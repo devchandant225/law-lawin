@@ -1,0 +1,64 @@
+@extends('layouts.app')
+
+@section('content')
+    {{-- Banner Component --}}
+    <x-banner :sliders="$sliders" />
+
+    {{-- About Section with Section Title Component --}}
+    <section class="relative bg-white">
+        <x-about-us />
+    </section>
+
+    {{-- Services Section --}}
+    <x-service-section 
+        :services="$services" 
+        :showViewAll="true"
+        :limit="8"
+        sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Services</span>"
+        sectionSubtitle="Professional Legal Services"
+        sectionDescription="We provide comprehensive legal services with expertise and dedication to serve our clients' needs across various practice areas."
+    />
+
+    {{-- Publications Section --}}
+    <x-practice-section 
+        :showViewAll="true"
+        :limit="6"
+        sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Practices</span>"
+        sectionSubtitle="Legal Knowledge Base"
+        sectionDescription="Explore our comprehensive collection of legal practice, research papers, and expert insights covering various areas of law."
+    />
+
+    {{-- Team Section --}}
+    <x-team-section 
+        :teams="$teams" 
+        :showViewAll="true"
+        :limit="8"
+        sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Our Team</span>"
+        sectionSubtitle="Meet Our Legal Professionals"
+        sectionDescription="Our experienced team of legal experts is dedicated to providing exceptional service and achieving the best outcomes for our clients."
+    />
+
+    {{-- Contact Section --}}
+    <x-contact-section 
+        :contactInfo="[
+            'location' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+            'phone' => '+971502864425',
+            'email' => 'contact@yallajetski.com',
+            'workingHours' => [
+                'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
+                'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM'
+            ]
+        ]"
+        sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Contact Us</span>"
+        sectionSubtitle="Get In Touch"
+        sectionDescription="We're here to help with any questions you might have. Feel free to reach out to us and we'll get back to you as soon as possible."
+        :showSocialLinks="true"
+    />
+
+    {{-- Events Section --}}
+    @include('components.events')
+
+    {{-- Notice Section --}}
+    @include('components.notice')
+
+@endsection

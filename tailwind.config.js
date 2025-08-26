@@ -7,7 +7,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#7e22ce ', // Purple - primary brand color
+				primary: '#6F64D3 ', // Purple - primary brand color
 				secondary: '#b1ac6a', // Gold - secondary brand color
 				accent: '#e7e8f0', // Light background accent
 			},

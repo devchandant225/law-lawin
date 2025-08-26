@@ -8,7 +8,7 @@
         'Explore our comprehensive collection of legal practices, research papers, and professional resources.',
 ])
 
-<section class="relative py-10 overflow-hidden bg-white">
+<section class="relative py-10 overflow-hidden bg-accent">
     <!-- Modern Line Grid Background -->
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
 
@@ -35,15 +35,15 @@
             </div>
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 Our
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary">
                     {!! $sectionTitle !!}</span>
             </h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6"></div>
+            <div class="w-24 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
         </div>
 
         @if ($practices->count() > 0)
             <!-- practices Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 @foreach ($practices->take($limit ?? $practices->count()) as $practice)
                     <div class="group relative practice-card-slide" data-aos="fade-up"
                         data-aos-delay="{{ $loop->index * 100 }}">
@@ -131,7 +131,7 @@
 
                                 <!-- Modern Button -->
                                 <a href="{{ route('practice.show', $practice->slug) }}"
-                                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white text-sm font-medium rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-primary text-white text-sm font-medium rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
                                     <span>Read Practice</span>
                                     <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,7 +149,7 @@
 
                         <!-- Floating Number Badge -->
                         <div
-                            class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110">
+                            class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-secondary to-secondary text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110">
                             {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}
                         </div>
                     </div>
@@ -157,11 +157,11 @@
             </div>
 
             <!-- View All practices Button -->
-            @if ($showViewAll && $practices->count() > ($limit ?? 6))
+            {{-- @if ($showViewAll && $practices->count() > ($limit ?? 6)) --}}
                 <div class="text-center">
                     <a href="{{ route('practices.index') }}"
-                        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold text-lg rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-emerald-600 focus:ring-opacity-30 group">
-                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="inline-flex items-center px-3 py-2 bg-primary text-white font-semibold text-sm rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-emerald-600 focus:ring-opacity-30 group">
+                        <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
                             </path>
@@ -174,7 +174,7 @@
                         </svg>
                     </a>
                 </div>
-            @endif
+            {{-- @endif --}}
         @else
             <!-- Empty State -->
             <div class="text-center py-20">

@@ -55,10 +55,5 @@
         :showSocialLinks="true"
     />
 
-    {{-- Events Section --}}
-    @include('components.events')
-
-    {{-- Notice Section --}}
-    @include('components.notice')
 
 @endsection

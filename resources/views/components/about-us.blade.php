@@ -38,7 +38,7 @@
                             </path>
                         </svg>
                     </div> --}}
-                    <div >
+                    <div>
                         <h1
                             class="text-4xl md:text-4xl lg:text-4xl font-bold bg-primary bg-clip-text text-transparent leading-tight">
                             About Our Company
@@ -64,19 +64,17 @@
 
                                     <!-- Modern Title with Animation -->
                                     <div class="relative mb-8">
-                                        <h2
-                                            class="text-4xl font-black text-primary mb-4 pb-2 animate-text-reveal">
+                                        <h2 class="text-4xl font-black text-primary mb-4 pb-2 animate-text-reveal">
                                             {{ $section->title }}
                                         </h2>
                                         <div class="flex items-center mb-3 w-[8rem]">
-                                            <div
-                                                class="w-[2rem] h-1 bg-primary rounded-full mr-4 animate-expand">
+                                            <div class="w-[2rem] h-1 bg-secondary rounded-full mr-4 animate-expand">
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Enhanced Description Content -->
-                                    <div class="space-y-8">
+                                    <div class="space-y-8 p-2">
                                         @if ($section->desc_1)
                                             <p class="text-gray-900 text-lg lg:text-xl leading-relaxed font-medium animate-slide-in-left"
                                                 style="animation-delay: 0.6s">
@@ -84,7 +82,7 @@
                                             </p>
                                         @endif
 
-                                      
+
                                     </div>
 
                                     <!-- Modern CTA Button -->
@@ -220,17 +218,17 @@
                                 </div>
                             </div>
                         </div>
-                          @if ($section->desc_2)
-                                            <p class="text-gray-900 mt-8 text-base lg:text-lg leading-relaxed animate-slide-in-left"
-                                                style="animation-delay: 0.8s">
-                                                {!! $section->desc_2 !!}
-                                            </p>
-                                        @endif
+                        <div class="p-2">
+                            @if ($section->desc_2)
+                                <p class="text-gray-900 mt-8 text-base lg:text-lg leading-relaxed animate-slide-in-left"
+                                    style="animation-delay: 0.8s">
+                                    {!! $section->desc_2 !!}
+                                </p>
+                            @endif
+                        </div>
                     </div>
                 @endforeach
             </div>
-
-            
         @else
             <!-- Enhanced Modern Empty State -->
             <div class="text-center py-32 animate-fade-in-up">

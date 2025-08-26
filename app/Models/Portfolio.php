@@ -36,7 +36,7 @@ class Portfolio extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image) {
-            return asset('storage/portfolios/' . $this->image);
+            return asset('storage/' . $this->image);
         }
         return null;
     }

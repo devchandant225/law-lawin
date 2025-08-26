@@ -32,7 +32,7 @@
     <x-team-section 
         :teams="$teams" 
         :showViewAll="true"
-        :limit="8"
+        :limit="4"
         sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Our Team</span>"
         sectionSubtitle="Meet Our Legal Professionals"
         sectionDescription="Our experienced team of legal experts is dedicated to providing exceptional service and achieving the best outcomes for our clients."

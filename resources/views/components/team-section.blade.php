@@ -1,7 +1,7 @@
 @props([
     'teams' => collect(),
     'showViewAll' => true,
-    'limit' => null,
+    'limit' => 4,
     'sectionTitle' => 'Our Team',
     'sectionSubtitle' => 'Meet Our Professional Team',
     'sectionDescription' =>

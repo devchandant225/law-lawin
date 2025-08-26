@@ -109,6 +109,38 @@
     @endif
 </a>
 
+{{-- Portfolio Management --}}
+<a href="{{ route('admin.portfolios.index') }}"
+    class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.portfolios.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">
+    <svg class="icon mr-3 h-5 w-5 {{ request()->routeIs('admin.portfolios.*') ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900' }}"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z" />
+    </svg>
+    <span class="hide-when-collapsed">Portfolio</span>
+    @if (request()->routeIs('admin.portfolios.*'))
+        <div class="ml-auto hide-when-collapsed">
+            <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+        </div>
+    @endif
+</a>
+
+{{-- Pages Management --}}
+<a href="{{ route('admin.pages.index') }}"
+    class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.pages.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">
+    <svg class="icon mr-3 h-5 w-5 {{ request()->routeIs('admin.pages.*') ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900' }}"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M16,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V8L16,3M18,19H6V5H15V9H18V19Z" />
+    </svg>
+    <span class="hide-when-collapsed">Pages</span>
+    @if (request()->routeIs('admin.pages.*'))
+        <div class="ml-auto hide-when-collapsed">
+            <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+        </div>
+    @endif
+</a>
+
 
 
 {{-- Sliders Management --}}

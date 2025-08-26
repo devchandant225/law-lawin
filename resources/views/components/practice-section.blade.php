@@ -1,7 +1,7 @@
 @props([
     'practices' => collect(),
     'showViewAll' => true,
-    'limit' => null,
+    'limit' => 8,
     'sectionTitle' => 'Our practices',
     'sectionSubtitle' => 'Professional Legal practices',
     'sectionDescription' =>

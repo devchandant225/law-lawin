@@ -22,7 +22,7 @@
     {{-- Publications Section --}}
     <x-practice-section 
         :showViewAll="true"
-        :limit="6"
+        :limit="8"
         sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Practices</span>"
         sectionSubtitle="Legal Knowledge Base"
         sectionDescription="Explore our comprehensive collection of legal practice, research papers, and expert insights covering various areas of law."

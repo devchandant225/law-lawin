@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('feature_image')->nullable();
-            $table->text('description')->nullable();
             $table->text('excerpt')->nullable();
             $table->enum('status', ['active', 'inactive', 'draft'])->default('draft');
             $table->integer('orderlist')->default(0);

@@ -10,7 +10,7 @@
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12">
+        <div class="grid grid-cols-12 gap-12">
             {{-- Organization Info Section --}}
             <div class="space-y-4 lg:col-span-4 xl:col-span-4">
                 {{-- Logo --}}

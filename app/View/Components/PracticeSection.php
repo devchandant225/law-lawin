@@ -24,7 +24,7 @@ class PracticeSection extends Component
      * @param string $status
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPractices($limit = null, $status = 'active')
+    public function getPractices($limit = 8, $status = 'active')
     {
         $query = Post::where('type','practice')
                     ->active()
@@ -44,7 +44,7 @@ class PracticeSection extends Component
      */
     public function getHomePractices()
     {
-        return $this->getPractices(6);
+        return $this->getPractices(8);
     }
 
     /**

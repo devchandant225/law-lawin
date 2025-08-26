@@ -12,7 +12,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\PublicationController as PublicPublicationController;
 use App\Http\Controllers\TeamController as PublicTeamController;
+use App\Http\Controllers\PortfolioController as PublicPortfolioController;
 
 // Admin Controllers
 use App\Http\Controllers\Admin\AuthController;
@@ -24,6 +26,7 @@ use App\Http\Controllers\Admin\FAQController as AdminFAQController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TableOfContentController;
 use App\Http\Controllers\Admin\AboutUsContentSectionController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\SliderController;
 
 /*
@@ -36,8 +39,6 @@ use App\Http\Controllers\SliderController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index']);
 
 // About
 Route::get('/about/introduction', [AboutController::class, 'introduction']);
@@ -82,9 +83,22 @@ Route::get('/practices/featured', [PracticeController::class, 'featured'])->name
 Route::get('/practices/stats', [PracticeController::class, 'stats'])->name('practices.stats');
 Route::get('/practice/{slug}', [PracticeController::class, 'show'])->name('practice.show');
 
+// Publications
+Route::get('/publications', [PublicPublicationController::class, 'index'])->name('publications.index');
+Route::get('/publications/search', [PublicPublicationController::class, 'search'])->name('publications.search');
+Route::get('/publications/featured', [PublicPublicationController::class, 'featured'])->name('publications.featured');
+Route::get('/publications/stats', [PublicPublicationController::class, 'stats'])->name('publications.stats');
+Route::get('/publication/{slug}', [PublicPublicationController::class, 'show'])->name('publication.show');
+
 // Team
 Route::get('/team', [PublicTeamController::class, 'index'])->name('team.index');
 Route::get('/team/{team}', [PublicTeamController::class, 'show'])->name('team.show');
+
+// Portfolio
+Route::get('/portfolios', [PublicPortfolioController::class, 'index'])->name('portfolios.index');
+
+// Add home route with name
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*
 |--------------------------------------------------------------------------
@@ -160,6 +174,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // About Us Content Section Management
     Route::resource('about-us-contents', AboutUsContentSectionController::class);
     Route::post('/about-us-contents/{aboutUsContent}/toggle-status', [AboutUsContentSectionController::class, 'toggleStatus'])->name('about-us-contents.toggle-status');
+    
+    // Portfolio Management
+    Route::resource('portfolios', PortfolioController::class);
+    Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
     
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

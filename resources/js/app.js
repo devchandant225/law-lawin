@@ -57,4 +57,80 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	}
+
+	// Initialize Portfolio Swiper
+	const portfolioSwiper = document.querySelector('.portfolioSwiper');
+	if (portfolioSwiper) {
+		new Swiper('.portfolioSwiper', {
+			modules: [Navigation, Pagination, Autoplay],
+			slidesPerView: 1,
+			spaceBetween: 20,
+			loop: true,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+				pauseOnMouseEnter: true,
+			},
+			speed: 800,
+			effect: 'slide',
+			navigation: {
+				nextEl: '.portfolio-swiper-next',
+				prevEl: '.portfolio-swiper-prev',
+			},
+			pagination: {
+				el: '.portfolio-swiper-pagination',
+				clickable: true,
+				dynamicBullets: true,
+			},
+			breakpoints: {
+				640: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 25,
+				},
+				1024: {
+					slidesPerView: 4,
+					spaceBetween: 30,
+				},
+				1280: {
+					slidesPerView: 5,
+					spaceBetween: 30,
+				},
+			},
+			on: {
+				init: function () {
+					// Add entrance animation delay
+					this.slides.forEach((slide, index) => {
+						slide.style.animationDelay = `${index * 0.1}s`;
+					});
+				},
+				slideChange: function () {
+					// Add subtle scale effect during transition
+					this.slides.forEach((slide) => {
+						slide.style.transform = 'scale(0.95)';
+						setTimeout(() => {
+							slide.style.transform = 'scale(1)';
+						}, 100);
+					});
+				},
+			}
+		});
+
+		// Add hover pause functionality
+		const swiperContainer = portfolioSwiper;
+		swiperContainer.addEventListener('mouseenter', () => {
+			if (portfolioSwiper.swiper) {
+				portfolioSwiper.swiper.autoplay.stop();
+			}
+		});
+
+		swiperContainer.addEventListener('mouseleave', () => {
+			if (portfolioSwiper.swiper) {
+				portfolioSwiper.swiper.autoplay.start();
+			}
+		});
+	}
 });

@@ -14,6 +14,7 @@ class Publication extends Model
         'title',
         'slug',
         'feature_image',
+        'description',
         'excerpt',
         'status',
         'orderlist',

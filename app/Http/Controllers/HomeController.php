@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Team;
+use App\Models\Portfolio;
 use App\View\Components\ServiceSection;
 use App\View\Components\TeamSection;
 
@@ -22,7 +23,10 @@ class HomeController extends Controller
         // Fetch team members for homepage (limited to 8)
         $teams = TeamSection::getHomeTeams(8);
         
-        return view('home', compact('sliders', 'services', 'teams'));
+        // Fetch active portfolios for homepage (limited to 10)
+        $portfolios = Portfolio::active()->ordered()->take(10)->get();
+        
+        return view('home', compact('sliders', 'services', 'teams', 'portfolios'));
     }
 }
 

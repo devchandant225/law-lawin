@@ -25,13 +25,14 @@ class PublicationRequest extends FormRequest
         $rules = [
             'title' => 'required|string|max:255',
             'excerpt' => 'nullable|string|max:1000',
+            'description' => 'nullable|string',
             'metatitle' => 'nullable|string|max:255',
             'metadescription' => 'nullable|string|max:500',
             'metakeywords' => 'nullable|string|max:1000',
             'status' => 'required|in:active,inactive,draft',
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'google_schema' => 'nullable|string'
+            'google_schema' => 'nullable|string',
         ];
 
         // Handle slug validation for create and update
@@ -82,7 +83,7 @@ class PublicationRequest extends FormRequest
             'metakeywords' => 'meta keywords',
             'feature_image' => 'feature image',
             'google_schema' => 'Google Schema',
-            'orderlist' => 'order list'
+            'orderlist' => 'order list',
         ];
     }
 

@@ -24,7 +24,7 @@ class TeamSection extends Component
     public function __construct(
         $teams = null,
         $showViewAll = true,
-        $limit = null,
+        $limit = 4,
         $sectionTitle = 'Our Team',
         $sectionSubtitle = 'Meet Our Professional Team',
         $sectionDescription = 'Our dedicated team of legal professionals brings years of experience and expertise to serve your legal needs with excellence.',

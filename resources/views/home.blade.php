@@ -28,6 +28,16 @@
         sectionDescription="Explore our comprehensive collection of legal practice, research papers, and expert insights covering various areas of law."
     />
 
+    {{-- Portfolio Section --}}
+    <x-portfolio-section 
+        :portfolios="$portfolios" 
+        :showViewAll="true"
+        :limit="10"
+        sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Our Portfolio</span>"
+        sectionSubtitle="Our Latest Work"
+        sectionDescription="Explore our diverse portfolio of successful projects and see how we bring ideas to life with creativity and expertise."
+    />
+
     {{-- Team Section --}}
     <x-team-section 
         :teams="$teams" 

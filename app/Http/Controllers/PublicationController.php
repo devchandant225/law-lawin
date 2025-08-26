@@ -3,116 +3,142 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
-use App\View\Components\PublicationSection;
+use App\Models\Publication;
+use Illuminate\View\View;
 
 class PublicationController extends Controller
 {
-    protected $publicationSection;
-
-    public function __construct()
-    {
-        $this->publicationSection = new PublicationSection();
-    }
 
     /**
-     * Display a listing of all publications.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of publications.
      */
-    public function index()
+    public function index(Request $request): View
     {
-        // Get all publications
-        $publications = $this->publicationSection->getAllPublications();
+        $query = Publication::active()->ordered();
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('excerpt', 'like', "%{$search}%");
+            });
+        }
+
+        // Pagination
+        $publications = $query->paginate(12)->withQueryString();
         
-        // Get publication statistics
-        $publicationStats = $this->publicationSection->getPublicationStats();
-        
-        return view('publications.index', compact('publications', 'publicationStats'));
+        // Get featured publications for sidebar
+        $featuredPublications = Publication::active()
+            ->ordered()
+            ->limit(5)
+            ->get();
+
+        // Get total count for stats
+        $totalPublications = Publication::active()->count();
+
+        return view('publications.index', compact('publications', 'featuredPublications', 'totalPublications'));
     }
 
     /**
      * Display the specified publication.
-     *
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Publication $publication): View
     {
-        // Find the publication by slug
-        $publication = Post::ofType('publication')
-                          ->active()
-                          ->where('slug', $slug)
-                          ->firstOrFail();
+        // Check if publication is active
+        if ($publication->status !== 'active') {
+            abort(404);
+        }
 
         // Get related publications
-        $relatedPublications = $this->publicationSection->getRelatedPublications($publication->slug, 3);
+        $relatedPublications = Publication::active()
+            ->where('id', '!=', $publication->id)
+            ->ordered()
+            ->limit(6)
+            ->get();
 
-        return view('publication.show', compact('publication', 'relatedPublications'));
+        // Get publication FAQs
+        $faqs = $publication->faqs()->where('status', 'active')->ordered()->get();
+
+        // Get table of contents
+        $tableOfContents = $publication->orderedTableOfContents()->active()->get();
+
+        // Get team members
+        $teamMembers = $publication->getTeamMembersWithRoles();
+
+        return view('publications.show', compact('publication', 'relatedPublications', 'faqs', 'tableOfContents', 'teamMembers'));
     }
 
     /**
-     * Search publications (API endpoint or for search functionality).
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Search publications via AJAX.
      */
     public function search(Request $request)
     {
         $query = $request->get('q', '');
-        $limit = $request->get('limit', 10);
-
+        
         if (empty($query)) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Search query is required',
-                'data' => []
-            ], 400);
+            return response()->json(['results' => []]);
         }
 
-        $publications = $this->publicationSection->searchPublications($query, $limit);
+        $publications = Publication::active()
+            ->where(function ($q) use ($query) {
+                $q->where('title', 'like', "%{$query}%")
+                  ->orWhere('excerpt', 'like', "%{$query}%");
+            })
+            ->ordered()
+            ->limit(10)
+            ->get(['id', 'title', 'slug', 'excerpt', 'feature_image'])
+            ->map(function ($publication) {
+                return [
+                    'id' => $publication->id,
+                    'title' => $publication->title,
+                    'slug' => $publication->slug,
+                    'excerpt' => $publication->excerpt ? \Str::limit($publication->excerpt, 100) : null,
+                    'url' => route('publication.show', $publication->slug),
+                    'image' => $publication->feature_image_url,
+                ];
+            });
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Publications found successfully',
-            'data' => $publications,
-            'query' => $query,
-            'count' => $publications->count()
-        ]);
+        return response()->json(['results' => $publications]);
     }
 
     /**
-     * Get featured publications (API endpoint or for featured section).
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Get featured publications.
      */
-    public function featured(Request $request)
+    public function featured()
     {
-        $limit = $request->get('limit', 4);
-        $publications = $this->publicationSection->getFeaturedPublications($limit);
+        $featuredPublications = Publication::active()
+            ->ordered()
+            ->limit(8)
+            ->get();
 
         return response()->json([
-            'status' => 'success',
-            'message' => 'Featured publications retrieved successfully',
-            'data' => $publications,
-            'count' => $publications->count()
+            'publications' => $featuredPublications->map(function ($publication) {
+                return [
+                    'id' => $publication->id,
+                    'title' => $publication->title,
+                    'slug' => $publication->slug,
+                    'excerpt' => $publication->excerpt,
+                    'url' => route('publication.show', $publication->slug),
+                    'image' => $publication->feature_image_url,
+                    'created_at' => $publication->created_at->format('M d, Y'),
+                ];
+            })
         ]);
     }
 
     /**
-     * Get publication statistics (API endpoint).
-     *
-     * @return \Illuminate\Http\Response
+     * Get publication statistics.
      */
     public function stats()
     {
-        $stats = $this->publicationSection->getPublicationStats();
+        $stats = [
+            'total_publications' => Publication::count(),
+            'active_publications' => Publication::active()->count(),
+            'total_faqs' => \App\Models\FAQ::count(),
+            'total_table_of_contents' => \App\Models\TableOfContent::count(),
+        ];
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Publication statistics retrieved successfully',
-            'data' => $stats
-        ]);
+        return response()->json($stats);
     }
 }

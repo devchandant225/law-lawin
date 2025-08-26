@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Post;
+use App\Models\Publication;
 
 class NavigationServiceProvider extends ServiceProvider
 {
@@ -64,7 +65,7 @@ class NavigationServiceProvider extends ServiceProvider
     private function getNavigationPublications()
     {
         return cache()->remember('nav_publications', 3600, function () {
-            return Post::where('type', 'publication')->active()->orderBy('created_at', 'desc')->select('id', 'title', 'slug', 'excerpt')->get();
+            return Publication::active()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
         });
     }
 

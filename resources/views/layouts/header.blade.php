@@ -237,16 +237,95 @@
 				</div>
 
 
-				<div class="relative group">
+			<div class="relative group">
 					<button class="inline-flex items-center gap-1 hover:text-purple-700 font-medium">
-						<span>News</span>
-						<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+						<span>News & Publications</span>
+						<svg class="h-4 w-4 transition-transform group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
 					</button>
-					<div class="absolute left-0 mt-2 hidden group-hover:block w-56 rounded-md border bg-white shadow-lg p-2">
-						<a class="block px-3 py-2 rounded hover:bg-gray-50" href="{{ url('/news') }}">Latest News</a>
-						<a class="block px-3 py-2 rounded hover:bg-gray-50" href="{{ url('/articles') }}">Legal Articles</a>
-						<a class="block px-3 py-2 rounded hover:bg-gray-50" href="{{ url('/newsletters') }}">Newsletters</a>
-						<a class="block px-3 py-2 rounded hover:bg-gray-50" href="{{ url('/resources') }}">Resources</a>
+					<div class="absolute left-0 mt-2 hidden group-hover:block w-80 rounded-xl border border-gray-200 bg-white shadow-2xl overflow-hidden">
+						<div class="bg-gradient-to-r from-orange-50 to-red-50 px-4 py-3 border-b border-gray-100">
+							<div class="flex items-center justify-between">
+								<h3 class="font-semibold text-gray-900">News & Publications</h3>
+								<a href="{{ route('publications.index') }}" class="text-xs text-orange-600 hover:text-orange-700 font-medium">View All →</a>
+							</div>
+						</div>
+						<div class="p-2">
+							{{-- News Section --}}
+							<div class="mb-3">
+								<div class="px-3 py-1 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100 pb-2 mb-2">News</div>
+								<a class="block px-3 py-2.5 rounded-lg hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 transition-all duration-200 group/item" href="{{ url('/news') }}">
+									<div class="flex items-start gap-3">
+										<div class="mt-1 flex-shrink-0">
+											<div class="w-8 h-8 bg-gradient-to-br from-orange-100 to-red-100 rounded-lg flex items-center justify-center group-hover/item:from-orange-200 group-hover/item:to-red-200 transition-colors">
+												<svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"/>
+												</svg>
+											</div>
+										</div>
+										<div class="flex-1">
+											<div class="font-medium text-gray-900 group-hover/item:text-orange-700 transition-colors">Latest News</div>
+											<div class="text-xs text-gray-500 mt-0.5">Stay updated with latest legal news</div>
+										</div>
+										<svg class="w-4 h-4 text-gray-400 group-hover/item:text-orange-600 transition-all transform group-hover/item:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+										</svg>
+									</div>
+								</a>
+							</div>
+							
+							{{-- Publications Section --}}
+							<div>
+								<div class="px-3 py-1 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b border-gray-100 pb-2 mb-2">Publications</div>
+								@if(isset($navPublications) && $navPublications->count() > 0)
+									@foreach($navPublications->take(4) as $publication)
+									 <a class="block px-3 py-2.5 rounded-lg hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 transition-all duration-200 group/item" 
+									   href="{{ route('publication.show', $publication->slug) }}">
+										<div class="flex items-start gap-3">
+											<div class="mt-1 flex-shrink-0">
+												<div class="w-8 h-8 bg-gradient-to-br from-orange-100 to-red-100 rounded-lg flex items-center justify-center group-hover/item:from-orange-200 group-hover/item:to-red-200 transition-colors">
+													<svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+													</svg>
+												</div>
+											</div>
+											<div class="flex-1">
+												<div class="font-medium text-gray-900 group-hover/item:text-orange-700 transition-colors">
+													{{ Str::limit($publication->title, 35) }}
+												</div>
+												@if($publication->excerpt)
+												<div class="text-xs text-gray-500 mt-0.5 line-clamp-1">
+													{{ Str::limit($publication->excerpt, 45) }}
+												</div>
+												@endif
+											</div>
+											<svg class="w-4 h-4 text-gray-400 group-hover/item:text-orange-600 transition-all transform group-hover/item:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+											</svg>
+										</div>
+									</a>
+									@endforeach
+									
+									@if($navPublications->count() > 4)
+									<div class="border-t border-gray-100 mt-2 pt-2">
+										<a href="{{ route('publications.index') }}"
+										   class="block px-3 py-2 text-center text-sm font-medium text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-lg transition-colors">
+											View All {{ $navPublications->count() }} Publications →
+										</a>
+									</div>
+									@endif
+								@else
+									<div class="px-4 py-8 text-center">
+										<svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+										</svg>
+										<p class="text-gray-500 text-sm">No publications available</p>
+										<a href="{{ route('publications.index') }}" class="text-orange-600 text-sm hover:text-orange-700 mt-2 inline-block font-medium">
+											Browse Publications →
+										</a>
+									</div>
+								@endif
+							</div>
+						</div>
 					</div>
 				</div>
 

@@ -36,20 +36,7 @@
                                         {{ $slider->description }}
                                     </p>
                                 @endif
-                                
-                                <div 
-                                    class="flex justify-center space-x-4 
-                                           animate-fade-in-up animation-delay-400"
-                                >
-                                    <a 
-                                        href="#" 
-                                        class="px-8 py-3 bg-primary text-white rounded-lg 
-                                               hover:bg-primary-600 transition-colors 
-                                               shadow-lg hover:shadow-xl"
-                                    >
-                                        Learn More
-                                    </a>
-                                </div>
+                          
                             </div>
                         </div>
                     </div>

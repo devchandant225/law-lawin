@@ -7,7 +7,7 @@
     'sectionDescription' => 'We provide comprehensive legal services with expertise and dedication to serve our clients\' needs.'
 ])
 
-<section class="relative py-10 bg-white overflow-hidden">
+<section class="relative py-10 bg-accent overflow-hidden">
     <!-- Modern Line Grid Background -->
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
         

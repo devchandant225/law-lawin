@@ -1,5 +1,5 @@
 <!-- Modern About Us Section with Grid Background and Enhanced Animations -->
-<div class="about-us-wrapper relative overflow-hidden bg-white">
+<div class="about-us-wrapper relative overflow-hidden bg-accent">
 
     <!-- Modern Line Grid Background -->
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
@@ -22,14 +22,14 @@
             <!-- Modern Section Header -->
             <div class="text-center mb-12 animate-fade-in-up">
 
-                <div class="mb-2">
+                <div class="">
                     <span
-                        class="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-semibold rounded-full mb-4 animate-slide-down">
+                        class="inline-block px-4 py-2 text-white bg-secondary text-sm font-semibold rounded-full animate-slide-down">
                         DISCOVER OUR STORY
                     </span>
                 </div>
-                <div class="flex gap-3 justify-center items-center ">
-                    <div
+                <div class="flex gap-3 justify-center items-center mt-2">
+                    {{-- <div
                         class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-[#6F64D3] to-[#ADA769] rounded-2xl animate-bounce-modern shadow-lg">
                         <svg class="w-10 h-10 text-white animate-pulse" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
@@ -37,10 +37,10 @@
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                             </path>
                         </svg>
-                    </div>
-                    <div>
+                    </div> --}}
+                    <div >
                         <h1
-                            class="text-5xl md:text-5xl lg:text-5xl font-bold bg-gradient-to-r from-[#6F64D3] via-[#ADA769] to-indigo-600 bg-clip-text text-transparent leading-tight">
+                            class="text-4xl md:text-4xl lg:text-4xl font-bold bg-primary bg-clip-text text-transparent leading-tight">
                             About Our Company
                         </h1>
                     </div>
@@ -64,17 +64,14 @@
 
                                     <!-- Modern Title with Animation -->
                                     <div class="relative mb-8">
-
                                         <h2
-                                            class="text-4xl font-black text-gray-900 mb-4 leading-tight animate-text-reveal">
+                                            class="text-4xl font-black text-primary mb-4 pb-2 animate-text-reveal">
                                             {{ $section->title }}
                                         </h2>
-                                        <div class="flex items-center mb-6 w-[8rem]">
+                                        <div class="flex items-center mb-3 w-[8rem]">
                                             <div
-                                                class="w-[2rem] h-1 bg-gradient-to-r from-[#6F64D3] to-[#ADA769] rounded-full mr-4 animate-expand">
+                                                class="w-[2rem] h-1 bg-primary rounded-full mr-4 animate-expand">
                                             </div>
-                                       
-                                            
                                         </div>
                                     </div>
 
@@ -87,16 +84,11 @@
                                             </p>
                                         @endif
 
-                                        @if ($section->desc_2)
-                                            <p class="text-gray-900 text-base lg:text-lg leading-relaxed animate-slide-in-left"
-                                                style="animation-delay: 0.8s">
-                                                {!! $section->desc_2 !!}
-                                            </p>
-                                        @endif
+                                      
                                     </div>
 
                                     <!-- Modern CTA Button -->
-                                    <div class="mt-10 animate-fade-in-up" style="animation-delay: 1s">
+                                    {{-- <div class="mt-10 animate-fade-in-up" style="animation-delay: 1s">
                                         <button
                                             class="modern-btn group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-[#6F64D3] to-[#ADA769] text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                                             <!-- Button Background Animation -->
@@ -129,7 +121,7 @@
                                                 </div>
                                             </div>
                                         </button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -228,16 +220,17 @@
                                 </div>
                             </div>
                         </div>
+                          @if ($section->desc_2)
+                                            <p class="text-gray-900 mt-8 text-base lg:text-lg leading-relaxed animate-slide-in-left"
+                                                style="animation-delay: 0.8s">
+                                                {!! $section->desc_2 !!}
+                                            </p>
+                                        @endif
                     </div>
                 @endforeach
             </div>
 
-            <!-- Modern Bottom Decoration -->
-            <div class="mt-24 flex flex-col items-center animate-fade-in-up" style="animation-delay: 1.5s">
-              
-                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#6F64D3] to-transparent animate-expand">
-                </div>
-            </div>
+            
         @else
             <!-- Enhanced Modern Empty State -->
             <div class="text-center py-32 animate-fade-in-up">
@@ -699,32 +692,6 @@
         background: none;
     }
 
-    /* Dark Mode Support */
-    @media (prefers-color-scheme: dark) {
-        .about-us-wrapper {
-            background:
-                radial-gradient(circle at 25% 25%, rgba(111, 100, 211, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(173, 167, 105, 0.1) 0%, transparent 50%),
-                linear-gradient(135deg, #fff 0%, #fff 50%, #fff 100%);
-        }
-
-        .about-section h1,
-        .about-section h2 {
-            color: #f1f5f9;
-            background: linear-gradient(to right, #6F64D3, #ADA769);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about-section p {
-            color: #515c68;
-        }
-
-        .modern-btn {
-            box-shadow: 0 10px 25px -5px rgba(111, 100, 211, 0.4);
-        }
-    }
 
     /* Intersection Observer Animation Triggers */
     .about-section[data-animate="true"] {

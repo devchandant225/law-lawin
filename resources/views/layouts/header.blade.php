@@ -1,6 +1,6 @@
 {{-- Top Contact Bar --}}
-<div class="bg-gradient-to-r from-purple-600 via-purple-600 to-purple-700 text-white hidden md:block border-b border-white/10">
-	<div class="max-w-7xl mx-auto px-4 py-3">
+<div class="bg-primary text-white hidden md:block border-b border-white/10">
+	<div class="max-w-7xl mx-auto px-4">
 		<div class="flex items-center justify-between text-sm">
 			<div class="flex items-center gap-6">
 				@if($globalProfile && $globalProfile->phone1)

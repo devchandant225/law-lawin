@@ -27,7 +27,9 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TableOfContentController;
 use App\Http\Controllers\Admin\AboutUsContentSectionController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\PageController as PublicPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,10 +86,10 @@ Route::get('/practices/stats', [PracticeController::class, 'stats'])->name('prac
 Route::get('/practice/{slug}', [PracticeController::class, 'show'])->name('practice.show');
 
 // Publications
-Route::get('/publications', [PublicPublicationController::class, 'index'])->name('publications.index');
-Route::get('/publications/search', [PublicPublicationController::class, 'search'])->name('publications.search');
-Route::get('/publications/featured', [PublicPublicationController::class, 'featured'])->name('publications.featured');
-Route::get('/publications/stats', [PublicPublicationController::class, 'stats'])->name('publications.stats');
+Route::get('/publication', [PublicPublicationController::class, 'index'])->name('publications.index');
+Route::get('/publication/search', [PublicPublicationController::class, 'search'])->name('publications.search');
+Route::get('/publication/featured', [PublicPublicationController::class, 'featured'])->name('publications.featured');
+Route::get('/publication/stats', [PublicPublicationController::class, 'stats'])->name('publications.stats');
 Route::get('/publication/{slug}', [PublicPublicationController::class, 'show'])->name('publication.show');
 
 // Team
@@ -96,6 +98,9 @@ Route::get('/team/{team}', [PublicTeamController::class, 'show'])->name('team.sh
 
 // Portfolio
 Route::get('/portfolios', [PublicPortfolioController::class, 'index'])->name('portfolios.index');
+
+// Pages
+Route::get('/page/{page}', [PublicPageController::class, 'show'])->name('page.show');
 
 // Add home route with name
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -178,6 +183,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // Portfolio Management
     Route::resource('portfolios', PortfolioController::class);
     Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
+    
+    // Pages Management
+    Route::resource('pages', AdminPageController::class);
+    Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
     
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

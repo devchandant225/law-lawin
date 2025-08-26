@@ -1,5 +1,5 @@
 {{-- Modern Footer --}}
-<footer class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+<footer class="relative bg-white text-gray-900 overflow-hidden">
     {{-- Background Elements --}}
     <div class="absolute inset-0 opacity-5">
         <div class="absolute top-10 left-10 w-20 h-20 bg-primary rounded-full animate-pulse"></div>
@@ -40,13 +40,13 @@
                 </a>
 
                 {{-- Mission Statement --}}
-                <p class="text-gray-300 leading-relaxed">
+                <p class="text-gray-900 leading-relaxed">
                     {{ $globalProfile->description }}
                 </p>
 
                 {{-- Contact Information --}}
                 <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-gray-900  transition-colors group">
                         <div
                             class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -57,11 +57,11 @@
                         <div>
                             <div class="font-medium">Email us</div>
                             <a href="mailto:{{ $globalProfile->email }}"
-                                class="text-sm text-gray-400 hover:text-secondary transition-colors">{{ $globalProfile->email }}</a>
+                                class="text-sm text-primary hover:text-secondary transition-colors">{{ $globalProfile->email }}</a>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-gray-900  transition-colors group">
                         <div
                             class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -72,11 +72,11 @@
                         <div>
                             <div class="font-medium">Call us</div>
                             <a href="tel:{{ $globalProfile->phone1 }}"
-                                class="text-sm text-gray-400 hover:text-secondary transition-colors">{{ $globalProfile->phone1 }}</a>
+                                class="text-sm text-primary hover:text-secondary transition-colors">{{ $globalProfile->phone1 }}</a>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 text-gray-300">
+                    <div class="flex items-center gap-3 text-gray-900">
                         <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -85,7 +85,8 @@
                         </div>
                         <div>
                             <div class="font-medium">Visit us</div>
-                            <div class="text-sm text-gray-400">{{ $globalProfile->address }}</div>
+                            <div class=" text-sm text-primary hover:text-secondary transition-colors">
+                                {{ $globalProfile->address }}</div>
                         </div>
                     </div>
                 </div>
@@ -142,13 +143,12 @@
             {{-- Quick Links --}}
             <div class="space-y-6 lg:col-span-3">
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-
+                    <h4 class="text-lg font-bold text-primary mb-4 flex items-center gap-2">
                         Quick Links
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
                         <a href="{{ url('/about/introduction') }}"
-                            class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+                            class="flex items-center gap-2 text-gray-600  transition-colors group">
                             <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
                                 viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -157,7 +157,7 @@
                             About Us
                         </a>
                         <a href="{{ url('/information/notices') }}"
-                            class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+                            class="flex items-center gap-2 text-gray-600  transition-colors group">
                             <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
                                 viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -166,7 +166,7 @@
                             Notices
                         </a>
                         <a href="{{ url('/information/events') }}"
-                            class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+                            class="flex items-center gap-2 text-gray-600 transition-colors group">
                             <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
                                 viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -175,7 +175,7 @@
                             Events
                         </a>
                         <a href="{{ url('/publications/journal') }}"
-                            class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+                            class="flex items-center gap-2 text-gray-600  transition-colors group">
                             <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
                                 viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -184,7 +184,7 @@
                             Journal
                         </a>
                         <a href="{{ url('/membership/register') }}"
-                            class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+                            class="flex items-center gap-2 text-gray-600  transition-colors group">
                             <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
                                 viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -193,7 +193,7 @@
                             Membership
                         </a>
                         <a href="{{ url('/contact') }}"
-                            class="flex items-center gap-2 text-gray-300 hover:text-white transition-colors group">
+                            class="flex items-center gap-2 text-gray-600 transition-colors group">
                             <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
                                 viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M22,4C22,2.89 21.1,2 20,2H4A2,2 0 0,0 2,4V16A2,2 0 0,0 4,18H18L22,22V4Z" />
@@ -206,27 +206,31 @@
 
             {{-- Map --}}
             <div class="lg:col-span-4 xl:col-span-4">
-                <h4 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <h4 class="text-lg font-bold text-primary mb-4 flex items-center gap-2">
                     Location
                 </h4>
                 <div class="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-xl">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11795.000075340042!2d85.324861!3d27.687021000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb191b975e3b81%3A0x60674a6cd53cbf4a!2sLawin%20and%20Partners!5e1!3m2!1sen!2sus!4v1756203134907!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11795.000075340042!2d85.324861!3d27.687021000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb191b975e3b81%3A0x60674a6cd53cbf4a!2sLawin%20and%20Partners!5e1!3m2!1sen!2sus!4v1756203134907!5m2!1sen!2sus"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 
         </div>
-        <div class="border-t border-white/15 mt-2">
-            <div
-                class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/80">
-                <div>&copy; {{ date('Y') }} {{ config('app.name', 'Professional Organization') }}. All rights
-                    reserved.
-                </div>
-                <div class="mt-3 md:mt-0 flex items-center gap-4">
-                    <a class="hover:text-white" href="{{ url('/') }}">Home</a>
-                    <a class="hover:text-white" href="{{ url('/publications/journal') }}">Journal</a>
-                    <a class="hover:text-white" href="{{ url('/information/events') }}">Events</a>
-                    <a class="hover:text-white" href="{{ url('/contact') }}">Contact</a>
-                </div>
-            </div>
-        </div>
+
 </footer>
+<div class="border-t bg-primary border-white/15">
+    <div
+        class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/80">
+        <div>&copy; {{ date('Y') }} {{ config('app.name', 'Professional Organization') }}. All rights
+            reserved.
+        </div>
+        <div class="mt-3 md:mt-0 flex items-center gap-4">
+            <a class="hover:text-white" href="{{ url('/') }}">Home</a>
+            <a class="hover:text-white" href="{{ url('/publications/journal') }}">Journal</a>
+            <a class="hover:text-white" href="{{ url('/information/events') }}">Events</a>
+            <a class="hover:text-white" href="{{ url('/contact') }}">Contact</a>
+        </div>
+    </div>
+</div>

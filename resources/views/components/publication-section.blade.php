@@ -22,24 +22,23 @@
 
                     <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
                 </div><!-- /.sec-title -->
-                
-                @if($publications->isNotEmpty())
+
+                @if ($publications->isNotEmpty())
                     <div class="row gutter-y-30">
-                        @foreach($publications as $index => $publication)
+                        @foreach ($publications as $index => $publication)
                             <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ ($index % 2) * 100 }}ms">
                                 <div class="award-one__item">
-                                    <div class="award-one__item__left">
+                                    <a href="{{ route('publication.show', $publication->slug) }}"
+                                        class="award-one__item__left">
                                         <h2 class="award-one__item__title">
-                                            <a href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
+                                            <a
+                                                href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
                                         </h2>
                                         <p class="award-one__item__text">
                                             {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 150) }}
                                         </p>
-                                        <a href="{{ route('publication.show', $publication->slug) }}" class="procounsel-btn procounsel-btn--base">
-                                            <i>Read More</i>
-                                            <span>Read More</span>
-                                        </a>
-                                    </div>
+
+                                    </a>
                                 </div>
                             </div>
                         @endforeach
@@ -50,8 +49,8 @@
                         <p>Please check back later for our latest publications and resources.</p>
                     </div>
                 @endif
-                
-                @if($showViewAll && $publications->isNotEmpty())
+
+                @if ($showViewAll && $publications->isNotEmpty())
                     <div class="text-center mt-5">
                         <a href="{{ route('publications.index') }}" class="procounsel-btn procounsel-btn--two">
                             <i>View All Publications</i>

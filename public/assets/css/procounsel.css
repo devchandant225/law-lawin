@@ -11816,7 +11816,7 @@ body.megamenu-popup-active .mobile-nav__content {
   }
 }
 .award-one__item__left {
-  width: 70%;
+  width: 100%;
 }
 @media (max-width: 1199px) {
   .award-one__item__left {

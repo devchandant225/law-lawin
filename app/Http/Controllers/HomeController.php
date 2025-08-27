@@ -22,11 +22,9 @@ class HomeController extends Controller
         
         // Fetch team members for homepage (limited to 8)
         $teams = TeamSection::getHomeTeams(8);
+    
         
-        // Fetch active publications for homepage (limited to 8)
-        $publications = Publication::active()->ordered()->take(8)->get();
-        
-        return view('home', compact('sliders', 'services', 'teams', 'publications'));
+        return view('home', compact('sliders', 'services', 'teams'));
     }
 }
 

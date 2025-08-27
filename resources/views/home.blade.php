@@ -28,7 +28,7 @@
         sectionDescription="Explore our diverse portfolio of successful projects and see how we bring ideas to life with creativity and expertise." />
 
     {{-- Publications Section --}}
-    <x-publication-section :publications="$publications" :showViewAll="true" :limit="8" :showSearch="true"
+    <x-publication-section  :showViewAll="true" :limit="8" :showSearch="true"
         sectionTitle="<span class=''>Publications</span>"
         sectionSubtitle="Legal Knowledge & Resources"
         sectionDescription="Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law." />

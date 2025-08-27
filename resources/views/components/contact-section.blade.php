@@ -26,7 +26,7 @@
                             <ul class="list-unstyled contact-two__info">
                                 <div class="contact-two__info__shape"></div>
                                 
-                                @if(!empty($contactInfo['phones']))
+                                @if(!empty($contactInfo) && (!empty($contactInfo['phones']) || !empty($contactInfo['phone'])))
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-telephone-call-1"></i>
@@ -36,15 +36,19 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            @foreach($contactInfo['phones'] as $phone)
-                                                <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
-                                            @endforeach
+                                            @if(!empty($contactInfo['phones']))
+                                                @foreach($contactInfo['phones'] as $phone)
+                                                    <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
+                                                @endforeach
+                                            @elseif(!empty($contactInfo['phone']))
+                                                <a href="tel:{{ $contactInfo['phone'] }}">{{ $contactInfo['phone'] }}</a>
+                                            @endif
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>
                                 @endif
                                 
-                                @if($contactInfo['email'])
+                                @if(!empty($contactInfo) && !empty($contactInfo['email']))
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-glove"></i>
@@ -61,7 +65,7 @@
                                 </li>
                                 @endif
                                 
-                                @if($contactInfo['address'])
+                                @if(!empty($contactInfo) && (!empty($contactInfo['address']) || !empty($contactInfo['location'])))
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-map-pin"></i>
@@ -71,7 +75,7 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            {{ $contactInfo['address'] }}
+                                            {{ $contactInfo['address'] ?? $contactInfo['location'] ?? '' }}
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>

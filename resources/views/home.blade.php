@@ -41,7 +41,7 @@
     <x-process-steps />
     {{-- Contact Section --}}
     <x-contact-section :contactInfo="[
-        'location' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+        'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
         'phone' => '+971502864425',
         'email' => 'contact@yallajetski.com',
         'workingHours' => [

@@ -57,6 +57,16 @@ class ContactSection extends Component
             return $this->contactInfo;
         }
 
+        // Return default contact info if profile doesn't exist or is empty
+        if (!$this->profile || !$this->profile->exists) {
+            return [
+                'phones' => [],
+                'email' => null,
+                'address' => null,
+                'social' => []
+            ];
+        }
+
         return [
             'phones' => array_filter([
                 $this->profile->phone1,

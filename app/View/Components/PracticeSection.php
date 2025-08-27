@@ -27,8 +27,8 @@ class PracticeSection extends Component
     {
         $this->limit = $limit;
         $this->showViewAll = $showViewAll;
-        $this->sectionTitle = $sectionTitle ?? "We're Providing Best <br><span>Service To Clients</span>";
-        $this->sectionSubtitle = $sectionSubtitle ?? 'Our Service';
+        $this->sectionTitle = $sectionTitle ?? "Expert Legal Practice Areas  <br><span>Tailored to Your Needs</span>";
+        $this->sectionSubtitle = $sectionSubtitle ?? 'Practice Area';
         $this->practices = $this->getPractices($limit);
     }
 

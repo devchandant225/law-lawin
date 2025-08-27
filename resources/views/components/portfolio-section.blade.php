@@ -42,7 +42,7 @@
                                 <div class="relative overflow-hidden aspect-square w-[5rem] h-[5rem] mx-auto mt-4 rounded-lg">
                                     @if ($portfolio->image_url)
                                         <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" 
-                                             class="w-[10rem] h-[6rem] object-contain transition-transform duration-500 group-hover:scale-110">
+                                             class="w-[12rem] h-[8rem] object-contain transition-transform duration-500 group-hover:scale-110">
                                     @else
                                         <!-- Default Portfolio Icon -->
                                         <div class="flex items-center justify-center w-full h-full">
@@ -56,7 +56,7 @@
                                 
                                 <!-- Card Content -->
                                 <div class="p-3 md:p-4">
-                                    <h3 class="text-sm md:text-base font-semibold text-gray-900 line-clamp-2 group-hover:text-[#6f64d3] transition-colors duration-300">
+                                    <h3 class="text-sm md:text-base font-semibold text-gray-900 line-clamp-2 group-hover:text-[#6f64d3] transition-colors duration-300 text-center">
                                         {{ $portfolio->title }}
                                     </h3>
                                 </div>

@@ -26,7 +26,43 @@
                             <ul class="list-unstyled contact-two__info">
                                 <div class="contact-two__info__shape"></div>
                                 
-                                @if(!empty($contactInfo) && (!empty($contactInfo['phones']) || !empty($contactInfo['phone'])))
+                                @php
+                                    // Determine phone numbers to display
+                                    $phoneNumbers = [];
+                                    if (!empty($contactInfo)) {
+                                        if (!empty($contactInfo['phones'])) {
+                                            $phoneNumbers = $contactInfo['phones'];
+                                        } elseif (!empty($contactInfo['phone'])) {
+                                            $phoneNumbers = [$contactInfo['phone']];
+                                        }
+                                    } elseif ($globalProfile) {
+                                        $phoneNumbers = array_filter([
+                                            $globalProfile->phone1,
+                                            $globalProfile->phone2
+                                        ]);
+                                    }
+                                    
+                                    // Determine email to display
+                                    $emailAddress = null;
+                                    if (!empty($contactInfo['email'])) {
+                                        $emailAddress = $contactInfo['email'];
+                                    } elseif ($globalProfile && $globalProfile->email) {
+                                        $emailAddress = $globalProfile->email;
+                                    }
+                                    
+                                    // Determine address to display
+                                    $address = null;
+                                    if (!empty($contactInfo['address'])) {
+                                        $address = $contactInfo['address'];
+                                    } elseif (!empty($contactInfo['location'])) {
+                                        $address = $contactInfo['location'];
+                                    } elseif ($globalProfile && $globalProfile->address) {
+                                        $address = $globalProfile->address;
+                                    }
+                                @endphp
+                                
+                                {{-- Phone Section --}}
+                                @if(!empty($phoneNumbers))
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-telephone-call-1"></i>
@@ -36,19 +72,16 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            @if(!empty($contactInfo['phones']))
-                                                @foreach($contactInfo['phones'] as $phone)
-                                                    <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
-                                                @endforeach
-                                            @elseif(!empty($contactInfo['phone']))
-                                                <a href="tel:{{ $contactInfo['phone'] }}">{{ $contactInfo['phone'] }}</a>
-                                            @endif
+                                            @foreach($phoneNumbers as $phone)
+                                                <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
+                                            @endforeach
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>
                                 @endif
                                 
-                                @if(!empty($contactInfo) && !empty($contactInfo['email']))
+                                {{-- Email Section --}}
+                                @if($emailAddress)
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-glove"></i>
@@ -58,14 +91,15 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            <a href="mailto:{{ $contactInfo['email'] }}">{{ $contactInfo['email'] }}</a><br>
+                                            <a href="mailto:{{ $emailAddress }}">{{ $emailAddress }}</a><br>
                                             <a href="{{ url('/') }}">{{ parse_url(url('/'), PHP_URL_HOST) }}</a>
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>
                                 @endif
                                 
-                                @if(!empty($contactInfo) && (!empty($contactInfo['address']) || !empty($contactInfo['location'])))
+                                {{-- Address Section --}}
+                                @if($address)
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-map-pin"></i>
@@ -75,7 +109,7 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            {{ $contactInfo['address'] ?? $contactInfo['location'] ?? '' }}
+                                            {{ $address }}
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>

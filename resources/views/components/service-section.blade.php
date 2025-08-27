@@ -19,6 +19,16 @@
 
                     <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
                 </div><!-- /.sec-title -->
+                
+                @if($showViewAll)
+                    <div class="text-center mb-5 wow fadeInUp" data-wow-delay="300ms">
+                        <a href="{{ route('services.index') }}" class="procounsel-btn procounsel-btn--two">
+                            <i>View All Services</i>
+                            <span>View All Services</span>
+                        </a>
+                    </div>
+                @endif
+                
                 <div class="row gutter-y-30">
                     @forelse($services as $index => $service)
                         <div class="col-xl-3 col-md-6 wow fadeInUp" data-wow-delay="{{ $index * 100 }}ms">

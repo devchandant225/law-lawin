@@ -5,11 +5,19 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Profile;
 
+/**
+ * Contact Section Component
+ * 
+ * This component displays contact information and an optional contact form.
+ * It uses the globalProfile from ProfileViewComposerServiceProvider as a fallback
+ * when no specific contactInfo is provided.
+ * 
+ * The component will prioritize contactInfo passed as props, but will fall back
+ * to globalProfile data (phone1, phone2, email, address) when available.
+ */
 class ContactSection extends Component
 {
-    public $profile;
     public $contactInfo;
     public $sectionTitle;
     public $sectionSubtitle;
@@ -38,7 +46,6 @@ class ContactSection extends Component
         $formAction = null,
         $showForm = true
     ) {
-        $this->profile = Profile::getProfile();
         $this->contactInfo = $contactInfo;
         $this->sectionTitle = $sectionTitle ?? 'Feel Free to <br><span>Write Us Anytime</span>';
         $this->sectionSubtitle = $sectionSubtitle ?? 'Contact With Us';
@@ -49,51 +56,12 @@ class ContactSection extends Component
     }
 
     /**
-     * Get formatted contact information
-     */
-    public function getContactInfo()
-    {
-        if ($this->contactInfo) {
-            return $this->contactInfo;
-        }
-
-        // Return default contact info if profile doesn't exist or is empty
-        if (!$this->profile || !$this->profile->exists) {
-            return [
-                'phones' => [],
-                'email' => null,
-                'address' => null,
-                'social' => []
-            ];
-        }
-
-        return [
-            'phones' => array_filter([
-                $this->profile->phone1,
-                $this->profile->phone2
-            ]),
-            'email' => $this->profile->email,
-            'address' => $this->profile->address,
-            'social' => [
-                'facebook' => $this->profile->facebook_link,
-                'instagram' => $this->profile->instagram_link,
-                'twitter' => $this->profile->twitter_link,
-                'linkedin' => $this->profile->linkedin_link,
-                'youtube' => $this->profile->youtube_link,
-                'whatsapp' => $this->profile->whatsapp,
-                'viber' => $this->profile->viber,
-            ]
-        ];
-    }
-
-    /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
         return view('components.contact-section', [
-            'profile' => $this->profile,
-            'contactInfo' => $this->getContactInfo(),
+            'contactInfo' => $this->contactInfo,
             'sectionTitle' => $this->sectionTitle,
             'sectionSubtitle' => $this->sectionSubtitle,
             'sectionDescription' => $this->sectionDescription,

@@ -12,24 +12,28 @@ class ServiceSection extends Component
     public $services;
     public $limit;
     public $showBrands;
+    public $showViewAll;
     public $sectionTitle;
     public $sectionSubtitle;
 
     /**
      * Create a new component instance.
      * 
+     * @param \Illuminate\Database\Eloquent\Collection|null $services
      * @param int|null $limit
+     * @param bool $showViewAll
      * @param bool $showBrands
      * @param string|null $sectionTitle
      * @param string|null $sectionSubtitle
      */
-    public function __construct($limit = 8, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
+    public function __construct($services = null, $limit = 8, $showViewAll = false, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
     {
         $this->limit = $limit;
         $this->showBrands = $showBrands;
+        $this->showViewAll = $showViewAll;
         $this->sectionTitle = $sectionTitle ?? "We're Providing Best Service To Clients";
         $this->sectionSubtitle = $sectionSubtitle ?? 'Our Services';
-        $this->services = $this->getServices($limit);
+        $this->services = $services ?? $this->getServices($limit);
     }
 
     /**
@@ -191,6 +195,7 @@ class ServiceSection extends Component
         return view('components.service-section', [
             'services' => $this->services,
             'showBrands' => $this->showBrands,
+            'showViewAll' => $this->showViewAll,
             'sectionTitle' => $this->sectionTitle,
             'sectionSubtitle' => $this->sectionSubtitle,
         ]);

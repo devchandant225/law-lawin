@@ -42,7 +42,7 @@
                                 <div class="relative overflow-hidden aspect-square w-[5rem] h-[5rem] mx-auto mt-4 rounded-lg">
                                     @if ($portfolio->image_url)
                                         <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" 
-                                             class="w-[12rem] h-[8rem] object-contain transition-transform duration-500 group-hover:scale-110">
+                                             class="w-[12rem] h-[10rem] object-contain transition-transform duration-500 group-hover:scale-110">
                                     @else
                                         <!-- Default Portfolio Icon -->
                                         <div class="flex items-center justify-center w-full h-full">

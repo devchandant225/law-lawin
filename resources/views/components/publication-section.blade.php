@@ -34,9 +34,11 @@
                                             <a
                                                 href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
                                         </h2>
-                                        {{-- <p class="award-one__item__text">
+                                        @if($publication->excerpt || $publication->description)
+                                        <p class="award-one__item__text">
                                             {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 150) }}
-                                        </p> --}}
+                                        </p>
+                                        @endif
 
                                     </div>
                                 </div>

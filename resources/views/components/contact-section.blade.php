@@ -18,13 +18,15 @@
                                             <path d="M14.3015 12.2813L14.0726 12.5102C13.9993 12.5825 13.9411 12.6687 13.9012 12.7637C13.8613 12.8586 13.8406 12.9605 13.8403 13.0635C13.84 13.1665 13.8601 13.2686 13.8993 13.3638C13.9386 13.459 13.9963 13.5455 14.0691 13.6184C14.142 13.6912 14.2285 13.7489 14.3237 13.7882C14.4189 13.8274 14.521 13.8475 14.624 13.8471C14.727 13.8468 14.8289 13.8261 14.9238 13.7863C15.0188 13.7464 15.105 13.6881 15.1773 13.6149L21.4273 7.36485C21.5716 7.21791 21.6521 7.01992 21.6511 6.81397C21.6502 6.60802 21.568 6.41077 21.4223 6.26514C21.2767 6.11951 21.0795 6.03729 20.8735 6.03635C20.6676 6.03542 20.4696 6.11586 20.3226 6.26016L20.0937 6.48907L16.5113 2.90602L16.7398 2.67735C16.8841 2.53041 16.9646 2.33242 16.9636 2.12647C16.9627 1.92052 16.8805 1.72327 16.7348 1.57764C16.5892 1.43201 16.392 1.34979 16.186 1.34885C15.9801 1.34792 15.7821 1.42836 15.6351 1.57266L9.38514 7.82266C9.31152 7.89496 9.25296 7.98112 9.21283 8.07618C9.17269 8.17123 9.15179 8.27329 9.15132 8.37647C9.15086 8.47965 9.17083 8.5819 9.2101 8.67731C9.24937 8.77273 9.30715 8.85942 9.38011 8.93238C9.45307 9.00534 9.53976 9.06312 9.63518 9.10239C9.73059 9.14166 9.83284 9.16163 9.93602 9.16117C10.0392 9.1607 10.1413 9.1398 10.2363 9.09966C10.3314 9.05953 10.4175 9.00097 10.4898 8.92735L10.7187 8.69844L10.7859 8.76559L1.18201 18.3695C0.953685 18.5955 0.772269 18.8644 0.648189 19.1608C0.524109 19.4571 0.459812 19.7751 0.458992 20.0963C0.458172 20.4176 0.520846 20.7359 0.643411 21.0328C0.765976 21.3298 0.946017 21.5996 1.17319 21.8268C1.40036 22.054 1.67018 22.234 1.96715 22.3566C2.26412 22.4791 2.58239 22.5418 2.90365 22.541C3.22492 22.5402 3.54286 22.4759 3.8392 22.3518C4.13554 22.2277 4.40444 22.0463 4.63045 21.818L14.2344 12.2141L14.3015 12.2813Z" />
                                         </svg>
                                     </div>
-                                    Contact With Us
+                                    {{ $sectionSubtitle }}
                                 </div><!-- /.sec-title__tagline -->
 
-                                <h3 class="sec-title__title bw-split-in-up">Feel Free to <br><span>Write Us Anytime</span></h3><!-- /.sec-title__title -->
+                                <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
                             </div><!-- /.sec-title -->
                             <ul class="list-unstyled contact-two__info">
                                 <div class="contact-two__info__shape"></div>
+                                
+                                @if(!empty($contactInfo['phones']))
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-telephone-call-1"></i>
@@ -34,11 +36,15 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            <a href="tel:+9238008060">+92 3800 8060</a><br>
-                                            <a href="tel:+2195550114">+21 9555-0114</a>
+                                            @foreach($contactInfo['phones'] as $phone)
+                                                <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
+                                            @endforeach
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>
+                                @endif
+                                
+                                @if($contactInfo['email'])
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-glove"></i>
@@ -48,11 +54,14 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            <a href="mailto:mitc@example.com">mitc@example.com</a><br>
-                                            <a href="www.website.html">www.website.com</a>
+                                            <a href="mailto:{{ $contactInfo['email'] }}">{{ $contactInfo['email'] }}</a><br>
+                                            <a href="{{ url('/') }}">{{ parse_url(url('/'), PHP_URL_HOST) }}</a>
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>
+                                @endif
+                                
+                                @if($contactInfo['address'])
                                 <li class="contact-two__info__item">
                                     <div class="contact-two__info__icon">
                                         <i class="icon-map-pin"></i>
@@ -62,32 +71,66 @@
                                     </div>
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
-                                            3891 Ranchview Dr. Richardson, <br> California 62639
+                                            {{ $contactInfo['address'] }}
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
+                    @if($showForm)
                     <div class="col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                        <form class="contact-one__form contact-form-validated form-one" action="https://bracketweb.com/procounsel-html/inc/sendemail.php">
+                        <!-- Success/Error Messages -->
+                        @if(session('success'))
+                            <div class="alert alert-success mb-4">
+                                <i class="fas fa-check-circle"></i> {{ session('success') }}
+                            </div>
+                        @endif
+                        @if(session('error'))
+                            <div class="alert alert-danger mb-4">
+                                <i class="fas fa-exclamation-triangle"></i> {{ session('error') }}
+                            </div>
+                        @endif
+                        
+                        <form class="contact-one__form contact-form-validated form-one" action="{{ $formAction }}" method="POST">
+                            @csrf
                             <div class="contact-one__form__bg-one"></div>
                             <div class="contact-one__form__bg-two"></div>
                             <div class="form-one__group">
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="name" type="text" name="name" placeholder="Name">
+                                    <input id="name" type="text" name="name" placeholder="Name" 
+                                           value="{{ old('name') }}" required>
+                                    @error('name')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="email" type="email" name="email" placeholder="Email Address">
+                                    <input id="email" type="email" name="email" placeholder="Email Address" 
+                                           value="{{ old('email') }}" required>
+                                    @error('email')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="phone" type="text" name="phone" placeholder="Phone">
+                                    <input id="phone" type="text" name="phone" placeholder="Phone" 
+                                           value="{{ old('phone') }}">
+                                    @error('phone')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="subject" type="text" name="subject" placeholder="Subject">
+                                    <input id="subject" type="text" name="subject" placeholder="Subject" 
+                                           value="{{ old('subject') }}" required>
+                                    @error('subject')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <textarea id="message" name="message" placeholder="Message"></textarea><!-- /# -->
+                                    <textarea id="message" name="message" placeholder="Message" required>{{ old('message') }}</textarea>
+                                    @error('message')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control form-one__control--full">
                                     <button type="submit" class="procounsel-btn">
@@ -98,6 +141,7 @@
                             </div><!-- /.form-one__group -->
                         </form>
                     </div><!-- /.col-md-6 -->
+                    @endif
                 </div>
             </div>
         </section>

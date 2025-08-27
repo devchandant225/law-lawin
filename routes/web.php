@@ -9,6 +9,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PracticeController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\PublicationController as AdminPublicationController;
 use App\Http\Controllers\Admin\FAQController as AdminFAQController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TableOfContentController;
 use App\Http\Controllers\Admin\AboutUsContentSectionController;
@@ -65,6 +67,7 @@ Route::get('/submission', [SubmissionController::class, 'create']);
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact/submit', [ContactFormController::class, 'submit'])->name('contact.submit');
 
 // Posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
@@ -148,6 +151,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // FAQ Management
     Route::resource('faqs', AdminFAQController::class);
     Route::post('/faqs/{faq}/toggle-status', [AdminFAQController::class, 'toggleStatus'])->name('faqs.toggle-status');
+    
+    // Contact Submissions Management
+    Route::resource('contacts', AdminContactController::class)->except(['create', 'store', 'edit', 'update']);
+    Route::get('/contacts/export', [AdminContactController::class, 'export'])->name('contacts.export');
     
     // Table of Contents Management (nested under publications)
     Route::prefix('publications/{publication}')

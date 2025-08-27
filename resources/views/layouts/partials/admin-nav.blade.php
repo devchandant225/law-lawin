@@ -93,6 +93,22 @@
     @endif
 </a>
 
+{{-- Contact Submissions Management --}}
+<a href="{{ route('admin.contacts.index') }}"
+    class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.contacts.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">
+    <svg class="icon mr-3 h-5 w-5 {{ request()->routeIs('admin.contacts.*') ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900' }}"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V8L12,13L20,8V18M20,6L12,11L4,6H20Z" />
+    </svg>
+    <span class="hide-when-collapsed">Contact Submissions</span>
+    @if (request()->routeIs('admin.contacts.*'))
+        <div class="ml-auto hide-when-collapsed">
+            <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+        </div>
+    @endif
+</a>
+
 {{-- About Us Content Management --}}
 <a href="{{ route('admin.about-us-contents.index') }}"
     class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.about-us-contents.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">

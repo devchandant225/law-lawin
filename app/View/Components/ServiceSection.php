@@ -23,7 +23,7 @@ class ServiceSection extends Component
      * @param string|null $sectionTitle
      * @param string|null $sectionSubtitle
      */
-    public function __construct($limit = 4, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
+    public function __construct($limit = 8, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
     {
         $this->limit = $limit;
         $this->showBrands = $showBrands;
@@ -78,7 +78,7 @@ class ServiceSection extends Component
      * @param int $limit
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getFeaturedServices($limit = 4)
+    public function getFeaturedServices($limit = 8)
     {
         return Post::ofType('service')
                   ->active()

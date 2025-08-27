@@ -13981,11 +13981,11 @@ body.megamenu-popup-active .mobile-nav__content {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 577px;
+  min-height: 300px;
 }
 @media (max-width: 1199px) {
   .page-header {
-    min-height: 450px;
+    min-height: 250px;
   }
 }
 @media (max-width: 767px) {

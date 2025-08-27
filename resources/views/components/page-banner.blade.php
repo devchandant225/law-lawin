@@ -5,9 +5,9 @@
     <!-- /.page-header__shape -->
     <div class="container">
         <h2 class="page-header__title bw-split-in-right">{{ $title }}</h2>
-        @if($subtitle)
+        {{-- @if($subtitle)
             <p class="page-header__subtitle">{{ $subtitle }}</p>
-        @endif
+        @endif --}}
         @if($showBreadcrumbs && !empty($breadcrumbs))
             <ul class="procounsel-breadcrumb list-unstyled">
                 @foreach($breadcrumbs as $breadcrumb)

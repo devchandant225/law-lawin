@@ -15,6 +15,7 @@ use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\PublicationController as PublicPublicationController;
 use App\Http\Controllers\TeamController as PublicTeamController;
 use App\Http\Controllers\PortfolioController as PublicPortfolioController;
+use App\Http\Controllers\HelpDeskController;
 
 // Admin Controllers
 use App\Http\Controllers\Admin\AuthController;
@@ -63,7 +64,7 @@ Route::get('/media/gallery', [MediaController::class, 'gallery']);
 Route::get('/submission', [SubmissionController::class, 'create']);
 
 // Contact
-Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // Posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
@@ -101,6 +102,10 @@ Route::get('/portfolios', [PublicPortfolioController::class, 'index'])->name('po
 
 // Pages
 Route::get('/page/{page}', [PublicPageController::class, 'show'])->name('page.show');
+
+// Help Desk Routes
+Route::get('/help-desk/nrn-legal', [HelpDeskController::class, 'nrnLegal'])->name('help-desk.nrn-legal');
+Route::get('/help-desk/fdi-legal', [HelpDeskController::class, 'fdiLegal'])->name('help-desk.fdi-legal');
 
 // Add home route with name
 Route::get('/', [HomeController::class, 'index'])->name('home');

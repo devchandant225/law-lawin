@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: [
-		'./resources/views/**/*.blade.php',
-		'./resources/js/**/*.js',
+		// Only scan admin-related files for Tailwind classes
+		'./resources/views/admin/**/*.blade.php',
+		'./resources/views/layouts/admin.blade.php',
+		'./resources/views/layouts/partials/admin-*.blade.php',
+		// Add any admin-specific JavaScript files if needed
+		'./resources/js/admin.js',
 	],
 	theme: {
 		extend: {

@@ -1,399 +1,152 @@
-@props([
-    'practices' => collect(),
-    'showViewAll' => true,
-    'limit' => 8,
-    'sectionTitle' => 'Our practices',
-    'sectionSubtitle' => 'Professional Legal practices',
-    'sectionDescription' =>
-        'Explore our comprehensive collection of legal practices, research papers, and professional resources.',
-])
+       <section class="service-four" id="services">
+            <div class="service-four__bg jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% -100%" style="background-image: url(assets/images/backgrounds/service-4-bg.jpg);"></div>
+            <div class="container">
+                <div class="sec-title text-left">
 
-<section class="relative py-10 overflow-hidden bg-accent">
-    <!-- Modern Line Grid Background -->
-    <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
+                    <div class="sec-title__tagline bw-split-in-up-fast d-inline-flex align-items-center gap-2">
+                        <div>
+                            <svg class="hammer" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.6562 20.875H10.7188C10.5115 20.875 10.3128 20.9573 10.1663 21.1038C10.0198 21.2503 9.9375 21.449 9.9375 21.6562C9.9375 21.8635 10.0198 22.0622 10.1663 22.2087C10.3128 22.3552 10.5115 22.4375 10.7188 22.4375H21.6562C21.8635 22.4375 22.0622 22.3552 22.2087 22.2087C22.3552 22.0622 22.4375 21.8635 22.4375 21.6562C22.4375 21.449 22.3552 21.2503 22.2087 21.1038C22.0622 20.9573 21.8635 20.875 21.6562 20.875Z" />
+                                <path d="M13.8056 16.9688C13.1943 16.9695 12.6083 17.2126 12.1761 17.6448C11.7439 18.0771 11.5007 18.6631 11.5 19.2744V20.0938H20.875V19.2744C20.8743 18.6631 20.6311 18.0771 20.1989 17.6448C19.7667 17.2126 19.1807 16.9695 18.5694 16.9688H13.8056Z" />
+                                <path d="M15.9585 13.6149C15.9006 13.6678 15.8349 13.7114 15.7637 13.7442L15.989 13.9696C16.4566 14.4355 17.0898 14.6971 17.7499 14.697C18.41 14.6969 19.0432 14.4352 19.5107 13.9693L21.7812 11.698C22.0124 11.4668 22.1959 11.1924 22.321 10.8903C22.4462 10.5882 22.5106 10.2645 22.5106 9.9375C22.5106 9.61053 22.4462 9.28677 22.321 8.9847C22.1959 8.68263 22.0124 8.40818 21.7812 8.17701L21.5888 7.98456L15.9585 13.6149Z" />
+                                <path d="M9.2226 7.20295L14.8529 1.57267C14.9108 1.51976 14.9765 1.47611 15.0478 1.44326L14.8224 1.21791C14.3548 0.752021 13.7216 0.490468 13.0615 0.49054C12.4014 0.490611 11.7682 0.752302 11.3007 1.21829L9.03015 3.48915C8.79891 3.72035 8.61548 3.99484 8.49034 4.29694C8.36519 4.59904 8.30078 4.92283 8.30078 5.24982C8.30078 5.57681 8.36519 5.9006 8.49034 6.2027C8.61548 6.5048 8.79891 6.77929 9.03015 7.01049L9.2226 7.20295Z" />
+                                <path d="M14.3015 12.2813L14.0726 12.5102C13.9993 12.5825 13.9411 12.6687 13.9012 12.7637C13.8613 12.8586 13.8406 12.9605 13.8403 13.0635C13.84 13.1665 13.8601 13.2686 13.8993 13.3638C13.9386 13.459 13.9963 13.5455 14.0691 13.6184C14.142 13.6912 14.2285 13.7489 14.3237 13.7882C14.4189 13.8274 14.521 13.8475 14.624 13.8471C14.727 13.8468 14.8289 13.8261 14.9238 13.7863C15.0188 13.7464 15.105 13.6881 15.1773 13.6149L21.4273 7.36485C21.5716 7.21791 21.6521 7.01992 21.6511 6.81397C21.6502 6.60802 21.568 6.41077 21.4223 6.26514C21.2767 6.11951 21.0795 6.03729 20.8735 6.03635C20.6676 6.03542 20.4696 6.11586 20.3226 6.26016L20.0937 6.48907L16.5113 2.90602L16.7398 2.67735C16.8841 2.53041 16.9646 2.33242 16.9636 2.12647C16.9627 1.92052 16.8805 1.72327 16.7348 1.57764C16.5892 1.43201 16.392 1.34979 16.186 1.34885C15.9801 1.34792 15.7821 1.42836 15.6351 1.57266L9.38514 7.82266C9.31152 7.89496 9.25296 7.98112 9.21283 8.07618C9.17269 8.17123 9.15179 8.27329 9.15132 8.37647C9.15086 8.47965 9.17083 8.5819 9.2101 8.67731C9.24937 8.77273 9.30715 8.85942 9.38011 8.93238C9.45307 9.00534 9.53976 9.06312 9.63518 9.10239C9.73059 9.14166 9.83284 9.16163 9.93602 9.16117C10.0392 9.1607 10.1413 9.1398 10.2363 9.09966C10.3314 9.05953 10.4175 9.00097 10.4898 8.92735L10.7187 8.69844L10.7859 8.76559L1.18201 18.3695C0.953685 18.5955 0.772269 18.8644 0.648189 19.1608C0.524109 19.4571 0.459812 19.7751 0.458992 20.0963C0.458172 20.4176 0.520846 20.7359 0.643411 21.0328C0.765976 21.3298 0.946017 21.5996 1.17319 21.8268C1.40036 22.054 1.67018 22.234 1.96715 22.3566C2.26412 22.4791 2.58239 22.5418 2.90365 22.541C3.22492 22.5402 3.54286 22.4759 3.8392 22.3518C4.13554 22.2277 4.40444 22.0463 4.63045 21.818L14.2344 12.2141L14.3015 12.2813Z" />
+                            </svg>
+                        </div>
+                        Our Service
+                    </div><!-- /.sec-title__tagline -->
 
-
-    <!-- Floating Geometric Shapes -->
-    <div class="absolute top-20 left-10 w-32 h-32 border-2 border-[#6f64d3] rounded-full opacity-20 animate-float-slow">
-    </div>
-    <div class="absolute bottom-20 right-10 w-24 h-24 border-2 border-[#6f64d3] rounded-lg opacity-20 animate-float-reverse"
-        style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-1/4 w-16 h-16 border-2 border-[#6f64d3] rotate-45 opacity-20 animate-float-slow"
-        style="animation-delay: 1s;"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      
-        {{-- Section Header --}}
-        <div class="text-center mb-16">
-            <div
-                class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
-                </svg>
-                {{ $sectionSubtitle }}
-            </div>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Our
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary">
-                    {!! $sectionTitle !!}</span>
-            </h2>
-            <div class="w-24 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
-        </div>
-
-        @if ($practices->count() > 0)
-            <!-- practices Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                @foreach ($practices->take($limit ?? $practices->count()) as $practice)
-                    <div class="group relative practice-card-slide" data-aos="fade-up"
-                        data-aos-delay="{{ $loop->index * 100 }}">
-                        <!-- Practice Card -->
-                        <article
-                            class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:-translate-y-2 border border-gray-100/50 backdrop-blur-sm">
-                            <!-- Image Container -->
-                            <div class="relative overflow-hidden h-48 bg-gradient-to-br from-emerald-100 to-teal-100">
-                                @if ($practice->feature_image_url)
-                                    <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}"
-                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                @else
-                                    <!-- Default Practice Icon -->
-                                    <div class="flex items-center justify-center w-full h-full">
-                                        <svg class="w-20 h-20 text-primary opacity-50" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                @endif
-
-                                <!-- Date Badge -->
-                                <div class="absolute top-3 right-3">
-                                    <span
-                                        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm">
-                                        {{ $practice->created_at->format('M Y') }}
-                                    </span>
-                                </div>
-
-                                <!-- Gradient Overlay -->
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="sec-title__title bw-split-in-up">We’re Providing Best <br><span>Service To Clients</span></h3><!-- /.sec-title__title -->
+                </div><!-- /.sec-title -->
+                <div class="service-four__carousel procounsel-owl__carousel procounsel-owl__carousel--basic-nav owl-carousel" data-owl-options='{
+                "items": 1,
+                "margin": 30,
+                "loop": false,
+                "smartSpeed": 700,
+                "nav": true,
+                "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+                "dots": false,
+                "autoplay": false,
+                "responsive": {
+                    "0": {
+                        "items": 1
+                    },
+                    "768": {
+                        "items": 2
+                    },
+                    "992": {
+                        "items": 3
+                    }
+                }
+            }'>
+                    <div class="item">
+                        <div class="service-four__item wow fadeInUp" data-wow-delay="00ms">
+                            <div class="service-four__item__image">
+                                <img src="assets/images/resources/service-4-1.jpg" alt="procounsel">
+                                <div class="service-four__item__icon">
+                                    <i class="icon-criminal-law"></i>
                                 </div>
                             </div>
-
-                            <!-- Card Content -->
-                            <div class="p-6">
-                                <!-- Title -->
-                                <h3
-                                    class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-                                    {{ $practice->title }}
-                                </h3>
-
-                                <!-- Excerpt -->
-                                @if ($practice->excerpt)
-                                    <p class="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
-                                        {{ $practice->excerpt }}
-                                    </p>
-                                @endif
-
-                                <!-- Meta Info -->
-                                <div class="flex items-center justify-between mb-4 text-xs text-gray-500">
-                                    <span class="flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4h3a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h3z" />
-                                        </svg>
-                                        {{ $practice->created_at->format('M d, Y') }}
-                                    </span>
-                                    <span class="flex items-center">
-                                        <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                        {{ rand(3, 8) }} min read
-                                    </span>
-                                </div>
-
-                                <!-- Modern Button -->
-                                <a href="{{ route('practice.show', $practice->slug) }}"
-                                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary to-primary text-white text-sm font-medium rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
-                                    <span>Read Practice</span>
-                                    <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                                    </svg>
+                            <div class="service-four__item__content">
+                                <h3 class="service-four__item__title"><a href="service-d-criminal.html">Criminal Law</a></h3><!-- /.service-title -->
+                                <p class="service-four__item__text">There are many variations of passages of Lorem Ipsum avb but the majority have</p>
+                                <a href="service-d-criminal.html" class="procounsel-btn">
+                                    <i>More Details</i>
+                                    <span>More Details</span>
                                 </a>
                             </div>
-
-                            <!-- Hover Effect Border -->
-                            <div
-                                class="absolute inset-0 border-2 border-transparent group-hover:border-primary rounded-2xl transition-colors duration-300 pointer-events-none">
+                        </div><!-- /.service-card-two -->
+                    </div><!-- item -->
+                    <div class="item">
+                        <div class="service-four__item wow fadeInUp" data-wow-delay="100ms">
+                            <div class="service-four__item__image">
+                                <img src="assets/images/resources/service-4-2.jpg" alt="procounsel">
+                                <div class="service-four__item__icon">
+                                    <i class=" icon-family-law-1"></i>
+                                </div>
                             </div>
-                        </article>
-
-                        <!-- Floating Number Badge -->
-                        <div
-                            class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-secondary to-secondary text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110">
-                            {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <!-- View All practices Button -->
-            {{-- @if ($showViewAll && $practices->count() > ($limit ?? 6)) --}}
-                <div class="text-center">
-                    <a href="{{ route('practices.index') }}"
-                        class="inline-flex items-center px-3 py-2 bg-primary text-white font-semibold text-sm rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-emerald-600 focus:ring-opacity-30 group">
-                        <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                            </path>
-                        </svg>
-                        <span>View All practices</span>
-                        <svg class="w-5 h-5 ml-3 transition-transform duration-300 group-hover:translate-x-2"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
+                            <div class="service-four__item__content">
+                                <h3 class="service-four__item__title"><a href="service-d-family.html">Family Law</a></h3><!-- /.service-title -->
+                                <p class="service-four__item__text">There are many variations of passages of Lorem Ipsum avb but the majority have</p>
+                                <a href="service-d-family.html" class="procounsel-btn">
+                                    <i>More Details</i>
+                                    <span>More Details</span>
+                                </a>
+                            </div>
+                        </div><!-- /.service-card-two -->
+                    </div><!-- item -->
+                    <div class="item">
+                        <div class="service-four__item wow fadeInUp" data-wow-delay="200ms">
+                            <div class="service-four__item__image">
+                                <img src="assets/images/resources/service-4-3.jpg" alt="procounsel">
+                                <div class="service-four__item__icon">
+                                    <i class="icon-real-estate-law"></i>
+                                </div>
+                            </div>
+                            <div class="service-four__item__content">
+                                <h3 class="service-four__item__title"><a href="service-d-real-estate.html">Real Estate Law</a></h3><!-- /.service-title -->
+                                <p class="service-four__item__text">There are many variations of passages of Lorem Ipsum avb but the majority have</p>
+                                <a href="service-d-real-estate.html" class="procounsel-btn">
+                                    <i>More Details</i>
+                                    <span>More Details</span>
+                                </a>
+                            </div>
+                        </div><!-- /.service-card-two -->
+                    </div><!-- item -->
+                    <div class="item">
+                        <div class="service-four__item wow fadeInUp" data-wow-delay="00ms">
+                            <div class="service-four__item__image">
+                                <img src="assets/images/resources/service-4-1.jpg" alt="procounsel">
+                                <div class="service-four__item__icon">
+                                    <i class="icon-criminal-law"></i>
+                                </div>
+                            </div>
+                            <div class="service-four__item__content">
+                                <h3 class="service-four__item__title"><a href="service-d-criminal.html">Criminal Law</a></h3><!-- /.service-title -->
+                                <p class="service-four__item__text">There are many variations of passages of Lorem Ipsum avb but the majority have</p>
+                                <a href="service-d-criminal.html" class="procounsel-btn">
+                                    <i>More Details</i>
+                                    <span>More Details</span>
+                                </a>
+                            </div>
+                        </div><!-- /.service-card-two -->
+                    </div><!-- item -->
+                    <div class="item">
+                        <div class="service-four__item wow fadeInUp" data-wow-delay="100ms">
+                            <div class="service-four__item__image">
+                                <img src="assets/images/resources/service-4-2.jpg" alt="procounsel">
+                                <div class="service-four__item__icon">
+                                    <i class=" icon-family-law-1"></i>
+                                </div>
+                            </div>
+                            <div class="service-four__item__content">
+                                <h3 class="service-four__item__title"><a href="service-d-family.html">Family Law</a></h3><!-- /.service-title -->
+                                <p class="service-four__item__text">There are many variations of passages of Lorem Ipsum avb but the majority have</p>
+                                <a href="service-d-family.html" class="procounsel-btn">
+                                    <i>More Details</i>
+                                    <span>More Details</span>
+                                </a>
+                            </div>
+                        </div><!-- /.service-card-two -->
+                    </div><!-- item -->
+                    <div class="item">
+                        <div class="service-four__item wow fadeInUp" data-wow-delay="200ms">
+                            <div class="service-four__item__image">
+                                <img src="assets/images/resources/service-4-3.jpg" alt="procounsel">
+                                <div class="service-four__item__icon">
+                                    <i class="icon-real-estate-law"></i>
+                                </div>
+                            </div>
+                            <div class="service-four__item__content">
+                                <h3 class="service-four__item__title"><a href="service-d-real-estate.html">Real Estate Law</a></h3><!-- /.service-title -->
+                                <p class="service-four__item__text">There are many variations of passages of Lorem Ipsum avb but the majority have</p>
+                                <a href="service-d-real-estate.html" class="procounsel-btn">
+                                    <i>More Details</i>
+                                    <span>More Details</span>
+                                </a>
+                            </div>
+                        </div><!-- /.service-card-two -->
+                    </div><!-- item -->
                 </div>
-            {{-- @endif --}}
-        @else
-            <!-- Empty State -->
-            <div class="text-center py-20">
-                <svg class="w-24 h-24 mx-auto text-gray-400 mb-6" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                    </path>
-                </svg>
-                <h3 class="text-2xl font-semibold text-gray-900 mb-2">No practices Available</h3>
-                <p class="text-gray-600">We're currently updating our practice library. Please check back later.</p>
             </div>
-        @endif
-    </div>
-</section>
-
-<style>
-    /* Line Clamp Utilities */
-    .line-clamp-2 {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-
-    .line-clamp-3 {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-    }
-
-    /* Modern Grid Background Pattern */
-    .bg-grid-pattern {
-        background-image:
-            linear-gradient(to right, #059669 1px, transparent 1px),
-            linear-gradient(to bottom, #059669 1px, transparent 1px);
-        background-size: 50px 50px;
-        background-position: -1px -1px;
-    }
-
-    /* Animated Grid Lines */
-    .grid-lines-horizontal {
-        position: absolute;
-        inset: 0;
-        background-image: linear-gradient(to right, transparent, rgba(5, 150, 105, 0.1) 50%, transparent);
-        background-size: 200% 1px;
-        background-position: 0 0;
-        animation: slideHorizontal 20s linear infinite;
-    }
-
-    .grid-lines-vertical {
-        position: absolute;
-        inset: 0;
-        background-image: linear-gradient(to bottom, transparent, rgba(5, 150, 105, 0.1) 50%, transparent);
-        background-size: 1px 200%;
-        background-position: 0 0;
-        animation: slideVertical 15s linear infinite;
-    }
-
-    /* Sliding Animations */
-    @keyframes slideHorizontal {
-        0% {
-            background-position: 0 0;
-        }
-
-        100% {
-            background-position: 200% 0;
-        }
-    }
-
-    @keyframes slideVertical {
-        0% {
-            background-position: 0 0;
-        }
-
-        100% {
-            background-position: 0 200%;
-        }
-    }
-
-    /* Gradient Shift Animation */
-    @keyframes gradient-shift {
-
-        0%,
-        100% {
-            opacity: 0.3;
-            transform: translateX(0) translateY(0);
-        }
-
-        25% {
-            opacity: 0.5;
-            transform: translateX(10px) translateY(-10px);
-        }
-
-        50% {
-            opacity: 0.3;
-            transform: translateX(-10px) translateY(10px);
-        }
-
-        75% {
-            opacity: 0.5;
-            transform: translateX(5px) translateY(5px);
-        }
-    }
-
-    .animate-gradient-shift {
-        animation: gradient-shift 15s ease-in-out infinite;
-    }
-
-    /* Float Animations */
-    @keyframes float-slow {
-
-        0%,
-        100% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0.2;
-        }
-
-        50% {
-            transform: translateY(-20px) rotate(180deg);
-            opacity: 0.3;
-        }
-    }
-
-    @keyframes float-reverse {
-
-        0%,
-        100% {
-            transform: translateY(0) translateX(0) rotate(0deg);
-            opacity: 0.2;
-        }
-
-        50% {
-            transform: translateY(20px) translateX(-20px) rotate(-180deg);
-            opacity: 0.3;
-        }
-    }
-
-    .animate-float-slow {
-        animation: float-slow 8s ease-in-out infinite;
-    }
-
-    .animate-float-reverse {
-        animation: float-reverse 10s ease-in-out infinite;
-    }
-
-    /* Practice Card Slide Animation */
-    .practice-card-slide {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: slideUp 0.6s ease-out forwards;
-        animation-play-state: paused;
-    }
-
-    .practice-card-slide.aos-animate {
-        animation-play-state: running;
-    }
-
-    @keyframes slideUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Intersection Observer Fallback */
-    .practice-card-slide {
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .practice-card-slide.in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Hover Effects Enhancement */
-    .group:hover .practice-card-slide {
-        z-index: 10;
-    }
-
-    /* Responsive Grid Line Adjustments */
-    @media (max-width: 768px) {
-        .bg-grid-pattern {
-            background-size: 30px 30px;
-        }
-    }
-
-    /* Performance Optimization */
-    .grid-lines-horizontal,
-    .grid-lines-vertical {
-        will-change: background-position;
-        transform: translateZ(0);
-        backface-visibility: hidden;
-    }
-
-    .practice-card-slide {
-        will-change: transform, opacity;
-    }
-</style>
-
-<!-- Add Intersection Observer Script for Sliding Animation -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Intersection Observer for slide animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('in-view');
-                    }, index * 100);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '50px'
-        });
-
-        // Observe all practice cards
-        document.querySelectorAll('.practice-card-slide').forEach((card) => {
-            observer.observe(card);
-        });
-
-        // Add parallax effect to floating shapes
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const shapes = document.querySelectorAll('.animate-float-slow, .animate-float-reverse');
-
-            shapes.forEach((shape, index) => {
-                const speed = 0.5 + (index * 0.1);
-                shape.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-    });
-</script>
+        </section>

@@ -8,7 +8,7 @@
     <title>{{ $title ?? 'Admin Panel' }} - {{ config('app.name', 'Plant Breeding Organization') }}</title>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.0/css/all.min.css" integrity="sha512-ykRBEJhyZ+B/BIJcBuOyUoIxh0OfdICfHPnPfBy7eIiyJv536ojTCsgX8aqrLQ9VJZHGz4tvYyzOM0lkgmQZGw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin.css', 'resources/js/app.js'])
     <style>
         /* Custom scrollbar for sidebar */
         .sidebar-scroll::-webkit-scrollbar {

@@ -1,236 +1,229 @@
-{{-- Modern Footer --}}
-<footer class="relative bg-white text-gray-900 overflow-hidden">
-    {{-- Background Elements --}}
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute top-10 left-10 w-20 h-20 bg-primary rounded-full animate-pulse"></div>
-        <div class="absolute top-32 right-20 w-16 h-16 bg-secondary rounded-full animate-pulse"
-            style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-20 left-1/3 w-12 h-12 bg-yellow-400 rounded-full animate-pulse"
-            style="animation-delay: 4s;"></div>
-    </div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="grid grid-cols-12 gap-12">
-            {{-- Organization Info Section --}}
-            <div class="space-y-4 lg:col-span-4 xl:col-span-4">
-                {{-- Logo --}}
-                <a href="{{ url('/') }}"
-                    class="group flex items-center gap-4 transition-transform hover:scale-105">
-                    <div class="relative">
-                        @if ($globalProfile && $globalProfile->logo)
-                            <div
-                                class="w-[10rem] h-[4rem] rounded-xl flex items-center justify-center group-hover:shadow-purple-600/25 transition-all">
-                                <img src="{{ asset('storage/' . $globalProfile->logo) }}"
-                                    alt="{{ $globalProfile->name ?? 'Organization Logo' }}"
-                                    class="h-full w-full object-cover scale-110">
+  <!-- Google Maps Section -->
+        <section class="map-section">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="map-container" id="google-map" style="position: relative; overflow: hidden;">
+                            @if($globalProfile && $globalProfile->address)
+                                <!-- Google Maps Embed with Search Query -->
+                                <iframe 
+                                    src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                    width="100%" 
+                                    height="400" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Office Location Map">
+                                </iframe>
+                                <!-- Map Overlay with Office Info -->
+                                <div class="map-overlay" style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.95); padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 300px; z-index: 10;">
+                                    <h5 style="margin: 0 0 10px 0; font-size: 16px; font-weight: bold; color: #333;">{{ config('app.name') }}</h5>
+                                    <p style="margin: 0; font-size: 14px; color: #666; line-height: 1.4;">{{ $globalProfile->address }}</p>
+                                    @if($globalProfile->phone1)
+                                    <p style="margin: 5px 0 0 0; font-size: 14px;"><i class="fas fa-phone" style="color: #007bff; margin-right: 8px;"></i><a href="tel:{{ $globalProfile->phone1 }}" style="color: #007bff; text-decoration: none;">{{ $globalProfile->phone1 }}</a></p>
+                                    @endif
+                                </div>
+                            @else
+                                <!-- Default Map for Kathmandu, Nepal -->
+                                <iframe 
+                                    src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Kathmandu,%20Nepal&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                    width="100%" 
+                                    height="400" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Default Location Map">
+                                </iframe>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.map-section -->
+        
+  <footer class="main-footer">
+            <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.png);"></div>
+            <div class="main-footer__top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="00ms">
+                            <div class="footer-widget footer-widget--about">
+                                <a href="{{ route('home') }}" class="footer-widget__logo">
+                                    @if($globalProfile && $globalProfile->logo_url)
+                                        <img src="{{ $globalProfile->logo_url }}" width="160" alt="{{ config('app.name') }}">
+                                    @else
+                                        <img src="assets/images/logo-light.png" width="160" alt="{{ config('app.name') }}">
+                                    @endif
+                                </a>
+                                <p class="footer-widget__text">
+                                    @if($globalProfile && $globalProfile->description)
+                                        {{ Str::limit($globalProfile->description, 120) }}
+                                    @else
+                                        Discover a unique approach with our dedicated attorneys, committed to providing effective legal solutions.
+                                    @endif
+                                </p>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="footer-widget footer-widget--links">
+                                <h2 class="footer-widget__title">Quick Links</h2><!-- /.footer-widget__title -->
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="/about/introduction">About Us</a></li>
+                                    <li><a href="{{ route('team.index') }}">Our Team</a></li>
+                                    <li><a href="{{ route('services.index') }}">Services</a></li>
+                                    <li><a href="{{ route('practices.index') }}">Practice Areas</a></li>
+                                    <li><a href="/contact">Contact</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="footer-widget footer-widget--links">
+                                <h2 class="footer-widget__title">Legal Help</h2><!-- /.footer-widget__title -->
+                                <ul class="list-unstyled footer-widget__links">
+                                    <li><a href="{{ route('publications.index') }}">Publications</a></li>
+                                    <li><a href="{{ route('posts.by-type', 'news') }}">Latest News</a></li>
+                                    <li><a href="{{ route('help-desk.nrn-legal') }}">NRN Legal Help</a></li>
+                                    <li><a href="{{ route('help-desk.fdi-legal') }}">FDI Legal Help</a></li>
+                                    <li><a href="{{ route('portfolios.index') }}">Portfolio</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                        <div class="col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="footer-widget footer-widget--mail">
+                                <h2 class="footer-widget__title">
+                                    Signup for our latest news<br> & articles
+                                </h2><!-- /.footer-widget__title -->
+                                <form action="#" data-url="MAILCHIMP_FORM_URL"
+                                    class="footer-widget__newsletter mc-form">
+                                    <input type="text" name="EMAIL" placeholder="Email Address">
+                                    <button type="submit">
+                                        <i class="icon-right-arrow-2"></i>
+                                        <span class="sr-only">submit</span><!-- /.sr-only -->
+                                    </button>
+                                </form><!-- /. mc-form -->
+                                <div class="footer-widget__check">
+                                    <input type="checkbox" checked="" name="save-data" id="save-data">
+                                    <label for="save-data"><span></span>I agree to the <a href="checkout.html">Privacy
+                                            Policy.</a></label>
+                                </div>
+                                <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                                <!-- /.footer-widget__text -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-md-6 -->
+                    </div><!-- /.row -->
+                    <div class="main-footer__info">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="main-footer__info__inner">
+                                    <div class="main-footer__info__pin">
+                                        <i class="icon-pin"></i>
+                                    </div>
+                                    <div class="main-footer__info__location">
+                                        @if($globalProfile && $globalProfile->address)
+                                            {!! nl2br(e($globalProfile->address)) !!}
+                                        @else
+                                            6391 Elgin St. Delaware <br>New York. USA
+                                        @endif
+                                    </div>
+                                    <ul class="list-unstyled main-footer__info__list">
+                                        @if($globalProfile && $globalProfile->phone1)
+                                        <li class="main-footer__info__item">
+                                            <div class="main-footer__info__icon">
+                                                <i class="icon-telephone-call-1"></i>
+                                            </div>
+                                            <div class="main-footer__info__content">
+                                                <p class="main-footer__info__text">
+                                                    <a href="tel:{{ $globalProfile->phone1 }}">{{ $globalProfile->phone1 }}</a>
+                                                </p><!-- /.contact-one__info__text -->
+                                            </div>
+                                        </li>
+                                        @endif
+                                        @if($globalProfile && $globalProfile->phone2)
+                                        <li class="main-footer__info__item">
+                                            <div class="main-footer__info__icon">
+                                                <i class="icon-telephone-call-1"></i>
+                                            </div>
+                                            <div class="main-footer__info__content">
+                                                <p class="main-footer__info__text">
+                                                    <a href="tel:{{ $globalProfile->phone2 }}">{{ $globalProfile->phone2 }}</a>
+                                                </p><!-- /.contact-one__info__text -->
+                                            </div>
+                                        </li>
+                                        @endif
+                                        @if($globalProfile && $globalProfile->email)
+                                        <li class="main-footer__info__item">
+                                            <div class="main-footer__info__icon">
+                                                <i class="icon-mail"></i>
+                                            </div>
+                                            <div class="main-footer__info__content">
+                                                <p class="main-footer__info__text">
+                                                    <a href="mailto:{{ $globalProfile->email }}">{{ $globalProfile->email }}</a>
+                                                </p><!-- /.contact-one__info__text -->
+                                            </div>
+                                        </li>
+                                        @endif
+                                        @if($globalProfile && $globalProfile->whatsapp)
+                                        <li class="main-footer__info__item">
+                                            <div class="main-footer__info__icon">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </div>
+                                            <div class="main-footer__info__content">
+                                                <p class="main-footer__info__text">
+                                                    <a href="https://wa.me/{{ $globalProfile->whatsapp }}">{{ $globalProfile->whatsapp }}</a>
+                                                </p><!-- /.contact-one__info__text -->
+                                            </div>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </div>
-                        @else
-                            <div
-                                class="h-10 w-10 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-purple-600/25 transition-all">
-                                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M16,6V17H7V6H16M16.5,5H6.5A0.5,0.5 0 0,0 6,5.5V17.5A0.5,0.5 0 0,0 6.5,18H16.5A0.5,0.5 0 0,0 17,17.5V5.5A0.5,0.5 0 0,0 16.5,5Z" />
-                                    <path
-                                        d="M18,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V4A2,2 0 0,0 18,2M18,20H6V4H18V20Z" />
-                                </svg>
+                            <div class="col-lg-4">
+                                <div class="main-footer__info__social">
+                                    @if($globalProfile && $globalProfile->facebook_link)
+                                    <a href="{{ $globalProfile->facebook_link }}">
+                                        <i class="icon-facebook"></i>
+                                        <span class="sr-only">Facebook</span>
+                                    </a>
+                                    @endif
+                                    @if($globalProfile && $globalProfile->twitter_link)
+                                    <a href="{{ $globalProfile->twitter_link }}">
+                                        <i class="icon-twitter"></i>
+                                        <span class="sr-only">Twitter</span>
+                                    </a>
+                                    @endif
+                                    @if($globalProfile && $globalProfile->linkedin_link)
+                                    <a href="{{ $globalProfile->linkedin_link }}">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span class="sr-only">LinkedIn</span>
+                                    </a>
+                                    @endif
+                                    @if($globalProfile && $globalProfile->instagram_link)
+                                    <a href="{{ $globalProfile->instagram_link }}">
+                                        <i class="fab fa-instagram"></i>
+                                        <span class="sr-only">Instagram</span>
+                                    </a>
+                                    @endif
+                                    @if($globalProfile && $globalProfile->youtube_link)
+                                    <a href="{{ $globalProfile->youtube_link }}">
+                                        <i class="icon-youtube"></i>
+                                        <span class="sr-only">Youtube</span>
+                                    </a>
+                                    @endif
+                                </div>
                             </div>
-                        @endif
-                    </div>
-
-                </a>
-
-                {{-- Mission Statement --}}
-                <p class="text-gray-900 leading-relaxed">
-                    {{ $globalProfile->description }}
-                </p>
-
-                {{-- Contact Information --}}
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-gray-900  transition-colors group">
-                        <div
-                            class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="font-medium">Email us</div>
-                            <a href="mailto:{{ $globalProfile->email }}"
-                                class="text-sm text-primary hover:text-secondary transition-colors">{{ $globalProfile->email }}</a>
                         </div>
                     </div>
-
-                    <div class="flex items-center gap-3 text-gray-900  transition-colors group">
-                        <div
-                            class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="font-medium">Call us</div>
-                            <a href="tel:{{ $globalProfile->phone1 }}"
-                                class="text-sm text-primary hover:text-secondary transition-colors">{{ $globalProfile->phone1 }}</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-3 text-gray-900">
-                        <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="font-medium">Visit us</div>
-                            <div class=" text-sm text-primary hover:text-secondary transition-colors">
-                                {{ $globalProfile->address }}</div>
-                        </div>
-                    </div>
-                </div>
-                {{-- Social Media --}}
-                <div>
-                    <h4 class="text-lg font-bold text-primary mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" />
-                        </svg>
-                        Connect
-                    </h4>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://facebook.com/plantbreedingbd" target="_blank" rel="noopener"
-                            aria-label="Facebook"
-                            class="group w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-all hover:scale-110 shadow-lg hover:shadow-blue-600/25">
-                            <svg class="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.62.77-1.62 1.55v1.86h2.76l-.44 2.91h-2.32v7.03C18.34 21.25 22 17.08 22 12.06z" />
-                            </svg>
-                        </a>
-                        <a href="https://twitter.com/plantbreedingbd" target="_blank" rel="noopener"
-                            aria-label="Twitter"
-                            class="group w-12 h-12 bg-blue-400 rounded-xl flex items-center justify-center hover:bg-blue-500 transition-all hover:scale-110 shadow-lg hover:shadow-blue-400/25">
-                            <svg class="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.05C2.38,12.15 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,15.98 6.05,17.21 7.96,17.25C6.5,18.37 4.68,19.02 2.72,19.02C2.38,19.02 2.04,19 1.71,18.96C3.64,20.14 5.96,20.82 8.45,20.82C16,20.82 20.33,14.46 20.33,9.79C20.33,9.6 20.33,9.42 20.32,9.23C21.16,8.63 21.88,7.87 22.46,6Z" />
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/company/plantbreedingbd" target="_blank" rel="noopener"
-                            aria-label="LinkedIn"
-                            class="group w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center hover:bg-blue-800 transition-all hover:scale-110 shadow-lg hover:shadow-blue-700/25">
-                            <svg class="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20.47,2H3.53A1.45,1.45 0 0,0 2.06,3.43V20.57A1.45,1.45 0 0,0 3.53,22H20.47A1.45,1.45 0 0,0 21.94,20.57V3.43A1.45,1.45 0 0,0 20.47,2M8.09,18.74H5.09V9.69H8.09M6.59,8.48C5.61,8.48 4.82,7.69 4.82,6.71C4.82,5.73 5.61,4.94 6.59,4.94C7.57,4.94 8.36,5.73 8.36,6.71C8.36,7.69 7.57,8.48 6.59,8.48M18.91,18.74H15.91V14.37C15.91,13.22 15.91,11.71 14.29,11.71C12.65,11.71 12.42,12.95 12.42,14.29V18.74H9.42V9.69H12.3V11.09H12.34C12.73,10.38 13.71,9.63 15.18,9.63C18.22,9.63 18.91,11.69 18.91,14.37V18.74Z" />
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/plantbreedingbd" target="_blank" rel="noopener"
-                            aria-label="Instagram"
-                            class="group w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-500 rounded-xl flex items-center justify-center hover:from-purple-700 hover:to-pink-600 transition-all hover:scale-110 shadow-lg hover:shadow-purple-500/25">
-                            <svg class="w-6 h-6 text-white group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.9a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 18 6.9z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Quick Links --}}
-            <div class="space-y-6 lg:col-span-3">
-                <div>
-                    <h4 class="text-lg font-bold text-primary mb-4 flex items-center gap-2">
-                        Quick Links
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-1 gap-3">
-                        <a href="{{ url('/about/introduction') }}"
-                            class="flex items-center gap-2 text-gray-600  transition-colors group">
-                            <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
-                            </svg>
-                            About Us
-                        </a>
-                        <a href="{{ url('/information/notices') }}"
-                            class="flex items-center gap-2 text-gray-600  transition-colors group">
-                            <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M5,7H19V5H5V7Z" />
-                            </svg>
-                            Notices
-                        </a>
-                        <a href="{{ url('/information/events') }}"
-                            class="flex items-center gap-2 text-gray-600 transition-colors group">
-                            <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
-                            </svg>
-                            Events
-                        </a>
-                        <a href="{{ url('/publications/journal') }}"
-                            class="flex items-center gap-2 text-gray-600  transition-colors group">
-                            <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
-                            </svg>
-                            Journal
-                        </a>
-                        <a href="{{ url('/membership/register') }}"
-                            class="flex items-center gap-2 text-gray-600  transition-colors group">
-                            <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M6,10V7H4V10H1V12H4V15H6V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
-                            </svg>
-                            Membership
-                        </a>
-                        <a href="{{ url('/contact') }}"
-                            class="flex items-center gap-2 text-gray-600 transition-colors group">
-                            <svg class="w-4 h-4 text-secondary group-hover:scale-110 transition-transform"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22,4C22,2.89 21.1,2 20,2H4A2,2 0 0,0 2,4V16A2,2 0 0,0 4,18H18L22,22V4Z" />
-                            </svg>
-                            Contact
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Map --}}
-            <div class="lg:col-span-4 xl:col-span-4">
-                <h4 class="text-lg font-bold text-primary mb-4 flex items-center gap-2">
-                    Location
-                </h4>
-                <div class="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-xl">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11795.000075340042!2d85.324861!3d27.687021000000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb191b975e3b81%3A0x60674a6cd53cbf4a!2sLawin%20and%20Partners!5e1!3m2!1sen!2sus!4v1756203134907!5m2!1sen!2sus"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-
-        </div>
-
-</footer>
-<div class="border-t bg-primary border-white/15">
-    <div
-        class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/80">
-        <div>&copy; {{ date('Y') }} {{ config('app.name', 'Professional Organization') }}. All rights
-            reserved.
-        </div>
-        <div class="mt-3 md:mt-0 flex items-center gap-4">
-            <a class="hover:text-white" href="{{ url('/') }}">Home</a>
-            <a class="hover:text-white" href="{{ url('/publications/journal') }}">Journal</a>
-            <a class="hover:text-white" href="{{ url('/information/events') }}">Events</a>
-            <a class="hover:text-white" href="{{ url('/contact') }}">Contact</a>
-        </div>
-    </div>
-</div>
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__top -->
+            <div class="main-footer__bottom  wow fadeInUp" data-wow-delay="00ms">
+                <div class="container">
+                    <div class="main-footer__bottom__inner">
+                        <p class="main-footer__copyright">
+                            &copy; Copyright <span class="dynamic-year"></span> by {{ config('app.name') }}. All rights reserved.
+                        </p>
+                    </div><!-- /.main-footer__inner -->
+                </div><!-- /.container -->
+            </div><!-- /.main-footer__bottom -->
+        </footer><!-- /.main-footer -->

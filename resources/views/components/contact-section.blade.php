@@ -27,38 +27,17 @@
                                 <div class="contact-two__info__shape"></div>
                                 
                                 @php
-                                    // Determine phone numbers to display
+                                    // Use only globalProfile for all contact info
                                     $phoneNumbers = [];
-                                    if (!empty($contactInfo)) {
-                                        if (!empty($contactInfo['phones'])) {
-                                            $phoneNumbers = $contactInfo['phones'];
-                                        } elseif (!empty($contactInfo['phone'])) {
-                                            $phoneNumbers = [$contactInfo['phone']];
-                                        }
-                                    } elseif ($globalProfile) {
+                                    if ($globalProfile) {
                                         $phoneNumbers = array_filter([
-                                            $globalProfile->phone1,
-                                            $globalProfile->phone2
+                                            $globalProfile->phone1 ?? null,
+                                            $globalProfile->phone2 ?? null,
                                         ]);
                                     }
-                                    
-                                    // Determine email to display
-                                    $emailAddress = null;
-                                    if (!empty($contactInfo['email'])) {
-                                        $emailAddress = $contactInfo['email'];
-                                    } elseif ($globalProfile && $globalProfile->email) {
-                                        $emailAddress = $globalProfile->email;
-                                    }
-                                    
-                                    // Determine address to display
-                                    $address = null;
-                                    if (!empty($contactInfo['address'])) {
-                                        $address = $contactInfo['address'];
-                                    } elseif (!empty($contactInfo['location'])) {
-                                        $address = $contactInfo['location'];
-                                    } elseif ($globalProfile && $globalProfile->address) {
-                                        $address = $globalProfile->address;
-                                    }
+
+                                    $emailAddress = $globalProfile->email ?? null;
+                                    $address = $globalProfile->address ?? null;
                                 @endphp
                                 
                                 {{-- Phone Section --}}

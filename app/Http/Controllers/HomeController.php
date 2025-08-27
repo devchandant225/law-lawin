@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Team;
 use App\Models\Portfolio;
+use App\Models\Publication;
 use App\View\Components\ServiceSection;
 use App\View\Components\TeamSection;
 
@@ -26,7 +27,10 @@ class HomeController extends Controller
         // Fetch active portfolios for homepage (limited to 10)
         $portfolios = Portfolio::active()->ordered()->take(10)->get();
         
-        return view('home', compact('sliders', 'services', 'teams', 'portfolios'));
+        // Fetch active publications for homepage (limited to 8)
+        $publications = Publication::active()->ordered()->take(8)->get();
+        
+        return view('home', compact('sliders', 'services', 'teams', 'portfolios', 'publications'));
     }
 }
 

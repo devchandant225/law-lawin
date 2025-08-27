@@ -160,19 +160,22 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Modern Floating Badge -->
-                                            <div
-                                                class="absolute -bottom-6 -left-6 group-hover:scale-110 transition-transform duration-300">
+                                            @if ($index == 1)
+                                                <!-- Modern Floating Badge -->
                                                 <div
-                                                    class="bg-white backdrop-blur-lg border border-white/20 px-6 py-3 rounded-2xl shadow-xl">
-                                                    <div class="flex items-center space-x-3">
-                                                        <div
-                                                            class="w-3 h-3 bg-gradient-to-r from-[#6F64D3] to-[#ADA769] rounded-full animate-pulse">
+                                                    class="absolute -bottom-6 -left-6 group-hover:scale-110 transition-transform duration-300">
+                                                    <div
+                                                        class="bg-white backdrop-blur-lg border border-white/20 px-6 py-3 rounded-2xl shadow-xl">
+                                                        <div class="flex items-center space-x-3">
+                                                            <div
+                                                                class="w-3 h-3 bg-gradient-to-r from-[#6F64D3] to-[#ADA769] rounded-full animate-pulse">
+                                                            </div>
+                                                            <span
+                                                                class="text-gray-800 font-bold text-sm">Excellence</span>
                                                         </div>
-                                                        <span class="text-gray-800 font-bold text-sm">Excellence</span>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         </div>
                                     @endif
 

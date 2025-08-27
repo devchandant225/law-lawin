@@ -3,7 +3,7 @@
               <div class="main-header__logo">
                   <a href="{{ route('home') }}">
                       @if($globalProfile && $globalProfile->logo_url)
-                          <img src="{{ asset('storage/' . $globalProfile->logo_url) }}" alt="{{ config('app.name') }}" width="160">
+                          <img src="{{$globalProfile->logo_url }}" alt="{{ config('app.name') }}" width="160">
                       @else
                           <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}" width="160">
                       @endif

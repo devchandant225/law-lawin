@@ -9,12 +9,27 @@ use App\Models\Post;
 
 class ServiceSection extends Component
 {
+    public $services;
+    public $limit;
+    public $showBrands;
+    public $sectionTitle;
+    public $sectionSubtitle;
+
     /**
      * Create a new component instance.
+     * 
+     * @param int|null $limit
+     * @param bool $showBrands
+     * @param string|null $sectionTitle
+     * @param string|null $sectionSubtitle
      */
-    public function __construct()
+    public function __construct($limit = 4, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
     {
-        //
+        $this->limit = $limit;
+        $this->showBrands = $showBrands;
+        $this->sectionTitle = $sectionTitle ?? "We're Providing Best Service To Clients";
+        $this->sectionSubtitle = $sectionSubtitle ?? 'Our Services';
+        $this->services = $this->getServices($limit);
     }
 
     /**
@@ -141,10 +156,43 @@ class ServiceSection extends Component
     }
 
     /**
+     * Get service icon class based on title (you can customize this mapping)
+     */
+    public function getServiceIcon($title)
+    {
+        $iconMap = [
+            'criminal' => 'icon-criminal-law',
+            'family' => 'icon-family-law',
+            'real estate' => 'icon-real-estate-law',
+            'employment' => 'icon-employment-law',
+            'business' => 'icon-business-law',
+            'immigration' => 'icon-immigration-law',
+            'tax' => 'icon-tax-law',
+            'personal injury' => 'icon-personal-injury',
+            'intellectual property' => 'icon-ip-law',
+            'corporate' => 'icon-corporate-law',
+        ];
+
+        $title = strtolower($title);
+        foreach ($iconMap as $keyword => $icon) {
+            if (strpos($title, $keyword) !== false) {
+                return $icon;
+            }
+        }
+
+        return 'icon-law'; // default icon
+    }
+
+    /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        return view('components.service-section');
+        return view('components.service-section', [
+            'services' => $this->services,
+            'showBrands' => $this->showBrands,
+            'sectionTitle' => $this->sectionTitle,
+            'sectionSubtitle' => $this->sectionSubtitle,
+        ]);
     }
 }

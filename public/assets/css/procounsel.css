@@ -18219,6 +18219,7 @@ body.megamenu-popup-active .mobile-nav__content {
   line-height: 25px;
   text-transform: capitalize;
   margin: 5px 0 0 0;
+  width:100%;
   color: var(--procounsel-primary, #19223a);
   transition: all 100ms ease;
 }

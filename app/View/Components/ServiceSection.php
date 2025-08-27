@@ -26,7 +26,7 @@ class ServiceSection extends Component
      * @param string|null $sectionTitle
      * @param string|null $sectionSubtitle
      */
-    public function __construct($services = null, $limit = 8, $showViewAll = false, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
+    public function __construct($services = null, $limit = 8, $showViewAll = true, $showBrands = true, $sectionTitle = null, $sectionSubtitle = null)
     {
         $this->limit = $limit;
         $this->showBrands = $showBrands;

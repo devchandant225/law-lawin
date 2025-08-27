@@ -37,7 +37,7 @@
                     @foreach ($portfolios->take($limit ?? $portfolios->count()) as $portfolio)
                         <div class="group relative portfolio-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                             <!-- Portfolio Card -->
-                            <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 border border-gray-100/50">
+                            <div class="bg-accent rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 border border-gray-100/50">
                                 <!-- Image Container -->
                                 <div class="relative overflow-hidden aspect-square w-[5rem] h-[5rem] mx-auto mt-4 rounded-lg">
                                     @if ($portfolio->image_url)

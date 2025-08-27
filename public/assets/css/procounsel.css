@@ -11820,7 +11820,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 @media (max-width: 1199px) {
   .award-one__item__left {
-    width: 50%;
+    width: 100%;
   }
 }
 @media (max-width: 767px) {

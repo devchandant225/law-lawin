@@ -9,12 +9,27 @@ use App\Models\Post;
 
 class PracticeSection extends Component
 {
+    public $practices;
+    public $limit;
+    public $showViewAll;
+    public $sectionTitle;
+    public $sectionSubtitle;
+
     /**
      * Create a new component instance.
+     * 
+     * @param int|null $limit
+     * @param bool $showViewAll
+     * @param string|null $sectionTitle
+     * @param string|null $sectionSubtitle
      */
-    public function __construct()
+    public function __construct($limit = 8, $showViewAll = false, $sectionTitle = null, $sectionSubtitle = null)
     {
-        //
+        $this->limit = $limit;
+        $this->showViewAll = $showViewAll;
+        $this->sectionTitle = $sectionTitle ?? "We're Providing Best <br><span>Service To Clients</span>";
+        $this->sectionSubtitle = $sectionSubtitle ?? 'Our Service';
+        $this->practices = $this->getPractices($limit);
     }
 
     /**
@@ -156,11 +171,48 @@ class PracticeSection extends Component
     }
 
     /**
+     * Get practice icon class based on title (you can customize this mapping)
+     */
+    public function getPracticeIcon($title)
+    {
+        $iconMap = [
+            'criminal' => 'icon-criminal-law',
+            'family' => 'icon-family-law-1',
+            'real estate' => 'icon-real-estate-law',
+            'employment' => 'icon-employment-law',
+            'business' => 'icon-business-law',
+            'immigration' => 'icon-immigration-law',
+            'tax' => 'icon-tax-law',
+            'personal injury' => 'icon-personal-injury',
+            'intellectual property' => 'icon-ip-law',
+            'corporate' => 'icon-corporate-law',
+            'civil' => 'icon-civil-law',
+            'contract' => 'icon-contract-law',
+            'property' => 'icon-property-law',
+            'banking' => 'icon-banking-law',
+            'insurance' => 'icon-insurance-law',
+        ];
+
+        $title = strtolower($title);
+        foreach ($iconMap as $keyword => $icon) {
+            if (strpos($title, $keyword) !== false) {
+                return $icon;
+            }
+        }
+
+        return 'icon-law'; // default icon
+    }
+
+    /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
-        $practices = $this->getHomePractices();
-        return view('components.practice-section', compact('practices'));
+        return view('components.practice-section', [
+            'practices' => $this->practices,
+            'showViewAll' => $this->showViewAll,
+            'sectionTitle' => $this->sectionTitle,
+            'sectionSubtitle' => $this->sectionSubtitle,
+        ]);
     }
 }

@@ -39,10 +39,10 @@
                             <!-- Portfolio Card -->
                             <div class="bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-2 border border-gray-100/50">
                                 <!-- Image Container -->
-                                <div class="relative overflow-hidden aspect-square bg-gradient-to-br from-purple-100 to-blue-100">
+                                <div class="relative overflow-hidden aspect-square w-[5rem] h-[5rem] mx-auto mt-4 rounded-lg">
                                     @if ($portfolio->image_url)
                                         <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" 
-                                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                             class="w-[10rem] h-[6rem] object-contain transition-transform duration-500 group-hover:scale-110">
                                     @else
                                         <!-- Default Portfolio Icon -->
                                         <div class="flex items-center justify-center w-full h-full">
@@ -52,24 +52,6 @@
                                             </svg>
                                         </div>
                                     @endif
-                                    
-                                    <!-- Gradient Overlay -->
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    
-                                    <!-- Hover Content -->
-                                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <div class="bg-white/20 backdrop-blur-sm text-white p-2 md:p-3 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 cursor-pointer">
-                                            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Number Badge -->
-                                    <div class="absolute -top-2 -right-2 w-6 h-6 md:w-7 md:h-7 bg-gradient-to-r from-secondary to-secondary text-white text-xs font-bold rounded-full flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110">
-                                        {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}
-                                    </div>
                                 </div>
                                 
                                 <!-- Card Content -->
@@ -79,8 +61,6 @@
                                     </h3>
                                 </div>
                                 
-                                <!-- Hover Effect Border -->
-                                <div class="absolute inset-0 border-2 border-transparent group-hover:border-[#6f64d3] rounded-xl transition-colors duration-300 pointer-events-none"></div>
                             </div>
                         </div>
                     @endforeach

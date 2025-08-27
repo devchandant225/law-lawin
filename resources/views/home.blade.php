@@ -30,7 +30,6 @@
 
     {{-- Portfolio Section --}}
     <x-portfolio-section 
-        :portfolios="$portfolios" 
         :showViewAll="true"
         :limit="10"
         sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Our Portfolio</span>"

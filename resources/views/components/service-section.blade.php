@@ -30,7 +30,7 @@
                                     <span class="service-one__item__count"></span>
                                 </div>
                                 <p class="service-one__item__text">
-                                    {{ $service->excerpt ?? Str::limit(strip_tags($service->description), 100) }}
+                                    {{Str::limit(strip_tags($service->excerpt), 100)  ?? Str::limit(strip_tags($service->description), 100) }}
                                 </p>
                                 <div class="service-one__item__image">
                                     @if($service->feature_image)

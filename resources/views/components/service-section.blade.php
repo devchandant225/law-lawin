@@ -23,16 +23,7 @@
                     @forelse($services as $index => $service)
                         <div class="col-xl-3 col-md-6 wow fadeInUp" data-wow-delay="{{ $index * 100 }}ms">
                             <div class="service-one__item">
-                                <div class="service-one__item__top">
-                                    <h3 class="service-one__item__title">
-                                        <a href="{{ route('service.show', $service->slug) }}">{{ $service->title }}</a>
-                                    </h3>
-                                    <span class="service-one__item__count"></span>
-                                </div>
-                                <p class="service-one__item__text">
-                                    {{Str::limit(strip_tags($service->excerpt), 100)  ?? Str::limit(strip_tags($service->description), 100) }}
-                                </p>
-                                <div class="service-one__item__image">
+                                   <div class="service-one__item__image">
                                     @if($service->feature_image)
                                         <img src="{{ $service->feature_image_url }}" alt="{{ $service->title }}">
                                     @else
@@ -46,6 +37,16 @@
                                         <i class="{{ $iconClass }}"></i>
                                     </div>
                                 </div>
+                                <div class="service-one__item__top">
+                                    <h3 class="service-one__item__title">
+                                        <a href="{{ route('service.show', $service->slug) }}">{{ $service->title }}</a>
+                                    </h3>
+                                    {{-- <span class="service-one__item__count"></span> --}}
+                                </div>
+                                <p class="service-one__item__text">
+                                    {{Str::limit(strip_tags($service->excerpt), 100)  ?? Str::limit(strip_tags($service->description), 100) }}
+                                </p>
+                             
                             </div><!-- /.service-card-one -->
                         </div><!-- item -->
                     @empty

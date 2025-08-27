@@ -27,7 +27,7 @@
                 {!! $sectionTitle !!}
             </h2>
             <div class="w-24 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
-            <p class="text-gray-600 max-w-2xl mx-auto">{{ $sectionDescription }}</p>
+            {{-- <p class="text-gray-600 max-w-2xl mx-auto">{{ $sectionDescription }}</p> --}}
         </div>
 
         @if ($portfolios->count() > 0)

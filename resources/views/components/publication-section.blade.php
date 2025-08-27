@@ -39,7 +39,7 @@
                 </span>
             </h2>
             <div class="w-24 h-1 bg-secondary mx-auto rounded-full mb-6"></div>
-            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">{{ $sectionDescription }}</p>
+            {{-- <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">{{ $sectionDescription }}</p> --}}
 
             {{-- Search Bar --}}
             @if ($showSearch)

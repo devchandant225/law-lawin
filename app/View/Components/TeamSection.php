@@ -18,6 +18,8 @@ class TeamSection extends Component
     public $sectionDescription;
     public $showSearch;
 
+    public $showSectionHeader;
+
     /**
      * Create a new component instance.
      */
@@ -28,7 +30,8 @@ class TeamSection extends Component
         $sectionTitle = 'Our Team',
         $sectionSubtitle = 'Meet Our Professional Team',
         $sectionDescription = 'Our dedicated team of legal professionals brings years of experience and expertise to serve your legal needs with excellence.',
-        $showSearch = false
+        $showSearch = false,
+        $showSectionHeader = true
     ) {
         $this->showViewAll = $showViewAll;
         $this->limit = $limit;
@@ -36,6 +39,7 @@ class TeamSection extends Component
         $this->sectionSubtitle = $sectionSubtitle;
         $this->sectionDescription = $sectionDescription;
         $this->showSearch = $showSearch;
+        $this->showSectionHeader = $showSectionHeader;
         
         // Set teams - if not provided, get default teams
         if ($teams === null) {

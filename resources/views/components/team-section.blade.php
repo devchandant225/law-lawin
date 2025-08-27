@@ -7,9 +7,10 @@
     'sectionDescription' =>
         'Our dedicated team of legal professionals brings years of experience and expertise to serve your legal needs with excellence.',
     'showSearch' => false,
+    'showSectionHeader' => true,
 ])
 
-<section class="relative bg-accent overflow-hidden">
+<section class="relative bg-white overflow-hidden">
     <!-- Modern Line Grid Background -->
     <div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
 
@@ -23,27 +24,29 @@
 
     <div class="container mx-auto px-4 relative z-10">
         {{-- Section Header --}}
-        <div class="text-center mb-16">
-            <div
-                class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
-                {{ $sectionSubtitle }}
-            </div>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                {!! $sectionTitle !!}
-            </h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6"></div>
-            {{-- <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+        @if ($showSectionHeader)
+            <div class="text-center mb-10">
+                <div
+                    class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                    {{ $sectionSubtitle }}
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    {!! $sectionTitle !!}
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6"></div>
+                {{-- <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 {{ $sectionDescription }}
             </p> --}}
-        </div>
+            </div>
+        @endif
 
         {{-- Search Bar (only on teams page) --}}
         @if ($showSearch)
-            <div class="max-w-md mx-auto mb-12">
+            <div class="max-w-md mx-auto mb-12 mt-5">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -201,24 +204,24 @@
             </div>
 
             <!-- View All Team Button -->
-            {{-- @if ($showViewAll && $teams->count() > ($limit ?? 8)) --}}
-            <div class="text-center mb-3">
-                <a href="{{ route('team.index') }}"
-                    class="inline-flex items-center px-3 py-2 bg-primary text-white font-semibold text-sm rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-emerald-600 focus:ring-opacity-30 group">
-                    <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                        </path>
-                    </svg>
-                    <span>View All Team Members</span>
-                    <svg class="w-5 h-5 ml-3 transition-transform duration-300 group-hover:translate-x-2"
-                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-            </div>
-            {{-- @endif --}}
+            @if ($showViewAll)
+                <div class="text-center mb-3">
+                    <a href="{{ route('team.index') }}"
+                        class="inline-flex items-center px-3 py-2 bg-primary text-white font-semibold text-sm rounded-full transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-emerald-600 focus:ring-opacity-30 group">
+                        <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                        <span>View All Team Members</span>
+                        <svg class="w-5 h-5 ml-3 transition-transform duration-300 group-hover:translate-x-2"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                </div>
+            @endif
 
             <!-- No Results Message (for search) -->
             <div id="noResults" class="hidden text-center py-12">

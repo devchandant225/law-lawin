@@ -56,7 +56,7 @@
     </style>
 	@stack('styles')
 </head>
-<body class="min-h-screen bg-[#e7e8f0] text-gray-900">
+<body class="min-h-screen bg-accent text-gray-900">
 	@include('layouts.header')
 	<main>
 		@yield('content')

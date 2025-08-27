@@ -19,7 +19,7 @@
 
 @section('content')
     {{-- Hero Section --}}
-    <section class="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-slate-900 via-primary to-secondary py-24 overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0"
@@ -68,15 +68,14 @@
                         </li>
                     </ol>
                 </nav>
-
-                <!-- Profile Header -->
+                      <!-- Profile Header -->
                 <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-8">
                     <!-- Profile Image -->
                     <div class="flex-shrink-0">
                         <div class="relative">
                             @if($team->image_url)
                                 <img src="{{ $team->image_url }}" alt="{{ $team->name }}" 
-                                     class="w-32 h-32 lg:w-48 lg:h-48 rounded-full object-cover border-4 border-white/20 shadow-2xl">
+                                     class="w-[5rem] h-[5rem] rounded-full object-cover border-4 border-white/20 shadow-2xl">
                             @else
                                 <div class="w-32 h-32 lg:w-48 lg:h-48 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center border-4 border-white/20 shadow-2xl">
                                     <svg class="w-16 h-16 lg:w-24 lg:h-24 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -84,57 +83,20 @@
                                     </svg>
                                 </div>
                             @endif
-                            @if($team->experience)
-                                <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                                    {{ $team->experience }}+ Years
-                                </div>
-                            @endif
+                        
                         </div>
                     </div>
 
                     <!-- Profile Info -->
                     <div class="flex-1 text-center lg:text-left">
                         <!-- Name & Designation -->
-                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                        <h1 class="text-lg md:text-2xl lg:text-3xl font-normal mb-4 leading-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                             {{ $team->name }}
                         </h1>
-                        <p class="text-xl md:text-2xl text-purple-300 font-semibold mb-4">{{ $team->designation }}</p>
-                        
                         <!-- Tagline -->
                         @if($team->tagline)
                             <p class="text-lg text-purple-200 mb-6 max-w-2xl mx-auto lg:mx-0">{{ $team->tagline }}</p>
                         @endif
-
-                        <!-- Contact & Social -->
-                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                            @if($team->email)
-                                <a href="mailto:{{ $team->email }}" 
-                                   class="inline-flex items-center px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-sm">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                    </svg>
-                                    Email
-                                </a>
-                            @endif
-                            @if($team->phone)
-                                <a href="tel:{{ $team->phone }}" 
-                                   class="inline-flex items-center px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-sm">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                    </svg>
-                                    Call
-                                </a>
-                            @endif
-                            @if($team->linkedinlink)
-                                <a href="{{ $team->linkedinlink }}" target="_blank" 
-                                   class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z"/>
-                                    </svg>
-                                    LinkedIn
-                                </a>
-                            @endif
-                        </div>
                     </div>
                 </div>
             </div>
@@ -156,6 +118,71 @@
             <div class="grid xl:grid-cols-4 gap-8">
                 <!-- Main Content -->
                 <div class="xl:col-span-3">
+                    
+                <!-- Profile Header -->
+                <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-8">
+                    <!-- Profile Image -->
+                    <div class="flex-shrink-0">
+                        <div class="relative">
+                            @if($team->image_url)
+                                <img src="{{ $team->image_url }}" alt="{{ $team->name }}" 
+                                     class="w-[20rem] h-[25rem] rounded object-cover border-4 border-white/20 shadow-2xl">
+                            @else
+                                <div class="w-32 h-32 lg:w-48 lg:h-48 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center border-4 border-white/20 shadow-2xl">
+                                    <svg class="w-16 h-16 lg:w-24 lg:h-24 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    </svg>
+                                </div>
+                            @endif
+                        
+                        </div>
+                    </div>
+
+                    <!-- Profile Info -->
+                    <div class="flex-1 text-center lg:text-left">
+                        <!-- Name & Designation -->
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-primary">
+                            {{ $team->name }}
+                        </h1>
+                        <p class="text-xl md:text-2xl text-secondary font-semibold mb-4">{{ $team->designation }}</p>
+                        
+                        <!-- Tagline -->
+                        @if($team->tagline)
+                            <p class="text-lg text-gray-600 mb-6 max-w-2xl mx-auto lg:mx-0">{{ $team->tagline }}</p>
+                        @endif
+
+                        <!-- Contact & Social -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            @if($team->email)
+                                <a href="mailto:{{ $team->email }}" 
+                                   class="inline-flex items-center px-4 py-2 bg-white/10 text-primary rounded-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-sm">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                    Email
+                                </a>
+                            @endif
+                            @if($team->phone)
+                                <a href="tel:{{ $team->phone }}" 
+                                   class="inline-flex items-center px-4 py-2 bg-white/10 text-primary rounded-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-sm">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                    Call
+                                </a>
+                            @endif
+                            @if($team->linkedinlink)
+                                <a href="{{ $team->linkedinlink }}" target="_blank" 
+                                   class="inline-flex items-center px-4 py-2 text-primary rounded-lg hover:bg-blue-700 transition-all duration-300">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z"/>
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
                     <!-- Biography Section -->
                     @if($team->description)
                         <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 mb-8">
@@ -300,13 +327,13 @@
                                 @if($team->email)
                                     <div class="flex items-center space-x-3">
                                         <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                             </svg>
                                         </div>
                                         <div>
                                             <p class="text-sm font-medium text-gray-900">Email</p>
-                                            <a href="mailto:{{ $team->email }}" class="text-sm text-purple-600 hover:text-purple-800">{{ $team->email }}</a>
+                                            <a href="mailto:{{ $team->email }}" class="text-sm text-primary hover:text-purple-800">{{ $team->email }}</a>
                                         </div>
                                     </div>
                                 @endif

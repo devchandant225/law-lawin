@@ -52,6 +52,7 @@
     <x-team-section 
         :teams="$teams" 
         :showViewAll="true"
+        :showSectionHeader="true"
         :limit="4"
         sectionTitle="<span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Our Team</span>"
         sectionSubtitle="Meet Our Legal Professionals"

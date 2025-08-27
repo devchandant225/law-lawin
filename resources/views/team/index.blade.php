@@ -1,23 +1,17 @@
 @extends('layouts.app')
 
 @section('head')
-    <x-meta-tags 
-        :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" 
-        :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" 
-        :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" 
-        :image="asset('images/team-banner.jpg')" 
-        type="website" 
-    />
+    <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
 @endsection
 
 @section('content')
     {{-- Hero Section --}}
-    <section class="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-24 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-secondary via-primary to-slate-900 py-24 overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0"
                 style="background-image: 
-                radial-gradient(circle at 2px 2px, white 2px, transparent 0);
+                radial-gradient(circle at 2px 2px, 2px, transparent 0);
                 background-size: 40px 40px;">
             </div>
         </div>
@@ -54,36 +48,24 @@
                 </nav>
 
                 <!-- Page Title -->
-                <div class="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm">
+                <div
+                    class="inline-flex items-center gap-2 bg-white/10 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                     </svg>
                     Meet Our Professional Team
                 </div>
-                
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
-                    Our <span class="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">Expert Team</span>
-                </h1>
-                
-                <p class="text-xl text-purple-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity.
-                </p>
 
-                <!-- Stats -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold text-white mb-2">{{ $teams->count() }}+</div>
-                        <div class="text-purple-300">Legal Professionals</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold text-white mb-2">{{ $teams->sum(function($team) { return is_numeric($team->experience) ? (int)$team->experience : 0; }) ?: '100' }}+</div>
-                        <div class="text-purple-300">Years Combined Experience</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
-                        <div class="text-purple-300">Legal Support</div>
-                    </div>
-                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
+                    Our <span class="">Expert Team</span>
+                </h1>
+
+                {{-- <p class="text-xl text-purple-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity.
+                </p> --}}
+
+
             </div>
         </div>
 
@@ -98,20 +80,17 @@
     </section>
 
     {{-- Team Section with Search --}}
-    <x-team-section 
-        :teams="$teams" 
-        :showViewAll="false"
-        :showSearch="true"
+    <x-team-section :teams="$teams" :showViewAll="false" :showSectionHeader="false" :showSearch="true"
         sectionTitle="Our <span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Legal Professionals</span>"
         sectionSubtitle="Expert Team Members"
-        sectionDescription="Our diverse team of legal experts combines deep knowledge, innovative thinking, and unwavering commitment to deliver exceptional legal services across various practice areas."
-    />
+        sectionDescription="Our diverse team of legal experts combines deep knowledge, innovative thinking, and unwavering commitment to deliver exceptional legal services across various practice areas." />
 
     {{-- Call to Action Section --}}
-    <section class="py-16 bg-gradient-to-r from-slate-900 to-purple-900">
+    <section class="py-16 bg-gradient-to-r from-secondary to-primary">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-3xl mx-auto">
-                <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                <div
+                    class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
                     <svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -121,7 +100,8 @@
                     Ready to Work with Our Team?
                 </h2>
                 <p class="text-xl text-purple-200 mb-8 leading-relaxed">
-                    Connect with our experienced legal professionals today. We're here to provide you with expert guidance and personalized legal solutions for your unique needs.
+                    Connect with our experienced legal professionals today. We're here to provide you with expert guidance
+                    and personalized legal solutions for your unique needs.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="{{ url('/contact') }}"

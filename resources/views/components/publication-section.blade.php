@@ -28,7 +28,7 @@
                         @foreach ($publications as $index => $publication)
                             <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ ($index % 2) * 100 }}ms">
                                 <div class="award-one__item">
-                                    <a href="{{ route('publication.show', $publication->slug) }}"
+                                    <div
                                         class="award-one__item__left">
                                         <h2 class="award-one__item__title">
                                             <a
@@ -38,7 +38,7 @@
                                             {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 150) }}
                                         </p> --}}
 
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

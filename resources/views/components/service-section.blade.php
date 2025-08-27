@@ -29,13 +29,6 @@
                                     @else
                                         <img src="{{ asset('assets/images/resources/service-1-1.png') }}" alt="{{ $service->title }}">
                                     @endif
-                                    <div class="service-one__item__icon">
-                                        @php
-                                            $serviceComponent = app('App\View\Components\ServiceSection');
-                                            $iconClass = $serviceComponent->getServiceIcon($service->title);
-                                        @endphp
-                                        <i class="{{ $iconClass }}"></i>
-                                    </div>
                                 </div>
                                 <div class="service-one__item__top">
                                     <h3 class="service-one__item__title">

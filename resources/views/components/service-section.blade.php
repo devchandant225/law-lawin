@@ -20,20 +20,11 @@
                     <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
                 </div><!-- /.sec-title -->
                 
-                @if($showViewAll)
-                    <div class="text-center mb-5 wow fadeInUp" data-wow-delay="300ms">
-                        <a href="{{ route('services.index') }}" class="procounsel-btn procounsel-btn--two">
-                            <i>View All Services</i>
-                            <span>View All Services</span>
-                        </a>
-                    </div>
-                @endif
-                
                 <div class="row gutter-y-30">
                     @forelse($services as $index => $service)
                         <div class="col-xl-3 col-md-6 wow fadeInUp" data-wow-delay="{{ $index * 100 }}ms">
                             <div class="service-one__item">
-                                   <div class="service-one__item__image">
+                                <div class="service-one__item__image">
                                     @if($service->feature_image)
                                         <img src="{{ $service->feature_image_url }}" alt="{{ $service->title }}">
                                     @else
@@ -49,6 +40,14 @@
                                 <p class="service-one__item__text">
                                     {{Str::limit(strip_tags($service->excerpt), 100)  ?? Str::limit(strip_tags($service->description), 100) }}
                                 </p>
+                                
+                                <!-- Read More Button -->
+                                <div class="service-one__item__btn">
+                                    <a href="{{ route('service.show', $service->slug) }}" class="procounsel-btn procounsel-btn--base">
+                                        <i>Read More</i>
+                                        <span>Read More</span>
+                                    </a>
+                                </div>
                              
                             </div><!-- /.service-card-one -->
                         </div><!-- item -->
@@ -61,84 +60,15 @@
                         </div>
                     @endforelse
                 </div>
-            </div>
-            @if($showBrands)
-            <div class="barnds-one @@extraClassName">
-                <div class="container">
-                    <div class="barnds-one__inner wow fadeInUp" data-wow-delay="300ms">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="barnds-one__text">
-                                    <h3>Top Brands <br> Trust Us</h3>
-                                </div>
-                            </div>
-                            <div class="col-lg-10">
-                                <div class="barnds-one__logos">
-                                    <div class="barnds-carousel__one procounsel-owl__carousel procounsel-owl__carousel--basic-nav owl-carousel" data-owl-options='{
-                        "loop": true,
-                        "animateOut": "fadeOut",
-                        "animateIn": "fadeIn",
-                        "items": 6,
-                        "autoplay": false,
-                        "autoplayTimeout": 7000,
-                        "smartSpeed": 1000,
-                        "nav": false,
-                        "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
-                        "dots": false,
-                        "margin": 0,
-                        "responsive": {
-                            "0": {
-                                "items": 2
-                            },
-                            "600": {
-                                "items": 3
-                            },
-                            "768": {
-                                "items": 4
-                            },
-                            "1200": {
-                                "items": 6
-                            }
-                        }
-                        }'>
-                                        <div class="item">
-                                            <div class="barnds-one__img">
-                                                <img src="assets/images/resources/brand-1.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="barnds-one__img">
-                                                <img src="assets/images/resources/brand-2.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="barnds-one__img">
-                                                <img src="assets/images/resources/brand-3.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="barnds-one__img">
-                                                <img src="assets/images/resources/brand-4.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="barnds-one__img">
-                                                <img src="assets/images/resources/brand-5.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="barnds-one__img">
-                                                <img src="assets/images/resources/brand-6.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div><!-- /.thm-owl__slider -->
-
-                                </div>
-                            </div>
-                        </div>
+                
+                @if($showViewAll)
+                    <div class="text-center mt-5 wow fadeInUp" data-wow-delay="300ms">
+                        <a href="{{ route('services.index') }}" class="procounsel-btn procounsel-btn--two">
+                            <i>View All Services</i>
+                            <span>View All Services</span>
+                        </a>
                     </div>
-                </div>
+                @endif
             </div>
-            @endif
         </section>
         <!-- Service End -->

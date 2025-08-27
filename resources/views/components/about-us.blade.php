@@ -160,7 +160,7 @@
                                                 </div>
                                             </div>
 
-                                            @if ($index == 1)
+                                            @if ($index == 0)
                                                 <!-- Modern Floating Badge -->
                                                 <div
                                                     class="absolute -bottom-6 -left-6 group-hover:scale-110 transition-transform duration-300">

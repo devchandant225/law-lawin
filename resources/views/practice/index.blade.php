@@ -4,75 +4,17 @@
 @section('description', 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.')
 
 @section('content')
+    {{-- Page Banner --}}
+    <x-page-banner 
+        title="Legal Publications" 
+        subtitle="Discover our extensive collection of legal publications, research papers, and expert insights that provide valuable guidance across various areas of law"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => url('/')],
+            ['label' => 'Publications']
+        ]"
+    />
+
 <div class="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
-    {{-- Hero Section --}}
-    <section class="relative py-20 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-green-600/95 to-blue-600/95"></div>
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="none"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>')] opacity-20"></div>
-        </div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white mb-6">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                    </svg>
-                    <span class="font-medium">Legal Knowledge Base</span>
-                </div>
-                
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                    Legal <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-100">Publications</span>
-                </h1>
-                
-                <p class="text-xl text-green-50 mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Discover our extensive collection of legal publications, research papers, and expert insights 
-                    that provide valuable guidance across various areas of law.
-                </p>
-
-                {{-- Search Bar --}}
-                <div class="max-w-2xl mx-auto mb-12">
-                    <form action="{{ route('publications.index') }}" method="GET" class="relative">
-                        <div class="relative">
-                            <input 
-                                type="text" 
-                                name="search" 
-                                placeholder="Search publications by title, content, or keywords..." 
-                                value="{{ request('search') }}"
-                                class="w-full pl-12 pr-24 py-4 rounded-2xl border-0 bg-white/90 backdrop-blur-sm shadow-xl text-gray-800 placeholder-gray-500 focus:bg-white focus:ring-4 focus:ring-green-500/30 transition-all"
-                            >
-                            <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                            </svg>
-                            <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-2 rounded-xl font-medium hover:from-green-700 hover:to-blue-700 transition-all hover:scale-105 shadow-lg">
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                {{-- Stats --}}
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20">
-                        <div class="text-3xl font-bold text-white mb-2">{{ $totalPublications ?? 0 }}</div>
-                        <div class="text-green-100 text-sm">Total Publications</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20">
-                        <div class="text-3xl font-bold text-white mb-2">{{ $featuredCount ?? 0 }}</div>
-                        <div class="text-green-100 text-sm">Featured</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20">
-                        <div class="text-3xl font-bold text-white mb-2">{{ date('Y') }}</div>
-                        <div class="text-green-100 text-sm">Latest Year</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20">
-                        <div class="text-3xl font-bold text-white mb-2">Free</div>
-                        <div class="text-green-100 text-sm">Access</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     {{-- Main Content --}}
     <section class="py-20">

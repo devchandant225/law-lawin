@@ -5,79 +5,15 @@
 @endsection
 
 @section('content')
-    {{-- Hero Section --}}
-    <section class="relative bg-gradient-to-br from-slate-900 via-primary to-slate-900 py-24 overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: 
-                radial-gradient(circle at 2px 2px, white 2px, transparent 0);
-                background-size: 40px 40px;">
-            </div>
-        </div>
-
-        <!-- Animated Background Elements -->
-        <div class="absolute top-20 left-10 w-20 h-20 bg-secondary/20 rounded-full blur-xl animate-pulse"></div>
-        <div class="absolute bottom-32 right-20 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-bounce"></div>
-        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/15 rounded-full blur-lg animate-pulse" style="animation-delay: 2s;"></div>
-
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <!-- Breadcrumb -->
-                <nav class="mb-8" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center space-x-2 text-primary/80">
-                        <li>
-                            <a href="{{ url('/') }}" class="hover:text-white transition-colors duration-300 group">
-                                <svg class="w-4 h-4 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-white font-medium">Publications</span>
-                        </li>
-                    </ol>
-                </nav>
-
-                <div class="text-center text-white">
-                    <!-- Title -->
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-white to-secondary bg-clip-text text-transparent">
-                        Legal Publications
-                    </h1>
-                    
-                    <!-- Description -->
-                    <p class="text-xl md:text-2xl text-primary/90 max-w-3xl mx-auto leading-relaxed mb-8">
-                        Explore our comprehensive collection of legal publications, research papers, and professional resources
-                    </p>
-
-                    <!-- Stats -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                            <div class="text-3xl font-bold text-white mb-2">{{ $totalPublications }}</div>
-                            <div class="text-primary/80 text-sm">Total Publications</div>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                            <div class="text-3xl font-bold text-white mb-2">{{ now()->format('Y') }}</div>
-                            <div class="text-primary/80 text-sm">Current Year</div>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                            <div class="text-3xl font-bold text-white mb-2">{{ $publications->count() }}</div>
-                            <div class="text-primary/80 text-sm">Showing Now</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Wave Divider -->
-        <div class="absolute bottom-0 left-0 w-full rotate-180 overflow-hidden">
-            <svg class="relative block w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
-            </svg>
-        </div>
-    </section>
+    {{-- Page Banner --}}
+    <x-page-banner 
+        title="Legal Publications" 
+        subtitle="Explore our comprehensive collection of legal publications, research papers, and professional resources"
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => url('/')],
+            ['label' => 'Publications']
+        ]"
+    />
 
     {{-- Main Content Section --}}
     <section class="py-16 bg-gray-50">

@@ -9,111 +9,15 @@
 @endsection
 
 @section('content')
-    {{-- Hero Section (Service Detail Page Style) --}}
-    <section class="relative bg-gradient-to-br from-slate-900 via-primary to-slate-900 py-24 overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0"
-                style="background-image: 
-                radial-gradient(circle at 2px 2px, white 2px, transparent 0);
-                background-size: 40px 40px;">
-            </div>
-        </div>
-
-        <!-- Animated Background Elements -->
-        <div class="absolute top-20 left-10 w-20 h-20 bg-secondary/20 rounded-full blur-xl animate-pulse"></div>
-        <div class="absolute bottom-32 right-20 w-32 h-32 bg-primary/10 rounded-full blur-2xl animate-bounce"></div>
-        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-secondary/15 rounded-full blur-lg animate-pulse"
-            style="animation-delay: 2s;"></div>
-
-        <div class="container mx-auto px-4 relative z-10">
-            <div class=" mx-auto">
-                <!-- Breadcrumb -->
-                <nav class="mb-8" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center space-x-2 text-primary/80">
-                        <li>
-                            <a href="{{ url('/') }}" class="hover:text-white transition-colors duration-300 group">
-                                <svg class="w-4 h-4 group-hover:scale-110 transition-transform duration-300"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <a href="{{ route('publications.index') }}"
-                                class="ml-2 hover:text-white transition-colors duration-300">Publications</a>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-2 text-white font-medium">{{ $publication->title }}</span>
-                        </li>
-                    </ol>
-                </nav>
-
-            </div>
-            <!-- Title -->
-            <h2
-                class="text-3xl md:text-4xl font-bold mb-6 leading-tight bg-gradient-to-r from-white to-secondary bg-clip-text text-transparent">
-                {{ $publication->title }}
-            </h2>
-            
-            <!-- Meta Information -->
-            <div class="flex flex-wrap items-center gap-6 text-primary/80">
-                <span class="flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4h3a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h3z"/>
-                    </svg>
-                    Published: {{ $publication->created_at->format('M d, Y') }}
-                </span>
-                
-                @if($publication->updated_at->gt($publication->created_at))
-                    <span class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                        </svg>
-                        Updated: {{ $publication->updated_at->format('M d, Y') }}
-                    </span>
-                @endif
-                
-                @if($faqs->count() > 0)
-                    <span class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        {{ $faqs->count() }} FAQ{{ $faqs->count() !== 1 ? 's' : '' }}
-                    </span>
-                @endif
-                
-                @if($tableOfContents->count() > 0)
-                    <span class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
-                        </svg>
-                        {{ $tableOfContents->count() }} Section{{ $tableOfContents->count() !== 1 ? 's' : '' }}
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <!-- Wave Divider -->
-        <div class="absolute bottom-0 border-b-0 left-0 w-full rotate-180 overflow-hidden">
-            <svg class="relative block w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                    class="fill-white"></path>
-            </svg>
-        </div>
-    </section>
+    {{-- Page Banner --}}
+    <x-page-banner 
+        :title="$publication->title" 
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => url('/')],
+            ['label' => 'Publications', 'url' => route('publications.index')],
+            ['label' => $publication->title]
+        ]"
+    />
 
     {{-- Main Content Section --}}
     <section class="py-10 bg-white">

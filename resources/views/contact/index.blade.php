@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-page-banner />
+    <x-page-banner 
+        title="Contact Us"
+        subtitle="Get in touch with our expert legal team for professional consultation and assistance."
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Contact Us']
+        ]"
+        backgroundImage="assets/images/backgrounds/page-header-contact-bg.jpg"
+    />
 
 
     <section class="contact-one">
@@ -40,70 +48,129 @@
                             <div class="contact-one__content__bg bw-img-anim-left"
                                 style="background-image: url(assets/images/resources/contact-1-1.jpg);"></div>
                             <ul class="list-unstyled contact-one__info">
-                                <li class="contact-one__info__item">
-                                    <div class="contact-one__info__icon">
-                                        <i class="icon-telephone-call-1"></i>
-                                        <span class="contact-one__info__icon__zoom">
+                                @php
+                                    // Get contact information from global profile
+                                    $phoneNumbers = [];
+                                    if ($globalProfile) {
+                                        $phoneNumbers = array_filter([
+                                            $globalProfile->phone1 ?? null,
+                                            $globalProfile->phone2 ?? null,
+                                        ]);
+                                    }
+
+                                    $emailAddress = $globalProfile->email ?? null;
+                                    $address = $globalProfile->address ?? null;
+                                @endphp
+
+                                {{-- Phone Section --}}
+                                @if (!empty($phoneNumbers))
+                                    <li class="contact-one__info__item">
+                                        <div class="contact-one__info__icon">
                                             <i class="icon-telephone-call-1"></i>
-                                        </span>
-                                    </div>
-                                    <div class="contact-one__info__content">
-                                        <p class="contact-one__info__text">
-                                            <a href="tel:+9238008060">+92 3800 8060</a><br>
-                                            <a href="tel:+2195550114">+21 9555-0114</a>
-                                        </p><!-- /.contact-one__info__text -->
-                                    </div><!-- /.contact-one__info__content -->
-                                </li>
-                                <li class="contact-one__info__item">
-                                    <div class="contact-one__info__icon">
-                                        <i class="icon-glove"></i>
-                                        <span class="contact-one__info__icon__zoom">
+                                            <span class="contact-one__info__icon__zoom">
+                                                <i class="icon-telephone-call-1"></i>
+                                            </span>
+                                        </div>
+                                        <div class="contact-one__info__content">
+                                            <p class="contact-one__info__text">
+                                                @foreach ($phoneNumbers as $phone)
+                                                    <a
+                                                        href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
+                                                @endforeach
+                                            </p><!-- /.contact-one__info__text -->
+                                        </div><!-- /.contact-one__info__content -->
+                                    </li>
+                                @endif
+
+                                {{-- Email Section --}}
+                                @if ($emailAddress)
+                                    <li class="contact-one__info__item">
+                                        <div class="contact-one__info__icon">
                                             <i class="icon-glove"></i>
-                                        </span>
-                                    </div>
-                                    <div class="contact-one__info__content">
-                                        <p class="contact-one__info__text">
-                                            <a href="mailto:mitc@example.com">mitc@example.com</a><br>
-                                            <a href="www.website.html">www.website.com</a>
-                                        </p><!-- /.contact-one__info__text -->
-                                    </div><!-- /.contact-one__info__content -->
-                                </li>
-                                <li class="contact-one__info__item">
-                                    <div class="contact-one__info__icon">
-                                        <i class="icon-map-pin"></i>
-                                        <span class="contact-one__info__icon__zoom">
+                                            <span class="contact-one__info__icon__zoom">
+                                                <i class="icon-glove"></i>
+                                            </span>
+                                        </div>
+                                        <div class="contact-one__info__content">
+                                            <p class="contact-one__info__text">
+                                                <a href="mailto:{{ $emailAddress }}">{{ $emailAddress }}</a><br>
+                                                <a href="{{ url('/') }}">{{ parse_url(url('/'), PHP_URL_HOST) }}</a>
+                                            </p><!-- /.contact-one__info__text -->
+                                        </div><!-- /.contact-one__info__content -->
+                                    </li>
+                                @endif
+
+                                {{-- Address Section --}}
+                                @if ($address)
+                                    <li class="contact-one__info__item">
+                                        <div class="contact-one__info__icon">
                                             <i class="icon-map-pin"></i>
-                                        </span>
-                                    </div>
-                                    <div class="contact-one__info__content">
-                                        <p class="contact-one__info__text">
-                                            3891 Ranchview Dr. Richardson, <br> California 62639
-                                        </p><!-- /.contact-one__info__text -->
-                                    </div><!-- /.contact-one__info__content -->
-                                </li>
+                                            <span class="contact-one__info__icon__zoom">
+                                                <i class="icon-map-pin"></i>
+                                            </span>
+                                        </div>
+                                        <div class="contact-one__info__content">
+                                            <p class="contact-one__info__text">
+                                                {{ $address }}
+                                            </p><!-- /.contact-one__info__text -->
+                                        </div><!-- /.contact-one__info__content -->
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
                     <div class="col-xl-6 wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Success/Error Messages -->
+                        @if (session('success'))
+                            <div class="alert alert-success mb-4">
+                                <i class="fas fa-check-circle"></i> {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger mb-4">
+                                <i class="fas fa-exclamation-triangle"></i> {{ session('error') }}
+                            </div>
+                        @endif
+
                         <form class="contact-one__form contact-form-validated form-one"
-                            action="https://bracketweb.com/procounsel-html/inc/sendemail.php">
+                            action="{{ route('contact.submit') }}" method="POST">
+                            @csrf
                             <div class="contact-one__form__bg-one"></div>
                             <div class="contact-one__form__bg-two"></div>
                             <div class="form-one__group">
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="name" type="text" name="name" placeholder="Name">
+                                    <input id="name" type="text" name="name" placeholder="Name"
+                                        value="{{ old('name') }}" required>
+                                    @error('name')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="email" type="email" name="email" placeholder="Email Address">
+                                    <input id="email" type="email" name="email" placeholder="Email Address"
+                                        value="{{ old('email') }}" required>
+                                    @error('email')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="phone" type="text" name="phone" placeholder="Phone">
+                                    <input id="phone" type="text" name="phone" placeholder="Phone"
+                                        value="{{ old('phone') }}">
+                                    @error('phone')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input id="subject" type="text" name="subject" placeholder="Subject">
+                                    <input id="subject" type="text" name="subject" placeholder="Subject"
+                                        value="{{ old('subject') }}" required>
+                                    @error('subject')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <textarea id="message" name="message" placeholder="Message"></textarea><!-- /# -->
+                                    <textarea id="message" name="message" placeholder="Message" required>{{ old('message') }}</textarea>
+                                    @error('message')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control form-one__control--full">
                                     <button type="submit" class="procounsel-btn">

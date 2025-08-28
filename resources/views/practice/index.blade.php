@@ -1,238 +1,236 @@
 @extends('layouts.app')
 
 @section('title', 'Practice Areas - ' . config('app.name'))
-@section('description', 'Explore our comprehensive practice areas and legal expertise. Our experienced team provides
-    specialized legal services across various areas of law.')
+@section('description', 'Explore our comprehensive practice areas and legal expertise. Our experienced team provides specialized legal services across various areas of law.')
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner title="Practice Areas"
-        subtitle="Discover our comprehensive legal practice areas and specialized expertise that provide exceptional legal services across various areas of law"
-        :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Practice Areas']]" />
-
-    <div class="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
-
-        {{-- Main Content --}}
-        <section class="py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {{-- Filter and Sort --}}
-                <div class="mb-12">
-                    <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-                        <form action="{{ route('practices.index') }}" method="GET" class="flex flex-wrap items-center gap-4">
-                            <input type="hidden" name="search" value="{{ request('search') }}">
-
-                            <div class="flex-1 min-w-48">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
-                                <select name="sort"
-                                    class="w-full rounded-xl border-gray-300 focus:border-green-500 focus:ring-green-500">
-                                    <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest First
-                                    </option>
-                                    <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First
-                                    </option>
-                                    <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>Title A-Z
-                                    </option>
-                                    <option value="featured" {{ request('sort') == 'featured' ? 'selected' : '' }}>Featured
-                                        First</option>
-                                </select>
-                            </div>
-
-                            <div class="flex items-end gap-2">
-                                <button type="submit"
-                                    class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:from-green-700 hover:to-blue-700 transition-all hover:scale-105 shadow-lg">
-                                    Apply Filters
-                                </button>
-                                @if (request()->hasAny(['search', 'sort']))
-                                    <a href="{{ route('practices.index') }}"
-                                        class="bg-gray-100 text-gray-700 px-6 py-3 rounded-xl font-medium hover:bg-gray-200 transition-all">
-                                        Clear
-                                    </a>
-                                @endif
-                            </div>
-                        </form>
+    <section class="page-header background-black pt-142 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center">
+                        <nav class="mb-30">
+                            <ol class="d-flex justify-content-center align-items-center list-unstyled mb-0" style="gap: 15px;">
+                                <li><a href="{{ url('/') }}" class="text-decoration-none" style="color: var(--procounsel-base);">Home</a></li>
+                                <li style="color: var(--procounsel-white);">/</li>
+                                <li style="color: var(--procounsel-white);">Practice Areas</li>
+                            </ol>
+                        </nav>
+                        <div class="sec-title text-center">
+                            <p class="sec-title__tagline" style="color: var(--procounsel-base);">Legal Excellence</p>
+                            <h1 class="sec-title__title--white mb-30">Our Practice <span>Areas</span></h1>
+                            <p class="procounsel-text-dark" style="font-size: 18px; line-height: 1.7;">
+                                Discover our comprehensive legal practice areas and specialized expertise that provide exceptional legal services across various areas of law
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                {{-- Practices Grid --}}
+    <div class="page-wrapper">
+
+        {{-- Filter and Sort Section --}}
+        <section class="background-gray">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="bg-white p-4" style="border-radius: 10px; box-shadow: 0px 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--procounsel-border-color);">
+                            <form action="{{ route('practices.index') }}" method="GET" class="form-one">
+                                <div class="form-one__group">
+                                    <div class="form-one__control">
+                                        <label for="sort">Sort By</label>
+                                        <select name="sort" id="sort" class="bootstrap-select" onchange="this.form.submit()">
+                                            <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest First</option>
+                                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First</option>
+                                            <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>Title A-Z</option>
+                                            <option value="featured" {{ request('sort') == 'featured' ? 'selected' : '' }}>Featured First</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-one__control">
+                                        <label for="search">Search Practice Areas</label>
+                                        <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Search practice areas...">
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex gap-3 mt-30">
+                                    <button type="submit" class="procounsel-btn">
+                                        <i>Apply Filters</i>
+                                        <span>Apply Filters</span>
+                                    </button>
+                                    @if (request()->hasAny(['search', 'sort']))
+                                        <a href="{{ route('practices.index') }}" class="procounsel-btn" style="background-color: var(--procounsel-gray2); color: var(--procounsel-text);">
+                                            <i>Clear</i>
+                                            <span>Clear</span>
+                                        </a>
+                                    @endif
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{-- Main Practices Section --}}
+        <section class="pt-120 pb-120">
+            <div class="container">
                 @if ($practices->count() > 0)
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {{-- Section Title --}}
+                    <div class="text-center mb-80">
+                        <div class="sec-title">
+                            <p class="sec-title__tagline">Our Expertise</p>
+                            <h2 class="sec-title__title">Practice <span>Areas</span></h2>
+                            <p style="color: var(--procounsel-text); margin-top: 20px;">
+                                Showing {{ $practices->count() }} of {{ $practices->total() }} practice areas
+                            </p>
+                        </div>
+                    </div>
+                    
+                    {{-- Practices Grid --}}
+                    <div class="row gutter-y-60">
                         @foreach ($practices as $index => $practice)
-                            <div class="item">
-                                <div class="service-four__item wow fadeInUp" data-wow-delay="{{ ($index % 3) * 100 }}ms">
-                                    <div class="service-four__item__image">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="blog-card-three" style="height: 100%;">
+                                    <div class="blog-card-three__image">
                                         @if ($practice->feature_image)
-                                            <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}">
+                                            <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}" style="height: 300px; object-fit: cover;">
+                                            <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}" style="height: 300px; object-fit: cover;">
                                         @else
-                                            <img src="{{ asset('assets/images/resources/service-4-1.jpg') }}"
-                                                alt="{{ $practice->title }}">
+                                            <div style="height: 300px; background: linear-gradient(135deg, var(--procounsel-primary) 0%, var(--procounsel-base) 100%); display: flex; align-items: center; justify-content: center;">
+                                                <div class="text-center text-white">
+                                                    @php
+                                                        $practiceComponent = app('App\View\Components\PracticeSection');
+                                                        $iconClass = $practiceComponent->getPracticeIcon($practice->title);
+                                                    @endphp
+                                                    <i class="{{ $iconClass }}" style="font-size: 60px; color: var(--procounsel-white);"></i>
+                                                </div>
+                                            </div>
                                         @endif
-                                        <div class="service-four__item__icon">
-                                            @php
-                                                $practiceComponent = app('App\View\Components\PracticeSection');
-                                                $iconClass = $practiceComponent->getPracticeIcon($practice->title);
-                                            @endphp
-                                            <i class="{{ $iconClass }}"></i>
+                                        <a href="{{ route('practice.show', $practice->slug) }}" class="blog-card-three__image__link"></a>
+                                    </div>
+                                    
+                                    <div class="blog-card-three__content p-2">
+                                        <h3 class="blog-card-three__title">
+                                            <a href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>
+                                        </h3>
+                                        
+                                        <div class="blog-card-three__bottom">
+                                            <div class="blog-card-three__author">
+                                                <div class="blog-card-three__author__info">
+                                                    <p class="blog-card-three__author__name" style="margin-bottom: 5px;">
+                                                        {{ $practice->excerpt ?? Str::limit(strip_tags($practice->description), 80) }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn">
+                                                <i>Learn More</i>
+                                                <span>Learn More</span>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="service-four__item__content">
-                                        <h3 class="service-four__item__title">
-                                            <a
-                                                href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>
-                                        </h3><!-- /.service-title -->
-                                        <p class="service-four__item__text">
-                                            {{ $practice->excerpt ?? Str::limit(strip_tags($practice->description), 80) }}
-                                        </p>
-                                        <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn">
-                                            <i>More Details</i>
-                                            <span>More Details</span>
-                                        </a>
-                                    </div>
-                                </div><!-- /.service-card-two -->
-                            </div><!-- item -->
+                                </div>
+                            </div>
                         @endforeach
                     </div>
 
                     {{-- Pagination --}}
                     @if ($practices->hasPages())
-                        <div class="mt-16">
-                            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-                                {{ $practices->links() }}
-                            </div>
+                        <div class="mt-80">
+                            <ul class="post-pagination text-center">
+                                {{-- Previous Page Link --}}
+                                @if ($practices->onFirstPage())
+                                    <li><span style="opacity: 0.5;">‹</span></li>
+                                @else
+                                    <li><a href="{{ $practices->previousPageUrl() }}">‹</a></li>
+                                @endif
+                    
+                                {{-- Pagination Elements --}}
+                                @foreach ($practices->getUrlRange(1, $practices->lastPage()) as $page => $url)
+                                    @if ($page == $practices->currentPage())
+                                        <li><a href="#" class="active">{{ $page }}</a></li>
+                                    @else
+                                        <li><a href="{{ $url }}">{{ $page }}</a></li>
+                                    @endif
+                                @endforeach
+                    
+                                {{-- Next Page Link --}}
+                                @if ($practices->hasMorePages())
+                                    <li><a href="{{ $practices->nextPageUrl() }}">›</a></li>
+                                @else
+                                    <li><span style="opacity: 0.5;">›</span></li>
+                                @endif
+                            </ul>
                         </div>
                     @endif
                 @else
                     {{-- Empty State --}}
-                    <div class="text-center py-20">
-                        <div class="max-w-md mx-auto">
-                            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">No Practice Areas Found</h3>
-                            <p class="text-gray-600 mb-8">
+                    <div class="text-center pt-80 pb-80">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="mb-40" style="font-size: 80px; color: var(--procounsel-base);">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                
+                                <div class="sec-title text-center mb-40">
+                                    <h3 class="sec-title__title">No Practice <span>Areas</span> Found</h3>
+                                    
+                                    <p style="color: var(--procounsel-text); font-size: 16px; margin-top: 20px;">
+                                        @if (request('search'))
+                                            No practice areas match your search criteria. Try adjusting your search terms.
+                                        @else
+                                            We're working on adding new practice areas. Check back soon for the latest legal services.
+                                        @endif
+                                    </p>
+                                </div>
+                                
                                 @if (request('search'))
-                                    No practice areas match your search criteria. Try adjusting your search terms.
-                                @else
-                                    We're working on adding new practice areas. Check back soon for the latest legal
-                                    services.
+                                    <a href="{{ route('practices.index') }}" class="procounsel-btn">
+                                        <i>View All Practice Areas</i>
+                                        <span>View All Practice Areas</span>
+                                    </a>
                                 @endif
-                            </p>
-                            @if (request('search'))
-                                <a href="{{ route('practices.index') }}"
-                                    class="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 py-3 rounded-xl font-medium hover:from-green-700 hover:to-blue-700 transition-all hover:scale-105 shadow-lg">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                    </svg>
-                                    View All Practice Areas
-                                </a>
-                            @endif
+                            </div>
                         </div>
                     </div>
                 @endif
             </div>
         </section>
-
-        {{-- Featured Practices Section --}}
-        @if (isset($featuredPractices) && $featuredPractices->count() > 0)
-            <section class="py-20 bg-gradient-to-r from-green-50 to-blue-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
-                        <div
-                            class="inline-flex items-center gap-2 bg-green-100 text-green-700 rounded-full px-4 py-2 text-sm font-medium mb-4">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                            </svg>
-                            Featured Practice Areas
-                        </div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            Our Core Legal Expertise
-                        </h2>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Our most specialized and comprehensive practice areas covering essential legal services
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        @foreach ($featuredPractices->take(6) as $practice)
-                            <article
-                                class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-green-200 hover:-translate-y-1">
-                                @if ($practice->feature_image)
-                                    <div class="relative h-48 overflow-hidden">
-                                        <img src="{{ asset('storage/' . $practice->feature_image) }}"
-                                            alt="{{ $practice->title }}"
-                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                                        <div class="absolute top-4 left-4">
-                                            <span
-                                                class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                                                Featured
-                                            </span>
-                                        </div>
-                                    </div>
-                                @endif
-
-                                <div class="p-6">
-                                    <h3
-                                        class="text-lg font-bold text-gray-900 mb-3 group-hover:text-green-700 transition-colors line-clamp-2">
-                                        {{ $practice->title }}
-                                    </h3>
-
-                                    @if ($practice->excerpt)
-                                        <p class="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
-                                            {{ Str::limit($practice->excerpt, 120) }}
-                                        </p>
-                                    @endif
-
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-sm text-gray-500">
-                                            {{ $practice->created_at->format('M d, Y') }}
-                                        </div>
-                                        <a href="{{ route('practice.show', $practice->slug) }}"
-                                            class="inline-flex items-center gap-1 text-green-600 font-medium hover:text-green-700 transition-colors group/link">
-                                            <span>Learn More</span>
-                                            <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"
-                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-                </div>
-            </section>
-        @endif
-
+        
         {{-- CTA Section --}}
-        <section class="py-20 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-600"></div>
-            <div
-                class="absolute inset-0 bg-[url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\"><defs><pattern id=\"dots\" width=\"10\" height=\"10\" patternUnits=\"userSpaceOnUse\"><circle cx=\"5\" cy=\"5\" r=\"1\" fill=\"white\" opacity=\"0.1\"/></pattern></defs><rect width=\"100%\" height=\"100%\" fill=\"url(%23dots)\"/></svg>')] opacity-30">
-            </div>
-
-            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-                    Need Legal Assistance?
-                </h2>
-                <p class="text-xl text-green-50 mb-8 leading-relaxed">
-                    Contact our experienced team to discuss your legal needs and find the right practice area for your
-                    situation.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                    <a href="{{ url('/contact') }}"
-                        class="bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition-all hover:scale-105 shadow-lg">
-                        Get Consultation
-                    </a>
-                    <a href="{{ url('/contact') }}"
-                        class="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition-all hover:scale-105">
-                        Contact Us
-                    </a>
+        <section class="background-black pt-120 pb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="text-center">
+                            <div class="sec-title text-center mb-50">
+                                <p class="sec-title__tagline" style="color: var(--procounsel-base);">Get Expert Help</p>
+                                <h2 class="sec-title__title--white mb-30">
+                                    Need Legal <span>Assistance?</span>
+                                </h2>
+                                <p class="procounsel-text-dark" style="font-size: 18px; max-width: 600px; margin: 0 auto;">
+                                    Contact our experienced team to discuss your legal needs and find the right practice area for your situation.
+                                </p>
+                            </div>
+                            
+                            <div class="d-flex flex-wrap gap-4 justify-content-center">
+                                <a href="{{ url('/contact') }}" class="procounsel-btn">
+                                    <i>Get Consultation</i>
+                                    <span>Get Consultation</span>
+                                </a>
+                                
+                                <a href="{{ url('/contact') }}" 
+                                   class="procounsel-btn" 
+                                   style="background-color: transparent; border: 2px solid var(--procounsel-white); color: var(--procounsel-white);">
+                                    <i>Contact Us</i>
+                                    <span>Contact Us</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

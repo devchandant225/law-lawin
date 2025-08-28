@@ -73,6 +73,14 @@ class Post extends Model
     }
 
     /**
+     * Scope a query to order by created_at.
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    /**
      * Get the feature image URL.
      */
     public function getFeatureImageUrlAttribute()

@@ -46,7 +46,7 @@ class ServiceController extends Controller
                       ->firstOrFail();
 
         // Get related services
-        $relatedServices = $this->serviceSection->getRelatedServices($service->slug, 3);
+        $relatedServices = $this->serviceSection->getRelatedServices($service->slug, 6);
 
         return view('service.show', compact('service', 'relatedServices'));
     }

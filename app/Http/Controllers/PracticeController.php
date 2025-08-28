@@ -46,7 +46,7 @@ class PracticeController extends Controller
                           ->firstOrFail();
 
         // Get related practices
-        $relatedPractices = $this->practiceSection->getRelatedPractices($practice->slug, 3);
+        $relatedPractices = $this->practiceSection->getRelatedPractices($practice->slug, 6);
 
         return view('practice.show', compact('practice', 'relatedPractices'));
     }

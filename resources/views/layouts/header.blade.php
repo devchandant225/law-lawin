@@ -2,8 +2,8 @@
           <div class="main-header__inner">
               <div class="main-header__logo">
                   <a href="{{ route('home') }}">
-                      @if($globalProfile && $globalProfile->logo_url)
-                          <img src="{{$globalProfile->logo_url }}" alt="{{ config('app.name') }}" width="160">
+                      @if ($globalProfile && $globalProfile->logo_url)
+                          <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" width="160">
                       @else
                           <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}" width="160">
                       @endif
@@ -13,17 +13,17 @@
                   <div class="topbar-one">
                       <div class="topbar-one__inner">
                           <ul class="list-unstyled topbar-one__info">
-                              @if($globalProfile && $globalProfile->address)
-                              <li class="topbar-one__info__item">
-                                  <i class="fas fa-map-marker-alt topbar-one__info__icon"></i>
-                                  {{ $globalProfile->address }}
-                              </li>
+                              @if ($globalProfile && $globalProfile->address)
+                                  <li class="topbar-one__info__item">
+                                      <i class="fas fa-map-marker-alt topbar-one__info__icon"></i>
+                                      {{ $globalProfile->address }}
+                                  </li>
                               @endif
-                              @if($globalProfile && $globalProfile->email)
-                              <li class="topbar-one__info__item">
-                                  <i class="fas fa-envelope topbar-one__info__icon"></i>
-                                  <a href="mailto:{{ $globalProfile->email }}">{{ $globalProfile->email }}</a>
-                              </li>
+                              @if ($globalProfile && $globalProfile->email)
+                                  <li class="topbar-one__info__item">
+                                      <i class="fas fa-envelope topbar-one__info__icon"></i>
+                                      <a href="mailto:{{ $globalProfile->email }}">{{ $globalProfile->email }}</a>
+                                  </li>
                               @endif
                           </ul><!-- /.list-unstyled topbar-one__info -->
                           <div class="topbar-one__right">
@@ -31,29 +31,29 @@
                                   Mon-Sat: 08.00 - 18.00</p><!-- /.topbar-one__text -->
                           </div><!-- /.topbar-one__right -->
                           <div class="main-header__right__social">
-                              @if($globalProfile && $globalProfile->facebook_link)
-                              <a href="{{ $globalProfile->facebook_link }}">
-                                  <i class="icon-facebook"></i>
-                                  <span class="sr-only">Facebook</span>
-                              </a>
+                              @if ($globalProfile && $globalProfile->facebook_link)
+                                  <a href="{{ $globalProfile->facebook_link }}">
+                                      <i class="icon-facebook"></i>
+                                      <span class="sr-only">Facebook</span>
+                                  </a>
                               @endif
-                              @if($globalProfile && $globalProfile->twitter_link)
-                              <a href="{{ $globalProfile->twitter_link }}">
-                                  <i class="icon-twitter"></i>
-                                  <span class="sr-only">Twitter</span>
-                              </a>
+                              @if ($globalProfile && $globalProfile->twitter_link)
+                                  <a href="{{ $globalProfile->twitter_link }}">
+                                      <i class="icon-twitter"></i>
+                                      <span class="sr-only">Twitter</span>
+                                  </a>
                               @endif
-                              @if($globalProfile && $globalProfile->linkedin_link)
-                              <a href="{{ $globalProfile->linkedin_link }}">
-                                  <i class="fab fa-linkedin"></i>
-                                  <span class="sr-only">LinkedIn</span>
-                              </a>
+                              @if ($globalProfile && $globalProfile->linkedin_link)
+                                  <a href="{{ $globalProfile->linkedin_link }}">
+                                      <i class="fab fa-linkedin"></i>
+                                      <span class="sr-only">LinkedIn</span>
+                                  </a>
                               @endif
-                              @if($globalProfile && $globalProfile->instagram_link)
-                              <a href="{{ $globalProfile->instagram_link }}">
-                                  <i class="fab fa-instagram"></i>
-                                  <span class="sr-only">Instagram</span>
-                              </a>
+                              @if ($globalProfile && $globalProfile->instagram_link)
+                                  <a href="{{ $globalProfile->instagram_link }}">
+                                      <i class="fab fa-instagram"></i>
+                                      <span class="sr-only">Instagram</span>
+                                  </a>
                               @endif
                           </div>
                       </div><!-- /.topbar-one__inner -->
@@ -68,67 +68,57 @@
                               <li>
                                   <a href="/about/introduction">About</a>
                               </li>
-                           
+
                               <li class="dropdown">
                                   <a href="{{ route('services.index') }}">Services</a>
-                                  @if($navServices && $navServices->count() > 0)
-                                  <ul>
-                                      <li><a href="{{ route('services.index') }}">All Services</a></li>
-                                      @foreach($navServices->take(8) as $service)
-                                      <li><a href="{{ route('service.show', $service->slug) }}">{{ $service->title }}</a></li>
-                                      @endforeach
-                                  </ul>
+                                  @if ($navServices && $navServices->count() > 0)
+                                      <ul>
+                                          <li><a href="{{ route('services.index') }}">All Services</a></li>
+                                          @foreach ($navServices->take(8) as $service)
+                                              <li><a
+                                                      href="{{ route('service.show', $service->slug) }}">{{ $service->title }}</a>
+                                              </li>
+                                          @endforeach
+                                      </ul>
                                   @endif
                               </li>
 
                               <li class="dropdown">
                                   <a href="{{ route('practices.index') }}">Practice Areas</a>
-                                  @if($navPracticeAreas && $navPracticeAreas->count() > 0)
-                                  <ul>
-                                      <li><a href="{{ route('practices.index') }}">All Practice Areas</a></li>
-                                      @foreach($navPracticeAreas->take(8) as $practice)
-                                      <li><a href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a></li>
-                                      @endforeach
-                                  </ul>
+                                  @if ($navPracticeAreas && $navPracticeAreas->count() > 0)
+                                      <ul>
+                                          <li><a href="{{ route('practices.index') }}">All Practice Areas</a></li>
+                                          @foreach ($navPracticeAreas->take(8) as $practice)
+                                              <li><a
+                                                      href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>
+                                              </li>
+                                          @endforeach
+                                      </ul>
                                   @endif
                               </li>
 
                               <li class="dropdown">
                                   <a href="#">News & Publications</a>
                                   <ul>
-                                      @if($navNews && $navNews->count() > 0)
                                       <li><a href="{{ route('posts.by-type', 'news') }}">News</a></li>
-                                      @endif
-                                      @if($navPublications && $navPublications->count() > 0)
                                       <li><a href="{{ route('publications.index') }}">Publications</a></li>
-                                      @foreach($navPublications->take(5) as $publication)
-                                      <li><a href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a></li>
-                                      @endforeach
-                                      @endif
                                   </ul>
                               </li>
 
                               <li class="dropdown">
                                   <a href="{{ route('team.index') }}">Our Team</a>
-                                  @if($navTeamMembers && $navTeamMembers->count() > 0)
-                                  <ul>
-                                      <li><a href="{{ route('team.index') }}">All Team Members</a></li>
-                                      @foreach($navTeamMembers->take(6) as $member)
-                                      <li><a href="{{ route('team.show', $member->slug) }}">{{ $member->name }} <small>({{ $member->designation }})</small></a></li>
-                                      @endforeach
-                                  </ul>
-                                  @endif
                               </li>
 
                               <li class="dropdown">
                                   <a href="#">Help Desk</a>
                                   <ul>
-                                      @foreach($navHelpDeskItems as $helpDeskItem)
-                                      <li><a href="{{ $helpDeskItem['url'] }}">{{ $helpDeskItem['title'] }}</a></li>
+                                      @foreach ($navHelpDeskItems as $helpDeskItem)
+                                          <li><a href="{{ $helpDeskItem['url'] }}">{{ $helpDeskItem['title'] }}</a>
+                                          </li>
                                       @endforeach
                                   </ul>
                               </li>
-                     
+
                               <li>
                                   <a href="/contact">Contact</a>
                               </li>
@@ -140,7 +130,7 @@
                               <span></span>
                               <span></span>
                           </div><!-- /.mobile-nav__toggler -->
-                       
+
                           <div class="main-header__btn">
                               <a href="/contact" class="procounsel-btn">
                                   <i>Get a Quote</i><span>Get a Quote</span>

@@ -20,15 +20,51 @@ class PracticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Get all practices
-        $practices = $this->practiceSection->getAllPractices();
+        $query = Post::ofType('practice')->active()->ordered();
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('excerpt', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        // Sorting
+        $sort = $request->get('sort', 'latest');
+        switch ($sort) {
+            case 'oldest':
+                $query->orderBy('created_at', 'asc');
+                break;
+            case 'title':
+                $query->orderBy('title', 'asc');
+                break;
+            case 'featured':
+                $query->whereNotNull('feature_image')->orderBy('created_at', 'desc');
+                break;
+            default:
+                $query->orderBy('created_at', 'desc');
+        }
+
+        // Pagination
+        $practices = $query->paginate(12)->withQueryString();
         
-        // Get practice statistics
-        $practiceStats = $this->practiceSection->getPracticeStats();
-        
-        return view('practice.index', compact('practices', 'practiceStats'));
+        // Get featured practices for sidebar
+        $featuredPractices = Post::ofType('practice')
+            ->active()
+            ->whereNotNull('feature_image')
+            ->orderBy('created_at', 'desc')
+            ->limit(6)
+            ->get();
+
+        // Get total count for stats
+        $totalPractices = Post::ofType('practice')->active()->count();
+
+        return view('practice.index', compact('practices', 'featuredPractices', 'totalPractices'));
     }
 
     /**

@@ -119,9 +119,6 @@
                                             </div>
                                             <div class="service-item-content">
                                                 <h6><a href="{{ route('service.show', $relatedService->slug) }}">{{ $relatedService->title }}</a></h6>
-                                                @if ($relatedService->excerpt)
-                                                    <p>{{ Str::limit($relatedService->excerpt, 80) }}</p>
-                                                @endif
                                             </div>
                                         </div>
                                     @endforeach

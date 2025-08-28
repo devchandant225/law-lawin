@@ -126,11 +126,12 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn">
+                                           
+                                        </div>
+                                         <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn float-end mb-2">
                                                 <i>Learn More</i>
                                                 <span>Learn More</span>
                                             </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

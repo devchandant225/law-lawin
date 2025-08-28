@@ -25,34 +25,34 @@
                             <div class="team-card__image bw-img-anim-left">
                                 <div class="team-card__content">
                                     <h3 class="team-card__title">
-                                        <a href="{{ route('team.show', $member->slug) }}">{{ $team->title }}</a>
+                                        <a href="{{ route('team.show', $team->slug) }}">{{ $team->title }}</a>
                                     </h3><!-- /.team-card__title -->
-                                    <p class="team-card__designation">{{ $member->designation ?: 'Lawyer' }}</p>
+                                    <p class="team-card__designation">{{ $team->designation ?: 'Lawyer' }}</p>
                                     <!-- /.team-card__designation -->
 
                                 </div><!-- /.team-card__content -->
                                 <div class="team-card__hover">
                                     <span class="team-card__hover__btn"><i class="icon-plus"></i></span>
                                     <div class="team-card__hover__social">
-                                        @if ($member->facebooklink)
-                                            <a href="{{ $member->facebooklink }}" target="_blank">
+                                        @if ($team->facebooklink)
+                                            <a href="{{ $team->facebooklink }}" target="_blank">
                                                 <i class="icon-facebook"></i>
                                                 <span class="sr-only">Facebook</span>
                                             </a>
                                         @endif
-                                        @if ($member->linkedinlink)
-                                            <a href="{{ $member->linkedinlink }}" target="_blank">
+                                        @if ($team->linkedinlink)
+                                            <a href="{{ $team->linkedinlink }}" target="_blank">
                                                 <i class="icon-linkedin"></i>
                                                 <span class="sr-only">LinkedIn</span>
                                             </a>
                                         @endif
-                                        @if ($member->email)
-                                            <a href="mailto:{{ $member->email }}">
+                                        @if ($team->email)
+                                            <a href="mailto:{{ $team->email }}">
                                                 <i class="icon-email"></i>
                                                 <span class="sr-only">Email</span>
                                             </a>
                                         @endif
-                                        @if (!$member->facebooklink && !$member->linkedinlink && !$member->email)
+                                        @if (!$team->facebooklink && !$team->linkedinlink && !$team->email)
                                             <!-- Default social links when none are provided -->
                                             <a href="#">
                                                 <i class="icon-facebook"></i>
@@ -61,10 +61,10 @@
                                         @endif
                                     </div><!-- /.team-card__social -->
                                 </div><!-- /.team-card__hover -->
-                                @if ($member->image)
-                                    <img src="{{ $member->image_url }}" alt="{{ $member->name }}">
+                                @if ($team->image)
+                                    <img src="{{ $team->image_url }}" alt="{{ $team->name }}">
                                 @else
-                                    <img src="{{ asset('assets/images/team/team-1-1.jpg') }}" alt="{{ $member->name }}">
+                                    <img src="{{ asset('assets/images/team/team-1-1.jpg') }}" alt="{{ $team->name }}">
                                 @endif
                             </div><!-- /.team-card__image -->
                         </div><!-- /.team-card -->

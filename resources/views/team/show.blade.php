@@ -200,9 +200,6 @@
                                             <div class="team-member-content">
                                                 <h6><a href="{{ route('team.show', $member) }}">{{ $member->name }}</a></h6>
                                                 <p>{{ $member->designation }}</p>
-                                                @if($member->tagline)
-                                                    <small>{{ Str::limit($member->tagline, 60) }}</small>
-                                                @endif
                                             </div>
                                         </div>
                                     @endforeach

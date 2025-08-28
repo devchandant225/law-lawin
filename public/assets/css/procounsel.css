@@ -18183,7 +18183,7 @@ body.megamenu-popup-active .mobile-nav__content {
 .service-one__item {
   position: relative;
   z-index: 2;
-  height:34rem;
+  height:36rem;
   counter-increment: count;
   transition: all 500ms ease;
   background-color: var(--procounsel-gray2, #ededed);

@@ -7542,8 +7542,7 @@ body.megamenu-popup-active .mobile-nav__content {
   gap: 15px;
 }
 .testimonials-card-three__author-img {
-  width: 10rem;
-  height: 8rem;
+  width: 100%;
   border-radius: 10%;
   overflow: hidden;
 }

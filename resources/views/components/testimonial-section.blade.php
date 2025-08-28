@@ -37,8 +37,7 @@
                     </span>
                 </div>
                 <div class="testimonials-three__info__content">
-                    <h4 class="testimonials-three__info__title">Satisfied Clients</h4>
-                    <p class="testimonials-three__info__text">Projects <br> Completed</p>
+                    <p class="testimonials-three__info__text">Satisfied <br> Clients</p>
                 </div>
             </div>
         </div>
@@ -84,9 +83,6 @@
                             </div><!-- /.testimonials-card-three__rating -->
                             <div class="testimonials-card-three__quote"><i class="icon-double-quote"></i></div>
                         </div>
-                        <div class="testimonials-card-three__text">
-                            Proudly served {{ $portfolio->title }} with professional legal excellence and dedication to achieving outstanding results.
-                        </div><!-- /.testimonials-card-three__content -->
                         <div class="testimonials-card-three__author">
                             <div class="testimonials-card-three__author-img">
                                 @if($portfolio->image_url)
@@ -99,7 +95,6 @@
                                 <h3 class="testimonials-card-three__name">
                                     {{ $portfolio->title }}
                                 </h3><!-- /.testimonials-card-three__name -->
-                                <p class="testimonials-card-three__designation">Valued Client</p>
                             </div>
                             <!-- /.testimonials-card-three__designation -->
                         </div>

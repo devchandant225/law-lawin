@@ -7537,13 +7537,14 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 .testimonials-card-three__author {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 15px;
 }
 .testimonials-card-three__author-img {
-  width: 47px;
-  height: 47px;
-  border-radius: 50%;
+  width: 10rem;
+  height: 8rem;
+  border-radius: 10%;
   overflow: hidden;
 }
 .testimonials-card-three__name {
@@ -7553,7 +7554,7 @@ body.megamenu-popup-active .mobile-nav__content {
   z-index: 2;
   font-weight: 400;
   font-size: 20px;
-  line-height: 10px;
+  line-height: 28px;
   text-transform: capitalize;
 }
 .testimonials-card-three__designation {

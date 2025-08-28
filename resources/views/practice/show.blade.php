@@ -87,9 +87,6 @@
                                             </div>
                                             <div class="practice-item-content">
                                                 <h6><a href="{{ route('practice.show', $relatedPractice->slug) }}">{{ $relatedPractice->title }}</a></h6>
-                                                @if ($relatedPractice->excerpt)
-                                                    <p>{{ Str::limit($relatedPractice->excerpt, 80) }}</p>
-                                                @endif
                                             </div>
                                         </div>
                                     @endforeach

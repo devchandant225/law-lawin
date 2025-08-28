@@ -18217,9 +18217,9 @@ body.megamenu-popup-active .mobile-nav__content {
 .service-one__item__title {
   font-size: 24px;
   font-weight: 400;
-  line-height: 25px;
+  line-height: 30px;
   text-transform: capitalize;
-  margin: 5px 0 0 0;
+  margin: 26px 0 0 0;
   width:100%;
   color: var(--procounsel-primary, #19223a);
   transition: all 100ms ease;

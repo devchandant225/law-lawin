@@ -307,12 +307,11 @@
 
         .team-image {
             position: relative;
-            margin-bottom: 20px;
         }
 
         .team-image img {
             width: 200px;
-            height: 250px;
+            height: 340px;
             object-fit: cover;
             border-radius: 15px;
             border: 4px solid var(--procounsel-border-color);

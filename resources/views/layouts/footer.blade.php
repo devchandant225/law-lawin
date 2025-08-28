@@ -140,18 +140,7 @@
                                             </div>
                                         </li>
                                         @endif
-                                        @if($globalProfile && $globalProfile->phone2)
-                                        <li class="main-footer__info__item">
-                                            <div class="main-footer__info__icon">
-                                                <i class="icon-telephone-call-1"></i>
-                                            </div>
-                                            <div class="main-footer__info__content">
-                                                <p class="main-footer__info__text">
-                                                    <a href="tel:{{ $globalProfile->phone2 }}">{{ $globalProfile->phone2 }}</a>
-                                                </p><!-- /.contact-one__info__text -->
-                                            </div>
-                                        </li>
-                                        @endif
+                                        
                                         @if($globalProfile && $globalProfile->email)
                                         <li class="main-footer__info__item">
                                             <div class="main-footer__info__icon">

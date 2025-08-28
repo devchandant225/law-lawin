@@ -6,21 +6,76 @@
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner 
-        title="Our Expert Team" 
+    <x-page-banner title="Our Expert Team"
         subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"
-        :breadcrumbs="[
-            ['label' => 'Home', 'url' => url('/')],
-            ['label' => 'Our Team']
-        ]"
-    />
+        :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Our Team']]" />
 
     {{-- Team Section with Search --}}
-    <x-team-section :teams="$teams" :showViewAll="false" :showSectionHeader="false" :showSearch="true"
+    {{-- <x-team-section :teams="$teams" :showViewAll="false" :showSectionHeader="false" :showSearch="true"
         sectionTitle="Our <span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Legal Professionals</span>"
         sectionSubtitle="Expert Team Members"
-        sectionDescription="Our diverse team of legal experts combines deep knowledge, innovative thinking, and unwavering commitment to deliver exceptional legal services across various practice areas." />
+        sectionDescription="Our diverse team of legal experts combines deep knowledge, innovative thinking, and unwavering commitment to deliver exceptional legal services across various practice areas." /> --}}
+    <section class="team-one">
+        <div class="container">
+            <div class="row gutter-y-30">
+                @foreach ($teams as $team)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="team-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
 
+                            <div class="team-card__image bw-img-anim-left">
+                                <div class="team-card__content">
+                                    <h3 class="team-card__title">
+                                        <a href="{{ route('team.show', $member->slug) }}">{{ $team->title }}</a>
+                                    </h3><!-- /.team-card__title -->
+                                    <p class="team-card__designation">{{ $member->designation ?: 'Lawyer' }}</p>
+                                    <!-- /.team-card__designation -->
+
+                                </div><!-- /.team-card__content -->
+                                <div class="team-card__hover">
+                                    <span class="team-card__hover__btn"><i class="icon-plus"></i></span>
+                                    <div class="team-card__hover__social">
+                                        @if ($member->facebooklink)
+                                            <a href="{{ $member->facebooklink }}" target="_blank">
+                                                <i class="icon-facebook"></i>
+                                                <span class="sr-only">Facebook</span>
+                                            </a>
+                                        @endif
+                                        @if ($member->linkedinlink)
+                                            <a href="{{ $member->linkedinlink }}" target="_blank">
+                                                <i class="icon-linkedin"></i>
+                                                <span class="sr-only">LinkedIn</span>
+                                            </a>
+                                        @endif
+                                        @if ($member->email)
+                                            <a href="mailto:{{ $member->email }}">
+                                                <i class="icon-email"></i>
+                                                <span class="sr-only">Email</span>
+                                            </a>
+                                        @endif
+                                        @if (!$member->facebooklink && !$member->linkedinlink && !$member->email)
+                                            <!-- Default social links when none are provided -->
+                                            <a href="#">
+                                                <i class="icon-facebook"></i>
+                                                <span class="sr-only">Facebook</span>
+                                            </a>
+                                        @endif
+                                    </div><!-- /.team-card__social -->
+                                </div><!-- /.team-card__hover -->
+                                @if ($member->image)
+                                    <img src="{{ $member->image_url }}" alt="{{ $member->name }}">
+                                @else
+                                    <img src="{{ asset('assets/images/team/team-1-1.jpg') }}" alt="{{ $member->name }}">
+                                @endif
+                            </div><!-- /.team-card__image -->
+                        </div><!-- /.team-card -->
+                    </div><!-- /.col-lg-4 col-md-6 -->
+                @endforeach
+
+
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.team-two -->
     {{-- Call to Action Section --}}
     <section class="py-16 bg-gradient-to-r from-secondary to-primary">
         <div class="container mx-auto px-4">

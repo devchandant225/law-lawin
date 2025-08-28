@@ -10,7 +10,7 @@
         :title="$service->title" 
         :breadcrumbs="[
             ['label' => 'Home', 'url' => url('/')],
-            ['label' => 'Services', 'url' => route('services.index')],
+            ['label' => 'Service', 'url' => route('services.index')],
             ['label' => $service->title]
         ]"
     />

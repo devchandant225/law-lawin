@@ -11801,7 +11801,7 @@ body.megamenu-popup-active .mobile-nav__content {
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--procounsel-border-color, #d9d9d9);
-  padding: 29px 59px;
+  padding: 4px 6px;
   transition: all 500ms ease;
 }
 @media (max-width: 1199px) {

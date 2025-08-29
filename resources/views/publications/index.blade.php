@@ -39,15 +39,6 @@
                     <p>Please check back later for our latest publications and resources.</p>
                 </div>
             @endif
-
-            @if ($showViewAll && $publications->isNotEmpty())
-                <div class="text-center mt-5">
-                    <a href="{{ route('publications.index') }}" class="procounsel-btn procounsel-btn--two">
-                        <i>View All Publications</i>
-                        <span>View All Publications</span>
-                    </a>
-                </div>
-            @endif
         </div>
     </section>
 

@@ -3,151 +3,189 @@
 @section('title', 'Add Table of Contents - ' . $publication->title)
 
 @section('content')
-<div class="container-fluid">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Page Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="flex items-center justify-between mb-6">
         <div>
-            <h1 class="h3 mb-0 text-gray-800">Add Table of Contents</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.publications.index') }}">Publications</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.publications.show', $publication) }}">{{ Str::limit($publication->title, 30) }}</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.publications.table-of-contents.index', $publication) }}">Table of Contents</a></li>
-                    <li class="breadcrumb-item active">Add</li>
+            <h1 class="text-2xl font-bold text-gray-900">Add Table of Contents</h1>
+            <nav class="flex mt-2" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
+                            <i class="fas fa-home mr-1"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-1"></i>
+                            <a href="{{ route('admin.publications.index') }}" class="text-sm font-medium text-gray-700 hover:text-blue-600">Publications</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-1"></i>
+                            <a href="{{ route('admin.publications.show', $publication) }}" class="text-sm font-medium text-gray-700 hover:text-blue-600">{{ Str::limit($publication->title, 30) }}</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-1"></i>
+                            <a href="{{ route('admin.publications.table-of-contents.index', $publication) }}" class="text-sm font-medium text-gray-700 hover:text-blue-600">Table of Contents</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-1"></i>
+                            <span class="text-sm font-medium text-gray-500">Add</span>
+                        </div>
+                    </li>
                 </ol>
             </nav>
         </div>
         <div>
-            <a href="{{ route('admin.publications.table-of-contents.index', $publication) }}" class="btn btn-secondary">
-                <i class="fas fa-arrow-left"></i> Back to List
+            <a href="{{ route('admin.publications.table-of-contents.index', $publication) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to List</span>
             </a>
         </div>
     </div>
 
     <!-- Publication Info Card -->
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <h5 class="card-title mb-1">{{ $publication->title }}</h5>
-                    <p class="text-muted small mb-0">
-                        Adding table of contents items for this publication
-                    </p>
-                </div>
-                <div class="col-md-4 text-md-right">
-                    <span class="badge badge-{{ $publication->status === 'active' ? 'success' : 'secondary' }}">
-                        {{ ucfirst($publication->status) }}
-                    </span>
-                </div>
+    <div class="bg-white shadow rounded-lg p-6 mb-6">
+        <div class="flex items-center justify-between">
+            <div class="flex-1">
+                <h2 class="text-lg font-semibold text-gray-900 mb-2">{{ $publication->title }}</h2>
+                <p class="text-sm text-gray-600">
+                    Adding table of contents items for this publication
+                </p>
+            </div>
+            <div class="flex-shrink-0">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $publication->status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                    {{ ucfirst($publication->status) }}
+                </span>
             </div>
         </div>
     </div>
 
     <!-- Form Card -->
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h6 class="m-0 font-weight-bold text-primary">Table of Contents Items</h6>
+    <div class="bg-white shadow rounded-lg">
+        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-blue-600">Table of Contents Items</h3>
             <div>
-                <button type="button" class="btn btn-sm btn-success" id="addMoreBtn">
-                    <i class="fas fa-plus"></i> Add More
+                <button type="button" class="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-green-600 text-white text-sm hover:bg-green-700 focus:ring-2 focus:ring-green-500 transition-colors" id="addMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    <span>Add More</span>
                 </button>
             </div>
         </div>
 
-        <div class="card-body">
+        <div class="p-6">
             <form id="tocForm" action="{{ route('admin.publications.table-of-contents.store', $publication) }}" method="POST">
                 @csrf
 
                 <!-- Instructions -->
-                <div class="alert alert-info" role="alert">
-                    <i class="fas fa-info-circle"></i>
-                    <strong>Instructions:</strong>
-                    <ul class="mb-0 mt-2">
-                        <li>Add multiple table of contents items at once</li>
-                        <li>Title is required for each item</li>
-                        <li>Description is optional but recommended</li>
-                        <li>Use the "Add More" button to add additional items</li>
-                        <li>Remove unwanted items using the trash button</li>
-                    </ul>
+                <div class="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-info-circle text-blue-400"></i>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-sm font-medium text-blue-800">Instructions:</h4>
+                            <ul class="mt-2 text-sm text-blue-700 list-disc list-inside space-y-1">
+                                <li>Add multiple table of contents items at once</li>
+                                <li>Title is required for each item</li>
+                                <li>Description is optional but recommended</li>
+                                <li>Use the "Add More" button to add items at the end</li>
+                                <li>Use the "Add Below" button to insert items at specific positions</li>
+                                <li>Remove unwanted items using the trash button</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Dynamic Form Fields Container -->
-                <div id="tocItemsContainer">
+                <div id="tocItemsContainer" class="space-y-6">
                     <!-- Initial Item -->
-                    <div class="toc-item-group card mb-3">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h6 class="mb-0">Item #<span class="item-number">1</span></h6>
-                            <button type="button" class="btn btn-sm btn-outline-danger remove-item" style="display: none;">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                    <div class="toc-item-group bg-gray-50 border border-gray-200 rounded-lg">
+                        <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200">
+                            <h4 class="text-sm font-medium text-gray-900">Item #<span class="item-number">1</span></h4>
+                            <div class="flex gap-2">
+                                <button type="button" class="inline-flex items-center gap-1 px-2 py-1 text-xs border border-green-300 text-green-600 rounded hover:bg-green-50 focus:ring-2 focus:ring-green-500 transition-colors add-item-below">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add Below</span>
+                                </button>
+                                <button type="button" class="inline-flex items-center gap-1 px-2 py-1 text-xs border border-red-300 text-red-600 rounded hover:bg-red-50 focus:ring-2 focus:ring-red-500 transition-colors remove-item hidden">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="toc_items_0_title">Title <span class="text-danger">*</span></label>
-                                        <input type="text" 
-                                               class="form-control @error('toc_items.0.title') is-invalid @enderror" 
-                                               id="toc_items_0_title" 
-                                               name="toc_items[0][title]" 
-                                               value="{{ old('toc_items.0.title') }}" 
-                                               placeholder="Enter title"
-                                               required>
-                                        @error('toc_items.0.title')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                        <div class="p-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="toc_items_0_title" class="block text-sm font-medium text-gray-700 mb-1">
+                                        Title <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" 
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('toc_items.0.title') border-red-500 @enderror" 
+                                           id="toc_items_0_title" 
+                                           name="toc_items[0][title]" 
+                                           value="{{ old('toc_items.0.title') }}" 
+                                           placeholder="Enter title"
+                                           required>
+                                    @error('toc_items.0.title')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="toc_items_0_status">Status</label>
-                                        <select class="form-control @error('toc_items.0.status') is-invalid @enderror" 
-                                                id="toc_items_0_status" 
-                                                name="toc_items[0][status]">
-                                            <option value="1" {{ old('toc_items.0.status', 1) == 1 ? 'selected' : '' }}>Active</option>
-                                            <option value="0" {{ old('toc_items.0.status', 1) == 0 ? 'selected' : '' }}>Inactive</option>
-                                        </select>
-                                        @error('toc_items.0.status')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                <div>
+                                    <label for="toc_items_0_status" class="block text-sm font-medium text-gray-700 mb-1">
+                                        Status
+                                    </label>
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('toc_items.0.status') border-red-500 @enderror" 
+                                            id="toc_items_0_status" 
+                                            name="toc_items[0][status]">
+                                        <option value="1" {{ old('toc_items.0.status', 1) == 1 ? 'selected' : '' }}>Active</option>
+                                        <option value="0" {{ old('toc_items.0.status', 1) == 0 ? 'selected' : '' }}>Inactive</option>
+                                    </select>
+                                    @error('toc_items.0.status')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="toc_items_0_description">Description</label>
-                                        <textarea class="form-control @error('toc_items.0.description') is-invalid @enderror" 
-                                                  id="toc_items_0_description" 
-                                                  name="toc_items[0][description]" 
-                                                  rows="3" 
-                                                  placeholder="Enter description (optional)">{{ old('toc_items.0.description') }}</textarea>
-                                        @error('toc_items.0.description')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                            <div>
+                                <label for="toc_items_0_description" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Description
+                                </label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 @error('toc_items.0.description') border-red-500 @enderror" 
+                                          id="toc_items_0_description" 
+                                          name="toc_items[0][description]" 
+                                          rows="3" 
+                                          placeholder="Enter description (optional)">{{ old('toc_items.0.description') }}</textarea>
+                                @error('toc_items.0.description')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Form Actions -->
-                <div class="form-group">
-                    <div class="d-flex justify-content-between align-items-center">
+                <div class="mt-8">
+                    <div class="flex justify-between items-center">
                         <div>
-                            <small class="text-muted">
-                                <i class="fas fa-info-circle"></i>
+                            <p class="text-sm text-gray-600">
+                                <i class="fas fa-info-circle mr-1"></i>
                                 Items will be ordered automatically based on the sequence added.
-                            </small>
+                            </p>
                         </div>
-                        <div>
-                            <button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                                <i class="fas fa-times"></i> Cancel
+                        <div class="flex gap-3">
+                            <button type="button" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 transition-colors" onclick="window.history.back()">
+                                <i class="fas fa-times"></i>
+                                <span>Cancel</span>
                             </button>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Save Table of Contents
+                            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 transition-colors">
+                                <i class="fas fa-save"></i>
+                                <span>Save Table of Contents</span>
                             </button>
                         </div>
                     </div>
@@ -158,43 +196,84 @@
 </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script>
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     let itemCounter = 1;
+    let ckeditorInstances = {};
 
-    // Add More Button Click
-    $('#addMoreBtn').click(function() {
+    // Initialize CKEditor for the initial description field
+    initializeCKEditor('toc_items_0_description');
+
+    // Add More Button Click (adds to end)
+    document.getElementById('addMoreBtn').addEventListener('click', function() {
         addNewItem();
     });
 
-    // Remove Item Button Click (using event delegation)
-    $(document).on('click', '.remove-item', function() {
-        const $itemGroup = $(this).closest('.toc-item-group');
-        $itemGroup.fadeOut(300, function() {
-            $(this).remove();
-            updateItemNumbers();
-            updateRemoveButtonsVisibility();
-        });
+    // Handle button clicks using event delegation
+    document.addEventListener('click', function(e) {
+        // Remove Item Button Click
+        if (e.target.closest('.remove-item')) {
+            const itemGroup = e.target.closest('.toc-item-group');
+            const descriptionTextarea = itemGroup.querySelector('textarea[name*="[description]"]');
+            
+            // Destroy CKEditor instance for this item
+            if (descriptionTextarea && ckeditorInstances[descriptionTextarea.id]) {
+                try {
+                    ckeditorInstances[descriptionTextarea.id].destroy();
+                    delete ckeditorInstances[descriptionTextarea.id];
+                } catch (e) {
+                    console.warn('Error destroying CKEditor instance:', e);
+                }
+            }
+            
+            itemGroup.style.transition = 'opacity 0.3s';
+            itemGroup.style.opacity = '0';
+            setTimeout(() => {
+                itemGroup.remove();
+                updateItemNumbers();
+                updateRemoveButtonsVisibility();
+                updateFormFieldNames();
+            }, 300);
+        }
+        
+        // Add Item Below Button Click
+        if (e.target.closest('.add-item-below')) {
+            const currentItem = e.target.closest('.toc-item-group');
+            addItemBelow(currentItem);
+        }
     });
 
     // Form Validation
-    $('#tocForm').submit(function(e) {
+    document.getElementById('tocForm').addEventListener('submit', function(e) {
         let isValid = true;
         let emptyCount = 0;
 
         // Clear previous error states
-        $('.form-control').removeClass('is-invalid');
-        $('.invalid-feedback').remove();
+        document.querySelectorAll('input, textarea, select').forEach(el => {
+            el.classList.remove('border-red-500');
+        });
+        document.querySelectorAll('.validation-error').forEach(el => el.remove());
+
+        // Sync CKEditor data before validation
+        for (let instanceId in ckeditorInstances) {
+            if (ckeditorInstances[instanceId]) {
+                ckeditorInstances[instanceId].updateElement();
+            }
+        }
 
         // Validate each item
-        $('.toc-item-group').each(function(index) {
-            const $item = $(this);
-            const $titleInput = $item.find('input[name*="[title]"]');
-            const $descriptionInput = $item.find('textarea[name*="[description]"]');
+        document.querySelectorAll('.toc-item-group').forEach((item, index) => {
+            const titleInput = item.querySelector('input[name*="[title]"]');
+            const descriptionInput = item.querySelector('textarea[name*="[description]"]');
             
-            const title = $titleInput.val().trim();
-            const description = $descriptionInput.val().trim();
+            const title = titleInput.value.trim();
+            let description = descriptionInput.value.trim();
+            
+            // Get CKEditor content if available
+            if (ckeditorInstances[descriptionInput.id]) {
+                description = ckeditorInstances[descriptionInput.id].getData().trim();
+            }
 
             // Check if item is completely empty
             if (!title && !description) {
@@ -204,21 +283,27 @@ $(document).ready(function() {
 
             // Validate title if item has any content
             if (!title) {
-                $titleInput.addClass('is-invalid');
-                $titleInput.after('<div class="invalid-feedback">Title is required when description is provided.</div>');
+                titleInput.classList.add('border-red-500');
+                const errorMsg = document.createElement('p');
+                errorMsg.className = 'mt-1 text-sm text-red-600 validation-error';
+                errorMsg.textContent = 'Title is required when description is provided.';
+                titleInput.parentNode.appendChild(errorMsg);
                 isValid = false;
             }
 
             // Validate title length
             if (title && title.length > 255) {
-                $titleInput.addClass('is-invalid');
-                $titleInput.after('<div class="invalid-feedback">Title cannot exceed 255 characters.</div>');
+                titleInput.classList.add('border-red-500');
+                const errorMsg = document.createElement('p');
+                errorMsg.className = 'mt-1 text-sm text-red-600 validation-error';
+                errorMsg.textContent = 'Title cannot exceed 255 characters.';
+                titleInput.parentNode.appendChild(errorMsg);
                 isValid = false;
             }
         });
 
         // Check if all items are empty
-        const totalItems = $('.toc-item-group').length;
+        const totalItems = document.querySelectorAll('.toc-item-group').length;
         if (emptyCount === totalItems) {
             showAlert('error', 'Please add at least one table of contents item with a title.');
             isValid = false;
@@ -226,109 +311,219 @@ $(document).ready(function() {
 
         if (!isValid) {
             e.preventDefault();
-            $('html, body').animate({
-                scrollTop: $('.is-invalid:first').offset().top - 100
-            }, 500);
+            const firstInvalid = document.querySelector('.border-red-500');
+            if (firstInvalid) {
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
     });
 
-    function addNewItem() {
-        const itemHtml = `
-            <div class="toc-item-group card mb-3">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Item #<span class="item-number">${itemCounter + 1}</span></h6>
-                    <button type="button" class="btn btn-sm btn-outline-danger remove-item">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="toc_items_${itemCounter}_title">Title <span class="text-danger">*</span></label>
-                                <input type="text" 
-                                       class="form-control" 
-                                       id="toc_items_${itemCounter}_title" 
-                                       name="toc_items[${itemCounter}][title]" 
-                                       placeholder="Enter title"
-                                       required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="toc_items_${itemCounter}_status">Status</label>
-                                <select class="form-control" 
-                                        id="toc_items_${itemCounter}_status" 
-                                        name="toc_items[${itemCounter}][status]">
-                                    <option value="1" selected>Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="toc_items_${itemCounter}_description">Description</label>
-                                <textarea class="form-control" 
-                                          id="toc_items_${itemCounter}_description" 
-                                          name="toc_items[${itemCounter}][description]" 
-                                          rows="3" 
-                                          placeholder="Enter description (optional)"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+    // Initialize CKEditor for a specific textarea
+    function initializeCKEditor(textareaId) {
+        if (ckeditorInstances[textareaId]) {
+            try {
+                ckeditorInstances[textareaId].destroy();
+            } catch (e) {
+                console.warn('Error destroying CKEditor instance:', e);
+            }
+            delete ckeditorInstances[textareaId];
+        }
+        
+        setTimeout(() => {
+            if (document.getElementById(textareaId)) {
+                ckeditorInstances[textareaId] = CKEDITOR.replace(textareaId, {
+                    filebrowserUploadUrl: "{{ route('admin.upload-blog-editor-image') . '?_token=' . csrf_token() }}",
+                    filebrowserUploadMethod: 'form',
+                    height: 200
+                });
+            }
+        }, 100);
+    }
 
-        $('#tocItemsContainer').append(itemHtml);
+    // Add new item at the end
+    function addNewItem() {
+        const itemHtml = createItemHTML(itemCounter);
+        document.getElementById('tocItemsContainer').insertAdjacentHTML('beforeend', itemHtml);
+        const newTextareaId = `toc_items_${itemCounter}_description`;
         itemCounter++;
         
         updateItemNumbers();
         updateRemoveButtonsVisibility();
 
+        // Initialize CKEditor for the new textarea
+        initializeCKEditor(newTextareaId);
+
         // Scroll to new item
-        const $newItem = $('.toc-item-group').last();
-        $('html, body').animate({
-            scrollTop: $newItem.offset().top - 100
-        }, 500);
+        const items = document.querySelectorAll('.toc-item-group');
+        const newItem = items[items.length - 1];
+        newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
         // Focus on title field
-        $newItem.find('input[name*="[title]"]').focus();
+        const titleInput = newItem.querySelector('input[name*="[title]"]');
+        setTimeout(() => titleInput.focus(), 100);
+    }
+    
+    // Add new item below a specific item
+    function addItemBelow(currentItem) {
+        const itemHtml = createItemHTML(itemCounter);
+        const newTextareaId = `toc_items_${itemCounter}_description`;
+        currentItem.insertAdjacentHTML('afterend', itemHtml);
+        itemCounter++;
+        
+        updateItemNumbers();
+        updateRemoveButtonsVisibility();
+        updateFormFieldNames();
+
+        // Initialize CKEditor for the new textarea
+        initializeCKEditor(newTextareaId);
+
+        // Get the newly inserted item (it's the next sibling after currentItem)
+        const newItem = currentItem.nextElementSibling;
+        newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Focus on title field
+        const titleInput = newItem.querySelector('input[name*="[title]"]');
+        setTimeout(() => titleInput.focus(), 100);
+    }
+    
+    // Create item HTML template
+    function createItemHTML(counter) {
+        return `
+            <div class="toc-item-group bg-gray-50 border border-gray-200 rounded-lg">
+                <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200">
+                    <h4 class="text-sm font-medium text-gray-900">Item #<span class="item-number">${counter + 1}</span></h4>
+                    <div class="flex gap-2">
+                        <button type="button" class="inline-flex items-center gap-1 px-2 py-1 text-xs border border-green-300 text-green-600 rounded hover:bg-green-50 focus:ring-2 focus:ring-green-500 transition-colors add-item-below">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Below</span>
+                        </button>
+                        <button type="button" class="inline-flex items-center gap-1 px-2 py-1 text-xs border border-red-300 text-red-600 rounded hover:bg-red-50 focus:ring-2 focus:ring-red-500 transition-colors remove-item">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="toc_items_${counter}_title" class="block text-sm font-medium text-gray-700 mb-1">
+                                Title <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" 
+                                   id="toc_items_${counter}_title" 
+                                   name="toc_items[${counter}][title]" 
+                                   placeholder="Enter title"
+                                   required>
+                        </div>
+                        <div>
+                            <label for="toc_items_${counter}_status" class="block text-sm font-medium text-gray-700 mb-1">
+                                Status
+                            </label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" 
+                                    id="toc_items_${counter}_status" 
+                                    name="toc_items[${counter}][status]">
+                                <option value="1" selected>Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="toc_items_${counter}_description" class="block text-sm font-medium text-gray-700 mb-1">
+                            Description
+                        </label>
+                        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" 
+                                  id="toc_items_${counter}_description" 
+                                  name="toc_items[${counter}][description]" 
+                                  rows="3" 
+                                  placeholder="Enter description (optional)"></textarea>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     function updateItemNumbers() {
-        $('.toc-item-group').each(function(index) {
-            $(this).find('.item-number').text(index + 1);
+        document.querySelectorAll('.toc-item-group').forEach((item, index) => {
+            const numberSpan = item.querySelector('.item-number');
+            numberSpan.textContent = index + 1;
+        });
+    }
+    
+    function updateFormFieldNames() {
+        document.querySelectorAll('.toc-item-group').forEach((item, index) => {
+            // Update form field names and IDs to maintain proper indexing
+            const titleInput = item.querySelector('input[name*="[title]"]');
+            const statusSelect = item.querySelector('select[name*="[status]"]');
+            const descriptionTextarea = item.querySelector('textarea[name*="[description]"]');
+            const titleLabel = item.querySelector('label[for*="_title"]');
+            const statusLabel = item.querySelector('label[for*="_status"]');
+            const descriptionLabel = item.querySelector('label[for*="_description"]');
+            
+            if (titleInput) {
+                titleInput.name = `toc_items[${index}][title]`;
+                titleInput.id = `toc_items_${index}_title`;
+                if (titleLabel) titleLabel.setAttribute('for', `toc_items_${index}_title`);
+            }
+            
+            if (statusSelect) {
+                statusSelect.name = `toc_items[${index}][status]`;
+                statusSelect.id = `toc_items_${index}_status`;
+                if (statusLabel) statusLabel.setAttribute('for', `toc_items_${index}_status`);
+            }
+            
+            if (descriptionTextarea) {
+                descriptionTextarea.name = `toc_items[${index}][description]`;
+                descriptionTextarea.id = `toc_items_${index}_description`;
+                if (descriptionLabel) descriptionLabel.setAttribute('for', `toc_items_${index}_description`);
+            }
         });
     }
 
     function updateRemoveButtonsVisibility() {
-        const itemCount = $('.toc-item-group').length;
-        if (itemCount > 1) {
-            $('.remove-item').show();
-        } else {
-            $('.remove-item').hide();
-        }
+        const itemCount = document.querySelectorAll('.toc-item-group').length;
+        const removeButtons = document.querySelectorAll('.remove-item');
+        
+        removeButtons.forEach(btn => {
+            if (itemCount > 1) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
+        });
     }
 
     function showAlert(type, message) {
-        const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+        const alertType = type === 'success' ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800';
+        const iconColor = type === 'success' ? 'text-green-400' : 'text-red-400';
+        const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+        
         const alertHtml = `
-            <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-                ${message}
-                <button type="button" class="close" data-dismiss="alert">
-                    <span>&times;</span>
-                </button>
+            <div class="${alertType} border rounded-md p-4 mb-4 alert-notification">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas ${icon} ${iconColor}"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium">${message}</p>
+                    </div>
+                    <div class="ml-auto pl-3">
+                        <button type="button" class="${iconColor.replace('text-', 'text-').replace('-400', '-600')} hover:${iconColor.replace('-400', '-800')}" onclick="this.closest('.alert-notification').remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         `;
         
-        $('.container-fluid').prepend(alertHtml);
+        const container = document.querySelector('.max-w-7xl');
+        container.insertAdjacentHTML('afterbegin', alertHtml);
         
         // Auto dismiss after 5 seconds
         setTimeout(function() {
-            $('.alert').alert('close');
+            const notification = container.querySelector('.alert-notification');
+            if (notification) {
+                notification.remove();
+            }
         }, 5000);
     }
 
@@ -341,14 +536,15 @@ $(document).ready(function() {
                     addNewItem();
                     
                     // Set the values
-                    const $lastItem = $('.toc-item-group').last();
-                    $lastItem.find('input[name*="[title]"]').val('{{ $item['title'] ?? '' }}');
-                    $lastItem.find('textarea[name*="[description]"]').val('{{ $item['description'] ?? '' }}');
-                    $lastItem.find('select[name*="[status]"]').val('{{ $item['status'] ?? 1 }}');
+                    const items = document.querySelectorAll('.toc-item-group');
+                    const lastItem = items[items.length - 1];
+                    lastItem.querySelector('input[name*="[title]"]').value = '{{ addslashes($item['title'] ?? '') }}';
+                    lastItem.querySelector('textarea[name*="[description]"]').value = '{{ addslashes($item['description'] ?? '') }}';
+                    lastItem.querySelector('select[name*="[status]"]').value = '{{ $item['status'] ?? 1 }}';
                 }, 100 * {{ $index }});
             @endif
         @endforeach
     @endif
 });
 </script>
-@endsection
+@endpush

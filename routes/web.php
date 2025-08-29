@@ -220,6 +220,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::resource('pages', AdminPageController::class);
     Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
     
+    // Image Upload for CKEditor
+    Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');
+    
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

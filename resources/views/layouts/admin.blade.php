@@ -301,6 +301,7 @@
             </div>
         </div>
     </footer>
+    @stack('scripts')
     <!-- JavaScript for mobile menu -->
     <script>
         function toggleMobileMenu() {

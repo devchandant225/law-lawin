@@ -5,166 +5,229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Registration - Lawin & Partners</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #6f42c1;
+            --secondary-color: #6c757d;
+            --accent-color: #e9ecef;
+        }
+        
+        body {
+            background: linear-gradient(135deg, rgba(111, 66, 193, 0.05) 0%, #e9ecef 50%, rgba(108, 117, 125, 0.05) 100%);
+            min-height: 100vh;
+        }
+        
+        .logo-container {
+            width: 6rem;
+            height: 6rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+        }
+        
+        .form-card {
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+        
+        .btn-primary-gradient {
+            background: linear-gradient(90deg, var(--primary-color) 0%, rgba(111, 66, 193, 0.8) 100%);
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(111, 66, 193, 0.3);
+            transition: all 0.15s ease-in-out;
+        }
+        
+        .btn-primary-gradient:hover {
+            background: linear-gradient(90deg, rgba(111, 66, 193, 0.9) 0%, rgba(111, 66, 193, 0.7) 100%);
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 0.75rem 1.5rem rgba(111, 66, 193, 0.4);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .transition-all {
+            transition: all 0.15s ease-in-out;
+        }
+        
+        .text-primary-custom {
+            color: var(--primary-color) !important;
+        }
+        
+        .text-secondary-custom {
+            color: var(--secondary-color) !important;
+        }
+        
+        .text-primary-custom:hover {
+            color: var(--secondary-color) !important;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-primary/5 via-accent to-secondary/5 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        {{-- Header --}}
-        <div class="text-center">
-            <div class="mx-auto w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-3xl flex items-center justify-center shadow-2xl border-4 border-white/20">
-                <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9,2V8H11V22H5V16H3V22H1V16C1,14.89 1.89,14 3,14H5V8A6,6 0 0,1 11,2H13A6,6 0 0,1 19,8V14H21C22.11,14 23,14.89 23,16V22H21V16H19V22H13V8H15V2H9M7,4H9V6H7V4M15,4H17V6H15V4Z"/>
-                </svg>
-            </div>
-            <div class="mt-6">
-                <h1 class="text-4xl font-bold text-primary mb-2">Lawin & Partners</h1>
-                <p class="text-lg text-secondary font-semibold mb-1">Legal Excellence Since 1985</p>
-            </div>
-            <div class="mt-4">
-                <h2 class="text-2xl font-bold text-gray-900">Admin Account Request</h2>
-                <p class="mt-2 text-sm text-gray-600">
-                    Request administrative access to the firm's management system
-                </p>
-            </div>
-        </div>
 
-        {{-- Registration Form --}}
-        <form class="mt-8 space-y-6" action="{{ route('admin.register.post') }}" method="POST">
-            @csrf
-                <div class="bg-white rounded-2xl shadow-2xl p-8 space-y-6 border border-gray-100">
-                {{-- Error Messages --}}
-                @if ($errors->any())
-                    <div class="bg-red-50 border border-red-200 rounded-xl p-4">
-                        <div class="flex">
-                            <svg class="w-5 h-5 text-red-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-                            </svg>
-                            <div class="ml-3">
-                                <h3 class="text-sm font-medium text-red-800">Registration Error</h3>
-                                <div class="mt-2 text-sm text-red-700">
-                                    <ul class="list-disc pl-5 space-y-1">
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
+<body class="d-flex align-items-center justify-content-center py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5 col-xl-4">
+                <!-- Header -->
+                <div class="text-center mb-4">
+                    <!-- Logo Section -->
+                    <div class="d-flex justify-content-center mb-4">
+                        <div class="logo-container rounded-4 d-flex align-items-center justify-content-center text-white">
+                            <i class="bi bi-briefcase" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Company Info -->
+                    <div class="mb-4">
+                        <h1 class="display-6 fw-bold text-primary-custom mb-2">Lawin & Partners</h1>
+                        <p class="fs-6 text-secondary-custom fw-semibold mb-1">Legal Excellence Since 1985</p>
+                    </div>
+                    
+                    <!-- Page Title -->
+                    <div>
+                        <h2 class="fs-3 fw-bold text-dark mb-2">Admin Account Request</h2>
+                        <p class="text-muted small">
+                            Request administrative access to the firm's management system
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <form action="{{ route('admin.register.post') }}" method="POST">
+                    @csrf
+                    <div class="card form-card border-0 rounded-4">
+                        <div class="card-body p-4">
+                            <!-- Error Messages -->
+                            @if ($errors->any())
+                                <div class="alert alert-danger d-flex align-items-start mb-4" role="alert">
+                                    <i class="bi bi-exclamation-circle-fill me-2 flex-shrink-0"></i>
+                                    <div>
+                                        <h6 class="alert-heading mb-1">Registration Error</h6>
+                                        <ul class="mb-0 small">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
+                            @endif
+
+                            <!-- Name Field -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-medium">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-person text-muted"></i>
+                                    </span>
+                                    <input type="text" 
+                                           class="form-control border-start-0 @error('name') is-invalid @enderror" 
+                                           id="name" 
+                                           name="name" 
+                                           autocomplete="name" 
+                                           required
+                                           value="{{ old('name') }}"
+                                           placeholder="Enter your full legal name">
+                                </div>
+                            </div>
+
+                            <!-- Email Field -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label fw-medium">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-envelope text-muted"></i>
+                                    </span>
+                                    <input type="email" 
+                                           class="form-control border-start-0 @error('email') is-invalid @enderror" 
+                                           id="email" 
+                                           name="email" 
+                                           autocomplete="email" 
+                                           required
+                                           value="{{ old('email') }}"
+                                           placeholder="Enter your professional email address">
+                                </div>
+                            </div>
+
+                            <!-- Password Field -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label fw-medium">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-lock text-muted"></i>
+                                    </span>
+                                    <input type="password" 
+                                           class="form-control border-start-0 @error('password') is-invalid @enderror" 
+                                           id="password" 
+                                           name="password" 
+                                           autocomplete="new-password" 
+                                           required
+                                           placeholder="Create a secure password">
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password Field -->
+                            <div class="mb-4">
+                                <label for="password_confirmation" class="form-label fw-medium">Confirm Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="bi bi-lock text-muted"></i>
+                                    </span>
+                                    <input type="password" 
+                                           class="form-control border-start-0" 
+                                           id="password_confirmation" 
+                                           name="password_confirmation" 
+                                           autocomplete="new-password" 
+                                           required
+                                           placeholder="Confirm your password">
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="mb-4">
+                                <button type="submit" class="btn btn-primary-gradient w-100 py-3 fw-semibold">
+                                    <i class="bi bi-plus-lg me-2"></i>
+                                    Submit Account Request
+                                </button>
+                            </div>
+
+                            <!-- Login Link -->
+                            <div class="text-center">
+                                <p class="small text-muted mb-0">
+                                    Already have administrator access?
+                                    <a href="{{ route('admin.login') }}" 
+                                       class="text-decoration-none fw-semibold text-primary-custom transition-all">
+                                        Sign in to Admin Portal
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
-                @endif
+                </form>
 
-                {{-- Name Field --}}
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
-                            </svg>
-                        </div>
-                        <input id="name" 
-                               name="name" 
-                               type="text" 
-                               autocomplete="name" 
-                               required 
-                               value="{{ old('name') }}"
-                               class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-150 ease-in-out @error('name') border-red-300 @enderror" 
-                               placeholder="Enter your full legal name">
-                    </div>
-                </div>
-
-                {{-- Email Field --}}
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
-                            </svg>
-                        </div>
-                        <input id="email" 
-                               name="email" 
-                               type="email" 
-                               autocomplete="email" 
-                               required 
-                               value="{{ old('email') }}"
-                               class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-150 ease-in-out @error('email') border-red-300 @enderror" 
-                               placeholder="Enter your professional email address">
-                    </div>
-                </div>
-
-                {{-- Password Field --}}
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6 8V7C6 5.9 6.9 5 8 5H16C17.1 5 18 5.9 18 7V8H19C19.6 8 20 8.4 20 9V19C20 19.6 19.6 20 19 20H5C4.4 20 4 19.6 4 19V9C4 8.4 4.4 8 5 8H6M8 7V8H16V7C16 6.4 15.6 6 15 6H9C8.4 6 8 6.4 8 7Z"/>
-                            </svg>
-                        </div>
-                        <input id="password" 
-                               name="password" 
-                               type="password" 
-                               autocomplete="new-password" 
-                               required 
-                               class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-150 ease-in-out @error('password') border-red-300 @enderror" 
-                               placeholder="Create a secure password">
-                    </div>
-                </div>
-
-                {{-- Confirm Password Field --}}
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6 8V7C6 5.9 6.9 5 8 5H16C17.1 5 18 5.9 18 7V8H19C19.6 8 20 8.4 20 9V19C20 19.6 19.6 20 19 20H5C4.4 20 4 19.6 4 19V9C4 8.4 4.4 8 5 8H6M8 7V8H16V7C16 6.4 15.6 6 15 6H9C8.4 6 8 6.4 8 7Z"/>
-                            </svg>
-                        </div>
-                        <input id="password_confirmation" 
-                               name="password_confirmation" 
-                               type="password" 
-                               autocomplete="new-password" 
-                               required 
-                               class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-150 ease-in-out" 
-                               placeholder="Confirm your password">
-                    </div>
-                </div>
-
-                {{-- Submit Button --}}
-                <div>
-                    <button type="submit" 
-                            class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform transition duration-150 ease-in-out hover:scale-105 shadow-lg hover:shadow-xl">
-                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                            <svg class="h-5 w-5 text-white/80 group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
-                            </svg>
-                        </span>
-                        Submit Account Request
-                    </button>
-                </div>
-
-                {{-- Login Link --}}
-                <div class="text-center">
-                    <p class="text-sm text-gray-600">
-                        Already have administrator access? 
-                        <a href="{{ route('admin.login') }}" class="font-semibold text-primary hover:text-secondary transition duration-150 ease-in-out">
-                            Sign in to Admin Portal
-                        </a>
-                    </p>
+                <!-- Back to Website -->
+                <div class="text-center mt-4">
+                    <a href="{{ url('/') }}" class="text-decoration-none text-muted small hover-scale transition-all">
+                        <i class="bi bi-arrow-left me-1"></i>
+                        Back to Lawin & Partners Website
+                    </a>
                 </div>
             </div>
-        </form>
-
-        {{-- Back to Website --}}
-        <div class="text-center">
-            <a href="{{ url('/') }}" class="inline-flex items-center text-sm text-gray-500 hover:text-primary transition duration-150 ease-in-out">
-                <svg class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
-                </svg>
-                Back to Lawin & Partners Website
-            </a>
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

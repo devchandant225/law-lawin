@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\TableOfContentController;
 use App\Http\Controllers\Admin\AboutUsContentSectionController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\PublicationTeamController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\PageController as PublicPageController;
 
@@ -180,6 +181,24 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
                 ->name('table-of-contents.reorder');
             Route::delete('table-of-contents/bulk-delete', [TableOfContentController::class, 'bulkDelete'])
                 ->name('table-of-contents.bulk-delete');
+                
+            // Publication Team Management (nested under publications)
+            Route::get('teams', [PublicationTeamController::class, 'index'])
+                ->name('teams.index');
+            Route::get('teams/create', [PublicationTeamController::class, 'create'])
+                ->name('teams.create');
+            Route::post('teams', [PublicationTeamController::class, 'store'])
+                ->name('teams.store');
+            Route::get('teams/show', [PublicationTeamController::class, 'show'])
+                ->name('teams.show');
+            Route::delete('teams/{team}', [PublicationTeamController::class, 'destroy'])
+                ->name('teams.destroy');
+            Route::put('teams/{team}/role', [PublicationTeamController::class, 'updateRole'])
+                ->name('teams.update-role');
+            Route::delete('teams/bulk-remove', [PublicationTeamController::class, 'bulkRemove'])
+                ->name('teams.bulk-remove');
+            Route::get('teams/data', [PublicationTeamController::class, 'getTeamMembers'])
+                ->name('teams.data');
         });
     
     // Team Management

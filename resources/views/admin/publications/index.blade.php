@@ -108,6 +108,9 @@
 												<a href="{{ route('admin.faqs.create', ['publication_id' => $publication->id]) }}" title="Add FAQ" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-green-300 text-green-600 hover:bg-green-50">
 													<i class="fas fa-question-circle"></i>
 												</a>
+												<a href="{{ route('admin.publications.teams.create', $publication) }}" title="Manage Team Members" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-orange-300 text-orange-600 hover:bg-orange-50">
+													<i class="fas fa-users"></i>
+												</a>
 												<button type="button" title="Delete" onclick="confirmDelete('{{ $publication->id }}', '{{ $publication->title }}')" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-red-300 text-red-600 hover:bg-red-50">
 													<i class="fas fa-trash"></i>
 												</button>

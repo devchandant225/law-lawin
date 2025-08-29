@@ -3,306 +3,355 @@
 @section('head')
     <x-meta-tags :title="$publication->metatitle ?: $publication->title . ' - Legal Publication'" :description="$publication->metadescription ?: $publication->excerpt" :keywords="$publication->metakeywords" :image="$publication->feature_image_url" type="article" :post="$publication" />
     
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Procounsel CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/procounsel.css') }}">
+    
     @if($publication->google_schema_json)
         <script type="application/ld+json">{!! $publication->google_schema_json !!}</script>
     @endif
 @endsection
 
 @section('content')
-    {{-- Page Banner --}}
-    <x-page-banner 
-        :title="$publication->title" 
-        :breadcrumbs="[
-            ['label' => 'Home', 'url' => url('/')],
-            ['label' => 'Publications', 'url' => route('publications.index')],
-            ['label' => $publication->title]
-        ]"
-    />
+    <!-- Page Header -->
+    <section class="page-header background-base">
+        <div class="container">
+            <div class="page-header__content">
+                <h1>{{ $publication->title }}</h1>
+                <nav class="breadcrumb-nav">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('publications.index') }}">Publications</a></li>
+                        <li class="breadcrumb-item active">{{ Str::limit($publication->title, 40) }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
 
-    {{-- Main Content Section --}}
-    <section class="py-10 bg-white">
-        <div class="container mx-auto">
-            <div class="grid xl:grid-cols-4 gap-3">
+    <!-- Main Content Section -->
+    <section class="pt-120 pb-120 background-gray">
+        <div class="container">
+            <div class="row">
                 <!-- Main Content -->
-                <div class="xl:col-span-3">
-                    {{-- Featured Image --}}
+                <div class="col-xl-8 col-lg-7">
+                    <!-- Featured Image -->
                     @if($publication->feature_image_url)
-                        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 mb-8">
-                            <div class="relative group">
-                                <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-3xl"></div>
-                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}"
-                                    class="w-full h-96 lg:h-[500px] object-cover rounded-3xl shadow-2xl transform transition-transform duration-700 group-hover:scale-105">
-                                <div class="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="publication-featured-image mb-50">
+                            <div class="publication-image-card">
+                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}" class="img-fluid rounded">
+                                <div class="publication-image-overlay">
+                                    <div class="overlay-icon">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     @endif
 
-                    {{-- Excerpt --}}
+                    <!-- Publication Summary -->
                     @if($publication->excerpt)
-                        <div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl shadow-xl border border-primary/10 p-8 lg:p-12 mb-8">
-                            <div class="flex items-start gap-4">
-                                <div class="flex-shrink-0">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                        </svg>
+                        <div class="publication-summary-card mb-50">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-start">
+                                        <div class="summary-icon me-4">
+                                            <div class="icon-circle background-base">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div class="summary-content flex-grow-1">
+                                            <h3 class="publication-summary-title mb-3">Publication Summary</h3>
+                                            <div class="publication-excerpt">
+                                                <p>{{ $publication->excerpt }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex-1">
-                                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Publication Summary</h3>
-                                    <p class="text-lg text-gray-700 leading-relaxed">{{ $publication->excerpt }}</p>
                                 </div>
                             </div>
                         </div>
                     @endif
 
-                    {{-- Table of Contents --}}
+                    <!-- Main Content -->
+                    @if($publication->description)
+                        <div class="publication-content-card mb-50">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <h3 class="content-title mb-4">
+                                        <span class="block-title__decor me-2"></span>
+                                        Publication Content
+                                    </h3>
+                                    <div class="publication-content">
+                                        {!! $publication->description !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    <!-- Table of Contents -->
                     @if($tableOfContents->count() > 0)
-                        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 mb-8">
-                            <h3 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
-                                    </svg>
-                                </div>
-                                Table of Contents
-                            </h3>
-                            <div class="space-y-3">
-                                @foreach($tableOfContents as $content)
-                                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                                            <span class="text-blue-600 font-semibold text-sm">{{ $content->orderlist ?? $loop->iteration }}</span>
+                        <div class="table-of-contents-card mb-50">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header background-base">
+                                    <h3 class="text-white mb-0 d-flex align-items-center">
+                                        <div class="toc-icon me-3">
+                                            <i class="fas fa-list-ol"></i>
                                         </div>
-                                        <div class="flex-1">
-                                            <h4 class="font-semibold text-gray-900 mb-1">{{ $content->title }}</h4>
-                                            @if($content->content)
-                                                <p class="text-gray-600 text-sm line-clamp-2">{{ strip_tags($content->content) }}</p>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-
-                    {{-- Team Members --}}
-                    @if(!empty($teamMembers) && count($teamMembers) > 0)
-                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl shadow-xl border border-purple-100 p-8 lg:p-12 mb-8">
-                            <h3 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                    </svg>
+                                        Table of Contents
+                                    </h3>
                                 </div>
-                                Contributing Team Members
-                            </h3>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                @foreach($teamMembers as $member)
-                                    <div class="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                                        <div class="flex-shrink-0">
-                                            @if($member['image_url'])
-                                                <img src="{{ $member['image_url'] }}" alt="{{ $member['name'] }}" class="w-16 h-16 rounded-full object-cover">
-                                            @else
-                                                <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center">
-                                                    <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                                                    </svg>
+                                <div class="card-body p-4">
+                                    <div class="table-of-contents-list">
+                                        @foreach($tableOfContents as $content)
+                                            <div class="toc-item d-flex align-items-start mb-3 p-3 rounded">
+                                                <div class="toc-number me-3">
+                                                    <span class="badge background-base text-white">{{ $content->order_index ?? $loop->iteration }}</span>
                                                 </div>
-                                            @endif
-                                        </div>
-                                        <div class="flex-1">
-                                            <h4 class="font-semibold text-gray-900 mb-1">{{ $member['name'] }}</h4>
-                                            @if($member['designation'])
-                                                <p class="text-gray-600 text-sm mb-1">{{ $member['designation'] }}</p>
-                                            @endif
-                                            <p class="text-purple-600 text-sm font-medium">{{ $member['role'] }}</p>
-                                        </div>
+                                                <div class="toc-content flex-grow-1">
+                                                    <h5 class="toc-title mb-2">{{ $content->title }}</h5>
+                                                    @if($content->description)
+                                                        <p class="toc-description mb-0 procounsel-text-dark">{{ Str::limit(strip_tags($content->description), 120) }}</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-
-                    {{-- FAQs Section --}}
-                    @if($faqs->count() > 0)
-                        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 mb-8">
-                            <h3 class="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                                <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center mr-4">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
                                 </div>
-                                Frequently Asked Questions
-                            </h3>
-                            <div class="space-y-4">
-                                @foreach($faqs as $faq)
-                                    <div class="border border-gray-200 rounded-2xl overflow-hidden">
-                                        <button class="w-full text-left p-6 bg-gray-50 hover:bg-gray-100 transition-colors focus:outline-none focus:bg-gray-100"
-                                                onclick="toggleFaq({{ $faq->id }})">
-                                            <div class="flex items-center justify-between">
-                                                <h4 class="font-semibold text-gray-900 pr-4">{{ $faq->question }}</h4>
-                                                <svg id="faq-icon-{{ $faq->id }}" class="w-5 h-5 text-gray-500 transform transition-transform"
-                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                                                </svg>
-                                            </div>
-                                        </button>
-                                        <div id="faq-content-{{ $faq->id }}" class="hidden p-6 bg-white border-t border-gray-200">
-                                            <div class="prose prose-sm max-w-none text-gray-700">
-                                                {!! $faq->answer !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
                             </div>
                         </div>
                     @endif
 
-                    {{-- Call to Action --}}
-                    <div class="bg-gradient-to-r from-slate-900 to-primary rounded-3xl shadow-2xl p-8 lg:p-12 text-white">
-                        <div class="text-center max-w-2xl mx-auto">
-                            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
-                                <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                </svg>
+                    <!-- Team Members -->
+                    @if(!empty($teamMembers) && count($teamMembers) > 0)
+                        <div class="team-members-card mb-50">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header background-base">
+                                    <h3 class="text-white mb-0 d-flex align-items-center">
+                                        <div class="team-icon me-3">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        Contributing Team Members
+                                    </h3>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="row gutter-y-30">
+                                        @foreach($teamMembers as $member)
+                                            <div class="col-md-6">
+                                                <div class="team-member-item d-flex align-items-start p-3 rounded">
+                                                    <div class="member-image me-3">
+                                                        @if($member['image_url'])
+                                                            <img src="{{ $member['image_url'] }}" alt="{{ $member['name'] }}" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">
+                                                        @else
+                                                            <div class="member-avatar rounded-circle d-flex align-items-center justify-content-center background-gray" style="width: 60px; height: 60px;">
+                                                                <i class="fas fa-user" style="color: var(--procounsel-base);"></i>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                    <div class="member-info flex-grow-1">
+                                                        <h5 class="member-name mb-1" style="color: var(--procounsel-black);">{{ $member['name'] }}</h5>
+                                                        @if($member['designation'])
+                                                            <p class="member-designation mb-1 small procounsel-text-dark">{{ $member['designation'] }}</p>
+                                                        @endif
+                                                        <span class="badge" style="background-color: var(--procounsel-base);">{{ $member['role'] }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
-                            <h3 class="text-3xl font-bold mb-4">Need More Information?</h3>
-                            <p class="text-xl text-primary/90 mb-8 leading-relaxed">
-                                Have questions about this publication or need specific legal guidance? Our experienced team is here to help.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="{{ url('/contact') }}"
-                                    class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-semibold rounded-2xl transform transition-all duration-300 hover:bg-gray-100 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30 shadow-xl">
-                                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                    </svg>
-                                    Get In Touch
-                                </a>
-                                <a href="{{ route('publications.index') }}"
-                                    class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-2xl border-2 border-white/30 transform transition-all duration-300 hover:bg-white/10 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white/30">
-                                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                    </svg>
-                                    More Publications
-                                </a>
+                        </div>
+                    @endif
+
+                    <!-- FAQs Section -->
+                    @if($faqs->count() > 0)
+                        <div class="faqs-card mb-50">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header background-base">
+                                    <h3 class="text-white mb-0 d-flex align-items-center">
+                                        <div class="faq-icon me-3">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        Frequently Asked Questions
+                                    </h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="accordion" id="faqAccordion">
+                                        @foreach($faqs as $faq)
+                                            <div class="accordion-item border-0">
+                                                <h2 class="accordion-header" id="faq-heading-{{ $faq->id }}">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-{{ $faq->id }}" aria-expanded="false" aria-controls="faq-collapse-{{ $faq->id }}">
+                                                        <i class="fas fa-question me-2" style="color: var(--procounsel-base);"></i>
+                                                        {{ $faq->question }}
+                                                    </button>
+                                                </h2>
+                                                <div id="faq-collapse-{{ $faq->id }}" class="accordion-collapse collapse" aria-labelledby="faq-heading-{{ $faq->id }}" data-bs-parent="#faqAccordion">
+                                                    <div class="accordion-body">
+                                                        <div class="faq-answer procounsel-text-dark">
+                                                            {!! $faq->answer !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    <!-- Call to Action -->
+                    <div class="cta-card mb-50">
+                        <div class="card border-0 shadow-lg background-black text-white">
+                            <div class="card-body p-5 text-center">
+                                <div class="cta-icon mx-auto mb-4">
+                                    <div class="icon-circle" style="background-color: rgba(255,255,255,0.1); width: 80px; height: 80px; margin: 0 auto;">
+                                        <i class="fas fa-comments" style="color: var(--procounsel-base); font-size: 32px;"></i>
+                                    </div>
+                                </div>
+                                <h3 class="cta-title mb-4">Need More Information?</h3>
+                                <p class="cta-description mb-4">
+                                    Have questions about this publication or need specific legal guidance? Our experienced team is here to help.
+                                </p>
+                                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                    <a href="{{ url('/contact') }}" class="procounsel-btn">
+                                        <i class="fas fa-phone me-2">Get In Touch</i>
+                                        <span>Get In Touch</span>
+                                    </a>
+                                    <a href="{{ route('publications.index') }}" class="btn btn-outline-light">
+                                        <i class="fas fa-book me-2"></i>
+                                        More Publications
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Sidebar -->
-                <div class="xl:col-span-1">
-                    <div class="sticky top-8 space-y-8">
-                        {{-- Publication Info Card --}}
-                        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6">
-                            <h4 class="text-xl font-bold text-gray-900 mb-6">Publication Details</h4>
-                            <div class="space-y-4 text-sm">
-                                <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                                    <span class="text-gray-600">Published</span>
-                                    <span class="font-medium">{{ $publication->created_at->format('M d, Y') }}</span>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="publication-sidebar">
+                        <!-- Publication Info Card -->
+                        <div class="sidebar-widget mb-40">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header background-base">
+                                    <h4 class="text-white mb-0">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        Publication Details
+                                    </h4>
                                 </div>
-                                @if($publication->updated_at->gt($publication->created_at))
-                                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                                        <span class="text-gray-600">Updated</span>
-                                        <span class="font-medium">{{ $publication->updated_at->format('M d, Y') }}</span>
+                                <div class="card-body p-4">
+                                    <div class="publication-meta">
+                                        <div class="meta-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                            <span class="meta-label procounsel-text-dark">Published:</span>
+                                            <span class="meta-value fw-bold">{{ $publication->created_at->format('M d, Y') }}</span>
+                                        </div>
+                                        @if($publication->updated_at->gt($publication->created_at))
+                                            <div class="meta-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                                <span class="meta-label procounsel-text-dark">Updated:</span>
+                                                <span class="meta-value fw-bold">{{ $publication->updated_at->format('M d, Y') }}</span>
+                                            </div>
+                                        @endif
+                                        @if($faqs->count() > 0)
+                                            <div class="meta-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                                <span class="meta-label procounsel-text-dark">FAQs:</span>
+                                                <span class="meta-value fw-bold">{{ $faqs->count() }}</span>
+                                            </div>
+                                        @endif
+                                        @if($tableOfContents->count() > 0)
+                                            <div class="meta-item d-flex justify-content-between align-items-center py-2 border-bottom">
+                                                <span class="meta-label procounsel-text-dark">Sections:</span>
+                                                <span class="meta-value fw-bold">{{ $tableOfContents->count() }}</span>
+                                            </div>
+                                        @endif
+                                        @if(!empty($teamMembers) && count($teamMembers) > 0)
+                                            <div class="meta-item d-flex justify-content-between align-items-center py-2">
+                                                <span class="meta-label procounsel-text-dark">Contributors:</span>
+                                                <span class="meta-value fw-bold">{{ count($teamMembers) }}</span>
+                                            </div>
+                                        @endif
                                     </div>
-                                @endif
-                                @if($faqs->count() > 0)
-                                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                                        <span class="text-gray-600">FAQs</span>
-                                        <span class="font-medium">{{ $faqs->count() }}</span>
-                                    </div>
-                                @endif
-                                @if($tableOfContents->count() > 0)
-                                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                                        <span class="text-gray-600">Sections</span>
-                                        <span class="font-medium">{{ $tableOfContents->count() }}</span>
-                                    </div>
-                                @endif
-                                @if(!empty($teamMembers) && count($teamMembers) > 0)
-                                    <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                                        <span class="text-gray-600">Contributors</span>
-                                        <span class="font-medium">{{ count($teamMembers) }}</span>
-                                    </div>
-                                @endif
+                                </div>
                             </div>
                         </div>
 
-                        {{-- Share Card --}}
-                        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6">
-                            <h4 class="text-xl font-bold text-gray-900 mb-4">Share This Publication</h4>
-                            <div class="grid grid-cols-3 gap-3">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}"
-                                    target="_blank"
-                                    class="bg-blue-600 text-white p-3 rounded-xl text-center hover:bg-blue-700 transition-colors duration-300 group">
-                                    <svg class="w-5 h-5 mx-auto group-hover:scale-110 transition-transform duration-300"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                                    </svg>
-                                </a>
-                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($publication->title) }}"
-                                    target="_blank"
-                                    class="bg-blue-400 text-white p-3 rounded-xl text-center hover:bg-blue-500 transition-colors duration-300 group">
-                                    <svg class="w-5 h-5 mx-auto group-hover:scale-110 transition-transform duration-300"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                                    </svg>
-                                </a>
-                                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->url()) }}"
-                                    target="_blank"
-                                    class="bg-blue-800 text-white p-3 rounded-xl text-center hover:bg-blue-900 transition-colors duration-300 group">
-                                    <svg class="w-5 h-5 mx-auto group-hover:scale-110 transition-transform duration-300"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                    </svg>
-                                </a>
+                        <!-- Share Card -->
+                        <div class="sidebar-widget mb-40">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header background-base">
+                                    <h4 class="text-white mb-0">
+                                        <i class="fas fa-share-alt me-2"></i>
+                                        Share This Publication
+                                    </h4>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="social-share d-flex justify-content-center gap-3">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" target="_blank" class="social-link facebook">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($publication->title) }}" target="_blank" class="social-link twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->url()) }}" target="_blank" class="social-link linkedin">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="mailto:?subject={{ urlencode($publication->title) }}&body={{ urlencode('Check out this publication: ' . request()->url()) }}" class="social-link email">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        {{-- Related Publications --}}
+                        <!-- Related Publications -->
                         @if($relatedPublications->count() > 0)
-                            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6">
-                                <h4 class="text-xl font-bold text-gray-900 mb-6">Related Publications</h4>
-                                <div class="space-y-4">
-                                    @foreach($relatedPublications->take(3) as $related)
-                                        <a href="{{ route('publication.show', $related->slug) }}" class="block group">
-                                            <div class="flex gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                                                <div class="flex-shrink-0">
-                                                    @if($related->feature_image_url)
-                                                        <img src="{{ $related->feature_image_url }}" alt="{{ $related->title }}" class="w-16 h-16 object-cover rounded-lg">
-                                                    @else
-                                                        <div class="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center">
-                                                            <svg class="w-6 h-6 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                                            </svg>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                                <div class="flex-1">
-                                                    <h5 class="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
-                                                        {{ $related->title }}
-                                                    </h5>
-                                                    <p class="text-sm text-gray-500 mt-1">
-                                                        {{ $related->created_at->format('M d, Y') }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                                
-                                @if($relatedPublications->count() > 3)
-                                    <div class="mt-4 pt-4 border-t border-gray-200">
-                                        <a href="{{ route('publications.index') }}" class="text-primary hover:text-primary/80 font-medium text-sm">
-                                            View All Publications →
-                                        </a>
+                            <div class="sidebar-widget">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header background-base">
+                                        <h4 class="text-white mb-0">
+                                            <i class="fas fa-book me-2"></i>
+                                            Related Publications
+                                        </h4>
                                     </div>
-                                @endif
+                                    <div class="card-body p-4">
+                                        <div class="related-publications">
+                                            @foreach($relatedPublications->take(3) as $related)
+                                                <div class="related-item mb-3 pb-3 {{ !$loop->last ? 'border-bottom' : '' }}">
+                                                    <a href="{{ route('publication.show', $related->slug) }}" class="text-decoration-none">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="related-image me-3">
+                                                                @if($related->feature_image_url)
+                                                                    <img src="{{ $related->feature_image_url }}" alt="{{ $related->title }}" class="img-fluid rounded" style="width: 60px; height: 60px; object-fit: cover;">
+                                                                @else
+                                                                    <div class="related-placeholder d-flex align-items-center justify-content-center rounded background-gray" style="width: 60px; height: 60px;">
+                                                                        <i class="fas fa-book" style="color: var(--procounsel-base);"></i>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="related-content flex-grow-1">
+                                                                <h6 class="related-title mb-1" style="color: var(--procounsel-black); line-height: 1.4;">{{ Str::limit($related->title, 60) }}</h6>
+                                                                <small class="related-date procounsel-text-dark">{{ $related->created_at->format('M d, Y') }}</small>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        
+                                        @if($relatedPublications->count() > 3)
+                                            <div class="text-center mt-3 pt-3 border-top">
+                                                <a href="{{ route('publications.index') }}" class="btn btn-sm btn-outline-secondary">
+                                                    View All Publications
+                                                    <i class="fas fa-arrow-right ms-1"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         @endif
                     </div>
@@ -313,71 +362,205 @@
 @endsection
 
 @push('scripts')
-    <script>
-        function toggleFaq(id) {
-            const content = document.getElementById(`faq-content-${id}`);
-            const icon = document.getElementById(`faq-icon-${id}`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.add('rotate-180');
-            } else {
-                content.classList.add('hidden');
-                icon.classList.remove('rotate-180');
-            }
-        }
-    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
 
 @push('styles')
     <style>
-        .line-clamp-2 {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+        /* Publication Page Styles */
+        .page-header {
+            padding: 120px 0 80px;
+            position: relative;
         }
-
-        .line-clamp-3 {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
-        .prose h1,
-        .prose h2,
-        .prose h3,
-        .prose h4,
-        .prose h5,
-        .prose h6 {
-            color: #1f2937;
+        
+        .page-header h1 {
+            color: var(--procounsel-white);
+            font-family: var(--procounsel-heading-font);
+            font-size: 3rem;
             font-weight: 700;
+            margin-bottom: 20px;
         }
-
-        .prose h2 {
-            @apply text-2xl mt-8 mb-4;
+        
+        .breadcrumb {
+            background: transparent;
+            margin-bottom: 0;
         }
-
-        .prose h3 {
-            @apply text-xl mt-6 mb-3;
+        
+        .breadcrumb-item a {
+            color: var(--procounsel-white);
+            text-decoration: none;
         }
-
-        .prose p {
-            @apply mb-4 leading-relaxed;
+        
+        .breadcrumb-item.active {
+            color: rgba(255, 255, 255, 0.8);
         }
-
-        .prose ul,
-        .prose ol {
-            @apply mb-4 pl-6;
+        
+        /* Image Styles */
+        .publication-image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-
-        .prose li {
-            @apply mb-2;
+        
+        .publication-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .prose a {
-            @apply text-primary hover:text-primary/80 transition-colors duration-200;
+        
+        .publication-image-card:hover .publication-image-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-icon {
+            color: var(--procounsel-base);
+            font-size: 3rem;
+        }
+        
+        /* Icon Circle */
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        /* Publication Content */
+        .publication-summary-title,
+        .content-title {
+            color: var(--procounsel-black);
+            font-family: var(--procounsel-heading-font);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .publication-excerpt p,
+        .publication-content {
+            color: var(--procounsel-text);
+            line-height: 1.8;
+        }
+        
+        .publication-content h2 {
+            color: var(--procounsel-black);
+            font-family: var(--procounsel-heading-font);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .publication-content h3 {
+            color: var(--procounsel-black);
+            font-family: var(--procounsel-heading-font);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Table of Contents */
+        .toc-item {
+            background-color: var(--procounsel-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .toc-item:hover {
+            background-color: var(--procounsel-gray2);
+            transform: translateY(-2px);
+        }
+        
+        .toc-title {
+            color: var(--procounsel-black);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        /* Team Members */
+        .team-member-item {
+            background-color: var(--procounsel-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member-item:hover {
+            background-color: var(--procounsel-gray2);
+            transform: translateY(-2px);
+        }
+        
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        /* Social Share */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .social-link.facebook { background-color: #3b5998; }
+        .social-link.twitter { background-color: #1da1f2; }
+        .social-link.linkedin { background-color: #0077b5; }
+        .social-link.email { background-color: var(--procounsel-text); }
+        
+        /* Related Publications */
+        .related-item a:hover .related-title {
+            color: var(--procounsel-base) !important;
+        }
+        
+        /* Card hover effects */
+        .card {
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Accordion Customization */
+        .accordion-button:not(.collapsed) {
+            background-color: var(--procounsel-gray);
+            color: var(--procounsel-black);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(199, 149, 74, 0.25);
+        }
+        
+        /* CTA Section */
+        .cta-title {
+            font-family: var(--procounsel-heading-font);
+            font-size: 2.5rem;
+            color: var(--procounsel-white);
+        }
+        
+        .cta-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
         }
     </style>
 @endpush

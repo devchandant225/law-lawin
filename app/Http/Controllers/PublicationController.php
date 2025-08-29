@@ -8,7 +8,6 @@ use Illuminate\View\View;
 
 class PublicationController extends Controller
 {
-
     /**
      * Display a listing of publications.
      */
@@ -20,19 +19,15 @@ class PublicationController extends Controller
         if ($request->filled('search')) {
             $search = $request->get('search');
             $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                  ->orWhere('excerpt', 'like', "%{$search}%");
+                $q->where('title', 'like', "%{$search}%")->orWhere('excerpt', 'like', "%{$search}%");
             });
         }
 
         // Pagination
         $publications = $query->paginate(12)->withQueryString();
-        
+
         // Get featured publications for sidebar
-        $featuredPublications = Publication::active()
-            ->ordered()
-            ->limit(5)
-            ->get();
+        $featuredPublications = Publication::active()->ordered()->limit(5)->get();
 
         // Get total count for stats
         $totalPublications = Publication::active()->count();
@@ -41,21 +36,16 @@ class PublicationController extends Controller
     }
 
     /**
-     * Display the specified publication.
+     * Display the specified practice.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
      */
-    public function show(Publication $publication): View
+    public function show($slug): View
     {
-        // Check if publication is active
-        if ($publication->status !== 'active') {
-            abort(404);
-        }
-
+        $publication = Publication::where('slug', $slug)->active()->firstOrFail();
         // Get related publications
-        $relatedPublications = Publication::active()
-            ->where('id', '!=', $publication->id)
-            ->ordered()
-            ->limit(6)
-            ->get();
+        $relatedPublications = Publication::active()->where('id', '!=', $publication->id)->ordered()->limit(10)->get();
 
         // Get publication FAQs
         $faqs = $publication->faqs()->where('status', 'active')->ordered()->get();
@@ -75,15 +65,14 @@ class PublicationController extends Controller
     public function search(Request $request)
     {
         $query = $request->get('q', '');
-        
+
         if (empty($query)) {
             return response()->json(['results' => []]);
         }
 
         $publications = Publication::active()
             ->where(function ($q) use ($query) {
-                $q->where('title', 'like', "%{$query}%")
-                  ->orWhere('excerpt', 'like', "%{$query}%");
+                $q->where('title', 'like', "%{$query}%")->orWhere('excerpt', 'like', "%{$query}%");
             })
             ->ordered()
             ->limit(10)
@@ -107,10 +96,7 @@ class PublicationController extends Controller
      */
     public function featured()
     {
-        $featuredPublications = Publication::active()
-            ->ordered()
-            ->limit(8)
-            ->get();
+        $featuredPublications = Publication::active()->ordered()->limit(8)->get();
 
         return response()->json([
             'publications' => $featuredPublications->map(function ($publication) {
@@ -123,7 +109,7 @@ class PublicationController extends Controller
                     'image' => $publication->feature_image_url,
                     'created_at' => $publication->created_at->format('M d, Y'),
                 ];
-            })
+            }),
         ]);
     }
 

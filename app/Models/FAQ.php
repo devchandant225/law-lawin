@@ -56,4 +56,12 @@ class FAQ extends Model
               ->orWhere('answer', 'like', '%' . $search . '%');
         });
     }
+
+    /**
+     * Scope a query to order by creation date.
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('created_at', 'asc');
+    }
 }

@@ -6,215 +6,72 @@
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner 
-        title="Legal Publications" 
+    <x-page-banner title="Legal Publications"
         subtitle="Explore our comprehensive collection of legal publications, research papers, and professional resources"
-        :breadcrumbs="[
-            ['label' => 'Home', 'url' => url('/')],
-            ['label' => 'Publications']
-        ]"
-    />
+        :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Publications']]" />
 
-    {{-- Main Content Section --}}
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="grid xl:grid-cols-4 gap-8">
-                <!-- Main Content -->
-                <div class="xl:col-span-3">
-                    <!-- Search and Filter Bar -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
-                        <form method="GET" action="{{ route('publications.index') }}" class="flex flex-col md:flex-row gap-4">
-                            <div class="flex-1">
-                                <div class="relative">
-                                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search publications by title or content..." class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
-                                    <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
+    <section class="award-one">
+        <div class="container">
+            <div class="sec-title text-center">
+                <div class="sec-title__tagline bw-split-in-up-fast d-inline-flex align-items-center gap-2">
+                    <div>
+                        <svg class="hammer" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21.6562 20.875H10.7188C10.5115 20.875 10.3128 20.9573 10.1663 21.1038C10.0198 21.2503 9.9375 21.449 9.9375 21.6562C9.9375 21.8635 10.0198 22.0622 10.1663 22.2087C10.3128 22.3552 10.5115 22.4375 10.7188 22.4375H21.6562C21.8635 22.4375 22.0622 22.3552 22.2087 22.2087C22.3552 22.0622 22.4375 21.8635 22.4375 21.6562C22.4375 21.449 22.3552 21.2503 22.2087 21.1038C22.0622 20.9573 21.8635 20.875 21.6562 20.875Z" />
+                            <path
+                                d="M13.8056 16.9688C13.1943 16.9695 12.6083 17.2126 12.1761 17.6448C11.7439 18.0771 11.5007 18.6631 11.5 19.2744V20.0938H20.875V19.2744C20.8743 18.6631 20.6311 18.0771 20.1989 17.6448C19.7667 17.2126 19.1807 16.9695 18.5694 16.9688H13.8056Z" />
+                            <path
+                                d="M15.9585 13.6149C15.9006 13.6678 15.8349 13.7114 15.7637 13.7442L15.989 13.9696C16.4566 14.4355 17.0898 14.6971 17.7499 14.697C18.41 14.6969 19.0432 14.4352 19.5107 13.9693L21.7812 11.698C22.0124 11.4668 22.1959 11.1924 22.321 10.8903C22.4462 10.5882 22.5106 10.2645 22.5106 9.9375C22.5106 9.61053 22.4462 9.28677 22.321 8.9847C22.1959 8.68263 22.0124 8.40818 21.7812 8.17701L21.5888 7.98456L15.9585 13.6149Z" />
+                            <path
+                                d="M9.2226 7.20295L14.8529 1.57267C14.9108 1.51976 14.9765 1.47611 15.0478 1.44326L14.8224 1.21791C14.3548 0.752021 13.7216 0.490468 13.0615 0.49054C12.4014 0.490611 11.7682 0.752302 11.3007 1.21829L9.03015 3.48915C8.79891 3.72035 8.61548 3.99484 8.49034 4.29694C8.36519 4.59904 8.30078 4.92283 8.30078 5.24982C8.30078 5.57681 8.36519 5.9006 8.49034 6.2027C8.61548 6.5048 8.79891 6.77929 9.03015 7.01049L9.2226 7.20295Z" />
+                            <path
+                                d="M14.3015 12.2813L14.0726 12.5102C13.9993 12.5825 13.9411 12.6687 13.9012 12.7637C13.8613 12.8586 13.8406 12.9605 13.8403 13.0635C13.84 13.1665 13.8601 13.2686 13.8993 13.3638C13.9386 13.459 13.9963 13.5455 14.0691 13.6184C14.142 13.6912 14.2285 13.7489 14.3237 13.7882C14.4189 13.8274 14.521 13.8475 14.624 13.8471C14.727 13.8468 14.8289 13.8261 14.9238 13.7863C15.0188 13.7464 15.105 13.6881 15.1773 13.6149L21.4273 7.36485C21.5716 7.21791 21.6521 7.01992 21.6511 6.81397C21.6502 6.60802 21.568 6.41077 21.4223 6.26514C21.2767 6.11951 21.0795 6.03729 20.8735 6.03635C20.6676 6.03542 20.4696 6.11586 20.3226 6.26016L20.0937 6.48907L16.5113 2.90602L16.7398 2.67735C16.8841 2.53041 16.9646 2.33242 16.9636 2.12647C16.9627 1.92052 16.8805 1.72327 16.7348 1.57764C16.5892 1.43201 16.392 1.34979 16.186 1.34885C15.9801 1.34792 15.7821 1.42836 15.6351 1.57266L9.38514 7.82266C9.31152 7.89496 9.25296 7.98112 9.21283 8.07618C9.17269 8.17123 9.15179 8.27329 9.15132 8.37647C9.15086 8.47965 9.17083 8.5819 9.2101 8.67731C9.24937 8.77273 9.30715 8.85942 9.38011 8.93238C9.45307 9.00534 9.53976 9.06312 9.63518 9.10239C9.73059 9.14166 9.83284 9.16163 9.93602 9.16117C10.0392 9.1607 10.1413 9.1398 10.2363 9.09966C10.3314 9.05953 10.4175 9.00097 10.4898 8.92735L10.7187 8.69844L10.7859 8.76559L1.18201 18.3695C0.953685 18.5955 0.772269 18.8644 0.648189 19.1608C0.524109 19.4571 0.459812 19.7751 0.458992 20.0963C0.458172 20.4176 0.520846 20.7359 0.643411 21.0328C0.765976 21.3298 0.946017 21.5996 1.17319 21.8268C1.40036 22.054 1.67018 22.234 1.96715 22.3566C2.26412 22.4791 2.58239 22.5418 2.90365 22.541C3.22492 22.5402 3.54286 22.4759 3.8392 22.3518C4.13554 22.2277 4.40444 22.0463 4.63045 21.818L14.2344 12.2141L14.3015 12.2813Z" />
+                        </svg>
+                    </div>
+                    {{ $sectionSubtitle }}
+                </div><!-- /.sec-title__tagline -->
+
+                <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
+            </div><!-- /.sec-title -->
+
+            @if ($publications->isNotEmpty())
+                <div class="row gutter-y-30">
+                    @foreach ($publications as $index => $publication)
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ ($index % 2) * 100 }}ms">
+                            <div class="award-one__item">
+                                <div class="award-one__item__left">
+                                    <h2 class="award-one__item__title">
+                                        <a
+                                            href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
+                                    </h2>
+                                    {{-- @if ($publication->excerpt || $publication->description)
+                                        <p class="award-one__item__text">
+                                            {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 150) }}
+                                        </p>
+                                        @endif --}}
+
                                 </div>
                             </div>
-                            <button type="submit" class="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-                                <span class="flex items-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                    Search
-                                </span>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Publications Grid -->
-                    @if($publications->count() > 0)
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                            @foreach($publications as $publication)
-                                <div class="group">
-                                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-gray-100">
-                                        <!-- Featured Image -->
-                                        <div class="relative overflow-hidden h-48 bg-gradient-to-br from-primary/10 to-secondary/10">
-                                            @if($publication->feature_image_url)
-                                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                            @else
-                                                <div class="flex items-center justify-center w-full h-full">
-                                                    <svg class="w-16 h-16 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                                    </svg>
-                                                </div>
-                                            @endif
-                                            
-                                            <!-- Date Badge -->
-                                            <div class="absolute top-3 right-3">
-                                                <span class="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-gray-700">
-                                                    {{ $publication->created_at->format('M d, Y') }}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Content -->
-                                        <div class="p-6">
-                                            <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-300">
-                                                {{ $publication->title }}
-                                            </h3>
-
-                                            @if($publication->excerpt)
-                                                <p class="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
-                                                    {{ $publication->excerpt }}
-                                                </p>
-                                            @endif
-
-                                            <!-- Metadata -->
-                                            <div class="flex items-center justify-between mb-4">
-                                                <div class="flex items-center gap-4">
-                                                    @if($publication->faqsCount() > 0)
-                                                        <span class="flex items-center gap-1 text-sm text-gray-500">
-                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                            </svg>
-                                                            {{ $publication->faqsCount() }} FAQs
-                                                        </span>
-                                                    @endif
-                                                    @if($publication->tableOfContentsCount() > 0)
-                                                        <span class="flex items-center gap-1 text-sm text-gray-500">
-                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
-                                                            </svg>
-                                                            {{ $publication->tableOfContentsCount() }} Sections
-                                                        </span>
-                                                    @endif
-                                                </div>
-                                            </div>
-
-                                            <a href="{{ route('publication.show', $publication->slug) }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-xl transform transition-all duration-300 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
-                                                <span>Read More</span>
-                                                <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </article>
-                                </div>
-                            @endforeach
                         </div>
-
-                        <!-- Pagination -->
-                        <div class="flex justify-center">
-                            {{ $publications->links() }}
-                        </div>
-                    @else
-                        <!-- Empty State -->
-                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-12 text-center">
-                            <svg class="w-24 h-24 text-gray-300 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-4">No Publications Found</h3>
-                            <p class="text-gray-600 mb-6">
-                                @if(request('search'))
-                                    No publications match your search criteria. Try adjusting your search terms.
-                                @else
-                                    No publications are available at the moment. Please check back later.
-                                @endif
-                            </p>
-                            @if(request('search'))
-                                <a href="{{ route('publications.index') }}" class="inline-flex items-center px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors">
-                                    Clear Search
-                                </a>
-                            @endif
-                        </div>
-                    @endif
+                    @endforeach
                 </div>
-
-                <!-- Sidebar -->
-                <div class="xl:col-span-1">
-                    <div class="sticky top-8 space-y-8">
-                        <!-- Featured Publications -->
-                        @if($featuredPublications->count() > 0)
-                            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-                                <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                                    <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                                    </svg>
-                                    Featured Publications
-                                </h3>
-                                <div class="space-y-4">
-                                    @foreach($featuredPublications as $featured)
-                                        <a href="{{ route('publication.show', $featured->slug) }}" class="block group">
-                                            <div class="flex gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                                                <div class="flex-shrink-0">
-                                                    @if($featured->feature_image_url)
-                                                        <img src="{{ $featured->feature_image_url }}" alt="{{ $featured->title }}" class="w-16 h-16 object-cover rounded-lg">
-                                                    @else
-                                                        <div class="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center">
-                                                            <svg class="w-6 h-6 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                                            </svg>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                                <div class="flex-1">
-                                                    <h4 class="font-semibold text-gray-900 group-hover:text-primary transition-colors line-clamp-2">
-                                                        {{ $featured->title }}
-                                                    </h4>
-                                                    <p class="text-sm text-gray-500 mt-1">
-                                                        {{ $featured->created_at->format('M d, Y') }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-
-                        <!-- Call to Action -->
-                        <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 text-white">
-                            <h3 class="text-xl font-bold mb-4">Need Legal Assistance?</h3>
-                            <p class="text-primary/90 mb-6">
-                                Get professional legal advice from our experienced team of lawyers.
-                            </p>
-                            <a href="{{ url('/contact') }}" class="inline-flex items-center px-6 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-gray-100 transition-colors">
-                                Contact Us Today
-                            </a>
-                        </div>
-                    </div>
+            @else
+                <div class="text-center py-5">
+                    <h4>No publications available at the moment.</h4>
+                    <p>Please check back later for our latest publications and resources.</p>
                 </div>
-            </div>
+            @endif
+
+            @if ($showViewAll && $publications->isNotEmpty())
+                <div class="text-center mt-5">
+                    <a href="{{ route('publications.index') }}" class="procounsel-btn procounsel-btn--two">
+                        <i>View All Publications</i>
+                        <span>View All Publications</span>
+                    </a>
+                </div>
+            @endif
         </div>
     </section>
-@endsection
 
-@push('styles')
-<style>
-    .line-clamp-2 {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-    
-    .line-clamp-3 {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-    }
-</style>
-@endpush
+@endsection

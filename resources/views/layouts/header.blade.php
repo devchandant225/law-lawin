@@ -37,22 +37,29 @@
                                       <span class="sr-only">Facebook</span>
                                   </a>
                               @endif
-                              @if ($globalProfile && $globalProfile->twitter_link)
-                                  <a href="{{ $globalProfile->twitter_link }}">
-                                      <i class="icon-twitter"></i>
-                                      <span class="sr-only">Twitter</span>
-                                  </a>
-                              @endif
+
                               @if ($globalProfile && $globalProfile->linkedin_link)
                                   <a href="{{ $globalProfile->linkedin_link }}">
                                       <i class="fab fa-linkedin"></i>
                                       <span class="sr-only">LinkedIn</span>
                                   </a>
                               @endif
-                              @if ($globalProfile && $globalProfile->instagram_link)
-                                  <a href="{{ $globalProfile->instagram_link }}">
-                                      <i class="fab fa-instagram"></i>
-                                      <span class="sr-only">Instagram</span>
+                              @if ($globalProfile && $globalProfile->whatsapp)
+                                  <a href="{{ $globalProfile->whatsapp }}">
+                                      <i class="fab fa-whatsapp"></i>
+                                      <span class="sr-only">whatsapp</span>
+                                  </a>
+                              @endif
+                              @if ($globalProfile && $globalProfile->viber)
+                                  <a href="{{ $globalProfile->viber }}">
+                                      <i class="fab fa-viber"></i>
+                                      <span class="sr-only">viber</span>
+                                  </a>
+                              @endif
+                                 @if ($globalProfile && $globalProfile->wechat_link)
+                                  <a href="{{ $globalProfile->wechat_link }}">
+                                      <i class="fab fa-weixin"></i>
+                                      <span class="sr-only">wechat link</span>
                                   </a>
                               @endif
                           </div>

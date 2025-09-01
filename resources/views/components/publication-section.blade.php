@@ -28,13 +28,12 @@
                         @foreach ($publications as $index => $publication)
                             <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ ($index % 2) * 100 }}ms">
                                 <div class="award-one__item">
-                                    <div
-                                        class="award-one__item__left">
+                                    <div class="award-one__item__left">
                                         <h2 class="award-one__item__title">
-                                            <a
+                                            <a style="color:#fff"
                                                 href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
                                         </h2>
-                                        {{-- @if($publication->excerpt || $publication->description)
+                                        {{-- @if ($publication->excerpt || $publication->description)
                                         <p class="award-one__item__text">
                                             {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 150) }}
                                         </p>

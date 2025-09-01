@@ -19,7 +19,7 @@
   --procounsel-special-font: "Whisper", cursive;
   --procounsel-text: #838790;
   --procounsel-text-rgb: 131, 135, 144;
-  --procounsel-text-dark: #7782A0;
+  --procounsel-text-dark: #fff;
   --procounsel-text-dark-rgb: 119, 130, 160;
   --procounsel-text-gray: #89868d;
   --procounsel-text-gray-rgb: 137, 134, 141;
@@ -11803,6 +11803,9 @@ body.megamenu-popup-active .mobile-nav__content {
   border: 1px solid var(--procounsel-border-color, #d9d9d9);
   padding: 4px 6px;
   transition: all 500ms ease;
+  background: var(--procounsel-base);
+  border-radius: 6px;
+
 }
 @media (max-width: 1199px) {
   .award-one__item {

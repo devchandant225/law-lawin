@@ -75,7 +75,7 @@
                                             <p class="contact-one__info__text">
                                                 @foreach ($phoneNumbers as $phone)
                                                     <a
-                                                        href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
+                                                        href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '' : '' }}
                                                 @endforeach
                                             </p><!-- /.contact-one__info__text -->
                                         </div><!-- /.contact-one__info__content -->

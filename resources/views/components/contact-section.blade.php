@@ -52,7 +52,7 @@
                                     <div class="contact-two__info__content">
                                         <p class="contact-two__info__text">
                                             @foreach($phoneNumbers as $phone)
-                                                <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '<br>' : '' }}
+                                                <a href="tel:{{ $phone }}">{{ $phone }}</a>{{ !$loop->last ? '' : '' }}
                                             @endforeach
                                         </p><!-- /.contact-two__info__text -->
                                     </div><!-- /.contact-two__info__content -->

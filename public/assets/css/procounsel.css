@@ -7391,8 +7391,8 @@ body.megamenu-popup-active .mobile-nav__content {
 .testimonials-three {
   position: relative;
   z-index: 1;
-  padding: 120px 0;
-  padding-bottom: 218px;
+  padding: 50px 0;
+  padding-bottom: 70px;
   background-color: var(--procounsel-gray2, #ededed);
 }
 @media (max-width: 767px) {
@@ -11787,7 +11787,7 @@ body.megamenu-popup-active .mobile-nav__content {
   width: 790px;
   height: 790px;
   border-radius: 790px;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(var(--procounsel-base-rgb, 199, 149, 74), 0.5) 0%, rgba(225, 162, 67, 0.5) 89%);
+  background: (--light-bg);
   filter: blur(125px);
 }
 @media (max-width: 1299px) {
@@ -16862,7 +16862,7 @@ body.megamenu-popup-active .mobile-nav__content {
 --------------------------------------------------------------*/
 .about-one {
   position: relative;
-  padding: 120px 0;
+  padding: 50px 0;
   overflow: hidden;
 }
 @media (max-width: 767px) {
@@ -18147,8 +18147,8 @@ body.megamenu-popup-active .mobile-nav__content {
 .service-one {
   position: relative;
   counter-reset: count;
-  padding: 120px 0;
-  padding-bottom: 220px;
+  padding: 50px 0;
+  padding-bottom: 50px;
   background-color: var(--procounsel-primary, #19223a);
 }
 @media (max-width: 767px) {
@@ -18189,7 +18189,7 @@ body.megamenu-popup-active .mobile-nav__content {
   height:36rem;
   counter-increment: count;
   transition: all 500ms ease;
-  background-color: var(--procounsel-gray2, #ededed);
+  background-color: var(--procounsel-gray, #ededed);
   padding: 36px 40px 40px;
   cursor: pointer;
 }
@@ -18751,7 +18751,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .service-four {
   position: relative;
-  padding: 120px 0;
+  padding: 50px 0;
   background-color: var(--procounsel-primary, #19223a);
 }
 @media (max-width: 767px) {

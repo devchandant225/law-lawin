@@ -139,8 +139,8 @@
                           </div><!-- /.mobile-nav__toggler -->
 
                           <div class="main-header__btn">
-                              <a href="/contact" class="procounsel-btn">
-                                  <i>Get a Quote</i><span>Get a Quote</span>
+                              <a href="/court-fee-calculator" class="procounsel-btn">
+                                  <i>Court Fee Calculator</i><span>Court Fee Calculator</span>
                               </a><!-- /.thm-btn main-header__btn -->
                           </div>
                       </div><!-- /.main-header__right -->

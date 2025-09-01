@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Request;
 class AboutUs extends Component
 {
     public $contentSections;
+    public $intro_home;
+    public $why_choose_home;
 
     /**
      * Create a new component instance.
@@ -25,6 +27,18 @@ class AboutUs extends Component
             ->forPageType($pageType)
             ->ordered()
             ->get();
+
+        // Fetch specific content for intro_home (order 1) and why_choose_home (order 2)
+        // Both should have page type home and be active
+        $this->intro_home = AboutUsContentSection::active()
+            ->forPageType(AboutUsContentSection::PAGE_TYPE_HOME)
+            ->where('order_list', 1)
+            ->first();
+
+        $this->why_choose_home = AboutUsContentSection::active()
+            ->forPageType(AboutUsContentSection::PAGE_TYPE_HOME)
+            ->where('order_list', 2)
+            ->first();
     }
 
     /**
@@ -54,7 +68,9 @@ class AboutUs extends Component
     public function render(): View|Closure|string
     {
         return view('components.about-us', [
-            'contentSections' => $this->contentSections
+            'contentSections' => $this->contentSections,
+            'intro_home' => $this->intro_home,
+            'why_choose_home' => $this->why_choose_home
         ]);
     }
 }

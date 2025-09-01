@@ -1,175 +1,153 @@
 <footer class="main-footer">
-      <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.png);"></div>
-      <div class="main-footer__top">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="00ms">
-                      <div class="footer-widget footer-widget--about">
-                          <a href="{{ route('home') }}" class="footer-widget__logo">
-                              @if ($globalProfile && $globalProfile->logo_url)
-                                  <img src="{{ $globalProfile->logo_url }}" width="160"
-                                      alt="{{ config('app.name') }}">
-                              @else
-                                  <img src="assets/images/logo-light.png" width="160" alt="{{ config('app.name') }}">
-                              @endif
-                          </a>
-                          <p class="footer-widget__text">
-                              @if ($globalProfile && $globalProfile->description)
-                                  {!! $globalProfile->description !!}
-                              @else
-                                  Discover a unique approach with our dedicated attorneys, committed to providing
-                                  effective legal solutions.
-                              @endif
-                          </p>
-                          <ul class="list-unstyled main-footer__info__list">
-                              @if ($globalProfile && $globalProfile->phone1)
-                                  <li class="main-footer__info__item">
-                                      <div class="main-footer__info__icon">
-                                          <i class="icon-telephone-call-1"></i>
-                                      </div>
-                                      <div class="main-footer__info__content">
-                                          <p class="main-footer__info__text">
-                                              <a
-                                                  href="tel:{{ $globalProfile->phone1 }}">{{ $globalProfile->phone1 }}</a>
-                                          </p><!-- /.contact-one__info__text -->
-                                      </div>
-                                  </li>
-                              @endif
+    <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.png);"></div>
+    <div class="main-footer__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="00ms">
+                    <div class="footer-widget footer-widget--about">
+                        <a href="{{ route('home') }}" class="footer-widget__logo">
+                            @if ($globalProfile && $globalProfile->logo_url)
+                                <img src="{{ $globalProfile->logo_url }}" width="160" alt="{{ config('app.name') }}">
+                            @else
+                                <img src="assets/images/logo-light.png" width="160" alt="{{ config('app.name') }}">
+                            @endif
+                        </a>
+                        <p class="footer-widget__text">
+                            @if ($globalProfile && $globalProfile->description)
+                                {!! $globalProfile->description !!}
+                            @else
+                                Discover a unique approach with our dedicated attorneys, committed to providing
+                                effective legal solutions.
+                            @endif
+                        </p>
+                        <ul class="list-unstyled main-footer__info__list">
+                            @if ($globalProfile && $globalProfile->phone1)
+                                <li class="main-footer__info__item">
+                                    <div class="main-footer__info__icon">
+                                        <i class="icon-telephone-call-1"></i>
+                                    </div>
+                                    <div class="main-footer__info__content">
+                                        <p class="main-footer__info__text">
+                                            <a href="tel:{{ $globalProfile->phone1 }}">{{ $globalProfile->phone1 }}</a>
+                                        </p><!-- /.contact-one__info__text -->
+                                    </div>
+                                </li>
+                            @endif
 
-                              @if ($globalProfile && $globalProfile->email)
-                                  <li class="main-footer__info__item">
-                                      <div class="main-footer__info__icon">
-                                          <i class="icon-mail"></i>
-                                      </div>
-                                      <div class="main-footer__info__content">
-                                          <p class="main-footer__info__text">
-                                              <a
-                                                  href="mailto:{{ $globalProfile->email }}">{{ $globalProfile->email }}</a>
-                                          </p><!-- /.contact-one__info__text -->
-                                      </div>
-                                  </li>
-                              @endif
-                              @if ($globalProfile && $globalProfile->address)
-                                  <li class="main-footer__info__item">
-                                      <div class="main-footer__info__icon">
-                                          <i class="fas fa-map"></i>
-                                      </div>
-                                      <div class="main-footer__info__content">
-                                          <p class="main-footer__info__text">
-                                              {{ $globalProfile->address }}
-                                          </p><!-- /.contact-one__info__text -->
-                                      </div>
-                                  </li>
-                              @endif
-                          </ul>
-                          <div class="main-footer__info__social">
-                              @if ($globalProfile && $globalProfile->facebook_link)
-                                  <a href="{{ $globalProfile->facebook_link }}">
-                                      <i class="icon-facebook"></i>
-                                      <span class="sr-only">Facebook</span>
-                                  </a>
-                              @endif
-                              @if ($globalProfile && $globalProfile->twitter_link)
-                                  <a href="{{ $globalProfile->twitter_link }}">
-                                      <i class="icon-twitter"></i>
-                                      <span class="sr-only">Twitter</span>
-                                  </a>
-                              @endif
-                              @if ($globalProfile && $globalProfile->linkedin_link)
-                                  <a href="{{ $globalProfile->linkedin_link }}">
-                                      <i class="fab fa-linkedin"></i>
-                                      <span class="sr-only">LinkedIn</span>
-                                  </a>
-                              @endif
-                              @if ($globalProfile && $globalProfile->instagram_link)
-                                  <a href="{{ $globalProfile->instagram_link }}">
-                                      <i class="fab fa-instagram"></i>
-                                      <span class="sr-only">Instagram</span>
-                                  </a>
-                              @endif
-                              @if ($globalProfile && $globalProfile->youtube_link)
-                                  <a href="{{ $globalProfile->youtube_link }}">
-                                      <i class="icon-youtube"></i>
-                                      <span class="sr-only">Youtube</span>
-                                  </a>
-                              @endif
-                          </div>
-                      </div><!-- /.footer-widget -->
-                  </div><!-- /.col-md-6 -->
-                  <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="100ms">
-                      <div class="footer-widget footer-widget--links">
-                          <h2 class="footer-widget__title">Quick Links</h2><!-- /.footer-widget__title -->
-                          <ul class="list-unstyled footer-widget__links">
-                              <li><a href="/about/introduction">About Us</a></li>
-                              <li><a href="{{ route('team.index') }}">Our Team</a></li>
-                              <li><a href="{{ route('services.index') }}">Services</a></li>
-                              <li><a href="{{ route('practices.index') }}">Practice Areas</a></li>
-                              <li><a href="/contact">Contact</a></li>
-                          </ul><!-- /.list-unstyled footer-widget__links -->
-                      </div><!-- /.footer-widget -->
-                  </div><!-- /.col-md-6 -->
-                  <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="200ms">
-                      <div class="footer-widget footer-widget--links">
-                          <h2 class="footer-widget__title">Legal Help</h2><!-- /.footer-widget__title -->
-                          <ul class="list-unstyled footer-widget__links">
-                              <li><a href="{{ route('publications.index') }}">Publications</a></li>
-                              <li><a href="{{ route('posts.by-type', 'news') }}">Latest News</a></li>
-                              <li><a href="{{ route('help-desk.nrn-legal') }}">NRN Legal Help</a></li>
-                              <li><a href="{{ route('help-desk.fdi-legal') }}">FDI Legal Help</a></li>
-                              <li><a href="{{ route('portfolios.index') }}">Portfolio</a></li>
-                          </ul><!-- /.list-unstyled footer-widget__links -->
-                      </div><!-- /.footer-widget -->
-                  </div><!-- /.col-md-6 -->
-                  <div class="col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="300ms">
-                      <div class="footer-widget footer-widget--mail">
-                          <h2 class="footer-widget__title">
-                              Signup for our latest news<br> & articles
-                          </h2><!-- /.footer-widget__title -->
-                          <form action="#" data-url="MAILCHIMP_FORM_URL"
-                              class="footer-widget__newsletter mc-form">
-                              <input type="text" name="EMAIL" placeholder="Email Address">
-                              <button type="submit">
-                                  <i class="icon-right-arrow-2"></i>
-                                  <span class="sr-only">submit</span><!-- /.sr-only -->
-                              </button>
-                          </form><!-- /. mc-form -->
-                          <div class="footer-widget__check">
-                              <input type="checkbox" checked="" name="save-data" id="save-data">
-                              <label for="save-data"><span></span>I agree to the <a href="checkout.html">Privacy
-                                      Policy.</a></label>
-                          </div>
-                          <div class="mc-form__response"></div><!-- /.mc-form__response -->
-                          <!-- /.footer-widget__text -->
-                      </div><!-- /.footer-widget -->
-                         <div class="map-container" id="google-map" style="position: relative; overflow: hidden;">
-                      @if ($globalProfile && $globalProfile->address)
-                          <!-- Google Maps Embed with Search Query -->
-                          <iframe
-                              src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade" title="Office Location Map">
-                          </iframe>
-                      @else
-                          <!-- Default Map for Kathmandu, Nepal -->
-                          <iframe
-                              src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Kathmandu,%20Nepal&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade" title="Default Location Map">
-                          </iframe>
-                      @endif
-                  </div>
-                  </div><!-- /.col-md-6 -->
-              </div><!-- /.row -->
-          </div><!-- /.container -->
-      </div><!-- /.main-footer__top -->
-      <div class="main-footer__bottom  wow fadeInUp" data-wow-delay="00ms">
-          <div class="container">
-              <div class="main-footer__bottom__inner">
-                  <p class="main-footer__copyright">
-                      &copy; Copyright <span class="dynamic-year"></span> by {{ config('app.name') }}. All rights
-                      reserved.
-                  </p>
-              </div><!-- /.main-footer__inner -->
-          </div><!-- /.container -->
-      </div><!-- /.main-footer__bottom -->
-  </footer><!-- /.main-footer -->
+                            @if ($globalProfile && $globalProfile->email)
+                                <li class="main-footer__info__item">
+                                    <div class="main-footer__info__icon">
+                                        <i class="icon-mail"></i>
+                                    </div>
+                                    <div class="main-footer__info__content">
+                                        <p class="main-footer__info__text">
+                                            <a href="mailto:{{ $globalProfile->email }}">{{ $globalProfile->email }}</a>
+                                        </p><!-- /.contact-one__info__text -->
+                                    </div>
+                                </li>
+                            @endif
+                            @if ($globalProfile && $globalProfile->address)
+                                <li class="main-footer__info__item">
+                                    <div class="main-footer__info__icon">
+                                        <i class="fas fa-map"></i>
+                                    </div>
+                                    <div class="main-footer__info__content">
+                                        <p class="main-footer__info__text">
+                                            {{ $globalProfile->address }}
+                                        </p><!-- /.contact-one__info__text -->
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
+                        <div class="main-footer__info__social">
+                            @if ($globalProfile && $globalProfile->facebook_link)
+                                <a href="{{ $globalProfile->facebook_link }}">
+                                    <i class="icon-facebook"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+                            @endif
+                            @if ($globalProfile && $globalProfile->twitter_link)
+                                <a href="{{ $globalProfile->twitter_link }}">
+                                    <i class="icon-twitter"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            @endif
+                            @if ($globalProfile && $globalProfile->linkedin_link)
+                                <a href="{{ $globalProfile->linkedin_link }}">
+                                    <i class="fab fa-linkedin"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                            @endif
+                            @if ($globalProfile && $globalProfile->instagram_link)
+                                <a href="{{ $globalProfile->instagram_link }}">
+                                    <i class="fab fa-instagram"></i>
+                                    <span class="sr-only">Instagram</span>
+                                </a>
+                            @endif
+                            @if ($globalProfile && $globalProfile->youtube_link)
+                                <a href="{{ $globalProfile->youtube_link }}">
+                                    <i class="icon-youtube"></i>
+                                    <span class="sr-only">Youtube</span>
+                                </a>
+                            @endif
+                        </div>
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="100ms">
+                    <div class="footer-widget footer-widget--links">
+                        <h2 class="footer-widget__title">Quick Links</h2><!-- /.footer-widget__title -->
+                        <ul class="list-unstyled footer-widget__links">
+                            <li><a href="/about/introduction">About Us</a></li>
+                            <li><a href="{{ route('team.index') }}">Our Team</a></li>
+                            <li><a href="{{ route('services.index') }}">Services</a></li>
+                            <li><a href="{{ route('practices.index') }}">Practice Areas</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul><!-- /.list-unstyled footer-widget__links -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="footer-widget footer-widget--links">
+                        <h2 class="footer-widget__title">Legal Help</h2><!-- /.footer-widget__title -->
+                        <ul class="list-unstyled footer-widget__links">
+                            <li><a href="{{ route('publications.index') }}">Publications</a></li>
+                            <li><a href="{{ route('posts.by-type', 'news') }}">Latest News</a></li>
+                            <li><a href="{{ route('help-desk.nrn-legal') }}">NRN Legal Help</a></li>
+                            <li><a href="{{ route('help-desk.fdi-legal') }}">FDI Legal Help</a></li>
+                            <li><a href="{{ route('portfolios.index') }}">Portfolio</a></li>
+                        </ul><!-- /.list-unstyled footer-widget__links -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-md-6 -->
+                <div class="col-md-6 col-xl-4 wow fadeInUp" data-wow-delay="300ms">
+                     <h2 class="footer-widget__title">Our Locations</h2><!-- /.footer-widget__title -->
+                    <div class="map-container" id="google-map" style="position: relative; overflow: hidden;">
+                        @if ($globalProfile && $globalProfile->address)
+                            <!-- Google Maps Embed with Search Query -->
+                            <iframe
+                                src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" title="Office Location Map">
+                            </iframe>
+                        @else
+                            <!-- Default Map for Kathmandu, Nepal -->
+                            <iframe
+                                src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Kathmandu,%20Nepal&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" title="Default Location Map">
+                            </iframe>
+                        @endif
+                    </div>
+                </div><!-- /.col-md-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.main-footer__top -->
+    <div class="main-footer__bottom  wow fadeInUp" data-wow-delay="00ms">
+        <div class="container">
+            <div class="main-footer__bottom__inner">
+                <p class="main-footer__copyright">
+                    &copy; Copyright <span class="dynamic-year"></span> by {{ config('app.name') }}. All rights
+                    reserved.
+                </p>
+            </div><!-- /.main-footer__inner -->
+        </div><!-- /.container -->
+    </div><!-- /.main-footer__bottom -->
+</footer><!-- /.main-footer -->

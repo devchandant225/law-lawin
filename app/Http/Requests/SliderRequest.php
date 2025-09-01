@@ -29,9 +29,9 @@ class SliderRequest extends FormRequest
         ];
 
         if ($this->isMethod('post')) {
-            $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+            $rules['image'] = 'required|image|mimes:jpeg,png,webp,jpg,gif,svg|max:2048';
         } else {
-            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+            $rules['image'] = 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:2048';
         }
 
         return $rules;
@@ -49,7 +49,7 @@ class SliderRequest extends FormRequest
             'title.max' => 'The title may not be greater than 255 characters.',
             'image.required' => 'The image field is required.',
             'image.image' => 'The image must be an image file.',
-            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, svg.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png,webp, jpg, gif, svg.',
             'image.max' => 'The image may not be greater than 2MB.',
             'orderlist.required' => 'The order list field is required.',
             'orderlist.integer' => 'The order list must be an integer.',

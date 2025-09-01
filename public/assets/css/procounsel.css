@@ -4068,7 +4068,7 @@ h6 {
   background-repeat: no-repeat;
 }
 .contact-two__bg::after {
-  background: radial-gradient(111.51% 143.6% at 0% 2.69%, rgba(var(--procounsel-base-rgb, 199, 149, 74), 0.8) 6.19%, rgba(var(--procounsel-primary-rgb, 25, 34, 58), 0.8) 80.27%);
+  background: #d4f7ffd4;
   position: absolute;
   top: 0;
   right: 0;
@@ -4087,7 +4087,7 @@ h6 {
   width: 825px;
   height: 825px;
   border-radius: 50%;
-  background-color: rgba(var(--procounsel-primary-rgb, 25, 34, 58), 0.1);
+  background-color: var(--light-bg);
   bottom: -260px;
   left: -60px;
   animation: zoomsIn 3s linear 0s infinite;
@@ -11771,12 +11771,12 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .award-one {
-  padding-top: 170px;
+  padding-top: 70px;
   position: relative;
 }
 @media (max-width: 768px) {
   .award-one {
-    padding-top: 130px;
+    padding-top: 50px;
   }
 }
 .award-one::after {

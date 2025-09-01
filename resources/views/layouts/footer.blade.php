@@ -1,46 +1,4 @@
-  <!-- Google Maps Section -->
-  <section class="map-section">
-      <div class="container-fluid p-0">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="map-container" id="google-map" style="position: relative; overflow: hidden;">
-                      @if ($globalProfile && $globalProfile->address)
-                          <!-- Google Maps Embed with Search Query -->
-                          <iframe
-                              src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade" title="Office Location Map">
-                          </iframe>
-                          <!-- Map Overlay with Office Info -->
-                          <div class="map-overlay"
-                              style="position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.95); padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 300px; z-index: 10;">
-                              <h5 style="margin: 0 0 10px 0; font-size: 16px; font-weight: bold; color: #333;">
-                                  {{ config('app.name') }}</h5>
-                              <p style="margin: 0; font-size: 14px; color: #666; line-height: 1.4;">
-                                  {{ $globalProfile->address }}</p>
-                              @if ($globalProfile->phone1)
-                                  <p style="margin: 5px 0 0 0; font-size: 14px;"><i class="fas fa-phone"
-                                          style="color: #007bff; margin-right: 8px;"></i><a
-                                          href="tel:{{ $globalProfile->phone1 }}"
-                                          style="color: #007bff; text-decoration: none;">{{ $globalProfile->phone1 }}</a>
-                                  </p>
-                              @endif
-                          </div>
-                      @else
-                          <!-- Default Map for Kathmandu, Nepal -->
-                          <iframe
-                              src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Kathmandu,%20Nepal&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                              referrerpolicy="no-referrer-when-downgrade" title="Default Location Map">
-                          </iframe>
-                      @endif
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section><!-- /.map-section -->
-
-  <footer class="main-footer">
+<footer class="main-footer">
       <div class="main-footer__bg" style="background-image: url(assets/images/backgrounds/footer-bg.png);"></div>
       <div class="main-footer__top">
           <div class="container">
@@ -183,6 +141,23 @@
                           <div class="mc-form__response"></div><!-- /.mc-form__response -->
                           <!-- /.footer-widget__text -->
                       </div><!-- /.footer-widget -->
+                         <div class="map-container" id="google-map" style="position: relative; overflow: hidden;">
+                      @if ($globalProfile && $globalProfile->address)
+                          <!-- Google Maps Embed with Search Query -->
+                          <iframe
+                              src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade" title="Office Location Map">
+                          </iframe>
+                      @else
+                          <!-- Default Map for Kathmandu, Nepal -->
+                          <iframe
+                              src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Kathmandu,%20Nepal&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade" title="Default Location Map">
+                          </iframe>
+                      @endif
+                  </div>
                   </div><!-- /.col-md-6 -->
               </div><!-- /.row -->
           </div><!-- /.container -->

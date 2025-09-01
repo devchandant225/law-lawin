@@ -3434,7 +3434,6 @@ h6 {
 .main-footer__info__list {
   margin-bottom: 0;
   padding-top: 23px;
-  padding-left: 44px;
 }
 @media (max-width: 768px) {
   .main-footer__info__list {
@@ -3471,10 +3470,10 @@ h6 {
 .main-footer__info__social {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   position: relative;
   gap: 10px;
   height: 100%;
+  margin-top: 10px;
 }
 @media (max-width: 991px) {
   .main-footer__info__social {

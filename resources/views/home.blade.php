@@ -8,7 +8,7 @@
     <section class="relative bg-white">
         <x-about-us />
     </section>
-     <x-why-choose-us />
+     {{-- <x-why-choose-us /> --}}
     {{-- Services Section --}}
     <x-service-section :services="$services" :showViewAll="true" :limit="8"
         sectionTitle="<span class=''>Services</span>"

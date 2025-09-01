@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/animate/animate.min.css') }}" />
+    <!-- FontAwesome 5 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/fontawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/jquery-ui/jquery-ui.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/jarallax/jarallax.css') }}" />
@@ -175,6 +177,9 @@
     <!-- template js -->
     <script src="assets/js/procounsel.js"></script>
     @stack('scripts')
+    
+    {{-- Floating Contact Component --}}
+    @include('layouts.partials.floating-contact')
 </body>
 
 </html>

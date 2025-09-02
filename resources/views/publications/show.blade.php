@@ -124,7 +124,7 @@
                                     <i class="fas fa-users me-2"></i>
                                     Contributing Team Members
                                 </h3>
-                                <p class="mb-0 mt-2" style="color: var(--procounsel-gray);">Meet the experts who contributed to this publication</p>
+                                <p class="mb-0 mt-2" style="color: rgb(39, 37, 37);">Meet the experts who contributed to this publication</p>
                             </div>
                             <div class="card-body p-4 p-md-5">
                                 <div class="row g-3">
@@ -169,7 +169,7 @@
                                     <i class="fas fa-question-circle me-2"></i>
                                     Frequently Asked Questions
                                 </h3>
-                                <p class="mb-0 mt-2" style="color: var(--procounsel-gray);">Common questions about this publication</p>
+                                <p class="mb-0 mt-2" style="color: rgb(39, 37, 37);">Common questions about this publication</p>
                             </div>
                             <div class="card-body p-4 p-md-5">
                                 <div class="accordion" id="faqAccordion">

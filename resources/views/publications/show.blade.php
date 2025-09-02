@@ -205,7 +205,7 @@
                             </div>
                         </section>
                     @endif
-
+                    
                     <!-- Call to Action Section -->
                     <section class="card cta-section mt-40"
                         style="background: linear-gradient(135deg, var(--procounsel-primary) 0%, var(--procounsel-base) 100%);">
@@ -229,6 +229,8 @@
                             </div>
                         </div>
                     </section>
+
+                    <x-publication-contact-form />
                 </div>
             </div>
         </div>

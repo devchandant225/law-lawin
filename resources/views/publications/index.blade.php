@@ -18,4 +18,7 @@
         'sectionSubtitle' => 'Legal Knowledge & Resources',
         'sectionDescription' => 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.',
     ])
+    
+    {{-- Contact Form Section --}}
+    <x-publication-contact-form />
 @endsection

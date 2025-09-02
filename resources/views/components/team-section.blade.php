@@ -30,7 +30,7 @@
                     data-owl-options='{
 				"items": 2,
 				"margin": 0,
-				"loop": true,
+				"loop": false,
 				"smartSpeed": 3000,
 				"nav": false,
 				"navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],

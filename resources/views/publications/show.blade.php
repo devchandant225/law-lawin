@@ -95,9 +95,6 @@
                             <section id="toc-section-{{ $content->id }}" class="card toc-content-section mb-30">
                                 <div class="card-body p-4 p-md-5">
                                     <div class="d-flex align-items-start mb-4">
-                                        <div class="toc-section-number background-base text-white me-4">
-                                            {{ $content->order_index ?? $loop->iteration }}
-                                        </div>
                                         <div class="flex-fill">
                                             <h3 class="content-title mb-3">{{ $content->title }}</h3>
                                             @if ($content->description)

@@ -34,10 +34,10 @@
 
     <!-- Main Content Section -->
     <section class="background-gray pt-80 pb-120">
-        <div class="container">
+        <div style="padding: 0 12px;" class="">
             <div class="row">
                 <!-- Sidebar - Table of Contents (Hidden on Mobile) -->
-                <div class="col-lg-4 d-none d-lg-block">
+                <div class="col-lg-3 d-none d-lg-block">
                     @if($tableOfContents->count() > 0)
                         <!-- Table of Contents Navigation -->
                         <div class="toc-sidebar-sticky">
@@ -68,7 +68,7 @@
                 </div>
 
                 <!-- Main Content (Full width on mobile, 8/12 on desktop) -->
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-9">
                     <!-- Publication Header -->
                     <div class="publication-header-card card mb-40">
                         @if($publication->feature_image_url)
@@ -131,12 +131,12 @@
                                     @foreach($teamMembers as $member)
                                         <div class="col-md-6">
                                             <div class="team-member-item card h-100">
-                                                <div class="card-body d-flex align-items-center">
+                                                <div class="card-body align-items-center">
                                                     <div class="me-3 flex-shrink-0">
                                                         @if($member['image_url'])
                                                             <img src="{{ $member['image_url'] }}" 
                                                                  alt="{{ $member['name'] }}" 
-                                                                 class="team-member-avatar rounded-circle">
+                                                                 class="team-member-avatar">
                                                         @else
                                                             <div class="team-member-avatar-placeholder background-gray2 rounded-circle d-flex align-items-center justify-content-center">
                                                                 <i class="fas fa-user" style="color: var(--procounsel-base);"></i>
@@ -565,8 +565,8 @@
         }
         
         .team-member-avatar {
-            width: 60px;
-            height: 60px;
+            width: 100%;
+            height: 24rem;
             object-fit: cover;
             border: 3px solid var(--procounsel-white);
         }

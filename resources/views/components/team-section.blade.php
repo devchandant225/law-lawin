@@ -29,9 +29,9 @@
                 <div class="team-one__carousel procounsel-owl__carousel procounsel-owl__carousel--basic-nav owl-carousel"
                     data-owl-options='{
 				"items": 2,
-				"margin": 50,
+				"margin": 0,
 				"loop": true,
-				"smartSpeed": 2000,
+				"smartSpeed": 3000,
 				"nav": false,
 				"navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
 				"dots": false,

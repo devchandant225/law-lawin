@@ -1,7 +1,7 @@
         <section class="award-one bg-section" style="
             position: relative;
             min-height: 100vh;
-            background-image: url('https://picsum.photos/1920/1080?random=1');
+            background-image: url('/publication.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

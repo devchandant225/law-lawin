@@ -147,7 +147,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="flex-fill">
-                                                        <h6 class="member-name mb-1">{{ $member['name'] }}</h6>
+                                                        <h6 class="member-name">{{ $member['name'] }}</h6>
                                                         @if ($member['designation'])
                                                             <p class="text-muted small mb-2">{{ $member['designation'] }}
                                                             </p>
@@ -593,9 +593,10 @@
 
         .member-name {
             font-family: var(--procounsel-heading-font);
-            font-size: 1.1rem;
+            font-size: 24px;
+            padding: 8px 0 0 0;
             font-weight: 400;
-            color: var(--procounsel-black);
+            color: var(--procounsel-base);
         }
 
         /* FAQ Section */

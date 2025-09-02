@@ -9,12 +9,13 @@
     <x-page-banner title="Legal Publications"
         subtitle="Explore our comprehensive collection of legal publications, research papers, and professional resources"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Publications']]" />
-
-    <section class="award-one">
-        {{-- Publications Section --}}
-        <x-publication-section :showViewAll="true" :limit="8" :showSearch="true"
-            sectionTitle="<span class=''>Publications</span>" sectionSubtitle="Legal Knowledge & Resources"
-            sectionDescription="Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law." />
-
-    </section>
+           {{-- Publications Section --}}
+    @livewire('publication-section', [
+        'showViewAll' => true,
+        'limit' => 8,
+        'showSearch' => true,
+        'sectionTitle' => '<span class="">Publications</span>',
+        'sectionSubtitle' => 'Legal Knowledge & Resources',
+        'sectionDescription' => 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.',
+    ])
 @endsection

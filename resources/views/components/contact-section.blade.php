@@ -198,27 +198,17 @@
                                        <span class="text-danger small">{{ $message }}</span>
                                    @enderror
                                </div><!-- /.form-one__control -->
-                               <div class="row">
-
-                                   <div class="col-md-12">
-
-                                       <div class="form-group">
-
-                                           <strong>ReCaptcha:</strong>
-
-                                           <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}">
-                                           </div>
-
-                                           @if ($errors->has('g-recaptcha-response'))
-                                               <span
-                                                   class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
-                                           @endif
-
+                               <!-- ReCaptcha -->
+                               @if (env('GOOGLE_RECAPTCHA_KEY'))
+                                   <div class="form-group mb-4">
+                                       <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}">
                                        </div>
-
+                                       @if ($errors->has('g-recaptcha-response'))
+                                           <span class="text-danger"
+                                               style="font-size: 12px; margin-top: 4px; display: block;">{{ $errors->first('g-recaptcha-response') }}</span>
+                                       @endif
                                    </div>
-
-                               </div>
+                               @endif
                                <div class="form-one__control form-one__control--full">
                                    <button type="submit" class="procounsel-btn">
                                        <i>Send Message</i>

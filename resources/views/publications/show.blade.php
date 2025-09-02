@@ -81,11 +81,6 @@
                         @endif
                         <div class="card-body p-4 p-md-5">
                             <h2 class="publication-summary-title mb-3">{{ $publication->title }}</h2>
-                            @if ($publication->excerpt)
-                                <div class="publication-excerpt mb-4">
-                                    <p>{{ $publication->excerpt }}</p>
-                                </div>
-                            @endif
                             @if ($publication->description)
                                 <div class="publication-content">
                                     {!! $publication->description !!}

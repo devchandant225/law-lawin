@@ -129,7 +129,7 @@
                             <div class="card-body p-4 p-md-5">
                                 <div class="row g-3">
                                     @foreach($teamMembers as $member)
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="team-member-item card h-100">
                                                 <div class="card-body align-items-center">
                                                     <div class="me-3 flex-shrink-0">

@@ -153,7 +153,7 @@
                                                             </p>
                                                         @endif
                                                         <button class="service-one__item__btn"><a
-                                                                href="{{ '/team' . '/' . $member['slug'] }}"></a></button>
+                                                                href="{{ '/team' . '/' . $member['slug'] }}">View Details</a></button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -11787,7 +11787,6 @@ body.megamenu-popup-active .mobile-nav__content {
   width: 790px;
   height: 790px;
   border-radius: 790px;
-  background: var(--light-bg);
   filter: blur(125px);
 }
 @media (max-width: 1299px) {

@@ -251,7 +251,6 @@
         }
 
         .service-description {
-            color: var(--procounsel-text-dark);
             line-height: 1.7;
             font-size: 1rem;
         }

@@ -69,23 +69,12 @@
                                         @endif
                                         @if($member->linkedinlink)
                                             <a href="{{ $member->linkedinlink }}" target="_blank">
-                                                <i class="icon-linkedin"></i>
+                                                <i class="fab fa-linkedin"></i>
                                                 <span class="sr-only">LinkedIn</span>
                                             </a>
                                         @endif
-                                        @if($member->email)
-                                            <a href="mailto:{{ $member->email }}">
-                                                <i class="icon-email"></i>
-                                                <span class="sr-only">Email</span>
-                                            </a>
-                                        @endif
-                                        @if(!$member->facebooklink && !$member->linkedinlink && !$member->email)
-                                            <!-- Default social links when none are provided -->
-                                            <a href="#">
-                                                <i class="icon-facebook"></i>
-                                                <span class="sr-only">Facebook</span>
-                                            </a>
-                                        @endif
+                                      
+                                     
                                     </div><!-- /.team-card__social -->
                                 </div><!-- /.team-card__hover -->
                                 @if($member->image)

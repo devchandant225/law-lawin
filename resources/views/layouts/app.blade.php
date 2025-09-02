@@ -16,7 +16,7 @@
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-
+  <script src='https://www.google.com/recaptcha/api.js'></script>
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/animate/animate.min.css') }}" />

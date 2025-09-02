@@ -35,7 +35,7 @@
 				"nav": false,
 				"navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
 				"dots": false,
-				"autoplay": true,
+				"autoplay": false,
 				"responsive": {
 					"0": {
 						"items": 1

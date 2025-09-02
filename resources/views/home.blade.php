@@ -54,7 +54,7 @@
             'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
         ],
     ]"
-        sectionTitle="<span class=''>Contact Us</span>"
+        sectionTitle="<span class=''>Reach out for the best Legal Advice</span>"
         sectionSubtitle="Get In Touch"
         sectionDescription="We're here to help with any questions you might have. Feel free to reach out to us and we'll get back to you as soon as possible."
         :showSocialLinks="true" />

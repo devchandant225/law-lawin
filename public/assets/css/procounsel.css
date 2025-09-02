@@ -614,7 +614,7 @@ h6 {
 .scroll-to-top.show {
   opacity: 1;
   visibility: visible;
-  bottom: 70px;
+  bottom: 150px;
 }
 
 /* post paginations */
@@ -4048,7 +4048,7 @@ h6 {
 .contact-two {
   position: relative;
   z-index: 2;
-  padding: 120px 0;
+  padding: 50px 0;
   background-color: var(--procounsel-gray2, #ededed);
   overflow: hidden;
 }
@@ -4114,11 +4114,7 @@ h6 {
   position: relative;
   z-index: 2;
 }
-@media (min-width: 1200px) {
-  .contact-two__content {
-    padding-left: 165px;
-  }
-}
+
 .contact-two__info {
   margin: 0;
   position: relative;
@@ -4150,7 +4146,7 @@ h6 {
   display: flex;
   align-items: center;
   gap: 17px;
-  margin-bottom: 39px;
+  margin-bottom: 6px;
 }
 .contact-two__info__item:last-child {
   margin-bottom: 0;

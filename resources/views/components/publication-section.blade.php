@@ -1,30 +1,21 @@
-        <section class="award-one parallax-section" style="position: relative; overflow: hidden; min-height: 100vh;">
-            <!-- Parallax Background -->
-            <div class="parallax-bg" style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 120%;
-                height: 120%;
-                background-image: url('https://picsum.photos/1920/1080?random=1');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                background-repeat: no-repeat;
-                transform: translateZ(0);
-                will-change: transform;
-                z-index: -2;
-            "></div>
+        <section class="award-one bg-section" style="
+            position: relative;
+            min-height: 100vh;
+            background-image: url('https://picsum.photos/1920/1080?random=1');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        ">
             
             <!-- Dark Overlay for text visibility -->
-            <div class="parallax-overlay" style="
+            <div class="bg-overlay" style="
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
                 background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
-                z-index: -1;
+                z-index: 0;
             "></div>
             
             <div class="container" style="position: relative; z-index: 1; padding: 80px 15px;">
@@ -91,26 +82,16 @@
         </section>
 
         <style>
-            .parallax-section {
+            .bg-section {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
             
-            .parallax-bg {
-                transition: transform 0.1s ease-out;
-            }
-            
             /* Responsive adjustments */
             @media (max-width: 768px) {
-                .parallax-section {
+                .bg-section {
                     min-height: 80vh !important;
-                }
-                
-                .parallax-bg {
-                    background-attachment: scroll !important;
-                    width: 110% !important;
-                    height: 110% !important;
                 }
                 
                 .container {
@@ -119,7 +100,7 @@
             }
             
             @media (max-width: 480px) {
-                .parallax-section {
+                .bg-section {
                     min-height: 70vh !important;
                 }
                 
@@ -151,29 +132,3 @@
                 transform: translateY(-5px);
             }
         </style>
-        
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const parallaxBg = document.querySelector('.parallax-bg');
-                
-                if (parallaxBg) {
-                    // Check if device supports parallax (not mobile for performance)
-                    const isMobile = window.innerWidth <= 768;
-                    
-                    if (!isMobile) {
-                        function updateParallax() {
-                            const scrollTop = window.pageYOffset;
-                            const rate = scrollTop * -0.5;
-                            parallaxBg.style.transform = `translate3d(0, ${rate}px, 0)`;
-                        }
-                        
-                        // Use requestAnimationFrame for smooth animation
-                        function handleScroll() {
-                            requestAnimationFrame(updateParallax);
-                        }
-                        
-                        window.addEventListener('scroll', handleScroll, { passive: true });
-                    }
-                }
-            });
-        </script>

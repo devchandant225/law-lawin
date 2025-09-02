@@ -47,6 +47,10 @@
     @endif
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Livewire Styles -->
+    @livewireStyles
+    
     @stack('styles')
 </head>
 
@@ -176,6 +180,10 @@
 
     <!-- template js -->
     <script src="assets/js/procounsel.js"></script>
+    
+    <!-- Livewire Scripts -->
+    @livewireScripts
+    
     @stack('scripts')
     
     {{-- Floating Contact Component --}}

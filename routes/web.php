@@ -112,6 +112,11 @@ Route::get('/page/{page}', [PublicPageController::class, 'show'])->name('page.sh
 Route::get('/help-desk/nrn-legal', [HelpDeskController::class, 'nrnLegal'])->name('help-desk.nrn-legal');
 Route::get('/help-desk/fdi-legal', [HelpDeskController::class, 'fdiLegal'])->name('help-desk.fdi-legal');
 
+// Calculator
+Route::get('/calculator', function () {
+    return view('calculator');
+})->name('calculator');
+
 // Add home route with name
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

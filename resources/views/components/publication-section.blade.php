@@ -1,5 +1,33 @@
-        <section class="award-one">
-            <div class="container">
+        <section class="award-one parallax-section" style="position: relative; overflow: hidden; min-height: 100vh;">
+            <!-- Parallax Background -->
+            <div class="parallax-bg" style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 120%;
+                height: 120%;
+                background-image: url('https://picsum.photos/1920/1080?random=1');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                transform: translateZ(0);
+                will-change: transform;
+                z-index: -2;
+            "></div>
+            
+            <!-- Dark Overlay for text visibility -->
+            <div class="parallax-overlay" style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+                z-index: -1;
+            "></div>
+            
+            <div class="container" style="position: relative; z-index: 1; padding: 80px 15px;">
                 <div class="sec-title text-center">
                     <div class="sec-title__tagline bw-split-in-up-fast d-inline-flex align-items-center gap-2">
                         <div>
@@ -61,3 +89,91 @@
                 @endif
             </div>
         </section>
+
+        <style>
+            .parallax-section {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .parallax-bg {
+                transition: transform 0.1s ease-out;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .parallax-section {
+                    min-height: 80vh !important;
+                }
+                
+                .parallax-bg {
+                    background-attachment: scroll !important;
+                    width: 110% !important;
+                    height: 110% !important;
+                }
+                
+                .container {
+                    padding: 60px 15px !important;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .parallax-section {
+                    min-height: 70vh !important;
+                }
+                
+                .container {
+                    padding: 40px 15px !important;
+                }
+            }
+            
+            /* Enhanced text visibility */
+            .sec-title__title,
+            .sec-title__tagline,
+            .award-one__item__title a,
+            .award-one__item__text {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+                color: #fff !important;
+            }
+            
+            .award-one__item {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 30px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            .award-one__item:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-5px);
+            }
+        </style>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const parallaxBg = document.querySelector('.parallax-bg');
+                
+                if (parallaxBg) {
+                    // Check if device supports parallax (not mobile for performance)
+                    const isMobile = window.innerWidth <= 768;
+                    
+                    if (!isMobile) {
+                        function updateParallax() {
+                            const scrollTop = window.pageYOffset;
+                            const rate = scrollTop * -0.5;
+                            parallaxBg.style.transform = `translate3d(0, ${rate}px, 0)`;
+                        }
+                        
+                        // Use requestAnimationFrame for smooth animation
+                        function handleScroll() {
+                            requestAnimationFrame(updateParallax);
+                        }
+                        
+                        window.addEventListener('scroll', handleScroll, { passive: true });
+                    }
+                }
+            });
+        </script>

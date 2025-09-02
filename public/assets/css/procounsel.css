@@ -4114,7 +4114,11 @@ h6 {
   position: relative;
   z-index: 2;
 }
-
+@media (min-width: 1200px) {
+  .contact-two__content {
+    padding-left: 70px;
+  }
+}
 .contact-two__info {
   margin: 0;
   position: relative;
@@ -18254,14 +18258,13 @@ body.megamenu-popup-active .mobile-nav__content {
   z-index: 99;
 }
 .service-one__item:hover .service-one__item__text {
-  color: var(--procounsel-white, #fff);
+  color: var(--procounsel-text-gray, #fff);
 }
 .service-one__item:hover .service-one__item__title {
-  color: var(--procounsel-white, #fff);
+  color: var(--procounsel-text-gray, #fff);
 }
 .service-one__item:hover {
-  background-color: var(--procounsel-base, #c7954a);
-  transform: translateY(-40px);
+  background-color: var(--light-bg, #c7954a);
 }
 @media (max-width: 1199px) {
   .service-one__item:hover {

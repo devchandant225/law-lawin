@@ -30,12 +30,12 @@
                     data-owl-options='{
 				"items": 1,
 				"margin": 30,
-				"loop": false,
+				"loop": true,
 				"smartSpeed": 700,
-				"nav": false,
+				"nav": true,
 				"navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-				"dots": true,
-				"autoplay": false,
+				"dots": false,
+				"autoplay": true,
 				"responsive": {
 					"0": {
 						"items": 1

@@ -109,7 +109,6 @@
                                   <ul>
                                       <li><a href="{{ route('posts.by-type', 'news') }}">News</a></li>
                                       <li><a href="{{ route('publications.index') }}">Publications</a></li>
-                                      <li><a href="{{ route('more-publications.index') }}">More Publications</a></li>
                                   </ul>
                               </li>
 

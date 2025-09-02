@@ -68,9 +68,6 @@
                                     @if($globalProfile->phone1)
                                         <div>Phone: {{ $globalProfile->phone1 }}</div>
                                     @endif
-                                    @if($globalProfile->phone2)
-                                        <div>{{ $globalProfile->phone2 }}</div>
-                                    @endif
                                 </div>
                             </div>
                             @endif

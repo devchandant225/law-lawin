@@ -152,8 +152,15 @@
                                                             <p class="text-muted small mb-2">{{ $member['designation'] }}
                                                             </p>
                                                         @endif
-                                                        <button class="service-one__item__btn p-team"><a
-                                                                href="{{ '/team' . '/' . $member['slug'] }}">View Details</a></button>
+                                                        <div class="text-right">
+                                                            <a href="{{ '/team' . '/' . $member['slug'] }}"
+                                                                class="procounsel-btn procounsel-btn--two">
+                                                                <i>View
+                                                                    Details</i>
+                                                                <span>View
+                                                                    Details</span>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

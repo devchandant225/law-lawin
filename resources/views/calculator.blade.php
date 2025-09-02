@@ -3,30 +3,15 @@
 @section('title', 'Court Fee Calculator')
 
 @section('content')
-<section class="page-header pt-100 pb-80" style="background: linear-gradient(135deg, var(--procounsel-primary) 0%, var(--procounsel-base) 100%);">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-8 col-md-12">
-                <div class="page-header__content">
-                    <h2 style="color: var(--procounsel-white); font-family: var(--procounsel-heading-font); font-size: 3rem; font-weight: 600; margin-bottom: 10px;">
-                        Court Fee Calculator
-                    </h2>
-                    <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin: 0;">
-                        Calculate accurate court fees for legal proceedings in Nepal
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12" style="text-align: center;">
-                <div class="page-header__shape" style="opacity: 0.3;">
-                    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="80" stroke="white" stroke-width="2" fill="none"/>
-                        <path d="M60 100h80M100 60v80" stroke="white" stroke-width="2"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <x-page-banner 
+        title="Calculator"
+        subtitle="Calculate your legal expenses and make informed decisions."
+        :breadcrumbs="[
+            ['label' => 'Home', 'url' => route('home')],
+            ['label' => 'Calculator']
+        ]"
+        backgroundImage="assets/images/backgrounds/page-header-contact-bg.jpg"
+    />
 
 <section class="pt-120 pb-120" style="background-color: var(--procounsel-white);">
     <div class="container">

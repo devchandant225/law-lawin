@@ -1,15 +1,7 @@
 {{-- Floating Contact Component --}}
 @if ($globalProfile && ($globalProfile->whatsapp || $globalProfile->viber || $globalProfile->phone1))
     <div id="floating-contact" class="floating-contact">
-        <!-- Main contact button -->
-        <div class="floating-contact__main-btn" id="contactToggle">
-            <i class="fas fa-comments"></i>
-            <span class="floating-contact__close-icon">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-
-        <!-- Contact options -->
+        <!-- Direct Contact Options - Always Visible -->
         <div class="floating-contact__options" id="contactOptions">
             @if ($globalProfile->whatsapp)
                 <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $globalProfile->whatsapp) }}" target="_blank"
@@ -47,131 +39,38 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        .floating-contact__main-btn {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .floating-contact__main-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 50%;
-        }
-
-        .floating-contact__main-btn:hover::before {
-            opacity: 1;
-        }
-
-        .floating-contact__main-btn i {
-            font-size: 24px;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .floating-contact__close-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(90deg);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-
-        .floating-contact.active .floating-contact__main-btn i:first-child {
-            transform: rotate(-90deg);
-            opacity: 0;
-        }
-
-        .floating-contact.active .floating-contact__close-icon {
-            transform: translate(-50%, -50%) rotate(0deg);
-            opacity: 1;
-        }
-
-        .floating-contact__main-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-        }
 
         .floating-contact__options {
-            position: absolute;
-            bottom: 80px;
+            position: relative;
+            bottom: 0;
             right: 0;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .floating-contact.active .floating-contact__options {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            transition: all 0.3s ease;
         }
 
         .floating-contact__option {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
-            transform: scale(0);
-            animation: none;
-        }
-
-        .floating-contact.active .floating-contact__option {
             transform: scale(1);
+            opacity: 1;
         }
 
-        .floating-contact.active .floating-contact__option:nth-child(1) {
-            animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.1s forwards;
-        }
-
-        .floating-contact.active .floating-contact__option:nth-child(2) {
-            animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards;
-        }
-
-        .floating-contact.active .floating-contact__option:nth-child(3) {
-            animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: scale(0) rotate(180deg);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
+        .floating-contact__option:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
         }
 
         .floating-contact__whatsapp {

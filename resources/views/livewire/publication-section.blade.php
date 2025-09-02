@@ -7,6 +7,27 @@
     ">
         
         <div class="container" style="position: relative; z-index: 1; padding: 25px 0px;">
+            {{-- Section Title and Subtitle --}}
+            @if(!request()->is('publication') && !request()->is('publications'))
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <div class="text-center wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
+                            <div class="sec-title">
+                                @if($sectionSubtitle)
+                                    <p class="sec-title__tagline">{!! $sectionSubtitle !!}</p>
+                                @endif
+                                @if($sectionTitle)
+                                    <h2 class="sec-title__title">{!! $sectionTitle !!}</h2>
+                                @endif
+                                @if($sectionDescription)
+                                    <p class="sec-title__text">{!! $sectionDescription !!}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            
             @if ($showSearch)
                 <!-- Search Section -->
                 <div class="row mb-5">
@@ -335,26 +356,8 @@
             font-weight: 500;
         }
         
-        /* Button styling */
-        .procounsel-btn {
-            background: linear-gradient(135deg, var(--procounsel-base), rgba(111, 100, 211, 0.8));
-            border: none;
-            border-radius: 15px;
-            padding: 12px 30px;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
+    
         
-        .procounsel-btn:hover {
-            background: linear-gradient(135deg, rgba(111, 100, 211, 0.9), var(--procounsel-base));
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(111, 100, 211, 0.3);
-            color: white;
-        }
+   
     </style>
 </div>

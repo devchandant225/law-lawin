@@ -11,13 +11,14 @@
 		"smartSpeed": 1000,
 		"nav": false,
         "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
-		"dots": true,
+		"dots": false,
 		"margin": 0
 	    }'>
               @foreach ($sliders as $slider)
                   <div class="item">
                       <div class="main-slider-one__item">
-                          <div class="main-slider-one__bg" style="background-image: url('{{ $slider->image_url }}');"></div>
+                          <div class="main-slider-one__bg" style="background-image: url('{{ $slider->image_url }}');">
+                          </div>
                           <!-- bg -->
                           <div class="main-slider-one__overlay-one"></div>
                           <div class="main-slider-one__overlay-two"></div>

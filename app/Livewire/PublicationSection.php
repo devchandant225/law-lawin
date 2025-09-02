@@ -15,6 +15,7 @@ class PublicationSection extends Component
     public $sectionSubtitle;
     public $sectionDescription;
     public $showSearch;
+    public $showSectionHeaders;
     public $publications;
 
     public function mount(

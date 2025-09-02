@@ -41,7 +41,7 @@
                 <div class="col-lg-3 d-none d-lg-block">
                     @if ($tableOfContents->count() > 0)
                         <!-- Table of Contents Navigation -->
-                        <div class="toc-sidebar-sticky">
+                        <div class="toc-sidebar-container" id="tocSidebar">
                             <div class="card toc-navigation">
                                 <div class="card-header background-base text-white">
                                     <h5 class="mb-0 d-flex align-items-center">
@@ -336,6 +336,121 @@
                     this.style.transform = 'translateY(0)';
                 });
             });
+
+            // ============ JavaScript Sticky TOC Sidebar ============
+            const tocSidebar = document.getElementById('tocSidebar');
+            if (tocSidebar) {
+                const sidebarColumn = tocSidebar.closest('.col-lg-3');
+                const mainContent = document.querySelector('.col-lg-9');
+                let sidebarRect, mainContentRect, sidebarHeight, mainContentHeight;
+                let originalOffsetTop, originalOffsetLeft, originalWidth;
+                let isSticky = false, isAtBottom = false;
+                
+                function calculateDimensions() {
+                    sidebarRect = tocSidebar.getBoundingClientRect();
+                    mainContentRect = mainContent.getBoundingClientRect();
+                    sidebarHeight = tocSidebar.offsetHeight;
+                    mainContentHeight = mainContent.offsetHeight;
+                    originalOffsetTop = tocSidebar.offsetTop;
+                    originalOffsetLeft = sidebarRect.left;
+                    originalWidth = tocSidebar.offsetWidth;
+                }
+                
+                function handleStickyBehavior() {
+                    if (window.innerWidth < 992) {
+                        // Reset on mobile
+                        tocSidebar.classList.remove('sticky', 'sticky-bottom');
+                        tocSidebar.style.width = '';
+                        tocSidebar.style.left = '';
+                        return;
+                    }
+                    
+                    const scrollTop = window.pageYOffset;
+                    const stickyOffset = 30; // Distance from top when sticky
+                    const footerOffset = 50; // Distance from bottom of main content
+                    
+                    // Calculate positions
+                    const shouldStick = scrollTop > (originalOffsetTop - stickyOffset);
+                    const mainContentBottom = mainContent.offsetTop + mainContentHeight;
+                    const sidebarBottom = scrollTop + stickyOffset + sidebarHeight;
+                    const shouldStickToBottom = sidebarBottom > (mainContentBottom - footerOffset);
+                    
+                    if (shouldStick && !shouldStickToBottom) {
+                        // Make sticky at top
+                        if (!isSticky) {
+                            tocSidebar.classList.add('sticky');
+                            tocSidebar.classList.remove('sticky-bottom');
+                            tocSidebar.style.width = originalWidth + 'px';
+                            tocSidebar.style.left = originalOffsetLeft + 'px';
+                            isSticky = true;
+                            isAtBottom = false;
+                        }
+                    } else if (shouldStickToBottom) {
+                        // Stick to bottom of content
+                        if (!isAtBottom) {
+                            tocSidebar.classList.remove('sticky');
+                            tocSidebar.classList.add('sticky-bottom');
+                            tocSidebar.style.width = originalWidth + 'px';
+                            tocSidebar.style.left = originalOffsetLeft + 'px';
+                            tocSidebar.style.top = (mainContentBottom - sidebarHeight - footerOffset) + 'px';
+                            isSticky = false;
+                            isAtBottom = true;
+                        }
+                    } else {
+                        // Reset to normal position
+                        if (isSticky || isAtBottom) {
+                            tocSidebar.classList.remove('sticky', 'sticky-bottom');
+                            tocSidebar.style.width = '';
+                            tocSidebar.style.left = '';
+                            tocSidebar.style.top = '';
+                            isSticky = false;
+                            isAtBottom = false;
+                        }
+                    }
+                }
+                
+                // Initialize
+                calculateDimensions();
+                
+                // Handle scroll events with throttling for better performance
+                let ticking = false;
+                function handleScroll() {
+                    if (!ticking) {
+                        requestAnimationFrame(function() {
+                            handleStickyBehavior();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }
+                
+                // Handle resize events
+                function handleResize() {
+                    // Reset sticky state on resize
+                    tocSidebar.classList.remove('sticky', 'sticky-bottom');
+                    tocSidebar.style.width = '';
+                    tocSidebar.style.left = '';
+                    tocSidebar.style.top = '';
+                    isSticky = false;
+                    isAtBottom = false;
+                    
+                    // Recalculate dimensions after a short delay
+                    setTimeout(() => {
+                        calculateDimensions();
+                        handleStickyBehavior();
+                    }, 100);
+                }
+                
+                // Add event listeners
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                window.addEventListener('resize', handleResize, { passive: true });
+                
+                // Initial call
+                handleStickyBehavior();
+                
+                // Add smooth transition effects
+                tocSidebar.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
         });
     </script>
 @endpush
@@ -438,12 +553,24 @@
             margin-bottom: 12px;
         }
 
-        /* Table of Contents Sidebar - Sticky Functionality */
-        .toc-sidebar-sticky {
-            position: sticky;
-            top: 30px;
+        /* Table of Contents Sidebar - Container for JS Sticky */
+        .toc-sidebar-container {
+            position: relative;
             z-index: 100;
             transition: all 0.3s ease;
+        }
+        
+        /* JS Sticky States */
+        .toc-sidebar-container.sticky {
+            position: fixed;
+            top: 30px;
+            transform: translateY(0);
+        }
+        
+        .toc-sidebar-container.sticky-bottom {
+            position: absolute;
+            bottom: 0;
+            transform: none;
         }
 
         .toc-navigation {

@@ -28,8 +28,8 @@
                 @if($teams->isNotEmpty())
                 <div class="team-one__carousel procounsel-owl__carousel procounsel-owl__carousel--basic-nav owl-carousel"
                     data-owl-options='{
-				"items": 1,
-				"margin": 30,
+				"items": 2,
+				"margin": 50,
 				"loop": true,
 				"smartSpeed": 2000,
 				"nav": false,

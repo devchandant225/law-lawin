@@ -184,6 +184,7 @@ class Publication extends Model
                 'id' => $team->id,
                 'name' => $team->name,
                 'designation' => $team->designation,
+                'slug' => $team->slug,
                 'image_url' => $team->image_url,
                 'role' => $team->pivot->role ?? 'Team Member',
                 'assigned_at' => $team->pivot->created_at

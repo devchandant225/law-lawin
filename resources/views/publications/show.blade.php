@@ -55,11 +55,7 @@
                                             <a href="#toc-section-{{ $content->id }}"
                                                 class="toc-nav-link d-flex align-items-center text-decoration-none p-3 border-bottom"
                                                 data-target="toc-section-{{ $content->id }}">
-                                                <span
-                                                    class="toc-number d-flex align-items-center justify-content-center me-3">
-                                                    {{ $content->order_index ?? $loop->iteration }}
-                                                </span>
-                                                <span class="flex-fill">{{ Str::limit($content->title, 25) }}</span>
+                                                <span class="flex-fill">{{ Str::limit($content->title, 50) }}</span>
                                             </a>
                                         @endforeach
                                     </nav>

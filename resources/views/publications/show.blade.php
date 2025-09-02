@@ -148,9 +148,6 @@
                                                         @if($member['designation'])
                                                             <p class="text-muted small mb-2">{{ $member['designation'] }}</p>
                                                         @endif
-                                                        <span class="badge" style="background-color: var(--procounsel-base); color: var(--procounsel-white);">
-                                                            {{ $member['role'] }}
-                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -383,7 +380,7 @@
         }
         
         .publication-feature-image {
-            height: 300px;
+            height: 470px;
             object-fit: cover;
             width: 100%;
         }

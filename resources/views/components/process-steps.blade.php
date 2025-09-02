@@ -70,3 +70,35 @@
         </div>
     </div>
 </section>
+
+<style>
+    .work-process-four {
+        position: relative;
+        background: var(--light-bg);
+        padding: 100px 0;
+    }
+    
+    .work-process-four::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--light-bg);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        z-index: -1;
+    }
+    
+    .work-process-four::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, var(--light-bg) 0%, rgba(255, 255, 255, 0.1) 100%);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        z-index: -2;
+    }
+</style>

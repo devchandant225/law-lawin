@@ -152,7 +152,7 @@
                                                             <p class="text-muted small mb-2">{{ $member['designation'] }}
                                                             </p>
                                                         @endif
-                                                        <button class="service-one__item__btn"><a
+                                                        <button class="service-one__item__btn p-team"><a
                                                                 href="{{ '/team' . '/' . $member['slug'] }}">View Details</a></button>
                                                     </div>
                                                 </div>

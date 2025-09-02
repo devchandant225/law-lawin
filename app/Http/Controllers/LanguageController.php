@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Publication;
 use Illuminate\View\View;
 
-class PublicationController extends Controller
+class LanguageController extends Controller
 {
     /**
-     * Display a listing of publications.
+     * Display a listing of languages.
      */
     public function index(Request $request): View
     {
-        $query = Publication::active()->publication()->ordered();
+        $query = Publication::active()->language()->ordered();
 
         // Search functionality
         if ($request->filled('search')) {
@@ -24,43 +24,44 @@ class PublicationController extends Controller
         }
 
         // Pagination
-        $publications = $query->paginate(12)->withQueryString();
+        $languages = $query->paginate(12)->withQueryString();
 
-        // Get featured publications for sidebar
-        $featuredPublications = Publication::active()->publication()->ordered()->limit(5)->get();
+        // Get featured languages for sidebar
+        $featuredLanguages = Publication::active()->language()->ordered()->limit(5)->get();
 
         // Get total count for stats
-        $totalPublications = Publication::active()->publication()->count();
+        $totalLanguages = Publication::active()->language()->count();
 
-        return view('publications.index', compact('publications', 'featuredPublications', 'totalPublications'));
+        return view('languages.index', compact('languages', 'featuredLanguages', 'totalLanguages'));
     }
 
     /**
-     * Display the specified practice.
+     * Display the specified language.
      *
      * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
     public function show($slug): View
     {
-        $publication = Publication::where('slug', $slug)->active()->publication()->firstOrFail();
-        // Get related publications
-        $relatedPublications = Publication::active()->publication()->where('id', '!=', $publication->id)->ordered()->limit(10)->get();
+        $language = Publication::where('slug', $slug)->active()->language()->firstOrFail();
+        
+        // Get related languages
+        $relatedLanguages = Publication::active()->language()->where('id', '!=', $language->id)->ordered()->limit(10)->get();
 
-        // Get publication FAQs
-        $faqs = $publication->faqs()->where('status', 'active')->ordered()->get();
+        // Get language FAQs
+        $faqs = $language->faqs()->where('status', 'active')->ordered()->get();
 
         // Get table of contents
-        $tableOfContents = $publication->orderedTableOfContents()->active()->get();
+        $tableOfContents = $language->orderedTableOfContents()->active()->get();
 
         // Get team members
-        $teamMembers = $publication->getTeamMembersWithRoles();
+        $teamMembers = $language->getTeamMembersWithRoles();
 
-        return view('publications.show', compact('publication', 'relatedPublications', 'faqs', 'tableOfContents', 'teamMembers'));
+        return view('languages.show', compact('language', 'relatedLanguages', 'faqs', 'tableOfContents', 'teamMembers'));
     }
 
     /**
-     * Search publications via AJAX.
+     * Search languages via AJAX.
      */
     public function search(Request $request)
     {
@@ -70,7 +71,7 @@ class PublicationController extends Controller
             return response()->json(['results' => []]);
         }
 
-        $publications = Publication::active()->publication()
+        $languages = Publication::active()->language()
             ->where(function ($q) use ($query) {
                 $q->where('title', 'like', "%{$query}%")->orWhere('excerpt', 'like', "%{$query}%");
             })
@@ -83,29 +84,29 @@ class PublicationController extends Controller
                     'title' => $publication->title,
                     'slug' => $publication->slug,
                     'excerpt' => $publication->excerpt ? \Str::limit($publication->excerpt, 100) : null,
-                    'url' => route('publication.show', $publication->slug),
+                    'url' => route('language.show', $publication->slug),
                     'image' => $publication->feature_image_url,
                 ];
             });
 
-        return response()->json(['results' => $publications]);
+        return response()->json(['results' => $languages]);
     }
 
     /**
-     * Get featured publications.
+     * Get featured languages.
      */
     public function featured()
     {
-        $featuredPublications = Publication::active()->publication()->ordered()->limit(8)->get();
+        $featuredLanguages = Publication::active()->language()->ordered()->limit(8)->get();
 
         return response()->json([
-            'publications' => $featuredPublications->map(function ($publication) {
+            'languages' => $featuredLanguages->map(function ($publication) {
                 return [
                     'id' => $publication->id,
                     'title' => $publication->title,
                     'slug' => $publication->slug,
                     'excerpt' => $publication->excerpt,
-                    'url' => route('publication.show', $publication->slug),
+                    'url' => route('language.show', $publication->slug),
                     'image' => $publication->feature_image_url,
                     'created_at' => $publication->created_at->format('M d, Y'),
                 ];
@@ -114,15 +115,19 @@ class PublicationController extends Controller
     }
 
     /**
-     * Get publication statistics.
+     * Get language statistics.
      */
     public function stats()
     {
         $stats = [
-            'total_publications' => Publication::count(),
-            'active_publications' => Publication::active()->count(),
-            'total_faqs' => \App\Models\FAQ::count(),
-            'total_table_of_contents' => \App\Models\TableOfContent::count(),
+            'total_languages' => Publication::language()->count(),
+            'active_languages' => Publication::active()->language()->count(),
+            'total_faqs' => \App\Models\FAQ::whereHas('publication', function ($q) {
+                $q->language();
+            })->count(),
+            'total_table_of_contents' => \App\Models\TableOfContent::whereHas('publication', function ($q) {
+                $q->language();
+            })->count(),
         ];
 
         return response()->json($stats);

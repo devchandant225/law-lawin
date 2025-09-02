@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+    <x-meta-tags />
+@endsection
+
 @section('content')
     {{-- Banner Component --}}
     <x-banner :sliders="$sliders" />

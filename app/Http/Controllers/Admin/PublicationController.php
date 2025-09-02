@@ -24,6 +24,11 @@ class PublicationController extends Controller
             $query->where('status', $request->status);
         }
 
+        // Filter by post type
+        if ($request->filled('post_type')) {
+            $query->where('post_type', $request->post_type);
+        }
+
         // Search functionality
         if ($request->filled('search')) {
             $query->where(function($q) use ($request) {

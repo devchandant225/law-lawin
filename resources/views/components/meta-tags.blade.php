@@ -13,17 +13,65 @@
 ])
 
 @php
-    // Set defaults
-    $metaTitle = $title ?? ($post->title ?? config('app.name'));
-    $metaDescription = $description ?? ($post->excerpt ?? $post->meta_description ?? 'Professional legal services and expertise');
-    $metaKeywords = $keywords ?? ($post->meta_keywords ?? 'legal services, law firm, professional legal advice');
-    $metaImage = $image ?? ($post->feature_image_url ?? asset('images/default-og-image.jpg'));
+    // Determine page type from current URL
+    $currentPath = request()->path();
+    $pageType = null;
+    
+    // Map URL patterns to page types
+    $urlToPageTypeMap = [
+        '' => 'home',
+        '/' => 'home',
+        'about' => 'about',
+        'about/introduction' => 'about',
+        'about/executive-committee' => 'about',
+        'service' => 'service',
+        'services' => 'services',
+        'publication' => 'publication',
+        'more-publication' => 'more-publication',
+        'practice' => 'practice',
+        'practices' => 'practices',
+        'language' => 'language',
+        'languages' => 'languages',
+        'service-location' => 'service-location',
+        'service-locations' => 'service-locations',
+        'calculator' => 'calculator',
+        'privacy' => 'privacy',
+        'terms-condition' => 'terms-condition',
+        'team' => 'team',
+        'contact' => 'contact',
+        'portfolios' => 'portfolios',
+        'help-desk' => 'help-desk',
+        'help-desk/nrn-legal' => 'help-desk',
+        'help-desk/fdi-legal' => 'help-desk'
+    ];
+    
+    // Find page type by checking URL patterns
+    foreach ($urlToPageTypeMap as $pattern => $type) {
+        if ($currentPath === $pattern || (strpos($currentPath, $pattern) === 0 && $pattern !== '')) {
+            $pageType = $type;
+            break;
+        }
+    }
+    
+    // If we have a page type, try to fetch meta tags from database
+    $dbMetaTag = null;
+    if ($pageType) {
+        $dbMetaTag = \App\Models\MetaTag::getByPageType($pageType);
+    }
+    
+    // Set meta values with priority: props > database > post > defaults
+    $metaTitle = $title ?? ($dbMetaTag->title ?? ($post->title ?? config('app.name')));
+    $metaDescription = $description ?? ($dbMetaTag->desc ?? ($post->excerpt ?? $post->meta_description ?? 'Professional legal services and expertise'));
+    $metaKeywords = $keywords ?? ($dbMetaTag->keyword ?? ($post->meta_keywords ?? 'legal services, law firm, professional legal advice'));
+    $metaImage = $image ?? ($dbMetaTag && $dbMetaTag->image ? \Storage::url($dbMetaTag->image) : ($post->feature_image_url ?? asset('images/default-og-image.jpg')));
     $metaUrl = $url ?? request()->url();
     
     // Generate Schema.org structured data
     $schemaData = null;
     if ($customSchema) {
         $schemaData = $customSchema;
+    } elseif ($dbMetaTag && $dbMetaTag->schema_json_ld) {
+        $schemaData = json_encode($dbMetaTag->schema_json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     } elseif ($post && $post->google_schema_json) {
         $schemaData = $post->google_schema_json;
     } elseif ($schema) {

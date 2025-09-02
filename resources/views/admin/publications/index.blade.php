@@ -6,11 +6,35 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 	<div>
 		<div class="flex items-center justify-between mb-6">
-			<h1 class="text-2xl font-bold text-gray-900">Publications Management</h1>
-			<a href="{{ route('admin.publications.create') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white hover:bg-purple-700 focus:ring-2 focus:ring-primary transition-colors">
-				<i class="fas fa-plus"></i>
-				<span>Create New Publication</span>
-			</a>
+			<div>
+				<h1 class="text-2xl font-bold text-gray-900">Publications Management</h1>
+				<p class="text-gray-600 mt-1">Manage both regular publications and more publications</p>
+			</div>
+			<div class="flex items-center gap-2">
+				<a href="{{ route('admin.publications.create') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white hover:bg-purple-700 focus:ring-2 focus:ring-primary transition-colors">
+					<i class="fas fa-plus"></i>
+					<span>Create New Publication</span>
+				</a>
+				<!-- Quick Links for Post Types -->
+				<div class="flex items-center gap-2 ml-4 border-l border-gray-300 pl-4">
+					<a href="{{ route('admin.publications.index', ['post_type' => 'publication']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'publication' ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100' }}">
+						<i class="fas fa-file-alt"></i>
+						<span>Publications ({{ \App\Models\Publication::publication()->count() }})</span>
+					</a>
+					<a href="{{ route('admin.publications.index', ['post_type' => 'more-publication']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'more-publication' ? 'bg-purple-100 text-purple-800' : 'text-gray-600 hover:bg-gray-100' }}">
+						<i class="fas fa-plus-circle"></i>
+						<span>More Publications ({{ \App\Models\Publication::morePublication()->count() }})</span>
+					</a>
+					<a href="{{ route('admin.publications.index', ['post_type' => 'service-location']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'service-location' ? 'bg-green-100 text-green-800' : 'text-gray-600 hover:bg-gray-100' }}">
+						<i class="fas fa-map-marker-alt"></i>
+						<span>Service Locations ({{ \App\Models\Publication::serviceLocation()->count() }})</span>
+					</a>
+					<a href="{{ route('admin.publications.index', ['post_type' => 'language']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'language' ? 'bg-orange-100 text-orange-800' : 'text-gray-600 hover:bg-gray-100' }}">
+						<i class="fas fa-language"></i>
+						<span>Languages ({{ \App\Models\Publication::language()->count() }})</span>
+					</a>
+				</div>
+			</div>
 		</div>
 
 		@if(session('success'))
@@ -23,7 +47,7 @@
 		<!-- Filters -->
 		<div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
 			<div class="p-4">
-				<form method="GET" action="{{ route('admin.publications.index') }}" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+				<form method="GET" action="{{ route('admin.publications.index') }}" class="grid grid-cols-1 md:grid-cols-4 gap-4">
 					<div>
 						<label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search</label>
 						<input type="text" id="search" name="search" value="{{ request('search') }}" placeholder="Search publications..."
@@ -36,6 +60,16 @@
 							<option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
 							<option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
 							<option value="draft" {{ request('status') == 'draft' ? 'selected' : '' }}>Draft</option>
+						</select>
+					</div>
+					<div>
+						<label for="post_type" class="block text-sm font-medium text-gray-700 mb-1">Post Type</label>
+						<select id="post_type" name="post_type" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary">
+							<option value="">All Types</option>
+							<option value="publication" {{ request('post_type') == 'publication' ? 'selected' : '' }}>Publication</option>
+							<option value="more-publication" {{ request('post_type') == 'more-publication' ? 'selected' : '' }}>More Publication</option>
+							<option value="service-location" {{ request('post_type') == 'service-location' ? 'selected' : '' }}>Service Location</option>
+							<option value="language" {{ request('post_type') == 'language' ? 'selected' : '' }}>Language</option>
 						</select>
 					</div>
 					<div class="flex items-end gap-2">
@@ -57,6 +91,7 @@
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-16">Image</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-20">Order</th>
+									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">Post Type</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">Status</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">Created</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-40">Actions</th>
@@ -82,6 +117,17 @@
 										</td>
 										<td class="px-4 py-3">
 											<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-800">{{ $publication->orderlist }}</span>
+										</td>
+										<td class="px-4 py-3">
+											@php
+												$postTypeBadgeClasses = [
+													'publication' => 'bg-blue-100 text-blue-800',
+													'more-publication' => 'bg-purple-100 text-purple-800',
+													'service-location' => 'bg-green-100 text-green-800',
+													'language' => 'bg-orange-100 text-orange-800'
+												][$publication->post_type] ?? 'bg-gray-100 text-gray-800';
+											@endphp
+											<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs {{ $postTypeBadgeClasses }}">{{ ucfirst(str_replace('-', ' ', $publication->post_type)) }}</span>
 										</td>
 										<td class="px-4 py-3">
 											@php
@@ -111,6 +157,21 @@
 												<a href="{{ route('admin.publications.teams.create', $publication) }}" title="Manage Team Members" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-orange-300 text-orange-600 hover:bg-orange-50">
 													<i class="fas fa-users"></i>
 												</a>
+												@if($publication->status === 'active')
+													@php
+														$liveUrls = [
+															'publication' => '/publication/' . $publication->slug,
+															'more-publication' => '/more-publication/' . $publication->slug,
+															'service-location' => '/service-location/' . $publication->slug,
+															'language' => '/language/' . $publication->slug
+														];
+														$liveUrl = $liveUrls[$publication->post_type] ?? '/publication/' . $publication->slug;
+														$liveTitle = 'View Live ' . ucfirst(str_replace('-', ' ', $publication->post_type));
+													@endphp
+													<a href="{{ url($liveUrl) }}" title="{{ $liveTitle }}" target="_blank" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-emerald-300 text-emerald-600 hover:bg-emerald-50">
+														<i class="fas fa-external-link-alt"></i>
+													</a>
+												@endif
 												<button type="button" title="Delete" onclick="confirmDelete('{{ $publication->id }}', '{{ $publication->title }}')" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-red-300 text-red-600 hover:bg-red-50">
 													<i class="fas fa-trash"></i>
 												</button>

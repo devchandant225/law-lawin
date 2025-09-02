@@ -30,6 +30,7 @@ class PublicationRequest extends FormRequest
             'metadescription' => 'nullable|string|max:500',
             'metakeywords' => 'nullable|string|max:1000',
             'status' => 'required|in:active,inactive,draft',
+            'post_type' => 'required|in:publication,more-publication,service-location,language',
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'google_schema' => 'nullable|string',
@@ -59,6 +60,8 @@ class PublicationRequest extends FormRequest
             'slug.unique' => 'This slug is already taken. Please choose a different one.',
             'status.required' => 'Please select a status for the publication.',
             'status.in' => 'The selected status is invalid.',
+            'post_type.required' => 'Please select a post type for the publication.',
+            'post_type.in' => 'The selected post type is invalid.',
             'orderlist.integer' => 'The order list must be a number.',
             'orderlist.min' => 'The order list must be at least 0.',
             'orderlist.max' => 'The order list may not be greater than 9999.',
@@ -84,6 +87,7 @@ class PublicationRequest extends FormRequest
             'feature_image' => 'feature image',
             'google_schema' => 'Google Schema',
             'orderlist' => 'order list',
+            'post_type' => 'post type',
         ];
     }
 

@@ -3,20 +3,20 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leading Law Firm in Nepal | Lawin and Partners</title>
+    
+    {{-- Dynamic Meta Tags Component --}}
+    <x-meta-tags :post="$post ?? null" />
+    
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description"
-        content="ProCounsel an ideal solution for all types of law firm and legal businesses. It is a professional and modern looking law HTML Template specially designed for lawyers, attorney, legal advisor, counsel, law firm, consulting business, legal office services and all other law related businesses & websites." />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
+    
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/animate/animate.min.css') }}" />
@@ -39,11 +39,6 @@
 
     @hasSection('head')
         @yield('head')
-    @else
-        <title>{{ $title ?? config('app.name', 'Professional Organization') }}</title>
-        <meta name="description"
-            content="Professional legal organization providing expert legal services and representation.">
-        <meta name="keywords" content="legal services, law firm, professional legal advice">
     @endif
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -146,6 +141,48 @@
         <span class="scroll-to-top__text">back top</span>
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
     </a>
+    
+    <!-- Scripts -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="{{ asset('assets/vendors/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jarallax/jarallax.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-ui/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-appear/jquery.appear.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-validate/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/nouislider/nouislider.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/tiny-slider/tiny-slider.js') }}"></script>
+    <script src="{{ asset('assets/vendors/wnumb/wNumb.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/owl-carousel/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/wow/wow.js') }}"></script>
+    <script src="{{ asset('assets/vendors/imagesloaded/imagesloaded.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/isotope/isotope.js') }}"></script>
+    <script src="{{ asset('assets/vendors/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/tilt/tilt.jquery.js') }}"></script>
+    <script src="{{ asset('assets/vendors/countdown/countdown.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-circleType/jquery.circleType.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jquery-lettering/jquery.lettering.min.js') }}"></script>
+
+    <!-- gsap js -->
+    <script src="{{ asset('assets/vendors/gsap/gsap.js') }}"></script>
+    <script src="{{ asset('assets/vendors/gsap/scrolltrigger.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/gsap/splittext.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/gsap/procounsel-split.js') }}"></script>
+
+    <!-- template js -->
+    <script src="{{ asset('assets/js/procounsel.js') }}"></script>
+    
+    <!-- Livewire Scripts -->
+    @livewireScripts
+    
+    @stack('scripts')
+    
+    {{-- Floating Contact Component --}}
+    @include('layouts.partials.floating-contact')
     <script src="{{ asset('assets/vendors/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/bootstrap-select/bootstrap-select.min.js') }}"></script>

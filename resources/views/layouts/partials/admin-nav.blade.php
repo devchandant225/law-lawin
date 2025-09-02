@@ -157,6 +157,22 @@
     @endif
 </a>
 
+{{-- Meta Tags Management --}}
+<a href="{{ route('admin.meta-tags.index') }}"
+    class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.meta-tags.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">
+    <svg class="icon mr-3 h-5 w-5 {{ request()->routeIs('admin.meta-tags.*') ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900' }}"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.78 12.45,22 13,22C13.55,22 14.05,21.78 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.45 21.78,11.95 21.41,11.58Z" />
+    </svg>
+    <span class="hide-when-collapsed">Meta Tags</span>
+    @if (request()->routeIs('admin.meta-tags.*'))
+        <div class="ml-auto hide-when-collapsed">
+            <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+        </div>
+    @endif
+</a>
+
 
 
 {{-- Sliders Management --}}

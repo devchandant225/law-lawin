@@ -48,10 +48,17 @@
                                         'inactive' => 'bg-red-100 text-red-800',
                                         'draft' => 'bg-yellow-100 text-yellow-800'
                                     ][$publication->status] ?? 'bg-gray-100 text-gray-800';
+                                    
+                                    $postTypeClasses = [
+                                        'publication' => 'bg-blue-100 text-blue-800',
+                                        'more-publication' => 'bg-purple-100 text-purple-800'
+                                    ][$publication->post_type] ?? 'bg-gray-100 text-gray-800';
                                 @endphp
                                 <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs {{ $statusClasses }}">{{ ucfirst($publication->status) }}</span>
                                 <br>
-                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800 mt-2">Order: {{ $publication->orderlist }}</span>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs {{ $postTypeClasses }} mt-2">{{ ucfirst(str_replace('-', ' ', $publication->post_type)) }}</span>
+                                <br>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-800 mt-2">Order: {{ $publication->orderlist }}</span>
                             </div>
                         </div>
 
@@ -143,10 +150,17 @@
                                 <span>Edit Publication</span>
                             </a>
                             @if($publication->status === 'active')
-                                <a href="{{ url('/publications/' . $publication->slug) }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700" target="_blank">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>View Live Publication</span>
-                                </a>
+                                @if($publication->post_type === 'publication')
+                                    <a href="{{ url('/publication/' . $publication->slug) }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>View Live Publication</span>
+                                    </a>
+                                @else
+                                    <a href="{{ url('/more-publication/' . $publication->slug) }}" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        <span>View Live More Publication</span>
+                                    </a>
+                                @endif
                             @endif
                             <button type="button" onclick="confirmDelete()" class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-red-300 text-red-600 hover:bg-red-50">
                                 <i class="fas fa-trash"></i>

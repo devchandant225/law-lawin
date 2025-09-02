@@ -14,6 +14,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\PublicationController as PublicPublicationController;
+use App\Http\Controllers\MorePublicationController;
+use App\Http\Controllers\ServiceLocationController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TeamController as PublicTeamController;
 use App\Http\Controllers\PortfolioController as PublicPortfolioController;
 use App\Http\Controllers\HelpDeskController;
@@ -24,6 +27,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\PublicationController as AdminPublicationController;
+use App\Http\Controllers\Admin\MorePublicationController as AdminMorePublicationController;
 use App\Http\Controllers\Admin\FAQController as AdminFAQController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\TeamController;
@@ -32,6 +36,7 @@ use App\Http\Controllers\Admin\AboutUsContentSectionController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PublicationTeamController;
+use App\Http\Controllers\Admin\MetaTagController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\PageController as PublicPageController;
 
@@ -97,6 +102,27 @@ Route::get('/publication/search', [PublicPublicationController::class, 'search']
 Route::get('/publication/featured', [PublicPublicationController::class, 'featured'])->name('publications.featured');
 Route::get('/publication/stats', [PublicPublicationController::class, 'stats'])->name('publications.stats');
 Route::get('/publication/{slug}', [PublicPublicationController::class, 'show'])->name('publication.show');
+
+// More Publications
+Route::get('/more-publication', [MorePublicationController::class, 'index'])->name('more-publications.index');
+Route::get('/more-publications/search', [MorePublicationController::class, 'search'])->name('more-publications.search');
+Route::get('/more-publications/featured', [MorePublicationController::class, 'featured'])->name('more-publications.featured');
+Route::get('/more-publications/stats', [MorePublicationController::class, 'stats'])->name('more-publications.stats');
+Route::get('/more-publication/{slug}', [MorePublicationController::class, 'show'])->name('more-publication.show');
+
+// Service Locations
+Route::get('/service-locations', [ServiceLocationController::class, 'index'])->name('service-locations.index');
+Route::get('/service-locations/search', [ServiceLocationController::class, 'search'])->name('service-locations.search');
+Route::get('/service-locations/featured', [ServiceLocationController::class, 'featured'])->name('service-locations.featured');
+Route::get('/service-locations/stats', [ServiceLocationController::class, 'stats'])->name('service-locations.stats');
+Route::get('/service-location/{slug}', [ServiceLocationController::class, 'show'])->name('service-locations.show');
+
+// Languages
+Route::get('/languages', [LanguageController::class, 'index'])->name('languages.index');
+Route::get('/languages/search', [LanguageController::class, 'search'])->name('languages.search');
+Route::get('/languages/featured', [LanguageController::class, 'featured'])->name('languages.featured');
+Route::get('/languages/stats', [LanguageController::class, 'stats'])->name('languages.stats');
+Route::get('/language/{slug}', [LanguageController::class, 'show'])->name('languages.show');
 
 // Team
 Route::get('/team', [PublicTeamController::class, 'index'])->name('team.index');
@@ -224,6 +250,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // Pages Management
     Route::resource('pages', AdminPageController::class);
     Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
+    
+    // Meta Tags Management
+    Route::resource('meta-tags', MetaTagController::class);
+    Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
     
     // Image Upload for CKEditor
     Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');

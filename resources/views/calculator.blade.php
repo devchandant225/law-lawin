@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Court Fee Calculator')
+@section('head')
+    <x-meta-tags />
+@endsection
 
 @section('content')
     <x-page-banner 

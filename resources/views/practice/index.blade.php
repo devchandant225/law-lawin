@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Practice Areas - ' . config('app.name'))
-@section('description', 'Explore our comprehensive practice areas and legal expertise. Our experienced team provides specialized legal services across various areas of law.')
+@section('head')
+    <x-meta-tags />
+@endsection
 
 @section('content')
     {{-- Page Banner --}}

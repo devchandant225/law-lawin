@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+    <x-meta-tags />
+@endsection
+
 @section('content')
     <x-page-banner title="Contact Us"
         subtitle="Get in touch with our expert legal team for professional consultation and assistance." :breadcrumbs="[['label' => 'Home', 'url' => route('home')], ['label' => 'Contact Us']]"

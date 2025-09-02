@@ -1,16 +1,20 @@
-<section class="contact-two pt-120 pb-120">
+<section class="contact-two pt-120 pb-120" style="
+    background: var(--light-bg);
+    background-image: linear-gradient(135deg, var(--light-bg) 0%, rgba(111, 100, 211, 0.1) 100%);
+">
     <div class="container">
         <div class="row">
             <!-- Left Column - Contact Information -->
             <div class="col-lg-6">
                 <div class="contact-info-card" style="
-                    background: linear-gradient(135deg, #5a6c7d 0%, #4a5568 50%, #2d3748 100%);
-                    border-radius: 15px;
+                    background: linear-gradient(135deg, var(--procounsel-base) 0%, rgba(111, 100, 211, 0.9) 50%, var(--procounsel-primary) 100%);
+                    border-radius: 20px;
                     padding: 60px 40px;
                     height: 100%;
                     color: white;
                     position: relative;
                     overflow: hidden;
+                    box-shadow: 0 15px 50px rgba(111, 100, 211, 0.2);
                 ">
                     <!-- Background Pattern -->
                     <div style="
@@ -229,15 +233,17 @@
             <!-- Right Column - Contact Form -->
             <div class="col-lg-6">
                 <div class="contact-form-card" style="
-                    background: white;
-                    border-radius: 15px;
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(15px);
+                    border-radius: 20px;
                     padding: 40px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 15px 50px rgba(111, 100, 211, 0.15);
                     height: 100%;
+                    border: 1px solid rgba(111, 100, 211, 0.1);
                 ">
                     <div class="form-header mb-4">
                         <h3 style="
-                            color: #6b7280;
+                            color: var(--procounsel-base);
                             font-size: 14px;
                             font-weight: 600;
                             text-transform: uppercase;
@@ -302,8 +308,8 @@
                                     background: #f9fafb;
                                     transition: all 0.3s ease;
                                 "
-                                onfocus="this.style.borderColor='#3b82f6'; this.style.background='white';"
-                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb';"
+                                onfocus="this.style.borderColor='var(--procounsel-base)'; this.style.background='white'; this.style.boxShadow='0 0 0 0.2rem rgba(111, 100, 211, 0.15)';"
+                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb'; this.style.boxShadow='none';"
                             >
                             @error('name')
                                 <span class="text-danger" style="font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span>
@@ -337,8 +343,8 @@
                                     background: #f9fafb;
                                     transition: all 0.3s ease;
                                 "
-                                onfocus="this.style.borderColor='#3b82f6'; this.style.background='white';"
-                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb';"
+                                onfocus="this.style.borderColor='var(--procounsel-base)'; this.style.background='white'; this.style.boxShadow='0 0 0 0.2rem rgba(111, 100, 211, 0.15)';"
+                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb'; this.style.boxShadow='none';"
                             >
                             @error('email')
                                 <span class="text-danger" style="font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span>
@@ -371,8 +377,8 @@
                                     background: #f9fafb;
                                     transition: all 0.3s ease;
                                 "
-                                onfocus="this.style.borderColor='#3b82f6'; this.style.background='white';"
-                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb';"
+                                onfocus="this.style.borderColor='var(--procounsel-base)'; this.style.background='white'; this.style.boxShadow='0 0 0 0.2rem rgba(111, 100, 211, 0.15)';"
+                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb'; this.style.boxShadow='none';"
                             >
                             @error('phone')
                                 <span class="text-danger" style="font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span>
@@ -405,8 +411,8 @@
                                     background: #f9fafb;
                                     transition: all 0.3s ease;
                                 "
-                                onfocus="this.style.borderColor='#3b82f6'; this.style.background='white';"
-                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb';"
+                                onfocus="this.style.borderColor='var(--procounsel-base)'; this.style.background='white'; this.style.boxShadow='0 0 0 0.2rem rgba(111, 100, 211, 0.15)';"
+                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb'; this.style.boxShadow='none';"
                             >
                             @error('subject')
                                 <span class="text-danger" style="font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span>
@@ -440,8 +446,8 @@
                                     resize: vertical;
                                     font-family: inherit;
                                 "
-                                onfocus="this.style.borderColor='#3b82f6'; this.style.background='white';"
-                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb';"
+                                onfocus="this.style.borderColor='var(--procounsel-base)'; this.style.background='white'; this.style.boxShadow='0 0 0 0.2rem rgba(111, 100, 211, 0.15)';"
+                                onblur="this.style.borderColor='#d1d5db'; this.style.background='#f9fafb'; this.style.boxShadow='none';"
                             >{{ old('message') }}</textarea>
                             @error('message')
                                 <span class="text-danger" style="font-size: 12px; margin-top: 4px; display: block;">{{ $message }}</span>
@@ -461,19 +467,22 @@
                         <!-- Submit Button -->
                         <div class="form-group">
                             <button type="submit" style="
-                                background: linear-gradient(135deg, #4f6378 0%, #3c4d5e 100%);
+                                background: linear-gradient(135deg, var(--procounsel-base) 0%, var(--procounsel-primary) 100%);
                                 color: white;
                                 border: none;
-                                border-radius: 8px;
-                                padding: 14px 30px;
+                                border-radius: 12px;
+                                padding: 16px 32px;
                                 font-size: 16px;
                                 font-weight: 600;
                                 cursor: pointer;
                                 transition: all 0.3s ease;
                                 width: auto;
-                                min-width: 120px;
-                            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                                submit
+                                min-width: 140px;
+                                text-transform: uppercase;
+                                letter-spacing: 0.5px;
+                                box-shadow: 0 4px 15px rgba(111, 100, 211, 0.3);
+                            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(111, 100, 211, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(111, 100, 211, 0.3)';">
+                                Submit Form
                             </button>
                         </div>
                     </form>

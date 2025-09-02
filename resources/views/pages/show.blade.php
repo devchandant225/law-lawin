@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('head')
-    <title>{{ $page->metatitle ?: $page->title }}</title>
-    <meta name="description" content="{{ $page->metadescription ?: $page->excerpt }}">
-    @if($page->metakeywords)
-        <meta name="keywords" content="{{ $page->metakeywords }}">
-    @endif
-    
-    @if($page->json_ld_schema)
-        <script type="application/ld+json">{!! $page->json_ld_schema_formatted !!}</script>
-    @endif
+    <x-meta-tags 
+        :title="$page->metatitle ?: $page->title"
+        :description="$page->metadescription ?: $page->excerpt" 
+        :keywords="$page->metakeywords"
+        :image="$page->feature_image_url"
+        :customSchema="$page->json_ld_schema ? $page->json_ld_schema_formatted : null"
+        :post="$page"
+    />
 @endsection
 
 @section('content')

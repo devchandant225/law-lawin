@@ -17,6 +17,7 @@ class Publication extends Model
         'description',
         'excerpt',
         'status',
+        'post_type',
         'orderlist',
         'metatitle',
         'metadescription',
@@ -27,6 +28,7 @@ class Publication extends Model
     protected $casts = [
         'google_schema' => 'array',
         'orderlist' => 'integer',
+        'post_type' => 'string',
     ];
 
     /**
@@ -71,6 +73,46 @@ class Publication extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('orderlist', 'asc')->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Scope a query to only include publications of type 'publication'.
+     */
+    public function scopePublication($query)
+    {
+        return $query->where('post_type', 'publication');
+    }
+
+    /**
+     * Scope a query to only include publications of type 'more-publication'.
+     */
+    public function scopeMorePublication($query)
+    {
+        return $query->where('post_type', 'more-publication');
+    }
+
+    /**
+     * Scope a query to only include publications of type 'service-location'.
+     */
+    public function scopeServiceLocation($query)
+    {
+        return $query->where('post_type', 'service-location');
+    }
+
+    /**
+     * Scope a query to only include publications of type 'language'.
+     */
+    public function scopeLanguage($query)
+    {
+        return $query->where('post_type', 'language');
+    }
+
+    /**
+     * Scope a query to filter by post type.
+     */
+    public function scopeByPostType($query, $postType)
+    {
+        return $query->where('post_type', $postType);
     }
 
     /**

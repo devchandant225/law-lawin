@@ -63,9 +63,6 @@
                     </div>
                 </div><!-- /.col-lg-7 -->
             </div><!-- /.row -->
-            @if ($intro_home->desc_2)
-                <p>{!! $intro_home->desc_2 !!}</p>
-            @endif
         </div><!-- /.container -->
     </section><!-- /.about-one -->
     <section class="logos-why-choose">
@@ -99,7 +96,7 @@
                             </div><!-- /.sec-title__tagline -->
 
                             <h3 class="sec-title__title bw-split-in-up">Why You Should Choose
-                                <br><span>Lawin & Partners</span>
+                                <br><span>Furu</span>
                             </h3><!-- /.sec-title__title -->
                         </div><!-- /.sec-title -->
                         <div class="logos-why-choose__benefits__content">
@@ -109,61 +106,66 @@
                                 <div class="col-lg-4">
                                     <div class="logos-why-choose__benefits-box">
                                         <h2 class="logos-why-choose__benefits-box__count"></h2>
-                                        <h4 class="logos-why-choose__benefits-box__title">Experienced Lawyers:</h4>
+                                        <h4 class="logos-why-choose__benefits-box__title">Experienced Counselors</h4>
                                         <p class="logos-why-choose__benefits-box__text">
-                                            A team of top-tier legal professionals with expertise in diverse legal
-                                            fields.
+                                            A dedicated team of professionals with years of expertise in education
+                                            consulting and career guidance.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="logos-why-choose__benefits-box">
                                         <h2 class="logos-why-choose__benefits-box__count"></h2>
-                                        <h4 class="logos-why-choose__benefits-box__title">Client-Focused Approach:</h4>
+                                        <h4 class="logos-why-choose__benefits-box__title">Student-Centered Approach</h4>
                                         <p class="logos-why-choose__benefits-box__text">
-                                            Personalized strategies designed to meet your unique needs.
+                                            Personalized counseling tailored to match each student’s dreams and academic
+                                            goals.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="logos-why-choose__benefits-box">
                                         <h2 class="logos-why-choose__benefits-box__count"></h2>
-                                        <h4 class="logos-why-choose__benefits-box__title">Result-Oriented Services:</h4>
+                                        <h4 class="logos-why-choose__benefits-box__title">Trusted Global Network</h4>
                                         <p class="logos-why-choose__benefits-box__text">
-                                            A commitment to achieving the best possible outcomes.
+                                            Strong partnerships with top universities and colleges worldwide for better
+                                            opportunities.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="logos-why-choose__benefits-box">
                                         <h2 class="logos-why-choose__benefits-box__count"></h2>
-                                        <h4 class="logos-why-choose__benefits-box__title">Comprehensive Expertise</h4>
+                                        <h4 class="logos-why-choose__benefits-box__title">Comprehensive Guidance</h4>
                                         <p class="logos-why-choose__benefits-box__text">
-                                            Specialized knowledge across Criminal, Family, Corporate, and Commercial
-                                            laws.
+                                            From test preparation to visa processing, we provide complete end-to-end
+                                            support.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="logos-why-choose__benefits-box">
                                         <h2 class="logos-why-choose__benefits-box__count"></h2>
-                                        <h4 class="logos-why-choose__benefits-box__title">Reputation for Excellence</h4>
+                                        <h4 class="logos-why-choose__benefits-box__title">Proven Success Record</h4>
                                         <p class="logos-why-choose__benefits-box__text">
-                                            Recognized as one of the best law firms in Nepal.
+                                            Hundreds of students placed successfully in their dream universities across
+                                            the globe.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="logos-why-choose__benefits-box">
                                         <h2 class="logos-why-choose__benefits-box__count"></h2>
-                                        <h4 class="logos-why-choose__benefits-box__title">Commitment to Integrity: </h4>
+                                        <h4 class="logos-why-choose__benefits-box__title">Commitment to Integrity</h4>
                                         <p class="logos-why-choose__benefits-box__text">
-                                            Transparent and ethical practices in all our dealings
+                                            Honest advice, transparent processes, and ethical guidance at every step of
+                                            your journey.
                                         </p>
                                     </div>
                                 </div>
                             </div><!-- /.row -->
                         </div>
+
                     </div>
                 </div>
             </div>

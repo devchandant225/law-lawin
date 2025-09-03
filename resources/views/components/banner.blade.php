@@ -43,3 +43,35 @@
               @endforeach
           </div>
       </section>
+      <section class="feature-one">
+          <div class="container">
+              <div class="feature-one__inner">
+                  <div class="row gutter-y-0">
+                      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="00ms">
+                          <div class="feature-one__item ">
+                              <div class="feature-one__item__icon">
+                                  <i class="icon-calendar"></i>
+                              </div>
+                              <h3 class="feature-one__item__title">Book Your <br> Counseling Session</h3>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="00ms">
+                          <div class="feature-one__item feature-one__item--border-left justify-content-center">
+                              <div class="feature-one__item__icon">
+                                  <i class="icon-payment"></i>
+                              </div>
+                              <h3 class="feature-one__item__title">Get Free <br> Expert Guidance</h3>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="00ms">
+                          <div class="feature-one__item feature-one__item--border-left justify-content-end">
+                              <div class="feature-one__item__icon">
+                                  <i class="icon-advice"></i>
+                              </div>
+                              <h3 class="feature-one__item__title">Trusted Study <br> Abroad Partner</h3>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>

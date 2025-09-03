@@ -99,23 +99,24 @@
                     <div class="footer-widget footer-widget--links">
                         <h2 class="footer-widget__title">Quick Links</h2><!-- /.footer-widget__title -->
                         <ul class="list-unstyled footer-widget__links">
-                            <li><a href="/about/introduction">About Us</a></li>
-                            <li><a href="{{ route('team.index') }}">Our Team</a></li>
-                            <li><a href="{{ route('services.index') }}">Services</a></li>
-                            <li><a href="{{ route('practices.index') }}">Practice Areas</a></li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
                         </ul><!-- /.list-unstyled footer-widget__links -->
                     </div><!-- /.footer-widget -->
                 </div><!-- /.col-md-6 -->
                 <div class="col-md-6 col-xl-2 wow fadeInUp" data-wow-delay="200ms">
                     <div class="footer-widget footer-widget--links">
-                        <h2 class="footer-widget__title">Legal Help</h2><!-- /.footer-widget__title -->
+                        <h2 class="footer-widget__title">Study Programs</h2><!-- /.footer-widget__title -->
                         <ul class="list-unstyled footer-widget__links">
-                            <li><a href="{{ route('publications.index') }}">Publications</a></li>
-                            <li><a href="{{ route('posts.by-type', 'news') }}">Latest News</a></li>
-                            <li><a href="{{ route('help-desk.nrn-legal') }}">NRN Legal Help</a></li>
-                            <li><a href="{{ route('help-desk.fdi-legal') }}">FDI Legal Help</a></li>
-                            <li><a href="{{ route('portfolios.index') }}">Portfolio</a></li>
+                            <li><a href="#">Australia</a></li>
+                            <li><a href="#">USA</a></li>
+                            <li><a href="#">United Kingdom</a></li>
+                            <li><a href="#">Japan</a></li>
+                            <li><a href="#">Learning Center</a></li>
                         </ul><!-- /.list-unstyled footer-widget__links -->
                     </div><!-- /.footer-widget -->
                 </div><!-- /.col-md-6 -->

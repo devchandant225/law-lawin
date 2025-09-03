@@ -30,13 +30,8 @@
 
                            <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3>
                            <!-- /.sec-title__title -->
-                           <p class="mt-2">Feel free to drop your queries in the Contact Form. Your queries will be
-                               delivered in our email box and our lawyers will get back to you through our email. We
-                               would also like to request you to drop your whatsapp or viber number in phone section so
-                               that we can directly call to address your queries if required</p>
-                           <p>We always focus on our client’s expectation, needs, practical commitments in solving their
-                               legal problems. Our professional lawyers does toughest defense with proven results with
-                               leading voice for defenseless.</p>
+                           <p class="mt-2">Feel free to drop your queries in the Contact Form. Your message will be delivered to our team, and our counselors will get back to you through email. We also encourage you to provide your WhatsApp or Viber number in the phone section so we can connect with you directly for faster assistance.</p>
+                           <p>At Furusato Education Consultancy, we always focus on students’ aspirations, needs, and future goals. Our experienced counselors provide honest guidance and dedicated support to help you achieve your dream of studying abroad with confidence.</p>
                        </div><!-- /.sec-title -->
                        <ul class="list-unstyled contact-two__info">
                            <div class="contact-two__info__shape"></div>

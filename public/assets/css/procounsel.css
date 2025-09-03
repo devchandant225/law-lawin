@@ -18,7 +18,7 @@
   --procounsel-heading-font: "Marcellus", serif;
   --procounsel-special-font: "Whisper", cursive;
   --procounsel-text: #838790;
-  --procounsel-text-rgb: 131, 135, 144;
+  --procounsel-text-rgb: 131, 135, 144;.about-one__inner
   --procounsel-text-dark: #fff;
   --procounsel-text-dark-rgb: 119, 130, 160;
   --procounsel-text-gray: #89868d;
@@ -16978,7 +16978,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 .about-one__inner {
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.1019607843);
-  padding: 39.5px 39px 38.5px 38px;
+  padding: 0 10px;
   background-color: var(--procounsel-white, #fff);
 }
 @media (max-width: 576px) {

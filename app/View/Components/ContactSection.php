@@ -42,7 +42,7 @@ class ContactSection extends Component
     ) {
         $this->sectionTitle = $sectionTitle ?? 'Feel Free to <br><span>Write Us Anytime</span>';
         $this->sectionSubtitle = $sectionSubtitle ?? 'Contact With Us';
-        $this->sectionDescription = $sectionDescription ?? 'Get in touch with our expert legal team for professional consultation and assistance.';
+        $this->sectionDescription = $sectionDescription ?? 'Reach Out for the Best Education Guidance';
         $this->showSocialLinks = $showSocialLinks;
         $this->formAction = $formAction ?? route('contact.submit');
         $this->showForm = $showForm;

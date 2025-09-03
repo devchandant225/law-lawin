@@ -43,7 +43,7 @@
                                     About Us
                                 </div><!-- /.sec-title__tagline -->
 
-                                <h3 class="sec-title__title bw-split-in-up">LEADING LAW <span>FIRM IN NEPAL</span></h3>
+                                <h3 class="sec-title__title bw-split-in-up">Leading Study Abroad <span>Consultancy in Nepal</span></h3>
                                 <!-- /.sec-title__title -->
                             </div><!-- /.sec-title -->
 

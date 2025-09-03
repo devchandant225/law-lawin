@@ -43,13 +43,14 @@
                                     About Us
                                 </div><!-- /.sec-title__tagline -->
 
-                                <h3 class="sec-title__title bw-split-in-up">Leading Study Abroad <span>Consultancy in Nepal</span></h3>
+                                <h3 class="sec-title__title bw-split-in-up">Leading Study Abroad <span>Consultancy in
+                                        Nepal</span></h3>
                                 <!-- /.sec-title__title -->
                             </div><!-- /.sec-title -->
 
-                            <p class="about-one__content__text">
-                                {!! $intro_home->desc_1 !!}
-                            </p>
+
+                            {!! $intro_home->desc_1 !!}
+
 
                             <div class="about-one__content__box">
                                 <div class="d-flex flex-column justify-content-between align-items-start">

@@ -3,6 +3,7 @@
         position: relative;
         min-height: 100%;
         background: var(--light-bg);
+        background-image: linear-gradient(135deg, var(--light-bg) 0%, rgba(111, 100, 211, 0.1) 100%);
     ">
         
         <div class="container" style="position: relative; z-index: 1; padding: 25px 0px;">
@@ -69,9 +70,9 @@
             </div>
 
             @if ($publications->isNotEmpty())
-                <div class="publication-grid" wire:loading.remove.delay>
+                <div class="row gutter-y-30" wire:loading.remove.delay>
                     @foreach ($publications as $index => $publication)
-                        <div class="publication-item wow fadeInUp" data-wow-delay="{{ ($index % 4) * 100 }}ms">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ ($index % 2) * 100 }}ms">
                             <div class="award-one__item">
                                 <div class="award-one__item__left">
                                     <h2 class="award-one__item__title">
@@ -122,34 +123,7 @@
             justify-content: center;
         }
         
-        /* Publication Grid Styles */
-        .publication-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 100%;
-        }
-        
-        /* Make all cards equal height */
-        .award-one__item {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
         /* Responsive adjustments */
-        @media (max-width: 1200px) {
-            .publication-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .publication-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
         @media (max-width: 768px) {
             .bg-section {
                 min-height: 80vh !important;
@@ -160,11 +134,7 @@
             }
         }
         
-        @media (max-width: 576px) {
-            .publication-grid {
-                grid-template-columns: 1fr;
-            }
-            
+        @media (max-width: 480px) {
             .bg-section {
                 min-height: 70vh !important;
             }
@@ -199,16 +169,12 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             border-radius: 25px;
-            padding: 16px 24px;
+            padding: 10px 24px 0 24px;
             border: 1px solid rgba(111, 100, 211, 0.2);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 10px 40px rgba(111, 100, 211, 0.1);
             position: relative;
             overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
         
         .award-one__item::before {
@@ -332,12 +298,12 @@
         }
         
         /* Search results animation */
-        .publication-grid {
+        .row.gutter-y-30 {
             transition: opacity 0.3s ease;
         }
         
         /* Smooth transitions for search results */
-        [wire\:loading] .publication-grid {
+        [wire\:loading] .row.gutter-y-30 {
             opacity: 0.5;
         }
         

@@ -1,5 +1,4 @@
-       <section class="service-four" id="services">
-            <div class="service-four__bg jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% -100%" style="background-image: url(assets/images/backgrounds/service-4-bg.jpg);"></div>
+       <section class="service-four" id="services" style="background: var(--light-bg); position: relative;">
             <div class="container">
                 <div class="sec-title text-left">
 
@@ -19,58 +18,38 @@
                     <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
                 </div><!-- /.sec-title -->
                 @if($practices->isNotEmpty())
-                <div class="service-four__carousel procounsel-owl__carousel procounsel-owl__carousel--basic-nav owl-carousel" data-owl-options='{
-                "items": 1,
-                "margin": 30,
-                "loop": false,
-                "smartSpeed": 700,
-                "nav": true,
-                "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
-                "dots": false,
-                "autoplay": false,
-                "responsive": {
-                    "0": {
-                        "items": 1
-                    },
-                    "768": {
-                        "items": 2
-                    },
-                    "992": {
-                        "items": 3
-                    }
-                }
-            }'>
+                <div class="practice-grid">
                     @foreach($practices as $index => $practice)
-                    <div class="item">
-                        <div class="service-four__item wow fadeInUp" data-wow-delay="{{ ($index % 3) * 100 }}ms">
-                            <div class="service-four__item__image">
-                                @if($practice->feature_image)
-                                    <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}">
-                                @else
-                                    <img src="{{ asset('assets/images/resources/service-4-1.jpg') }}" alt="{{ $practice->title }}">
-                                @endif
-                                <div class="service-four__item__icon">
-                                    @php
-                                        $practiceComponent = app('App\View\Components\PracticeSection');
-                                        $iconClass = $practiceComponent->getPracticeIcon($practice->title);
-                                    @endphp
-                                    <i class="{{ $iconClass }}"></i>
+                        <div class="practice-item wow fadeInUp" data-wow-delay="{{ ($index % 4) * 100 }}ms">
+                            <div class="service-four__item">
+                                <div class="service-four__item__image">
+                                    @if($practice->feature_image)
+                                        <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}">
+                                    @else
+                                        <img src="{{ asset('assets/images/resources/service-4-1.jpg') }}" alt="{{ $practice->title }}">
+                                    @endif
+                                    <div class="service-four__item__icon">
+                                        @php
+                                            $practiceComponent = app('App\View\Components\PracticeSection');
+                                            $iconClass = $practiceComponent->getPracticeIcon($practice->title);
+                                        @endphp
+                                        <i class="{{ $iconClass }}"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="service-four__item__content">
-                                <h3 class="service-four__item__title">
-                                    <a href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-four__item__text">
-                                    {{ $practice->excerpt ?? Str::limit(strip_tags($practice->description), 80) }}
-                                </p>
-                                <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn">
-                                    <i>More Details</i>
-                                    <span>More Details</span>
-                                </a>
-                            </div>
-                        </div><!-- /.service-card-two -->
-                    </div><!-- item -->
+                                <div class="service-four__item__content">
+                                    <h3 class="service-four__item__title">
+                                        <a href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>
+                                    </h3><!-- /.service-title -->
+                                    <p class="service-four__item__text">
+                                        {{ $practice->excerpt ?? Str::limit(strip_tags($practice->description), 80) }}
+                                    </p>
+                                    <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn">
+                                        <i>More Details</i>
+                                        <span>More Details</span>
+                                    </a>
+                                </div>
+                            </div><!-- /.service-card-two -->
+                        </div><!-- practice-item -->
                     @endforeach
                 </div>
                 @else
@@ -90,3 +69,46 @@
                 @endif
             </div>
         </section>
+        
+        <style>
+        /* Practice Grid Styles */
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+        
+        /* Make all cards equal height */
+        .service-four__item {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-four__item__content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .practice-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .practice-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        </style>

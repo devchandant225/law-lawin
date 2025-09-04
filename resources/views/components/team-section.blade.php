@@ -66,7 +66,7 @@
                     </div>
 
                     <!-- Team Member Info -->
-                    <div class="p-6 text-center">
+                    <div class="p-6">
                         <h3 class="font-bold text-xl text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300">
                             <a href="{{ route('team.show', $member->slug) }}" class="hover:text-primary transition-colors duration-300">
                                 {{ $member->name }}
@@ -77,7 +77,7 @@
                         <!-- Contact Info -->
                         <div class="space-y-2 text-xs text-gray-500">
                             @if($member->phone)
-                                <div class="flex items-center justify-center space-x-2">
+                                <div class="flex space-x-2">
                                     <i class="fas fa-phone text-primary"></i>
                                     <a href="tel:{{ $member->phone }}" class="hover:text-primary transition-colors duration-300">
                                         {{ $member->phone }}
@@ -85,7 +85,7 @@
                                 </div>
                             @endif
                             @if($member->email)
-                                <div class="flex items-center justify-center space-x-2">
+                                <div class="flex space-x-2">
                                     <i class="fas fa-envelope text-primary"></i>
                                     <a href="mailto:{{ $member->email }}" class="hover:text-primary transition-colors duration-300">
                                         {{ $member->email }}

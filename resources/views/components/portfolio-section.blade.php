@@ -57,7 +57,7 @@
                                         @if($portfolio->image_url)
                                             <img src="{{ $portfolio->image_url }}" 
                                                  alt="{{ $portfolio->title }}" 
-                                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                                 class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
                                         @else
                                             <div class="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center">
                                                 <div class="text-center">

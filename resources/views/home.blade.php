@@ -42,7 +42,7 @@
     <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="true" :limit="4"
         sectionTitle="<span class=''>Our Team</span>" sectionSubtitle="Meet Our Legal Professionals"
         sectionDescription="Our experienced team of legal experts is dedicated to providing exceptional service and achieving the best outcomes for our clients." />
-    <x-process-steps />
+
     {{-- Contact Section --}}
     <x-contact-section :contactInfo="[
         'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',

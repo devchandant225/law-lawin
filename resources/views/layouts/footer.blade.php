@@ -1,194 +1,148 @@
-<!-- Modern Footer matching provided design -->
-<footer class="bg-white text-gray-800 border-t border-gray-200">
+<!-- Footer Design Matching Image -->
+<footer class="bg-white border-t border-gray-200">
+    <!-- Main Footer Content -->
     <div class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- Left Column - Company Info -->
+
+            <!-- Left Column - Company Info & Social Media -->
             <div class="lg:col-span-1">
                 <!-- Company Logo -->
                 <div class="mb-6">
                     <a href="{{ route('home') }}" class="inline-block">
                         @if ($globalProfile && $globalProfile->logo_url)
-                            <img src="{{ $globalProfile->logo_url }}" 
-                                 width="200" 
-                                 alt="{{ config('app.name') }}"
-                                 class="h-16 w-auto">
+                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="h-16 w-auto">
                         @else
-                            <img src="assets/images/logo-dark.png" 
-                                 width="200" 
-                                 alt="{{ config('app.name') }}"
-                                 class="h-16 w-auto">
+                            <img src="{{ asset('assets/images/logo-dark.png') }}" alt="{{ config('app.name') }}"
+                                class="h-16 w-auto">
                         @endif
                     </a>
                 </div>
-                
-                <!-- Contact Info -->
-                <div class="space-y-2 mb-6 text-sm">
+
+                <!-- Contact Information -->
+                <div class="space-y-2 mb-6 text-lg text-gray-700">
                     @if ($globalProfile && $globalProfile->address)
                         <div class="flex items-start space-x-2">
-                            <div class="flex-shrink-0 w-4 h-4 text-blue-600 mt-0.5">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="text-gray-700">
-                                {{ $globalProfile->address }}
-                            </div>
+                            <i class="fas fa-map-marker-alt text-primary mt-0.5 flex-shrink-0"></i>
+                            <span>{{ $globalProfile->address }}</span>
                         </div>
                     @else
                         <div class="flex items-start space-x-2">
-                            <div class="flex-shrink-0 w-4 h-4 text-blue-600 mt-0.5">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="text-gray-700">
-                                Park Lane, Buddhanagar-10, Kathmandu, Nepal.
-                            </div>
+                            <i class="fas fa-map-marker-alt text-primary mt-0.5 flex-shrink-0"></i>
+                            <span>Park Lane, Buddhanagar-10, Kathmandu, Nepal.</span>
                         </div>
                     @endif
-                    
-                    @if ($globalProfile && $globalProfile->phone1)
+
+                    @if (!empty(($phoneNumbers = array_filter([$globalProfile->phone1 ?? null, $globalProfile->phone2 ?? null]))))
                         <div class="flex items-center space-x-2">
-                            <div class="flex-shrink-0 w-4 h-4 text-blue-600">
-                                <i class="fas fa-phone"></i>
-                            </div>
+                            <i class="fas fa-phone text-primary flex-shrink-0"></i>
                             <div>
-                                <a href="tel:{{ $globalProfile->phone1 }}" 
-                                   class="text-gray-700 hover:text-blue-600 transition-colors duration-300">
-                                    phone : {{ $globalProfile->phone1 }}
-                                </a>
-                                @if ($globalProfile->phone2)
-                                    , <a href="tel:{{ $globalProfile->phone2 }}" 
-                                         class="text-gray-700 hover:text-blue-600 transition-colors duration-300">
-                                        {{ $globalProfile->phone2 }}
-                                    </a>
-                                @endif
+                                phone :
+                                @foreach ($phoneNumbers as $phone)
+                                    <a href="tel:{{ $phone }}"
+                                        class="hover:text-primary transition-colors">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
+                                @endforeach
                             </div>
                         </div>
                     @else
                         <div class="flex items-center space-x-2">
-                            <div class="flex-shrink-0 w-4 h-4 text-blue-600">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="text-gray-700">
-                                phone : +9779808811027, +9779849964619
-                            </div>
+                            <i class="fas fa-phone text-primary flex-shrink-0"></i>
+                            <span>phone : +9779808811027, +9779849964619</span>
                         </div>
                     @endif
-                    
+
                     @if ($globalProfile && $globalProfile->email)
                         <div class="flex items-center space-x-2">
-                            <div class="flex-shrink-0 w-4 h-4 text-blue-600">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <a href="mailto:{{ $globalProfile->email }}" 
-                                   class="text-gray-700 hover:text-blue-600 transition-colors duration-300">
-                                    {{ $globalProfile->email }}
-                                </a>
-                            </div>
+                            <i class="fas fa-envelope text-primary flex-shrink-0"></i>
+                            <a href="mailto:{{ $globalProfile->email }}"
+                                class="hover:text-primary transition-colors">{{ $globalProfile->email }}</a>
+                            @if ($globalProfile->email2)
+                                , <a href="mailto:{{ $globalProfile->email2 }}"
+                                    class="hover:text-primary transition-colors">{{ $globalProfile->email2 }}</a>
+                            @endif
                         </div>
                     @else
                         <div class="flex items-center space-x-2">
-                            <div class="flex-shrink-0 w-4 h-4 text-blue-600">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="text-gray-700">
-                                info@lawbhandari.com , nabin@lawbhandari.com
-                            </div>
+                            <i class="fas fa-envelope text-primary flex-shrink-0"></i>
+                            <span>info@lawbhandari.com , nabin@lawbhandari.com</span>
                         </div>
                     @endif
                 </div>
 
-                <!-- Social Media Icons -->
+                <!-- Follow Us Section -->
                 <div class="mb-6">
-                    <div class="flex items-center space-x-1">
-                        <h4 class="text-sm font-semibold text-gray-700 mr-3">Follow Us</h4>
-                        <div class="flex space-x-2">
-                            @if ($globalProfile && $globalProfile->facebook_link)
-                                <a href="{{ $globalProfile->facebook_link }}" 
-                                   target="_blank"
-                                   class="w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
-                                    <i class="fab fa-facebook-f text-xs"></i>
-                                </a>
-                            @else
-                                <a href="#" 
-                                   class="w-7 h-7 bg-blue-600 text-white rounded flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
-                                    <i class="fab fa-facebook-f text-xs"></i>
-                                </a>
-                            @endif
-
-                            @if ($globalProfile && $globalProfile->linkedin_link)
-                                <a href="{{ $globalProfile->linkedin_link }}" 
-                                   target="_blank"
-                                   class="w-7 h-7 bg-blue-700 text-white rounded flex items-center justify-center hover:bg-blue-800 transition-colors duration-300">
-                                    <i class="fab fa-linkedin-in text-xs"></i>
-                                </a>
-                            @else
-                                <a href="#" 
-                                   class="w-7 h-7 bg-blue-700 text-white rounded flex items-center justify-center hover:bg-blue-800 transition-colors duration-300">
-                                    <i class="fab fa-linkedin-in text-xs"></i>
-                                </a>
-                            @endif
-
-                            <a href="#" 
-                               class="w-7 h-7 bg-pink-500 text-white rounded flex items-center justify-center hover:bg-pink-600 transition-colors duration-300">
-                                <i class="fab fa-instagram text-xs"></i>
+                    <h4 class="text-lg font-bold text-gray-800 mb-3">Follow Us</h4>
+                    <div class="flex space-x-2">
+                        @if ($globalProfile && $globalProfile->facebook_link)
+                            <a href="{{ $globalProfile->facebook_link }}" target="_blank"
+                                class="w-10 h-10 bg-blue-600 text-white rounded flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
+                                <i class="fab fa-facebook-f text-sm"></i>
                             </a>
+                        @else
+                            <div class="w-10 h-10 bg-blue-600 text-white rounded flex items-center justify-center">
+                                <i class="fab fa-facebook-f text-sm"></i>
+                            </div>
+                        @endif
 
+                        @if ($globalProfile && $globalProfile->linkedin_link)
+                            <a href="{{ $globalProfile->linkedin_link }}" target="_blank"
+                                class="w-10 h-10 bg-blue-700 text-white rounded flex items-center justify-center hover:bg-blue-800 transition-colors duration-300">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                        @else
+                            <div class="w-10 h-10 bg-blue-700 text-white rounded flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </div>
+                        @endif
+
+                        <div class="w-10 h-10 bg-pink-500 text-white rounded flex items-center justify-center">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Connect With Us Section -->
+                    <div class="mt-6">
+                        <h4 class="text-lg font-bold text-gray-800 mb-3">Connect With Us</h4>
+                        <div class="flex space-y-1 text-lg text-gray-600 gap-3">
                             @if ($globalProfile && $globalProfile->whatsapp)
-                                <a href="{{ $globalProfile->whatsapp }}" 
-                                   target="_blank"
-                                   class="w-7 h-7 bg-green-500 text-white rounded flex items-center justify-center hover:bg-green-600 transition-colors duration-300">
-                                    <i class="fab fa-whatsapp text-xs"></i>
+                                <a href="{{ $globalProfile->whatsapp }}" target="_blank"
+                                    class="w-10 h-10 bg-green-500 text-white rounded flex items-center justify-center hover:bg-green-600 transition-colors duration-300">
+                                    <i class="fab fa-whatsapp text-sm"></i>
                                 </a>
                             @else
-                                <a href="#" 
-                                   class="w-7 h-7 bg-green-500 text-white rounded flex items-center justify-center hover:bg-green-600 transition-colors duration-300">
-                                    <i class="fab fa-whatsapp text-xs"></i>
-                                </a>
+                                <div class="w-10 h-10 bg-green-500 text-white rounded flex items-center justify-center">
+                                    <i class="fab fa-whatsapp text-sm"></i>
+                                </div>
                             @endif
 
                             @if ($globalProfile && $globalProfile->viber)
-                                <a href="{{ $globalProfile->viber }}" 
-                                   target="_blank"
-                                   class="w-7 h-7 bg-purple-600 text-white rounded flex items-center justify-center hover:bg-purple-700 transition-colors duration-300">
-                                    <i class="fab fa-viber text-xs"></i>
+                                <a href="{{ $globalProfile->viber }}" target="_blank"
+                                    class="w-10 h-10 bg-purple-600 text-white rounded flex items-center justify-center hover:bg-purple-700 transition-colors duration-300">
+                                    <i class="fab fa-viber text-sm"></i>
                                 </a>
                             @else
-                                <a href="#" 
-                                   class="w-7 h-7 bg-purple-600 text-white rounded flex items-center justify-center hover:bg-purple-700 transition-colors duration-300">
-                                    <i class="fab fa-viber text-xs"></i>
-                                </a>
+                                <div
+                                    class="w-10 h-10 bg-purple-600 text-white rounded flex items-center justify-center">
+                                    <i class="fab fa-viber text-sm"></i>
+                                </div>
                             @endif
 
                             @if ($globalProfile && $globalProfile->wechat_link)
-                                <a href="{{ $globalProfile->wechat_link }}" 
-                                   target="_blank"
-                                   class="w-7 h-7 bg-green-600 text-white rounded flex items-center justify-center hover:bg-green-700 transition-colors duration-300">
-                                    <i class="fab fa-weixin text-xs"></i>
+                                <a href="{{ $globalProfile->wechat_link }}" target="_blank"
+                                    class="w-10 h-10 bg-green-600 text-white rounded flex items-center justify-center hover:bg-green-700 transition-colors duration-300">
+                                    <i class="fab fa-weixin text-sm"></i>
                                 </a>
                             @else
-                                <a href="#" 
-                                   class="w-7 h-7 bg-green-600 text-white rounded flex items-center justify-center hover:bg-green-700 transition-colors duration-300">
-                                    <i class="fab fa-weixin text-xs"></i>
-                                </a>
+                                <div class="w-10 h-10 bg-green-600 text-white rounded flex items-center justify-center">
+                                    <i class="fab fa-weixin text-sm"></i>
+                                </div>
                             @endif
 
-                            <a href="#" 
-                               class="w-7 h-7 bg-blue-400 text-white rounded flex items-center justify-center hover:bg-blue-500 transition-colors duration-300">
-                                <i class="fab fa-telegram text-xs"></i>
-                            </a>
+                            <div class="w-10 h-10 bg-blue-400 text-white rounded flex items-center justify-center">
+                                <i class="fab fa-telegram text-sm"></i>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Connect With Us Links -->
-                <div class="text-xs">
-                    <h4 class="font-semibold text-gray-700 mb-2">Connect With Us</h4>
-                    <div class="space-y-1">
-                        <a href="#" class="block text-gray-600 hover:text-blue-600 transition-colors duration-300">Law firm in Nepal</a>
-                        <a href="#" class="block text-gray-600 hover:text-blue-600 transition-colors duration-300">Lawyers in Nepal</a>
-                        <a href="#" class="block text-gray-600 hover:text-blue-600 transition-colors duration-300">Disclaimer</a>
-                        <a href="#" class="block text-gray-600 hover:text-blue-600 transition-colors duration-300">Terms of use</a>
-                        <a href="#" class="block text-gray-600 hover:text-blue-600 transition-colors duration-300">Privacy Policy</a>
                     </div>
                 </div>
             </div>
@@ -197,52 +151,41 @@
             <div class="lg:col-span-1">
                 <!-- Office Hours -->
                 <div class="mb-8">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Office Hours</h3>
-                    <div class="space-y-2 text-sm">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Office Hours</h3>
+                    <div class="space-y-2 text-lg text-gray-700">
                         <div class="flex items-center space-x-2">
-                            <div class="w-4 h-4 text-blue-600">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <span class="text-gray-700">09:00 AM - 06:00 PM</span>
+                            <i class="fas fa-clock text-primary flex-shrink-0"></i>
+                            <span>09:00 AM - 06:00 PM</span>
                         </div>
                         <div class="flex items-center space-x-2">
-                            <div class="w-4 h-4 text-blue-600">
-                                <i class="fas fa-calendar"></i>
-                            </div>
-                            <span class="text-gray-700">Sunday - Friday</span>
+                            <i class="fas fa-calendar text-primary flex-shrink-0"></i>
+                            <span>Sunday - Friday</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Newsletter Signup -->
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Subscribe To Our News Letter</h3>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Subscribe To Our News Letter</h3>
                     <form class="space-y-3" method="POST" action="#" id="newsletter-form">
                         @csrf
                         <div>
-                            <input 
-                                type="email" 
-                                name="email"
-                                placeholder="Enter Your Email"
-                                required
-                                class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 text-gray-800 text-sm"
-                            >
+                            <input type="email" name="email" placeholder="Enter Your Email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary placeholder-gray-500">
                         </div>
                         <div>
-                            <button 
-                                type="submit"
-                                class="w-full bg-slate-600 text-white font-semibold py-2.5 px-4 rounded-md hover:bg-slate-700 transition-colors duration-300 text-sm"
-                            >
+                            <button type="submit"
+                                class="w-full bg-secondary text-white font-semibold py-3 px-4 rounded-md hover:bg-primary transition-colors duration-300 text-sm">
                                 Subscribe Now
                             </button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Court Fee Calculator Link -->
-                <div class="mb-6">
-                    <a href="#" 
-                       class="inline-flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 group font-medium text-sm">
+                <!-- Court Fee Calculator -->
+                <div>
+                    <a href="#"
+                        class="inline-flex items-center text-gray-700 hover:text-primary transition-colors duration-300 group font-semibold text-lg">
                         <i class="fas fa-calculator mr-2 group-hover:scale-110 transition-transform duration-300"></i>
                         Court FEE CALCULATOR OF NEPAL
                         <i class="fas fa-external-link-alt ml-2 text-xs"></i>
@@ -252,12 +195,11 @@
 
             <!-- Right Column - Direction/Map -->
             <div class="lg:col-span-1">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Direction</h3>
-                
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Direction</h3>
+
                 <!-- Google Map -->
                 <div class="rounded-lg overflow-hidden shadow-lg mb-4" style="height: 250px;">
                     @if ($globalProfile && $globalProfile->address)
-                        <!-- Google Maps Embed with Search Query -->
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                             width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
@@ -265,7 +207,6 @@
                             class="w-full h-full">
                         </iframe>
                     @else
-                        <!-- Default Map for Kathmandu, Nepal -->
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=en&amp;q=Park+Lane,+Buddhanagar-10,+Kathmandu,+Nepal&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                             width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
@@ -274,128 +215,43 @@
                         </iframe>
                     @endif
                 </div>
-                
-                <!-- Map Info Card -->
-                <div class="bg-blue-50 p-3 rounded-lg">
-                    <div class="flex items-center justify-between mb-2">
-                        <h4 class="font-semibold text-gray-800 text-sm">Bhandari Law and Partners</h4>
-                        <div class="flex items-center space-x-1">
-                            <div class="flex text-orange-400 text-xs">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-xs font-semibold text-gray-700">5.0</span>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-600 mb-2">10 Park Ln, Kathmandu 44600</p>
-                    <p class="text-xs text-blue-600 mb-2">221 reviews</p>
-                    <a href="#" class="text-xs text-blue-600 hover:underline">View larger map</a>
-                </div>
+
             </div>
         </div>
 
     </div>
-    
-    <!-- Footer Bottom -->
-    <div class="border-t border-gray-200 mt-8 pt-4">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row justify-between items-center space-y-2 lg:space-y-0 text-xs text-gray-600">
-                <div class="text-center lg:text-left">
-                    <p>© <span class="dynamic-year"></span>, Bhandari Law And Partners. All rights reserved..</p>
+
+    <!-- Footer Bottom - Clean Design -->
+    <div class="bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+                <!-- Copyright -->
+                <div class="text-center md:text-left">
+                    <p class="text-sm text-gray-600">
+                        © <span class="dynamic-year"></span>, Lawin And Partners. All rights reserved..
+                    </p>
                 </div>
-                <div class="flex flex-wrap justify-center lg:justify-end space-x-4">
-                    <a href="#" class="hover:text-blue-600 transition-colors duration-300">Law firm in Nepal</a>
-                    <a href="#" class="hover:text-blue-600 transition-colors duration-300">Lawyers in Nepal</a>
-                    <a href="#" class="hover:text-blue-600 transition-colors duration-300">Disclaimer</a>
-                    <a href="#" class="hover:text-blue-600 transition-colors duration-300">Terms of use</a>
-                    <a href="#" class="hover:text-blue-600 transition-colors duration-300">Privacy Policy</a>
+
+                <!-- Footer Links -->
+                <div class="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">Law firm
+                        in Nepal</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">Lawyers
+                        in Nepal</a>
+                    <a href="#"
+                        class="text-gray-600 hover:text-primary transition-colors duration-300">Disclaimer</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">Terms of
+                        use</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">Privacy
+                        Policy</a>
                 </div>
             </div>
         </div>
 
-        <!-- Floating Action Buttons -->
-        <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
-            <!-- WhatsApp Button -->
-            @if ($globalProfile && $globalProfile->whatsapp)
-                <a href="{{ $globalProfile->whatsapp }}" 
-                   target="_blank"
-                   class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 group">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span class="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">WhatsApp</span>
-                </a>
-            @else
-                <a href="#" 
-                   class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 group">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span class="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">WhatsApp</span>
-                </a>
-            @endif
-            
-            <!-- Call Now Button -->
-            @if ($globalProfile && $globalProfile->phone1)
-                <a href="tel:{{ $globalProfile->phone1 }}" 
-                   class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 hover:scale-110 transition-all duration-300 group">
-                    <i class="fas fa-phone text-lg"></i>
-                    <span class="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">Call Now</span>
-                </a>
-            @else
-                <a href="tel:+97798088112027" 
-                   class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 hover:scale-110 transition-all duration-300 group">
-                    <i class="fas fa-phone text-lg"></i>
-                    <span class="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">Call Now</span>
-                </a>
-            @endif
-        </div>
     </div>
 </footer>
 
-    <script>
-        // Set current year
-        document.querySelector('.dynamic-year').textContent = new Date().getFullYear();
-
-        // Newsletter form handling
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your newsletter subscription logic here
-            console.log('Newsletter subscription submitted');
-        });
-
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Add animation on scroll (optional)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe footer elements for animation
-        document.querySelectorAll('footer .container > div > div').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+<script>
+    // Set current year
+    document.querySelector('.dynamic-year').textContent = new Date().getFullYear();
+</script>

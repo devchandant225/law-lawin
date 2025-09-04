@@ -1,6 +1,6 @@
         <!-- Top Contact Bar -->
         <div class="bg-gray-50 border-b border-gray-200 py-2">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center">
                     <!-- Contact Info -->
                     <div class="flex items-center space-x-6 text-sm text-gray-600">
@@ -73,7 +73,7 @@
 
         <!-- Main Header -->
         <header class="bg-white shadow-sm transition-all duration-300 z-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center py-4">
                     <!-- Logo -->
                     <div class="flex items-center">
@@ -88,14 +88,14 @@
 
                     <!-- Desktop Navigation -->
                     <nav class="hidden lg:flex items-center space-x-8">
-                        <a href="{{ route('home') }}" class="text-gray-700 capitalize hover:text-primary font-medium transition-colors">HOME</a>
-                        <a href="/about/introduction" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">ABOUT</a>
-                        <a href="{{ route('team.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">TEAM</a>
+                        <a href="{{ route('home') }}" class="text-gray-700 capitalize hover:text-primary font-medium transition-colors">Home</a>
+                        <a href="/about/introduction" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">About</a>
+                        <a href="{{ route('team.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">Team</a>
                         
                         <!-- Practice Areas Dropdown -->
                         <div class="relative group">
                             <a href="{{ route('practices.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
-                                PRACTICE AREA
+                                Practice Areas
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
                             @if ($navPracticeAreas && $navPracticeAreas->count() > 0)
@@ -113,7 +113,7 @@
                         <!-- Services Dropdown -->
                         <div class="relative group">
                             <a href="{{ route('services.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
-                                OUR SERVICES
+                                Our Services
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
                             @if ($navServices && $navServices->count() > 0)
@@ -131,7 +131,7 @@
                         <!-- News & Publications Dropdown -->
                         <div class="relative group">
                             <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
-                                NEWS & PUBLICATION
+                               News & Publications
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
                             <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">

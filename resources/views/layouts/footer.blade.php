@@ -1,11 +1,11 @@
 <!-- Footer Design Matching Image -->
-<footer class="bg-white border-t border-gray-200">
+<footer class="bg-accent border-t border-gray-200">
     <!-- Main Footer Content -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="mx-auto px-8 py-8">
+        <div class="flex  gap-8">
 
             <!-- Left Column - Company Info & Social Media -->
-            <div class="lg:col-span-1">
+            <div class="lg:w-[35%] w-[100%]">
                 <!-- Company Logo -->
                 <div class="mb-6">
                     <a href="{{ route('home') }}" class="inline-block">
@@ -19,7 +19,7 @@
                 </div>
 
                 <!-- Contact Information -->
-                <div class="space-y-2 mb-6 text-lg text-gray-700">
+                <div class="space-y-2 mb-6 text-base font-semibold text-gray-700">
                     @if ($globalProfile && $globalProfile->address)
                         <div class="flex items-start space-x-2">
                             <i class="fas fa-map-marker-alt text-primary mt-0.5 flex-shrink-0"></i>
@@ -70,7 +70,7 @@
 
                 <!-- Follow Us Section -->
                 <div class="mb-6">
-                    <h4 class="text-lg font-bold text-gray-800 mb-3">Follow Us</h4>
+                    <h4 class="text-lg font-bold text-gray-800 mb-3 underline">Follow Us</h4>
                     <div class="flex space-x-2">
                         @if ($globalProfile && $globalProfile->facebook_link)
                             <a href="{{ $globalProfile->facebook_link }}" target="_blank"
@@ -103,7 +103,7 @@
 
                     <!-- Connect With Us Section -->
                     <div class="mt-6">
-                        <h4 class="text-lg font-bold text-gray-800 mb-3">Connect With Us</h4>
+                        <h4 class="text-lg font-bold text-gray-800 mb-3 underline">Connect With Us</h4>
                         <div class="flex space-y-1 text-lg text-gray-600 gap-3">
                             @if ($globalProfile && $globalProfile->whatsapp)
                                 <a href="{{ $globalProfile->whatsapp }}" target="_blank"
@@ -148,10 +148,10 @@
             </div>
 
             <!-- Middle Column - Office Hours & Newsletter -->
-            <div class="lg:col-span-1">
+            <div class="lg:w-[25%] w-[100%]">
                 <!-- Office Hours -->
                 <div class="mb-8">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4">Office Hours</h3>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 underline">Office Hours</h3>
                     <div class="space-y-2 text-lg text-gray-700">
                         <div class="flex items-center space-x-2">
                             <i class="fas fa-clock text-primary flex-shrink-0"></i>
@@ -166,7 +166,7 @@
 
                 <!-- Newsletter Signup -->
                 <div class="mb-6">
-                    <h3 class="text-lg font-bold text-gray-800 mb-4">Subscribe To Our News Letter</h3>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 underline">Subscribe To Our News Letter</h3>
                     <form class="space-y-3" method="POST" action="#" id="newsletter-form">
                         @csrf
                         <div>
@@ -184,8 +184,8 @@
 
                 <!-- Court Fee Calculator -->
                 <div>
-                    <a href="#"
-                        class="inline-flex items-center text-gray-700 hover:text-primary transition-colors duration-300 group font-semibold text-lg">
+                    <a href="/calculator"
+                        class="inline-flex items-center text-gray-700 hover:text-primary transition-colors duration-300 group font-semibold text-lg underline">
                         <i class="fas fa-calculator mr-2 group-hover:scale-110 transition-transform duration-300"></i>
                         Court FEE CALCULATOR OF NEPAL
                         <i class="fas fa-external-link-alt ml-2 text-xs"></i>
@@ -194,8 +194,8 @@
             </div>
 
             <!-- Right Column - Direction/Map -->
-            <div class="lg:col-span-1">
-                <h3 class="text-lg font-bold text-gray-800 mb-4">Direction</h3>
+            <div class="lg:w-[60%] w-[100%]">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 underline">Direction</h3>
 
                 <!-- Google Map -->
                 <div class="rounded-lg overflow-hidden shadow-lg mb-4" style="height: 250px;">
@@ -223,7 +223,7 @@
 
     <!-- Footer Bottom - Clean Design -->
     <div class="bg-gray-50 border-t border-gray-200">
-        <div class="container mx-auto px-4 py-4">
+        <div class="px-8 mx-auto py-4">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
                 <!-- Copyright -->
                 <div class="text-center md:text-left">

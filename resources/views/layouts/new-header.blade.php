@@ -1,177 +1,382 @@
-        <!-- Top Contact Bar -->
-        <div class="bg-gray-50 border-b border-gray-200 py-2">
-            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center">
-                    <!-- Contact Info -->
-                    <div class="flex items-center space-x-6 text-sm text-gray-600">
-                        @if ($globalProfile && $globalProfile->phone1)
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-phone text-primary"></i>
-                                <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-primary transition-colors">
-                                    {{ $globalProfile->phone1 }}
-                                </a>
-                            </div>
-                        @endif
-                        @if ($globalProfile && $globalProfile->email)
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-envelope text-primary"></i>
-                                <a href="mailto:{{ $globalProfile->email }}" class="hover:text-primary transition-colors">
-                                    {{ $globalProfile->email }}
-                                </a>
-                            </div>
-                        @endif
+<!-- Overlay Header with Scroll Effects -->
+<div class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
+    <!-- Top Contact Bar -->
+    <div class="header-top bg-transparent border-b border-white/20 py-2 transition-all duration-300">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Contact Info -->
+                <div class="flex items-center space-x-6 text-sm text-white/90 header-contact">
+                    @if ($globalProfile && $globalProfile->phone1)
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-white/90"></i>
+                            <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-white transition-colors">
+                                {{ $globalProfile->phone1 }}
+                            </a>
+                        </div>
+                    @endif
+                    @if ($globalProfile && $globalProfile->email)
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-white/90"></i>
+                            <a href="mailto:{{ $globalProfile->email }}" class="hover:text-white transition-colors">
+                                {{ $globalProfile->email }}
+                            </a>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Language Selector & Social Links -->
+                <div class="flex items-center space-x-4">
+                    <!-- Language Buttons -->
+                    <div class="flex items-center space-x-1 header-languages">
+                        <a href="#" class="px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">French</a>
+                        <span class="text-white/60">|</span>
+                        <a href="#" class="px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">中国人</a>
+                        <span class="text-white/60">|</span>
+                        <a href="#" class="px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">Español</a>
                     </div>
 
-                    <!-- Language Selector & Social Links -->
-                    <div class="flex items-center space-x-4">
-                        <!-- Language Buttons -->
-                        <div class="flex items-center space-x-1">
-                            <a href="#" class="px-2 py-1 text-xs font-medium text-gray-600 hover:text-primary transition-colors">French</a>
-                            <span class="text-gray-400">|</span>
-                            <a href="#" class="px-2 py-1 text-xs font-medium text-gray-600 hover:text-primary transition-colors">中国人</a>
-                            <span class="text-gray-400">|</span>
-                            <a href="#" class="px-2 py-1 text-xs font-medium text-gray-600 hover:text-primary transition-colors">Español</a>
-                        </div>
-
-                        <!-- Social Links -->
-                        <div class="flex items-center space-x-2">
-                            @if ($globalProfile && $globalProfile->whatsapp)
-                                <a href="{{ $globalProfile->whatsapp }}" class="w-6 h-6 flex items-center justify-center text-green-600 hover:text-green-700 transition-colors">
-                                    <i class="fab fa-whatsapp text-sm"></i>
-                                    <span class="sr-only">WhatsApp</span>
-                                </a>
-                            @endif
-                            @if ($globalProfile && $globalProfile->viber)
-                                <a href="{{ $globalProfile->viber }}" class="w-6 h-6 flex items-center justify-center text-purple-600 hover:text-purple-700 transition-colors">
-                                    <i class="fab fa-viber text-sm"></i>
-                                    <span class="sr-only">Viber</span>
-                                </a>
-                            @endif
-                            @if ($globalProfile && $globalProfile->wechat_link)
-                                <a href="{{ $globalProfile->wechat_link }}" class="w-6 h-6 flex items-center justify-center text-green-500 hover:text-green-600 transition-colors">
-                                    <i class="fab fa-weixin text-sm"></i>
-                                    <span class="sr-only">WeChat</span>
-                                </a>
-                            @endif
-                            @if ($globalProfile && $globalProfile->facebook_link)
-                                <a href="{{ $globalProfile->facebook_link }}" class="w-6 h-6 flex items-center justify-center text-blue-600 hover:text-blue-700 transition-colors">
-                                    <i class="fab fa-facebook text-sm"></i>
-                                    <span class="sr-only">Facebook</span>
-                                </a>
-                            @endif
-                            @if ($globalProfile && $globalProfile->linkedin_link)
-                                <a href="{{ $globalProfile->linkedin_link }}" class="w-6 h-6 flex items-center justify-center text-blue-700 hover:text-blue-800 transition-colors">
-                                    <i class="fab fa-linkedin text-sm"></i>
-                                    <span class="sr-only">LinkedIn</span>
-                                </a>
-                            @endif
-                        </div>
+                    <!-- Social Links -->
+                    <div class="flex items-center space-x-2 header-social">
+                        @if ($globalProfile && $globalProfile->whatsapp)
+                            <a href="{{ $globalProfile->whatsapp }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                                <span class="sr-only">WhatsApp</span>
+                            </a>
+                        @endif
+                        @if ($globalProfile && $globalProfile->viber)
+                            <a href="{{ $globalProfile->viber }}" class="w-6 h-6 flex items-center justify-center text-purple-400 hover:text-purple-300 transition-colors">
+                                <i class="fab fa-viber text-sm"></i>
+                                <span class="sr-only">Viber</span>
+                            </a>
+                        @endif
+                        @if ($globalProfile && $globalProfile->wechat_link)
+                            <a href="{{ $globalProfile->wechat_link }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
+                                <i class="fab fa-weixin text-sm"></i>
+                                <span class="sr-only">WeChat</span>
+                            </a>
+                        @endif
+                        @if ($globalProfile && $globalProfile->facebook_link)
+                            <a href="{{ $globalProfile->facebook_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-facebook text-sm"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                        @endif
+                        @if ($globalProfile && $globalProfile->linkedin_link)
+                            <a href="{{ $globalProfile->linkedin_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fab fa-linkedin text-sm"></i>
+                                <span class="sr-only">LinkedIn</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Main Header -->
-        <header class="bg-white shadow-sm transition-all duration-300 z-50">
-            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center py-4">
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <a href="{{ route('home') }}" class="flex-shrink-0">
-                            @if ($globalProfile && $globalProfile->logo_url)
-                                <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="h-12 w-auto">
-                            @else
-                                <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}" class="h-12 w-auto">
-                            @endif
+    <!-- Main Header -->
+    <header class="header-main bg-transparent backdrop-blur-sm transition-all duration-300">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="{{ route('home') }}" class="flex-shrink-0">
+                        @if ($globalProfile && $globalProfile->logo_url)
+                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="h-12 w-auto header-logo">
+                        @else
+                            <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}" class="h-12 w-auto header-logo">
+                        @endif
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 header-nav">
+                    <a href="{{ route('home') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Home</a>
+                    <a href="/about/introduction" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
+                    <a href="{{ route('team.index') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
+                    
+                    <!-- Practice Areas Dropdown -->
+                    <div class="relative group">
+                        <a href="{{ route('practices.index') }}" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link">
+                            Practice Areas
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
                         </a>
-                    </div>
-
-                    <!-- Desktop Navigation -->
-                    <nav class="hidden lg:flex items-center space-x-8">
-                        <a href="{{ route('home') }}" class="text-gray-700 capitalize hover:text-primary font-medium transition-colors">Home</a>
-                        <a href="/about/introduction" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">About</a>
-                        <a href="{{ route('team.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">Team</a>
-                        
-                        <!-- Practice Areas Dropdown -->
-                        <div class="relative group">
-                            <a href="{{ route('practices.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
-                                Practice Areas
-                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                            </a>
-                            @if ($navPracticeAreas && $navPracticeAreas->count() > 0)
-                                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                    <div class="py-2">
-                                        <a href="{{ route('practices.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">All Practice Areas</a>
-                                        @foreach ($navPracticeAreas->take(8) as $practice)
-                                            <a href="{{ route('practice.show', $practice->slug) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">{{ $practice->title }}</a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-
-                        <!-- Services Dropdown -->
-                        <div class="relative group">
-                            <a href="{{ route('services.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
-                                Our Services
-                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                            </a>
-                            @if ($navServices && $navServices->count() > 0)
-                                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                    <div class="py-2">
-                                        <a href="{{ route('services.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">All Services</a>
-                                        @foreach ($navServices->take(8) as $service)
-                                            <a href="{{ route('service.show', $service->slug) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">{{ $service->title }}</a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-
-                        <!-- News & Publications Dropdown -->
-                        <div class="relative group">
-                            <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
-                               News & Publications
-                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                            </a>
-                            <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        @if ($navPracticeAreas && $navPracticeAreas->count() > 0)
+                            <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                                 <div class="py-2">
-                                    <a href="{{ route('posts.by-type', 'news') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">News</a>
-                                    <a href="{{ route('publications.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">Publications</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Help Desk Dropdown -->
-                        <div class="relative group">
-                            <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center">
-                                Help Desk
-                                <i class="fas fa-chevron-down ml-1 text-xs"></i>
-                            </a>
-                            <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                                <div class="py-2">
-                                    @foreach ($navHelpDeskItems as $helpDeskItem)
-                                        <a href="{{ $helpDeskItem['url'] }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">{{ $helpDeskItem['title'] }}</a>
+                                    <a href="{{ route('practices.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">All Practice Areas</a>
+                                    @foreach ($navPracticeAreas->take(8) as $practice)
+                                        <a href="{{ route('practice.show', $practice->slug) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">{{ $practice->title }}</a>
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
-
-                        <a href="/contact" class="text-gray-700 hover:text-primary font-medium transition-colors">Contact</a>
-                          <a href="/calculator" class="text-gray-700 hover:text-primary font-medium transition-colors">Court Fees Calculator</a>
-                    </nav>
-
-                    <!-- Mobile menu button -->
-                    <div class="lg:hidden">
-                        <button type="button" class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 transition-colors">
-                            <span class="sr-only">Open main menu</span>
-                            <div class="w-6 h-6 flex flex-col justify-center items-center">
-                                <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200"></span>
-                                <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200 mt-1"></span>
-                                <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200 mt-1"></span>
-                            </div>
-                        </button>
+                        @endif
                     </div>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group">
+                        <a href="{{ route('services.index') }}" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link">
+                            Our Services
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        @if ($navServices && $navServices->count() > 0)
+                            <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-2">
+                                    <a href="{{ route('services.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">All Services</a>
+                                    @foreach ($navServices->take(8) as $service)
+                                        <a href="{{ route('service.show', $service->slug) }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">{{ $service->title }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+
+                    <!-- News & Publications Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link">
+                           News & Publications
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="{{ route('posts.by-type', 'news') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">News</a>
+                                <a href="{{ route('publications.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">Publications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help Desk Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="text-white hover:text-white/80 font-medium transition-colors flex items-center nav-link">
+                            Help Desk
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                @foreach ($navHelpDeskItems as $helpDeskItem)
+                                    <a href="{{ $helpDeskItem['url'] }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors">{{ $helpDeskItem['title'] }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/contact" class="text-white hover:text-white/80 font-medium transition-colors nav-link">Contact</a>
+                    <a href="/calculator" class="text-white hover:text-white/80 font-medium transition-colors nav-link">Court Fees Calculator</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors">
+                        <span class="sr-only">Open main menu</span>
+                        <div class="w-6 h-6 flex flex-col justify-center items-center">
+                            <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200"></span>
+                            <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200 mt-1"></span>
+                            <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200 mt-1"></span>
+                        </div>
+                    </button>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+</div>
+
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+    <div class="flex h-full">
+        <!-- Overlay -->
+        <div class="mobile-nav__overlay fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+        
+        <!-- Menu Panel -->
+        <div class="mobile-nav__panel relative ml-auto flex h-full w-full max-w-sm flex-col bg-white shadow-xl">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-4 py-4 border-b border-gray-200">
+                <a href="{{ route('home') }}" class="flex-shrink-0">
+                    @if ($globalProfile && $globalProfile->logo_url)
+                        <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="h-10 w-auto">
+                    @else
+                        <img src="assets/images/logo-dark.png" alt="{{ config('app.name') }}" class="h-10 w-auto">
+                    @endif
+                </a>
+                <button type="button" class="mobile-nav__close inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 transition-colors">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="flex-1 px-4 py-6 space-y-4">
+                <a href="{{ route('home') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
+                <a href="/about/introduction" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About</a>
+                <a href="{{ route('team.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Team</a>
+                <a href="{{ route('practices.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Practice Areas</a>
+                <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>
+                <a href="{{ route('posts.by-type', 'news') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">News</a>
+                <a href="{{ route('publications.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">Publications</a>
+                <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
+                <a href="/calculator" class="block text-gray-800 hover:text-primary font-medium transition-colors">Court Fees Calculator</a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Header Scroll Effects */
+#main-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+#main-header.scrolled .header-top {
+    background-color: rgba(249, 250, 251, 0.9);
+    border-bottom-color: rgba(209, 213, 219, 0.3);
+}
+
+#main-header.scrolled .header-contact,
+#main-header.scrolled .header-languages {
+    color: rgb(75, 85, 99);
+}
+
+#main-header.scrolled .header-contact a,
+#main-header.scrolled .header-languages a {
+    color: rgb(107, 114, 128);
+}
+
+#main-header.scrolled .header-contact a:hover,
+#main-header.scrolled .header-languages a:hover {
+    color: rgb(59, 130, 246);
+}
+
+#main-header.scrolled .header-contact i {
+    color: rgb(59, 130, 246);
+}
+
+#main-header.scrolled .header-social a {
+    color: inherit;
+}
+
+#main-header.scrolled .nav-link {
+    color: rgb(75, 85, 99) !important;
+}
+
+#main-header.scrolled .nav-link:hover {
+    color: rgb(59, 130, 246) !important;
+}
+
+#main-header.scrolled .mobile-nav__toggler {
+    color: rgb(75, 85, 99);
+}
+
+#main-header.scrolled .mobile-nav__toggler:hover {
+    color: rgb(59, 130, 246);
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Mobile Navigation */
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav.active .mobile-nav__overlay {
+    opacity: 1;
+}
+
+/* Smooth transitions */
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+/* Logo transition */
+.header-logo {
+    transition: all 0.3s ease;
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+    #main-header.scrolled {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+    }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+    #main-header.scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+}
+</style>
+
+<script>
+// Header scroll effects and mobile navigation
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('main-header');
+    const mobileToggler = document.querySelector('.mobile-nav__toggler');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavClose = document.querySelector('.mobile-nav__close');
+    const mobileNavOverlay = document.querySelector('.mobile-nav__overlay');
+    
+    // Header scroll effect
+    function handleScroll() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    
+    // Throttled scroll handler for better performance
+    let ticking = false;
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    
+    // Mobile navigation
+    function openMobileNav() {
+        mobileNav.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeMobileNav() {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    if (mobileToggler) {
+        mobileToggler.addEventListener('click', openMobileNav);
+    }
+    
+    if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', closeMobileNav);
+    }
+    
+    if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', closeMobileNav);
+    }
+    
+    // Close mobile nav on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMobileNav();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 1024 && mobileNav.classList.contains('active')) {
+            closeMobileNav();
+        }
+    });
+    
+    // Initialize scroll state
+    handleScroll();
+});
+</script>

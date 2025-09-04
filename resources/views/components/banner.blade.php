@@ -1,5 +1,5 @@
 <!-- Modern Banner Carousel -->
-<section class="relative overflow-hidden bg-gray-900" id="home">
+<section class="absolute z-[21] top-0 left-0 w-full h-screen overflow-hidden bg-gray-900" id="home">
     <div class="banner-carousel relative h-screen">
         @if(count($sliders) > 0)
             @foreach ($sliders as $index => $slider)
@@ -32,7 +32,7 @@
                                     <!-- CTA Button -->
                                     <div class="flex flex-col sm:flex-row gap-4">
                                         <a href="/about" 
-                                           class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                                           class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary rounded-full hover:bg-primary/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                                             <span class="mr-2">Discover More</span>
                                             <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
                                                  fill="none" stroke="currentColor" viewBox="0 0 24 24">

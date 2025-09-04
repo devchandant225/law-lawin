@@ -1,5 +1,5 @@
 <!-- Modern Contact Section -->
-<section class="relative py-16 bg-gradient-to-br from-primary via-primary/95 to-secondary overflow-hidden" id="contact" data-aos="fade-up" data-aos-duration="800">
+<section class="relative py-16 bg-[#2b4c65] overflow-hidden" id="contact" data-aos="fade-up" data-aos-duration="800">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 30px 30px;"></div>

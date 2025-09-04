@@ -1,13 +1,13 @@
 <!-- Modern Practice Areas Section -->
-<section class="relative py-20 bg-gradient-to-b from-gray-900 via-blue-900 to-gray-900 overflow-hidden" id="practice-areas">
+<section class="relative py-20 bg-gradient-to-b from-primary via-primary/90 to-secondary overflow-hidden" id="practice-areas">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     
     <!-- Animated Background Elements -->
-    <div class="absolute top-20 right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-    <div class="absolute bottom-20 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+    <div class="absolute top-20 right-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+    <div class="absolute bottom-20 left-10 w-72 h-72 bg-secondary/60 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Section Header -->
@@ -47,7 +47,7 @@
                                          alt="{{ $practice->title }}" 
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 @else
-                                    <div class="w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 flex items-center justify-center">
+                                    <div class="w-full h-full bg-gradient-to-br from-primary via-secondary to-primary/80 flex items-center justify-center">
                                         <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
                                             <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
@@ -67,9 +67,9 @@
                                             $practiceComponent = app('App\View\Components\PracticeSection');
                                             $iconClass = $practiceComponent->getPracticeIcon($practice->title);
                                         @endphp
-                                        <i class="{{ $iconClass }} text-blue-600 text-lg"></i>
+                                        <i class="{{ $iconClass }} text-primary text-lg"></i>
                                         @if(empty($iconClass) || $iconClass === 'icon-law')
-                                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M12 2l3.09 6.26L22 9l-6.91.74L12 16l-3.09-6.26L2 9l6.91-.74L12 2z"/>
                                             </svg>
                                         @endif
@@ -80,7 +80,7 @@
                             <!-- Content Container -->
                             <div class="p-6 pt-10 flex flex-col h-[calc(100%-12rem)]">
                                 <!-- Title -->
-                                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300">
+                                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
                                     <a href="{{ route('practice.show', $practice->slug) }}" class="block">
                                         {{ $practice->title }}
                                     </a>
@@ -94,7 +94,7 @@
                                 <!-- More Details Button -->
                                 <div class="mt-auto">
                                     <a href="{{ route('practice.show', $practice->slug) }}" 
-                                       class="inline-flex items-center text-blue-300 font-semibold hover:text-white transition-colors duration-300 group/btn">
+                                       class="inline-flex items-center text-accent font-semibold hover:text-white transition-colors duration-300 group/btn">
                                         <span>More Details</span>
                                         <svg class="w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
                                              fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -79,12 +79,12 @@
                 <!-- Call to Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 pt-6">
                     <a href="{{ route('team.index') }}"
-                        class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white font-semibold rounded-xl hover:from-blue-800 hover:via-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg">
+                        class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary via-secondary to-primary text-white font-semibold rounded-xl hover:from-secondary hover:via-primary hover:to-secondary transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg">
                         <span>Meet Our Team</span>
                         <i class="fas fa-arrow-right ml-3 transition-transform group-hover:translate-x-1"></i>
                     </a>
                     <a href="/about"
-                        class="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-300">
+                        class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 text-primary font-semibold rounded-xl hover:border-primary hover:text-white hover:bg-primary transition-all duration-300">
                         <span>How We Do It</span>
                     </a>
                 </div>

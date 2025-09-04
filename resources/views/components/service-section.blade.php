@@ -39,7 +39,6 @@
                         <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden">
-                                <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700"></div>
                                 @if($service->feature_image)
                                     <img src="{{ $service->feature_image_url }}" 
                                          alt="{{ $service->title }}" 
@@ -55,14 +54,7 @@
                                     </div>
                                 @endif
                                 
-                                <!-- Floating Icon -->
-                                <div class="absolute -bottom-6 left-6">
-                                    <div class="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                        <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                                        </svg>
-                                    </div>
-                                </div>
+                              
                             </div>
                             
                             <!-- Content Container -->

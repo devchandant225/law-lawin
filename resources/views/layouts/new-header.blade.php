@@ -4,11 +4,11 @@
                 <div class="flex justify-between items-center">
                     <!-- Contact Info -->
                     <div class="flex items-center space-x-6 text-sm text-gray-600">
-                        @if ($globalProfile && $globalProfile->phone)
+                        @if ($globalProfile && $globalProfile->phone1)
                             <div class="flex items-center space-x-2">
                                 <i class="fas fa-phone text-primary"></i>
-                                <a href="tel:{{ $globalProfile->phone }}" class="hover:text-primary transition-colors">
-                                    {{ $globalProfile->phone }}
+                                <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-primary transition-colors">
+                                    {{ $globalProfile->phone1 }}
                                 </a>
                             </div>
                         @endif
@@ -88,13 +88,13 @@
 
                     <!-- Desktop Navigation -->
                     <nav class="hidden lg:flex items-center space-x-8">
-                        <a href="{{ route('home') }}" class="text-gray-700 hover:text-primary font-medium transition-colors">HOME</a>
-                        <a href="/about/introduction" class="text-gray-700 hover:text-primary font-medium transition-colors">ABOUT</a>
-                        <a href="{{ route('team.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors">TEAM</a>
+                        <a href="{{ route('home') }}" class="text-gray-700 capitalize hover:text-primary font-medium transition-colors">HOME</a>
+                        <a href="/about/introduction" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">ABOUT</a>
+                        <a href="{{ route('team.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors capitalize">TEAM</a>
                         
                         <!-- Practice Areas Dropdown -->
                         <div class="relative group">
-                            <a href="{{ route('practices.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center">
+                            <a href="{{ route('practices.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
                                 PRACTICE AREA
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
@@ -112,7 +112,7 @@
 
                         <!-- Services Dropdown -->
                         <div class="relative group">
-                            <a href="{{ route('services.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center">
+                            <a href="{{ route('services.index') }}" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
                                 OUR SERVICES
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
@@ -130,7 +130,7 @@
 
                         <!-- News & Publications Dropdown -->
                         <div class="relative group">
-                            <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center">
+                            <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center capitalize">
                                 NEWS & PUBLICATION
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
@@ -145,7 +145,7 @@
                         <!-- Help Desk Dropdown -->
                         <div class="relative group">
                             <a href="#" class="text-gray-700 hover:text-primary font-medium transition-colors flex items-center">
-                                HELP DESK
+                                Help Desk
                                 <i class="fas fa-chevron-down ml-1 text-xs"></i>
                             </a>
                             <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -157,7 +157,8 @@
                             </div>
                         </div>
 
-                        <a href="/contact" class="text-gray-700 hover:text-primary font-medium transition-colors">CONTACT</a>
+                        <a href="/contact" class="text-gray-700 hover:text-primary font-medium transition-colors">Contact</a>
+                          <a href="/calculator" class="text-gray-700 hover:text-primary font-medium transition-colors">Court Fees Calculator</a>
                     </nav>
 
                     <!-- Mobile menu button -->

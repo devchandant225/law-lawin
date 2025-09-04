@@ -37,7 +37,7 @@
         @if($practices->isNotEmpty())
             <!-- Practice Areas Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                @foreach($practices->take(4) as $index => $practice)
+                @foreach($practices->take(8) as $index => $practice)
                     <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
                         <div class="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
                             <!-- Image Container -->

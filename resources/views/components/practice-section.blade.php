@@ -60,21 +60,7 @@
                                 <!-- Overlay -->
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                                 
-                                <!-- Practice Icon -->
-                                <div class="absolute -bottom-6 left-6">
-                                    <div class="w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                                        @php
-                                            $practiceComponent = app('App\View\Components\PracticeSection');
-                                            $iconClass = $practiceComponent->getPracticeIcon($practice->title);
-                                        @endphp
-                                        <i class="{{ $iconClass }} text-primary text-lg"></i>
-                                        @if(empty($iconClass) || $iconClass === 'icon-law')
-                                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2l3.09 6.26L22 9l-6.91.74L12 16l-3.09-6.26L2 9l6.91-.74L12 2z"/>
-                                            </svg>
-                                        @endif
-                                    </div>
-                                </div>
+                        
                             </div>
                             
                             <!-- Content Container -->

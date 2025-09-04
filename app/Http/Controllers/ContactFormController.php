@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ContactFormRequest;
 use App\Mail\ContactFormMail;
 use App\Models\Contact;
+use App\Rules\ReCaptcha;
 
 class ContactFormController extends Controller
 {
@@ -26,20 +27,22 @@ class ContactFormController extends Controller
             'phone' => 'nullable|string|max:20',
             'subject' => 'required|string|max:500',
             'message' => 'required|string|max:2000',
+            'g-recaptcha-response' => ['required', new ReCaptcha()],
         ]);
 
         if ($validator->fails()) {
             if ($request->expectsJson()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Validation failed',
-                    'errors' => $validator->errors()
-                ], 422);
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => 'Validation failed',
+                        'errors' => $validator->errors(),
+                    ],
+                    422,
+                );
             }
 
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         try {
@@ -58,41 +61,38 @@ class ContactFormController extends Controller
             $contact = Contact::create($contactData);
 
             // Send email to admin
-            Mail::to(config('mail.admin_email', 'chandant142@gmail.com'))
-                ->send(new ContactFormMail($contactData));
+            Mail::to(config('mail.admin_email', 'chandant142@gmail.com'))->send(new ContactFormMail($contactData));
 
             // Optionally send confirmation email to user
             if (config('mail.send_confirmation', false)) {
-                Mail::to($contactData['email'])
-                    ->send(new ContactFormMail($contactData, true));
+                Mail::to($contactData['email'])->send(new ContactFormMail($contactData, true));
             }
 
             if ($request->expectsJson()) {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Thank you for your message! We will get back to you soon.'
+                    'message' => 'Thank you for your message! We will get back to you soon.',
                 ]);
             }
 
-            return redirect()->back()
-                ->with('success', 'Thank you for your message! We will get back to you soon.');
-
+            return redirect()->back()->with('success', 'Thank you for your message! We will get back to you soon.');
         } catch (\Exception $e) {
             \Log::error('Contact form submission failed: ' . $e->getMessage(), [
                 'request_data' => $request->all(),
-                'error' => $e
+                'error' => $e,
             ]);
 
             if ($request->expectsJson()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Sorry, there was an error sending your message. Please try again later.'
-                ], 500);
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => 'Sorry, there was an error sending your message. Please try again later.',
+                    ],
+                    500,
+                );
             }
 
-            return redirect()->back()
-                ->with('error', 'Sorry, there was an error sending your message. Please try again later.')
-                ->withInput();
+            return redirect()->back()->with('error', 'Sorry, there was an error sending your message. Please try again later.')->withInput();
         }
     }
 
@@ -124,7 +124,7 @@ class ContactFormController extends Controller
                 'phone' => 'nullable|string|max:20',
                 'subject' => 'required|string|max:500',
                 'message' => 'required|string|max:2000',
-            ]
+            ],
         ]);
     }
 }

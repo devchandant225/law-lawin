@@ -43,33 +43,6 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="testimonials-three__carousel procounsel-owl__carousel procounsel-owl__carousel--with-shadow procounsel-owl__carousel--basic-nav owl-carousel"
-            data-owl-options='{
-                "items": 1,
-                "margin": 30,
-                "loop": true,
-                "smartSpeed": 700,
-                "nav": false,
-                "dots": false,
-                "autoplay": true,
-                "responsive": {
-                    "0": {
-                        "items": 1
-                    },
-                    "575": {
-                        "items": 2
-                    },
-                    "768": {
-                        "items": 2
-                    },
-                    "992": {
-                        "items": 3
-                    },
-                    "1200": {
-                        "items": 4
-                    }
-                }
-            }'>
             @forelse($portfolios->take($limit) as $index => $portfolio)
                 <div class="item">
                     <div class="testimonials-card-three wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='{{ $index * 100 }}ms'>

@@ -2,18 +2,16 @@
     <!-- More Publications Section -->
     <section class="section-padding background-gray" wire:ignore.self>
         <div class="container">
-            @if($showSearch)
+            @if ($showSearch)
                 <!-- Search Section -->
                 <div class="row mb-5 mt-5">
                     <div class="col-12">
                         <div class="text-center wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <div class="more-publication-search-wrapper">
                                 <div class="input-group more-publication-search-box">
-                                    <input type="text" 
-                                           wire:model.live.debounce.300ms="search" 
-                                           class="form-control more-publication-search-input" 
-                                           placeholder="Search more publications..." 
-                                           aria-label="Search more publications">
+                                    <input type="text" wire:model.live.debounce.300ms="search"
+                                        class="form-control more-publication-search-input"
+                                        placeholder="Search more publications..." aria-label="Search more publications">
                                     <button class="more-publication-search-btn" type="button">
                                         <i class="fas fa-search"></i>
                                     </button>
@@ -26,21 +24,21 @@
 
             <div class="row" id="more-publications-container">
                 @forelse($morePublications as $index => $morePublication)
-                    <div class="col-xl-6 col-lg-6 col-md-12 wow fadeInUp" 
-                         data-wow-delay="{{ 200 + ($index * 100) }}ms" 
-                         data-wow-duration="1500ms"
-                         wire:key="more-publication-{{ $morePublication->id }}">
+                    <div class="col-xl-6 col-lg-6 col-md-12 wow fadeInUp" data-wow-delay="{{ 200 + $index * 100 }}ms"
+                        data-wow-duration="1500ms" wire:key="more-publication-{{ $morePublication->id }}">
                         <div class="more-publication-item">
                             <div class="more-publication-item__image">
-                                @if($morePublication->feature_image_url)
-                                    <img src="{{ $morePublication->feature_image_url }}" alt="{{ $morePublication->title }}">
+                                @if ($morePublication->feature_image_url)
+                                    <img src="{{ $morePublication->feature_image_url }}"
+                                        alt="{{ $morePublication->title }}">
                                 @else
                                     <div class="more-publication-placeholder">
                                         <i class="fas fa-file-alt"></i>
                                     </div>
                                 @endif
                                 <div class="more-publication-item__overlay">
-                                    <a href="{{ route('more-publication.show', $morePublication->slug) }}" class="more-publication-item__btn">
+                                    <a href="{{ route('more-publication.show', $morePublication->slug) }}"
+                                        class="more-publication-item__btn">
                                         <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </div>
@@ -61,17 +59,18 @@
                                         {{ $morePublication->title }}
                                     </a>
                                 </h3>
-                                @if($morePublication->excerpt)
+                                @if ($morePublication->excerpt)
                                     <p class="more-publication-item__text">
                                         {{ Str::limit($morePublication->excerpt, 150) }}
                                     </p>
                                 @endif
                                 <div class="more-publication-item__bottom">
-                                    <a href="{{ route('more-publication.show', $morePublication->slug) }}" class="procounsel-btn procounsel-btn--two">
+                                    <a href="{{ route('more-publication.show', $morePublication->slug) }}"
+                                        class="procounsel-btn procounsel-btn--two">
                                         <i>Read More</i>
                                         <span>Read More</span>
                                     </a>
-                                    @if($morePublication->tableOfContentsCount() > 0)
+                                    @if ($morePublication->tableOfContentsCount() > 0)
                                         <span class="more-publication-sections-count">
                                             <i class="fas fa-list-ol"></i>
                                             {{ $morePublication->tableOfContentsCount() }} Sections
@@ -88,13 +87,13 @@
                                 <i class="fas fa-search mb-3"></i>
                                 <h4>No More Publications Found</h4>
                                 <p class="text-muted">
-                                    @if($search)
+                                    @if ($search)
                                         No more publications match your search criteria "{{ $search }}".
                                     @else
                                         No more publications are currently available.
                                     @endif
                                 </p>
-                                @if($search)
+                                @if ($search)
                                     <button wire:click="$set('search', '')" class="btn btn-outline-primary">
                                         <i class="fas fa-times me-2"></i>Clear Search
                                     </button>
@@ -105,7 +104,7 @@
                 @endforelse
             </div>
 
-            @if($showViewAll && $morePublications->count() >= $limit)
+            @if ($showViewAll && $morePublications->count() >= $limit)
                 <div class="row">
                     <div class="col-12">
                         <div class="text-center mt-4 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
@@ -121,10 +120,10 @@
     </section>
 
     <style>
-
         .more-pub {
             padding-bottom: 50px;
         }
+
         /* More Publication Section Styles */
         .more-publication-item {
             background-color: var(--procounsel-white);
@@ -373,6 +372,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);

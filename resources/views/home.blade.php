@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('head')
-    <x-meta-tags />
-@endsection
-
 @section('content')
     {{-- Banner Component --}}
     <x-banner :sliders="$sliders" />
@@ -24,23 +20,23 @@
         sectionDescription="Explore our comprehensive collection of legal practice, research papers, and expert insights covering various areas of law." />
 
     {{-- Portfolio Section --}}
-    {{-- <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10"
+    <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10"
         sectionTitle="<span class=''>Our Portfolio</span>"
         sectionSubtitle="Our Latest Work"
-        sectionDescription="Explore our diverse portfolio of successful projects and see how we bring ideas to life with creativity and expertise." /> --}}
+        sectionDescription="Explore our diverse portfolio of successful projects and see how we bring ideas to life with creativity and expertise." />
 
     {{-- Testimonial Section - Clients We Served --}}
-    <x-testimonial-section :portfolios="$portfolios" :limit="8" sectionTitle="<span class=''>Clients We Served</span>"
-        sectionSubtitle="Our Happy Clients" />
+    {{-- <x-testimonial-section :portfolios="$portfolios" :limit="8" sectionTitle="<span class=''>Clients We Served</span>"
+        sectionSubtitle="Our Happy Clients" /> --}}
 
-   {{-- Publications Section --}}
+    {{-- Publications Section --}}
     @livewire('publication-section', [
-        'showViewAll' => true, 
-        'limit' => 8, 
+        'showViewAll' => true,
+        'limit' => 8,
         'showSearch' => true,
         'sectionTitle' => '<span class="">Publications</span>',
         'sectionSubtitle' => 'Legal Knowledge & Resources',
-        'sectionDescription' => 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.'
+        'sectionDescription' => 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.',
     ])
     {{-- Team Section --}}
     <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="true" :limit="4"

@@ -198,7 +198,7 @@
                     </div>
 
                     <a href="/contact" class="text-white hover:text-white/80 font-medium transition-colors nav-link">Contact</a>
-                    <a href="/calculator" class="text-white hover:text-white/80 font-medium transition-colors nav-link">Court Fees Calculator</a>
+                 
                 </nav>
 
                 <!-- Mobile menu button -->
@@ -236,7 +236,6 @@
                 <a href="{{ route('posts.by-type', 'news') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">News</a>
                 <a href="{{ route('publications.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">Publications</a>
                 <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
-                <a href="/calculator" class="block text-gray-800 hover:text-primary font-medium transition-colors">Court Fees Calculator</a>
             </nav>
         </div>
     </div>

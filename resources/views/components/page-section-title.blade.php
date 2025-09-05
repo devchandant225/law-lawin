@@ -29,13 +29,6 @@
                 </span>
             </h1>
             
-            {{-- Decorative Line --}}
-            <div class="flex justify-center items-center">
-                <div class="h-px bg-white/30 w-24"></div>
-                <div class="mx-4 w-3 h-3 bg-white rounded-full"></div>
-                <div class="h-px bg-white/30 w-24"></div>
-            </div>
-            
             {{-- Optional Breadcrumb or Navigation Hint --}}
             {{-- <div class="text-white/80 text-lg font-medium">
                 <span class="hover:text-white transition-colors duration-300 cursor-default">

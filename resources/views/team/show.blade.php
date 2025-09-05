@@ -60,11 +60,7 @@
                                                 <i class="fas fa-user text-white text-6xl"></i>
                                             </div>
                                         @endif
-                                        
-                                        <!-- Status Badge -->
-                                        <div class="absolute -top-2 -right-2 bg-green-400 text-white px-3 py-1 rounded-full text-xs font-semibold border-2 border-white shadow-lg">
-                                            <i class="fas fa-check mr-1"></i>Active
-                                        </div>
+                                  
                                     </div>
                                 </div>
                                 

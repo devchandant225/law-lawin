@@ -1,5 +1,5 @@
 <!-- Responsive Footer Design -->
-<footer class="bg-accent border-t border-gray-200">
+<footer class="bg-gray-100 border-t border-gray-200">
     <!-- Main Footer Content -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Mobile: Single column, Tablet: 2 columns, Desktop: 3 columns -->

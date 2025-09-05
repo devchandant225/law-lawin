@@ -1,22 +1,22 @@
 <!-- Overlay Header with Scroll Effects -->
 <div class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
     <!-- Top Contact Bar -->
-    <div class="header-top bg-transparent border-b border-white/20 py-2 transition-all duration-300">
-        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="header-top bg-transparent border-b border-white/20 py-1 sm:py-2 transition-all duration-300">
+        <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="flex justify-between items-center">
                 <!-- Contact Info -->
-                <div class="flex items-center space-x-6 text-sm text-white/90 header-contact">
+                <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-xs sm:text-sm text-white/90 header-contact">
                     @if ($globalProfile && $globalProfile->phone1)
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-phone text-white/90"></i>
+                        <div class="flex items-center space-x-1 sm:space-x-2">
+                            <i class="fas fa-phone text-white/90 text-xs"></i>
                             <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-white transition-colors">
                                 {{ $globalProfile->phone1 }}
                             </a>
                         </div>
                     @endif
                     @if ($globalProfile && $globalProfile->email)
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-envelope text-white/90"></i>
+                        <div class="hidden lg:flex items-center space-x-1 sm:space-x-2">
+                            <i class="fas fa-envelope text-white/90 text-xs"></i>
                             <a href="mailto:{{ $globalProfile->email }}" class="hover:text-white transition-colors">
                                 {{ $globalProfile->email }}
                             </a>
@@ -25,18 +25,18 @@
                 </div>
 
                 <!-- Language Selector & Social Links -->
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2 sm:space-x-4 ml-auto">
                     <!-- Language Buttons -->
-                    <div class="flex items-center space-x-1 header-languages">
-                        <a href="#" class="px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">French</a>
-                        <span class="text-white/60">|</span>
-                        <a href="#" class="px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">中国人</a>
-                        <span class="text-white/60">|</span>
-                        <a href="#" class="px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">Español</a>
+                    <div class="hidden sm:flex items-center space-x-1 header-languages">
+                        <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">FR</a>
+                        <span class="text-white/60 text-xs">|</span>
+                        <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">中文</a>
+                        <span class="text-white/60 text-xs">|</span>
+                        <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">ES</a>
                     </div>
 
                     <!-- Social Links -->
-                    <div class="flex items-center space-x-2 header-social">
+                    <div class="flex items-center space-x-1 sm:space-x-2 header-social">
                         @if ($globalProfile && $globalProfile->whatsapp)
                             <a href="{{ $globalProfile->whatsapp }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
                                 <i class="fab fa-whatsapp text-sm"></i>
@@ -167,10 +167,10 @@
                 <div class="lg:hidden">
                     <button type="button" class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors">
                         <span class="sr-only">Open main menu</span>
-                        <div class="w-6 h-6 flex flex-col justify-center items-center">
-                            <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200"></span>
-                            <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200 mt-1"></span>
-                            <span class="bg-current block h-0.5 w-6 transform transition ease-in-out duration-200 mt-1"></span>
+                        <div class="hamburger-icon w-6 h-6 flex flex-col justify-center items-center">
+                            <span class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300"></span>
+                            <span class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
+                            <span class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
                         </div>
                     </button>
                 </div>
@@ -180,29 +180,13 @@
 </div>
 
 <!-- Mobile Navigation Menu -->
-<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden" style="top: 100px;">
     <div class="flex h-full">
         <!-- Overlay -->
         <div class="mobile-nav__overlay fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
         
         <!-- Menu Panel -->
         <div class="mobile-nav__panel relative ml-auto flex h-full w-full max-w-sm flex-col bg-white shadow-xl">
-            <!-- Header -->
-            <div class="flex items-center justify-between px-4 py-4 border-b border-gray-200">
-                <a href="{{ route('home') }}" class="flex-shrink-0">
-                    @if ($globalProfile && $globalProfile->logo_url)
-                        <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="h-10 w-auto">
-                    @else
-                        <img src="assets/images/logo-dark.png" alt="{{ config('app.name') }}" class="h-10 w-auto">
-                    @endif
-                </a>
-                <button type="button" class="mobile-nav__close inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 transition-colors">
-                    <span class="sr-only">Close menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
             
             <!-- Navigation Links -->
             <nav class="flex-1 px-4 py-6 space-y-4">
@@ -305,6 +289,74 @@
         background-color: rgba(255, 255, 255, 0.95);
     }
 }
+
+/* Additional responsive improvements */
+@media (max-width: 640px) {
+    .header-top {
+        min-height: 2rem;
+    }
+    
+    .header-social a {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+    
+    .header-social a i {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-social {
+        max-width: 8rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .header-social::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Prevent text overflow in contact info */
+.header-contact a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10rem;
+}
+
+@media (min-width: 1024px) {
+    .header-contact a {
+        max-width: none;
+    }
+}
+
+/* Hamburger Menu Animation */
+.mobile-nav__toggler.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-nav__toggler.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.mobile-nav__toggler.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Adjust mobile navigation positioning */
+.mobile-nav {
+    height: calc(100vh - 80px);
+    top: 80px;
+}
+
+.mobile-nav__overlay {
+    top: 80px;
+    height: calc(100vh - 80px);
+}
 </style>
 
 <script>
@@ -342,16 +394,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile navigation
     function openMobileNav() {
         mobileNav.classList.add('active');
+        mobileToggler.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
     
     function closeMobileNav() {
         mobileNav.classList.remove('active');
+        mobileToggler.classList.remove('active');
         document.body.style.overflow = '';
     }
     
     if (mobileToggler) {
-        mobileToggler.addEventListener('click', openMobileNav);
+        mobileToggler.addEventListener('click', function() {
+            if (mobileNav.classList.contains('active')) {
+                closeMobileNav();
+            } else {
+                openMobileNav();
+            }
+        });
     }
     
     if (mobileNavClose) {

@@ -63,7 +63,7 @@
 
                 <!-- Description Content -->
                 <div class="space-y-6">
-                    <div class="text-lg text-gray-600 max-w-none">
+                    <div class="text-lg text-gray-600 max-w-none text-justify">
                         {!! $intro_home->desc_1 !!}
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 <div class="mx-auto">
                     <!-- Description 2 Content -->
                     <div class="text-left">
-                        <div class="text-lg text-gray-50 mx-auto">
+                        <div class="text-lg text-gray-50 mx-auto text-justify">
                             {!! $intro_home->desc_2 !!}
                         </div>
                     </div>

@@ -2,47 +2,49 @@
 
 @section('content')
     {{-- Banner Component --}}
-    <x-banner :sliders="$sliders" />
+    <div class="h-screen">
+        <x-banner :sliders="$sliders" />
+    </div>
 
     {{-- About Section with Section Title Component --}}
     <section class="relative bg-white">
         <x-about-us />
     </section>
     {{-- <x-why-choose-us /> --}}
+    {{-- Services Section Title --}}
+    <x-page-section-title title="<span>Services</span>" />
     {{-- Services Section --}}
-    <x-service-section :services="$services" :showViewAll="true" :limit="8" sectionTitle="<span class=''>Services</span>"
-        sectionSubtitle="Professional Legal Services"
-        sectionDescription="We provide comprehensive legal services with expertise and dedication to serve our clients' needs across various practice areas." />
+    <x-service-section :services="$services" :showViewAll="true" :limit="8" />
 
-    {{-- Publications Section --}}
-    <x-practice-section :showViewAll="true" :limit="8" sectionTitle="<span class=''>Practices</span>"
-        sectionSubtitle="Legal Knowledge Base"
-        sectionDescription="Explore our comprehensive collection of legal practice, research papers, and expert insights covering various areas of law." />
+    {{-- Practices Section Title --}}
+    <x-page-section-title title="<span>Practices</span>" />
+    {{-- Practices Section --}}
+    <x-practice-section :showViewAll="true" :limit="8" />
 
+    {{-- Portfolio Section Title --}}
+    <x-page-section-title title="<span>Our Portfolio</span>" />
     {{-- Portfolio Section --}}
-    <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10"
-        sectionTitle="<span class=''>Our Portfolio</span>"
-        sectionSubtitle="Our Latest Work"
-        sectionDescription="Explore our diverse portfolio of successful projects and see how we bring ideas to life with creativity and expertise." />
+    <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10" />
 
     {{-- Testimonial Section - Clients We Served --}}
     {{-- <x-testimonial-section :portfolios="$portfolios" :limit="8" sectionTitle="<span class=''>Clients We Served</span>"
         sectionSubtitle="Our Happy Clients" /> --}}
 
+    {{-- Publications Section Title --}}
+    <x-page-section-title title="<span>Publications</span>" />
     {{-- Publications Section --}}
     @livewire('publication-section', [
         'showViewAll' => true,
         'limit' => 8,
-        'showSearch' => true,
-        'sectionTitle' => '<span class="">Publications</span>',
-        'sectionSubtitle' => 'Legal Knowledge & Resources',
-        'sectionDescription' => 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.',
+        'showSearch' => true
     ])
+    {{-- Team Section Title --}}
+    <x-page-section-title title="<span>Our Team</span>" />
     {{-- Team Section --}}
-    <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="true" :limit="4"
-        sectionTitle="<span class=''>Our Team</span>" sectionSubtitle="Meet Our Legal Professionals"
-        sectionDescription="Our experienced team of legal experts is dedicated to providing exceptional service and achieving the best outcomes for our clients." />
+    <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="false" :limit="4" />
 
+    {{-- Contact Section Title --}}
+    <x-page-section-title title="<span>Reach out for the best Legal Advice</span>" />
     {{-- Contact Section --}}
     <x-contact-section :contactInfo="[
         'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
@@ -52,8 +54,5 @@
             'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
             'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
         ],
-    ]" sectionTitle="<span class=''>Reach out for the best Legal Advice</span>"
-        sectionSubtitle="Get In Touch"
-        sectionDescription="We're here to help with any questions you might have. Feel free to reach out to us and we'll get back to you as soon as possible."
-        :showSocialLinks="true" />
+    ]" :showSocialLinks="true" />
 @endsection

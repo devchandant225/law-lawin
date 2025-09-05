@@ -5,18 +5,6 @@
     </div>
 
     <div class="container mx-auto px-4 relative z-10">
-        <!-- Section Header -->
-        @if($showSectionHeader)
-        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
-            <div class="inline-flex items-center gap-2 mb-4">
-                <span class="w-8 h-px bg-primary"></span>
-                <p class="text-primary font-semibold text-sm uppercase tracking-wider">{{ $sectionSubtitle }}</p>
-                <span class="w-8 h-px bg-primary"></span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">{!! $sectionTitle !!}</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-6 rounded-full"></div>
-        </div>
-        @endif
 
         @if($teams->isNotEmpty())
         <!-- Team Grid -->

@@ -7,26 +7,6 @@
     ">
         
         <div class="container" style="position: relative; z-index: 1; padding: 25px 0px;">
-            {{-- Section Title and Subtitle --}}
-            @if(!request()->is('publication') && !request()->is('publications'))
-                <div class="row mb-5">
-                    <div class="col-12">
-                        <div class="text-center wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
-                            <div class="sec-title">
-                                @if($sectionSubtitle)
-                                    <p class="sec-title__tagline">{!! $sectionSubtitle !!}</p>
-                                @endif
-                                @if($sectionTitle)
-                                    <h2 class="sec-title__title">{!! $sectionTitle !!}</h2>
-                                @endif
-                                @if($sectionDescription)
-                                    <p class="sec-title__text">{!! $sectionDescription !!}</p>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
             
             @if ($showSearch)
                 <!-- Search Section -->

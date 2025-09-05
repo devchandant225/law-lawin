@@ -7,29 +7,6 @@
     <div class="absolute top-1/2 left-1/3 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Section Header -->
-        <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="800">
-            <!-- Section Tag -->
-            <div class="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full shadow-lg border border-primary/20 mb-6" data-aos="zoom-in" data-aos-delay="100">
-                <div class="p-2 bg-primary rounded-full">
-                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21.6562 20.875H10.7188C10.5115 20.875 10.3128 20.9573 10.1663 21.1038C10.0198 21.2503 9.9375 21.449 9.9375 21.6562C9.9375 21.8635 10.0198 22.0622 10.1663 22.2087C10.3128 22.3552 10.5115 22.4375 10.7188 22.4375H21.6562C21.8635 22.4375 22.0622 22.3552 22.2087 22.2087C22.3552 22.0622 22.4375 21.8635 22.4375 21.6562C22.4375 21.449 22.3552 21.2503 22.2087 21.1038C22.0622 20.9573 21.8635 20.875 21.6562 20.875Z" />
-                        <path d="M13.8056 16.9688C13.1943 16.9695 12.6083 17.2126 12.1761 17.6448C11.7439 18.0771 11.5007 18.6631 11.5 19.2744V20.0938H20.875V19.2744C20.8743 18.6631 20.6311 18.0771 20.1989 17.6448C19.7667 17.2126 19.1807 16.9695 18.5694 16.9688H13.8056Z" />
-                    </svg>
-                </div>
-                <span class="text-lg font-semibold text-primary tracking-wide">{{ $sectionSubtitle }}</span>
-            </div>
-            
-            <!-- Section Title -->
-            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
-                {!! $sectionTitle !!}
-            </h2>
-            
-            <!-- Section Description -->
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="300">
-                We provide comprehensive legal services with expert guidance and professional excellence
-            </p>
-        </div>
         
         @if($services->isNotEmpty())
             <!-- Services Grid -->

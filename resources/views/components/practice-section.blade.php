@@ -14,23 +14,25 @@
                         <div class="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden rounded-t-2xl">
-                                @if($practice->feature_image)
-                                    <img src="{{ $practice->feature_image_url }}" 
-                                         alt="{{ $practice->title }}" 
-                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                @else
-                                    <div class="w-full h-full bg-gradient-to-br from-primary via-secondary to-primary/80 flex items-center justify-center">
-                                        <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7 10 0"></path>
-                                            </svg>
+                                <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">
+                                    @if($practice->feature_image)
+                                        <img src="{{ $practice->feature_image_url }}" 
+                                             alt="{{ $practice->title }}" 
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    @else
+                                        <div class="w-full h-full bg-gradient-to-br from-primary via-secondary to-primary/80 flex items-center justify-center">
+                                            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7 10 0"></path>
+                                                </svg>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
-                                
-                                <!-- Overlay -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                    @endif
+                                    
+                                    <!-- Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                </a>
                                 
                         
                             </div>
@@ -38,7 +40,7 @@
                             <!-- Content Container -->
                             <div class="p-6 pt-10 flex flex-col h-[calc(100%-12rem)]">
                                 <!-- Title -->
-                                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                                <h3 class="text-xl font-bold text-white mb-3 transition-colors duration-300">
                                     <a href="{{ route('practice.show', $practice->slug) }}" class="block">
                                         {{ $practice->title }}
                                     </a>
@@ -53,34 +55,18 @@
                                 <div class="mt-auto">
                                     <a href="{{ route('practice.show', $practice->slug) }}" 
                                        class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary bg-white/90 backdrop-blur-sm rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl group/btn">
-                                        <!-- Background Animation -->
-                                        <div class="absolute inset-0 bg-gradient-to-r from-accent to-white opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                                        <div class="absolute inset-0 bg-gradient-to-r from-white via-accent/20 to-white transform translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-out"></div>
-                                        
                                         <!-- Button Content -->
                                         <span class="relative z-10 group-hover/btn:text-primary transition-colors duration-300">More Details</span>
                                         <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-all duration-300 group-hover/btn:text-primary" 
                                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                         </svg>
-                                        
-                                        <!-- Glow Effect -->
-                                        <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
-                                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-accent/30 to-transparent rounded-full blur-sm transform scale-110"></div>
-                                        </div>
-                                        
-                                        <!-- Shine Effect -->
-                                        <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
-                                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 translate-x-full group-hover/btn:translate-x-[-200%] transition-transform duration-700 ease-out"></div>
-                                        </div>
+                               
                                     </a>
                                 </div>
                             </div>
                             
-                            <!-- Hover Glow Effect -->
-                            <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl"></div>
-                            </div>
+                
                         </div>
                     </div>
                 @endforeach

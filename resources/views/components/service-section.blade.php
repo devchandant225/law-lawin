@@ -11,20 +11,22 @@
                         <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden">
-                                @if($service->feature_image)
-                                    <img src="{{ $service->feature_image_url }}" 
-                                         alt="{{ $service->title }}" 
-                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-blue-900/30 transition-colors duration-500"></div>
-                                @else
-                                    <div class="w-full h-full flex items-center justify-center">
-                                        <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
-                                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/>
-                                            </svg>
+                                <a href="{{ route('service.show', $service->slug) }}" class="block w-full h-full">
+                                    @if($service->feature_image)
+                                        <img src="{{ $service->feature_image_url }}" 
+                                             alt="{{ $service->title }}" 
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-blue-900/30 transition-colors duration-500"></div>
+                                    @else
+                                        <div class="w-full h-full flex items-center justify-center">
+                                            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center">
+                                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 2L13.09 8.26L19 9L13.09 9.74L12 16L10.91 9.74L5 9L10.91 8.26L12 2Z"/>
+                                                </svg>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
+                                    @endif
+                                </a>
                                 
                               
                             </div>

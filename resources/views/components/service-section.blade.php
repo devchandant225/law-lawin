@@ -68,8 +68,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Hover Effect Border -->
-                            <div class="absolute inset-0 rounded-2xl ring-2 ring-transparent group-hover:ring-primary/30 transition-all duration-300"></div>
+                           
                         </div>
                     </div>
                 @endforeach

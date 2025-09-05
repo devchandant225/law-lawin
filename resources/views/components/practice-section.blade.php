@@ -1,5 +1,5 @@
 <!-- Modern Practice Areas Section -->
-<section class="relative py-20 bg-gradient-to-b from-primary via-primary/90 to-secondary overflow-hidden" id="practice-areas">
+<section class="relative py-20  overflow-hidden" id="practice-areas">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 20px 20px;"></div>

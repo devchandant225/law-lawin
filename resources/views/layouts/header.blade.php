@@ -138,11 +138,6 @@
                               <span></span>
                           </div><!-- /.mobile-nav__toggler -->
 
-                          <div class="main-header__btn">
-                              <a href="{{ route('calculator') }}" class="procounsel-btn">
-                                  <i>Court Fee Calculator</i><span>Court Fee Calculator</span>
-                              </a><!-- /.thm-btn main-header__btn -->
-                          </div>
                       </div><!-- /.main-header__right -->
                   </div>
               </div>

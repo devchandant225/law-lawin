@@ -96,7 +96,7 @@
                 </div>
                 
                 {{-- Practices Grid --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     @foreach ($practices as $index => $practice)
                         <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index % 3 + 1) * 100 }}" data-aos-duration="600">
                             <div class="relative bg-white rounded-2xl border border-gray-100 hover:border-primary/20 transition-all duration-500 transform hover:-translate-y-2 shadow-lg hover:shadow-2xl overflow-hidden h-full">

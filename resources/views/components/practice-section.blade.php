@@ -48,7 +48,7 @@
                                 
                                 <!-- Description -->
                                 <p class="text-gray-300 leading-relaxed mb-6 flex-grow">
-                                    {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 120) }}
+                                    {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 50) }}
                                 </p>
                                 
                                 <!-- More Details Button -->

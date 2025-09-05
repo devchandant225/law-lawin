@@ -42,7 +42,7 @@
                                 
                                 <!-- Description -->
                                 <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
-                                    {{ Str::limit(strip_tags($service->excerpt ?? $service->description), 120) }}
+                                    {{ Str::limit(strip_tags($service->excerpt ?? $service->description), 50) }}
                                 </p>
                                 
                                 <!-- Read More Button -->

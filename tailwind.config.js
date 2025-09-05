@@ -10,12 +10,10 @@ export default {
         extend: {
             colors: {
                 primary: "#2b4c65",
-                secondary: "#567470",
-                accent: "#F3EEED",
+                secondary: "#1a3247",
+                accent: "#4a6b85",
             },
         },
     },
     plugins: [],
 };
-
-

@@ -4,11 +4,6 @@
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
-    
-    <!-- Animated Background Elements -->
-    <div class="absolute top-20 right-10 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-    <div class="absolute bottom-20 left-10 w-72 h-72 bg-secondary/60 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
-    
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         @if($practices->isNotEmpty())

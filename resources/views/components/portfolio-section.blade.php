@@ -28,7 +28,7 @@
                             <div class="swiper-slide">
                                 <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
                                     <!-- Image Container -->
-                                    <div class="relative h-80 overflow-hidden rounded-t-2xl">
+                                    <div class="relative h-60 overflow-hidden rounded-t-2xl">
                                         @if($portfolio->image_url)
                                             <img src="{{ $portfolio->image_url }}" 
                                                  alt="{{ $portfolio->title }}" 
@@ -57,7 +57,7 @@
                                     <!-- Content Container -->
                                     <div class="p-6">
                                         <!-- Title -->
-                                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                                             {{ $portfolio->title }}
                                         </h3>                                   
                                         

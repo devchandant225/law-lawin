@@ -44,15 +44,10 @@
                             <!-- Accent top bar -->
                             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-white to-accent opacity-70"></div>
 
-                            <div class="p-6">
+                            <div class="p-2">
                                 <h2 class="text-xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
                                     <a href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
                                 </h2>
-                            </div>
-
-                            <!-- Hover glow -->
-                            <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                                <div class="absolute inset-0 bg-gradient-to-tr from-accent/10 via-white/5 to-accent/20"></div>
                             </div>
                         </div>
                     @endforeach

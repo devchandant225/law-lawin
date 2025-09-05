@@ -46,12 +46,22 @@
                                 <!-- Read More Button -->
                                 <div class="mt-auto">
                                     <a href="{{ route('service.show', $service->slug) }}" 
-                                       class="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors duration-300 group/btn">
-                                        <span>Read More</span>
-                                        <svg class="w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
+                                       class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
+                                        <!-- Background Animation -->
+                                        <div class="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                                        <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500 ease-out"></div>
+                                        
+                                        <!-- Button Content -->
+                                        <span class="relative z-10">Read More</span>
+                                        <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
                                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                         </svg>
+                                        
+                                        <!-- Shine Effect -->
+                                        <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover/btn:translate-x-[-200%] transition-transform duration-700 ease-out"></div>
+                                        </div>
                                     </a>
                                 </div>
                             </div>

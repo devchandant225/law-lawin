@@ -30,51 +30,70 @@
     />
 
     {{-- Main Content Section --}}
-    <section class="team-details-section">
-        <div class="container">
-            <div class="row">
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Main Content - 70% -->
-                <div class="col-lg-8 col-md-12">
+                <div class="lg:col-span-2">
                     <!-- Team Member Profile Card -->
-                    <div class="team-content-card">
-                        <div class="team-header">
-                            <div class="row align-items-center">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-8 group">
+                        <!-- Profile Header with Gradient Background -->
+                        <div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-8">
+                            <!-- Decorative Elements -->
+                            <div class="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                            <div class="absolute bottom-4 right-12 w-12 h-12 bg-white/20 rounded-full blur-lg"></div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center relative z-10">
                                 <!-- Profile Image -->
-                                <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                                    <div class="team-image">
+                                <div class="text-center md:text-left">
+                                    <div class="relative inline-block">
                                         @if($team->image_url)
-                                            <img src="{{ $team->image_url }}" alt="{{ $team->name }}" class="img-fluid">
+                                            <img src="{{ $team->image_url }}" alt="{{ $team->name }}" 
+                                                 class="w-32 h-40 md:w-40 md:h-48 object-cover rounded-2xl border-4 border-white/30 shadow-2xl group-hover:scale-105 transition-transform duration-300">
                                         @else
-                                            <div class="placeholder-avatar">
-                                                <i class="fas fa-user"></i>
+                                            <div class="w-32 h-40 md:w-40 md:h-48 bg-white/20 backdrop-blur-sm rounded-2xl border-4 border-white/30 flex items-center justify-center shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                                                <i class="fas fa-user text-white text-6xl"></i>
                                             </div>
                                         @endif
+                                        
+                                        <!-- Status Badge -->
+                                        <div class="absolute -top-2 -right-2 bg-green-400 text-white px-3 py-1 rounded-full text-xs font-semibold border-2 border-white shadow-lg">
+                                            <i class="fas fa-check mr-1"></i>Active
+                                        </div>
                                     </div>
                                 </div>
                                 
                                 <!-- Profile Info -->
-                                <div class="col-lg-8">
-                                    <h1 class="team-name">{{ $team->name }}</h1>
-                                    <h3 class="team-designation">{{ $team->designation }}</h3>
+                                <div class="md:col-span-2 text-center md:text-left">
+                                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-blue-100 transition-colors">{{ $team->name }}</h1>
+                                    <h3 class="text-xl md:text-2xl text-blue-100 font-semibold mb-4">{{ $team->designation }}</h3>
                                     
                                     @if($team->tagline)
-                                        <p class="team-tagline">{{ $team->tagline }}</p>
+                                        <p class="text-blue-100 text-lg mb-6 leading-relaxed">{{ $team->tagline }}</p>
                                     @endif
                                     
-                                    <!-- Quick Contact -->
-                                    <div class="team-contact-buttons">
+                                    <!-- Quick Contact Buttons -->
+                                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
                                         @if($team->email)
-                                            <a href="mailto:{{ $team->email }}" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                                            <a href="mailto:{{ $team->email }}" 
+                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-blue-700 transition-all duration-300 hover:scale-105">
                                                 <i class="fas fa-envelope"></i> Email
                                             </a>
                                         @endif
                                         @if($team->phone)
-                                            <a href="tel:{{ $team->phone }}" class="btn btn-outline-success btn-sm me-2 mb-2">
+                                            <a href="tel:{{ $team->phone }}" 
+                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 hover:scale-105">
                                                 <i class="fas fa-phone"></i> Call
                                             </a>
                                         @endif
                                         @if($team->linkedinlink)
-                                            <a href="{{ $team->linkedinlink }}" target="_blank" class="btn btn-outline-info btn-sm mb-2">
+                                            <a href="{{ $team->linkedinlink }}" target="_blank" 
+                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-105">
                                                 <i class="fab fa-linkedin-in"></i> LinkedIn
                                             </a>
                                         @endif
@@ -86,72 +105,76 @@
                     
                     <!-- Biography Section -->
                     @if($team->description)
-                        <div class="team-bio-section">
-                            <h3 class="bio-title">
-                                <i class="fas fa-user-circle"></i>
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                            <h3 class="flex items-center gap-4 text-2xl font-bold text-blue-900 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-user-circle text-white text-xl"></i>
+                                </div>
                                 About {{ $team->name }}
                             </h3>
-                            <div class="team-description">
+                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                                 {!! $team->description !!}
                             </div>
                         </div>
                     @endif
 
                     <!-- Professional Profile Section -->
-                    <div class="professional-section">
-                        <h3 class="professional-title">
-                            <i class="fas fa-briefcase"></i>
+                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                        <h3 class="flex items-center gap-4 text-2xl font-bold text-blue-900 mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-briefcase text-white text-xl"></i>
+                            </div>
                             Professional Profile
                         </h3>
-                        <div class="row">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             @if($team->experience)
-                                <div class="col-md-6">
-                                    <div class="professional-item">
-                                        <div class="professional-icon">
-                                            <i class="fas fa-clock"></i>
+                                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-clock text-white text-lg"></i>
                                         </div>
-                                        <div class="professional-content">
-                                            <h5>Experience</h5>
-                                            <p>{{ $team->experience }}+ years of legal practice</p>
+                                        <div>
+                                            <h5 class="text-lg font-semibold text-gray-900 mb-2">Experience</h5>
+                                            <p class="text-gray-600">{{ $team->experience }}+ years of legal practice</p>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                             
                             @if($team->qualification)
-                                <div class="col-md-6">
-                                    <div class="professional-item">
-                                        <div class="professional-icon">
-                                            <i class="fas fa-graduation-cap"></i>
+                                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                            <i class="fas fa-graduation-cap text-white text-lg"></i>
                                         </div>
-                                        <div class="professional-content">
-                                            <h5>Education</h5>
-                                            <p>{{ $team->qualification }}</p>
+                                        <div>
+                                            <h5 class="text-lg font-semibold text-gray-900 mb-2">Education</h5>
+                                            <p class="text-gray-600">{{ $team->qualification }}</p>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                             
-                            <div class="col-md-6">
-                                <div class="professional-item">
-                                    <div class="professional-icon">
-                                        <i class="fas fa-gavel"></i>
+                            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-gavel text-white text-lg"></i>
                                     </div>
-                                    <div class="professional-content">
-                                        <h5>Specialization</h5>
-                                        <p>{{ $team->designation }}</p>
+                                    <div>
+                                        <h5 class="text-lg font-semibold text-gray-900 mb-2">Specialization</h5>
+                                        <p class="text-gray-600">{{ $team->designation }}</p>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="col-md-6">
-                                <div class="professional-item">
-                                    <div class="professional-icon">
-                                        <i class="fas fa-map-marker-alt"></i>
+                            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <i class="fas fa-map-marker-alt text-white text-lg"></i>
                                     </div>
-                                    <div class="professional-content">
-                                        <h5>Availability</h5>
-                                        <p>Available for consultation</p>
+                                    <div>
+                                        <h5 class="text-lg font-semibold text-gray-900 mb-2">Availability</h5>
+                                        <p class="text-gray-600">Available for consultation</p>
                                     </div>
                                 </div>
                             </div>
@@ -160,12 +183,14 @@
 
                     <!-- Additional Details -->
                     @if($team->additional_details)
-                        <div class="additional-details-section">
-                            <h3 class="additional-title">
-                                <i class="fas fa-info-circle"></i>
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                            <h3 class="flex items-center gap-4 text-2xl font-bold text-blue-900 mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-info-circle text-white text-xl"></i>
+                                </div>
                                 Additional Information
                             </h3>
-                            <div class="team-additional-details">
+                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                                 {!! $team->additional_details !!}
                             </div>
                         </div>
@@ -173,96 +198,126 @@
                 </div>
 
                 <!-- Sidebar - 30% -->
-                <div class="col-lg-4 col-md-12">
-                    <div class="sidebar-sticky">
+                <div class="lg:col-span-1">
+                    <div class="sticky top-8 space-y-6">
                         <!-- Other Team Members -->
-                        <div class="sidebar-card">
-                            <h4 class="sidebar-title">
-                                <i class="fas fa-users"></i>
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+                            <h4 class="flex items-center gap-3 text-xl font-bold text-blue-900 mb-6">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-users text-white text-sm"></i>
+                                </div>
                                 Our Team
                             </h4>
-                            <div class="other-team-members">
+                            <div class="space-y-4">
                                 @php
                                     $otherTeamMembers = App\Models\Team::active()->where('id', '!=', $team->id)->ordered()->take(4)->get();
                                 @endphp
                                 @if($otherTeamMembers->count() > 0)
                                     @foreach($otherTeamMembers as $member)
-                                        <div class="team-member-item">
-                                            <div class="team-member-image">
+                                        <div class="group flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-all duration-300 border-l-4 border-transparent hover:border-blue-500">
+                                            <div class="relative flex-shrink-0">
                                                 @if($member->image_url)
-                                                    <img src="{{ $member->image_url }}" alt="{{ $member->name }}" class="img-fluid">
+                                                    <img src="{{ $member->image_url }}" alt="{{ $member->name }}" 
+                                                         class="w-14 h-14 rounded-full object-cover border-2 border-gray-100 group-hover:border-blue-300 transition-colors">
                                                 @else
-                                                    <div class="placeholder-image">
-                                                        <i class="fas fa-user"></i>
+                                                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center border-2 border-gray-100 group-hover:border-blue-300 transition-colors">
+                                                        <i class="fas fa-user text-white text-lg"></i>
                                                     </div>
                                                 @endif
+                                                <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white"></div>
                                             </div>
-                                            <div class="team-member-content">
-                                                <h6><a href="{{ route('team.show', $member) }}">{{ $member->name }}</a></h6>
-                                                <p>{{ $member->designation }}</p>
+                                            <div class="flex-1 min-w-0">
+                                                <h6 class="font-semibold text-gray-900 text-sm truncate group-hover:text-blue-600 transition-colors">
+                                                    <a href="{{ route('team.show', $member) }}">{{ $member->name }}</a>
+                                                </h6>
+                                                <p class="text-gray-600 text-xs mt-1 truncate">{{ $member->designation }}</p>
                                             </div>
                                         </div>
                                     @endforeach
+                                @else
+                                    <div class="text-center py-8 text-gray-500">
+                                        <i class="fas fa-users text-3xl mb-3"></i>
+                                        <p>No other team members available</p>
+                                    </div>
                                 @endif
                             </div>
                         </div>
 
                         <!-- Social Share -->
-                        <div class="sidebar-card">
-                            <h4 class="sidebar-title">
-                                <i class="fas fa-share-alt"></i>
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+                            <h4 class="flex items-center gap-3 text-xl font-bold text-blue-900 mb-6">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-share-alt text-white text-sm"></i>
+                                </div>
                                 Share Profile
                             </h4>
-                            <div class="social-share">
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" target="_blank" class="social-btn facebook">
+                            <div class="flex justify-center gap-3">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" target="_blank" 
+                                   class="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-md hover:shadow-lg">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode('Meet ' . $team->name . ' - ' . $team->designation) }}" target="_blank" class="social-btn twitter">
+                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode('Meet ' . $team->name . ' - ' . $team->designation) }}" target="_blank" 
+                                   class="w-12 h-12 bg-sky-500 hover:bg-sky-600 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-md hover:shadow-lg">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->url()) }}" target="_blank" class="social-btn linkedin">
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->url()) }}" target="_blank" 
+                                   class="w-12 h-12 bg-blue-800 hover:bg-blue-900 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-md hover:shadow-lg">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://wa.me/?text={{ urlencode('Meet ' . $team->name . ' - ' . $team->designation . ' - ' . request()->url()) }}" target="_blank" class="social-btn whatsapp">
+                                <a href="https://wa.me/?text={{ urlencode('Meet ' . $team->name . ' - ' . $team->designation . ' - ' . request()->url()) }}" target="_blank" 
+                                   class="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-md hover:shadow-lg">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
                             </div>
                         </div>
 
                         <!-- Contact Form -->
-                        <div class="sidebar-card">
-                            <h4 class="sidebar-title">
-                                <i class="fas fa-envelope"></i>
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+                            <h4 class="flex items-center gap-3 text-xl font-bold text-blue-900 mb-6">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-white text-sm"></i>
+                                </div>
                                 Contact {{ $team->name }}
                             </h4>
-                            <form class="contact-form" action="{{ route('contact.submit') }}" method="POST">
+                            <form action="{{ route('contact.submit') }}" method="POST" class="space-y-4">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="fullname">Full Name *</label>
-                                    <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Enter your full name" required>
+                                <div>
+                                    <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
+                                    <input type="text" id="fullname" name="fullname" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           placeholder="Enter your full name">
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+                                    <input type="email" id="email" name="email" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           placeholder="Enter your email">
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number">
+                                <div>
+                                    <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                                    <input type="tel" id="phone" name="phone"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           placeholder="Enter your phone number">
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="subject">Subject *</label>
-                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter subject" value="Consultation request for {{ $team->name }}" required>
+                                <div>
+                                    <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject *</label>
+                                    <input type="text" id="subject" name="subject" required
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           placeholder="Enter subject" value="Consultation request for {{ $team->name }}">
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label for="message">Message *</label>
-                                    <textarea id="message" name="message" class="form-control" rows="4" placeholder="Write your message here..." required></textarea>
+                                <div>
+                                    <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
+                                    <textarea id="message" name="message" rows="4" required
+                                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none" 
+                                              placeholder="Write your message here..."></textarea>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-primary btn-contact">
+                                <button type="submit" 
+                                        class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-paper-plane"></i>
                                     Send Message
                                 </button>
@@ -270,8 +325,9 @@
                         </div>
 
                         <!-- Back to Team -->
-                        <div class="sidebar-card text-center">
-                            <a href="{{ route('team.index') }}" class="btn btn-outline-primary btn-back">
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 text-center">
+                            <a href="{{ route('team.index') }}" 
+                               class="inline-flex items-center gap-3 px-6 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300">
                                 <i class="fas fa-arrow-left"></i>
                                 View All Team Members
                             </a>

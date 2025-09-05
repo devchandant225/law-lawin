@@ -43,7 +43,7 @@
                     <!-- Team Member Profile Card -->
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden mb-8 group">
                         <!-- Profile Header with Gradient Background -->
-                        <div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-8">
+                        <div class="relative bg-gradient-to-br from-primary via-primary to-primary p-8">
                             <!-- Decorative Elements -->
                             <div class="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
                             <div class="absolute bottom-4 right-12 w-12 h-12 bg-white/20 rounded-full blur-lg"></div>
@@ -70,18 +70,18 @@
                                 
                                 <!-- Profile Info -->
                                 <div class="md:col-span-2 text-center md:text-left">
-                                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-blue-100 transition-colors">{{ $team->name }}</h1>
-                                    <h3 class="text-xl md:text-2xl text-blue-100 font-semibold mb-4">{{ $team->designation }}</h3>
+                                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-white/90 transition-colors">{{ $team->name }}</h1>
+                                    <h3 class="text-xl md:text-2xl text-white/90 font-semibold mb-4">{{ $team->designation }}</h3>
                                     
                                     @if($team->tagline)
-                                        <p class="text-blue-100 text-lg mb-6 leading-relaxed">{{ $team->tagline }}</p>
+                                        <p class="text-white/80 text-lg mb-6 leading-relaxed">{{ $team->tagline }}</p>
                                     @endif
                                     
                                     <!-- Quick Contact Buttons -->
                                     <div class="flex flex-wrap justify-center md:justify-start gap-3">
                                         @if($team->email)
                                             <a href="mailto:{{ $team->email }}" 
-                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-blue-700 transition-all duration-300 hover:scale-105">
+                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-primary transition-all duration-300 hover:scale-105">
                                                 <i class="fas fa-envelope"></i> Email
                                             </a>
                                         @endif
@@ -93,7 +93,7 @@
                                         @endif
                                         @if($team->linkedinlink)
                                             <a href="{{ $team->linkedinlink }}" target="_blank" 
-                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 hover:scale-105">
+                                               class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105">
                                                 <i class="fab fa-linkedin-in"></i> LinkedIn
                                             </a>
                                         @endif
@@ -106,8 +106,8 @@
                     <!-- Biography Section -->
                     @if($team->description)
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                            <h3 class="flex items-center gap-4 text-2xl font-bold text-blue-900 mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                            <h3 class="flex items-center gap-4 text-2xl font-bold text-primary mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-xl flex items-center justify-center">
                                     <i class="fas fa-user-circle text-white text-xl"></i>
                                 </div>
                                 About {{ $team->name }}
@@ -120,8 +120,8 @@
 
                     <!-- Professional Profile Section -->
                     <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                        <h3 class="flex items-center gap-4 text-2xl font-bold text-blue-900 mb-8">
-                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                        <h3 class="flex items-center gap-4 text-2xl font-bold text-primary mb-8">
+                            <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-xl flex items-center justify-center">
                                 <i class="fas fa-briefcase text-white text-xl"></i>
                             </div>
                             Professional Profile
@@ -184,8 +184,8 @@
                     <!-- Additional Details -->
                     @if($team->additional_details)
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                            <h3 class="flex items-center gap-4 text-2xl font-bold text-blue-900 mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                            <h3 class="flex items-center gap-4 text-2xl font-bold text-primary mb-6">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-xl flex items-center justify-center">
                                     <i class="fas fa-info-circle text-white text-xl"></i>
                                 </div>
                                 Additional Information
@@ -202,8 +202,8 @@
                     <div class="sticky top-8 space-y-6">
                         <!-- Other Team Members -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-                            <h4 class="flex items-center gap-3 text-xl font-bold text-blue-900 mb-6">
-                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                            <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
+                                <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                                     <i class="fas fa-users text-white text-sm"></i>
                                 </div>
                                 Our Team
@@ -245,8 +245,8 @@
 
                         <!-- Social Share -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-                            <h4 class="flex items-center gap-3 text-xl font-bold text-blue-900 mb-6">
-                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                            <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
+                                <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                                     <i class="fas fa-share-alt text-white text-sm"></i>
                                 </div>
                                 Share Profile
@@ -273,8 +273,8 @@
 
                         <!-- Contact Form -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-                            <h4 class="flex items-center gap-3 text-xl font-bold text-blue-900 mb-6">
-                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                            <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
+                                <div class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                                     <i class="fas fa-envelope text-white text-sm"></i>
                                 </div>
                                 Contact {{ $team->name }}
@@ -284,40 +284,40 @@
                                 <div>
                                     <label for="fullname" class="block text-sm font-semibold text-gray-700 mb-2">Full Name *</label>
                                     <input type="text" id="fullname" name="fullname" required
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
                                            placeholder="Enter your full name">
                                 </div>
                                 
                                 <div>
                                     <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
                                     <input type="email" id="email" name="email" required
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
                                            placeholder="Enter your email">
                                 </div>
                                 
                                 <div>
                                     <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
                                     <input type="tel" id="phone" name="phone"
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
                                            placeholder="Enter your phone number">
                                 </div>
                                 
                                 <div>
                                     <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject *</label>
                                     <input type="text" id="subject" name="subject" required
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
                                            placeholder="Enter subject" value="Consultation request for {{ $team->name }}">
                                 </div>
                                 
                                 <div>
                                     <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message *</label>
                                     <textarea id="message" name="message" rows="4" required
-                                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none" 
+                                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none" 
                                               placeholder="Write your message here..."></textarea>
                                 </div>
                                 
                                 <button type="submit" 
-                                        class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                        class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary hover:opacity-90 text-white px-6 py-4 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-paper-plane"></i>
                                     Send Message
                                 </button>
@@ -327,7 +327,7 @@
                         <!-- Back to Team -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 text-center">
                             <a href="{{ route('team.index') }}" 
-                               class="inline-flex items-center gap-3 px-6 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300">
+                               class="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300">
                                 <i class="fas fa-arrow-left"></i>
                                 View All Team Members
                             </a>

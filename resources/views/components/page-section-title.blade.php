@@ -1,5 +1,5 @@
 {{-- Page Section Title Component --}}
-<div class="relative bg-primary py-5 overflow-hidden">
+<div class="relative bg-primary py-6 overflow-hidden">
     {{-- Background Pattern/Effects --}}
     {{-- <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 left-0 w-full h-full">
@@ -23,7 +23,7 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center">
             {{-- Main Title --}}
-            <h1 class="text-4xl  font-semibold text-white leading-tight tracking-tight uppercase">
+            <h1 class="text-3xl font-semibold text-white leading-tight tracking-tight uppercase">
                 <span class="inline-block transform hover:scale-105 transition-transform duration-300">
                     {!! $title !!}
                 </span>

@@ -8,15 +8,8 @@
 ])
 
 <!-- Modern Portfolio Section -->
-<section class="relative py-20 bg-white overflow-hidden" id="portfolio">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50"></div>
-    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
-    
-    <!-- Decorative Elements -->
-    <div class="absolute top-20 right-20 w-32 h-32 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
-    <div class="absolute bottom-20 left-20 w-40 h-40 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse animation-delay-2000"></div>
-    
+<section class="relative py-8 bg-white overflow-hidden" id="portfolio">
+
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         @if($portfolios->isNotEmpty())
@@ -26,13 +19,13 @@
                     <div class="swiper-wrapper">
                         @foreach($portfolios->take($limit) as $index => $portfolio)
                             <div class="swiper-slide">
-                                <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
+                                <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
                                     <!-- Image Container -->
                                     <div class="relative h-60 overflow-hidden rounded-t-2xl">
                                         @if($portfolio->image_url)
                                             <img src="{{ $portfolio->image_url }}" 
                                                  alt="{{ $portfolio->title }}" 
-                                                 class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
+                                                 class="w-full h-full object-contain">
                                         @else
                                             <div class="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center">
                                                 <div class="text-center">
@@ -41,31 +34,22 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                                         </svg>
                                                     </div>
-                                                    <p class="text-white font-medium">{{ $portfolio->title }}</p>
+                                                    <p class="text-white font-normal text-sm">{{ $portfolio->title }}</p>
                                                 </div>
                                             </div>
                                         @endif
-                                        
-                                        <!-- Gradient Overlay -->
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        
-                                  
-                                        
-                                    
                                     </div>
                                     
                                     <!-- Content Container -->
-                                    <div class="p-6">
+                                    <div class="px-3 py-2 text-center bg-cyan-100">
                                         <!-- Title -->
-                                        <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                        <h3 class="text-sm font-normal text-gray-900 mb-2 transition-colors duration-300">
                                             {{ $portfolio->title }}
                                         </h3>                                   
                                         
                                        
                                     </div>
-                                    
-                                    <!-- Hover Effect Border -->
-                                    <div class="absolute inset-0 rounded-2xl ring-2 ring-transparent group-hover:ring-blue-200 transition-all duration-300"></div>
+                                 
                                 </div>
                             </div>
                         @endforeach

@@ -1,83 +1,82 @@
-<!-- Overlay Header with Scroll Effects -->
-<div class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
-    <!-- Top Contact Bar -->
-    <div class="header-top bg-transparent border-b border-white/20 sm:py-2 transition-all duration-300">
-        <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
-            <div class="flex justify-between items-center">
-                <!-- Contact Info -->
-                <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-xs sm:text-sm text-white/90 header-contact">
-                    @if ($globalProfile && $globalProfile->phone1)
-                        <div class="flex items-center space-x-1 sm:space-x-2">
-                            <i class="fas fa-phone text-white/90 text-xs"></i>
-                            <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-white transition-colors">
-                                {{ $globalProfile->phone1 }}
-                            </a>
-                        </div>
-                    @endif
-                    @if ($globalProfile && $globalProfile->email)
-                        <div class="hidden lg:flex items-center space-x-1 sm:space-x-2">
-                            <i class="fas fa-envelope text-white/90 text-xs"></i>
-                            <a href="mailto:{{ $globalProfile->email }}" class="hover:text-white transition-colors">
-                                {{ $globalProfile->email }}
-                            </a>
-                        </div>
-                    @endif
-                </div>
-
-                <!-- Language Selector & Social Links -->
-                <div class="flex items-center space-x-2 sm:space-x-4 ml-auto">
-                    <!-- Language Buttons -->
-                    {{-- <div class="hidden sm:flex items-center space-x-1 header-languages">
-                        <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">FR</a>
-                        <span class="text-white/60 text-xs">|</span>
-                        <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">中文</a>
-                        <span class="text-white/60 text-xs">|</span>
-                        <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">ES</a>
-                    </div> --}}
-
-                    <!-- Social Links -->
-                    <div class="flex items-center space-x-1 sm:space-x-2 header-social">
-                        @if ($globalProfile && $globalProfile->whatsapp)
-                            <a href="{{ $globalProfile->whatsapp }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
-                                <i class="fab fa-whatsapp text-sm"></i>
-                                <span class="sr-only">WhatsApp</span>
-                            </a>
-                        @endif
-                        @if ($globalProfile && $globalProfile->viber)
-                            <a href="{{ $globalProfile->viber }}" class="w-6 h-6 flex items-center justify-center text-purple-400 hover:text-purple-300 transition-colors">
-                                <i class="fab fa-viber text-sm"></i>
-                                <span class="sr-only">Viber</span>
-                            </a>
-                        @endif
-                        @if ($globalProfile && $globalProfile->wechat_link)
-                            <a href="{{ $globalProfile->wechat_link }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
-                                <i class="fab fa-weixin text-sm"></i>
-                                <span class="sr-only">WeChat</span>
-                            </a>
-                        @endif
-                        @if ($globalProfile && $globalProfile->facebook_link)
-                            <a href="{{ $globalProfile->facebook_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-facebook text-sm"></i>
-                                <span class="sr-only">Facebook</span>
-                            </a>
-                        @endif
-                        @if ($globalProfile && $globalProfile->linkedin_link)
-                            <a href="{{ $globalProfile->linkedin_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fab fa-linkedin text-sm"></i>
-                                <span class="sr-only">LinkedIn</span>
-                            </a>
-                        @endif
-                              <a href="/calculator" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
-                                <i class="fa fa-calculator text-sm"></i>
-                                <span class="sr-only">calculator</span>
-                            </a>
+<!-- Top Contact Bar - Scrollable -->
+<div class="header-top bg-transparent border-b border-white/20 sm:py-2 transition-all duration-300" id="top-header">
+    <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div class="flex justify-between items-center">
+            <!-- Contact Info -->
+            <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-xs sm:text-sm text-white/90 header-contact">
+                @if ($globalProfile && $globalProfile->phone1)
+                    <div class="flex items-center space-x-1 sm:space-x-2">
+                        <i class="fas fa-phone text-white/90 text-xs"></i>
+                        <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-white transition-colors">
+                            {{ $globalProfile->phone1 }}
+                        </a>
                     </div>
+                @endif
+                @if ($globalProfile && $globalProfile->email)
+                    <div class="hidden lg:flex items-center space-x-1 sm:space-x-2">
+                        <i class="fas fa-envelope text-white/90 text-xs"></i>
+                        <a href="mailto:{{ $globalProfile->email }}" class="hover:text-white transition-colors">
+                            {{ $globalProfile->email }}
+                        </a>
+                    </div>
+                @endif
+            </div>
+
+            <!-- Language Selector & Social Links -->
+            <div class="flex items-center space-x-2 sm:space-x-4 ml-auto">
+                <!-- Language Buttons -->
+                {{-- <div class="hidden sm:flex items-center space-x-1 header-languages">
+                    <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">FR</a>
+                    <span class="text-white/60 text-xs">|</span>
+                    <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">中文</a>
+                    <span class="text-white/60 text-xs">|</span>
+                    <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">ES</a>
+                </div> --}}
+
+                <!-- Social Links -->
+                <div class="flex items-center space-x-1 sm:space-x-2 header-social">
+                    @if ($globalProfile && $globalProfile->whatsapp)
+                        <a href="{{ $globalProfile->whatsapp }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                            <span class="sr-only">WhatsApp</span>
+                        </a>
+                    @endif
+                    @if ($globalProfile && $globalProfile->viber)
+                        <a href="{{ $globalProfile->viber }}" class="w-6 h-6 flex items-center justify-center text-purple-400 hover:text-purple-300 transition-colors">
+                            <i class="fab fa-viber text-sm"></i>
+                            <span class="sr-only">Viber</span>
+                        </a>
+                    @endif
+                    @if ($globalProfile && $globalProfile->wechat_link)
+                        <a href="{{ $globalProfile->wechat_link }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
+                            <i class="fab fa-weixin text-sm"></i>
+                            <span class="sr-only">WeChat</span>
+                        </a>
+                    @endif
+                    @if ($globalProfile && $globalProfile->facebook_link)
+                        <a href="{{ $globalProfile->facebook_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                            <i class="fab fa-facebook text-sm"></i>
+                            <span class="sr-only">Facebook</span>
+                        </a>
+                    @endif
+                    @if ($globalProfile && $globalProfile->linkedin_link)
+                        <a href="{{ $globalProfile->linkedin_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                            <i class="fab fa-linkedin text-sm"></i>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                    @endif
+                          <a href="/calculator" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                            <i class="fa fa-calculator text-sm"></i>
+                            <span class="sr-only">calculator</span>
+                        </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Main Header -->
+<!-- Main Header - Sticky -->
+<div class="sticky top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
     <header class="header-main transition-all duration-300">
         <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
@@ -246,39 +245,23 @@
 </div>
 
 <style>
-/* Header Scroll Effects */
+/* Top Header - Normal scrollable section */
+#top-header {
+    position: relative;
+    z-index: 40;
+}
+
+/* Main Header - Sticky section */
+#main-header {
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Header Scroll Effects - When main header gets background */
 #main-header.scrolled {
-    background-color: rgba(249, 250, 251, 0.9);
+    background-color: rgba(249, 250, 251, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-}
-
-#main-header.scrolled .header-top {
-    background-color: rgba(249, 250, 251, 0.9);
-    border-bottom-color: rgba(209, 213, 219, 0.3);
-}
-
-#main-header.scrolled .header-contact,
-#main-header.scrolled .header-languages {
-    color: rgb(75, 85, 99);
-}
-
-#main-header.scrolled .header-contact a,
-#main-header.scrolled .header-languages a {
-    color: rgb(107, 114, 128);
-}
-
-#main-header.scrolled .header-contact a:hover,
-#main-header.scrolled .header-languages a:hover {
-    color: rgb(59, 130, 246);
-}
-
-#main-header.scrolled .header-contact i {
-    color: rgb(59, 130, 246);
-}
-
-#main-header.scrolled .header-social a {
-    color: inherit;
 }
 
 #main-header.scrolled .nav-link {
@@ -286,7 +269,7 @@
 }
 
 #main-header.scrolled .nav-link:hover {
-    color: rgb(59, 130, 246) !important;
+    color: #139fba !important;
 }
 
 #main-header.scrolled .mobile-nav__toggler {
@@ -294,7 +277,31 @@
 }
 
 #main-header.scrolled .mobile-nav__toggler:hover {
-    color: rgb(59, 130, 246);
+    color: #139fba;
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Ensure main header has background when top header is scrolled away */
+#main-header.scrolled-past-top {
+    background-color: rgba(249, 250, 251, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+#main-header.scrolled-past-top .nav-link {
+    color: rgb(75, 85, 99) !important;
+}
+
+#main-header.scrolled-past-top .nav-link:hover {
+    color: #139fba !important;
+}
+
+#main-header.scrolled-past-top .mobile-nav__toggler {
+    color: rgb(75, 85, 99);
+}
+
+#main-header.scrolled-past-top .mobile-nav__toggler:hover {
+    color: #139fba;
     background-color: rgba(59, 130, 246, 0.1);
 }
 
@@ -403,7 +410,8 @@
 <script>
 // Header scroll effects and mobile navigation
 document.addEventListener('DOMContentLoaded', function() {
-    const header = document.getElementById('main-header');
+    const topHeader = document.getElementById('top-header');
+    const mainHeader = document.getElementById('main-header');
     const mobileToggler = document.querySelector('.mobile-nav__toggler');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileNavClose = document.querySelector('.mobile-nav__close');
@@ -411,10 +419,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Header scroll effect
     function handleScroll() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
+        const topHeaderHeight = topHeader ? topHeader.offsetHeight : 0;
+        const scrollY = window.scrollY;
+        
+        // Add background to main header when top header starts scrolling away
+        if (scrollY > topHeaderHeight / 2) {
+            mainHeader.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');
+            mainHeader.classList.remove('scrolled');
+        }
+        
+        // Additional class when completely past top header
+        if (scrollY > topHeaderHeight) {
+            mainHeader.classList.add('scrolled-past-top');
+        } else {
+            mainHeader.classList.remove('scrolled-past-top');
         }
     }
     

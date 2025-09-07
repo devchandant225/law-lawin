@@ -8,7 +8,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 @foreach($services->take(8) as $index => $service)
                     <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
-                        <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform overflow-hidden h-full">
+                        <div class="relative bg-white rounded-xl shadow hover:shadow-xl transition-all duration-500 transform overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden">
                                 <a href="{{ route('service.show', $service->slug) }}" class="block w-full h-full">

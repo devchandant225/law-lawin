@@ -11,7 +11,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 @foreach($practices->take(8) as $index => $practice)
                     <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
-                        <div class="relative bg-white rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                        <div class="relative shadow bg-white rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden rounded-t-2xl">
                                 <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">

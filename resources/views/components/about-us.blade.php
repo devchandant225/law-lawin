@@ -85,7 +85,7 @@
 
         <!-- Description 2 Section Below -->
         @if ($intro_home->desc_2)
-            <div class="mt-12 lg:mt-12 bg-primary rounded-2xl p-6">
+            <div class="mt-12 lg:mt-12 bg-secondary rounded-2xl p-6">
                 <div class="mx-auto">
                     <!-- Description 2 Content -->
                     <div class="text-left">

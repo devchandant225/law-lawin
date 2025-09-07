@@ -4,37 +4,38 @@
 
         @if ($teams->isNotEmpty())
             <!-- Team Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-12">
                 @foreach ($teams as $index => $member)
-                    <div class="team-card-wrapper" data-aos="fade-up" data-aos-duration="800"
+                    <div class="team-card-wrapper w-[14rem]" data-aos="fade-up" data-aos-duration="800"
                         data-aos-delay="{{ $index * 100 }}">
                         <div
-                            class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group overflow-hidden border border-gray-100 hover:border-primary/30">
+                            class="bg-white rounded-2xl shadow-md transition-all duration-500 group overflow-hidden border border-gray-100 hover:border-primary/30">
                             <!-- Team Member Image -->
-                            <div class="relative overflow-hidden">
-                                <div class="bg-gradient-to-br from-accent to-secondary/20">
-                                    @if ($member->image)
-                                        <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
-                                            class="w-[16rem] h-[16rem] object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out">
-                                    @else
-                                        <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"
-                                            alt="{{ $member->name }}"
-                                            class="w-full h-full object-contain transition-transform duration-700 ease-out">
-                                    @endif
-                                </div>
+                            <a href="{{ route('team.show', $member->slug) }}" class="block">
+                                <div class="relative overflow-hidden">
+                                    <div class="bg-gradient-to-br from-accent to-secondary/20">
+                                        @if ($member->image)
+                                            <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
+                                                class="w-full h-[18rem] object-fit object-center">
+                                        @else
+                                            <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"
+                                                alt="{{ $member->name }}"
+                                                class="w-full h-full object-contain transition-transform duration-700 ease-out">
+                                        @endif
+                                    </div>
 
-                            </div>
+                                </div>
+                            </a>
 
                             <!-- Team Member Info -->
                             <div class="px-4 py-2">
                                 <h3
-                                    class="font-seibold text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
-                                    <a href="{{ route('team.show', $member->slug) }}"
-                                        class="text-primary font-semibold">
+                                    class="font-medium text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
+                                    <a href="{{ route('team.show', $member->slug) }}" class="text-primary">
                                         {{ $member->name }}
                                     </a>
                                 </h3>
-                                <p class="text-gray-600 font-medium text-sm mb-2">
+                                <p class="text-gray-600 font-normal text-sm mb-2">
                                     {{ $member->designation ?: 'Legal Professional' }}</p>
 
                                 <!-- Contact Info -->
@@ -76,7 +77,7 @@
                                         @endif
                                     </div>
                                     <a href="{{ route('team.show', $member->slug) }}"
-                                        class="px-4 py-1.5 bg-primary text-white text-xs font-semibold rounded-full hover:bg-secondary transition-all duration-300 hover:scale-105">
+                                        class="px-2 pt-2 bg-accent text-white text-xs font-semibold rounded-lg hover:bg-secondary transition-all duration-300 hover:scale-105">
                                         View more
                                     </a>
                                 </div>
@@ -99,7 +100,7 @@
         @if ($showViewAll && $teams->isNotEmpty())
             <div class="text-center" data-aos="fade-up" data-aos-delay="400">
                 <a href="{{ route('team.index') }}"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-secondary hover:to-primary hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-semibold shadow-lg">
                     <span>View All Team Members</span>
                     <i class="fas fa-arrow-right text-sm"></i>
                 </a>

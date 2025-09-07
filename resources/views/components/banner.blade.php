@@ -15,18 +15,24 @@
                     <div class="relative z-10 h-full flex items-center">
                         <div class="w-[100%] absolute bottom-[5rem] left-0 z-[999] px-4 sm:px-6 lg:px-8">
                               <!-- Animated Content -->
-                                <div class="text-center flex-col items-center justify-center inline-block">
-                                    <!-- Title -->
+                                <div class="text-center flex flex-col items-center justify-center">
+                                  <div>
+                                      <!-- Title -->
                                     <h1
                                         class="text-3xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">
                                         <span class="block">{{ $slider->title }}</span>
                                     </h1>
-
-                                    <!-- Description -->
+                                    
+                                  </div>
+                                  <div>
+                                       <!-- Description -->
                                     <p
                                         class="text-base text-gray-200 mb-8 leading-relaxed bg-gray-800/40 inline-block px-4 py-2 rounded">
                                         {{ $slider->description }}
                                     </p>
+                                  </div>
+
+                                 
 
                                     <!-- CTA Button -->
                                     {{-- <div class="flex flex-col sm:flex-row gap-4">
@@ -126,7 +132,7 @@
         let currentSlide = 0;
         let isAutoPlay = true;
         let autoPlayInterval;
-        const autoPlayDelay = 3000; // 5 seconds
+        const autoPlayDelay = 5000; // 5 seconds
 
         // Initialize carousel
         function init() {

@@ -78,7 +78,7 @@
     </div>
 
     <!-- Main Header -->
-    <header class="header-main bg-transparent backdrop-blur-sm transition-all duration-300">
+    <header class="header-main transition-all duration-300">
         <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->

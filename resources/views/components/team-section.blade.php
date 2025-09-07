@@ -1,16 +1,10 @@
-<section class="modern-team-section py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0"
-            style="background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0); background-size: 30px 30px;">
-        </div>
-    </div>
+<section class="modern-team-section py-8 bg-gray-100 relative overflow-hidden px-20">
 
     <div class="container mx-auto px-4 relative z-10">
 
         @if ($teams->isNotEmpty())
             <!-- Team Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-28 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-12">
                 @foreach ($teams as $index => $member)
                     <div class="team-card-wrapper" data-aos="fade-up" data-aos-duration="800"
                         data-aos-delay="{{ $index * 100 }}">
@@ -21,7 +15,7 @@
                                 <div class="bg-gradient-to-br from-accent to-secondary/20">
                                     @if ($member->image)
                                         <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
-                                            class="w-[15rem] h-[15rem] object-contain object-center group-hover:scale-110 transition-transform duration-700 ease-out">
+                                            class="w-[16rem] h-[16rem] object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out">
                                     @else
                                         <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"
                                             alt="{{ $member->name }}"

@@ -35,7 +35,7 @@
 
             @if ($publications->isNotEmpty())
                 <!-- Two-column responsive grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" wire:loading.remove.delay>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" wire:loading.remove.delay>
                     @foreach ($publications as $index => $publication)
                         <div class="group relative bg-primary rounded-2xl border border-accent/20 hover:border-accent/40 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
                             <div class="p-2">

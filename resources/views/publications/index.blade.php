@@ -20,5 +20,5 @@
     ])
     
     {{-- Contact Form Section --}}
-    <x-publication-contact-form />
+    <x-contact-section />
 @endsection

@@ -1,8 +1,5 @@
 <div>
-    <section class="relative py-16 bg-gradient-to-b from-primary to-primary/90 overflow-hidden">
-        <!-- Decorative blobs -->
-        <div class="pointer-events-none absolute -top-10 -right-10 w-80 h-80 bg-accent/20 rounded-full blur-3xl"></div>
-        <div class="pointer-events-none absolute -bottom-10 -left-10 w-96 h-96 bg-secondary/30 rounded-full blur-3xl"></div>
+    <section class="relative py-8 bg-secondary overflow-hidden">
 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             @if ($showSearch)
@@ -11,10 +8,10 @@
                     <div class="flex shadow-lg rounded-full overflow-hidden bg-white">
                         <input type="text"
                                wire:model.live.debounce.300ms="search"
-                               class="flex-1 px-6 py-4 outline-none text-gray-700 placeholder:text-gray-400"
+                               class="flex-1 px-6 py-2 outline-none text-gray-700 placeholder:text-gray-400"
                                placeholder="Search publications..."
                                aria-label="Search publications">
-                        <button type="button" class="px-6 bg-secondary text-white hover:bg-accent hover:text-primary transition-colors duration-300">
+                        <button type="button" class="px-6 bg-primary text-white">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -40,13 +37,10 @@
                 <!-- Two-column responsive grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8" wire:loading.remove.delay>
                     @foreach ($publications as $index => $publication)
-                        <div class="group relative bg-secondary rounded-2xl border border-accent/20 hover:border-accent/40 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
-                            <!-- Accent top bar -->
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-white to-accent opacity-70"></div>
-
+                        <div class="group relative bg-primary rounded-2xl border border-accent/20 hover:border-accent/40 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
                             <div class="p-2">
-                                <h2 class="text-xl font-bold text-white group-hover:text-accent transition-colors duration-300 mb-2">
-                                    <a href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
+                                <h2 class="text-lg font-semibold text-white group-hover:text-accent transition-colors duration-300 mb-2">
+                                    <a href="{{ route('publication.show', $publication->slug) }}">{{$index + 1 . "." . $publication->title }}</a>
                                 </h2>
                             </div>
                         </div>
@@ -76,7 +70,7 @@
             @if ($showViewAll && $publications->isNotEmpty())
                 <div class="text-center mt-10" wire:loading.remove.delay>
                     <a href="{{ route('publications.index') }}"
-                       class="inline-flex items-center px-8 py-4 rounded-full bg-secondary text-white font-semibold hover:from-accent hover:to-secondary hover:text-primary transition-all duration-300 shadow-lg hover:shadow-xl">
+                       class="inline-flex items-center px-4 py-2 rounded-full bg-primary text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
                         <i class="fas fa-book-open mr-2"></i>
                         <span>View All Publications</span>
                     </a>

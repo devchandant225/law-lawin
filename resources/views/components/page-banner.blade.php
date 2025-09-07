@@ -1,8 +1,7 @@
 <div class="h-[200px]">
     <div class="absolute top-0 left-0 w-full z-30">
         <!-- Modern Page Banner with Tailwind CSS -->
-        <section
-            class="relative h-[300px]  flex items-center justify-center overflow-hidden pt-[4rem]">
+        <section class="relative h-[300px]  flex items-center justify-center overflow-hidden pt-[4rem]">
             <!-- Background Image with Overlay -->
             <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style="background-image: url('{{ $backgroundImage ?? 'https://picsum.photos/1920/1080?random=2' }}');">
@@ -12,14 +11,7 @@
             <div class="absolute inset-0 bg-accent/70"></div>
 
             <!-- Content Container -->
-            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center mt-[3rem] mb-[6rem]">
-                <!-- Main Title -->
-                <h1 class="text-2xl font-bold text-white mb-4 leading-tight">
-                    <span class="block opacity-0 animate-fade-in-up"
-                        style="animation-delay: 0.2s; animation-fill-mode: forwards;">
-                        {{ $title }}
-                    </span>
-                </h1>
+            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center mt-[5rem] mb-[3rem]">
 
                 <!-- Breadcrumbs -->
                 @if (isset($showBreadcrumbs) && $showBreadcrumbs && !empty($breadcrumbs))
@@ -75,17 +67,24 @@
                         </div>
                     </nav>
                 @endif
+
+                <h1 class="text-3xl font-bold text-white mt-4 leading-tight">
+                    <span class="block opacity-0 animate-fade-in-up"
+                        style="animation-delay: 0.2s; animation-fill-mode: forwards;">
+                        {{ $title }}
+                    </span>
+                </h1>
             </div>
 
             <!-- Bottom Wave Decoration -->
-            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            {{-- <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
                 <svg class="relative block w-full h-12 md:h-16 lg:h-20" data-name="Layer 1"
                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path
                         d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
                         class="fill-white"></path>
                 </svg>
-            </div>
+            </div> --}}
         </section>
     </div>
 

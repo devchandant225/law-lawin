@@ -23,67 +23,64 @@
         <div class="container mx-auto px-4 relative z-10">
             @if ($practices->count() > 0)
                 {{-- Practices Grid --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    @foreach ($practices as $index => $practice)
-                        <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index % 3 + 1) * 100 }}" data-aos-duration="600">
-                            <div class="relative bg-white rounded-2xl border border-gray-100 hover:border-primary/20 transition-all duration-500 transform hover:-translate-y-2 shadow-lg hover:shadow-2xl overflow-hidden h-full">
-                                <!-- Image Container -->
-                                <div class="relative h-48 overflow-hidden rounded-t-2xl">
-                                    <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">
-                                        @if($practice->feature_image)
-                                            <img src="{{ $practice->feature_image_url }}" 
-                                                 alt="{{ $practice->title }}" 
-                                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                        @else
-                                            <div class="w-full h-full bg-gradient-to-br from-primary via-primary/90 to-primary/80 flex items-center justify-center">
-                                                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7 10 0"></path>
-                                                    </svg>
-                                                </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                @foreach($practices->take(8) as $index => $practice)
+                    <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
+                        <div class="relative shadow bg-white rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                            <!-- Image Container -->
+                            <div class="relative h-48 overflow-hidden rounded-t-2xl">
+                                <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">
+                                    @if($practice->feature_image)
+                                        <img src="{{ $practice->feature_image_url }}" 
+                                             alt="{{ $practice->title }}" 
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    @else
+                                        <div class="w-full h-full bg-gradient-to-br from-primary via-secondary to-primary/80 flex items-center justify-center">
+                                            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7 10 0"></path>
+                                                </svg>
                                             </div>
-                                        @endif
-                                        
-                                        <!-- Overlay -->
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </div>
+                                    @endif
+                                    <!-- Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                </a>
+                            </div>
+                            <!-- Content Container -->
+                            <div class="px-4 py-3 flex flex-col h-[calc(100%-12rem)] text-center">
+                                <!-- Title -->
+                                <h3 class="text-base font-semibold text-gray-900 mb-3 transition-colors duration-300">
+                                    <a href="{{ route('practice.show', $practice->slug) }}" class="block">
+                                        {{ $practice->title }}
                                     </a>
-                                </div>
-                                
-                                <!-- Content Container -->
-                                <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
-                                    <!-- Title -->
-                                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
-                                        <a href="{{ route('practice.show', $practice->slug) }}" class="block">
-                                            {{ $practice->title }}
-                                        </a>
-                                    </h3>
-                                    
-                                    <!-- Description -->
-                                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
-                                        {{ $practice->excerpt ?? Str::limit(strip_tags($practice->description), 120) }}
-                                    </p>
-                                    
-                                    <!-- More Details Button -->
+                                </h3>
+                                <!-- Description -->
+                                <p class="text-gray-600 leading-relaxed mb-3 flex-grow text-sm">
+                                    {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 55) }}
+                                </p>
+                                <!-- More Details Button -->
                                     <div class="mt-auto">
-                                        <a href="{{ route('practice.show', $practice->slug) }}" 
-                                           class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary bg-primary/10 rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn border border-primary/20 hover:border-primary/40">
-                                            <!-- Button Content -->
-                                            <span class="relative z-10 group-hover/btn:text-white transition-colors duration-300">Learn More</span>
-                                            <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-all duration-300 group-hover/btn:text-white" 
-                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                            </svg>
-                                            
-                                            <!-- Background animation -->
-                                            <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary scale-x-0 group-hover/btn:scale-x-100 transition-transform duration-300 origin-left"></div>
-                                        </a>
-                                    </div>
+                                    <a href="{{ route('practice.show', $practice->slug) }}" 
+                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
+                                        <!-- Button Content -->
+                                        <span class="relative z-10">Read More</span>
+                                        <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
+                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        </svg>
+                                        <!-- Shine Effect -->
+                                        <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover/btn:translate-x-[-200%] transition-transform duration-700 ease-out"></div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
+            </div>
 
                 {{-- Pagination --}}
                 @if ($practices->hasPages())

@@ -119,12 +119,12 @@
                                         </div>
                                     </a>
                                     <div class="h-px bg-gray-100 my-2 mx-4"></div>
-                                    @foreach ($navPracticeAreas->take(6) as $practice)
+                                    @foreach ($navPracticeAreas->take(10) as $practice)
                                         <a href="{{ route('practice.show', $practice->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                             <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
                                                 <i class="fas fa-balance-scale text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
                                             </div>
-                                            <span class="font-medium truncate">{{ $practice->title }}</span>
+                                            <span class="font-medium">{{ $practice->title }}</span>
                                         </a>
                                     @endforeach
                                 </div>
@@ -154,12 +154,12 @@
                                         </div>
                                     </a>
                                     <div class="h-px bg-gray-100 my-2 mx-4"></div>
-                                    @foreach ($navServices->take(6) as $service)
+                                    @foreach ($navServices->take(10) as $service)
                                         <a href="{{ route('service.show', $service->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                             <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
                                                 <i class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
                                             </div>
-                                            <span class="font-medium truncate">{{ $service->title }}</span>
+                                            <span class="font-medium">{{ $service->title }}</span>
                                         </a>
                                     @endforeach
                                 </div>

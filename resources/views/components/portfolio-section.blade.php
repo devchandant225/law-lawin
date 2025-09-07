@@ -43,7 +43,7 @@
                                     <!-- Content Container -->
                                     <div class="px-3 py-2 text-center bg-blue-100">
                                         <!-- Title -->
-                                        <h3 class="text-sm font-normal text-gray-800 mb-2 transition-colors duration-300">
+                                        <h3 class="text-sm font-normal text-gray-800 mb-2 transition-colors duration-300 capitalize">
                                             {{ $portfolio->title }}
                                         </h3>                                   
                                         

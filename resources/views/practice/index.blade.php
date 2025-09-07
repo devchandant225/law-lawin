@@ -17,84 +17,11 @@
 
     <div class="page-wrapper">
 
-    {{-- Filter and Sort Section --}}
-    <section class="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-                    <form action="{{ route('practices.index') }}" method="GET" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="sort" class="block text-sm font-semibold text-gray-700 mb-2">Sort By</label>
-                                <select name="sort" id="sort" 
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors" 
-                                        onchange="this.form.submit()">
-                                    <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest First</option>
-                                    <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Oldest First</option>
-                                    <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>Title A-Z</option>
-                                    <option value="featured" {{ request('sort') == 'featured' ? 'selected' : '' }}>Featured First</option>
-                                </select>
-                            </div>
-                            
-                            <div>
-                                <label for="search" class="block text-sm font-semibold text-gray-700 mb-2">Search Practice Areas</label>
-                                <input type="text" name="search" id="search" 
-                                       value="{{ request('search') }}" 
-                                       placeholder="Search practice areas..."
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
-                            </div>
-                        </div>
-                        
-                        <div class="flex flex-wrap gap-4 justify-center">
-                            <button type="submit" 
-                                    class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary to-primary hover:opacity-90 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z"></path>
-                                </svg>
-                                Apply Filters
-                            </button>
-                            
-                            @if (request()->hasAny(['search', 'sort']))
-                                <a href="{{ route('practices.index') }}" 
-                                   class="inline-flex items-center px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 hover:scale-105">
-                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>
-                                    Clear Filters
-                                </a>
-                            @endif
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     {{-- Main Practices Section --}}
-    <section class="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
-        </div>
+    <section class="py-8 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
         
         <div class="container mx-auto px-4 relative z-10">
             @if ($practices->count() > 0)
-                {{-- Section Title --}}
-                <div class="text-center mb-16">
-                    <div class="max-w-3xl mx-auto">
-                        <p class="text-base font-semibold text-primary mb-3">Our Expertise</p>
-                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Practice <span class="text-primary">Areas</span></h2>
-                        <p class="text-gray-600 text-lg">
-                            Showing {{ $practices->count() }} of {{ $practices->total() }} practice areas
-                        </p>
-                    </div>
-                </div>
-                
                 {{-- Practices Grid --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                     @foreach ($practices as $index => $practice)

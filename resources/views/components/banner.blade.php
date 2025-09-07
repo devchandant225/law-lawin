@@ -15,7 +15,7 @@
                     <div class="relative z-10 h-full flex items-center">
                         <div class="w-[100%] absolute bottom-[5rem] left-0 z-[999] px-4 sm:px-6 lg:px-8">
                               <!-- Animated Content -->
-                                <div class="text-center">
+                                <div class="text-center flex-col items-center justify-center inline-block">
                                     <!-- Title -->
                                     <h1
                                         class="text-3xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">

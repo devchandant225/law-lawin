@@ -1,5 +1,5 @@
 <!-- Modern Services Section -->
-<section class="relative py-20 bg-gradient-to-br from-accent via-accent/50 to-secondary/10 overflow-hidden" id="services">
+<section class="relative py-8 bg-gray-100 overflow-hidden" id="services">
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -8,7 +8,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 @foreach($services->take(8) as $index => $service)
                     <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
-                        <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                        <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden">
                                 <a href="{{ route('service.show', $service->slug) }}" class="block w-full h-full">
@@ -32,27 +32,23 @@
                             </div>
                             
                             <!-- Content Container -->
-                            <div class="p-6 pt-10 flex flex-col h-[calc(100%-12rem)]">
+                            <div class="p-6 flex flex-col h-[calc(100%-12rem)] text-center">
                                 <!-- Title -->
-                                <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                                <h3 class="text-base font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
                                     <a href="{{ route('service.show', $service->slug) }}" class="block">
                                         {{ $service->title }}
                                     </a>
                                 </h3>
                                 
                                 <!-- Description -->
-                                <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+                                <p class="text-gray-600 leading-relaxed mb-4 flex-grow text-sm">
                                     {{ Str::limit(strip_tags($service->excerpt ?? $service->description), 50) }}
                                 </p>
                                 
                                 <!-- Read More Button -->
                                 <div class="mt-auto">
                                     <a href="{{ route('service.show', $service->slug) }}" 
-                                       class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
-                                        <!-- Background Animation -->
-                                        <div class="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                                        <div class="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500 ease-out"></div>
-                                        
+                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
                                         <!-- Button Content -->
                                         <span class="relative z-10">Read More</span>
                                         <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 

@@ -69,7 +69,7 @@
                 </div>
 
                 <!-- Call to Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                {{-- <div class="flex flex-col sm:flex-row gap-4 pt-6">
                     <a href="{{ route('team.index') }}"
                         class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary via-secondary to-primary text-white font-semibold rounded-xl hover:from-secondary hover:via-primary hover:to-secondary transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg">
                         <span>Meet Our Team</span>
@@ -79,13 +79,13 @@
                         class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 text-primary font-semibold rounded-xl hover:border-primary hover:text-white hover:bg-primary transition-all duration-300">
                         <span>How We Do It</span>
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
 
         <!-- Description 2 Section Below -->
         @if ($intro_home->desc_2)
-            <div class="mt-12 lg:mt-12 bg-secondary rounded-2xl p-6">
+            <div class="mt-12 lg:mt-12 bg-primary rounded-2xl p-6">
                 <div class="mx-auto">
                     <!-- Description 2 Content -->
                     <div class="text-left">

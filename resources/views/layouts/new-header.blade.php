@@ -1,7 +1,7 @@
 <!-- Overlay Header with Scroll Effects -->
 <div class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
     <!-- Top Contact Bar -->
-    <div class="header-top bg-transparent border-b border-white/20 py-1 sm:py-2 transition-all duration-300">
+    <div class="header-top bg-transparent border-b border-white/20 sm:py-2 transition-all duration-300">
         <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="flex justify-between items-center">
                 <!-- Contact Info -->
@@ -248,7 +248,7 @@
 <style>
 /* Header Scroll Effects */
 #main-header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(249, 250, 251, 0.9);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }

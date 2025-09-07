@@ -56,16 +56,16 @@
                                       <span class="sr-only">viber</span>
                                   </a>
                               @endif
-                                 @if ($globalProfile && $globalProfile->wechat_link)
+                              @if ($globalProfile && $globalProfile->wechat_link)
                                   <a href="{{ $globalProfile->wechat_link }}">
                                       <i class="fab fa-weixin"></i>
                                       <span class="sr-only">wechat link</span>
                                   </a>
                               @endif
-                                 <a href="/calculator">
-                                      <i class="fab fa-calculator"></i>
-                                      <span class="sr-only">wechat link</span>
-                                  </a>
+                              <a href="/calculator">
+                                  <i class="fab fa-calculator"></i>
+                                  <span class="sr-only">wechat link</span>
+                              </a>
                           </div>
                       </div><!-- /.topbar-one__inner -->
                   </div><!-- /.topbar-one -->

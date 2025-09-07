@@ -1,7 +1,7 @@
 {{-- Page Section Title Component --}}
-<div class="relative bg-primary py-6 overflow-hidden">
+<div class="relative bg-primary py-5 overflow-hidden">
     {{-- Background Pattern/Effects --}}
-    <div class="absolute inset-0 opacity-10">
+    {{-- <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 left-0 w-full h-full">
             <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
                 <path fill="currentColor" fill-opacity="0.3" 
@@ -9,7 +9,7 @@
                 </path>
             </svg>
         </div>
-    </div>
+    </div> --}}
     
     {{-- Decorative Elements --}}
     <div class="absolute inset-0 pointer-events-none">
@@ -23,7 +23,7 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center">
             {{-- Main Title --}}
-            <h1 class="text-3xl sm:text-3xl lg:text-5xl xl:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+            <h1 class="text-4xl  font-semibold text-white leading-tight tracking-tight uppercase">
                 <span class="inline-block transform hover:scale-105 transition-transform duration-300">
                     {!! $title !!}
                 </span>

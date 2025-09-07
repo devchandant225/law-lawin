@@ -14,28 +14,28 @@
                     <!-- Content Container -->
                     <div class="relative z-10 h-full flex items-center">
                         <div class="w-[100%] absolute bottom-[5rem] left-0 z-[999] px-4 sm:px-6 lg:px-8">
-                              <!-- Animated Content -->
-                                <div class="text-center flex flex-col items-center justify-center">
-                                  <div>
-                                      <!-- Title -->
+                            <!-- Animated Content -->
+                            <div class="text-center flex flex-col items-center justify-center">
+                                <div>
+                                    <!-- Title -->
                                     <h1
                                         class="text-3xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">
                                         <span class="block">{{ $slider->title }}</span>
                                     </h1>
-                                    
-                                  </div>
-                                  <div>
-                                       <!-- Description -->
+
+                                </div>
+                                <div>
+                                    <!-- Description -->
                                     <p
                                         class="text-base text-gray-200 mb-8 leading-relaxed bg-gray-800/40 inline-block px-4 py-2 rounded">
                                         {{ $slider->description }}
                                     </p>
-                                  </div>
+                                </div>
 
-                                 
 
-                                    <!-- CTA Button -->
-                                    {{-- <div class="flex flex-col sm:flex-row gap-4">
+
+                                <!-- CTA Button -->
+                                {{-- <div class="flex flex-col sm:flex-row gap-4">
                                         <a href="/about"
                                             class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary rounded-full hover:bg-primary/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                                             <span class="mr-2">Discover More</span>
@@ -50,7 +50,7 @@
                                             Get In Touch
                                         </a>
                                     </div> --}}
-                                </div>
+                            </div>
                         </div>
                     </div>
 

@@ -5,7 +5,6 @@
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         @if($practices->isNotEmpty())
             <!-- Practice Areas Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -29,14 +28,10 @@
                                             </div>
                                         </div>
                                     @endif
-                                    
                                     <!-- Overlay -->
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                                 </a>
-                                
-                        
                             </div>
-                            
                             <!-- Content Container -->
                             <div class="px-4 py-3 flex flex-col h-[calc(100%-12rem)] text-center">
                                 <!-- Title -->
@@ -45,12 +40,10 @@
                                         {{ $practice->title }}
                                     </a>
                                 </h3>
-                                
                                 <!-- Description -->
                                 <p class="text-gray-600 leading-relaxed mb-3 flex-grow text-sm">
                                     {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 55) }}
                                 </p>
-                                
                                 <!-- More Details Button -->
                                     <div class="mt-auto">
                                     <a href="{{ route('practice.show', $practice->slug) }}" 
@@ -61,7 +54,6 @@
                                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                         </svg>
-                                        
                                         <!-- Shine Effect -->
                                         <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
                                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover/btn:translate-x-[-200%] transition-transform duration-700 ease-out"></div>
@@ -69,8 +61,6 @@
                                     </a>
                                 </div>
                             </div>
-                            
-                
                         </div>
                     </div>
                 @endforeach

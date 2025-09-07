@@ -327,14 +327,13 @@
 /* Backdrop blur support */
 @supports (backdrop-filter: blur(10px)) {
     #main-header.scrolled {
-        background-color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
+        background-color: #fff;
     }
 }
 
 @supports not (backdrop-filter: blur(10px)) {
     #main-header.scrolled {
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: #fff;
     }
 }
 

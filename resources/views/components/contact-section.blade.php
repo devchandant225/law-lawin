@@ -1,26 +1,17 @@
 <!-- Modern Contact Section -->
-<section class="relative py-16 bg-gradient-to-br from-primary via-primary/95 to-secondary overflow-hidden" id="contact" data-aos="fade-up" data-aos-duration="800">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
-    </div>
-    
-    <!-- Decorative Elements -->
-    <div class="absolute top-20 right-10 w-72 h-72 bg-accent/30 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
-    <div class="absolute bottom-20 left-10 w-96 h-96 bg-secondary/40 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-pulse animation-delay-2000"></div>
-    
+<section class="relative py-8 overflow-hidden bg-white" id="contact" data-aos="fade-up" data-aos-duration="800">
     <div class="container mx-auto px-4 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
             
             <!-- Left Column - Contact Information -->
-            <div class="space-y-8" data-aos="fade-right" data-aos-delay="200">
+            <div class="space-y-8 bg-gradient-to-b from-accent to-accent px-4 py-3 rounded-lg" data-aos="fade-right" data-aos-delay="200">
                 <!-- Header -->
                 <div class="space-y-6">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-white leading-tight">
+                    <h2 class="text-xl lg:text-2xl font-semibold text-white leading-tight">
                         Get in Touch with Our Legal Experts
                     </h2>
-                    <div class="space-y-4 text-gray-200">
-                        <p class="text-lg leading-relaxed">
+                    <div class="space-y-2 text-gray-100 font-semibold">
+                        <p class="text-base leading-relaxed">
                             Have a question or need legal assistance? Fill out our contact form and our team of experienced lawyers in Kathmandu, Nepal will get back to you promptly.
                         </p>
                         <p class="leading-relaxed">
@@ -46,13 +37,13 @@
                 @endphp
                 
                 <!-- Contact Information -->
-                <div class="space-y-6">
+                <div class="space-y-3">
                     @if ($address)
                         <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-6 h-6 text-accent mt-1">
+                            <div class="flex-shrink-0 w-6 h-6 text-white mt-1">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="text-gray-200">
+                            <div class="text-gray-100">
                                 <p class="font-medium">{{ $address }}</p>
                             </div>
                         </div>
@@ -60,14 +51,14 @@
                     
                     @if (!empty($phoneNumbers))
                         <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-6 h-6 text-accent mt-1">
+                            <div class="flex-shrink-0 w-6 h-6 text-white mt-1">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="text-gray-200">
+                            <div class="text-gray-100">
                                 <p class="font-medium">
                                     Phone : 
                                     @foreach ($phoneNumbers as $phone)
-                                        <a href="tel:{{ $phone }}" class="hover:text-accent transition-colors duration-300">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
+                                        <a href="tel:{{ $phone }}" class="hover:text-white transition-colors duration-300">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
                                     @endforeach
                                 </p>
                             </div>
@@ -76,15 +67,15 @@
                     
                     @if ($emailAddress)
                         <div class="flex items-start space-x-4">
-                            <div class="flex-shrink-0 w-6 h-6 text-accent mt-1">
+                            <div class="flex-shrink-0 w-6 h-6 text-white mt-1">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="text-gray-200">
-                                <a href="mailto:{{ $emailAddress }}" class="hover:text-accent transition-colors duration-300 font-medium">
+                            <div class="text-gray-100">
+                                <a href="mailto:{{ $emailAddress }}" class="hover:text-underline transition-colors duration-300 font-medium">
                                     {{ $emailAddress }}
                                 </a>
                                 @if ($globalProfile && $globalProfile->email2)
-                                    , <a href="mailto:{{ $globalProfile->email2 }}" class="hover:text-accent transition-colors duration-300">{{ $globalProfile->email2 }}</a>
+                                    , <a href="mailto:{{ $globalProfile->email2 }}" class="hover:text-underline transition-colors duration-300">{{ $globalProfile->email2 }}</a>
                                 @endif
                             </div>
                         </div>
@@ -176,9 +167,9 @@
             </div>
             <!-- Right Column - Contact Form -->
             @if ($showForm)
-                <div class="space-y-6" data-aos="fade-left" data-aos-delay="300">
+                <div class="space-y-4" data-aos="fade-left" data-aos-delay="300">
                     <!-- Form Header -->
-                    <div class="bg-white rounded-2xl shadow-xl p-8">
+                    <div class="bg-gray-100 rounded-2xl shadow-xl p-8">
                         <div class="mb-6">
                             <h3 class="text-2xl font-bold text-primary mb-2">
                              REACH OUT TO US AT ANY TIME
@@ -204,7 +195,7 @@
                         @endif
                         
                         <!-- Contact Form -->
-                        <form action="{{ $formAction }}" method="POST" class="space-y-6">
+                        <form action="{{ $formAction }}" method="POST" class="space-y-4">
                             @csrf
                             
                             <!-- Full Name -->
@@ -216,7 +207,7 @@
                                        placeholder="Enter Your Full Name"
                                        value="{{ old('name') }}" 
                                        required
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400">
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400">
                                 @error('name')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -231,7 +222,7 @@
                                        placeholder="Enter Your Email"
                                        value="{{ old('email') }}" 
                                        required
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400">
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400">
                                 @error('email')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -245,7 +236,7 @@
                                        name="phone" 
                                        placeholder="Enter Your Phone Number"
                                        value="{{ old('phone') }}"
-                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400">
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400">
                                 @error('phone')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror
@@ -256,10 +247,10 @@
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
                                 <textarea id="message" 
                                           name="message" 
-                                          rows="6"
+                                          rows="4"
                                           placeholder="Enter your message"
                                           required
-                                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400 resize-none">{{ old('message') }}</textarea>
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300 placeholder-gray-400 resize-none">{{ old('message') }}</textarea>
                                 @error('message')
                                     <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                 @enderror

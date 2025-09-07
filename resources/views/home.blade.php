@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- Banner Component --}}
-    <div class="h-screen">
+    <div class="h-[80vh]">
         <x-banner :sliders="$sliders" />
     </div>
 

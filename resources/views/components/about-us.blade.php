@@ -22,10 +22,10 @@
                 <div class="relative">
                     <!-- Image with rounded corners and shadow -->
                     <div
-                        class="relative overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-lg transform hover:scale-[1.02] transition-all duration-500">
+                        class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
                         <img src="{{ asset('storage/' . $intro_home->image1) }}"
                             alt="{{ $intro_home->title ?? 'Legal Services' }}"
-                            class="w-full h-[30rem] object-cover">
+                            class="w-full h-[30rem] object-cover rounded">
 
                         <!-- Subtle gradient overlay -->
                         <div
@@ -33,11 +33,6 @@
                         </div>
                     </div>
 
-
-
-                    <!-- Decorative Elements -->
-                    <div class="absolute -top-6 -left-6 w-20 h-20 bg-primary/10 rounded-full blur-lg"></div>
-                    <div class="absolute -bottom-8 -left-8 w-28 h-28 bg-secondary/10 rounded-full blur-xl"></div>
                 </div>
             </div>
 
@@ -52,8 +47,8 @@
 
                     <!-- Main Title -->
                     <div class="space-y-4">
-                        <h2 class="text-4xl sm:text-5xl lg:text-5xl font-bold text-gray-800 leading-tight">
-                            <span class="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent font-serif">
+                        <h2 class="font-semibold text-gray-800 leading-tight">
+                            <span class="text-primary text-3xl underline">
                                 {{ $intro_home->title ?? 'Lawin & Partners' }}
                             </span>
                         </h2>
@@ -62,8 +57,8 @@
                 </div>
 
                 <!-- Description Content -->
-                <div class="space-y-6">
-                    <div class="text-lg text-gray-600 max-w-none text-justify">
+                <div class="">
+                    <div class="text-base text-gray-600 max-w-none text-justify">
                         {!! $intro_home->desc_1 !!}
                     </div>
                 </div>
@@ -85,11 +80,11 @@
 
         <!-- Description 2 Section Below -->
         @if ($intro_home->desc_2)
-            <div class="mt-12 lg:mt-12 bg-secondary rounded-2xl p-6">
+            <div class="mt-12 lg:mt-12 rounded-2xl p-6">
                 <div class="mx-auto">
                     <!-- Description 2 Content -->
                     <div class="text-left">
-                        <div class="text-lg text-gray-50 mx-auto text-justify">
+                        <div class="text-base text-gray-600 mx-auto text-justify">
                             {!! $intro_home->desc_2 !!}
                         </div>
                     </div>

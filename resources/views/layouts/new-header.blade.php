@@ -27,13 +27,13 @@
                 <!-- Language Selector & Social Links -->
                 <div class="flex items-center space-x-2 sm:space-x-4 ml-auto">
                     <!-- Language Buttons -->
-                    <div class="hidden sm:flex items-center space-x-1 header-languages">
+                    {{-- <div class="hidden sm:flex items-center space-x-1 header-languages">
                         <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">FR</a>
                         <span class="text-white/60 text-xs">|</span>
                         <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">中文</a>
                         <span class="text-white/60 text-xs">|</span>
                         <a href="#" class="px-1 sm:px-2 py-1 text-xs font-medium text-white/80 hover:text-white transition-colors">ES</a>
-                    </div>
+                    </div> --}}
 
                     <!-- Social Links -->
                     <div class="flex items-center space-x-1 sm:space-x-2 header-social">
@@ -67,6 +67,10 @@
                                 <span class="sr-only">LinkedIn</span>
                             </a>
                         @endif
+                              <a href="/calculator" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                                <i class="fa fa-calculator text-sm"></i>
+                                <span class="sr-only">calculator</span>
+                            </a>
                     </div>
                 </div>
             </div>

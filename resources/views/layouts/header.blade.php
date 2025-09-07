@@ -62,6 +62,10 @@
                                       <span class="sr-only">wechat link</span>
                                   </a>
                               @endif
+                                 <a href="/calculator">
+                                      <i class="fab fa-calculator"></i>
+                                      <span class="sr-only">wechat link</span>
+                                  </a>
                           </div>
                       </div><!-- /.topbar-one__inner -->
                   </div><!-- /.topbar-one -->

@@ -32,7 +32,7 @@
                             </div>
                             
                             <!-- Content Container -->
-                            <div class="p-6 flex flex-col h-[calc(100%-12rem)] text-center">
+                            <div class="px-6 py-3 flex flex-col h-[calc(100%-12rem)] text-center">
                                 <!-- Title -->
                                 <h3 class="text-base font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
                                     <a href="{{ route('service.show', $service->slug) }}" class="block">
@@ -86,7 +86,7 @@
             <!-- View All Button -->
             <div class="text-center" data-aos="fade-up" data-aos-delay="600">
                 <a href="{{ route('services.index') }}" 
-                   class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 hover:shadow-xl group">
+                   class="inline-flex items-center px-4 py-2 bg-primary text-white font-semibold rounded-full transition-all duration-300 transform group">
                     <span class="mr-3">View All Services</span>
                     <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,5 +1,5 @@
 <!-- Modern Practice Areas Section -->
-<section class="relative py-20  overflow-hidden" id="practice-areas">
+<section class="relative py-8 bg-gray-100 overflow-hidden" id="practice-areas">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
@@ -11,7 +11,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 @foreach($practices->take(8) as $index => $practice)
                     <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
-                        <div class="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                        <div class="relative bg-white rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
                             <!-- Image Container -->
                             <div class="relative h-48 overflow-hidden rounded-t-2xl">
                                 <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">
@@ -38,30 +38,34 @@
                             </div>
                             
                             <!-- Content Container -->
-                            <div class="p-6 pt-10 flex flex-col h-[calc(100%-12rem)]">
+                            <div class="px-4 py-3 flex flex-col h-[calc(100%-12rem)] text-center">
                                 <!-- Title -->
-                                <h3 class="text-xl font-bold text-white mb-3 transition-colors duration-300">
+                                <h3 class="text-base font-semibold text-gray-900 mb-3 transition-colors duration-300">
                                     <a href="{{ route('practice.show', $practice->slug) }}" class="block">
                                         {{ $practice->title }}
                                     </a>
                                 </h3>
                                 
                                 <!-- Description -->
-                                <p class="text-gray-300 leading-relaxed mb-6 flex-grow">
-                                    {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 50) }}
+                                <p class="text-gray-600 leading-relaxed mb-3 flex-grow text-sm">
+                                    {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 55) }}
                                 </p>
                                 
                                 <!-- More Details Button -->
-                                <div class="mt-auto">
+                                    <div class="mt-auto">
                                     <a href="{{ route('practice.show', $practice->slug) }}" 
-                                       class="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-primary bg-white/90 backdrop-blur-sm rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl group/btn">
+                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
                                         <!-- Button Content -->
-                                        <span class="relative z-10 group-hover/btn:text-primary transition-colors duration-300">More Details</span>
-                                        <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-all duration-300 group-hover/btn:text-primary" 
+                                        <span class="relative z-10">Read More</span>
+                                        <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
                                              fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                         </svg>
-                               
+                                        
+                                        <!-- Shine Effect -->
+                                        <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover/btn:translate-x-[-200%] transition-transform duration-700 ease-out"></div>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
@@ -88,7 +92,7 @@
             <!-- View All Button -->
             <div class="text-center" data-aos="fade-up" data-aos-delay="600">
                 <a href="{{ route('practices.index') }}" 
-                   class="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group">
+                   class="inline-flex items-center px-4 py-2 bg-primary text-gray-50 font-semibold rounded-full hover:bg-secondary transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group">
                     <span class="mr-3">View All Practice Areas</span>
                     <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">

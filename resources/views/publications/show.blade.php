@@ -3,8 +3,8 @@
 @section('head')
     <x-meta-tags :title="$publication->metatitle ?: $publication->title . ' - Legal Publication'" :description="$publication->metadescription ?: $publication->excerpt" :keywords="$publication->metakeywords" :image="$publication->feature_image_url" type="article" :post="$publication" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Procounsel CSS -->
@@ -16,46 +16,37 @@
 @endsection
 
 @section('content')
-    <!-- Page Header -->
-    <section class="page-header background-black">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="sec-title__title--white">{{ $publication->title }}</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('publications.index') }}">Publications</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ Str::limit($publication->title, 40) }}
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </section>
+    {{-- Page Banner --}}
+    <x-page-banner :title="$publication->title" :breadcrumbs="[
+        ['label' => 'Home', 'url' => url('/')],
+        ['label' => 'Publications', 'url' => route('publications.index')],
+        ['label' => $publication->title],
+    ]" />
 
     <!-- Main Content Section -->
-    <section class="background-gray pt-80 pb-120">
-        <div style="padding: 0 12px;" class="">
-            <div class="row">
+    <section class="pt-0">
+        <div class="px-3">
+            <div class="flex flex-wrap -mx-4">
                 <!-- Sidebar - Table of Contents (Hidden on Mobile) -->
-                <div class="col-lg-3 d-none d-lg-block">
+                <div class="w-full lg:w-1/4 px-4 hidden lg:block">
                     @if ($tableOfContents->count() > 0)
                         <!-- Table of Contents Navigation -->
-                        <div class="toc-sidebar-container" id="tocSidebar">
-                            <div class="card toc-navigation">
-                                <div class="card-header background-base text-white">
-                                    <h5 class="mb-0 d-flex align-items-center">
-                                        <i class="fas fa-list-ol me-2"></i>
-                                        Contents
+                        <div class="sticky top-[5rem] z-50" id="tocSidebar">
+                            <div
+                                class="bg-white rounded-lg shadow-lg overflow-hidden toc-navigation max-h-[calc(100vh-6rem)]">
+                                <div class="bg-primary text-white p-5">
+                                    <h5 class="mb-0 flex items-center text-base font-medium">
+                                        <i class="fas fa-list-ol mr-2"></i>
+                                        Table Of Contents
                                     </h5>
                                 </div>
-                                <div class="card-body p-0">
-                                    <nav class="toc-nav">
+                                <div class="p-0">
+                                    <nav class="toc-nav max-h-80 overflow-y-auto">
                                         @foreach ($tableOfContents as $content)
                                             <a href="#toc-section-{{ $content->id }}"
-                                                class="toc-nav-link d-flex align-items-center text-decoration-none p-3 border-bottom"
+                                                class="toc-nav-link flex items-center no-underline p-3 border-b border-gray-200 text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 border-l-4 border-l-transparent hover:border-l-primary text-sm"
                                                 data-target="toc-section-{{ $content->id }}">
-                                                <span class="flex-fill">{{ Str::limit($content->title, 50) }}</span>
+                                                <span class="flex-1">{{ Str::limit($content->title, 100) }}</span>
                                             </a>
                                         @endforeach
                                     </nav>
@@ -65,20 +56,21 @@
                     @endif
                 </div>
 
-                <!-- Main Content (Full width on mobile, 8/12 on desktop) -->
-                <div class="col-12 col-lg-9">
+                <!-- Main Content (Full width on mobile, 3/4 on desktop) -->
+                <div class="w-full lg:w-3/4 px-4">
                     <!-- Publication Header -->
-                    <div class="publication-header-card card mb-40">
+                    <div class="publication-header-card bg-white overflow-hidden">
                         @if ($publication->feature_image_url)
                             <div class="publication-image-wrapper">
                                 <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}"
-                                    class="card-img-top publication-feature-image">
+                                    class="w-full h-96 object-cover publication-feature-image">
                             </div>
                         @endif
-                        <div class="card-body p-4 p-md-5">
-                            <h2 class="publication-summary-title mb-3">{{ $publication->title }}</h2>
+                        <div class="p-6">
+                            <h2 class="publication-summary-title text-3xl md:text-4xl font-normal text-gray-900 mb-4">
+                                {{ $publication->title }}</h2>
                             @if ($publication->description)
-                                <div class="publication-content">
+                                <div class="publication-content text-gray-700 leading-relaxed">
                                     {!! $publication->description !!}
                                 </div>
                             @endif
@@ -88,13 +80,14 @@
                     <!-- Table of Contents Content Sections -->
                     @if ($tableOfContents->count() > 0)
                         @foreach ($tableOfContents as $content)
-                            <section id="toc-section-{{ $content->id }}" class="card toc-content-section mb-30">
-                                <div class="card-body p-4 p-md-5">
-                                    <div class="d-flex align-items-start mb-4">
-                                        <div class="flex-fill">
-                                            <h3 class="content-title mb-3">{{ $content->title }}</h3>
+                            <section id="toc-section-{{ $content->id }}" class="bg-white toc-content-section">
+                                <div class="p-6 md:p-8">
+                                    <div class="flex items-start mb-4">
+                                        <div class="flex-1">
+                                            <h3 class="content-title text-2xl md:text-3xl font-normal text-gray-900 mb-4">
+                                                {{ $content->title }}</h3>
                                             @if ($content->description)
-                                                <div class="toc-content">
+                                                <div class="toc-content text-gray-700 leading-relaxed">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif
@@ -107,132 +100,269 @@
 
                     <!-- Team Members Section -->
                     @if (!empty($teamMembers) && count($teamMembers) > 0)
-                        <section id="team-section" class="card team-section mt-40">
-                            <div class="card-header background-primary text-white text-center">
-                                <h3 class="mb-0">
-                                    <i class="fas fa-users me-2"></i>
+                        <section id="team-section"
+                            class="modern-team-section py-4 bg-gray-100 relative overflow-hidden mt-10 rounded-lg">
+                            <!-- Section Header -->
+                            <div class="mb-8 px-3">
+                                <h3 class="text-2xl font-bold text-accent mb-4">
+                                    <i class="fas fa-users mr-3 text-primary"></i>
                                     Contributing Team Members
                                 </h3>
-                                <p class="mb-0 mt-2" style="color: rgb(39, 37, 37);">Meet the experts who contributed to
-                                    this publication</p>
                             </div>
-                            <div class="card-body p-4 p-md-5">
-                                <div class="row g-3">
-                                    @foreach ($teamMembers as $member)
-                                        <div class="col-md-4">
-                                            <div class="team-member-item card h-100">
-                                                <div class="card-body align-items-center">
-                                                    <div class="me-3 flex-shrink-0">
-                                                        @if ($member['image_url'])
+
+                            <div class="container mx-auto px-4 relative z-10">
+                                <!-- Team Grid -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-4 mb-12">
+                                    @foreach ($teamMembers as $index => $member)
+                                        <div class="team-card-wrapper w-[14rem]" data-aos="fade-up" data-aos-duration="800"
+                                            data-aos-delay="{{ $index * 100 }}">
+                                            <div
+                                                class="bg-white rounded-2xl shadow-md transition-all duration-500 group overflow-hidden border border-gray-100 hover:border-primary/30">
+                                                <!-- Team Member Image -->
+                                                @if (isset($member['slug']) && $member['slug'])
+                                                    <a href="{{ route('team.show', $member['slug']) }}" class="block">
+                                                    @else
+                                                        <div class="block">
+                                                @endif
+                                                <div class="relative overflow-hidden">
+                                                    <div class="bg-gradient-to-br from-accent to-secondary/20">
+                                                        @if (isset($member['image_url']) && $member['image_url'])
                                                             <img src="{{ $member['image_url'] }}"
-                                                                alt="{{ $member['name'] }}" class="team-member-avatar">
+                                                                alt="{{ $member['name'] ?? 'Team Member' }}"
+                                                                class="w-full h-[18rem] object-cover object-center">
                                                         @else
-                                                            <div
-                                                                class="team-member-avatar-placeholder background-gray2 rounded-circle d-flex align-items-center justify-content-center">
-                                                                <i class="fas fa-user"
-                                                                    style="color: var(--procounsel-base);"></i>
-                                                            </div>
+                                                            <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"
+                                                                alt="{{ $member['name'] ?? 'Team Member' }}"
+                                                                class="w-full h-[18rem] object-cover transition-transform duration-700 ease-out">
                                                         @endif
                                                     </div>
-                                                    <div class="flex-fill">
-                                                        <h6 class="member-name">{{ $member['name'] }}</h6>
-                                                        @if ($member['designation'])
-                                                            <p class="text-muted small mb-2">{{ $member['designation'] }}
-                                                            </p>
-                                                        @endif
-                                                        <div class="text-right">
-                                                            <a href="{{ '/team' . '/' . $member['slug'] }}"
-                                                                class="procounsel-btn procounsel-btn--two">
-                                                                <i>View
-                                                                    Details</i>
-                                                                <span>View
-                                                                    Details</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                 </div>
+                                                @if (isset($member['slug']) && $member['slug'])
+                                                    </a>
+                                                @else
                                             </div>
+                                    @endif
+
+                                    <!-- Team Member Info -->
+                                    <div class="px-4 py-2">
+                                        <h3
+                                            class="font-medium text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
+                                            @if (isset($member['slug']) && $member['slug'])
+                                                <a href="{{ route('team.show', $member['slug']) }}" class="text-primary">
+                                                    {{ $member['name'] ?? 'Team Member' }}
+                                                </a>
+                                            @else
+                                                <span class="text-primary">{{ $member['name'] ?? 'Team Member' }}</span>
+                                            @endif
+                                        </h3>
+                                        <p class="text-gray-600 font-normal text-sm mb-2">
+                                            {{ $member['designation'] ?? 'Legal Professional' }}
+                                        </p>
+
+                                        <!-- Contact Info -->
+                                        <div class="space-y-2 text-xs text-gray-500">
+                                            @if (isset($member['phone']) && $member['phone'])
+                                                <div class="flex space-x-2">
+                                                    <i class="fas fa-phone text-primary"></i>
+                                                    <a href="tel:{{ $member['phone'] }}"
+                                                        class="hover:text-primary transition-colors duration-300">
+                                                        {{ $member['phone'] }}
+                                                    </a>
+                                                </div>
+                                            @endif
+                                            @if (isset($member['email']) && $member['email'])
+                                                <div class="flex space-x-2">
+                                                    <i class="fas fa-envelope text-primary"></i>
+                                                    <a href="mailto:{{ $member['email'] }}"
+                                                        class="hover:text-primary transition-colors duration-300">
+                                                        {{ $member['email'] }}
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </div>
-                                    @endforeach
+
+                                        <!-- Social Media Icons (Footer) -->
+                                        <div class="flex justify-between space-x-3 mt-2 pt-2 border-t border-gray-100">
+                                            <div class="flex space-x-3 w-[50%]">
+                                                @if (isset($member['facebooklink']) && $member['facebooklink'])
+                                                    <a href="{{ $member['facebooklink'] }}" target="_blank"
+                                                        class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white hover:bg-primary hover:text-white transition-all duration-300">
+                                                        <i class="fab fa-facebook-f text-xs"></i>
+                                                    </a>
+                                                @endif
+                                                @if (isset($member['linkedinlink']) && $member['linkedinlink'])
+                                                    <a href="{{ $member['linkedinlink'] }}" target="_blank"
+                                                        class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white hover:bg-secondary hover:text-white transition-all duration-300">
+                                                        <i class="fab fa-linkedin-in text-xs"></i>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            @if (isset($member['slug']) && $member['slug'])
+                                                <a href="{{ route('team.show', $member['slug']) }}"
+                                                    class="px-2 py-2 bg-accent text-white text-xs font-semibold rounded-lg hover:bg-secondary transition-all duration-300 hover:scale-105">
+                                                    View more
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </section>
-                    @endif
-
-                    <!-- FAQs Section -->
-                    @if ($faqs->count() > 0)
-                        <section id="faqs-section" class="card faq-section mt-40">
-                            <div class="card-header background-primary text-white text-center">
-                                <h3 class="mb-0">
-                                    <i class="fas fa-question-circle me-2"></i>
-                                    Frequently Asked Questions
-                                </h3>
-                                <p class="mb-0 mt-2" style="color: rgb(39, 37, 37);">Common questions about this publication
-                                </p>
-                            </div>
-                            <div class="card-body p-4 p-md-5">
-                                <div class="accordion" id="faqAccordion">
-                                    @foreach ($faqs as $faq)
-                                        <div class="accordion-item mb-3">
-                                            <h6 class="accordion-header" id="faq-heading-{{ $faq->id }}">
-                                                <button
-                                                    class="accordion-button collapsed faq-toggle d-flex align-items-center"
-                                                    type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#faq-{{ $faq->id }}" aria-expanded="false"
-                                                    aria-controls="faq-{{ $faq->id }}">
-                                                    <i class="fas fa-question-circle me-3"
-                                                        style="color: var(--procounsel-base);"></i>
-                                                    {{ $faq->question }}
-                                                </button>
-                                            </h6>
-                                            <div id="faq-{{ $faq->id }}" class="accordion-collapse collapse"
-                                                aria-labelledby="faq-heading-{{ $faq->id }}"
-                                                data-bs-parent="#faqAccordion">
-                                                <div class="accordion-body background-gray">
-                                                    {!! $faq->answer !!}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </section>
-                    @endif
-                    
-                    <!-- Call to Action Section -->
-                    <section class="card cta-section mt-40"
-                        style="background: linear-gradient(135deg, var(--procounsel-primary) 0%, var(--procounsel-base) 100%);">
-                        <div class="card-body text-center p-5">
-                            <div class="icon-circle background-base mb-4 mx-auto">
-                                <i class="fas fa-comments" style="color: var(--procounsel-white);"></i>
-                            </div>
-                            <h3 class="cta-title mb-4">Need More Information?</h3>
-                            <p class="cta-description mb-4">
-                                Have questions about this publication or need specific legal guidance? Our experienced team
-                                is here to help.
-                            </p>
-                            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a href="{{ url('/contact') }}" class="procounsel-btn">
-                                    <i><i class="fas fa-phone me-2"></i>Get In Touch</i>
-                                    <span><i class="fas fa-phone me-2"></i>Get In Touch</span>
-                                </a>
-                                <a href="{{ route('publications.index') }}" class="btn btn-outline-light btn-lg">
-                                    <i class="fas fa-book me-2"></i>More Publications
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-
-                    <x-publication-contact-form />
+                    @endforeach
                 </div>
             </div>
+
+            <!-- Decorative Elements -->
+            <div class="absolute top-10 left-10 w-20 h-20 bg-accent rounded-full blur-3xl opacity-60 animate-pulse"></div>
+            <div
+                class="absolute bottom-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl opacity-40 animate-pulse delay-1000">
+            </div>
+    </section>
+    @endif
+
+    <!-- FAQs Section -->
+    @if ($faqs->count() > 0)
+        <section id="faqs-section" class="bg-white rounded-lg shadow-lg faq-section">
+            <div class="text-accent p-5 rounded-t-lg">
+                <h3 class="mb-0 text-2xl font-bold">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Frequently Asked Questions
+                </h3>
+            </div>
+            <div class="p-6 md:p-8">
+                <div class="space-y-4" id="faqAccordion">
+                    @foreach ($faqs as $faq)
+                        <div class="border border-gray-200 rounded-lg overflow-hidden mb-3">
+                            <h6 class="" id="faq-heading-{{ $faq->id }}">
+                                <button
+                                    class="w-full text-left p-5 bg-white hover:bg-gray-50 flex items-center font-medium text-gray-900 faq-toggle transition-colors duration-200"
+                                    type="button" onclick="toggleFaq('faq-{{ $faq->id }}')" aria-expanded="false"
+                                    aria-controls="faq-{{ $faq->id }}">
+                                    <i class="fas fa-question-circle mr-3 text-accent"></i>
+                                    {{ $faq->question }}
+                                    <i class="fas fa-chevron-down ml-auto transform transition-transform duration-200"
+                                        id="chevron-{{ $faq->id }}"></i>
+                                </button>
+                            </h6>
+                            <div id="faq-{{ $faq->id }}" class="hidden"
+                                aria-labelledby="faq-heading-{{ $faq->id }}">
+                                <div class="p-5 bg-gray-100 text-gray-700 leading-relaxed">
+                                    {!! $faq->answer !!}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <!-- Quick Legal Assistance Section -->
+    <section class="bg-accent rounded-lg shadow-xl overflow-hidden cta-section mt-10 p-6">
+        @php
+            // Use globalProfile for contact info like in contact-section.blade.php
+            $phoneNumbers = [];
+            if ($globalProfile) {
+                $phoneNumbers = array_filter([
+                    $globalProfile->phone1 ?? null,
+                    $globalProfile->phone2 ?? null,
+                ]);
+            }
+            $primaryPhone = !empty($phoneNumbers) ? $phoneNumbers[0] : null;
+            $emailAddress = $globalProfile->email ?? null;
+            
+            // Clean phone number for links (remove any formatting)
+            $cleanPhone = $primaryPhone ? preg_replace('/[^0-9+]/', '', $primaryPhone) : null;
+        @endphp
+        
+        <div class="text-left">
+            <h3 class="text-xl font-bold text-white mb-3 underline decoration-white">
+                For quick legal assistance:
+            </h3>
+            
+            <div class="text-white text-base mb-4">
+                @if ($primaryPhone)
+                    <p class="mb-2">
+                        <span class="font-medium">You can directly call to our legal expert:</span> 
+                        <a href="tel:{{ $cleanPhone }}" class="font-bold hover:underline">{{ $primaryPhone }}</a>
+                    </p>
+                @endif
+                <p class="mb-4">
+                    <span class="font-medium">Even can call or drop a text through What's app , Viber, Telegram and We Chat at the same number.</span>
+                </p>
+            </div>
+
+            <!-- Messaging App Icons -->
+            <div class="flex items-center gap-3 mb-4">
+                @if ($globalProfile && $globalProfile->whatsapp)
+                    <a href="{{ $globalProfile->whatsapp }}" target="_blank" class="bg-white p-3 rounded-lg hover:scale-105 transition-transform duration-200">
+                        <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
+                    </a>
+                @elseif ($cleanPhone)
+                    <a href="https://wa.me/{{ ltrim($cleanPhone, '+') }}" target="_blank" class="bg-white p-3 rounded-lg hover:scale-105 transition-transform duration-200">
+                        <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
+                    </a>
+                @endif
+                
+                @if ($globalProfile && $globalProfile->viber)
+                    <a href="{{ $globalProfile->viber }}" target="_blank" class="bg-white p-3 rounded-lg hover:scale-105 transition-transform duration-200">
+                        <i class="fab fa-viber text-purple-600 text-2xl"></i>
+                    </a>
+                @elseif ($cleanPhone)
+                    <a href="viber://chat?number={{ $cleanPhone }}" target="_blank" class="bg-white p-3 rounded-lg hover:scale-105 transition-transform duration-200">
+                        <i class="fab fa-viber text-purple-600 text-2xl"></i>
+                    </a>
+                @endif
+                
+                @if ($cleanPhone)
+                    <a href="https://t.me/{{ ltrim($cleanPhone, '+') }}" target="_blank" class="bg-white p-3 rounded-lg hover:scale-105 transition-transform duration-200">
+                        <i class="fab fa-telegram text-blue-500 text-2xl"></i>
+                    </a>
+                @endif
+            </div>
+
+            @if ($emailAddress)
+                <div class="text-white text-base">
+                    <p class="mb-2">
+                        <span class="font-medium">Also can do email on :</span> 
+                        <a href="mailto:{{ $emailAddress }}" class="font-bold hover:underline text-white">{{ $emailAddress }}</a>
+                        @if ($globalProfile && $globalProfile->email2)
+                            , <a href="mailto:{{ $globalProfile->email2 }}" class="font-bold hover:underline text-white">{{ $globalProfile->email2 }}</a>
+                        @endif
+                    </p>
+                </div>
+            @endif
         </div>
     </section>
+
+    <x-contact-section />
+    </div>
+    </div>
+    </section>
+    <x-page-section-title title="<span>More Publications</span>" />
+    {{-- Publications Section --}}
+    @livewire('publication-section', [
+        'showViewAll' => true,
+        'limit' => 8,
+        'showSearch' => true,
+    ])
 @endsection
 
 @push('scripts')
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript for FAQ toggle -->
+    <script>
+        function toggleFaq(faqId) {
+            const faq = document.getElementById(faqId);
+            const chevron = document.getElementById('chevron-' + faqId.replace('faq-', ''));
+
+            if (faq.classList.contains('hidden')) {
+                faq.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                faq.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -330,567 +460,87 @@
                 });
             });
 
-            // ============ JavaScript Sticky TOC Sidebar ============
-            const tocSidebar = document.getElementById('tocSidebar');
-            if (tocSidebar) {
-                const sidebarColumn = tocSidebar.closest('.col-lg-3');
-                const mainContent = document.querySelector('.col-lg-9');
-                let sidebarRect, mainContentRect, sidebarHeight, mainContentHeight;
-                let originalOffsetTop, originalOffsetLeft, originalWidth;
-                let isSticky = false, isAtBottom = false;
-                
-                function calculateDimensions() {
-                    sidebarRect = tocSidebar.getBoundingClientRect();
-                    mainContentRect = mainContent.getBoundingClientRect();
-                    sidebarHeight = tocSidebar.offsetHeight;
-                    mainContentHeight = mainContent.offsetHeight;
-                    originalOffsetTop = tocSidebar.offsetTop;
-                    originalOffsetLeft = sidebarRect.left;
-                    originalWidth = tocSidebar.offsetWidth;
-                }
-                
-                function handleStickyBehavior() {
-                    if (window.innerWidth < 992) {
-                        // Reset on mobile
-                        tocSidebar.classList.remove('sticky', 'sticky-bottom');
-                        tocSidebar.style.width = '';
-                        tocSidebar.style.left = '';
-                        return;
+            // Enhanced active state management for TOC
+            const enhancedObserver = new IntersectionObserver(function(entries) {
+                let mostVisibleEntry = null;
+                let maxIntersectionRatio = 0;
+
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > maxIntersectionRatio) {
+                        maxIntersectionRatio = entry.intersectionRatio;
+                        mostVisibleEntry = entry;
                     }
-                    
-                    const scrollTop = window.pageYOffset;
-                    const stickyOffset = 30; // Distance from top when sticky
-                    const footerOffset = 50; // Distance from bottom of main content
-                    
-                    // Calculate positions
-                    const shouldStick = scrollTop > (originalOffsetTop - stickyOffset);
-                    const mainContentBottom = mainContent.offsetTop + mainContentHeight;
-                    const sidebarBottom = scrollTop + stickyOffset + sidebarHeight;
-                    const shouldStickToBottom = sidebarBottom > (mainContentBottom - footerOffset);
-                    
-                    if (shouldStick && !shouldStickToBottom) {
-                        // Make sticky at top
-                        if (!isSticky) {
-                            tocSidebar.classList.add('sticky');
-                            tocSidebar.classList.remove('sticky-bottom');
-                            tocSidebar.style.width = originalWidth + 'px';
-                            tocSidebar.style.left = originalOffsetLeft + 'px';
-                            isSticky = true;
-                            isAtBottom = false;
-                        }
-                    } else if (shouldStickToBottom) {
-                        // Stick to bottom of content
-                        if (!isAtBottom) {
-                            tocSidebar.classList.remove('sticky');
-                            tocSidebar.classList.add('sticky-bottom');
-                            tocSidebar.style.width = originalWidth + 'px';
-                            tocSidebar.style.left = originalOffsetLeft + 'px';
-                            tocSidebar.style.top = (mainContentBottom - sidebarHeight - footerOffset) + 'px';
-                            isSticky = false;
-                            isAtBottom = true;
-                        }
-                    } else {
-                        // Reset to normal position
-                        if (isSticky || isAtBottom) {
-                            tocSidebar.classList.remove('sticky', 'sticky-bottom');
-                            tocSidebar.style.width = '';
-                            tocSidebar.style.left = '';
-                            tocSidebar.style.top = '';
-                            isSticky = false;
-                            isAtBottom = false;
-                        }
+                });
+
+                if (mostVisibleEntry) {
+                    // Remove active state from all links
+                    tocLinks.forEach(link => {
+                        link.classList.remove('toc-nav-active', 'bg-primary', 'text-white',
+                            'border-l-primary');
+                        link.classList.add('border-l-transparent', 'text-gray-700');
+                    });
+
+                    // Find and activate corresponding TOC link
+                    const correspondingLink = document.querySelector(
+                        `[data-target="${mostVisibleEntry.target.id}"], [href="#${mostVisibleEntry.target.id}"]`
+                    );
+                    if (correspondingLink) {
+                        correspondingLink.classList.add('toc-nav-active', 'bg-primary', 'text-white',
+                            'border-l-primary');
+                        correspondingLink.classList.remove('border-l-transparent', 'text-gray-700');
                     }
                 }
-                
-                // Initialize
-                calculateDimensions();
-                
-                // Handle scroll events with throttling for better performance
-                let ticking = false;
-                function handleScroll() {
-                    if (!ticking) {
-                        requestAnimationFrame(function() {
-                            handleStickyBehavior();
-                            ticking = false;
+            }, {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: [0.1, 0.5, 1.0]
+            });
+
+            // Observe all sections
+            sections.forEach(section => {
+                enhancedObserver.observe(section);
+            });
+
+            // Enhanced TOC link click handling
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target') || this.getAttribute('href')
+                        .substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // Remove active state from all links
+                        tocLinks.forEach(l => {
+                            l.classList.remove('toc-nav-active', 'bg-primary', 'text-white',
+                                'border-l-primary');
+                            l.classList.add('border-l-transparent', 'text-gray-700');
                         });
-                        ticking = true;
+
+                        // Add active state to clicked link
+                        this.classList.add('toc-nav-active', 'bg-primary', 'text-white',
+                            'border-l-primary');
+                        this.classList.remove('border-l-transparent', 'text-gray-700');
+
+                        // Calculate scroll position
+                        const headerOffset = 120;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        // Smooth scroll
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
                     }
-                }
-                
-                // Handle resize events
-                function handleResize() {
-                    // Reset sticky state on resize
-                    tocSidebar.classList.remove('sticky', 'sticky-bottom');
-                    tocSidebar.style.width = '';
-                    tocSidebar.style.left = '';
-                    tocSidebar.style.top = '';
-                    isSticky = false;
-                    isAtBottom = false;
-                    
-                    // Recalculate dimensions after a short delay
-                    setTimeout(() => {
-                        calculateDimensions();
-                        handleStickyBehavior();
-                    }, 100);
-                }
-                
-                // Add event listeners
-                window.addEventListener('scroll', handleScroll, { passive: true });
-                window.addEventListener('resize', handleResize, { passive: true });
-                
-                // Initial call
-                handleStickyBehavior();
-                
-                // Add smooth transition effects
-                tocSidebar.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            }
+                });
+            });
         });
     </script>
 @endpush
 
 @push('styles')
     <style>
-        /* Publication Page Custom Styles */
-
-        /* Page Header Styling */
-        .page-header {
-            padding: 120px 0 80px;
-            position: relative;
-            background: linear-gradient(135deg, var(--procounsel-primary) 0%, var(--procounsel-black) 100%);
-        }
-
-        .page-header h1 {
-            font-family: var(--procounsel-heading-font);
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: var(--procounsel-white);
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        .breadcrumb {
-            background: transparent;
-            margin-bottom: 0;
-        }
-
-        .breadcrumb-item a {
-            color: var(--procounsel-white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb-item a:hover {
-            color: var(--procounsel-base);
-        }
-
-        .breadcrumb-item.active {
-            color: var(--procounsel-text-dark);
-        }
-
-        /* Main Content Styles */
-        .publication-header-card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            background-color: var(--procounsel-white);
-        }
-
-        .publication-feature-image {
-            height: 470px;
-            object-fit: cover;
-            width: 100%;
-        }
-
-        .publication-summary-title {
-            font-family: var(--procounsel-heading-font);
-            font-size: 2.2rem;
-            font-weight: 400;
-            color: var(--procounsel-black);
-            margin-bottom: 20px;
-        }
-
-        .publication-excerpt p {
-            font-size: 1.1rem;
-            color: var(--procounsel-text);
-            line-height: 1.8;
-            margin-bottom: 0;
-        }
-
-        .publication-content {
-            color: var(--procounsel-text);
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        .publication-content h2 {
-            font-family: var(--procounsel-heading-font);
-            color: var(--procounsel-black);
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        .publication-content h3 {
-            font-family: var(--procounsel-heading-font);
-            color: var(--procounsel-black);
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-top: 25px;
-            margin-bottom: 12px;
-        }
-
-        /* Table of Contents Sidebar - Container for JS Sticky */
-        .toc-sidebar-container {
-            position: relative;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        /* JS Sticky States */
-        .toc-sidebar-container.sticky {
-            position: fixed;
-            top: 30px;
-            transform: translateY(0);
-        }
-        
-        .toc-sidebar-container.sticky-bottom {
-            position: absolute;
-            bottom: 0;
-            transform: none;
-        }
-
-        .toc-navigation {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            background-color: var(--procounsel-white);
-            max-height: calc(100vh - 100px);
-            overflow: hidden;
-        }
-
-        .toc-nav-link {
-            color: var(--procounsel-text);
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .toc-nav-link:hover {
-            background-color: var(--procounsel-gray);
-            color: var(--procounsel-black);
-            border-left-color: var(--procounsel-base);
-            transform: translateX(5px);
-        }
-
-        .toc-nav-link.toc-nav-active {
-            background-color: var(--procounsel-base);
-            color: var(--procounsel-white);
-            border-left-color: var(--procounsel-primary);
-            font-weight: 600;
-        }
-
-        .toc-number {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: var(--procounsel-gray2);
-            color: var(--procounsel-text);
-            font-size: 14px;
-            font-weight: 600;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .toc-nav-link:hover .toc-number {
-            background-color: var(--procounsel-primary);
-            color: var(--procounsel-white);
-        }
-
-        .toc-nav-active .toc-number {
-            background-color: var(--procounsel-white);
-            color: var(--procounsel-base);
-        }
-
-        /* TOC Content Sections */
-        .toc-content-section {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            background-color: var(--procounsel-white);
-        }
-
-        .toc-content-section:hover {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
-            transform: translateY(-3px);
-        }
-
-        .toc-section-number {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .content-title {
-            font-family: var(--procounsel-heading-font);
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--procounsel-black);
-        }
-
-        .toc-content {
-            color: var(--procounsel-text);
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        .toc-content h2 {
-            font-family: var(--procounsel-heading-font);
-            color: var(--procounsel-black);
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-top: 25px;
-            margin-bottom: 12px;
-        }
-
-        .toc-content h3 {
-            font-family: var(--procounsel-heading-font);
-            color: var(--procounsel-black);
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        /* Team Members Section */
-        .team-section {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            background-color: var(--procounsel-white);
-        }
-
-        .team-member-item {
-            background-color: var(--procounsel-gray);
-            border: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .team-member-item:hover {
-            background-color: var(--procounsel-gray2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member-avatar {
-            width: 100%;
-            height: 24rem;
-            object-fit: cover;
-            border: 3px solid var(--procounsel-white);
-        }
-
-        .team-member-avatar-placeholder {
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-        }
-
-        .member-name {
-            font-family: var(--procounsel-heading-font);
-            font-size: 24px;
-            padding: 8px 0 0 0;
-            font-weight: 400;
-            color: var(--procounsel-base);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            background-color: var(--procounsel-white);
-        }
-
-        .accordion-item {
-            border: 1px solid var(--procounsel-border-color);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .accordion-button {
-            background-color: var(--procounsel-white);
-            border: none;
-            color: var(--procounsel-black);
-            font-weight: 500;
-            padding: 20px;
-            font-family: var(--procounsel-font);
-        }
-
-        .accordion-button:not(.collapsed) {
-            background-color: var(--procounsel-gray);
-            color: var(--procounsel-black);
-            box-shadow: none;
-        }
-
-        .accordion-button:focus {
-            box-shadow: 0 0 0 0.25rem rgba(199, 149, 74, 0.25);
-            border-color: var(--procounsel-base);
-        }
-
-        .accordion-body {
-            padding: 20px;
-            line-height: 1.8;
-            color: var(--procounsel-text);
-        }
-
-        /* Call to Action Section */
-        .cta-section {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .cta-title {
-            font-family: var(--procounsel-heading-font);
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: var(--procounsel-white);
-        }
-
-        @media (max-width: 768px) {
-            .cta-title {
-                font-size: 2rem;
-            }
-        }
-
-        .cta-description {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .icon-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-        }
-
-        /* Mobile Responsive */
-        #tocChevron.rotated {
-            transform: rotate(180deg);
-        }
-
-        /* Card Section Headers */
-        .card-header {
-            border-bottom: 1px solid var(--procounsel-border-color);
-            padding: 20px;
-        }
-
-        .card-header h3 {
-            font-family: var(--procounsel-heading-font);
-            font-weight: 400;
-            font-size: 1.6rem;
-        }
-
-        /* Smooth Transitions */
-        * {
-            scroll-behavior: smooth;
-        }
-
-        /* Hover Effects */
-        .card:not(.no-hover) {
-            transition: all 0.3s ease;
-        }
-
-        /* Content Typography */
-        .publication-content p,
-        .toc-content p {
-            margin-bottom: 15px;
-        }
-
-        .publication-content ul,
-        .publication-content ol,
-        .toc-content ul,
-        .toc-content ol {
-            margin-bottom: 15px;
-            padding-left: 30px;
-        }
-
-        .publication-content li,
-        .toc-content li {
-            margin-bottom: 5px;
-        }
-
-        /* Custom Scrollbar for TOC */
-        .toc-nav {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .toc-nav::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .toc-nav::-webkit-scrollbar-track {
-            background: var(--procounsel-gray2);
-        }
-
-        .toc-nav::-webkit-scrollbar-thumb {
-            background: var(--procounsel-base);
-            border-radius: 3px;
-        }
-
-        .toc-nav::-webkit-scrollbar-thumb:hover {
-            background: var(--procounsel-primary);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 991px) {
-            .publication-summary-title {
-                font-size: 1.8rem;
-            }
-
-            .content-title {
-                font-size: 1.5rem;
-            }
-
-            .toc-section-number {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .page-header {
-                padding: 80px 0 60px;
-            }
-
-            .icon-circle {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-            }
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -951,8 +601,6 @@
             }
 
             td {
-                text-align: right;
-                padding-left: 50%;
                 position: relative;
             }
 

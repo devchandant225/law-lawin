@@ -232,18 +232,12 @@
                 <!-- Copyright -->
                 <div class="text-center md:text-left">
                     <p class="text-sm text-gray-100">
-                        © <span class="dynamic-year"></span>, Lawin And Partners. All rights reserved..
+                        © <span class="dynamic-year"></span>, Furusato Education Center. All rights reserved..
                     </p>
                 </div>
 
                 <!-- Footer Links -->
                 <div class="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
-                    <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Law firm
-                        in Nepal</a>
-                    <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Lawyers
-                        in Nepal</a>
-                    <a href="#"
-                        class="text-gray-100 hover:text-white transition-colors duration-300">Disclaimer</a>
                     <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Terms of
                         use</a>
                     <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Privacy

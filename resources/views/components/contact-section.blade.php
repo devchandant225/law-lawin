@@ -8,17 +8,17 @@
                 <!-- Header -->
                 <div class="space-y-6">
                     <h2 class="text-xl lg:text-2xl font-semibold text-white leading-tight">
-                        Get in Touch with Our Legal Experts
+                        Connect with Furusato Education Center
                     </h2>
                     <div class="space-y-2 text-gray-100 font-semibold">
                         <p class="text-base leading-relaxed">
-                            Have a question or need legal assistance? Fill out our contact form and our team of experienced lawyers in Kathmandu, Nepal will get back to you promptly.
+                            Ready to pursue your educational dreams? Fill out our contact form and our experienced education consultants will guide you through your journey to study abroad.
                         </p>
                         <p class="leading-relaxed">
-                            Please include your WhatsApp or Viber number in the phone section if you'd prefer a direct call from one of our legal professionals.
+                            Please include your WhatsApp or Viber number in the phone section if you'd prefer a direct consultation call from one of our education experts.
                         </p>
                         <p class="leading-relaxed">
-                            We are here to provide trusted legal support tailored to your needs.
+                            We are here to make your international education aspirations a reality with personalized guidance and comprehensive support.
                         </p>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                 <!-- Connect Section -->
                 <div class="space-y-4">
                     <h3 class="text-xl font-semibold text-white">
-                        Connect with our professional lawyers in Nepal :
+                        Connect with our education consultants :
                     </h3>
                     
                     <!-- Professional Communication Icons -->
@@ -132,7 +132,7 @@
                 <!-- Social Media Section -->
                 <div class="space-y-4">
                     <h3 class="text-xl font-semibold text-white">
-                        Follow Our Law Firm on Social Media :
+                        Follow Furusato Education Center on Social Media :
                     </h3>
                     
                     <!-- Social Media Icons -->

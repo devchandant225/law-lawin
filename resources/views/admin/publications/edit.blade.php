@@ -190,14 +190,10 @@
                                             <span class="text-red-600">*</span></label>
                                         <select id="post_type" name="post_type" required
                                             class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('post_type') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">
-                                            <option value="publication"
-                                                {{ old('post_type', $publication->post_type ?? 'publication') == 'publication' ? 'selected' : '' }}>Publication</option>
-                                            <option value="more-publication"
-                                                {{ old('post_type', $publication->post_type) == 'more-publication' ? 'selected' : '' }}>More Publication</option>
-                                            <option value="service-location"
-                                                {{ old('post_type', $publication->post_type) == 'service-location' ? 'selected' : '' }}>Service Location</option>
-                                            <option value="language"
-                                                {{ old('post_type', $publication->post_type) == 'language' ? 'selected' : '' }}>Language</option>
+                                            <option value="study-abroad"
+                                                {{ old('post_type', $publication->post_type ?? 'study-abroad') == 'study-abroad' ? 'selected' : '' }}>Study Abroad</option>
+                                            <option value="learning-center"
+                                                {{ old('post_type', $publication->post_type) == 'learning-center' ? 'selected' : '' }}>Learning Center</option>
                                         </select>
                                         @error('post_type')
                                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

@@ -20,6 +20,8 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TeamController as PublicTeamController;
 use App\Http\Controllers\PortfolioController as PublicPortfolioController;
 use App\Http\Controllers\HelpDeskController;
+use App\Http\Controllers\StudyAbroadController;
+use App\Http\Controllers\LearningCenterController;
 
 // Admin Controllers
 use App\Http\Controllers\Admin\AuthController;
@@ -37,6 +39,7 @@ use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PublicationTeamController;
 use App\Http\Controllers\Admin\MetaTagController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\PageController as PublicPageController;
 
@@ -109,6 +112,20 @@ Route::get('/more-publications/search', [MorePublicationController::class, 'sear
 Route::get('/more-publications/featured', [MorePublicationController::class, 'featured'])->name('more-publications.featured');
 Route::get('/more-publications/stats', [MorePublicationController::class, 'stats'])->name('more-publications.stats');
 Route::get('/more-publication/{slug}', [MorePublicationController::class, 'show'])->name('more-publication.show');
+
+// Study Abroad
+Route::get('/study-abroad', [StudyAbroadController::class, 'index'])->name('study-abroad.index');
+Route::get('/study-abroad/search', [StudyAbroadController::class, 'search'])->name('study-abroad.search');
+Route::get('/study-abroad/featured', [StudyAbroadController::class, 'featured'])->name('study-abroad.featured');
+Route::get('/study-abroad/stats', [StudyAbroadController::class, 'stats'])->name('study-abroad.stats');
+Route::get('/study-abroad/{slug}', [StudyAbroadController::class, 'show'])->name('study-abroad.show');
+
+// Learning Center
+Route::get('/learning-center', [LearningCenterController::class, 'index'])->name('learning-center.index');
+Route::get('/learning-center/search', [LearningCenterController::class, 'search'])->name('learning-center.search');
+Route::get('/learning-center/featured', [LearningCenterController::class, 'featured'])->name('learning-center.featured');
+Route::get('/learning-center/stats', [LearningCenterController::class, 'stats'])->name('learning-center.stats');
+Route::get('/learning-center/{slug}', [LearningCenterController::class, 'show'])->name('learning-center.show');
 
 // Service Locations
 Route::get('/service-locations', [ServiceLocationController::class, 'index'])->name('service-locations.index');
@@ -256,6 +273,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // Meta Tags Management
     Route::resource('meta-tags', MetaTagController::class);
     Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
+    
+    // Testimonials Management
+    Route::resource('testimonials', TestimonialController::class);
+    Route::patch('/testimonials/{testimonial}/toggle-status', [TestimonialController::class, 'toggleStatus'])->name('testimonials.toggle-status');
     
     // Image Upload for CKEditor
     Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');

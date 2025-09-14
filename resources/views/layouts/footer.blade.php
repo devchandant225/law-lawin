@@ -147,17 +147,7 @@
                                 </div>
                             @endif
 
-                            @if ($globalProfile && $globalProfile->wechat_link)
-                                <a href="{{ $globalProfile->wechat_link }}" target="_blank"
-                                    class="w-8 h-8 sm:w-8 sm:h-8 bg-green-600 text-white rounded flex items-center justify-center hover:bg-green-700 transition-colors duration-300">
-                                    <i class="fab fa-weixin text-xs sm:text-sm"></i>
-                                </a>
-                            @else
-                                <div
-                                    class="w-8 h-8 sm:w-8 sm:h-8 bg-green-600 text-white rounded flex items-center justify-center">
-                                    <i class="fab fa-weixin text-xs sm:text-sm"></i>
-                                </div>
-                            @endif
+                  
 
                             <div
                                 class="w-8 h-8 sm:w-8 sm:h-8 bg-blue-400 text-white rounded flex items-center justify-center">
@@ -205,16 +195,7 @@
                     </form>
                 </div>
 
-                <!-- Court Fee Calculator -->
-                <div class="text-center md:text-left">
-                    <a href="/calculator"
-                        class="inline-flex items-center text-gray-700 hover:text-primary transition-colors duration-300 group font-semibold text-sm sm:text-base lg:text-lg underline">
-                        <i class="fas fa-calculator mr-2 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="hidden sm:inline">Court FEE CALCULATOR OF NEPAL</span>
-                        <span class="sm:hidden">Court Calculator</span>
-                        <i class="fas fa-external-link-alt ml-2 text-xs"></i>
-                    </a>
-                </div>
+            
             </div>
 
             <!-- Right Column - Direction/Map -->

@@ -51,7 +51,7 @@ class PublicationSection extends Component
 
     public function loadPublications()
     {
-        $query = Publication::active()->publication()->ordered();
+        $query = Publication::active()->studyAbroad()->ordered();
 
         if (!empty($this->search)) {
             $query->where(function($q) {

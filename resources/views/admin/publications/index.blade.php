@@ -8,7 +8,7 @@
 		<div class="flex items-center justify-between mb-6">
 			<div>
 				<h1 class="text-2xl font-bold text-gray-900">Publications Management</h1>
-				<p class="text-gray-600 mt-1">Manage both regular publications and more publications</p>
+				<p class="text-gray-600 mt-1">Manage study abroad and learning center publications</p>
 			</div>
 			<div class="flex items-center gap-2">
 				<a href="{{ route('admin.publications.create') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white hover:bg-purple-700 focus:ring-2 focus:ring-primary transition-colors">
@@ -17,21 +17,13 @@
 				</a>
 				<!-- Quick Links for Post Types -->
 				<div class="flex items-center gap-2 ml-4 border-l border-gray-300 pl-4">
-					<a href="{{ route('admin.publications.index', ['post_type' => 'publication']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'publication' ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100' }}">
-						<i class="fas fa-file-alt"></i>
-						<span>Publications ({{ \App\Models\Publication::publication()->count() }})</span>
+					<a href="{{ route('admin.publications.index', ['post_type' => 'study-abroad']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'study-abroad' ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100' }}">
+						<i class="fas fa-plane"></i>
+						<span>Study Abroad ({{ \App\Models\Publication::studyAbroad()->count() }})</span>
 					</a>
-					<a href="{{ route('admin.publications.index', ['post_type' => 'more-publication']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'more-publication' ? 'bg-purple-100 text-purple-800' : 'text-gray-600 hover:bg-gray-100' }}">
-						<i class="fas fa-plus-circle"></i>
-						<span>More Publications ({{ \App\Models\Publication::morePublication()->count() }})</span>
-					</a>
-					<a href="{{ route('admin.publications.index', ['post_type' => 'service-location']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'service-location' ? 'bg-green-100 text-green-800' : 'text-gray-600 hover:bg-gray-100' }}">
-						<i class="fas fa-map-marker-alt"></i>
-						<span>Service Locations ({{ \App\Models\Publication::serviceLocation()->count() }})</span>
-					</a>
-					<a href="{{ route('admin.publications.index', ['post_type' => 'language']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'language' ? 'bg-orange-100 text-orange-800' : 'text-gray-600 hover:bg-gray-100' }}">
-						<i class="fas fa-language"></i>
-						<span>Languages ({{ \App\Models\Publication::language()->count() }})</span>
+					<a href="{{ route('admin.publications.index', ['post_type' => 'learning-center']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('post_type') == 'learning-center' ? 'bg-purple-100 text-purple-800' : 'text-gray-600 hover:bg-gray-100' }}">
+						<i class="fas fa-graduation-cap"></i>
+						<span>Learning Center ({{ \App\Models\Publication::learningCenter()->count() }})</span>
 					</a>
 				</div>
 			</div>
@@ -66,10 +58,8 @@
 						<label for="post_type" class="block text-sm font-medium text-gray-700 mb-1">Post Type</label>
 						<select id="post_type" name="post_type" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary">
 							<option value="">All Types</option>
-							<option value="publication" {{ request('post_type') == 'publication' ? 'selected' : '' }}>Publication</option>
-							<option value="more-publication" {{ request('post_type') == 'more-publication' ? 'selected' : '' }}>More Publication</option>
-							<option value="service-location" {{ request('post_type') == 'service-location' ? 'selected' : '' }}>Service Location</option>
-							<option value="language" {{ request('post_type') == 'language' ? 'selected' : '' }}>Language</option>
+							<option value="study-abroad" {{ request('post_type') == 'study-abroad' ? 'selected' : '' }}>Study Abroad</option>
+							<option value="learning-center" {{ request('post_type') == 'learning-center' ? 'selected' : '' }}>Learning Center</option>
 						</select>
 					</div>
 					<div class="flex items-end gap-2">
@@ -121,10 +111,8 @@
 										<td class="px-4 py-3">
 											@php
 												$postTypeBadgeClasses = [
-													'publication' => 'bg-blue-100 text-blue-800',
-													'more-publication' => 'bg-purple-100 text-purple-800',
-													'service-location' => 'bg-green-100 text-green-800',
-													'language' => 'bg-orange-100 text-orange-800'
+													'study-abroad' => 'bg-blue-100 text-blue-800',
+													'learning-center' => 'bg-purple-100 text-purple-800'
 												][$publication->post_type] ?? 'bg-gray-100 text-gray-800';
 											@endphp
 											<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs {{ $postTypeBadgeClasses }}">{{ ucfirst(str_replace('-', ' ', $publication->post_type)) }}</span>
@@ -160,12 +148,10 @@
 												@if($publication->status === 'active')
 													@php
 														$liveUrls = [
-															'publication' => '/publication/' . $publication->slug,
-															'more-publication' => '/more-publication/' . $publication->slug,
-															'service-location' => '/service-location/' . $publication->slug,
-															'language' => '/language/' . $publication->slug
+															'study-abroad' => '/study-abroad/' . $publication->slug,
+															'learning-center' => '/learning-center/' . $publication->slug
 														];
-														$liveUrl = $liveUrls[$publication->post_type] ?? '/publication/' . $publication->slug;
+														$liveUrl = $liveUrls[$publication->post_type] ?? '/publications/' . $publication->slug;
 														$liveTitle = 'View Live ' . ucfirst(str_replace('-', ' ', $publication->post_type));
 													@endphp
 													<a href="{{ url($liveUrl) }}" title="{{ $liveTitle }}" target="_blank" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-emerald-300 text-emerald-600 hover:bg-emerald-50">

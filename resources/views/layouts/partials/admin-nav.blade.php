@@ -173,6 +173,22 @@
     @endif
 </a>
 
+{{-- Testimonials Management --}}
+<a href="{{ route('admin.testimonials.index') }}"
+    class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.testimonials.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">
+    <svg class="icon mr-3 h-5 w-5 {{ request()->routeIs('admin.testimonials.*') ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900' }}"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5M12.5,18.5C12.5,17.67 13.17,17 14,17C14.83,17 15.5,17.67 15.5,18.5C15.5,19.33 14.83,20 14,20C13.17,20 12.5,19.33 12.5,18.5M17.5,18.5C17.5,17.67 18.17,17 19,17C19.83,17 20.5,17.67 20.5,18.5C20.5,19.33 19.83,20 19,20C18.17,20 17.5,19.33 17.5,18.5M21,16V18H23V20H21V22H19V20H17V18H19V16H21Z" />
+    </svg>
+    <span class="hide-when-collapsed">Testimonials</span>
+    @if (request()->routeIs('admin.testimonials.*'))
+        <div class="ml-auto hide-when-collapsed">
+            <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+        </div>
+    @endif
+</a>
+
 
 
 {{-- Sliders Management --}}

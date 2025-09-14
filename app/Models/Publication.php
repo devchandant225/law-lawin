@@ -71,27 +71,19 @@ class Publication extends Model
     }
 
     /**
-     * Scope a query to only include publications of type 'more-publication'.
+     * Scope a query to only include publications of type 'study-abroad'.
      */
-    public function scopeMorePublication($query)
+    public function scopeStudyAbroad($query)
     {
-        return $query->where('post_type', 'more-publication');
+        return $query->where('post_type', 'study-abroad');
     }
 
     /**
-     * Scope a query to only include publications of type 'service-location'.
+     * Scope a query to only include publications of type 'learning-center'.
      */
-    public function scopeServiceLocation($query)
+    public function scopeLearningCenter($query)
     {
-        return $query->where('post_type', 'service-location');
-    }
-
-    /**
-     * Scope a query to only include publications of type 'language'.
-     */
-    public function scopeLanguage($query)
-    {
-        return $query->where('post_type', 'language');
+        return $query->where('post_type', 'learning-center');
     }
 
     /**

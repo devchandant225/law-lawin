@@ -92,49 +92,82 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-8 header-nav">
-                    <a href="{{ route('home') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Home</a>
-                    <a href="/about/introduction" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
-                    <a href="{{ route('team.index') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
+                <nav class="hidden lg:flex items-center space-x-6 header-nav">
+                    <!-- Home -->
+                    <a href="{{ route('home') }}" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">Home</a>
                     
-                    <!-- Practice Areas Dropdown -->
+                    <!-- About Us -->
+                    <a href="/about/introduction" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">About Us</a>
+                    
+                    <!-- Study Abroad Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('practices.index') }}" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link group/link">
-                            Practice Areas
+                        <a href="#" class="text-white hover:text-secondary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                            Study Abroad
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
-                        @if ($navPracticeAreas && $navPracticeAreas->count() > 0)
-                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                                <div class="py-3">
-                                    <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Practice Areas</span>
-                                    </div>
-                                    <a href="{{ route('practices.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
-                                            <i class="fas fa-th-large text-primary text-xs"></i>
-                                        </div>
-                                        <div>
-                                            <div class="font-medium">All Practice Areas</div>
-                                            <div class="text-xs text-gray-500 group-hover/item:text-primary/70">View complete list</div>
-                                        </div>
-                                    </a>
-                                    <div class="h-px bg-gray-100 my-2 mx-4"></div>
-                                    @foreach ($navPracticeAreas->take(10) as $practice)
-                                        <a href="{{ route('practice.show', $practice->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i class="fas fa-balance-scale text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
-                                            </div>
-                                            <span class="font-medium">{{ $practice->title }}</span>
-                                        </a>
-                                    @endforeach
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div class="py-3">
+                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Study Destinations</span>
                                 </div>
+                                <a href="/study-abroad/usa" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-6 h-6 rounded-md bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                        <i class="fas fa-flag-usa text-blue-500 text-xs transition-colors"></i>
+                                    </div>
+                                    <span class="font-medium">USA</span>
+                                </a>
+                                <a href="/study-abroad/canada" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-6 h-6 rounded-md bg-red-50 group-hover/item:bg-red-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                        <i class="fas fa-maple-leaf text-red-500 text-xs transition-colors"></i>
+                                    </div>
+                                    <span class="font-medium">Canada</span>
+                                </a>
+                                <a href="/study-abroad/japan" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-6 h-6 rounded-md bg-red-50 group-hover/item:bg-red-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                        <i class="fas fa-torii-gate text-red-500 text-xs transition-colors"></i>
+                                    </div>
+                                    <span class="font-medium">Japan</span>
+                                </a>
                             </div>
-                        @endif
+                        </div>
                     </div>
 
-                    <!-- Services Dropdown -->
+                    <!-- Learning Center Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('services.index') }}" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="#" class="text-white hover:text-secondary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                            Learning Center
+                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div class="py-3">
+                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Learning Resources</span>
+                                </div>
+                                <a href="/learning-center/guides" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-6 h-6 rounded-md bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                        <i class="fas fa-book-open text-green-500 text-xs transition-colors"></i>
+                                    </div>
+                                    <span class="font-medium">Study Guides</span>
+                                </a>
+                                <a href="/learning-center/resources" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-6 h-6 rounded-md bg-purple-50 group-hover/item:bg-purple-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                        <i class="fas fa-graduation-cap text-purple-500 text-xs transition-colors"></i>
+                                    </div>
+                                    <span class="font-medium">Resources</span>
+                                </a>
+                                <a href="/learning-center/tips" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-6 h-6 rounded-md bg-orange-50 group-hover/item:bg-orange-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                        <i class="fas fa-lightbulb text-orange-500 text-xs transition-colors"></i>
+                                    </div>
+                                    <span class="font-medium">Tips & Advice</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Our Services Dropdown -->
+                    <div class="relative group">
+                        <a href="{{ route('services.index') }}" class="text-white hover:text-secondary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Our Services
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -144,18 +177,18 @@
                                     <div class="px-4 pb-2 mb-2 border-b border-gray-100">
                                         <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Our Services</span>
                                     </div>
-                                    <a href="{{ route('services.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <a href="{{ route('services.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
                                         <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
                                             <i class="fas fa-briefcase text-primary text-xs"></i>
                                         </div>
                                         <div>
                                             <div class="font-medium">All Services</div>
-                                            <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Complete service portfolio</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete service portfolio</div>
                                         </div>
                                     </a>
                                     <div class="h-px bg-gray-100 my-2 mx-4"></div>
                                     @foreach ($navServices->take(10) as $service)
-                                        <a href="{{ route('service.show', $service->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                        <a href="{{ route('service.show', $service->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
                                             <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
                                                 <i class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
                                             </div>
@@ -167,40 +200,19 @@
                         @endif
                     </div>
 
-                    <!-- News & Publications Dropdown -->
-                    <div class="relative group">
-                        <a href="#" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link group/link">
-                           News & Publications
-                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
-                        </a>
-                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                            <div class="py-3">
-                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Resources</span>
-                                </div>
-                                <a href="{{ route('posts.by-type', 'news') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-newspaper text-blue-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">News</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Latest updates & insights</div>
-                                    </div>
-                                </a>
-                                <a href="{{ route('publications.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-book text-green-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">Publications</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Research & reports</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Our Team -->
+                    <a href="{{ route('team.index') }}" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">Our Team</a>
+                    
+                    <!-- Gallery -->
+                    <a href="/gallery" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">Gallery</a>
 
-                    <a href="/contact" class="text-white hover:text-white/80 font-medium transition-colors nav-link">Contact</a>
+                    <!-- Contact -->
+                    <a href="/contact" class="text-white hover:text-secondary font-medium transition-colors nav-link">Contact Us</a>
+                    
+                    <!-- CTA Button -->
+                    <a href="/contact" class="bg-primary hover:bg-secondary text-white font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        Speak With Us
+                    </a>
                  
                 </nav>
 
@@ -232,13 +244,35 @@
             <!-- Navigation Links -->
             <nav class="flex-1 px-4 py-6 space-y-4">
                 <a href="{{ route('home') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
-                <a href="/about/introduction" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About</a>
-                <a href="{{ route('team.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Team</a>
-                <a href="{{ route('practices.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Practice Areas</a>
+                <a href="/about/introduction" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About Us</a>
+                
+                <!-- Study Abroad Mobile -->
+                <div class="space-y-2">
+                    <span class="block text-gray-600 font-medium text-sm uppercase tracking-wide">Study Abroad</span>
+                    <a href="/study-abroad/usa" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">USA</a>
+                    <a href="/study-abroad/canada" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Canada</a>
+                    <a href="/study-abroad/japan" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Japan</a>
+                </div>
+                
+                <!-- Learning Center Mobile -->
+                <div class="space-y-2">
+                    <span class="block text-gray-600 font-medium text-sm uppercase tracking-wide">Learning Center</span>
+                    <a href="/learning-center/guides" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Study Guides</a>
+                    <a href="/learning-center/resources" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Resources</a>
+                    <a href="/learning-center/tips" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Tips & Advice</a>
+                </div>
+                
                 <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>
-                <a href="{{ route('posts.by-type', 'news') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">News</a>
-                <a href="{{ route('publications.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">Publications</a>
-                <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
+                <a href="{{ route('team.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Team</a>
+                <a href="/gallery" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Gallery</a>
+                <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact Us</a>
+                
+                <!-- Mobile CTA Button -->
+                <div class="pt-4">
+                    <a href="/contact" class="block bg-primary hover:bg-secondary text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 text-center shadow-lg">
+                        Speak With Us
+                    </a>
+                </div>
             </nav>
         </div>
     </div>

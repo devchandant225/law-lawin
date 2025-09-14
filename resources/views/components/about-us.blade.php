@@ -47,8 +47,8 @@
 
                     <!-- Main Title -->
                     <div class="space-y-4">
-                        <h2 class="font-semibold text-gray-800 leading-tight">
-                            <span class="text-primary text-3xl underline">
+                        <h2 class="font-bold text-gray-800 leading-tight">
+                            <span class="text-primary text-4xl">
                                 {{ $intro_home->title ?? 'Lawin & Partners' }}
                             </span>
                         </h2>

@@ -6,6 +6,9 @@
         <x-banner :sliders="$sliders" />
     </div>
 
+    {{-- Highlight Features Section --}}
+    <x-highlight-section />
+
     {{-- About Section with Section Title Component --}}
     <section class="relative bg-white">
         <x-about-us />

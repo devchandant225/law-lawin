@@ -171,7 +171,7 @@
                     <!-- Form Header -->
                     <div class="bg-gray-100 rounded-2xl shadow-xl p-8">
                         <div class="mb-6">
-                            <h3 class="text-2xl font-bold text-primary mb-2">
+                            <h3 class="text-2xl font-bold text-secondary mb-2">
                              REACH OUT TO US AT ANY TIME
                             </h3>
                         </div>
@@ -269,7 +269,7 @@
                             <!-- Submit Button -->
                             <div class="pt-4">
                                 <button type="submit" 
-                                        class="w-full bg-gradient-to-r from-primary to-secondary text-white font-semibold py-4 px-6 rounded-lg hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
+                                        class="w-full bg-gradient-to-r from-secondary to-secondary text-white font-semibold py-4 px-6 rounded-lg hover:from-primary hover:to-primary transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
                                     <span class="flex items-center justify-center space-x-2">
                                         <span>submit</span>
                                         <i class="fas fa-paper-plane ml-2"></i>

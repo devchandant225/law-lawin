@@ -13,6 +13,10 @@
     <section class="relative bg-white">
         <x-about-us />
     </section>
+    
+    {{-- Counter Section --}}
+    <x-counter-section />
+    
     {{-- <x-why-choose-us /> --}}
     {{-- Services Section Title --}}
     <x-page-section-title title="<span>Services</span>" />

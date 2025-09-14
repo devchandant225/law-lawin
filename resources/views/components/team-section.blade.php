@@ -16,7 +16,7 @@
                                     <div class="bg-gradient-to-br from-accent to-secondary/20">
                                         @if ($member->image)
                                             <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
-                                                class="w-full h-full object-fit object-center">
+                                                class="w-full h-[23rem] object-fit object-center">
                                         @else
                                             <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"
                                                 alt="{{ $member->name }}"
@@ -100,7 +100,7 @@
         @if ($showViewAll && $teams->isNotEmpty())
             <div class="text-center" data-aos="fade-up" data-aos-delay="400">
                 <a href="{{ route('team.index') }}"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-semibold shadow-lg">
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-secondary to-secondary text-white px-4 py-2 rounded-full font-semibold shadow-lg">
                     <span>View All Team Members</span>
                     <i class="fas fa-arrow-right text-sm"></i>
                 </a>

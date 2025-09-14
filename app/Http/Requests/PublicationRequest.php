@@ -30,7 +30,7 @@ class PublicationRequest extends FormRequest
             'metadescription' => 'nullable|string|max:500',
             'metakeywords' => 'nullable|string|max:1000',
             'status' => 'required|in:active,inactive,draft',
-            'post_type' => 'required|in:publication,more-publication,service-location,language',
+            'post_type' => 'required|in:publication,more-publication,service-location,language,study-abroad,learning-center',
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'google_schema' => 'nullable|string',

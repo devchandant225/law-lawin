@@ -4,7 +4,7 @@
 
         @if ($teams->isNotEmpty())
             <!-- Team Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-4 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-4 mb-12">
                 @foreach ($teams->take(4) as $index => $member)
                     <div class="team-card-wrapper w-full" data-aos="fade-up" data-aos-duration="800"
                         data-aos-delay="{{ $index * 100 }}">
@@ -39,10 +39,10 @@
                                     {{ $member->designation ?: 'Legal Professional' }}</p>
 
                                 <!-- Contact Info -->
-                                <div class="space-y-2 text-xs text-gray-500">
+                                <div class="space-y-2 text-base text-gray-500">
                                     @if ($member->phone)
                                         <div class="flex space-x-2">
-                                            <i class="fas fa-phone text-primary"></i>
+                                            <i class="fas fa-phone text-primary mt-1"></i>
                                             <a href="tel:{{ $member->phone }}"
                                                 class="hover:text-primary transition-colors duration-300">
                                                 {{ $member->phone }}
@@ -51,7 +51,7 @@
                                     @endif
                                     @if ($member->email)
                                         <div class="flex space-x-2">
-                                            <i class="fas fa-envelope text-primary"></i>
+                                            <i class="fas fa-envelope text-primary mt-1"></i>
                                             <a href="mailto:{{ $member->email }}"
                                                 class="hover:text-primary transition-colors duration-300">
                                                 {{ $member->email }}

@@ -144,6 +144,8 @@ Route::get('/calculator', function () {
 })->name('calculator');
 
 // Add home route with name
+Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*

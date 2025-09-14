@@ -13,10 +13,50 @@
                             <a href="#">Home</a>
                         </li>
 
+<<<<<<< HEAD
                         <!-- About -->
                         <li>
                             <a href="#">About</a>
                         </li>
+=======
+                              @if ($globalProfile && $globalProfile->linkedin_link)
+                                  <a href="{{ $globalProfile->linkedin_link }}">
+                                      <i class="fab fa-linkedin"></i>
+                                      <span class="sr-only">LinkedIn</span>
+                                  </a>
+                              @endif
+                              @if ($globalProfile && $globalProfile->whatsapp)
+                                  <a href="{{ $globalProfile->whatsapp }}">
+                                      <i class="fab fa-whatsapp"></i>
+                                      <span class="sr-only">whatsapp</span>
+                                  </a>
+                              @endif
+                              @if ($globalProfile && $globalProfile->viber)
+                                  <a href="{{ $globalProfile->viber }}">
+                                      <i class="fab fa-viber"></i>
+                                      <span class="sr-only">viber</span>
+                                  </a>
+                              @endif
+                              @if ($globalProfile && $globalProfile->wechat_link)
+                                  <a href="{{ $globalProfile->wechat_link }}">
+                                      <i class="fab fa-weixin"></i>
+                                      <span class="sr-only">wechat link</span>
+                                  </a>
+                              @endif
+                              <a href="/calculator">
+                                  <i class="fab fa-calculator"></i>
+                                  <span class="sr-only">wechat link</span>
+                              </a>
+                          </div>
+                      </div><!-- /.topbar-one__inner -->
+                  </div><!-- /.topbar-one -->
+                  <div class="main-header__center__bottom">
+                      <nav class="main-header__nav main-menu">
+                          <ul class="main-menu__list">
+                              <li>
+                                  <a href="{{ route('home') }}">Home</a>
+                              </li>
+>>>>>>> main
 
                         <!-- Study Abroad with Countries Dropdown -->
                         <li class="dropdown">
@@ -54,6 +94,7 @@
                             <a href="#">Gallery</a>
                         </li>
 
+<<<<<<< HEAD
                         <!-- Contact Us -->
                         <li>
                             <a href="#">Contact Us</a>
@@ -76,3 +117,32 @@
             </div><!-- /.main-header__inner -->
         </div><!-- /.container-fluid -->
     </header><!-- /.main-header -->
+=======
+                              <li class="dropdown">
+                                  <a href="#">Help Desk</a>
+                                  <ul>
+                                      @foreach ($navHelpDeskItems as $helpDeskItem)
+                                          <li><a href="{{ $helpDeskItem['url'] }}">{{ $helpDeskItem['title'] }}</a>
+                                          </li>
+                                      @endforeach
+                                  </ul>
+                              </li>
+
+                              <li>
+                                  <a href="/contact">Contact</a>
+                              </li>
+                          </ul>
+                      </nav><!-- /.main-header__nav -->
+                      <div class="main-header__right">
+                          <div class="mobile-nav__btn mobile-nav__toggler">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                          </div><!-- /.mobile-nav__toggler -->
+
+                      </div><!-- /.main-header__right -->
+                  </div>
+              </div>
+          </div><!-- /.main-header__inner -->
+      </header><!-- /.main-header -->
+>>>>>>> main

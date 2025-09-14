@@ -6,76 +6,117 @@
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner title="Our Expert Team"
+    <x-page-banner title="Our Team"
         subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Our Team']]" />
 
-    {{-- Team Section with Search --}}
-    {{-- <x-team-section :teams="$teams" :showViewAll="false" :showSectionHeader="false" :showSearch="true"
-        sectionTitle="Our <span class='bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>Legal Professionals</span>"
-        sectionSubtitle="Expert Team Members"
-        sectionDescription="Our diverse team of legal experts combines deep knowledge, innovative thinking, and unwavering commitment to deliver exceptional legal services across various practice areas." /> --}}
-    <section class="team-one">
-        <div class="container">
-            <div class="row gutter-y-30">
-                @foreach ($teams as $team)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+    {{-- Modern Team Section with Tailwind CSS --}}
+    <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      
+        <div class="container mx-auto px-4 relative z-10">
+          
 
-                            <div class="team-card__image bw-img-anim-left">
-                                <div class="team-card__content">
-                                    <h3 class="team-card__title">
-                                        <a href="{{ route('team.show', $team->slug) }}">{{ $team->name }}</a>
-                                    </h3><!-- /.team-card__title -->
-                                    <p class="team-card__designation">{{ $team->designation ?: 'Lawyer' }}</p>
-                                    <!-- /.team-card__designation -->
+            @if ($teams->isNotEmpty())
+                <!-- Team Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-4 mb-12">
+                    @foreach ($teams as $index => $member)
+                        <div class="team-card-wrapper w-[14rem]" data-aos="fade-up" data-aos-duration="800"
+                            data-aos-delay="{{ $index * 100 }}">
+                            <div
+                                class="bg-white rounded-2xl shadow-md transition-all duration-500 group overflow-hidden border border-gray-100 hover:border-primary/30">
+                                <!-- Team Member Image -->
+                                <a href="{{ route('team.show', $member->slug) }}" class="block">
+                                    <div class="relative overflow-hidden">
+                                        <div class="bg-gradient-to-br from-accent to-secondary/20">
+                                            @if ($member->image)
+                                                <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
+                                                    class="w-full h-[18rem] object-fit object-center">
+                                            @else
+                                                <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"
+                                                    alt="{{ $member->name }}"
+                                                    class="w-full h-full object-contain transition-transform duration-700 ease-out">
+                                            @endif
+                                        </div>
 
-                                </div><!-- /.team-card__content -->
-                                <div class="team-card__hover">
-                                    <span class="team-card__hover__btn"><i class="icon-plus"></i></span>
-                                    <div class="team-card__hover__social">
-                                        @if ($team->facebooklink)
-                                            <a href="{{ $team->facebooklink }}" target="_blank">
-                                                <i class="icon-facebook"></i>
-                                                <span class="sr-only">Facebook</span>
-                                            </a>
+                                    </div>
+                                </a>
+
+                                <!-- Team Member Info -->
+                                <div class="px-4 py-2">
+                                    <h3
+                                        class="font-medium text-lg text-gray-900 group-hover:text-primary transition-colors duration-300">
+                                        <a href="{{ route('team.show', $member->slug) }}" class="text-primary">
+                                            {{ $member->name }}
+                                        </a>
+                                    </h3>
+                                    <p class="text-gray-600 font-normal text-sm mb-2">
+                                        {{ $member->designation ?: 'Legal Professional' }}</p>
+
+                                    <!-- Contact Info -->
+                                    <div class="space-y-2 text-xs text-gray-500">
+                                        @if ($member->phone)
+                                            <div class="flex space-x-2">
+                                                <i class="fas fa-phone text-primary"></i>
+                                                <a href="tel:{{ $member->phone }}"
+                                                    class="hover:text-primary transition-colors duration-300">
+                                                    {{ $member->phone }}
+                                                </a>
+                                            </div>
                                         @endif
-                                        @if ($team->linkedinlink)
-                                            <a href="{{ $team->linkedinlink }}" target="_blank">
-                                                <i class="icon-linkedin"></i>
-                                                <span class="sr-only">LinkedIn</span>
-                                            </a>
+                                        @if ($member->email)
+                                            <div class="flex space-x-2">
+                                                <i class="fas fa-envelope text-primary"></i>
+                                                <a href="mailto:{{ $member->email }}"
+                                                    class="hover:text-primary transition-colors duration-300">
+                                                    {{ $member->email }}
+                                                </a>
+                                            </div>
                                         @endif
-                                        @if ($team->email)
-                                            <a href="mailto:{{ $team->email }}">
-                                                <i class="icon-email"></i>
-                                                <span class="sr-only">Email</span>
-                                            </a>
-                                        @endif
-                                        @if (!$team->facebooklink && !$team->linkedinlink && !$team->email)
-                                            <!-- Default social links when none are provided -->
-                                            <a href="#">
-                                                <i class="icon-facebook"></i>
-                                                <span class="sr-only">Facebook</span>
-                                            </a>
-                                        @endif
-                                    </div><!-- /.team-card__social -->
-                                </div><!-- /.team-card__hover -->
-                                @if ($team->image)
-                                    <img src="{{ $team->image_url }}" alt="{{ $team->name }}">
-                                @else
-                                    <img src="{{ asset('assets/images/team/team-1-1.jpg') }}" alt="{{ $team->name }}">
-                                @endif
-                            </div><!-- /.team-card__image -->
-                        </div><!-- /.team-card -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
-                @endforeach
+                                    </div>
 
+                                    <!-- Social Media Icons (Footer) -->
+                                    <div class="flex justify-between space-x-3 mt-2 pt-2 border-t border-gray-100">
+                                        <div class="flex space-x-3 w-[50%]">
+                                            @if ($member->facebooklink)
+                                                <a href="{{ $member->facebooklink }}" target="_blank"
+                                                    class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white hover:bg-primary hover:text-white transition-all duration-300">
+                                                    <i class="fab fa-facebook-f text-xs"></i>
+                                                </a>
+                                            @endif
+                                            @if ($member->linkedinlink)
+                                                <a href="{{ $member->linkedinlink }}" target="_blank"
+                                                    class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white hover:bg-secondary hover:text-white transition-all duration-300">
+                                                    <i class="fab fa-linkedin-in text-xs"></i>
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <a href="{{ route('team.show', $member->slug) }}"
+                                            class="px-2 pt-2 bg-accent text-white text-xs font-semibold rounded-lg hover:bg-secondary transition-all duration-300 hover:scale-105">
+                                            View more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-20">
+                    <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-3xl text-gray-400"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">No team members available at the moment.</h4>
+                    <p class="text-gray-600 max-w-md mx-auto">Please check back later to meet our amazing team of legal
+                        professionals.</p>
+                </div>
+            @endif
+        </div>
 
-
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section><!-- /.team-two -->
+        <!-- Decorative Elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 bg-blue-400/30 rounded-full blur-3xl opacity-60 animate-pulse"></div>
+        <div
+            class="absolute bottom-10 right-10 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl opacity-40 animate-pulse delay-1000">
+        </div>
+    </section>
 
 @endsection
-

@@ -10,20 +10,7 @@ class Publication extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'slug',
-        'feature_image',
-        'description',
-        'excerpt',
-        'status',
-        'post_type',
-        'orderlist',
-        'metatitle',
-        'metadescription',
-        'metakeywords',
-        'google_schema'
-    ];
+    protected $fillable = ['title', 'slug', 'feature_image', 'description', 'excerpt', 'status', 'post_type', 'orderlist', 'metatitle', 'metadescription', 'metakeywords', 'google_schema'];
 
     protected $casts = [
         'google_schema' => 'array',
@@ -195,9 +182,7 @@ class Publication extends Model
      */
     public function teams()
     {
-        return $this->belongsToMany(Team::class, 'publication_team')
-                    ->withPivot('role')
-                    ->withTimestamps();
+        return $this->belongsToMany(Team::class, 'publication_team')->withPivot('role')->withTimestamps();
     }
 
     /**
@@ -221,17 +206,23 @@ class Publication extends Model
      */
     public function getTeamMembersWithRoles()
     {
-        return $this->teams()->get()->map(function($team) {
-            return [
-                'id' => $team->id,
-                'name' => $team->name,
-                'designation' => $team->designation,
-                'slug' => $team->slug,
-                'image_url' => $team->image_url,
-                'role' => $team->pivot->role ?? 'Team Member',
-                'assigned_at' => $team->pivot->created_at
-            ];
-        });
+        return $this->teams()
+            ->get()
+            ->map(function ($team) {
+                return [
+                    'id' => $team->id,
+                    'name' => $team->name,
+                    'designation' => $team->designation,
+                    'slug' => $team->slug,
+                    'phone' => $team->phone,
+                    'email' => $team->email,
+                    'facebooklink' => $team->facebooklink,
+                    'linkedinlink' => $team->linkedinlink,
+                    'image_url' => $team->image_url,
+                    'role' => $team->pivot->role ?? 'Team Member',
+                    'assigned_at' => $team->pivot->created_at,
+                ];
+            });
     }
 
     /**
@@ -246,7 +237,7 @@ class Publication extends Model
             'description' => $this->excerpt ?: substr(strip_tags($this->title), 0, 160),
             'url' => url('/publications/' . $this->slug),
             'datePublished' => $this->created_at->toISOString(),
-            'dateModified' => $this->updated_at->toISOString()
+            'dateModified' => $this->updated_at->toISOString(),
         ];
 
         if ($this->feature_image) {

@@ -9,7 +9,7 @@
     <x-page-banner title="Legal Publications"
         subtitle="Explore our comprehensive collection of legal publications, research papers, and professional resources"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Publications']]" />
-           {{-- Publications Section --}}
+    {{-- Publications Section --}}
     @livewire('publication-section', [
         'showViewAll' => true,
         'limit' => 8,
@@ -18,7 +18,7 @@
         'sectionSubtitle' => 'Legal Knowledge & Resources',
         'sectionDescription' => 'Explore our comprehensive collection of legal publications, research papers, and expert insights covering various areas of law.',
     ])
-    
+
     {{-- Contact Form Section --}}
-    <x-publication-contact-form />
+    <x-contact-section />
 @endsection

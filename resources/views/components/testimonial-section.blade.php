@@ -23,260 +23,86 @@
                         Testimonials
                     </div><!-- /.sec-title__tagline -->
 
-                    <h3 class="sec-title__title bw-split-in-up">See What They Are <br><span>Talking About?</span></h3>
-                    <!-- /.sec-title__title -->
-                </div><!-- /.sec-title -->
-                <div class="testimonials-one__carousel procounsel-owl__carousel  procounsel-owl__carousel--basic-nav owl-carousel"
-                    data-owl-options='{
-				"items": 1,
-				"margin": 30,
-				"loop": false,
-				"smartSpeed": 700,
-				"nav": false,
-				"navText": ["<span>Prev</span>","<span>Next</span>"],
-				"dots": false,
-				"autoplay": false,
-				"responsive": {
-					"0": {
-						"items": 1
-					},
-					"768": {
-						"items": 2
-					},
-					"992": {
-						"items": 3
-					}
-				}
-			}'>
-                    <div class="item">
-                        <div class="testimonials-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
-                            <!-- <div class="testimonials-card__bg" style="background-image: url(assets/images/shapes/testi-card-bg-1-1.jpg);"></div> -->
-                            <div class="testimonials-card__top">
-                                <div class="testimonials-card__image bw-img-anim-right">
-                                    <img src="assets/images/resources/testi-1-1.jpg" alt="Alen Martin">
-                                </div><!-- /.testimonials-card__image -->
-                                <div class="testimonials-card__content">
-                                    <div class="testimonials-card__quote">
-                                        <i class="icon-quote"></i>
-                                        <i class="icon-quote"></i>
-
-                                    </div>
-                                    <h3 class="testimonials-card__name">
-                                        Alen Martin
-                                    </h3><!-- /.testimonials-card__name -->
-                                    <p class="testimonials-card__designation">Customer</p>
-                                    <!-- /.testimonials-card__designation -->
-                                    <div class="testimonials-card__rating">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-
-                                    </div>
-                                </div>
-                                <!-- testimonials-card__content -->
-                            </div><!-- /.testimonials-card__top -->
-
-                            <div class="testimonials-card__desc">
-                                There are many variations passages to luck of Loem Ipsum available to but the majority
-                                have live by injected
-                                humour, suffered alteration in
-                            </div><!-- /.testimonials-card__desc -->
-
-                        </div><!-- /.testimonials-card -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="testimonials-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
-                            <!-- <div class="testimonials-card__bg" style="background-image: url(assets/images/shapes/testi-card-bg-1-1.jpg);"></div> -->
-                            <div class="testimonials-card__top">
-                                <div class="testimonials-card__image bw-img-anim-right">
-                                    <img src="assets/images/resources/testi-1-2.jpg" alt="Hena Wiano">
-                                </div><!-- /.testimonials-card__image -->
-                                <div class="testimonials-card__content">
-                                    <div class="testimonials-card__quote">
-                                        <i class="icon-quote"></i>
-                                        <i class="icon-quote"></i>
-
-                                    </div>
-                                    <h3 class="testimonials-card__name">
-                                        Hena Wiano
-                                    </h3><!-- /.testimonials-card__name -->
-                                    <p class="testimonials-card__designation">Customer</p>
-                                    <!-- /.testimonials-card__designation -->
-                                    <div class="testimonials-card__rating">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-
-                                    </div>
-                                </div>
-                                <!-- testimonials-card__content -->
-                            </div><!-- /.testimonials-card__top -->
-
-                            <div class="testimonials-card__desc">
-                                There are many variations passages to luck of Loem Ipsum available to but the majority
-                                have live by injected
-                                humour, suffered alteration in
-                            </div><!-- /.testimonials-card__desc -->
-
-                        </div><!-- /.testimonials-card -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="testimonials-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
-                            <!-- <div class="testimonials-card__bg" style="background-image: url(assets/images/shapes/testi-card-bg-1-1.jpg);"></div> -->
-                            <div class="testimonials-card__top">
-                                <div class="testimonials-card__image bw-img-anim-right">
-                                    <img src="assets/images/resources/testi-1-3.jpg" alt="Keli Wiliam">
-                                </div><!-- /.testimonials-card__image -->
-                                <div class="testimonials-card__content">
-                                    <div class="testimonials-card__quote">
-                                        <i class="icon-quote"></i>
-                                        <i class="icon-quote"></i>
-
-                                    </div>
-                                    <h3 class="testimonials-card__name">
-                                        Keli Wiliam
-                                    </h3><!-- /.testimonials-card__name -->
-                                    <p class="testimonials-card__designation">Customer</p>
-                                    <!-- /.testimonials-card__designation -->
-                                    <div class="testimonials-card__rating">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-
-                                    </div>
-                                </div>
-                                <!-- testimonials-card__content -->
-                            </div><!-- /.testimonials-card__top -->
-
-                            <div class="testimonials-card__desc">
-                                There are many variations passages to luck of Loem Ipsum available to but the majority
-                                have live by injected
-                                humour, suffered alteration in
-                            </div><!-- /.testimonials-card__desc -->
-
-                        </div><!-- /.testimonials-card -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="testimonials-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
-                            <!-- <div class="testimonials-card__bg" style="background-image: url(assets/images/shapes/testi-card-bg-1-1.jpg);"></div> -->
-                            <div class="testimonials-card__top">
-                                <div class="testimonials-card__image bw-img-anim-right">
-                                    <img src="assets/images/resources/testi-1-1.jpg" alt="Alice Genesis">
-                                </div><!-- /.testimonials-card__image -->
-                                <div class="testimonials-card__content">
-                                    <div class="testimonials-card__quote">
-                                        <i class="icon-quote"></i>
-                                        <i class="icon-quote"></i>
-
-                                    </div>
-                                    <h3 class="testimonials-card__name">
-                                        Alice Genesis
-                                    </h3><!-- /.testimonials-card__name -->
-                                    <p class="testimonials-card__designation">Customer</p>
-                                    <!-- /.testimonials-card__designation -->
-                                    <div class="testimonials-card__rating">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-
-                                    </div>
-                                </div>
-                                <!-- testimonials-card__content -->
-                            </div><!-- /.testimonials-card__top -->
-
-                            <div class="testimonials-card__desc">
-                                There are many variations passages to luck of Loem Ipsum available to but the majority
-                                have live by injected
-                                humour, suffered alteration in
-                            </div><!-- /.testimonials-card__desc -->
-
-                        </div><!-- /.testimonials-card -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="testimonials-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
-                            <!-- <div class="testimonials-card__bg" style="background-image: url(assets/images/shapes/testi-card-bg-1-1.jpg);"></div> -->
-                            <div class="testimonials-card__top">
-                                <div class="testimonials-card__image bw-img-anim-right">
-                                    <img src="assets/images/resources/testi-1-2.jpg" alt="Alen Martin">
-                                </div><!-- /.testimonials-card__image -->
-                                <div class="testimonials-card__content">
-                                    <div class="testimonials-card__quote">
-                                        <i class="icon-quote"></i>
-                                        <i class="icon-quote"></i>
-
-                                    </div>
-                                    <h3 class="testimonials-card__name">
-                                        Alen Martin
-                                    </h3><!-- /.testimonials-card__name -->
-                                    <p class="testimonials-card__designation">Customer</p>
-                                    <!-- /.testimonials-card__designation -->
-                                    <div class="testimonials-card__rating">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-
-                                    </div>
-                                </div>
-                                <!-- testimonials-card__content -->
-                            </div><!-- /.testimonials-card__top -->
-
-                            <div class="testimonials-card__desc">
-                                There are many variations passages to luck of Loem Ipsum available to but the majority
-                                have live by injected
-                                humour, suffered alteration in
-                            </div><!-- /.testimonials-card__desc -->
-
-                        </div><!-- /.testimonials-card -->
-                    </div><!-- /.item -->
-                    <div class="item">
-                        <div class="testimonials-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
-                            <!-- <div class="testimonials-card__bg" style="background-image: url(assets/images/shapes/testi-card-bg-1-1.jpg);"></div> -->
-                            <div class="testimonials-card__top">
-                                <div class="testimonials-card__image bw-img-anim-right">
-                                    <img src="assets/images/resources/testi-1-3.jpg" alt="Hena Wiano">
-                                </div><!-- /.testimonials-card__image -->
-                                <div class="testimonials-card__content">
-                                    <div class="testimonials-card__quote">
-                                        <i class="icon-quote"></i>
-                                        <i class="icon-quote"></i>
-
-                                    </div>
-                                    <h3 class="testimonials-card__name">
-                                        Hena Wiano
-                                    </h3><!-- /.testimonials-card__name -->
-                                    <p class="testimonials-card__designation">Customer</p>
-                                    <!-- /.testimonials-card__designation -->
-                                    <div class="testimonials-card__rating">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-
-                                    </div>
-                                </div>
-                                <!-- testimonials-card__content -->
-                            </div><!-- /.testimonials-card__top -->
-
-                            <div class="testimonials-card__desc">
-                                There are many variations passages to luck of Loem Ipsum available to but the majority
-                                have live by injected
-                                humour, suffered alteration in
-                            </div><!-- /.testimonials-card__desc -->
-
-                        </div><!-- /.testimonials-card -->
-                    </div><!-- /.item -->
-                </div><!-- /.testimonials-one__carousel -->
-            </div><!-- /.container -->
-        </section>
-        <!-- /.testimonials-one -->
+                <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
+            </div><!-- /.sec-title -->
+            <div class="testimonials-three__info">
+                <div class="testimonials-three__info__rating">
+                    <h3 class="testimonials-three__info__rating-value">{{ $portfolios->count() }}+</h3>
+                    <span class="testimonials-three__info__stars">
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                    </span>
+                </div>
+                <div class="testimonials-three__info__content">
+                    <p class="testimonials-three__info__text">Satisfied <br> Clients</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+            @forelse($portfolios->take($limit) as $index => $portfolio)
+                <div class="item">
+                    <div class="testimonials-card-three wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='{{ $index * 100 }}ms'>
+                        <div class="testimonials-card-three__top">
+                            <div class="testimonials-card-three__rating">
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                            </div><!-- /.testimonials-card-three__rating -->
+                            <div class="testimonials-card-three__quote"><i class="icon-double-quote"></i></div>
+                        </div>
+                        <div class="testimonials-card-three__author">
+                            <div class="testimonials-card-three__author-img">
+                                @if($portfolio->image_url)
+                                    <img src="{{ $portfolio->image_url }}" alt="{{ $portfolio->title }}" style="object-fit: cover; width: 100%; height: 100%;">
+                                @else
+                                    <img src="{{ asset('assets/images/resources/testi-3-1.jpg') }}" alt="{{ $portfolio->title }}">
+                                @endif
+                            </div>
+                            <div class="testimonials-card-three__author-info">
+                                <h3 class="testimonials-card-three__name">
+                                    {{ $portfolio->title }}
+                                </h3><!-- /.testimonials-card-three__name -->
+                            </div>
+                            <!-- /.testimonials-card-three__designation -->
+                        </div>
+                    </div><!-- /.testimonials-card-three -->
+                </div><!-- /.item -->
+            @empty
+                <div class="item">
+                    <div class="testimonials-card-three wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                        <div class="testimonials-card-three__top">
+                            <div class="testimonials-card-three__rating">
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                            </div><!-- /.testimonials-card-three__rating -->
+                            <div class="testimonials-card-three__quote"><i class="icon-double-quote"></i></div>
+                        </div>
+                        <div class="testimonials-card-three__text">
+                            We look forward to serving more clients with our professional legal services and expertise.
+                        </div><!-- /.testimonials-card-three__content -->
+                        <div class="testimonials-card-three__author">
+                            <div class="testimonials-card-three__author-img">
+                                <img src="{{ asset('assets/images/resources/testi-3-1.jpg') }}" alt="Coming Soon">
+                            </div>
+                            <div class="testimonials-card-three__author-info">
+                                <h3 class="testimonials-card-three__name">
+                                    Your Business Here
+                                </h3><!-- /.testimonials-card-three__name -->
+                                <p class="testimonials-card-three__designation">Future Client</p>
+                            </div>
+                        </div>
+                    </div><!-- /.testimonials-card-three -->
+                </div><!-- /.item -->
+            @endforelse
+        </div><!-- /.testimonials-two__carousel -->
+    </div><!-- /.container -->
+</section><!-- /.testimonials-three -->

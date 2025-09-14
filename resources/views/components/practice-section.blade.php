@@ -1,92 +1,95 @@
-       <section class="service-four" id="services">
-            <div class="service-four__bg jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% -100%" style="background-image: url(assets/images/backgrounds/service-4-bg.jpg);"></div>
-            <div class="container">
-                <div class="sec-title text-left">
-
-                    <div class="sec-title__tagline bw-split-in-up-fast d-inline-flex align-items-center gap-2">
-                        <div>
-                            <svg class="hammer" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M21.6562 20.875H10.7188C10.5115 20.875 10.3128 20.9573 10.1663 21.1038C10.0198 21.2503 9.9375 21.449 9.9375 21.6562C9.9375 21.8635 10.0198 22.0622 10.1663 22.2087C10.3128 22.3552 10.5115 22.4375 10.7188 22.4375H21.6562C21.8635 22.4375 22.0622 22.3552 22.2087 22.2087C22.3552 22.0622 22.4375 21.8635 22.4375 21.6562C22.4375 21.449 22.3552 21.2503 22.2087 21.1038C22.0622 20.9573 21.8635 20.875 21.6562 20.875Z" />
-                                <path d="M13.8056 16.9688C13.1943 16.9695 12.6083 17.2126 12.1761 17.6448C11.7439 18.0771 11.5007 18.6631 11.5 19.2744V20.0938H20.875V19.2744C20.8743 18.6631 20.6311 18.0771 20.1989 17.6448C19.7667 17.2126 19.1807 16.9695 18.5694 16.9688H13.8056Z" />
-                                <path d="M15.9585 13.6149C15.9006 13.6678 15.8349 13.7114 15.7637 13.7442L15.989 13.9696C16.4566 14.4355 17.0898 14.6971 17.7499 14.697C18.41 14.6969 19.0432 14.4352 19.5107 13.9693L21.7812 11.698C22.0124 11.4668 22.1959 11.1924 22.321 10.8903C22.4462 10.5882 22.5106 10.2645 22.5106 9.9375C22.5106 9.61053 22.4462 9.28677 22.321 8.9847C22.1959 8.68263 22.0124 8.40818 21.7812 8.17701L21.5888 7.98456L15.9585 13.6149Z" />
-                                <path d="M9.2226 7.20295L14.8529 1.57267C14.9108 1.51976 14.9765 1.47611 15.0478 1.44326L14.8224 1.21791C14.3548 0.752021 13.7216 0.490468 13.0615 0.49054C12.4014 0.490611 11.7682 0.752302 11.3007 1.21829L9.03015 3.48915C8.79891 3.72035 8.61548 3.99484 8.49034 4.29694C8.36519 4.59904 8.30078 4.92283 8.30078 5.24982C8.30078 5.57681 8.36519 5.9006 8.49034 6.2027C8.61548 6.5048 8.79891 6.77929 9.03015 7.01049L9.2226 7.20295Z" />
-                                <path d="M14.3015 12.2813L14.0726 12.5102C13.9993 12.5825 13.9411 12.6687 13.9012 12.7637C13.8613 12.8586 13.8406 12.9605 13.8403 13.0635C13.84 13.1665 13.8601 13.2686 13.8993 13.3638C13.9386 13.459 13.9963 13.5455 14.0691 13.6184C14.142 13.6912 14.2285 13.7489 14.3237 13.7882C14.4189 13.8274 14.521 13.8475 14.624 13.8471C14.727 13.8468 14.8289 13.8261 14.9238 13.7863C15.0188 13.7464 15.105 13.6881 15.1773 13.6149L21.4273 7.36485C21.5716 7.21791 21.6521 7.01992 21.6511 6.81397C21.6502 6.60802 21.568 6.41077 21.4223 6.26514C21.2767 6.11951 21.0795 6.03729 20.8735 6.03635C20.6676 6.03542 20.4696 6.11586 20.3226 6.26016L20.0937 6.48907L16.5113 2.90602L16.7398 2.67735C16.8841 2.53041 16.9646 2.33242 16.9636 2.12647C16.9627 1.92052 16.8805 1.72327 16.7348 1.57764C16.5892 1.43201 16.392 1.34979 16.186 1.34885C15.9801 1.34792 15.7821 1.42836 15.6351 1.57266L9.38514 7.82266C9.31152 7.89496 9.25296 7.98112 9.21283 8.07618C9.17269 8.17123 9.15179 8.27329 9.15132 8.37647C9.15086 8.47965 9.17083 8.5819 9.2101 8.67731C9.24937 8.77273 9.30715 8.85942 9.38011 8.93238C9.45307 9.00534 9.53976 9.06312 9.63518 9.10239C9.73059 9.14166 9.83284 9.16163 9.93602 9.16117C10.0392 9.1607 10.1413 9.1398 10.2363 9.09966C10.3314 9.05953 10.4175 9.00097 10.4898 8.92735L10.7187 8.69844L10.7859 8.76559L1.18201 18.3695C0.953685 18.5955 0.772269 18.8644 0.648189 19.1608C0.524109 19.4571 0.459812 19.7751 0.458992 20.0963C0.458172 20.4176 0.520846 20.7359 0.643411 21.0328C0.765976 21.3298 0.946017 21.5996 1.17319 21.8268C1.40036 22.054 1.67018 22.234 1.96715 22.3566C2.26412 22.4791 2.58239 22.5418 2.90365 22.541C3.22492 22.5402 3.54286 22.4759 3.8392 22.3518C4.13554 22.2277 4.40444 22.0463 4.63045 21.818L14.2344 12.2141L14.3015 12.2813Z" />
-                            </svg>
-                        </div>
-                        {{ $sectionSubtitle }}
-                    </div><!-- /.sec-title__tagline -->
-
-                    <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
-                </div><!-- /.sec-title -->
-                @if($practices->isNotEmpty())
-                <div class="service-four__carousel procounsel-owl__carousel procounsel-owl__carousel--basic-nav owl-carousel" data-owl-options='{
-                "items": 1,
-                "margin": 30,
-                "loop": false,
-                "smartSpeed": 700,
-                "nav": true,
-                "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
-                "dots": false,
-                "autoplay": false,
-                "responsive": {
-                    "0": {
-                        "items": 1
-                    },
-                    "768": {
-                        "items": 2
-                    },
-                    "992": {
-                        "items": 3
-                    }
-                }
-            }'>
-                    @foreach($practices as $index => $practice)
-                    <div class="item">
-                        <div class="service-four__item wow fadeInUp" data-wow-delay="{{ ($index % 3) * 100 }}ms">
-                            <div class="service-four__item__image">
-                                @if($practice->feature_image)
-                                    <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}">
-                                @else
-                                    <img src="{{ asset('assets/images/resources/service-4-1.jpg') }}" alt="{{ $practice->title }}">
-                                @endif
-                                <div class="service-four__item__icon">
-                                    @php
-                                        $practiceComponent = app('App\View\Components\PracticeSection');
-                                        $iconClass = $practiceComponent->getPracticeIcon($practice->title);
-                                    @endphp
-                                    <i class="{{ $iconClass }}"></i>
-                                </div>
-                            </div>
-                            <div class="service-four__item__content">
-                                <h3 class="service-four__item__title">
-                                    <a href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>
-                                </h3><!-- /.service-title -->
-                                <p class="service-four__item__text">
-                                    {{ $practice->excerpt ?? Str::limit(strip_tags($practice->description), 80) }}
-                                </p>
-                                <a href="{{ route('practice.show', $practice->slug) }}" class="procounsel-btn">
-                                    <i>More Details</i>
-                                    <span>More Details</span>
+<!-- Modern Practice Areas Section -->
+<section class="relative py-8 bg-gray-100 overflow-hidden" id="practice-areas">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 20px 20px;"></div>
+    </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        @if($practices->isNotEmpty())
+            <!-- Practice Areas Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                @foreach($practices->take(8) as $index => $practice)
+                    <div class="group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 150 }}" data-aos-duration="800">
+                        <div class="relative shadow bg-white rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                            <!-- Image Container -->
+                            <div class="relative h-48 overflow-hidden rounded-t-2xl">
+                                <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">
+                                    @if($practice->feature_image)
+                                        <img src="{{ $practice->feature_image_url }}" 
+                                             alt="{{ $practice->title }}" 
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    @else
+                                        <div class="w-full h-full bg-gradient-to-br from-primary via-secondary to-primary/80 flex items-center justify-center">
+                                            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 7 10 0"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <!-- Overlay -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                                 </a>
                             </div>
-                        </div><!-- /.service-card-two -->
-                    </div><!-- item -->
-                    @endforeach
-                </div>
-                @else
-                <div class="text-center py-5">
-                    <h4>No practice areas available at the moment.</h4>
-                    <p>Please check back later for our latest practice areas.</p>
-                </div>
-                @endif
-                
-                @if($showViewAll && $practices->isNotEmpty())
-                <div class="text-center mt-5">
-                    <a href="{{ route('practices.index') }}" class="procounsel-btn procounsel-btn--two">
-                        <i>View All Practice Area</i>
-                        <span>View All Practice Area</span>
-                    </a>
-                </div>
-                @endif
+                            <!-- Content Container -->
+                            <div class="px-4 py-3 flex flex-col h-[calc(100%-12rem)] text-center">
+                                <!-- Title -->
+                                <h3 class="text-base font-semibold text-gray-900 mb-3 transition-colors duration-300">
+                                    <a href="{{ route('practice.show', $practice->slug) }}" class="block">
+                                        {{ $practice->title }}
+                                    </a>
+                                </h3>
+                                <!-- Description -->
+                                <p class="text-gray-600 leading-relaxed mb-3 flex-grow text-sm">
+                                    {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 55) }}
+                                </p>
+                                <!-- More Details Button -->
+                                    <div class="mt-auto">
+                                    <a href="{{ route('practice.show', $practice->slug) }}" 
+                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
+                                        <!-- Button Content -->
+                                        <span class="relative z-10">Read More</span>
+                                        <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
+                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        </svg>
+                                        <!-- Shine Effect -->
+                                        <div class="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300">
+                                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover/btn:translate-x-[-200%] transition-transform duration-700 ease-out"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-        </section>
+        @else
+            <!-- Empty State -->
+            <div class="text-center py-16" data-aos="fade-up">
+                <div class="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">No Practice Areas Available</h3>
+                <p class="text-gray-300 max-w-md mx-auto">We're expanding our legal expertise. Please check back soon for our comprehensive practice areas!</p>
+            </div>
+        @endif
+        
+        @if($showViewAll && $practices->isNotEmpty())
+            <!-- View All Button -->
+            <div class="text-center" data-aos="fade-up" data-aos-delay="600">
+                <a href="{{ route('practices.index') }}" 
+                   class="inline-flex items-center px-4 py-2 bg-primary text-gray-50 font-semibold rounded-full hover:bg-secondary transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group">
+                    <span class="mr-3">View All Practice Areas</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+        @endif
+    </div>
+</section>

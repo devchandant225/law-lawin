@@ -4,9 +4,9 @@
 
         @if ($teams->isNotEmpty())
             <!-- Team Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-4 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-4 mb-12">
                 @foreach ($teams->take(4) as $index => $member)
-                    <div class="team-card-wrapper w-[14rem]" data-aos="fade-up" data-aos-duration="800"
+                    <div class="team-card-wrapper w-full" data-aos="fade-up" data-aos-duration="800"
                         data-aos-delay="{{ $index * 100 }}">
                         <div
                             class="bg-white rounded-2xl shadow-md transition-all duration-500 group overflow-hidden border border-gray-100 hover:border-primary/30">

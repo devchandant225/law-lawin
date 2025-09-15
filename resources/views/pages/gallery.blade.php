@@ -34,7 +34,7 @@
 
 @endsection
 
-@section('styles')
+
 <style>
 /* Hero Animations */
 .animate-fade-in {
@@ -257,9 +257,9 @@
     overflow: hidden;
 }
 </style>
-@endsection
 
-@section('scripts')
+
+
 <!-- AOS (Animate On Scroll) Library -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -276,4 +276,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-@endsection
+

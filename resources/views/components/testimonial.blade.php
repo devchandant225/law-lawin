@@ -1,24 +1,36 @@
 <!-- Testimonials Section -->
-<section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-    <!-- Background Elements -->
+<section class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 via-white to-gray-50 relative overflow-hidden">
+    <!-- Decorative Background Elements -->
     <div class="absolute inset-0 opacity-5">
-        <svg class="absolute top-10 left-10 w-32 h-32 text-primary" fill="currentColor" viewBox="0 0 100 100">
-            <path d="M40 20c0-8 6-12 12-12s12 4 12 12c0 8-4 16-12 24-8-8-12-16-12-24zM10 50c0-8 6-12 12-12s12 4 12 12c0 8-4 16-12 24-8-8-12-16-12-24z"/>
-        </svg>
-        <svg class="absolute bottom-10 right-10 w-24 h-24 text-secondary" fill="currentColor" viewBox="0 0 100 100">
-            <path d="M40 20c0-8 6-12 12-12s12 4 12 12c0 8-4 16-12 24-8-8-12-16-12-24zM10 50c0-8 6-12 12-12s12 4 12 12c0 8-4 16-12 24-8-8-12-16-12-24z"/>
-        </svg>
+        <!-- Dot pattern -->
+        <div class="absolute top-20 right-20 w-32 h-32">
+            <div class="grid grid-cols-8 gap-1 w-full h-full">
+                @for($i = 0; $i < 64; $i++)
+                    <div class="w-1 h-1 bg-blue-400 rounded-full"></div>
+                @endfor
+            </div>
+        </div>
+        <!-- Circle patterns -->
+        <div class="absolute top-1/4 left-10 w-24 h-24 border-2 border-orange-200 rounded-full"></div>
+        <div class="absolute bottom-1/3 right-32 w-16 h-16 border-2 border-blue-200 rounded-full"></div>
     </div>
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Section Header -->
-        <div class="text-center mb-16">
-           
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">
-                What Our <span class="text-primary">Students</span> Say
+        <div class="max-w-4xl mx-auto mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Testimonials
+                </div>
+            </div>
+            <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                What Our <span class="text-blue-600">Community</span> Says
             </h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Hear from our students about their journey and success stories with Furusato Education Center.
+            <p class="text-xl text-gray-600 max-w-3xl leading-relaxed">
+                Welcome to our testimonial section, where members of our university community share their experiences and insights about life at Forbid Edu Career. We invite you to join us and be part of our inspiring journey of...
             </p>
         </div>
 
@@ -29,55 +41,50 @@
                     <div class="swiper-wrapper">
                         @foreach($testimonials as $testimonial)
                             <div class="swiper-slide">
-                                <div class="testimonial-card bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 mx-2 relative overflow-hidden">
-                                    <!-- Quote Icon -->
-                                    <div class="absolute top-6 right-6 opacity-10">
-                                        <svg class="w-16 h-16 text-primary" fill="currentColor" viewBox="0 0 100 100">
-                                            <path d="M40 20c0-8 6-12 12-12s12 4 12 12c0 8-4 16-12 24-8-8-12-16-12-24zM10 50c0-8 6-12 12-12s12 4 12 12c0 8-4 16-12 24-8-8-12-16-12-24z"/>
-                                        </svg>
+                                <div class="testimonial-card bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 mx-3 relative border border-gray-100 group">
+                                    <!-- Profile Image with Quote Badge -->
+                                    <div class="flex justify-center mb-6">
+                                        <div class="relative">
+                                            <img src="{{ $testimonial->image_url }}" 
+                                                 alt="{{ $testimonial->name }}" 
+                                                 class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg">
+                                            <!-- Red Quote Badge -->
+                                            <div class="absolute -bottom-2 -right-2 w-10 h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
+                                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </div>
 
+                                    <!-- Testimonial Content -->
+                                    <blockquote class="text-gray-700 text-center leading-relaxed mb-6 relative z-10 font-medium">
+                                        "{{ $testimonial->desc }}"
+                                    </blockquote>
+
                                     <!-- Rating Stars -->
-                                    <div class="flex items-center gap-1 mb-4">
+                                    <div class="flex items-center justify-center gap-1 mb-6">
                                         @for($i = 1; $i <= 5; $i++)
                                             @if($i <= $testimonial->rating)
-                                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                                 </svg>
                                             @else
-                                                <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                                <svg class="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                                                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                                 </svg>
                                             @endif
                                         @endfor
-                                        <span class="ml-2 text-sm text-gray-500">{{ $testimonial->rating }}/5</span>
                                     </div>
-
-                                    <!-- Testimonial Content -->
-                                    <blockquote class="text-gray-700 text-lg leading-relaxed mb-6 relative z-10">
-                                        "{{ $testimonial->desc }}"
-                                    </blockquote>
 
                                     <!-- Author Info -->
-                                    <div class="flex items-center gap-4">
-                                        <div class="relative">
-                                            <img src="{{ $testimonial->image_url }}" 
-                                                 alt="{{ $testimonial->name }}" 
-                                                 class="w-14 h-14 rounded-full object-cover border-4 border-primary/10">
-                                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-primary rounded-full border-2 border-white flex items-center justify-center">
-                                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h4 class="font-semibold text-gray-900 text-lg">{{ $testimonial->name }}</h4>
-                                            <p class="text-primary font-medium">{{ $testimonial->profession }}</p>
-                                        </div>
+                                    <div class="text-center">
+                                        <h4 class="font-bold text-gray-900 text-lg mb-1">{{ $testimonial->name }}</h4>
+                                        <p class="text-gray-500 text-sm font-medium">{{ $testimonial->profession }}</p>
                                     </div>
 
-                                    <!-- Decorative Element -->
-                                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                                    <!-- Hover Effect Border -->
+                                    <div class="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-blue-100 transition-all duration-500"></div>
                                 </div>
                             </div>
                         @endforeach
@@ -125,25 +132,76 @@
     .testimonial-swiper .swiper-pagination-bullet {
         width: 12px;
         height: 12px;
-        background: #e5e7eb;
+        background: #d1d5db;
         opacity: 1;
         transition: all 0.3s ease;
+        border-radius: 50%;
     }
     
     .testimonial-swiper .swiper-pagination-bullet-active {
-        background: var(--primary-color, #3B82F6);
-        transform: scale(1.2);
+        background: #3b82f6;
+        transform: scale(1.3);
     }
     
     .testimonial-card {
         height: auto;
-        min-height: 320px;
+        min-height: 400px;
+        backdrop-filter: blur(10px);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+    
+    @media (max-width: 1024px) {
+        .testimonial-card {
+            min-height: 380px;
+        }
     }
     
     @media (max-width: 768px) {
         .testimonial-card {
-            min-height: 280px;
+            min-height: 350px;
+            margin: 0 10px;
         }
+        
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .testimonial-card {
+            min-height: 320px;
+            padding: 1.5rem;
+        }
+    }
+    
+    /* Custom animation for slide transitions */
+    .swiper-slide-active .testimonial-card {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .swiper-slide:not(.swiper-slide-active) .testimonial-card {
+        opacity: 0.7;
+        transform: scale(0.95);
+    }
+    
+    /* Background animation */
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .absolute.top-1\/4 {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .absolute.bottom-1\/3 {
+        animation: float 8s ease-in-out infinite reverse;
     }
 </style>
 

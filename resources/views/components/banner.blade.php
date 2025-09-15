@@ -7,48 +7,50 @@
                     <!-- Background Image -->
                     <div class="absolute inset-0">
                         <img src="{{ $slider->image_url }}" alt="{{ $slider->title }}"
-                            class="w-full h-full object-cover object-center">
+                            class="w-full h-full object-cover object-right lg:object-center">
+                        <!-- Dark overlay for better text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent lg:from-black/60 lg:via-black/30 lg:to-transparent"></div>
                     </div>
 
                     <!-- Content Container -->
                     <div class="relative z-10 h-full flex items-center">
-                        <div class="w-[100%] absolute bottom-[8rem] sm:bottom-[10rem] left-0 z-[999] px-4 sm:px-6 lg:px-8">
-                            <!-- Animated Content -->
-                            <div class="text-center flex flex-col items-center justify-center">
-                                <div>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full min-h-[600px]">
+                                <!-- Left Content -->
+                                <div class="slide-content transform translate-y-8 opacity-0 transition-all duration-1000 ease-out">
                                     <!-- Title -->
-                                    <h1
-                                        class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">
-                                        <span class="block">{{ $slider->title }}</span>
+                                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                                        Building a <span class="text-secondary">{{ $slider->title }}</span>
+                                        <br>Future
                                     </h1>
 
-                                </div>
-                                <div>
                                     <!-- Description -->
-                                    <p
-                                        class="text-base sm:text-lg text-gray-200 mb-8 leading-relaxed bg-gray-800/40 inline-block px-4 py-2 rounded max-w-2xl">
+                                    <p class="text-lg sm:text-xl text-gray-200 mb-8 leading-relaxed max-w-lg">
                                         {{ $slider->description }}
                                     </p>
-                                </div>
 
-
-
-                                <!-- CTA Button -->
-                                <div class="flex flex-col sm:flex-row gap-4 relative z-[1000]">
-                                        <a href="/about"
-                                            class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary rounded-full hover:bg-primary/80 transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg">
-                                            <span class="mr-2">Discover More</span>
+                                    <!-- CTA Buttons -->
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <a href="{{ $slider->button_link ?? '/contact' }}"
+                                            class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                            <span class="mr-2">Apply Now</span>
                                             <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                             </svg>
                                         </a>
-                                        <a href="/contact"
-                                            class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg">
-                                            Get In Touch
+                                        <a href="/about/introduction"
+                                            class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-secondary rounded-lg hover:bg-secondary/90 transition-all duration-300 shadow-lg">
+                                            About Us
                                         </a>
                                     </div>
+                                </div>
+
+                                <!-- Right Content - Image Area (handled by background image) -->
+                                <div class="hidden lg:block">
+                                    <!-- This space is for the person image which comes from the background -->
+                                </div>
                             </div>
                         </div>
                     </div>

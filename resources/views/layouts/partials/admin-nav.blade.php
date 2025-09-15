@@ -141,6 +141,22 @@
     @endif
 </a>
 
+{{-- Gallery Management --}}
+<a href="{{ route('admin.gallery.index') }}"
+    class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.gallery.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">
+    <svg class="icon mr-3 h-5 w-5 {{ request()->routeIs('admin.gallery.*') ? 'text-gray-900' : 'text-gray-500 group-hover:text-gray-900' }}"
+        viewBox="0 0 24 24" fill="currentColor">
+        <path
+            d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z" />
+    </svg>
+    <span class="hide-when-collapsed">Gallery</span>
+    @if (request()->routeIs('admin.gallery.*'))
+        <div class="ml-auto hide-when-collapsed">
+            <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+        </div>
+    @endif
+</a>
+
 {{-- Pages Management --}}
 <a href="{{ route('admin.pages.index') }}"
     class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 {{ request()->routeIs('admin.pages.*') ? 'text-gray-900 font-semibold' : 'text-gray-700 hover:text-gray-900' }}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -19,5 +20,15 @@ class PageController extends Controller
         }
 
         return view('pages.show', compact('page'));
+    }
+
+    /**
+     * Display the gallery page with masonry layout
+     */
+    public function gallery(): View
+    {
+        $galleries = Gallery::active()->ordered()->get();
+        
+        return view('pages.gallery', compact('galleries'));
     }
 }

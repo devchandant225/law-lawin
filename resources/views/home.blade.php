@@ -37,6 +37,10 @@
         'showSearch' => true,
     ]) --}}
      <x-publication-section />
+    
+    {{-- Blog Posts Section --}}
+    @livewire('blog-posts')
+    
     {{-- Team Section Title --}}
     {{-- <x-page-section-title title="<span>Our Team</span>" /> --}}
     {{-- Team Section --}}

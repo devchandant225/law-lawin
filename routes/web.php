@@ -22,6 +22,7 @@ use App\Http\Controllers\PortfolioController as PublicPortfolioController;
 use App\Http\Controllers\HelpDeskController;
 use App\Http\Controllers\StudyAbroadController;
 use App\Http\Controllers\LearningCenterController;
+use App\Http\Controllers\BlogController;
 
 // Admin Controllers
 use App\Http\Controllers\Admin\AuthController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Admin\MetaTagController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\PageController as PublicPageController;
+use App\Http\Controllers\Admin\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +85,10 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{type}', [PostController::class, 'byType'])->name('posts.by-type')
     ->where('type', 'service|practice|news|blog');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+// Blog Routes
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // Services
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
@@ -147,6 +153,9 @@ Route::get('/team/{team}', [PublicTeamController::class, 'show'])->name('team.sh
 
 // Portfolio
 Route::get('/portfolios', [PublicPortfolioController::class, 'index'])->name('portfolios.index');
+
+// Gallery
+Route::get('/gallery', [PublicPageController::class, 'gallery'])->name('gallery');
 
 // Pages
 Route::get('/page/{page}', [PublicPageController::class, 'show'])->name('page.show');
@@ -277,6 +286,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     // Testimonials Management
     Route::resource('testimonials', TestimonialController::class);
     Route::patch('/testimonials/{testimonial}/toggle-status', [TestimonialController::class, 'toggleStatus'])->name('testimonials.toggle-status');
+    
+    // Gallery Management
+    Route::resource('gallery', GalleryController::class);
+    Route::post('/gallery/{gallery}/toggle-status', [GalleryController::class, 'toggleStatus'])->name('gallery.toggle-status');
+    Route::delete('/gallery-bulk-delete', [GalleryController::class, 'bulkDelete'])->name('gallery.bulk-delete');
     
     // Image Upload for CKEditor
     Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');

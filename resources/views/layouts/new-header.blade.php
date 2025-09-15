@@ -102,7 +102,7 @@
                         class="{{ request()->routeIs('home') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Home</a>
 
                     <!-- About Us -->
-                    <a href="/about/introduction"
+                    <a href="/about"
                         class="{{ request()->is('about/*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">About
                         Us</a>
 

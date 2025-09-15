@@ -169,7 +169,7 @@
                             Home
                         </span>
                     </a>
-                    <a href="/about/introduction" class="footer-link block text-white hover:text-white transition-all duration-300 group">
+                    <a href="/about" class="footer-link block text-white hover:text-white transition-all duration-300 group">
                         <span class="flex items-center">
                             <i class="fas fa-chevron-right text-xs text-primary/50 group-hover:text-primary mr-2 transform group-hover:translate-x-1 transition-all duration-300"></i>
                             About Us

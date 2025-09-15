@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
+    public function index()
+    {
+        return view('about.index');
+    }
+    
     public function introduction()
     {
         return view('about.introduction');

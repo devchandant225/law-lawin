@@ -57,6 +57,7 @@ use App\Http\Controllers\Admin\GalleryController;
 */
 
 // About
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/about/introduction', [AboutController::class, 'introduction']);
 Route::get('/about/executive-committee', [AboutController::class, 'executiveCommittee']);
 

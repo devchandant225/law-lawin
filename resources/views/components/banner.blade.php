@@ -1,5 +1,4 @@
 <!-- Modern Banner Carousel -->
-<section class="absolute z-[21] top-0 left-0 w-full h-screen overflow-hidden bg-gray-900" id="home">
     <div class="banner-carousel relative h-screen">
         @if (count($sliders) > 0)
             @foreach ($sliders as $index => $slider)
@@ -13,13 +12,13 @@
 
                     <!-- Content Container -->
                     <div class="relative z-10 h-full flex items-center">
-                        <div class="w-[100%] absolute bottom-[5rem] left-0 z-[999] px-4 sm:px-6 lg:px-8">
+                        <div class="w-[100%] absolute bottom-[8rem] sm:bottom-[10rem] left-0 z-[999] px-4 sm:px-6 lg:px-8">
                             <!-- Animated Content -->
                             <div class="text-center flex flex-col items-center justify-center">
                                 <div>
                                     <!-- Title -->
                                     <h1
-                                        class="text-3xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">
+                                        class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">
                                         <span class="block">{{ $slider->title }}</span>
                                     </h1>
 
@@ -27,7 +26,7 @@
                                 <div>
                                     <!-- Description -->
                                     <p
-                                        class="text-base text-gray-200 mb-8 leading-relaxed bg-gray-800/40 inline-block px-4 py-2 rounded">
+                                        class="text-base sm:text-lg text-gray-200 mb-8 leading-relaxed bg-gray-800/40 inline-block px-4 py-2 rounded max-w-2xl">
                                         {{ $slider->description }}
                                     </p>
                                 </div>
@@ -35,9 +34,9 @@
 
 
                                 <!-- CTA Button -->
-                                <div class="flex flex-col sm:flex-row gap-4">
+                                <div class="flex flex-col sm:flex-row gap-4 relative z-[1000]">
                                         <a href="/about"
-                                            class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary rounded-full hover:bg-primary/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                                            class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary rounded-full hover:bg-primary/80 transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg">
                                             <span class="mr-2">Discover More</span>
                                             <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +45,7 @@
                                             </svg>
                                         </a>
                                         <a href="/contact"
-                                            class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300">
+                                            class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white rounded-full hover:bg-white hover:text-gray-900 transition-all duration-300 shadow-lg">
                                             Get In Touch
                                         </a>
                                     </div>
@@ -94,7 +93,7 @@
         @endif
 
     </div>
-</section>
+
 
 <style>
     .carousel-slide.active {

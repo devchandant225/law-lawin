@@ -1,5 +1,5 @@
 <!-- Top Contact Bar - Scrollable -->
-<div class="header-top bg-transparent border-b border-white/20 sm:py-2 transition-all duration-300" id="top-header">
+<div class="header-top bg-primary border-b border-white/20 sm:py-2 transition-all duration-300" id="top-header">
     <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
         <div class="flex justify-between items-center">
             <!-- Contact Info -->
@@ -94,14 +94,14 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-6 header-nav">
                     <!-- Home -->
-                    <a href="{{ route('home') }}" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">Home</a>
+                    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Home</a>
                     
                     <!-- About Us -->
-                    <a href="/about/introduction" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">About Us</a>
+                    <a href="/about/introduction" class="{{ request()->is('about/*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">About Us</a>
                     
                     <!-- Study Abroad Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="text-white hover:text-secondary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="#" class="{{ request()->is('study-abroad*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Study Abroad
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -134,7 +134,7 @@
 
                     <!-- Learning Center Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="text-white hover:text-secondary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="#" class="{{ request()->is('learning-center*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Learning Center
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -167,7 +167,7 @@
 
                     <!-- Our Services Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('services.index') }}" class="text-white hover:text-secondary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('services.index') }}" class="{{ request()->is('services*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Our Services
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -201,13 +201,13 @@
                     </div>
 
                     <!-- Our Team -->
-                    <a href="{{ route('team.index') }}" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">Our Team</a>
+                    <a href="{{ route('team.index') }}" class="{{ request()->is('team*') || request()->routeIs('team.*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Our Team</a>
                     
                     <!-- Gallery -->
-                    <a href="/gallery" class="text-white hover:text-secondary font-medium transition-colors capitalize nav-link">Gallery</a>
+                    <a href="/gallery" class="{{ request()->is('gallery*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Gallery</a>
 
                     <!-- Contact -->
-                    <a href="/contact" class="text-white hover:text-secondary font-medium transition-colors nav-link">Contact Us</a>
+                    <a href="/contact" class="{{ request()->is('contact*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors nav-link">Contact Us</a>
                     
                     <!-- CTA Button -->
                     <a href="/contact" class="bg-primary hover:bg-secondary text-white font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">

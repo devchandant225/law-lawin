@@ -1,5 +1,5 @@
 <!-- Highlight Features Section -->
-<section class="bg-gradient-to-r from-blue-800 to-blue-900 py-8 relative overflow-hidden">
+<section class="bg-gradient-to-r from-blue-800 to-blue-900 py-12 sm:py-16 relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60"

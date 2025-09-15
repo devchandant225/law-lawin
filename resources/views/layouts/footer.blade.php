@@ -15,7 +15,7 @@
                 <div class="mb-8 group">
                     <a href="{{ route('home') }}" class="inline-block transform transition-all duration-300 group-hover:scale-105">
                         @if ($globalProfile && $globalProfile->logo_url)
-                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}"
+                            <img src="{{ asset('/Logo-Furusato.jpg') }}" alt="{{ config('app.name') }}"
                                 class="h-16 lg:h-20 w-auto">
                         @else
                             <img src="{{ asset('assets/images/logo-dark.png') }}" alt="{{ config('app.name') }}"
@@ -49,7 +49,7 @@
                     @if (!empty(($phoneNumbers = array_filter([$globalProfile->phone1 ?? null, $globalProfile->phone2 ?? null]))))
                         <div class="flex items-start space-x-3 group contact-item">
                             <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-colors duration-300">
-                                <i class="fas fa-phone text-primary text-sm"></i>
+                                <i class="fas fa-phone-alt text-primary text-sm"></i>
                             </div>
                             <div class="flex-1">
                                 <div class="space-y-1">

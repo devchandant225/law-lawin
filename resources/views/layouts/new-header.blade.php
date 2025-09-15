@@ -7,7 +7,7 @@
                 class="hidden md:flex items-center space-x-4 lg:space-x-6 text-xs sm:text-sm text-white/90 header-contact">
                 @if ($globalProfile && $globalProfile->phone1)
                     <div class="flex items-center space-x-1 sm:space-x-2">
-                        <i class="fas fa-phone text-white/90 text-xs"></i>
+                        <i class="fas fa-phone-alt text-white/90 text-xs"></i>
                         <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-white transition-colors">
                             {{ $globalProfile->phone1 }}
                         </a>

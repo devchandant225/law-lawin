@@ -17,8 +17,8 @@
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Section Header -->
-        <div class="max-w-4xl mx-auto mb-16">
-            <div class="flex items-center gap-3 mb-6">
+        <div class="max-w-4xl mx-auto mb-16 text-center">
+            <div class="flex items-center justify-center gap-3 mb-6">
                 <div class="flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -29,7 +29,7 @@
             <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 What Our <span class="text-blue-600">Community</span> Says
             </h2>
-            <p class="text-xl text-gray-600 max-w-3xl leading-relaxed">
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Welcome to our testimonial section, where members of our university community share their experiences and insights about life at Forbid Edu Career. We invite you to join us and be part of our inspiring journey of...
             </p>
         </div>
@@ -37,7 +37,21 @@
         @if($testimonials->count() > 0)
             <!-- Testimonials Slider -->
             <div class="testimonial-swiper relative">
-                <div class="swiper-container overflow-hidden">
+                <!-- Previous Button - Left Side -->
+                <button class="testimonial-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-blue-600 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
+                    <svg class="w-6 h-6 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                
+                <!-- Next Button - Right Side -->
+                <button class="testimonial-next absolute right-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-blue-600 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group">
+                    <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                
+                <div class="swiper-container overflow-hidden mx-16">
                     <div class="swiper-wrapper">
                         @foreach($testimonials as $testimonial)
                             <div class="swiper-slide">
@@ -90,23 +104,10 @@
                         @endforeach
                     </div>
                 </div>
-
-                <!-- Navigation Buttons -->
-                <div class="flex items-center justify-center gap-4 mt-8">
-                    <button class="testimonial-prev w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all duration-300 group">
-                        <svg class="w-6 h-6 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
-                    
-                    <!-- Pagination Dots -->
+                
+                <!-- Pagination Dots - Bottom Center -->
+                <div class="flex items-center justify-center mt-8">
                     <div class="testimonial-pagination flex gap-2"></div>
-                    
-                    <button class="testimonial-next w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all duration-300 group">
-                        <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
                 </div>
             </div>
         @else
@@ -176,6 +177,48 @@
         .testimonial-card {
             min-height: 320px;
             padding: 1.5rem;
+        }
+        
+        /* Hide navigation arrows on mobile for better UX */
+        .testimonial-prev,
+        .testimonial-next {
+            display: none;
+        }
+        
+        .swiper-container {
+            margin: 0 !important;
+        }
+    }
+    
+    /* Navigation button positioning */
+    .testimonial-prev,
+    .testimonial-next {
+        z-index: 20;
+        backdrop-filter: blur(10px);
+    }
+    
+    @media (max-width: 768px) {
+        .testimonial-prev {
+            left: 2px;
+        }
+        
+        .testimonial-next {
+            right: 2px;
+        }
+        
+        .swiper-container {
+            margin-left: 3rem;
+            margin-right: 3rem;
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .testimonial-prev {
+            left: 1rem;
+        }
+        
+        .testimonial-next {
+            right: 1rem;
         }
     }
     

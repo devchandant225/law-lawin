@@ -101,68 +101,72 @@
                     
                     <!-- Study Abroad Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="{{ request()->is('study-abroad*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('study-abroad.index') }}" class="{{ request()->is('study-abroad*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Study Abroad
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
-                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                            <div class="py-3">
-                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Study Destinations</span>
+                        @if ($navStudyAbroad && $navStudyAbroad->count() > 0)
+                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                                <div class="py-3">
+                                    <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Study Abroad Resources</span>
+                                    </div>
+                                    <a href="{{ route('study-abroad.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                            <i class="fas fa-graduation-cap text-primary text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">All Study Abroad</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete study abroad resources</div>
+                                        </div>
+                                    </a>
+                                    <div class="h-px bg-gray-100 my-2 mx-4"></div>
+                                    @foreach ($navStudyAbroad->take(8) as $studyAbroad)
+                                        <a href="{{ route('study-abroad.show', $studyAbroad->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                                <i class="fas fa-plane text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                            </div>
+                                            <span class="font-medium truncate">{{ $studyAbroad->title }}</span>
+                                        </a>
+                                    @endforeach
                                 </div>
-                                <a href="/study-abroad/usa" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-6 h-6 rounded-md bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                        <i class="fas fa-flag-usa text-blue-500 text-xs transition-colors"></i>
-                                    </div>
-                                    <span class="font-medium">USA</span>
-                                </a>
-                                <a href="/study-abroad/canada" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-6 h-6 rounded-md bg-red-50 group-hover/item:bg-red-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                        <i class="fas fa-maple-leaf text-red-500 text-xs transition-colors"></i>
-                                    </div>
-                                    <span class="font-medium">Canada</span>
-                                </a>
-                                <a href="/study-abroad/japan" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-6 h-6 rounded-md bg-red-50 group-hover/item:bg-red-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                        <i class="fas fa-torii-gate text-red-500 text-xs transition-colors"></i>
-                                    </div>
-                                    <span class="font-medium">Japan</span>
-                                </a>
                             </div>
-                        </div>
+                        @endif
                     </div>
 
                     <!-- Learning Center Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="{{ request()->is('learning-center*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('learning-center.index') }}" class="{{ request()->is('learning-center*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Learning Center
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
-                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                            <div class="py-3">
-                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Learning Resources</span>
+                        @if ($navLearningCenter && $navLearningCenter->count() > 0)
+                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                                <div class="py-3">
+                                    <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Learning Resources</span>
+                                    </div>
+                                    <a href="{{ route('learning-center.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                            <i class="fas fa-book-open text-primary text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">All Learning Center</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete learning resources</div>
+                                        </div>
+                                    </a>
+                                    <div class="h-px bg-gray-100 my-2 mx-4"></div>
+                                    @foreach ($navLearningCenter->take(8) as $learningCenter)
+                                        <a href="{{ route('learning-center.show', $learningCenter->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                                <i class="fas fa-lightbulb text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                            </div>
+                                            <span class="font-medium truncate">{{ $learningCenter->title }}</span>
+                                        </a>
+                                    @endforeach
                                 </div>
-                                <a href="/learning-center/guides" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-6 h-6 rounded-md bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                        <i class="fas fa-book-open text-green-500 text-xs transition-colors"></i>
-                                    </div>
-                                    <span class="font-medium">Study Guides</span>
-                                </a>
-                                <a href="/learning-center/resources" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-6 h-6 rounded-md bg-purple-50 group-hover/item:bg-purple-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                        <i class="fas fa-graduation-cap text-purple-500 text-xs transition-colors"></i>
-                                    </div>
-                                    <span class="font-medium">Resources</span>
-                                </a>
-                                <a href="/learning-center/tips" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-6 h-6 rounded-md bg-orange-50 group-hover/item:bg-orange-100 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                        <i class="fas fa-lightbulb text-orange-500 text-xs transition-colors"></i>
-                                    </div>
-                                    <span class="font-medium">Tips & Advice</span>
-                                </a>
                             </div>
-                        </div>
+                        @endif
                     </div>
 
                     <!-- Our Services Dropdown -->
@@ -248,18 +252,22 @@
                 
                 <!-- Study Abroad Mobile -->
                 <div class="space-y-2">
-                    <span class="block text-gray-600 font-medium text-sm uppercase tracking-wide">Study Abroad</span>
-                    <a href="/study-abroad/usa" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">USA</a>
-                    <a href="/study-abroad/canada" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Canada</a>
-                    <a href="/study-abroad/japan" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Japan</a>
+                    <a href="{{ route('study-abroad.index') }}" class="block text-gray-600 font-medium text-sm uppercase tracking-wide hover:text-primary transition-colors">Study Abroad</a>
+                    @if ($navStudyAbroad && $navStudyAbroad->count() > 0)
+                        @foreach ($navStudyAbroad->take(5) as $studyAbroad)
+                            <a href="{{ route('study-abroad.show', $studyAbroad->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4 truncate">{{ $studyAbroad->title }}</a>
+                        @endforeach
+                    @endif
                 </div>
                 
                 <!-- Learning Center Mobile -->
                 <div class="space-y-2">
-                    <span class="block text-gray-600 font-medium text-sm uppercase tracking-wide">Learning Center</span>
-                    <a href="/learning-center/guides" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Study Guides</a>
-                    <a href="/learning-center/resources" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Resources</a>
-                    <a href="/learning-center/tips" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4">Tips & Advice</a>
+                    <a href="{{ route('learning-center.index') }}" class="block text-gray-600 font-medium text-sm uppercase tracking-wide hover:text-primary transition-colors">Learning Center</a>
+                    @if ($navLearningCenter && $navLearningCenter->count() > 0)
+                        @foreach ($navLearningCenter->take(5) as $learningCenter)
+                            <a href="{{ route('learning-center.show', $learningCenter->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4 truncate">{{ $learningCenter->title }}</a>
+                        @endforeach
+                    @endif
                 </div>
                 
                 <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>

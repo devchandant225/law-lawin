@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
         <!-- Section Header -->
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest <span class="text-secondary">Blog</span> Posts</h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">Stay updated with our latest insights, stories, and expert opinions</p>
         </div>
 

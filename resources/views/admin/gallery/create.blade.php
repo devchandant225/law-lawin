@@ -79,7 +79,8 @@
                     <div class="mt-4">
                         <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
                                name="images[]" id="images" multiple 
-                               accept="image/jpeg,image/png,image/jpg,image/gif,image/webp" required>
+                               accept="image/jpeg,image/png,image/jpg,image/gif,image/webp" 
+                               onchange="enableSubmitButton()">
                         <p class="text-xs text-gray-500 mt-2">Hold Ctrl/Cmd to select multiple files</p>
                     </div>
                 </div>
@@ -192,10 +193,25 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let selectedFiles = [];
     let imageCounter = 0;
+    
+    // Debug logging
+    console.log('Gallery upload script initialized');
+    console.log('Submit button:', submitBtn);
+    console.log('Image input:', imageInput);
 
     // Handle file input change
     imageInput.addEventListener('change', function(e) {
+        console.log('Files selected:', e.target.files.length);
         handleFiles(e.target.files);
+        
+        // Simple fallback - enable button if files are selected
+        if (e.target.files.length > 0) {
+            submitBtn.disabled = false;
+            console.log('Submit button enabled via fallback');
+        } else {
+            submitBtn.disabled = true;
+            console.log('Submit button disabled - no files');
+        }
     });
 
     // Handle drag and drop
@@ -228,15 +244,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function handleFiles(files) {
+        console.log('handleFiles called with', files.length, 'files');
+        
         if (files.length === 0) {
             previewContainer.classList.add('hidden');
             submitBtn.disabled = true;
+            console.log('No files - button disabled');
             return;
         }
 
         selectedFiles = Array.from(files);
         previewContainer.classList.remove('hidden');
         submitBtn.disabled = false;
+        console.log('Files loaded - button enabled');
         
         generatePreviews();
     }
@@ -363,5 +383,23 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.innerHTML = '<i class="ri-loader-line spinner-border spinner-border-sm"></i> Uploading...';
     });
 });
+
+// Global fallback function for enabling submit button
+function enableSubmitButton() {
+    const imageInput = document.getElementById('images');
+    const submitBtn = document.getElementById('submit-btn');
+    
+    console.log('enableSubmitButton called');
+    
+    if (imageInput && submitBtn) {
+        if (imageInput.files && imageInput.files.length > 0) {
+            submitBtn.disabled = false;
+            console.log('Submit button enabled by global function');
+        } else {
+            submitBtn.disabled = true;
+            console.log('Submit button disabled by global function');
+        }
+    }
+}
 </script>
 @endsection

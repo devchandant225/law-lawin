@@ -13,10 +13,10 @@
     <section class="relative bg-white">
         <x-about-us />
     </section>
-    
+
     {{-- Why Choose Us Section --}}
     <x-why-choose-us />
-    
+
     <x-counter-section />
     <x-page-section-title title="<span>Services</span>" />
 
@@ -36,11 +36,11 @@
         'limit' => 8,
         'showSearch' => true,
     ]) --}}
-     <x-publication-section />
-    
-    {{-- Blog Posts Section --}}
+    <x-publication-section />
+
+    <x-page-section-title title="<span>Blogs & News</span>" />
     @livewire('blog-posts')
-    
+
     {{-- Team Section Title --}}
     {{-- <x-page-section-title title="<span>Our Team</span>" /> --}}
     {{-- Team Section --}}

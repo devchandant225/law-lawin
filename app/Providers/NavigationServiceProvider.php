@@ -47,6 +47,12 @@ class NavigationServiceProvider extends ServiceProvider
             // Get help desk navigation items
             $navHelpDeskItems = $this->getNavigationHelpDeskItems();
 
+            // Get study abroad publications for navigation dropdown
+            $navStudyAbroad = $this->getNavigationStudyAbroad();
+
+            // Get learning center publications for navigation dropdown
+            $navLearningCenter = $this->getNavigationLearningCenter();
+
             $view->with([
                 'navServices' => $navServices,
                 'navPublications' => $navPublications,
@@ -54,6 +60,8 @@ class NavigationServiceProvider extends ServiceProvider
                 'navNews' => $navNews,
                 'navTeamMembers' => $navTeamMembers,
                 'navHelpDeskItems' => $navHelpDeskItems,
+                'navStudyAbroad' => $navStudyAbroad,
+                'navLearningCenter' => $navLearningCenter,
             ]);
         });
     }
@@ -66,7 +74,7 @@ class NavigationServiceProvider extends ServiceProvider
     private function getNavigationServices()
     {
         return cache()->remember('nav_services', 3600, function () {
-            return Post::where('type', 'service')->active()->orderBy('title', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
+            return Post::where('type', 'service')->active()->orderBy('title', 'asc')->select('id', 'title', 'slug', 'excerpt')->limit(15)->get();
         });
     }
 
@@ -140,6 +148,30 @@ class NavigationServiceProvider extends ServiceProvider
     }
 
     /**
+     * Get study abroad publications for navigation dropdown
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    private function getNavigationStudyAbroad()
+    {
+        return cache()->remember('nav_study_abroad', 3600, function () {
+            return Publication::active()->studyAbroad()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
+        });
+    }
+
+    /**
+     * Get learning center publications for navigation dropdown
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    private function getNavigationLearningCenter()
+    {
+        return cache()->remember('nav_learning_center', 3600, function () {
+            return Publication::active()->learningCenter()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
+        });
+    }
+
+    /**
      * Clear navigation cache
      *
      * @return void
@@ -151,5 +183,7 @@ class NavigationServiceProvider extends ServiceProvider
         cache()->forget('nav_practice_areas');
         cache()->forget('nav_news');
         cache()->forget('nav_team_members');
+        cache()->forget('nav_study_abroad');
+        cache()->forget('nav_learning_center');
     }
 }

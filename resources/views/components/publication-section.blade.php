@@ -28,7 +28,7 @@
                                     <!-- Image Container -->
                                     <div class="relative overflow-hidden h-48 bg-gradient-to-br from-blue-100 to-blue-200">
                                         @if($publication->feature_image)
-                                            <img src="{{ asset('storage/' . $publication->feature_image_url) }}" 
+                                            <img src="{{ $publication->feature_image_url }}" 
                                                  alt="{{ $publication->title }}" 
                                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                         @else

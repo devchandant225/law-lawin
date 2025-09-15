@@ -114,11 +114,6 @@
                         @endforeach
                     </div>
                 </div>
-
-                <!-- Pagination Dots - Bottom Center -->
-                <center>
-                    <div class="testimonial-pagination flex gap-2"></div>
-                </center>
             </div>
         @else
             <!-- No Testimonials State -->

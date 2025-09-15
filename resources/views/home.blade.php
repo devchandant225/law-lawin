@@ -29,9 +29,10 @@
     <x-practice-section :showViewAll="true" :limit="8" />
 
     {{-- Portfolio Section Title --}}
-    <x-page-section-title title="<span>Our Portfolio</span>" />
+    <x-page-section-title title="<span>Testimonails</span>" />
+        <x-testimonial />
     {{-- Portfolio Section --}}
-    <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10" />
+    {{-- <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10" /> --}}
 
     {{-- Testimonial Section - Clients We Served --}}
     {{-- <x-testimonial-section :portfolios="$portfolios" :limit="8" sectionTitle="<span class=''>Clients We Served</span>"

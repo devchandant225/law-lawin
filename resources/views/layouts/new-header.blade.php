@@ -3,7 +3,8 @@
     <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
         <div class="flex justify-between items-center">
             <!-- Contact Info -->
-            <div class="hidden md:flex items-center space-x-4 lg:space-x-6 text-xs sm:text-sm text-white/90 header-contact">
+            <div
+                class="hidden md:flex items-center space-x-4 lg:space-x-6 text-xs sm:text-sm text-white/90 header-contact">
                 @if ($globalProfile && $globalProfile->phone1)
                     <div class="flex items-center space-x-1 sm:space-x-2">
                         <i class="fas fa-phone text-white/90 text-xs"></i>
@@ -36,39 +37,40 @@
                 <!-- Social Links -->
                 <div class="flex items-center space-x-1 sm:space-x-2 header-social">
                     @if ($globalProfile && $globalProfile->whatsapp)
-                        <a href="{{ $globalProfile->whatsapp }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
+                        <a href="{{ $globalProfile->whatsapp }}"
+                            class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
                             <i class="fab fa-whatsapp text-sm"></i>
                             <span class="sr-only">WhatsApp</span>
                         </a>
                     @endif
                     @if ($globalProfile && $globalProfile->viber)
-                        <a href="{{ $globalProfile->viber }}" class="w-6 h-6 flex items-center justify-center text-purple-400 hover:text-purple-300 transition-colors">
+                        <a href="{{ $globalProfile->viber }}"
+                            class="w-6 h-6 flex items-center justify-center text-purple-400 hover:text-purple-300 transition-colors">
                             <i class="fab fa-viber text-sm"></i>
                             <span class="sr-only">Viber</span>
                         </a>
                     @endif
                     @if ($globalProfile && $globalProfile->wechat_link)
-                        <a href="{{ $globalProfile->wechat_link }}" class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
+                        <a href="{{ $globalProfile->wechat_link }}"
+                            class="w-6 h-6 flex items-center justify-center text-green-400 hover:text-green-300 transition-colors">
                             <i class="fab fa-weixin text-sm"></i>
                             <span class="sr-only">WeChat</span>
                         </a>
                     @endif
                     @if ($globalProfile && $globalProfile->facebook_link)
-                        <a href="{{ $globalProfile->facebook_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                        <a href="{{ $globalProfile->facebook_link }}"
+                            class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
                             <i class="fab fa-facebook text-sm"></i>
                             <span class="sr-only">Facebook</span>
                         </a>
                     @endif
                     @if ($globalProfile && $globalProfile->linkedin_link)
-                        <a href="{{ $globalProfile->linkedin_link }}" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
+                        <a href="{{ $globalProfile->linkedin_link }}"
+                            class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
                             <i class="fab fa-linkedin text-sm"></i>
                             <span class="sr-only">LinkedIn</span>
                         </a>
                     @endif
-                          <a href="/calculator" class="w-6 h-6 flex items-center justify-center text-blue-400 hover:text-blue-300 transition-colors">
-                            <i class="fa fa-calculator text-sm"></i>
-                            <span class="sr-only">calculator</span>
-                        </a>
                 </div>
             </div>
         </div>
@@ -84,9 +86,11 @@
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="flex-shrink-0">
                         @if ($globalProfile && $globalProfile->logo_url)
-                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="h-12 w-auto header-logo">
+                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}"
+                                class="h-12 w-auto header-logo">
                         @else
-                            <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}" class="h-12 w-auto header-logo">
+                            <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}"
+                                class="h-12 w-auto header-logo">
                         @endif
                     </a>
                 </div>
@@ -94,37 +98,50 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-6 header-nav">
                     <!-- Home -->
-                    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Home</a>
-                    
+                    <a href="{{ route('home') }}"
+                        class="{{ request()->routeIs('home') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Home</a>
+
                     <!-- About Us -->
-                    <a href="/about/introduction" class="{{ request()->is('about/*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">About Us</a>
-                    
+                    <a href="/about/introduction"
+                        class="{{ request()->is('about/*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">About
+                        Us</a>
+
                     <!-- Study Abroad Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('study-abroad.index') }}" class="{{ request()->is('study-abroad*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('study-abroad.index') }}"
+                            class="{{ request()->is('study-abroad*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Study Abroad
-                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                            <i
+                                class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
                         @if ($navStudyAbroad && $navStudyAbroad->count() > 0)
-                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div
+                                class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                                 <div class="py-3">
                                     <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Study Abroad Resources</span>
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Study
+                                            Abroad Resources</span>
                                     </div>
-                                    <a href="{{ route('study-abroad.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                    <a href="{{ route('study-abroad.index') }}"
+                                        class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                        <div
+                                            class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
                                             <i class="fas fa-graduation-cap text-primary text-xs"></i>
                                         </div>
                                         <div>
                                             <div class="font-medium">All Study Abroad</div>
-                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete study abroad resources</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete
+                                                study abroad resources</div>
                                         </div>
                                     </a>
                                     <div class="h-px bg-gray-100 my-2 mx-4"></div>
                                     @foreach ($navStudyAbroad->take(8) as $studyAbroad)
-                                        <a href="{{ route('study-abroad.show', $studyAbroad->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i class="fas fa-plane text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                        <a href="{{ route('study-abroad.show', $studyAbroad->slug) }}"
+                                            class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                            <div
+                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                                <i
+                                                    class="fas fa-plane text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
                                             </div>
                                             <span class="font-medium truncate">{{ $studyAbroad->title }}</span>
                                         </a>
@@ -136,30 +153,41 @@
 
                     <!-- Learning Center Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('learning-center.index') }}" class="{{ request()->is('learning-center*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('learning-center.index') }}"
+                            class="{{ request()->is('learning-center*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Learning Center
-                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                            <i
+                                class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
                         @if ($navLearningCenter && $navLearningCenter->count() > 0)
-                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div
+                                class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                                 <div class="py-3">
                                     <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Learning Resources</span>
+                                        <span
+                                            class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Learning
+                                            Resources</span>
                                     </div>
-                                    <a href="{{ route('learning-center.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                    <a href="{{ route('learning-center.index') }}"
+                                        class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                        <div
+                                            class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
                                             <i class="fas fa-book-open text-primary text-xs"></i>
                                         </div>
                                         <div>
                                             <div class="font-medium">All Learning Center</div>
-                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete learning resources</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete
+                                                learning resources</div>
                                         </div>
                                     </a>
                                     <div class="h-px bg-gray-100 my-2 mx-4"></div>
                                     @foreach ($navLearningCenter->take(8) as $learningCenter)
-                                        <a href="{{ route('learning-center.show', $learningCenter->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i class="fas fa-lightbulb text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                        <a href="{{ route('learning-center.show', $learningCenter->slug) }}"
+                                            class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                            <div
+                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                                <i
+                                                    class="fas fa-lightbulb text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
                                             </div>
                                             <span class="font-medium truncate">{{ $learningCenter->title }}</span>
                                         </a>
@@ -171,30 +199,40 @@
 
                     <!-- Our Services Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('services.index') }}" class="{{ request()->is('services*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('services.index') }}"
+                            class="{{ request()->is('services*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Our Services
-                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                            <i
+                                class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
                         @if ($navServices && $navServices->count() > 0)
-                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div
+                                class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                                 <div class="py-3">
                                     <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Our Services</span>
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Our
+                                            Services</span>
                                     </div>
-                                    <a href="{{ route('services.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                    <a href="{{ route('services.index') }}"
+                                        class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                        <div
+                                            class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
                                             <i class="fas fa-briefcase text-primary text-xs"></i>
                                         </div>
                                         <div>
                                             <div class="font-medium">All Services</div>
-                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete service portfolio</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-white/70">Complete
+                                                service portfolio</div>
                                         </div>
                                     </a>
                                     <div class="h-px bg-gray-100 my-2 mx-4"></div>
                                     @foreach ($navServices->take(10) as $service)
-                                        <a href="{{ route('service.show', $service->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
-                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                        <a href="{{ route('service.show', $service->slug) }}"
+                                            class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-primary hover:text-white transition-all duration-200 rounded-lg mx-2">
+                                            <div
+                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                                <i
+                                                    class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
                                             </div>
                                             <span class="font-medium">{{ $service->title }}</span>
                                         </a>
@@ -205,29 +243,39 @@
                     </div>
 
                     <!-- Our Team -->
-                    <a href="{{ route('team.index') }}" class="{{ request()->is('team*') || request()->routeIs('team.*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Our Team</a>
-                    
+                    <a href="{{ route('team.index') }}"
+                        class="{{ request()->is('team*') || request()->routeIs('team.*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Our
+                        Team</a>
+
                     <!-- Gallery -->
-                    <a href="/gallery" class="{{ request()->is('gallery*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Gallery</a>
+                    <a href="/gallery"
+                        class="{{ request()->is('gallery*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors capitalize nav-link">Gallery</a>
 
                     <!-- Contact -->
-                    <a href="/contact" class="{{ request()->is('contact*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors nav-link">Contact Us</a>
-                    
+                    <a href="/contact"
+                        class="{{ request()->is('contact*') ? 'text-primary font-semibold' : 'text-gray-700' }} hover:text-primary font-medium transition-colors nav-link">Contact
+                        Us</a>
+
                     <!-- CTA Button -->
-                    <a href="/contact" class="bg-primary hover:bg-secondary text-white font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    <a href="/contact"
+                        class="bg-primary hover:bg-secondary text-white font-semibold px-6 py-2.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                         Speak With Us
                     </a>
-                 
+
                 </nav>
 
                 <!-- Mobile menu button -->
                 <div class="lg:hidden">
-                    <button type="button" class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors">
+                    <button type="button"
+                        class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors">
                         <span class="sr-only">Open main menu</span>
                         <div class="hamburger-icon w-6 h-6 flex flex-col justify-center items-center">
-                            <span class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300"></span>
-                            <span class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
-                            <span class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
+                            <span
+                                class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300"></span>
+                            <span
+                                class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
+                            <span
+                                class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
                         </div>
                     </button>
                 </div>
@@ -237,47 +285,64 @@
 </div>
 
 <!-- Mobile Navigation Menu -->
-<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden" style="top: 100px;">
+<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+    style="top: 100px;">
     <div class="flex h-full">
         <!-- Overlay -->
         <div class="mobile-nav__overlay fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
-        
+
         <!-- Menu Panel -->
         <div class="mobile-nav__panel relative ml-auto flex h-full w-full max-w-sm flex-col bg-white shadow-xl">
-            
+
             <!-- Navigation Links -->
             <nav class="flex-1 px-4 py-6 space-y-4">
-                <a href="{{ route('home') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
-                <a href="/about/introduction" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About Us</a>
-                
+                <a href="{{ route('home') }}"
+                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
+                <a href="/about/introduction"
+                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About
+                    Us</a>
+
                 <!-- Study Abroad Mobile -->
                 <div class="space-y-2">
-                    <a href="{{ route('study-abroad.index') }}" class="block text-gray-600 font-medium text-sm uppercase tracking-wide hover:text-primary transition-colors">Study Abroad</a>
+                    <a href="{{ route('study-abroad.index') }}"
+                        class="block text-gray-600 font-medium text-sm uppercase tracking-wide hover:text-primary transition-colors">Study
+                        Abroad</a>
                     @if ($navStudyAbroad && $navStudyAbroad->count() > 0)
                         @foreach ($navStudyAbroad->take(5) as $studyAbroad)
-                            <a href="{{ route('study-abroad.show', $studyAbroad->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4 truncate">{{ $studyAbroad->title }}</a>
+                            <a href="{{ route('study-abroad.show', $studyAbroad->slug) }}"
+                                class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4 truncate">{{ $studyAbroad->title }}</a>
                         @endforeach
                     @endif
                 </div>
-                
+
                 <!-- Learning Center Mobile -->
                 <div class="space-y-2">
-                    <a href="{{ route('learning-center.index') }}" class="block text-gray-600 font-medium text-sm uppercase tracking-wide hover:text-primary transition-colors">Learning Center</a>
+                    <a href="{{ route('learning-center.index') }}"
+                        class="block text-gray-600 font-medium text-sm uppercase tracking-wide hover:text-primary transition-colors">Learning
+                        Center</a>
                     @if ($navLearningCenter && $navLearningCenter->count() > 0)
                         @foreach ($navLearningCenter->take(5) as $learningCenter)
-                            <a href="{{ route('learning-center.show', $learningCenter->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4 truncate">{{ $learningCenter->title }}</a>
+                            <a href="{{ route('learning-center.show', $learningCenter->slug) }}"
+                                class="block text-gray-700 hover:text-primary font-medium transition-colors pl-4 truncate">{{ $learningCenter->title }}</a>
                         @endforeach
                     @endif
                 </div>
-                
-                <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>
-                <a href="{{ route('team.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Team</a>
-                <a href="/gallery" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Gallery</a>
-                <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact Us</a>
-                
+
+                <a href="{{ route('services.index') }}"
+                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our
+                    Services</a>
+                <a href="{{ route('team.index') }}"
+                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our
+                    Team</a>
+                <a href="/gallery"
+                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Gallery</a>
+                <a href="/contact"
+                    class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact Us</a>
+
                 <!-- Mobile CTA Button -->
                 <div class="pt-4">
-                    <a href="/contact" class="block bg-primary hover:bg-secondary text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 text-center shadow-lg">
+                    <a href="/contact"
+                        class="block bg-primary hover:bg-secondary text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 text-center shadow-lg">
                         Speak With Us
                     </a>
                 </div>
@@ -287,257 +352,258 @@
 </div>
 
 <style>
-/* Top Header - Normal scrollable section */
-#top-header {
-    position: relative;
-    z-index: 40;
-}
+    /* Top Header - Normal scrollable section */
+    #top-header {
+        position: relative;
+        z-index: 40;
+    }
 
-/* Main Header - Sticky section */
-#main-header {
-    background-color: transparent;
-    transition: all 0.3s ease;
-}
+    /* Main Header - Sticky section */
+    #main-header {
+        background-color: transparent;
+        transition: all 0.3s ease;
+    }
 
-/* Header Scroll Effects - When main header gets background */
-#main-header.scrolled {
-    background-color: rgba(249, 250, 251, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-}
-
-#main-header.scrolled .nav-link {
-    color: rgb(75, 85, 99) !important;
-}
-
-#main-header.scrolled .nav-link:hover {
-    color: #139fba !important;
-}
-
-#main-header.scrolled .mobile-nav__toggler {
-    color: rgb(75, 85, 99);
-}
-
-#main-header.scrolled .mobile-nav__toggler:hover {
-    color: #139fba;
-    background-color: rgba(59, 130, 246, 0.1);
-}
-
-/* Ensure main header has background when top header is scrolled away */
-#main-header.scrolled-past-top {
-    background-color: rgba(249, 250, 251, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-}
-
-#main-header.scrolled-past-top .nav-link {
-    color: rgb(75, 85, 99) !important;
-}
-
-#main-header.scrolled-past-top .nav-link:hover {
-    color: #139fba !important;
-}
-
-#main-header.scrolled-past-top .mobile-nav__toggler {
-    color: rgb(75, 85, 99);
-}
-
-#main-header.scrolled-past-top .mobile-nav__toggler:hover {
-    color: #139fba;
-    background-color: rgba(59, 130, 246, 0.1);
-}
-
-/* Mobile Navigation */
-.mobile-nav.active {
-    transform: translateX(0);
-}
-
-.mobile-nav.active .mobile-nav__overlay {
-    opacity: 1;
-}
-
-/* Smooth transitions */
-.nav-link {
-    transition: color 0.3s ease;
-}
-
-/* Logo transition */
-.header-logo {
-    transition: all 0.3s ease;
-}
-
-/* Backdrop blur support */
-@supports (backdrop-filter: blur(10px)) {
+    /* Header Scroll Effects - When main header gets background */
     #main-header.scrolled {
-        background-color: #fff;
+        background-color: rgba(249, 250, 251, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     }
-}
 
-@supports not (backdrop-filter: blur(10px)) {
-    #main-header.scrolled {
-        background-color: #fff;
+    #main-header.scrolled .nav-link {
+        color: rgb(75, 85, 99) !important;
     }
-}
 
-/* Additional responsive improvements */
-@media (max-width: 640px) {
-    .header-top {
-        min-height: 2rem;
+    #main-header.scrolled .nav-link:hover {
+        color: #139fba !important;
     }
-    
-    .header-social a {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-    
-    .header-social a i {
-        font-size: 0.75rem;
-    }
-}
 
-@media (max-width: 480px) {
-    .header-social {
-        max-width: 8rem;
-        overflow-x: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+    #main-header.scrolled .mobile-nav__toggler {
+        color: rgb(75, 85, 99);
     }
-    
-    .header-social::-webkit-scrollbar {
-        display: none;
+
+    #main-header.scrolled .mobile-nav__toggler:hover {
+        color: #139fba;
+        background-color: rgba(59, 130, 246, 0.1);
     }
-}
 
-/* Prevent text overflow in contact info */
-.header-contact a {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 10rem;
-}
+    /* Ensure main header has background when top header is scrolled away */
+    #main-header.scrolled-past-top {
+        background-color: rgba(249, 250, 251, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
 
-@media (min-width: 1024px) {
+    #main-header.scrolled-past-top .nav-link {
+        color: rgb(75, 85, 99) !important;
+    }
+
+    #main-header.scrolled-past-top .nav-link:hover {
+        color: #139fba !important;
+    }
+
+    #main-header.scrolled-past-top .mobile-nav__toggler {
+        color: rgb(75, 85, 99);
+    }
+
+    #main-header.scrolled-past-top .mobile-nav__toggler:hover {
+        color: #139fba;
+        background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav.active {
+        transform: translateX(0);
+    }
+
+    .mobile-nav.active .mobile-nav__overlay {
+        opacity: 1;
+    }
+
+    /* Smooth transitions */
+    .nav-link {
+        transition: color 0.3s ease;
+    }
+
+    /* Logo transition */
+    .header-logo {
+        transition: all 0.3s ease;
+    }
+
+    /* Backdrop blur support */
+    @supports (backdrop-filter: blur(10px)) {
+        #main-header.scrolled {
+            background-color: #fff;
+        }
+    }
+
+    @supports not (backdrop-filter: blur(10px)) {
+        #main-header.scrolled {
+            background-color: #fff;
+        }
+    }
+
+    /* Additional responsive improvements */
+    @media (max-width: 640px) {
+        .header-top {
+            min-height: 2rem;
+        }
+
+        .header-social a {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .header-social a i {
+            font-size: 0.75rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header-social {
+            max-width: 8rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .header-social::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    /* Prevent text overflow in contact info */
     .header-contact a {
-        max-width: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 10rem;
     }
-}
 
-/* Hamburger Menu Animation */
-.mobile-nav__toggler.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
+    @media (min-width: 1024px) {
+        .header-contact a {
+            max-width: none;
+        }
+    }
 
-.mobile-nav__toggler.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-    transform: translateX(20px);
-}
+    /* Hamburger Menu Animation */
+    .mobile-nav__toggler.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
 
-.mobile-nav__toggler.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
+    .mobile-nav__toggler.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+    }
 
-/* Adjust mobile navigation positioning */
-.mobile-nav {
-    height: calc(100vh - 80px);
-    top: 80px;
-}
+    .mobile-nav__toggler.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
 
-.mobile-nav__overlay {
-    top: 80px;
-    height: calc(100vh - 80px);
-}
+    /* Adjust mobile navigation positioning */
+    .mobile-nav {
+        height: calc(100vh - 80px);
+        top: 80px;
+    }
+
+    .mobile-nav__overlay {
+        top: 80px;
+        height: calc(100vh - 80px);
+    }
 </style>
 
 <script>
-// Header scroll effects and mobile navigation
-document.addEventListener('DOMContentLoaded', function() {
-    const topHeader = document.getElementById('top-header');
-    const mainHeader = document.getElementById('main-header');
-    const mobileToggler = document.querySelector('.mobile-nav__toggler');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileNavClose = document.querySelector('.mobile-nav__close');
-    const mobileNavOverlay = document.querySelector('.mobile-nav__overlay');
-    
-    // Header scroll effect
-    function handleScroll() {
-        const topHeaderHeight = topHeader ? topHeader.offsetHeight : 0;
-        const scrollY = window.scrollY;
-        
-        // Add background to main header when top header starts scrolling away
-        if (scrollY > topHeaderHeight / 2) {
-            mainHeader.classList.add('scrolled');
-        } else {
-            mainHeader.classList.remove('scrolled');
-        }
-        
-        // Additional class when completely past top header
-        if (scrollY > topHeaderHeight) {
-            mainHeader.classList.add('scrolled-past-top');
-        } else {
-            mainHeader.classList.remove('scrolled-past-top');
-        }
-    }
-    
-    // Throttled scroll handler for better performance
-    let ticking = false;
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                handleScroll();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestTick);
-    
-    // Mobile navigation
-    function openMobileNav() {
-        mobileNav.classList.add('active');
-        mobileToggler.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMobileNav() {
-        mobileNav.classList.remove('active');
-        mobileToggler.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    if (mobileToggler) {
-        mobileToggler.addEventListener('click', function() {
-            if (mobileNav.classList.contains('active')) {
-                closeMobileNav();
+    // Header scroll effects and mobile navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const topHeader = document.getElementById('top-header');
+        const mainHeader = document.getElementById('main-header');
+        const mobileToggler = document.querySelector('.mobile-nav__toggler');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavClose = document.querySelector('.mobile-nav__close');
+        const mobileNavOverlay = document.querySelector('.mobile-nav__overlay');
+
+        // Header scroll effect
+        function handleScroll() {
+            const topHeaderHeight = topHeader ? topHeader.offsetHeight : 0;
+            const scrollY = window.scrollY;
+
+            // Add background to main header when top header starts scrolling away
+            if (scrollY > topHeaderHeight / 2) {
+                mainHeader.classList.add('scrolled');
             } else {
-                openMobileNav();
+                mainHeader.classList.remove('scrolled');
+            }
+
+            // Additional class when completely past top header
+            if (scrollY > topHeaderHeight) {
+                mainHeader.classList.add('scrolled-past-top');
+            } else {
+                mainHeader.classList.remove('scrolled-past-top');
+            }
+        }
+
+        // Throttled scroll handler for better performance
+        let ticking = false;
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Mobile navigation
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            mobileToggler.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('active');
+            mobileToggler.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileToggler) {
+            mobileToggler.addEventListener('click', function() {
+                if (mobileNav.classList.contains('active')) {
+                    closeMobileNav();
+                } else {
+                    openMobileNav();
+                }
+            });
+        }
+
+        if (mobileNavClose) {
+            mobileNavClose.addEventListener('click', closeMobileNav);
+        }
+
+        if (mobileNavOverlay) {
+            mobileNavOverlay.addEventListener('click', closeMobileNav);
+        }
+
+        // Close mobile nav on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                closeMobileNav();
             }
         });
-    }
-    
-    if (mobileNavClose) {
-        mobileNavClose.addEventListener('click', closeMobileNav);
-    }
-    
-    if (mobileNavOverlay) {
-        mobileNavOverlay.addEventListener('click', closeMobileNav);
-    }
-    
-    // Close mobile nav on escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            closeMobileNav();
-        }
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024 && mobileNav.classList.contains('active')) {
+                closeMobileNav();
+            }
+        });
+
+        // Initialize scroll state
+        handleScroll();
     });
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth >= 1024 && mobileNav.classList.contains('active')) {
-            closeMobileNav();
-        }
-    });
-    
-    // Initialize scroll state
-    handleScroll();
-});
 </script>

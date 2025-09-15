@@ -79,7 +79,7 @@
         </div>
 
         <!-- Description 2 Section Below -->
-        @if ($intro_home->desc_2)
+        {{-- @if ($intro_home->desc_2)
             <div class="mt-12 lg:mt-12 rounded-2xl p-6">
                 <div class="mx-auto">
                     <!-- Description 2 Content -->
@@ -91,6 +91,6 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
     </div>
 </section>

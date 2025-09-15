@@ -13,6 +13,10 @@
     <section class="relative bg-white">
         <x-about-us />
     </section>
+    
+    {{-- Why Choose Us Section --}}
+    <x-why-choose-us />
+    
     <x-counter-section />
     <x-page-section-title title="<span>Services</span>" />
 
@@ -25,17 +29,18 @@
 
 
 
-    <x-page-section-title title="<span>Publications</span>" />
+    <x-page-section-title title="<span>Study Abroad</span>" />
     {{-- Publications Section --}}
-    @livewire('publication-section', [
+    {{-- @livewire('publication-section', [
         'showViewAll' => true,
         'limit' => 8,
         'showSearch' => true,
-    ])
+    ]) --}}
+     <x-publication-section />
     {{-- Team Section Title --}}
-    <x-page-section-title title="<span>Our Team</span>" />
+    {{-- <x-page-section-title title="<span>Our Team</span>" /> --}}
     {{-- Team Section --}}
-    <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="false" :limit="4" />
+    {{-- <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="false" :limit="4" /> --}}
 
     {{-- Contact Section Title --}}
     <x-page-section-title title="<span>Reach out for the best Legal Advice</span>" />

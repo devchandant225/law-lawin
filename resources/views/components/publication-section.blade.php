@@ -1,134 +1,251 @@
-        <section class="award-one bg-section" style="
-            position: relative;
-            min-height: 100vh;
-            background-image: url('/publication.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        ">
+<!-- Publications Section -->
+        <section class="py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 opacity-5">
+                <!-- Dot pattern -->
+                <div class="absolute top-20 left-20 w-32 h-32">
+                    <div class="grid grid-cols-8 gap-1 w-full h-full">
+                        @for($i = 0; $i < 64; $i++)
+                            <div class="w-1 h-1 bg-blue-400 rounded-full"></div>
+                        @endfor
+                    </div>
+                </div>
+                <!-- Circle patterns -->
+                <div class="absolute bottom-1/4 right-10 w-24 h-24 border-2 border-blue-200 rounded-full"></div>
+                <div class="absolute top-1/3 right-32 w-16 h-16 border-2 border-orange-200 rounded-full"></div>
+            </div>
             
-            <!-- Dark Overlay for text visibility -->
-            <div class="bg-overlay" style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
-                z-index: 0;
-            "></div>
-            
-            <div class="container" style="position: relative; z-index: 1; padding: 80px 15px;">
-                <div class="sec-title text-center">
-                    <div class="sec-title__tagline bw-split-in-up-fast d-inline-flex align-items-center gap-2">
-                        <div>
-                            <svg class="hammer" width="23" height="23" viewBox="0 0 23 23" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M21.6562 20.875H10.7188C10.5115 20.875 10.3128 20.9573 10.1663 21.1038C10.0198 21.2503 9.9375 21.449 9.9375 21.6562C9.9375 21.8635 10.0198 22.0622 10.1663 22.2087C10.3128 22.3552 10.5115 22.4375 10.7188 22.4375H21.6562C21.8635 22.4375 22.0622 22.3552 22.2087 22.2087C22.3552 22.0622 22.4375 21.8635 22.4375 21.6562C22.4375 21.449 22.3552 21.2503 22.2087 21.1038C22.0622 20.9573 21.8635 20.875 21.6562 20.875Z" />
-                                <path
-                                    d="M13.8056 16.9688C13.1943 16.9695 12.6083 17.2126 12.1761 17.6448C11.7439 18.0771 11.5007 18.6631 11.5 19.2744V20.0938H20.875V19.2744C20.8743 18.6631 20.6311 18.0771 20.1989 17.6448C19.7667 17.2126 19.1807 16.9695 18.5694 16.9688H13.8056Z" />
-                                <path
-                                    d="M15.9585 13.6149C15.9006 13.6678 15.8349 13.7114 15.7637 13.7442L15.989 13.9696C16.4566 14.4355 17.0898 14.6971 17.7499 14.697C18.41 14.6969 19.0432 14.4352 19.5107 13.9693L21.7812 11.698C22.0124 11.4668 22.1959 11.1924 22.321 10.8903C22.4462 10.5882 22.5106 10.2645 22.5106 9.9375C22.5106 9.61053 22.4462 9.28677 22.321 8.9847C22.1959 8.68263 22.0124 8.40818 21.7812 8.17701L21.5888 7.98456L15.9585 13.6149Z" />
-                                <path
-                                    d="M9.2226 7.20295L14.8529 1.57267C14.9108 1.51976 14.9765 1.47611 15.0478 1.44326L14.8224 1.21791C14.3548 0.752021 13.7216 0.490468 13.0615 0.49054C12.4014 0.490611 11.7682 0.752302 11.3007 1.21829L9.03015 3.48915C8.79891 3.72035 8.61548 3.99484 8.49034 4.29694C8.36519 4.59904 8.30078 4.92283 8.30078 5.24982C8.30078 5.57681 8.36519 5.9006 8.49034 6.2027C8.61548 6.5048 8.79891 6.77929 9.03015 7.01049L9.2226 7.20295Z" />
-                                <path
-                                    d="M14.3015 12.2813L14.0726 12.5102C13.9993 12.5825 13.9411 12.6687 13.9012 12.7637C13.8613 12.8586 13.8406 12.9605 13.8403 13.0635C13.84 13.1665 13.8601 13.2686 13.8993 13.3638C13.9386 13.459 13.9963 13.5455 14.0691 13.6184C14.142 13.6912 14.2285 13.7489 14.3237 13.7882C14.4189 13.8274 14.521 13.8475 14.624 13.8471C14.727 13.8468 14.8289 13.8261 14.9238 13.7863C15.0188 13.7464 15.105 13.6881 15.1773 13.6149L21.4273 7.36485C21.5716 7.21791 21.6521 7.01992 21.6511 6.81397C21.6502 6.60802 21.568 6.41077 21.4223 6.26514C21.2767 6.11951 21.0795 6.03729 20.8735 6.03635C20.6676 6.03542 20.4696 6.11586 20.3226 6.26016L20.0937 6.48907L16.5113 2.90602L16.7398 2.67735C16.8841 2.53041 16.9646 2.33242 16.9636 2.12647C16.9627 1.92052 16.8805 1.72327 16.7348 1.57764C16.5892 1.43201 16.392 1.34979 16.186 1.34885C15.9801 1.34792 15.7821 1.42836 15.6351 1.57266L9.38514 7.82266C9.31152 7.89496 9.25296 7.98112 9.21283 8.07618C9.17269 8.17123 9.15179 8.27329 9.15132 8.37647C9.15086 8.47965 9.17083 8.5819 9.2101 8.67731C9.24937 8.77273 9.30715 8.85942 9.38011 8.93238C9.45307 9.00534 9.53976 9.06312 9.63518 9.10239C9.73059 9.14166 9.83284 9.16163 9.93602 9.16117C10.0392 9.1607 10.1413 9.1398 10.2363 9.09966C10.3314 9.05953 10.4175 9.00097 10.4898 8.92735L10.7187 8.69844L10.7859 8.76559L1.18201 18.3695C0.953685 18.5955 0.772269 18.8644 0.648189 19.1608C0.524109 19.4571 0.459812 19.7751 0.458992 20.0963C0.458172 20.4176 0.520846 20.7359 0.643411 21.0328C0.765976 21.3298 0.946017 21.5996 1.17319 21.8268C1.40036 22.054 1.67018 22.234 1.96715 22.3566C2.26412 22.4791 2.58239 22.5418 2.90365 22.541C3.22492 22.5402 3.54286 22.4759 3.8392 22.3518C4.13554 22.2277 4.40444 22.0463 4.63045 21.818L14.2344 12.2141L14.3015 12.2813Z" />
-                            </svg>
-                        </div>
-                        {{ $sectionSubtitle }}
-                    </div><!-- /.sec-title__tagline -->
-
-                    <h3 class="sec-title__title bw-split-in-up">{!! $sectionTitle !!}</h3><!-- /.sec-title__title -->
-                </div><!-- /.sec-title -->
-
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 @if ($publications->isNotEmpty())
-                    <div class="row gutter-y-30">
+                    <!-- Publications Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
                         @foreach ($publications as $index => $publication)
-                            <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ ($index % 2) * 100 }}ms">
-                                <div class="award-one__item">
-                                    <div class="award-one__item__left">
-                                        <h2 class="award-one__item__title">
-                                            <a style="color:#fff"
-                                                href="{{ route('publication.show', $publication->slug) }}">{{ $publication->title }}</a>
-                                        </h2>
-                                        {{-- @if ($publication->excerpt || $publication->description)
-                                        <p class="award-one__item__text">
-                                            {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 150) }}
-                                        </p>
-                                        @endif --}}
-
+                            <div class="publication-card group" 
+                                 data-aos="fade-up" 
+                                 data-aos-delay="{{ $index * 100 }}">
+                                <!-- Card Container -->
+                                <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2 border border-gray-100">
+                                    <!-- Image Container -->
+                                    <div class="relative overflow-hidden h-48 bg-gradient-to-br from-blue-100 to-blue-200">
+                                        @if($publication->featured_image)
+                                            <img src="{{ asset('storage/' . $publication->featured_image) }}" 
+                                                 alt="{{ $publication->title }}" 
+                                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                        @else
+                                            <!-- Default Publication Image -->
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <svg class="w-16 h-16 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                            </div>
+                                        @endif
+                                        
+                                        <!-- Overlay -->
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        
+                                        <!-- Category Badge -->
+                                        <div class="absolute top-4 left-4">
+                                            <span class="px-3 py-1 bg-secondary text-white text-xs font-semibold rounded-full">
+                                                {{ $publication->post_type ?? 'Publication' }}
+                                            </span>
+                                        </div>
+                                        
+                                        <!-- Read More Button -->
+                                        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                                            <a href="{{ route('publication.show', $publication->slug) }}" 
+                                               class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-50 transition-colors duration-200">
+                                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Content Container -->
+                                    <div class="p-6">
+                                        <!-- Publication Date -->
+                                        @if($publication->created_at)
+                                            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                                </svg>
+                                                {{ $publication->created_at->format('M d, Y') }}
+                                            </div>
+                                        @endif
+                                        
+                                        <!-- Title -->
+                                        <h3 class="font-bold text-lg text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
+                                            <a href="{{ route('publication.show', $publication->slug) }}" class="hover:text-primary">
+                                                {{ $publication->title }}
+                                            </a>
+                                        </h3>
+                                        
+                                        <!-- Excerpt -->
+                                        @if ($publication->excerpt || $publication->description)
+                                            <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                                                {{ $publication->excerpt ?? Str::limit(strip_tags($publication->description), 120) }}
+                                            </p>
+                                        @endif
+                                        
+                                        <!-- Footer -->
+                                        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                            <!-- Author/Status -->
+                                            <div class="flex items-center gap-2">
+                                                @if($publication->status)
+                                                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                                    <span class="text-xs text-gray-500">Published</span>
+                                                @endif
+                                            </div>
+                                            
+                                            <!-- Read More Link -->
+                                            <a href="{{ route('publication.show', $publication->slug) }}" 
+                                               class="text-primary hover:text-blue-700 text-sm font-medium flex items-center gap-1 group/link">
+                                                Read More
+                                                <svg class="w-4 h-4 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
+                    
+                    <!-- View All Button -->
+                    {{-- @if ($showViewAll)
+                        <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                            <a href="{{ route('publications.index') }}" 
+                               class="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                                <span>View All Publications</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    @endif --}}
                 @else
-                    <div class="text-center py-5">
-                        <h4>No publications available at the moment.</h4>
-                        <p>Please check back later for our latest publications and resources.</p>
-                    </div>
-                @endif
-
-                @if ($showViewAll && $publications->isNotEmpty())
-                    <div class="text-center mt-5">
-                        <a href="{{ route('publications.index') }}" class="procounsel-btn procounsel-btn--two">
-                            <i>View All Publications</i>
-                            <span>View All Publications</span>
-                        </a>
+                    <!-- No Publications State -->
+                    <div class="text-center py-16" data-aos="fade-up">
+                        <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-6">
+                            <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">No Publications Available</h3>
+                        <p class="text-gray-600 max-w-md mx-auto">We're working on bringing you the latest publications and insights. Please check back later for updates.</p>
                     </div>
                 @endif
             </div>
         </section>
 
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <!-- Custom Styles -->
         <style>
-            .bg-section {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            /* Line clamp utilities */
+            .line-clamp-2 {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
             
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .bg-section {
-                    min-height: 80vh !important;
-                }
-                
-                .container {
-                    padding: 60px 15px !important;
+            .line-clamp-3 {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            
+            /* Publication card animations */
+            .publication-card {
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            
+            .publication-card:hover {
+                transform: translateY(-8px) scale(1.02);
+            }
+            
+            /* Background animation */
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+            
+            .absolute.top-1\/3 {
+                animation: float 6s ease-in-out infinite;
+            }
+            
+            .absolute.bottom-1\/4 {
+                animation: float 8s ease-in-out infinite reverse;
+            }
+            
+            /* Responsive grid adjustments */
+            @media (max-width: 640px) {
+                .grid {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
                 }
             }
             
-            @media (max-width: 480px) {
-                .bg-section {
-                    min-height: 70vh !important;
-                }
-                
-                .container {
-                    padding: 40px 15px !important;
+            @media (min-width: 641px) and (max-width: 768px) {
+                .md\:grid-cols-2 {
+                    grid-template-columns: repeat(2, 1fr);
                 }
             }
             
-            /* Enhanced text visibility */
-            .sec-title__title,
-            .sec-title__tagline,
-            .award-one__item__title a,
-            .award-one__item__text {
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-                color: #fff !important;
+            @media (min-width: 769px) and (max-width: 1023px) {
+                .lg\:grid-cols-3 {
+                    grid-template-columns: repeat(3, 1fr);
+                }
             }
             
-            .award-one__item {
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                border-radius: 15px;
-                padding: 30px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
+            @media (min-width: 1280px) {
+                .xl\:grid-cols-4 {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+            
+            /* Card hover effects */
+            .publication-card .bg-white {
+                transition: all 0.5s ease;
+                will-change: transform, box-shadow;
+            }
+            
+            .publication-card:hover .bg-white {
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
+            
+            /* Image hover effects */
+            .publication-card img {
+                transition: transform 0.5s ease;
+                will-change: transform;
+            }
+            
+            /* Button hover effects */
+            .publication-card a[class*="bg-blue"] {
                 transition: all 0.3s ease;
+                will-change: transform, box-shadow;
             }
             
-            .award-one__item:hover {
-                background: rgba(255, 255, 255, 0.15);
-                transform: translateY(-5px);
+            .publication-card a[class*="bg-blue"]:hover {
+                transform: scale(1.05) translateY(-1px);
+                box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
             }
         </style>
+        
+        <!-- AOS JavaScript -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-out-cubic',
+                    once: true,
+                    offset: 50,
+                    disable: 'mobile'
+                });
+            });
+        </script>

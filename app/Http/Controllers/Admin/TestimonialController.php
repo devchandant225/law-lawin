@@ -37,13 +37,13 @@ class TestimonialController extends Controller
             'profession' => 'required|string|max:255',
             'desc' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
-            'status' => 'boolean',
-            'sort_order' => 'integer',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'status' => 'nullable|in:1,on',
+            'sort_order' => 'nullable|integer',
+            'img' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048'
         ]);
 
-        $data = $request->all();
-        $data['status'] = $request->has('status');
+        $data = $request->except(['_token']);
+        $data['status'] = $request->has('status') ? 1 : 0;
 
         // Handle image upload
         if ($request->hasFile('img')) {
@@ -83,13 +83,13 @@ class TestimonialController extends Controller
             'profession' => 'required|string|max:255',
             'desc' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
-            'status' => 'boolean',
-            'sort_order' => 'integer',
+            'status' => 'nullable|in:1,on',
+            'sort_order' => 'nullable|integer',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $data = $request->all();
-        $data['status'] = $request->has('status');
+        $data = $request->except(['_token', '_method']);
+        $data['status'] = $request->has('status') ? 1 : 0;
 
         // Handle image upload
         if ($request->hasFile('img')) {

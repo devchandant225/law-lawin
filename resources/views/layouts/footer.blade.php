@@ -49,7 +49,7 @@
                     @if (!empty(($phoneNumbers = array_filter([$globalProfile->phone1 ?? null, $globalProfile->phone2 ?? null]))))
                         <div class="flex items-start space-x-3 group contact-item">
                             <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-colors duration-300">
-                                <i class="fas fa-phone-alt text-primary text-sm"></i>
+                                <i class="fas fa-phone text-primary text-sm"></i>
                             </div>
                             <div class="flex-1">
                                 <div class="space-y-1">
@@ -63,7 +63,7 @@
                     @else
                         <div class="flex items-start space-x-3 group contact-item">
                             <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-300">
-                                <i class="fas fa-phone text-primary text-sm"></i>
+                                <i class="fas fa-phone-alt text-primary text-sm"></i>
                             </div>
                             <div class="flex-1">
                                 <div class="space-y-1">

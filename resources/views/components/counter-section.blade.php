@@ -8,7 +8,7 @@
         <!-- Section Title -->
         <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Our <span class="text-primary">Educational</span> Impact
+                Our <span class="text-secondary">Educational</span> Impact
             </h2>
             <p class="text-gray-600 text-lg max-w-2xl mx-auto">
                 Empowering students worldwide with quality education and achieving remarkable milestones together

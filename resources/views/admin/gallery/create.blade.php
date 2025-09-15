@@ -3,93 +3,103 @@
 @section('title', 'Upload Gallery Images')
 
 @section('content')
-<div class="container-fluid">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Upload Gallery Images</h4>
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.gallery.index') }}">Gallery</a></li>
-                        <li class="breadcrumb-item active">Upload</li>
-                    </ol>
-                </div>
-            </div>
+    <div class="mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <h1 class="text-2xl font-semibold text-gray-900">Upload Gallery Images</h1>
+            <nav class="flex mt-3 sm:mt-0" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}" class="text-blue-600 hover:text-blue-800 font-medium">Dashboard</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <a href="{{ route('admin.gallery.index') }}" class="text-blue-600 hover:text-blue-800 font-medium">Gallery</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <span class="text-gray-500">Upload</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
         </div>
     </div>
 
     <!-- Alert Messages -->
     @if($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul class="mb-0">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div class="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle text-red-500 mr-3 mt-0.5"></i>
+                    <div>
+                        <ul class="text-red-800 list-disc list-inside">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="text-red-400 hover:text-red-600" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
     @endif
 
     <!-- Main Content -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Upload Multiple Images</h5>
-                    <p class="text-muted mb-0">Select multiple images to upload to your gallery. Maximum file size: 10MB per image.</p>
+    <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-lg font-medium text-gray-900 mb-2">Upload Multiple Images</h2>
+            <p class="text-sm text-gray-500">Select multiple images to upload to your gallery. Maximum file size: 10MB per image.</p>
+        </div>
+
+        <div class="p-6">
+            <form action="{{ route('admin.gallery.store') }}" method="POST" enctype="multipart/form-data" id="gallery-form">
+                @csrf
+                
+                <!-- File Upload Section -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-700 mb-3">Select Images <span class="text-red-500">*</span></label>
+                    <div class="dropzone" id="image-dropzone">
+                        <div class="dz-message" data-dz-message>
+                            <div class="mb-4">
+                                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Drop images here or click to upload</h3>
+                            <p class="text-sm text-gray-500">Supports: JPG, PNG, GIF, WebP (max 10MB each)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Traditional File Input (fallback) -->
+                    <div class="mt-4">
+                        <input type="file" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
+                               name="images[]" id="images" multiple 
+                               accept="image/jpeg,image/png,image/jpg,image/gif,image/webp" required>
+                        <p class="text-xs text-gray-500 mt-2">Hold Ctrl/Cmd to select multiple files</p>
+                    </div>
                 </div>
 
-                <div class="card-body">
-                    <form action="{{ route('admin.gallery.store') }}" method="POST" enctype="multipart/form-data" id="gallery-form">
-                        @csrf
-                        
-                        <!-- File Upload Section -->
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <label class="form-label">Select Images <span class="text-danger">*</span></label>
-                                <div class="dropzone" id="image-dropzone">
-                                    <div class="dz-message" data-dz-message>
-                                        <div class="mb-3">
-                                            <i class="display-4 text-muted ri-upload-cloud-line"></i>
-                                        </div>
-                                        <h4>Drop images here or click to upload</h4>
-                                        <p class="text-muted">Supports: JPG, PNG, GIF, WebP (max 10MB each)</p>
-                                    </div>
-                                </div>
-                                
-                                <!-- Traditional File Input (fallback) -->
-                                <div class="mt-3">
-                                    <input type="file" class="form-control" name="images[]" id="images" multiple 
-                                           accept="image/jpeg,image/png,image/jpg,image/gif,image/webp" required>
-                                    <small class="text-muted">Hold Ctrl/Cmd to select multiple files</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Preview and Details Section -->
-                        <div id="image-preview-container" style="display: none;">
-                            <h6 class="mb-3">Image Details</h6>
-                            <div id="image-previews" class="row"></div>
-                        </div>
-
-                        <!-- Form Actions -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex justify-content-between">
-                                    <a href="{{ route('admin.gallery.index') }}" class="btn btn-secondary">
-                                        <i class="ri-arrow-left-line"></i> Back to Gallery
-                                    </a>
-                                    <button type="submit" class="btn btn-primary" id="submit-btn" disabled>
-                                        <i class="ri-upload-line"></i> Upload Images
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                <!-- Preview and Details Section -->
+                <div id="image-preview-container" class="hidden">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Image Details</h3>
+                    <div id="image-previews" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
                 </div>
-            </div>
+
+                <!-- Form Actions -->
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-6 border-t border-gray-200">
+                    <a href="{{ route('admin.gallery.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 mb-3 sm:mb-0">
+                        <i class="fas fa-arrow-left mr-2"></i> Back to Gallery
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" id="submit-btn" disabled>
+                        <i class="fas fa-upload mr-2"></i> Upload Images
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -219,13 +229,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleFiles(files) {
         if (files.length === 0) {
-            previewContainer.style.display = 'none';
+            previewContainer.classList.add('hidden');
             submitBtn.disabled = true;
             return;
         }
 
         selectedFiles = Array.from(files);
-        previewContainer.style.display = 'block';
+        previewContainer.classList.remove('hidden');
         submitBtn.disabled = false;
         
         generatePreviews();
@@ -247,42 +257,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         reader.onload = function(e) {
             const previewHtml = `
-                <div class="col-md-6 col-lg-4 mb-3" data-index="${index}">
-                    <div class="image-preview-card">
-                        <div class="image-preview-container">
-                            <img src="${e.target.result}" alt="Preview" class="preview-image">
-                            <button type="button" class="remove-image" onclick="removeImage(${index})">
-                                <i class="ri-close-line"></i>
-                            </button>
+                <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm" data-index="${index}">
+                    <div class="relative mb-4">
+                        <img src="${e.target.result}" alt="Preview" class="w-full h-40 object-cover rounded-lg border border-gray-200">
+                        <button type="button" class="absolute top-2 right-2 w-6 h-6 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center text-xs transition-colors duration-200" onclick="removeImage(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Title <span class="text-red-500">*</span></label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
+                                   name="titles[]" value="${getFileNameWithoutExtension(file.name)}" required>
                         </div>
                         
-                        <div class="mt-3">
-                            <div class="mb-2">
-                                <label class="form-label">Title <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="titles[]" 
-                                       value="${getFileNameWithoutExtension(file.name)}" required>
-                            </div>
-                            
-                            <div class="mb-2">
-                                <label class="form-label">Description</label>
-                                <textarea class="form-control" name="descriptions[]" rows="2" 
-                                          placeholder="Optional description"></textarea>
-                            </div>
-                            
-                            <div class="mb-0">
-                                <label class="form-label">Alt Text</label>
-                                <input type="text" class="form-control" name="alt_texts[]" 
-                                       value="${getFileNameWithoutExtension(file.name)}"
-                                       placeholder="Alternative text for accessibility">
-                            </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
+                                      name="descriptions[]" rows="2" placeholder="Optional description"></textarea>
                         </div>
                         
-                        <div class="mt-2">
-                            <small class="text-muted">
-                                Size: ${(file.size / 1024 / 1024).toFixed(2)} MB | 
-                                Type: ${file.type}
-                            </small>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Alt Text</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
+                                   name="alt_texts[]" value="${getFileNameWithoutExtension(file.name)}"
+                                   placeholder="Alternative text for accessibility">
                         </div>
+                    </div>
+                    
+                    <div class="mt-3 pt-3 border-t border-gray-200">
+                        <p class="text-xs text-gray-500">
+                            Size: ${(file.size / 1024 / 1024).toFixed(2)} MB | Type: ${file.type}
+                        </p>
                     </div>
                 </div>
             `;
@@ -311,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Hide preview container if no files
         if (selectedFiles.length === 0) {
-            previewContainer.style.display = 'none';
+            previewContainer.classList.add('hidden');
             submitBtn.disabled = true;
         } else {
             // Regenerate previews to fix indices
@@ -331,9 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
         titles.forEach(input => {
             if (input.value.trim() === '') {
                 hasEmptyTitle = true;
-                input.classList.add('is-invalid');
+                input.classList.add('border-red-500');
+                input.classList.remove('border-gray-300');
             } else {
-                input.classList.remove('is-invalid');
+                input.classList.remove('border-red-500');
+                input.classList.add('border-gray-300');
             }
         });
         

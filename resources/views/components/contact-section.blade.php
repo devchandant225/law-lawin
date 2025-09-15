@@ -171,7 +171,7 @@
                     <!-- Form Header -->
                     <div class="bg-gray-100 rounded-2xl shadow-xl p-8">
                         <div class="mb-6">
-                            <h3 class="text-2xl font-bold text-secondary mb-2">
+                            <h3 class="text-2xl font-bold text-gray-600 mb-2">
                              REACH OUT TO US AT ANY TIME
                             </h3>
                         </div>

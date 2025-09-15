@@ -18,7 +18,7 @@
                                     <div class="relative overflow-hidden">
                                         <img src="{{ $post->feature_image_url }}" 
                                              alt="{{ $post->title }}" 
-                                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                                             class="w-full h-[15rem] object-cover transition-transform duration-300 hover:scale-105">
                                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                     </div>
                                 @else
@@ -84,7 +84,7 @@
             @else
                 <div class="text-center">
                     <a href="/blog" 
-                       class="inline-flex items-center px-8 py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl">
+                       class="inline-flex items-center px-8 py-3 bg-secondary hover:bg-primary text-white font-semibold rounded-lg transition-colors shadow-lg hover:shadow-xl">
                         <i class="fas fa-th-large mr-2"></i>
                         View All Blog Posts
                     </a>

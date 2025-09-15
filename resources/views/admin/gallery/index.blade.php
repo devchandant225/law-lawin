@@ -3,167 +3,186 @@
 @section('title', 'Gallery Management')
 
 @section('content')
-<div class="container-fluid">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Gallery Management</h4>
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Gallery</li>
-                    </ol>
-                </div>
-            </div>
+    <div class="mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <h1 class="text-2xl font-semibold text-gray-900">Gallery Management</h1>
+            <nav class="flex mt-3 sm:mt-0" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}" class="text-blue-600 hover:text-blue-800 font-medium">Dashboard</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                            <span class="text-gray-500">Gallery</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
         </div>
     </div>
 
     <!-- Alert Messages -->
     @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div class="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                    <span class="text-green-800">{{ session('success') }}</span>
+                </div>
+                <button type="button" class="text-green-400 hover:text-green-600" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
     @endif
 
     @if(session('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div class="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-exclamation-circle text-red-500 mr-3"></i>
+                    <span class="text-red-800">{{ session('error') }}</span>
+                </div>
+                <button type="button" class="text-red-400 hover:text-red-600" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
     @endif
 
     @if($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <ul class="mb-0">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div class="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div class="flex items-start justify-between">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-circle text-red-500 mr-3 mt-0.5"></i>
+                    <div>
+                        <ul class="text-red-800 list-disc list-inside">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="text-red-400 hover:text-red-600" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
     @endif
 
     <!-- Main Content -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0">Gallery Images</h5>
-                    <div class="d-flex gap-2">
-                        <button type="button" class="btn btn-danger btn-sm" id="bulkDeleteBtn" style="display: none;">
-                            <i class="ri-delete-bin-line"></i> Delete Selected
-                        </button>
-                        <a href="{{ route('admin.gallery.create') }}" class="btn btn-primary btn-sm">
-                            <i class="ri-add-line"></i> Upload Images
-                        </a>
-                    </div>
+    <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <h2 class="text-lg font-medium text-gray-900 mb-3 sm:mb-0">Gallery Images</h2>
+                <div class="flex items-center space-x-3">
+                    <button type="button" class="hidden px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-colors duration-200" id="bulkDeleteBtn">
+                        <i class="fas fa-trash mr-2"></i> Delete Selected
+                    </button>
+                    <a href="{{ route('admin.gallery.create') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 inline-flex items-center">
+                        <i class="fas fa-plus mr-2"></i> Upload Images
+                    </a>
                 </div>
+            </div>
+        </div>
 
-                <div class="card-body">
-                    @if($galleries->count() > 0)
-                        <!-- Bulk Actions Form -->
-                        <form id="bulkDeleteForm" action="{{ route('admin.gallery.bulk-delete') }}" method="POST" style="display: none;">
-                            @csrf
-                            @method('DELETE')
-                            <div id="selectedImagesContainer"></div>
-                        </form>
+        <div class="p-6">
+@if($galleries->count() > 0)
+                <!-- Bulk Actions Form -->
+                <form id="bulkDeleteForm" action="{{ route('admin.gallery.bulk-delete') }}" method="POST" class="hidden">
+                    @csrf
+                    @method('DELETE')
+                    <div id="selectedImagesContainer"></div>
+                </form>
 
-                        <!-- Gallery Grid -->
-                        <div class="row gallery-grid" id="gallery-grid">
-                            @foreach($galleries as $gallery)
-                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-4">
-                                    <div class="gallery-item card h-100">
-                                        <div class="position-relative">
-                                            <div class="form-check position-absolute top-0 start-0 m-2" style="z-index: 10;">
-                                                <input class="form-check-input gallery-checkbox" type="checkbox" 
-                                                       value="{{ $gallery->id }}" id="gallery{{ $gallery->id }}">
-                                            </div>
-                                            
-                                            <div class="gallery-image-container">
-                                                <img src="{{ $gallery->image_url }}" 
-                                                     alt="{{ $gallery->alt_text }}" 
-                                                     class="card-img-top gallery-image"
-                                                     style="height: 200px; object-fit: cover; cursor: pointer;"
-                                                     onclick="openImageModal('{{ $gallery->image_url }}', '{{ $gallery->title }}')">
-                                                
-                                                <!-- Image Overlay -->
-                                                <div class="gallery-overlay">
-                                                    <div class="gallery-actions">
-                                                        <button type="button" class="btn btn-light btn-sm" 
-                                                                onclick="openImageModal('{{ $gallery->image_url }}', '{{ $gallery->title }}')">
-                                                            <i class="ri-eye-line"></i>
-                                                        </button>
-                                                        <a href="{{ route('admin.gallery.edit', $gallery) }}" 
-                                                           class="btn btn-primary btn-sm">
-                                                            <i class="ri-edit-line"></i>
-                                                        </a>
-                                                        <form action="{{ route('admin.gallery.destroy', $gallery) }}" 
-                                                              method="POST" class="d-inline-block" 
-                                                              onsubmit="return confirm('Are you sure you want to delete this image?')">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                                <i class="ri-delete-bin-line"></i>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body p-3">
-                                            <h6 class="card-title mb-2">{{ Str::limit($gallery->title, 30) }}</h6>
-                                            @if($gallery->description)
-                                                <p class="card-text small text-muted mb-2">
-                                                    {{ Str::limit($gallery->description, 50) }}
-                                                </p>
-                                            @endif
-                                            
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <small class="text-muted">Order: {{ $gallery->sort_order }}</small>
-                                                <div>
-                                                    <form action="{{ route('admin.gallery.toggle-status', $gallery) }}" 
-                                                          method="POST" class="d-inline-block">
-                                                        @csrf
-                                                        <button type="submit" class="btn btn-sm {{ $gallery->is_active ? 'btn-success' : 'btn-secondary' }}">
-                                                            {{ $gallery->is_active ? 'Active' : 'Inactive' }}
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="mt-2">
-                                                <small class="text-muted">
-                                                    Uploaded: {{ $gallery->created_at->format('M j, Y') }}
-                                                </small>
-                                            </div>
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6" id="gallery-grid">
+                    @foreach($galleries as $gallery)
+                        <div class="gallery-item bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                            <div class="relative">
+                                <!-- Checkbox -->
+                                <div class="absolute top-2 left-2 z-10">
+                                    <input class="gallery-checkbox w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500" 
+                                           type="checkbox" value="{{ $gallery->id }}" id="gallery{{ $gallery->id }}">
+                                </div>
+                                
+                                <div class="gallery-image-container relative overflow-hidden">
+                                    <img src="{{ $gallery->image_url }}" 
+                                         alt="{{ $gallery->alt_text }}" 
+                                         class="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-110"
+                                         onclick="openImageModal('{{ $gallery->image_url }}', '{{ $gallery->title }}')">
+                                    
+                                    <!-- Image Overlay -->
+                                    <div class="gallery-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <div class="flex items-center space-x-2">
+                                            <button type="button" class="p-2 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-lg text-white transition-colors duration-200" 
+                                                    onclick="openImageModal('{{ $gallery->image_url }}', '{{ $gallery->title }}')">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <a href="{{ route('admin.gallery.edit', $gallery) }}" 
+                                               class="p-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white transition-colors duration-200">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <form action="{{ route('admin.gallery.destroy', $gallery) }}" 
+                                                  method="POST" class="inline" 
+                                                  onsubmit="return confirm('Are you sure you want to delete this image?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="p-2 bg-red-600 hover:bg-red-700 rounded-lg text-white transition-colors duration-200">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
 
-                        <!-- Pagination -->
-                        <div class="row">
-                            <div class="col-12">
-                                {{ $galleries->links() }}
+                            <div class="p-4">
+                                <h3 class="font-medium text-gray-900 mb-2 text-sm">{{ Str::limit($gallery->title, 30) }}</h3>
+                                @if($gallery->description)
+                                    <p class="text-xs text-gray-500 mb-3 line-clamp-2">
+                                        {{ Str::limit($gallery->description, 50) }}
+                                    </p>
+                                @endif
+                                
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-xs text-gray-400">Order: {{ $gallery->sort_order }}</span>
+                                    <form action="{{ route('admin.gallery.toggle-status', $gallery) }}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit" class="px-2 py-1 text-xs font-medium rounded-full transition-colors duration-200 {{ $gallery->is_active ? 'bg-green-100 text-green-800 hover:bg-green-200' : 'bg-gray-100 text-gray-800 hover:bg-gray-200' }}">
+                                            {{ $gallery->is_active ? 'Active' : 'Inactive' }}
+                                        </button>
+                                    </form>
+                                </div>
+                                
+                                <div class="text-xs text-gray-400">
+                                    Uploaded: {{ $gallery->created_at->format('M j, Y') }}
+                                </div>
                             </div>
                         </div>
+                    @endforeach
+                </div>
 
-                    @else
-                        <div class="text-center py-5">
-                            <div class="mb-4">
-                                <i class="ri-image-line" style="font-size: 4rem; color: #ccc;"></i>
-                            </div>
-                            <h5 class="text-muted">No images uploaded yet</h5>
-                            <p class="text-muted">Start building your gallery by uploading some images.</p>
-                            <a href="{{ route('admin.gallery.create') }}" class="btn btn-primary">
-                                <i class="ri-add-line"></i> Upload Images
-                            </a>
-                        </div>
-                    @endif
+                <!-- Pagination -->
+                <div class="mt-8">
+                    {{ $galleries->links() }}
+                </div>
+
+            @else
+                <div class="text-center py-12">
+                    <div class="mb-6">
+                        <i class="fas fa-images text-6xl text-gray-300"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">No images uploaded yet</h3>
+                    <p class="text-gray-500 mb-6">Start building your gallery by uploading some images.</p>
+                    <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200">
+                        <i class="fas fa-plus mr-2"></i> Upload Images
+                    </a>
+                </div>
+            @endif
                 </div>
             </div>
         </div>
@@ -171,16 +190,16 @@
 </div>
 
 <!-- Image Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalTitle"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body text-center">
-                <img id="modalImage" src="" alt="" class="img-fluid">
-            </div>
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-4xl max-h-screen overflow-hidden">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900" id="imageModalTitle"></h3>
+            <button type="button" class="text-gray-400 hover:text-gray-600 transition-colors duration-200" onclick="closeImageModal()">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div class="p-4 text-center">
+            <img id="modalImage" src="" alt="" class="max-w-full max-h-96 object-contain">
         </div>
     </div>
 </div>
@@ -189,69 +208,17 @@
 
 @section('styles')
 <style>
-.gallery-item {
-    transition: transform 0.2s, box-shadow 0.2s;
-    border-radius: 12px;
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.gallery-image-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.gallery-image {
-    transition: transform 0.3s ease;
-}
-
-.gallery-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover .gallery-overlay {
-    opacity: 1;
-}
-
-.gallery-item:hover .gallery-image {
-    transform: scale(1.05);
-}
-
-.gallery-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.gallery-checkbox {
-    background: white;
-    border: 2px solid #ddd;
-}
-
-.gallery-grid .col-xl-2:nth-child(6n+1),
-.gallery-grid .col-lg-3:nth-child(4n+1),
-.gallery-grid .col-md-4:nth-child(3n+1),
-.gallery-grid .col-sm-6:nth-child(2n+1) {
-    clear: left;
 }
 
 @media (max-width: 768px) {
     .gallery-overlay {
-        opacity: 1;
-        background: rgba(0, 0, 0, 0.3);
+        opacity: 1 !important;
+        background: rgba(0, 0, 0, 0.3) !important;
     }
 }
 </style>
@@ -311,10 +278,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function openImageModal(imageUrl, title) {
-    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
-    document.getElementById('modalImage').src = imageUrl;
-    document.getElementById('imageModalTitle').textContent = title;
-    modal.show();
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('imageModalTitle');
+    
+    modalImage.src = imageUrl;
+    modalTitle.textContent = title;
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
 }
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+// Close modal when clicking outside
+document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImageModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
 </script>
 @endsection

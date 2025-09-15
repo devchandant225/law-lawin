@@ -27,8 +27,8 @@
                                 <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2 border border-gray-100">
                                     <!-- Image Container -->
                                     <div class="relative overflow-hidden h-48 bg-gradient-to-br from-blue-100 to-blue-200">
-                                        @if($publication->featured_image)
-                                            <img src="{{ asset('storage/' . $publication->featured_image) }}" 
+                                        @if($publication->feature_image)
+                                            <img src="{{ asset('storage/' . $publication->feature_image_url) }}" 
                                                  alt="{{ $publication->title }}" 
                                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                         @else
@@ -39,40 +39,10 @@
                                                 </svg>
                                             </div>
                                         @endif
-                                        
-                                        <!-- Overlay -->
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        
-                                        <!-- Category Badge -->
-                                        <div class="absolute top-4 left-4">
-                                            <span class="px-3 py-1 bg-secondary text-white text-xs font-semibold rounded-full">
-                                                {{ $publication->post_type ?? 'Publication' }}
-                                            </span>
-                                        </div>
-                                        
-                                        <!-- Read More Button -->
-                                        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                                            <a href="{{ route('publication.show', $publication->slug) }}" 
-                                               class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-50 transition-colors duration-200">
-                                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                                </svg>
-                                            </a>
-                                        </div>
                                     </div>
                                     
                                     <!-- Content Container -->
                                     <div class="p-6">
-                                        <!-- Publication Date -->
-                                        @if($publication->created_at)
-                                            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                                </svg>
-                                                {{ $publication->created_at->format('M d, Y') }}
-                                            </div>
-                                        @endif
-                                        
                                         <!-- Title -->
                                         <h3 class="font-bold text-lg text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
                                             <a href="{{ route('publication.show', $publication->slug) }}" class="hover:text-primary">

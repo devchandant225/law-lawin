@@ -31,25 +31,36 @@
                 <div class="w-full lg:w-1/4 px-4 hidden lg:block">
                     @if ($tableOfContents->count() > 0)
                         <!-- Table of Contents Navigation -->
-                        <div class="sticky top-[5rem] z-50" id="tocSidebar">
-                            <div
-                                class="bg-white rounded-lg shadow-lg overflow-hidden toc-navigation max-h-[calc(100vh-6rem)]">
-                                <div class="bg-primary text-white p-5">
+                        <div class="sticky top-[5rem] z-50 transition-all duration-300" id="tocSidebar">
+                            <div class="bg-white rounded-lg shadow-lg overflow-hidden toc-navigation max-h-[calc(100vh-7rem)] border border-gray-200">
+                                <div class="bg-gradient-to-r from-primary to-secondary text-white p-5">
                                     <h5 class="mb-0 flex items-center text-base font-medium">
                                         <i class="fas fa-list-ol mr-2"></i>
                                         Program Contents
                                     </h5>
                                 </div>
                                 <div class="p-0">
-                                    <nav class="toc-nav max-h-80 overflow-y-auto">
+                                    <nav class="toc-nav max-h-[calc(100vh-15rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
                                         @foreach ($tableOfContents as $content)
                                             <a href="#toc-section-{{ $content->id }}"
-                                                class="toc-nav-link flex items-center no-underline p-3 border-b border-gray-200 text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 border-l-4 border-l-transparent hover:border-l-primary text-sm"
+                                                class="toc-nav-link flex items-center no-underline p-3 border-b border-gray-100 text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 border-l-4 border-l-transparent hover:border-l-white text-sm group"
                                                 data-target="toc-section-{{ $content->id }}">
-                                                <span class="flex-1">{{ Str::limit($content->title, 100) }}</span>
+                                                <span class="flex-1 group-hover:pl-1 transition-all duration-300">{{ Str::limit($content->title, 100) }}</span>
+                                                <i class="fas fa-chevron-right opacity-0 group-hover:opacity-100 ml-2 transform scale-75 group-hover:scale-100 transition-all duration-300"></i>
                                             </a>
                                         @endforeach
                                     </nav>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Indicator -->
+                            <div class="mt-4 bg-white rounded-lg shadow-sm p-3 border border-gray-200">
+                                <div class="flex items-center text-xs text-gray-600">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span>Reading Progress</span>
+                                </div>
+                                <div class="mt-2 bg-gray-200 rounded-full h-2">
+                                    <div id="reading-progress" class="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
                                 </div>
                             </div>
                         </div>
@@ -563,6 +574,53 @@
                     }
                 });
             });
+            
+            // Reading Progress Functionality
+            function updateReadingProgress() {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const progress = (scrollTop / documentHeight) * 100;
+                
+                const progressBar = document.getElementById('reading-progress');
+                if (progressBar) {
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                }
+            }
+            
+            // Enhanced Sticky Sidebar Behavior
+            function handleStickyElem() {
+                const tocSidebar = document.getElementById('tocSidebar');
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (tocSidebar) {
+                    if (scrollTop > 100) {
+                        tocSidebar.classList.add('scrolled');
+                    } else {
+                        tocSidebar.classList.remove('scrolled');
+                    }
+                }
+            }
+            
+            // Add scroll event listeners
+            let ticking = false;
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        updateReadingProgress();
+                        handleStickyElem();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', requestTick);
+            window.addEventListener('resize', requestTick);
+            
+            // Initial call
+            updateReadingProgress();
+            handleStickyElem();
         });
     </script>
 @endpush
@@ -604,8 +662,63 @@
             background-color: #f1f1f1;
         }
 
-        @media (max-width: 768px) {
+        /* Enhanced Sticky Sidebar Styles */
+        #tocSidebar {
+            transition: all 0.3s ease;
+        }
+        
+        #tocSidebar.scrolled {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Custom Scrollbar for Sidebar */
+        .toc-nav::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .toc-nav::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+        
+        .toc-nav::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 2px;
+        }
+        
+        .toc-nav::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Active TOC Link Styling */
+        .toc-nav-link.toc-nav-active {
+            background: linear-gradient(135deg, var(--tw-gradient-stops));
+            --tw-gradient-from: rgb(var(--color-primary));
+            --tw-gradient-to: rgb(var(--color-secondary));
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+            transform: translateX(2px);
+            box-shadow: inset 4px 0 0 white;
+        }
+        
+        /* Smooth animations for sidebar elements */
+        .toc-nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Reading progress animation */
+        #reading-progress {
+            transition: width 0.1s ease-out;
+        }
+        
+        /* Responsive behavior */
+        @media (max-width: 1024px) {
+            #tocSidebar {
+                position: relative !important;
+                top: auto !important;
+            }
+        }
 
+        @media (max-width: 768px) {
             table,
             thead,
             tbody,

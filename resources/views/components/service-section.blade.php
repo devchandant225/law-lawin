@@ -34,7 +34,7 @@
                             <!-- Content Container -->
                             <div class="px-6 py-3 flex flex-col h-[calc(100%-12rem)] text-center">
                                 <!-- Title -->
-                                <h3 class="text-base font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                                <h3 class="text-lg font-semibold text-primary mb-3 group-hover:text-primary transition-colors duration-300">
                                     <a href="{{ route('service.show', $service->slug) }}" class="block">
                                         {{ $service->title }}
                                     </a>
@@ -48,7 +48,7 @@
                                 <!-- Read More Button -->
                                 <div class="mt-auto">
                                     <a href="{{ route('service.show', $service->slug) }}" 
-                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
+                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary hover:bg-secondary  rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
                                         <!-- Button Content -->
                                         <span class="relative z-10">Read More</span>
                                         <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 

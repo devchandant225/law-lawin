@@ -13,38 +13,24 @@
     <section class="relative bg-white">
         <x-about-us />
     </section>
-    
-    {{-- Counter Section --}}
     <x-counter-section />
-    
-    {{-- <x-why-choose-us /> --}}
-    {{-- Services Section Title --}}
     <x-page-section-title title="<span>Services</span>" />
-    {{-- Services Section --}}
+
     <x-service-section :services="$services" :showViewAll="true" :limit="8" />
 
-    {{-- Practices Section Title --}}
-    <x-page-section-title title="<span>Practices</span>" />
-    {{-- Practices Section --}}
-    <x-practice-section :showViewAll="true" :limit="8" />
 
     {{-- Portfolio Section Title --}}
-    <x-page-section-title title="<span>Testimonails</span>" />
-        <x-testimonial />
-    {{-- Portfolio Section --}}
-    {{-- <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10" /> --}}
+    <x-page-section-title title="<span>Testimonials</span>" />
+    <x-testimonial />
 
-    {{-- Testimonial Section - Clients We Served --}}
-    {{-- <x-testimonial-section :portfolios="$portfolios" :limit="8" sectionTitle="<span class=''>Clients We Served</span>"
-        sectionSubtitle="Our Happy Clients" /> --}}
 
-    {{-- Publications Section Title --}}
+
     <x-page-section-title title="<span>Publications</span>" />
     {{-- Publications Section --}}
     @livewire('publication-section', [
         'showViewAll' => true,
         'limit' => 8,
-        'showSearch' => true
+        'showSearch' => true,
     ])
     {{-- Team Section Title --}}
     <x-page-section-title title="<span>Our Team</span>" />

@@ -16,10 +16,10 @@
                     <a href="{{ route('home') }}" class="inline-block transform transition-all duration-300 group-hover:scale-105">
                         @if ($globalProfile && $globalProfile->logo_url)
                             <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}"
-                                class="h-16 lg:h-20 w-auto filter brightness-0 invert">
+                                class="h-16 lg:h-20 w-auto">
                         @else
                             <img src="{{ asset('assets/images/logo-dark.png') }}" alt="{{ config('app.name') }}"
-                                class="h-16 lg:h-20 w-auto filter brightness-0 invert">
+                                class="h-16 lg:h-20 w-auto">
                         @endif
                     </a>
                 </div>

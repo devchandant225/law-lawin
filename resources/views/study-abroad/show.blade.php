@@ -34,7 +34,7 @@
                         <div class="sticky top-[5rem] z-50 transition-all duration-300" id="tocSidebar">
                             <div class="bg-white rounded-lg shadow-lg overflow-hidden toc-navigation max-h-[calc(100vh-7rem)] border border-gray-200">
                                 <div class="bg-gradient-to-r from-primary to-secondary text-white p-5">
-                                    <h5 class="mb-0 flex items-center text-base font-medium">
+                                    <h5 class="mb-0 flex items-center text-base font-medium text-gray-50">
                                         <i class="fas fa-list-ol mr-2"></i>
                                         Program Contents
                                     </h5>

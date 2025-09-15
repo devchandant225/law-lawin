@@ -106,7 +106,7 @@
 </div>
 @endsection
 
-@section('styles')
+
 <style>
 .dropzone {
     border: 2px dashed #d1d5db;
@@ -180,9 +180,8 @@
     border-color: #2563eb;
 }
 </style>
-@endsection
 
-@section('scripts')
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const imageInput = document.getElementById('images');
@@ -202,16 +201,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle file input change
     imageInput.addEventListener('change', function(e) {
         console.log('Files selected:', e.target.files.length);
-        handleFiles(e.target.files);
         
-        // Simple fallback - enable button if files are selected
+        // Enable button immediately if files are selected
         if (e.target.files.length > 0) {
             submitBtn.disabled = false;
-            console.log('Submit button enabled via fallback');
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            console.log('Submit button enabled - files selected');
         } else {
             submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
             console.log('Submit button disabled - no files');
         }
+        
+        // Handle file processing for preview
+        handleFiles(e.target.files);
     });
 
     // Handle drag and drop
@@ -352,35 +355,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form validation before submit
     document.getElementById('gallery-form').addEventListener('submit', function(e) {
-        const titles = document.querySelectorAll('input[name="titles[]"]');
-        let hasEmptyTitle = false;
-        
-        titles.forEach(input => {
-            if (input.value.trim() === '') {
-                hasEmptyTitle = true;
-                input.classList.add('border-red-500');
-                input.classList.remove('border-gray-300');
-            } else {
-                input.classList.remove('border-red-500');
-                input.classList.add('border-gray-300');
-            }
-        });
-        
-        if (hasEmptyTitle) {
-            e.preventDefault();
-            alert('Please fill in all required title fields.');
-            return false;
-        }
-        
-        if (selectedFiles.length === 0) {
+        // Check if files are selected using the file input
+        if (!imageInput.files || imageInput.files.length === 0) {
             e.preventDefault();
             alert('Please select at least one image to upload.');
             return false;
         }
+        
+        // Only check titles if preview is shown (advanced mode)
+        const titles = document.querySelectorAll('input[name="titles[]"]');
+        if (titles.length > 0) {
+            let hasEmptyTitle = false;
+            
+            titles.forEach(input => {
+                if (input.value.trim() === '') {
+                    hasEmptyTitle = true;
+                    input.classList.add('border-red-500');
+                    input.classList.remove('border-gray-300');
+                } else {
+                    input.classList.remove('border-red-500');
+                    input.classList.add('border-gray-300');
+                }
+            });
+            
+            if (hasEmptyTitle) {
+                e.preventDefault();
+                alert('Please fill in all required title fields.');
+                return false;
+            }
+        }
 
         // Disable submit button to prevent double submission
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="ri-loader-line spinner-border spinner-border-sm"></i> Uploading...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Uploading...';
     });
 });
 
@@ -394,12 +401,14 @@ function enableSubmitButton() {
     if (imageInput && submitBtn) {
         if (imageInput.files && imageInput.files.length > 0) {
             submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             console.log('Submit button enabled by global function');
         } else {
             submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
             console.log('Submit button disabled by global function');
         }
     }
 }
 </script>
-@endsection
+

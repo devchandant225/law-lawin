@@ -7,7 +7,6 @@ use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
 
 class GalleryController extends Controller
 {
@@ -56,23 +55,11 @@ class GalleryController extends Controller
                     // Store original image
                     Storage::disk('public')->put($path, file_get_contents($image));
 
-                    // Create optimized version using Intervention Image if available
+                    // Create optimized version using native GD library
                     try {
-                        $fullPath = storage_path('app/public/' . $path);
-                        $img = Image::make($fullPath);
-                        
-                        // Resize if too large (max 1920px width)
-                        if ($img->width() > 1920) {
-                            $img->resize(1920, null, function ($constraint) {
-                                $constraint->aspectRatio();
-                                $constraint->upsize();
-                            });
-                        }
-                        
-                        // Optimize quality
-                        $img->save($fullPath, 85);
+                        $this->optimizeImage(storage_path('app/public/' . $path));
                     } catch (\Exception $e) {
-                        // If Intervention Image is not available, continue with original
+                        // If optimization fails, continue with original
                     }
 
                     // Create gallery record
@@ -152,19 +139,9 @@ class GalleryController extends Controller
 
                 Storage::disk('public')->put($path, file_get_contents($image));
 
-                // Optimize image if Intervention Image is available
+                // Optimize image using native GD library
                 try {
-                    $fullPath = storage_path('app/public/' . $path);
-                    $img = Image::make($fullPath);
-                    
-                    if ($img->width() > 1920) {
-                        $img->resize(1920, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                            $constraint->upsize();
-                        });
-                    }
-                    
-                    $img->save($fullPath, 85);
+                    $this->optimizeImage(storage_path('app/public/' . $path));
                 } catch (\Exception $e) {
                     // Continue with original if optimization fails
                 }
@@ -250,5 +227,93 @@ class GalleryController extends Controller
         
         return redirect()->back()
             ->with('success', "Gallery image {$status} successfully!");
+    }
+
+    /**
+     * Optimize image using native PHP GD library
+     */
+    private function optimizeImage($imagePath, $maxWidth = 1920, $quality = 85)
+    {
+        if (!file_exists($imagePath)) {
+            return false;
+        }
+
+        // Get image info
+        $imageInfo = getimagesize($imagePath);
+        if (!$imageInfo) {
+            return false;
+        }
+
+        $width = $imageInfo[0];
+        $height = $imageInfo[1];
+        $mimeType = $imageInfo['mime'];
+
+        // Skip if image is already small enough
+        if ($width <= $maxWidth) {
+            return true;
+        }
+
+        // Create image resource based on mime type
+        switch ($mimeType) {
+            case 'image/jpeg':
+                $source = imagecreatefromjpeg($imagePath);
+                break;
+            case 'image/png':
+                $source = imagecreatefrompng($imagePath);
+                break;
+            case 'image/gif':
+                $source = imagecreatefromgif($imagePath);
+                break;
+            case 'image/webp':
+                $source = imagecreatefromwebp($imagePath);
+                break;
+            default:
+                return false;
+        }
+
+        if (!$source) {
+            return false;
+        }
+
+        // Calculate new dimensions
+        $ratio = $height / $width;
+        $newWidth = $maxWidth;
+        $newHeight = (int) ($maxWidth * $ratio);
+
+        // Create new image
+        $destination = imagecreatetruecolor($newWidth, $newHeight);
+
+        // Preserve transparency for PNG and GIF
+        if ($mimeType === 'image/png' || $mimeType === 'image/gif') {
+            imagealphablending($destination, false);
+            imagesavealpha($destination, true);
+            $transparent = imagecolorallocatealpha($destination, 255, 255, 255, 127);
+            imagefilledrectangle($destination, 0, 0, $newWidth, $newHeight, $transparent);
+        }
+
+        // Resize image
+        imagecopyresampled($destination, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+        // Save optimized image
+        switch ($mimeType) {
+            case 'image/jpeg':
+                imagejpeg($destination, $imagePath, $quality);
+                break;
+            case 'image/png':
+                imagepng($destination, $imagePath, (int) (9 - ($quality / 10)));
+                break;
+            case 'image/gif':
+                imagegif($destination, $imagePath);
+                break;
+            case 'image/webp':
+                imagewebp($destination, $imagePath, $quality);
+                break;
+        }
+
+        // Clean up memory
+        imagedestroy($source);
+        imagedestroy($destination);
+
+        return true;
     }
 }

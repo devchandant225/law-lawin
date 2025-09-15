@@ -9,16 +9,11 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="text-center space-y-6 mb-16">
-            <!-- Tagline Badge -->
-            <div class="inline-flex items-center space-x-3 px-5 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20">
-                <span class="text-sm font-semibold text-secondary uppercase tracking-wider">Why Choose Us</span>
-            </div>
-
             <!-- Main Title -->
             <div class="space-y-4">
                 <h2 class="font-bold text-gray-800 leading-tight">
                     <span class="text-primary text-4xl">
-                        Your Trusted Partner for Study Abroad Success
+                        Your Trusted Partner for <span class="text-secondary">Study Abroad</span> Success
                     </span>
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -35,7 +30,7 @@
                 
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-xl"></i>
                         </div>
                     </div>
@@ -49,11 +44,11 @@
 
             <!-- Feature 2: Personalized Support -->
             <div class="group relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-t-xl"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary rounded-t-xl"></div>
                 
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                             <i class="fas fa-user-check text-white text-xl"></i>
                         </div>
                     </div>
@@ -67,11 +62,11 @@
 
             <!-- Feature 3: Comprehensive Services -->
             <div class="group relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-t-xl"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary rounded-t-xl"></div>
                 
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                             <i class="fas fa-cogs text-white text-xl"></i>
                         </div>
                     </div>
@@ -85,11 +80,11 @@
 
             <!-- Feature 4: Strong University Partnerships -->
             <div class="group relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-t-xl"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary rounded-t-xl"></div>
                 
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                             <i class="fas fa-handshake text-white text-xl"></i>
                         </div>
                     </div>
@@ -103,11 +98,11 @@
 
             <!-- Feature 5: Proven Track Record -->
             <div class="group relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-t-xl"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary rounded-t-xl"></div>
                 
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                             <i class="fas fa-trophy text-white text-xl"></i>
                         </div>
                     </div>
@@ -121,11 +116,11 @@
 
             <!-- Feature 6: Student-Centric Approach -->
             <div class="group relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary rounded-t-xl"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary rounded-t-xl"></div>
                 
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
                             <i class="fas fa-heart text-white text-xl"></i>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
         <x-about-us />
     </section>
 
-    {{-- Why Choose Us Section --}}
+    <x-page-section-title title="<span>Why Choose Us</span>" />
     <x-why-choose-us />
 
     <x-counter-section />
@@ -30,12 +30,7 @@
 
 
     <x-page-section-title title="<span>Study Abroad</span>" />
-    {{-- Publications Section --}}
-    {{-- @livewire('publication-section', [
-        'showViewAll' => true,
-        'limit' => 8,
-        'showSearch' => true,
-    ]) --}}
+
     <x-publication-section />
 
     <x-page-section-title title="<span>Blogs & News</span>" />

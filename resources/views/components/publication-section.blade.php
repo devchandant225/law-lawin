@@ -59,14 +59,6 @@
                                         
                                         <!-- Footer -->
                                         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                            <!-- Author/Status -->
-                                            <div class="flex items-center gap-2">
-                                                @if($publication->status)
-                                                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                                                    <span class="text-xs text-gray-500">Published</span>
-                                                @endif
-                                            </div>
-                                            
                                             <!-- Read More Link -->
                                             <a href="{{ route('publication.show', $publication->slug) }}" 
                                                class="text-primary hover:text-blue-700 text-sm font-medium flex items-center gap-1 group/link">

@@ -43,7 +43,7 @@
     {{-- <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="false" :limit="4" /> --}}
 
     {{-- Contact Section Title --}}
-    <x-page-section-title title="<span>Reach out for the best Legal Advice</span>" />
+    <x-page-section-title title="<span>Reach Out for Expert Study Abroad Guidance</span>" />
     {{-- Contact Section --}}
     <x-contact-section :contactInfo="[
         'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',

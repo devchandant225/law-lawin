@@ -53,6 +53,7 @@ class PublicationSection extends Component
 
     /**
      * Get publications for the publication section component
+     * Now specifically fetches only study-abroad post type
      *
      * @param int|null $limit
      * @param string $status
@@ -60,7 +61,7 @@ class PublicationSection extends Component
      */
     public function getPublications($limit = 8, $status = 'active')
     {
-        $query = Publication::active()->ordered();
+        $query = Publication::active()->studyAbroad()->ordered();
 
         if ($limit) {
             $query->limit($limit);
@@ -91,6 +92,7 @@ class PublicationSection extends Component
 
     /**
      * Get featured publications (you can customize this logic)
+     * Now specifically fetches only study-abroad post type
      *
      * @param int $limit
      * @return \Illuminate\Database\Eloquent\Collection
@@ -98,6 +100,7 @@ class PublicationSection extends Component
     public function getFeaturedPublications($limit = 4)
     {
         return Publication::active()
+                  ->studyAbroad()
                   ->whereNotNull('feature_image')
                   ->ordered()
                   ->limit($limit)
@@ -106,6 +109,7 @@ class PublicationSection extends Component
 
     /**
      * Get publications with pagination for admin or large lists
+     * Now specifically fetches only study-abroad post type
      *
      * @param int $perPage
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
@@ -113,12 +117,14 @@ class PublicationSection extends Component
     public function getPaginatedPublications($perPage = 12)
     {
         return Publication::active()
+                  ->studyAbroad()
                   ->ordered()
                   ->paginate($perPage);
     }
 
     /**
      * Get related publications (exclude current publication)
+     * Now specifically fetches only study-abroad post type
      *
      * @param string $currentSlug
      * @param int $limit
@@ -127,6 +133,7 @@ class PublicationSection extends Component
     public function getRelatedPublications($currentSlug, $limit = 3)
     {
         return Publication::active()
+                  ->studyAbroad()
                   ->where('slug', '!=', $currentSlug)
                   ->ordered()
                   ->limit($limit)
@@ -135,6 +142,7 @@ class PublicationSection extends Component
 
     /**
      * Search publications by title or description
+     * Now specifically searches only study-abroad post type
      *
      * @param string $query
      * @param int $limit
@@ -143,6 +151,7 @@ class PublicationSection extends Component
     public function searchPublications($query, $limit = 10)
     {
         return Publication::active()
+                  ->studyAbroad()
                   ->where(function($q) use ($query) {
                       $q->where('title', 'LIKE', "%{$query}%")
                         ->orWhere('description', 'LIKE', "%{$query}%")
@@ -155,16 +164,17 @@ class PublicationSection extends Component
 
     /**
      * Get publication statistics
+     * Now specifically provides stats for study-abroad post type
      *
      * @return array
      */
     public function getPublicationStats()
     {
         return [
-            'total' => Publication::count(),
-            'active' => Publication::active()->count(),
-            'with_images' => Publication::active()->whereNotNull('feature_image')->count(),
-            'recent' => Publication::active()->where('created_at', '>=', now()->subDays(30))->count(),
+            'total' => Publication::studyAbroad()->count(),
+            'active' => Publication::active()->studyAbroad()->count(),
+            'with_images' => Publication::active()->studyAbroad()->whereNotNull('feature_image')->count(),
+            'recent' => Publication::active()->studyAbroad()->where('created_at', '>=', now()->subDays(30))->count(),
         ];
     }
 

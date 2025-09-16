@@ -13,12 +13,6 @@
                             <a href="#">Home</a>
                         </li>
 
-<<<<<<< HEAD
-                        <!-- About -->
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-=======
                               @if ($globalProfile && $globalProfile->linkedin_link)
                                   <a href="{{ $globalProfile->linkedin_link }}">
                                       <i class="fab fa-linkedin"></i>
@@ -56,7 +50,6 @@
                               <li>
                                   <a href="{{ route('home') }}">Home</a>
                               </li>
->>>>>>> main
 
                         <!-- Study Abroad with Countries Dropdown -->
                         <li class="dropdown">

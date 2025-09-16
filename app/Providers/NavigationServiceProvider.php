@@ -73,9 +73,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationServices()
     {
-        return cache()->remember('nav_services', 3600, function () {
-            return Post::where('type', 'service')->active()->orderBy('title', 'asc')->select('id', 'title', 'slug', 'excerpt')->limit(15)->get();
-        });
+        return Post::where('type', 'service')->active()->orderBy('title', 'asc')->select('id', 'title', 'slug', 'excerpt')->limit(15)->get();
     }
 
     /**
@@ -85,9 +83,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationPublications()
     {
-        return cache()->remember('nav_publications', 3600, function () {
-            return Publication::active()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
-        });
+        return Publication::active()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
     }
 
     /**
@@ -97,9 +93,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationPracticeAreas()
     {
-        return cache()->remember('nav_practice_areas', 3600, function () {
-            return Post::where('type', 'practice')->active()->orderBy('title', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
-        });
+        return Post::where('type', 'practice')->active()->orderBy('title', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
     }
 
     /**
@@ -109,9 +103,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationNews()
     {
-        return cache()->remember('nav_news', 3600, function () {
-            return Post::where('type', 'news')->active()->orderBy('created_at', 'desc')->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
-        });
+        return Post::where('type', 'news')->active()->orderBy('created_at', 'desc')->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
     }
 
     /**
@@ -121,9 +113,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationTeamMembers()
     {
-        return cache()->remember('nav_team_members', 3600, function () {
-            return Team::active()->ordered()->select('id', 'name', 'slug', 'designation', 'image')->limit(10)->get();
-        });
+        return Team::active()->ordered()->select('id', 'name', 'slug', 'designation', 'image')->limit(10)->get();
     }
 
     /**
@@ -154,9 +144,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationStudyAbroad()
     {
-        return cache()->remember('nav_study_abroad', 3600, function () {
-            return Publication::active()->studyAbroad()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
-        });
+        return Publication::active()->studyAbroad()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
     }
 
     /**
@@ -166,9 +154,7 @@ class NavigationServiceProvider extends ServiceProvider
      */
     private function getNavigationLearningCenter()
     {
-        return cache()->remember('nav_learning_center', 3600, function () {
-            return Publication::active()->learningCenter()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
-        });
+        return Publication::active()->learningCenter()->ordered()->select('id', 'title', 'slug', 'excerpt')->limit(10)->get();
     }
 
     /**

@@ -1,6 +1,6 @@
 <!-- Modern Contact Section -->
 <section class="relative py-8 overflow-hidden bg-white" id="contact" data-aos="fade-up" data-aos-duration="800">
-    <div class="container mx-auto px-4 relative z-10">
+    <div class="mx-auto px-4 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
             
             <!-- Left Column - Contact Information -->

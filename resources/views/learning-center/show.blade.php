@@ -24,7 +24,7 @@
     ]" />
 
     <!-- Main Content Section -->
-    <section class="pt-0">
+    <section class="pt-4">
         <div class="px-3">
             <div class="flex flex-wrap -mx-4">
                 <!-- Sidebar - Table of Contents (Hidden on Mobile) -->
@@ -34,8 +34,8 @@
                         <div class="sticky top-[5rem] z-50" id="tocSidebar">
                             <div
                                 class="bg-white rounded-lg shadow-lg overflow-hidden toc-navigation max-h-[calc(100vh-6rem)]">
-                                <div class="bg-primary text-white p-5">
-                                    <h5 class="mb-0 flex items-center text-base font-medium">
+                                <div class="bg-primary text-gray-50 p-5">
+                                    <h5 class="mb-0 flex items-center text-base font-medium text-gray-50 ">
                                         <i class="fas fa-list-ol mr-2"></i>
                                         Resource Contents
                                     </h5>
@@ -89,10 +89,10 @@
                     @if ($tableOfContents->count() > 0)
                         @foreach ($tableOfContents as $content)
                             <section id="toc-section-{{ $content->id }}" class="bg-white toc-content-section">
-                                <div class="p-6 md:p-8">
-                                    <div class="flex items-start mb-4">
+                                <div class="px-2 py-2">
+                                    <div class="flex items-start">
                                         <div class="flex-1">
-                                            <h3 class="content-title text-2xl md:text-3xl font-normal text-gray-900 mb-4">
+                                            <h3 class="content-title text-2xl md:text-3xl font-normal text-primary mb-4">
                                                 {{ $content->title }}</h3>
                                             @if ($content->description)
                                                 <div class="toc-content text-gray-700 leading-relaxed">

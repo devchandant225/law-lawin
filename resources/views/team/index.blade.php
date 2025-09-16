@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('head')
-    <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
+    <x-meta-tags :title="'Our Education Team - Expert Study Abroad Consultants'" :description="'Meet our experienced team of education consultants. Expert advisors and study abroad specialists ready to guide your international education journey with dedication and expertise.'" :keywords="'education team, study abroad consultants, education advisors, international education, study abroad experts, education consultancy'" :image="asset('images/team-banner.jpg')" type="website" />
 @endsection
 
 @section('content')
     {{-- Page Banner --}}
     <x-page-banner title="Our Team"
-        subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"
+        subtitle="Meet our dedicated team of education consultants who bring years of experience, expertise, and passion to guide your study abroad journey with excellence and personalized support"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Our Team']]" />
 
     {{-- Modern Team Section with Tailwind CSS --}}
@@ -50,7 +50,7 @@
                                         </a>
                                     </h3>
                                     <p class="text-gray-600 font-normal text-sm mb-2">
-                                        {{ $member->designation ?: 'Legal Professional' }}</p>
+                                        {{ $member->designation ?: 'Education Consultant' }}</p>
 
                                     <!-- Contact Info -->
                                     <div class="space-y-2 text-xs text-gray-500">
@@ -106,8 +106,8 @@
                         <i class="fas fa-users text-3xl text-gray-400"></i>
                     </div>
                     <h4 class="text-2xl font-bold text-gray-800 mb-4">No team members available at the moment.</h4>
-                    <p class="text-gray-600 max-w-md mx-auto">Please check back later to meet our amazing team of legal
-                        professionals.</p>
+                    <p class="text-gray-600 max-w-md mx-auto">Please check back later to meet our amazing team of education
+                        consultants and study abroad specialists.</p>
                 </div>
             @endif
         </div>

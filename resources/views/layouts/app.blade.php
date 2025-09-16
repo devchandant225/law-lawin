@@ -30,7 +30,7 @@
     @livewireStyles
     <style>
         ul {
-            list-style: disc;
+            list-style: disc !important;
         }
     </style>
     @stack('styles')

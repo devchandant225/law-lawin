@@ -267,7 +267,7 @@
                 <!-- Mobile menu button -->
                 <div class="lg:hidden">
                     <button type="button"
-                        class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors">
+                        class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary hover:bg-gray-100 transition-colors">
                         <span class="sr-only">Open main menu</span>
                         <div class="hamburger-icon w-6 h-6 flex flex-col justify-center items-center">
                             <span
@@ -298,7 +298,7 @@
             <nav class="flex-1 px-4 py-6 space-y-4">
                 <a href="{{ route('home') }}"
                     class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
-                <a href="/about/introduction"
+                <a href="/about"
                     class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About
                     Us</a>
 
@@ -384,6 +384,16 @@
     }
 
     #main-header.scrolled .mobile-nav__toggler:hover {
+        color: #139fba;
+        background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    /* Default mobile nav toggler styles - visible from start */
+    .mobile-nav__toggler {
+        color: rgb(75, 85, 99);
+    }
+
+    .mobile-nav__toggler:hover {
         color: #139fba;
         background-color: rgba(59, 130, 246, 0.1);
     }

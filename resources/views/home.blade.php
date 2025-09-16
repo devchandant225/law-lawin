@@ -33,6 +33,9 @@
 
     <x-publication-section />
 
+    {{-- Our Process Section --}}
+    <x-process-section />
+
     <x-page-section-title title="<span>Blogs & News</span>" />
     @livewire('blog-posts')
 

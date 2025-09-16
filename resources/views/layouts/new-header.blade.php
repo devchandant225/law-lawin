@@ -1,5 +1,5 @@
 <!-- Top Contact Bar - Scrollable -->
-<div class="header-top bg-primary border-b border-white/20 sm:py-2 transition-all duration-300" id="top-header">
+<div class="header-top bg-primary border-b border-white/20 sm:py-2 transition-all duration-300 lg:block hidden" id="top-header">
     <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
         <div class="flex justify-between items-center">
             <!-- Contact Info -->

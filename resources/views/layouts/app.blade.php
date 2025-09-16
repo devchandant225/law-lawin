@@ -31,6 +31,7 @@
     <style>
         ul {
             list-style: disc !important;
+            margin-left: 50px !important;
         }
     </style>
     @stack('styles')

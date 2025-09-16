@@ -63,7 +63,7 @@
                         @if ($learningCenter->feature_image_url)
                             <div class="publication-image-wrapper">
                                 <img src="{{ $learningCenter->feature_image_url }}" alt="{{ $learningCenter->title }}"
-                                    class="w-full h-96 object-cover publication-feature-image">
+                                    class="w-full h-[26rem] object-cover publication-feature-image">
                             </div>
                         @endif
                         <div class="p-6">
@@ -88,7 +88,7 @@
                     <!-- Table of Contents Content Sections -->
                     @if ($tableOfContents->count() > 0)
                         @foreach ($tableOfContents as $content)
-                            <section id="toc-section-{{ $content->id }}" class="bg-white toc-content-section">
+                            <section id="toc-section-{{ $content->id }}" class="bg-white toc-content-section mt-2">
                                 <div class="px-2 py-2">
                                     <div class="flex items-start">
                                         <div class="flex-1">

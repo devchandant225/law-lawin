@@ -44,13 +44,15 @@
     {{-- Contact Section Title --}}
     <x-page-section-title title="<span>Reach Out for Expert Study Abroad Guidance</span>" />
     {{-- Contact Section --}}
-    <x-contact-section :contactInfo="[
-        'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
-        'phone' => '+9779841933745',
-        'email' => 'info@lawinpartners.com',
-        'workingHours' => [
-            'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
-            'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
-        ],
-    ]" :showSocialLinks="true" />
+    <div class="container mx-auto">
+        <x-contact-section :contactInfo="[
+            'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+            'phone' => '+9779841933745',
+            'email' => 'info@lawinpartners.com',
+            'workingHours' => [
+                'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
+                'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
+            ],
+        ]" :showSocialLinks="true" />
+    </div>
 @endsection

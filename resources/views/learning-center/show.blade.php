@@ -75,10 +75,10 @@
                                 </span>
                             </div>
                             
-                            <h2 class="publication-summary-title text-3xl md:text-4xl font-normal text-gray-900 mb-4">
+                            <h2 class="publication-summary-title text-3xl md:text-4xl font-semibold text-primary mb-4">
                                 {{ $learningCenter->title }}</h2>
                             @if ($learningCenter->description)
-                                <div class="publication-content text-gray-700 leading-relaxed">
+                                <div class="publication-content text-gray-700 leading-relaxed text-lg">
                                     {!! $learningCenter->description !!}
                                 </div>
                             @endif
@@ -95,7 +95,7 @@
                                             <h3 class="content-title text-2xl md:text-3xl font-semibold text-primary mb-4">
                                                 {{ $content->title }}</h3>
                                             @if ($content->description)
-                                                <div class="toc-content text-gray-700 leading-relaxed">
+                                                <div class="toc-content text-gray-700 leading-relaxed text-lg">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif

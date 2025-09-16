@@ -28,7 +28,11 @@
 
     <!-- Livewire Styles -->
     @livewireStyles
-
+    <style>
+        ul {
+            list-style: disc;
+        }
+    </style>
     @stack('styles')
 </head>
 

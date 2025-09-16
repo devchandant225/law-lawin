@@ -92,7 +92,7 @@
                                 <div class="px-2 py-2">
                                     <div class="flex items-start">
                                         <div class="flex-1">
-                                            <h3 class="content-title text-2xl md:text-3xl font-normal text-primary mb-4">
+                                            <h3 class="content-title text-2xl md:text-3xl font-semibold text-primary mb-4">
                                                 {{ $content->title }}</h3>
                                             @if ($content->description)
                                                 <div class="toc-content text-gray-700 leading-relaxed">

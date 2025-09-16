@@ -1,7 +1,7 @@
 <!-- Modern Contact Section -->
 <section class="relative py-8 overflow-hidden bg-white" id="contact" data-aos="fade-up" data-aos-duration="800">
-    <div class="mx-auto px-4 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+    <div class="mx-auto relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mx-auto">
             
             <!-- Left Column - Contact Information -->
             <div class="space-y-8 bg-gradient-to-b from-accent to-accent px-4 py-3 rounded-lg" data-aos="fade-right" data-aos-delay="200">

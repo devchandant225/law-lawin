@@ -87,7 +87,7 @@
                     <a href="{{ route('home') }}" class="flex-shrink-0">
                         @if ($globalProfile && $globalProfile->logo_url)
                             <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}"
-                                class="h-12 w-auto header-logo">
+                                class="h-12 w-[12rem] header-logo">
                         @else
                             <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}"
                                 class="h-12 w-auto header-logo">

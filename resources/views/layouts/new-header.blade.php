@@ -1,5 +1,5 @@
 <!-- Top Contact Bar - Scrollable -->
-<div class="header-top bg-white border-b border-gray-200 py-2 transition-all duration-300" id="top-header">
+<div class="header-top bg-white border-b border-gray-200 py-1 transition-all duration-300" id="top-header">
     <div class="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8">
         <!-- Desktop Layout -->
         <div class="hidden md:flex justify-between items-center">

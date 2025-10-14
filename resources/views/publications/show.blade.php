@@ -66,8 +66,8 @@
                                     class="w-full h-96 object-cover publication-feature-image">
                             </div>
                         @endif
-                        <div class="p-6">
-                            <h2 class="publication-summary-title text-3xl md:text-4xl font-normal text-gray-900 mb-4">
+                        <div class="py-3 px-2">
+                            <h2 class="publication-summary-title text-3xl md:text-4xl font-semibold text-accent mb-4">
                                 {{ $publication->title }}</h2>
                             @if ($publication->description)
                                 <div class="publication-content text-gray-700 leading-relaxed">

@@ -8,7 +8,8 @@
     <x-page-banner title="Contact Us"
         subtitle="Get in touch with our expert legal team for professional consultation and assistance." :breadcrumbs="[['label' => 'Home', 'url' => route('home')], ['label' => 'Contact Us']]"
         backgroundImage="assets/images/backgrounds/page-header-contact-bg.jpg" />
-
+    {{-- Contact Section Title --}}
+    <x-page-section-title title="<span>Contact Us</span>" />
     {{-- Contact Section --}}
     <x-contact-section :contactInfo="[
         'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',

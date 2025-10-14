@@ -1,7 +1,7 @@
 <div class="h-[120px]">
     <div class="absolute top-0 left-0 w-full z-30">
         <!-- Breadcrumb Style Banner with Primary Color Background -->
-        <section class="relative h-[200px] flex items-center overflow-hidden pt-[4rem] bg-primary">
+        <section class="relative h-[230px] flex items-center overflow-hidden pt-[4rem] bg-cyan-500/40">
             <!-- Content Container -->
             <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-left">
 

@@ -9,12 +9,13 @@
     <x-page-banner title="Our Team"
         subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Our Team']]" />
-
+    {{-- Contact Section Title --}}
+    <x-page-section-title title="<span>Our Team</span>" />
     {{-- Modern Team Section with Tailwind CSS --}}
     <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-      
+
         <div class="container mx-auto px-4 relative z-10">
-          
+
 
             @if ($teams->isNotEmpty())
                 <!-- Team Grid -->

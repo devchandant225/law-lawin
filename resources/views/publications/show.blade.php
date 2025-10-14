@@ -81,7 +81,7 @@
                     @if ($tableOfContents->count() > 0)
                         @foreach ($tableOfContents as $content)
                             <section id="toc-section-{{ $content->id }}" class="bg-white toc-content-section">
-                                <div class="">
+                                <div class="py-3">
                                     <div class="flex items-start">
                                         <div class="flex-1">
                                             <h3 class="content-title text-2xl md:text-3xl font-normal text-gray-900 mb-4">

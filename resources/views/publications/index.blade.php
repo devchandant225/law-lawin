@@ -6,9 +6,11 @@
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner title="Legal Publications"
+    <x-page-banner title=""
         subtitle="Explore our comprehensive collection of legal publications, research papers, and professional resources"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Publications']]" />
+    {{-- Publications Section Title --}}
+    <x-page-section-title title="<span>Publications</span>" />
     {{-- Publications Section --}}
     @livewire('publication-section', [
         'showViewAll' => true,

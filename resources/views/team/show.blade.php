@@ -122,55 +122,122 @@
                             </div>
                             Professional Profile
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Tab Navigation -->
+                        <div class="flex flex-wrap border-b border-gray-200 mb-6" role="tablist">
                             @if($team->experience)
-                                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                            <i class="fas fa-clock text-white text-lg"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-lg font-semibold text-gray-900 mb-2">Experience</h5>
-                                            <p class="text-gray-600">{{ $team->experience }}+ years of legal practice</p>
+                                <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300 active" 
+                                        onclick="switchTab(event, 'experience-tab')" role="tab" aria-controls="experience-tab" aria-selected="true">
+                                    <div class="w-6 h-6 bg-green-500 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-clock text-white text-xs"></i>
+                                    </div>
+                                    Experience
+                                </button>
+                            @endif
+                            
+                            @if($team->qualification)
+                                <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300 {{ !$team->experience ? 'active' : '' }}" 
+                                        onclick="switchTab(event, 'education-tab')" role="tab" aria-controls="education-tab" aria-selected="{{ !$team->experience ? 'true' : 'false' }}">
+                                    <div class="w-6 h-6 bg-purple-500 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-graduation-cap text-white text-xs"></i>
+                                    </div>
+                                    Education
+                                </button>
+                            @endif
+                            
+                            <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300 {{ !$team->experience && !$team->qualification ? 'active' : '' }}" 
+                                    onclick="switchTab(event, 'specialization-tab')" role="tab" aria-controls="specialization-tab" aria-selected="{{ !$team->experience && !$team->qualification ? 'true' : 'false' }}">
+                                <div class="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-gavel text-white text-xs"></i>
+                                </div>
+                                Specialization
+                            </button>
+                            
+                            <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300" 
+                                    onclick="switchTab(event, 'availability-tab')" role="tab" aria-controls="availability-tab" aria-selected="false">
+                                <div class="w-6 h-6 bg-red-500 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-white text-xs"></i>
+                                </div>
+                                Availability
+                            </button>
+                        </div>
+                        
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            @if($team->experience)
+                                <div id="experience-tab" class="tab-panel active" role="tabpanel" aria-labelledby="experience-tab">
+                                    <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
+                                        <div class="flex items-start gap-6">
+                                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-clock text-white text-xl"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h4 class="text-2xl font-bold text-gray-900 mb-4">Experience</h4>
+                                                <p class="text-gray-600 text-lg leading-relaxed mb-4">{{ $team->experience }}+ years of legal practice</p>
+                                                <p class="text-gray-500 text-sm">With over {{ $team->experience }} years in the legal field, {{ $team->name }} brings extensive experience and deep knowledge to every case, ensuring clients receive the highest quality legal representation.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                             
                             @if($team->qualification)
-                                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                            <i class="fas fa-graduation-cap text-white text-lg"></i>
-                                        </div>
-                                        <div>
-                                            <h5 class="text-lg font-semibold text-gray-900 mb-2">Education</h5>
-                                            <p class="text-gray-600">{{ $team->qualification }}</p>
+                                <div id="education-tab" class="tab-panel {{ !$team->experience ? 'active' : '' }}" role="tabpanel" aria-labelledby="education-tab">
+                                    <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
+                                        <div class="flex items-start gap-6">
+                                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h4 class="text-2xl font-bold text-gray-900 mb-4">Education</h4>
+                                                <p class="text-gray-600 text-lg leading-relaxed mb-4">{{ $team->qualification }}</p>
+                                                <p class="text-gray-500 text-sm">{{ $team->name }} has completed rigorous academic training in law, providing a solid foundation for professional legal practice and continuous learning in the ever-evolving legal landscape.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                             
-                            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                        <i class="fas fa-gavel text-white text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-lg font-semibold text-gray-900 mb-2">Specialization</h5>
-                                        <p class="text-gray-600">{{ $team->designation }}</p>
+                            <div id="specialization-tab" class="tab-panel {{ !$team->experience && !$team->qualification ? 'active' : '' }}" role="tabpanel" aria-labelledby="specialization-tab">
+                                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
+                                    <div class="flex items-start gap-6">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-gavel text-white text-xl"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Specialization</h4>
+                                            <p class="text-gray-600 text-lg leading-relaxed mb-4">{{ $team->designation }}</p>
+                                            <p class="text-gray-500 text-sm">As a {{ $team->designation }}, {{ $team->name }} focuses on delivering specialized legal services with deep expertise in this area of law, ensuring clients receive targeted and effective legal solutions.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 group border border-gray-100">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                        <i class="fas fa-map-marker-alt text-white text-lg"></i>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-lg font-semibold text-gray-900 mb-2">Availability</h5>
-                                        <p class="text-gray-600">Available for consultation</p>
+                            <div id="availability-tab" class="tab-panel" role="tabpanel" aria-labelledby="availability-tab">
+                                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
+                                    <div class="flex items-start gap-6">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Availability</h4>
+                                            <p class="text-gray-600 text-lg leading-relaxed mb-4">Available for consultation</p>
+                                            <p class="text-gray-500 text-sm">{{ $team->name }} is currently accepting new clients and consultations. Contact us to schedule an appointment and discuss your legal needs with our experienced legal professional.</p>
+                                            <div class="mt-6 flex flex-wrap gap-3">
+                                                @if($team->email)
+                                                    <a href="mailto:{{ $team->email }}" 
+                                                       class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
+                                                        <i class="fas fa-envelope"></i> Email Now
+                                                    </a>
+                                                @endif
+                                                @if($team->phone)
+                                                    <a href="tel:{{ $team->phone }}" 
+                                                       class="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-colors">
+                                                        <i class="fas fa-phone"></i> Call Now
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -949,5 +1016,140 @@
         .professional-icon {
             background: linear-gradient(135deg, var(--procounsel-base), var(--procounsel-primary));
         }
+
+        /* Tab Styles */
+        .tab-button {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .tab-button.active {
+            color: var(--procounsel-primary) !important;
+            border-bottom-color: var(--procounsel-primary) !important;
+        }
+        
+        .tab-button.active .w-6 {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tab-panel {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .tab-panel.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive tab navigation */
+        @media (max-width: 768px) {
+            .tab-button {
+                font-size: 0.875rem;
+                padding: 0.75rem 1rem;
+            }
+            
+            .tab-button .w-6 {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .tab-button {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.25rem;
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .tab-button span {
+                font-size: 0.75rem;
+            }
+        }
     </style>
 @endpush
+
+@push('scripts')
+<script>
+function switchTab(event, tabId) {
+    // Prevent default behavior
+    event.preventDefault();
+    
+    // Remove active class from all tab buttons
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        button.classList.remove('active');
+        button.setAttribute('aria-selected', 'false');
+    });
+    
+    // Hide all tab panels
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabPanels.forEach(panel => {
+        panel.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    event.currentTarget.classList.add('active');
+    event.currentTarget.setAttribute('aria-selected', 'true');
+    
+    // Show the selected tab panel
+    const selectedPanel = document.getElementById(tabId);
+    if (selectedPanel) {
+        selectedPanel.classList.add('active');
+    }
+    
+    // Store the active tab in localStorage for persistence
+    localStorage.setItem('activeTeamTab', tabId);
+}
+
+// Initialize tabs when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if there's a stored active tab
+    const storedTab = localStorage.getItem('activeTeamTab');
+    
+    // If there's a stored tab and it exists on the page, activate it
+    if (storedTab && document.getElementById(storedTab)) {
+        // Find the button for the stored tab
+        const storedButton = document.querySelector(`[onclick="switchTab(event, '${storedTab}')"]`);
+        if (storedButton) {
+            // Remove active from all
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+                button.setAttribute('aria-selected', 'false');
+            });
+            
+            tabPanels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+            
+            // Activate the stored tab
+            storedButton.classList.add('active');
+            storedButton.setAttribute('aria-selected', 'true');
+            document.getElementById(storedTab).classList.add('active');
+        }
+    }
+});
+</script>

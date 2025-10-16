@@ -7,14 +7,14 @@
 @section('content')
     {{-- Page Banner --}}
     <x-page-banner 
-        title="Our Practice Areas" 
+        title="" 
         subtitle="Discover our comprehensive legal practice areas and specialized expertise that provide exceptional legal services across various areas of law"
         :breadcrumbs="[
             ['label' => 'Home', 'url' => url('/')],
             ['label' => 'Practice Areas']
         ]"
     />
-
+      <x-page-section-title title="<span>Practice Areas</span>" />
     <div class="page-wrapper">
 
     {{-- Main Practices Section --}}

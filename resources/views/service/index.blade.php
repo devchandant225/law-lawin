@@ -9,7 +9,7 @@
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner title="Our Services"
+    <x-page-banner title=""
         subtitle="Comprehensive legal expertise tailored to meet your specific needs with dedication and professional excellence"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Services']]" />
     {{-- Contact Section Title --}}

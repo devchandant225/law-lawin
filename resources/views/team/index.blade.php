@@ -6,7 +6,7 @@
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner title="Our Team"
+    <x-page-banner title=""
         subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Our Team']]" />
     {{-- Contact Section Title --}}

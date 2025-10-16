@@ -42,18 +42,18 @@
                                 <div class="space-y-2 text-xs text-gray-500">
                                     @if ($member->phone)
                                         <div class="flex space-x-2">
-                                            <i class="fas fa-phone text-primary"></i>
+                                            <i class="fas fa-phone text-blue-100"></i>
                                             <a href="tel:{{ $member->phone }}"
-                                                class="hover:text-primary transition-colors duration-300">
+                                                class="hover:text-blue-100 transition-colors duration-300">
                                                 {{ $member->phone }}
                                             </a>
                                         </div>
                                     @endif
                                     @if ($member->email)
                                         <div class="flex space-x-2">
-                                            <i class="fas fa-envelope text-primary"></i>
+                                            <i class="fas fa-envelope text-blue-100"></i>
                                             <a href="mailto:{{ $member->email }}"
-                                                class="hover:text-primary transition-colors duration-300">
+                                                class="hover:text-blue-100 transition-colors duration-300">
                                                 {{ $member->email }}
                                             </a>
                                         </div>
@@ -77,7 +77,7 @@
                                         @endif
                                     </div>
                                     <a href="{{ route('team.show', $member->slug) }}"
-                                        class="px-2 pt-2 bg-accent text-white text-xs font-semibold rounded-lg hover:bg-secondary transition-all duration-300 hover:scale-105">
+                                        class="px-2 pt-2 bg-blue-100 text-white text-xs font-semibold rounded-lg hover:bg-blue-100 transition-all duration-300 hover:scale-105">
                                         View more
                                     </a>
                                 </div>

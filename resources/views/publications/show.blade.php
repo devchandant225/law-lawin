@@ -24,7 +24,7 @@
     ]" />
 
     <!-- Main Content Section -->
-    <section class="pt-0">
+    <section class="pt-3">
         <div class="px-3">
             <div class="flex flex-wrap -mx-4">
                 <!-- Sidebar - Table of Contents (Hidden on Mobile) -->
@@ -63,7 +63,7 @@
                         @if ($publication->feature_image_url)
                             <div class="publication-image-wrapper">
                                 <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}"
-                                    class="w-full h-[25rem] object-fill publication-feature-image">
+                                    class="w-full h-[28rem] object-fill publication-feature-image">
                             </div>
                         @endif
                         <div class="py-3 px-2">

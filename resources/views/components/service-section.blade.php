@@ -86,7 +86,7 @@
             <!-- View All Button -->
             <div class="text-center" data-aos="fade-up" data-aos-delay="600">
                 <a href="{{ route('services.index') }}" 
-                   class="inline-flex items-center px-4 py-2 bg-primary text-white font-semibold rounded-full transition-all duration-300 transform group">
+                   class="inline-flex items-center px-4 py-2 bg-blue-100 text-gray-600 font-semibold rounded-full transition-all duration-300 transform group">
                     <span class="mr-3">View All Services</span>
                     <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">

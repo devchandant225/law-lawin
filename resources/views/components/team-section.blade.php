@@ -100,7 +100,7 @@
         @if ($showViewAll && $teams->isNotEmpty())
             <div class="text-center" data-aos="fade-up" data-aos-delay="400">
                 <a href="{{ route('team.index') }}"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-semibold shadow-lg">
+                    class="inline-flex items-center gap-2 bg-blue-100 text-gray-600 px-4 py-2 rounded-full font-semibold shadow-lg">
                     <span>View All Team Members</span>
                     <i class="fas fa-arrow-right text-sm"></i>
                 </a>

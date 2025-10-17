@@ -568,7 +568,7 @@
         }
 
         th {
-            background-color: var(--procounsel-base);
+            background-color: cyan;
             color: #fff;
             font-weight: 600;
         }

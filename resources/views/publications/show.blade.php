@@ -67,7 +67,7 @@
                             </div>
                         @endif
                         <div class="py-3 px-2">
-                            <h2 class="publication-summary-title text-xl font-semibold text-accent mb-4">
+                            <h2 class="publication-summary-title text-xl font-semibold text-accent mb-2">
                                 {{ $publication->title }}</h2>
                             @if ($publication->description)
                                 <div class="publication-content text-gray-700 leading-relaxed">

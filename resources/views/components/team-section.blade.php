@@ -42,7 +42,7 @@
                                 <div class="space-y-2 text-xs text-gray-500">
                                     @if ($member->phone)
                                         <div class="flex space-x-2">
-                                            <i class="fas fa-phone text-blue-100"></i>
+                                            <i class="fas fa-phone text-primary"></i>
                                             <a href="tel:{{ $member->phone }}"
                                                 class="hover:text-blue-100 transition-colors duration-300">
                                                 {{ $member->phone }}
@@ -51,7 +51,7 @@
                                     @endif
                                     @if ($member->email)
                                         <div class="flex space-x-2">
-                                            <i class="fas fa-envelope text-blue-100"></i>
+                                            <i class="fas fa-envelope text-primary"></i>
                                             <a href="mailto:{{ $member->email }}"
                                                 class="hover:text-blue-100 transition-colors duration-300">
                                                 {{ $member->email }}
@@ -65,19 +65,19 @@
                                     <div class="flex space-x-3 w-[50%]">
                                         @if ($member->facebooklink)
                                             <a href="{{ $member->facebooklink }}" target="_blank"
-                                                class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white hover:bg-primary hover:text-white transition-all duration-300">
+                                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-blue-200 hover:text-gray-800 transition-all duration-300">
                                                 <i class="fab fa-facebook-f text-xs"></i>
                                             </a>
                                         @endif
                                         @if ($member->linkedinlink)
                                             <a href="{{ $member->linkedinlink }}" target="_blank"
-                                                class="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white hover:bg-secondary hover:text-white transition-all duration-300">
+                                                class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-blue-200 hover:text-gray-800 transition-all duration-300">
                                                 <i class="fab fa-linkedin-in text-xs"></i>
                                             </a>
                                         @endif
                                     </div>
                                     <a href="{{ route('team.show', $member->slug) }}"
-                                        class="px-2 pt-2 bg-blue-100 text-white text-xs font-semibold rounded-lg hover:bg-blue-100 transition-all duration-300 hover:scale-105">
+                                        class="px-2 pt-2 bg-blue-100 text-gray-600 text-xs font-semibold rounded-lg hover:bg-blue-100 transition-all duration-300 hover:scale-105">
                                         View more
                                     </a>
                                 </div>

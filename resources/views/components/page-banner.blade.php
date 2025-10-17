@@ -1,14 +1,15 @@
-<div class="h-[120px]">
+<div class="h-[85px]">
     <div class="absolute top-0 left-0 w-full z-30">
         <!-- Breadcrumb Style Banner with Primary Color Background -->
-        <section class="relative h-[230px] flex items-center overflow-hidden pt-[4rem] bg-cyan-500/40">
-            <!-- Content Container -->
-            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-left">
+        <section class="relative h-[200px] flex flex-col justify-between overflow-hidden pt-[4rem] bg-cyan-500/40">
+            <!-- Empty space for banner height -->
+            <div class="flex-grow"></div>
 
-                <!-- Breadcrumbs -->
+            <!-- Breadcrumbs at Bottom -->
+            <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pb-6">
                 @if (isset($showBreadcrumbs) && $showBreadcrumbs && !empty($breadcrumbs))
-                    <nav class="opacity-0 animate-fade-in-up mb-2"
-                        style="animation-delay: 0.2s; animation-fill-mode: forwards;" aria-label="Breadcrumb">
+                    <nav class="opacity-0 animate-fade-in-up"
+                        style="animation-delay: 0.4s; animation-fill-mode: forwards;" aria-label="Breadcrumb">
                         <div class="flex items-center space-x-1 text-sm">
                             @foreach ($breadcrumbs as $breadcrumb)
                                 @if (!$loop->first)
@@ -30,8 +31,8 @@
                         </div>
                     </nav>
                 @elseif(!empty($breadcrumbs))
-                    <nav class="opacity-0 animate-fade-in-up mb-2"
-                        style="animation-delay: 0.2s; animation-fill-mode: forwards;" aria-label="Breadcrumb">
+                    <nav class="opacity-0 animate-fade-in-up"
+                        style="animation-delay: 0.4s; animation-fill-mode: forwards;" aria-label="Breadcrumb">
                         <div class="flex items-center space-x-1 text-sm">
                             @foreach ($breadcrumbs as $breadcrumb)
                                 @if (!$loop->first)
@@ -53,17 +54,9 @@
                         </div>
                     </nav>
                 @endif
-
-                <h1 class="text-2xl font-bold text-white leading-tight">
-                    <span class="block opacity-0 animate-fade-in-up"
-                        style="animation-delay: 0.4s; animation-fill-mode: forwards;">
-                        {{ $title }}
-                    </span>
-                </h1>
             </div>
         </section>
     </div>
-
 </div>
 <!-- Add custom CSS for animations -->
 <style>

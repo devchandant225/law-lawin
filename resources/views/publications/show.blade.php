@@ -63,7 +63,7 @@
                         @if ($publication->feature_image_url)
                             <div class="publication-image-wrapper">
                                 <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}"
-                                    class="w-full h-[15rem] object-cover publication-feature-image">
+                                    class="w-full h-[25rem] object-contain publication-feature-image">
                             </div>
                         @endif
                         <div class="py-3 px-2">

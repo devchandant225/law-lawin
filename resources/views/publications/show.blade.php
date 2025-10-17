@@ -101,7 +101,7 @@
                     <!-- Team Members Section -->
                     @if (!empty($teamMembers) && count($teamMembers) > 0)
                         <section id="team-section"
-                            class="modern-team-section py-4 bg-gray-100 relative overflow-hidden mt-10 rounded-lg">
+                            class="modern-team-section py-4 relative overflow-hidden mt-10 rounded-lg">
                             <!-- Section Header -->
                             <div class="mb-8 px-3">
                                 <h3 class="text-2xl font-bold text-accent mb-4">

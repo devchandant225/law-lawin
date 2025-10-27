@@ -82,12 +82,7 @@
                                             {{ $publication->title }}
                                         </h1>
                                         
-                                        <!-- Decorative elements -->
-                                        <div class="mt-8 flex justify-center space-x-4">
-                                            <div class="w-2 h-2 bg-white rounded-full animate-bounce"></div>
-                                            <div class="w-2 h-2 bg-white rounded-full animate-bounce delay-100"></div>
-                                            <div class="w-2 h-2 bg-white rounded-full animate-bounce delay-200"></div>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>

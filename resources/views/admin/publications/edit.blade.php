@@ -259,18 +259,31 @@
                                 <div class="p-4 space-y-4">
                                     <!-- Current Image -->
                                     @if ($publication->feature_image)
-                                        <div>
+                                        <div id="current-image-section">
                                             <label class="block text-sm font-medium text-gray-700 mb-1">Current
                                                 Image</label>
                                             <img src="{{ $publication->feature_image_url }}"
                                                 alt="{{ $publication->title }}"
                                                 class="rounded border border-gray-200 max-h-52">
+                                            <div class="mt-2">
+                                                <button type="button" onclick="removeCurrentImage()"
+                                                    class="inline-flex items-center px-3 py-1 text-sm font-medium text-red-600 bg-red-50 border border-red-200 rounded-md hover:bg-red-100 hover:border-red-300 transition-colors">
+                                                    <i class="fas fa-trash-alt mr-1"></i>
+                                                    Remove Image
+                                                </button>
+                                                <input type="hidden" id="remove_image" name="remove_image" value="0">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-lg">
+                                            <i class="fas fa-image text-4xl text-gray-400 mb-2"></i>
+                                            <p class="text-sm text-gray-500">No image uploaded. A gradient background will be displayed.</p>
                                         </div>
                                     @endif
 
                                     <div>
                                         <label for="feature_image"
-                                            class="block text-sm font-medium text-gray-700 mb-1">{{ $publication->feature_image ? 'Change Image' : 'Upload Image' }}</label>
+                                            class="block text-sm font-medium text-gray-700 mb-1">{{ $publication->feature_image ? 'Change Image (Optional)' : 'Upload Image (Optional)' }}</label>
                                         <input type="file" id="feature_image" name="feature_image" accept="image/*"
                                             onchange="previewImage(this)"
                                             class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('feature_image') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
@@ -278,7 +291,7 @@
                                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                         <p class="mt-1 text-xs text-gray-500">Supported formats: JPEG, PNG, JPG, GIF, WebP
-                                            (Max: 2MB)</p>
+                                            (Max: 2MB). If no image is provided, a gradient background will be displayed.</p>
                                     </div>
 
                                     <!-- Image Preview -->
@@ -357,6 +370,38 @@
             };
 
             document.getElementById('google_schema').value = JSON.stringify(schema, null, 2);
+        }
+
+        // Remove current image
+        function removeCurrentImage() {
+            if (confirm('Are you sure you want to remove the current image? A gradient background will be displayed instead.')) {
+                document.getElementById('current-image-section').style.display = 'none';
+                document.getElementById('remove_image').value = '1';
+                
+                // Show the no image placeholder
+                const noImageDiv = document.createElement('div');
+                noImageDiv.className = 'text-center p-6 border-2 border-dashed border-gray-300 rounded-lg';
+                noImageDiv.innerHTML = `
+                    <i class="fas fa-image text-4xl text-gray-400 mb-2"></i>
+                    <p class="text-sm text-gray-500">Image will be removed. A gradient background will be displayed.</p>
+                    <button type="button" onclick="undoRemoveImage()" class="mt-2 inline-flex items-center px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 transition-colors">
+                        <i class="fas fa-undo mr-1"></i>
+                        Undo Remove
+                    </button>
+                `;
+                document.getElementById('current-image-section').parentNode.insertBefore(noImageDiv, document.getElementById('current-image-section').nextSibling);
+                noImageDiv.id = 'removed-image-placeholder';
+            }
+        }
+
+        // Undo image removal
+        function undoRemoveImage() {
+            document.getElementById('current-image-section').style.display = 'block';
+            document.getElementById('remove_image').value = '0';
+            const placeholder = document.getElementById('removed-image-placeholder');
+            if (placeholder) {
+                placeholder.remove();
+            }
         }
         CKEDITOR.replace('description', {
             filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",

@@ -30,7 +30,7 @@ class PublicationRequest extends FormRequest
             'metadescription' => 'nullable|string|max:500',
             'metakeywords' => 'nullable|string|max:1000',
             'status' => 'required|in:active,inactive,draft',
-            'post_type' => 'required|in:publication,more-publication,service-location,language',
+            'post_type' => ['required', 'string', Rule::in(['publication', 'more-publication', 'service-location', 'language'])],
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'google_schema' => 'nullable|string',
@@ -104,6 +104,11 @@ class PublicationRequest extends FormRequest
         // Set default orderlist if not provided
         if (!$this->has('orderlist') || $this->orderlist === '') {
             $this->merge(['orderlist' => 0]);
+        }
+
+        // Ensure post_type is properly sanitized as string
+        if ($this->has('post_type')) {
+            $this->merge(['post_type' => (string) trim($this->post_type)]);
         }
 
         // Validate JSON format if google_schema is provided

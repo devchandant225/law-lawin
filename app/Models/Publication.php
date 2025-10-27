@@ -15,7 +15,6 @@ class Publication extends Model
     protected $casts = [
         'google_schema' => 'array',
         'orderlist' => 'integer',
-        'post_type' => 'string',
     ];
 
     /**

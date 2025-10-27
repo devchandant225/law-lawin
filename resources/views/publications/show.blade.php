@@ -65,6 +65,37 @@
                                 <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}"
                                     class="w-full h-[28rem] object-fill publication-feature-image">
                             </div>
+                        @else
+                            <!-- Gradient Background with Text when no image -->
+                            <div class="publication-gradient-header">
+                                <div class="bg-gradient-to-b from-accent to-yellow-500 h-[28rem] w-full flex items-center justify-center relative overflow-hidden">
+                                    <!-- Background Pattern -->
+                                    <div class="absolute inset-0 opacity-20">
+                                        <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                                        <div class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl opacity-20 animate-pulse delay-1000"></div>
+                                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-white rounded-full blur-3xl opacity-10"></div>
+                                    </div>
+                                    
+                                    <!-- Content -->
+                                    <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                                        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight drop-shadow-lg">
+                                            {{ $publication->title }}
+                                        </h1>
+                                        @if ($publication->excerpt)
+                                            <p class="mt-4 text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed drop-shadow-md">
+                                                {{ Str::limit(strip_tags($publication->excerpt), 150) }}
+                                            </p>
+                                        @endif
+                                        
+                                        <!-- Decorative elements -->
+                                        <div class="mt-8 flex justify-center space-x-4">
+                                            <div class="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+                                            <div class="w-2 h-2 bg-white rounded-full animate-bounce delay-100"></div>
+                                            <div class="w-2 h-2 bg-white rounded-full animate-bounce delay-200"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                         <div class="py-3 px-2">
                             <h2 class="publication-summary-title text-xl font-semibold text-accent mb-2">
@@ -550,6 +581,45 @@
 
 @push('styles')
     <style>
+        /* Responsive gradient header */
+        .publication-gradient-header {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .publication-gradient-header h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .publication-gradient-header p {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 640px) {
+            .publication-gradient-header h1 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            .publication-gradient-header p {
+                font-size: 1rem !important;
+            }
+            
+            .publication-gradient-header .bg-gradient-to-b {
+                height: 20rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .publication-gradient-header h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .publication-gradient-header .bg-gradient-to-b {
+                height: 18rem !important;
+            }
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;

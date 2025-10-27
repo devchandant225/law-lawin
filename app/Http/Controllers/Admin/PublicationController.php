@@ -18,7 +18,7 @@ class PublicationController extends Controller
     public function index(Request $request)
     {
         $query = Publication::query();
-
+        
         // Filter by status
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -62,6 +62,11 @@ class PublicationController extends Controller
         // Generate slug if not provided
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']);
+        }
+
+        // Ensure post_type is properly cast as string
+        if (isset($validated['post_type'])) {
+            $validated['post_type'] = (string) $validated['post_type'];
         }
 
         // Handle file upload
@@ -113,8 +118,21 @@ class PublicationController extends Controller
             $validated['slug'] = Str::slug($validated['title']);
         }
 
+        // Ensure post_type is properly cast as string
+        if (isset($validated['post_type'])) {
+            $validated['post_type'] = (string) $validated['post_type'];
+        }
+
+        // Handle image removal
+        if ($request->has('remove_image') && $request->remove_image == '1') {
+            // Delete old image if exists
+            if ($publication->feature_image) {
+                Storage::disk('public')->delete($publication->feature_image);
+                $validated['feature_image'] = null;
+            }
+        }
         // Handle file upload
-        if ($request->hasFile('feature_image')) {
+        elseif ($request->hasFile('feature_image')) {
             // Delete old image if exists
             if ($publication->feature_image) {
                 Storage::disk('public')->delete($publication->feature_image);

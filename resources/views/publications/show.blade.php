@@ -81,11 +81,6 @@
                                         <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight drop-shadow-lg">
                                             {{ $publication->title }}
                                         </h1>
-                                        @if ($publication->excerpt)
-                                            <p class="mt-4 text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed drop-shadow-md">
-                                                {{ Str::limit(strip_tags($publication->excerpt), 150) }}
-                                            </p>
-                                        @endif
                                         
                                         <!-- Decorative elements -->
                                         <div class="mt-8 flex justify-center space-x-4">

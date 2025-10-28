@@ -297,7 +297,7 @@
             document.getElementById('google_schema').value = JSON.stringify(schema, null, 2);
         }
            CKEDITOR.replace('description', {
-            filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+            filebrowserUploadUrl: "{{ 'https://lawinpartners.joomni.com/admin/upload_editor_image?_token=' . csrf_token() }}",
             filebrowserUploadMethod: 'form'
         })
     </script>

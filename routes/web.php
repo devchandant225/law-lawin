@@ -60,7 +60,6 @@ Route::get('/information/notices', [InformationController::class, 'notices']);
 Route::get('/information/notices/{slug}', [InformationController::class, 'showNotice']);
 Route::get('/information/events', [InformationController::class, 'events']);
 
-
 // Membership
 Route::get('/membership/register', [MembershipController::class, 'create']);
 Route::get('/membership/{type}', [MembershipController::class, 'listing']);
@@ -77,7 +76,8 @@ Route::post('/contact/submit', [ContactFormController::class, 'submit'])->name('
 
 // Posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/{type}', [PostController::class, 'byType'])->name('posts.by-type')
+Route::get('/posts/{type}', [PostController::class, 'byType'])
+    ->name('posts.by-type')
     ->where('type', 'service|practice|news|blog');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
@@ -155,111 +155,106 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 */
 
 // Admin Authentication Routes (Guest only)
-Route::prefix('admin')->name('admin.')->middleware('guest')->group(function () {
-    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-});
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('guest')
+    ->group(function () {
+        Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+        Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+        Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+    });
 
 // Admin Protected Routes
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
-    // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
-    // Profile Management
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
-    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile/logo', [ProfileController::class, 'removeLogo'])->name('profile.remove-logo');
-    
-    // Posts Management
-    Route::resource('posts', AdminPostController::class);
-    Route::post('/posts/{post}/toggle-status', [AdminPostController::class, 'toggleStatus'])->name('posts.toggle-status');
-    
-    // Publications Management
-    Route::resource('publications', AdminPublicationController::class);
-    Route::post('/publications/{publication}/toggle-status', [AdminPublicationController::class, 'toggleStatus'])->name('publications.toggle-status');
-    
-    // FAQ Management
-    Route::resource('faqs', AdminFAQController::class);
-    Route::post('/faqs/{faq}/toggle-status', [AdminFAQController::class, 'toggleStatus'])->name('faqs.toggle-status');
-    
-    // Contact Submissions Management
-    Route::resource('contacts', AdminContactController::class)->except(['create', 'store', 'edit', 'update']);
-    Route::get('/contacts/export', [AdminContactController::class, 'export'])->name('contacts.export');
-    
-    // Table of Contents Management (nested under publications)
-    Route::prefix('publications/{publication}')
-        ->name('publications.')
-        ->group(function () {
-            Route::resource('table-of-contents', TableOfContentController::class, [
-                'names' => [
-                    'index' => 'table-of-contents.index',
-                    'create' => 'table-of-contents.create', 
-                    'store' => 'table-of-contents.store',
-                    'show' => 'table-of-contents.show',
-                    'edit' => 'table-of-contents.edit',
-                    'update' => 'table-of-contents.update',
-                    'destroy' => 'table-of-contents.destroy'
-                ]
-            ]);
-            
-            // Additional TOC routes
-            Route::post('table-of-contents/{tableOfContent}/toggle-status', [TableOfContentController::class, 'toggleStatus'])
-                ->name('table-of-contents.toggle-status');
-            Route::post('table-of-contents/reorder', [TableOfContentController::class, 'reorder'])
-                ->name('table-of-contents.reorder');
-            Route::delete('table-of-contents/bulk-delete', [TableOfContentController::class, 'bulkDelete'])
-                ->name('table-of-contents.bulk-delete');
-                
-            // Publication Team Management (nested under publications)
-            Route::get('teams', [PublicationTeamController::class, 'index'])
-                ->name('teams.index');
-            Route::get('teams/create', [PublicationTeamController::class, 'create'])
-                ->name('teams.create');
-            Route::post('teams', [PublicationTeamController::class, 'store'])
-                ->name('teams.store');
-            Route::get('teams/show', [PublicationTeamController::class, 'show'])
-                ->name('teams.show');
-            Route::delete('teams/{team}', [PublicationTeamController::class, 'destroy'])
-                ->name('teams.destroy');
-            Route::put('teams/{team}/role', [PublicationTeamController::class, 'updateRole'])
-                ->name('teams.update-role');
-            Route::delete('teams/bulk-remove', [PublicationTeamController::class, 'bulkRemove'])
-                ->name('teams.bulk-remove');
-            Route::get('teams/data', [PublicationTeamController::class, 'getTeamMembers'])
-                ->name('teams.data');
-        });
-    
-    // Team Management
-    Route::resource('teams', TeamController::class);
-    
-    // Slider Management
-    Route::resource('sliders', SliderController::class);
-    Route::post('/sliders/{slider}/toggle-status', [SliderController::class, 'toggleStatus'])->name('sliders.toggle-status');
-    
-    // About Us Content Section Management
-    Route::resource('about-us-contents', AboutUsContentSectionController::class);
-    Route::post('/about-us-contents/{aboutUsContent}/toggle-status', [AboutUsContentSectionController::class, 'toggleStatus'])->name('about-us-contents.toggle-status');
-    
-    // Portfolio Management
-    Route::resource('portfolios', PortfolioController::class);
-    Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
-    
-    // Pages Management
-    Route::resource('pages', AdminPageController::class);
-    Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
-    
-    // Meta Tags Management
-    Route::resource('meta-tags', MetaTagController::class);
-    Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
-    
-    // Image Upload for CKEditor
-    Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');
-    
-    // Logout
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        // Dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        // Profile Management
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
+        Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+        Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile/logo', [ProfileController::class, 'removeLogo'])->name('profile.remove-logo');
+
+        // Posts Management
+        Route::resource('posts', AdminPostController::class);
+        Route::post('/posts/{post}/toggle-status', [AdminPostController::class, 'toggleStatus'])->name('posts.toggle-status');
+
+        // Publications Management
+        Route::resource('publications', AdminPublicationController::class);
+        Route::post('/publications/{publication}/toggle-status', [AdminPublicationController::class, 'toggleStatus'])->name('publications.toggle-status');
+        Route::post('/upload_editor_image', [AdminPublicationController::class, 'editorUpload']);
+        // FAQ Management
+        Route::resource('faqs', AdminFAQController::class);
+        Route::post('/faqs/{faq}/toggle-status', [AdminFAQController::class, 'toggleStatus'])->name('faqs.toggle-status');
+
+        // Contact Submissions Management
+        Route::resource('contacts', AdminContactController::class)->except(['create', 'store', 'edit', 'update']);
+        Route::get('/contacts/export', [AdminContactController::class, 'export'])->name('contacts.export');
+
+        // Table of Contents Management (nested under publications)
+        Route::prefix('publications/{publication}')
+            ->name('publications.')
+            ->group(function () {
+                Route::resource('table-of-contents', TableOfContentController::class, [
+                    'names' => [
+                        'index' => 'table-of-contents.index',
+                        'create' => 'table-of-contents.create',
+                        'store' => 'table-of-contents.store',
+                        'show' => 'table-of-contents.show',
+                        'edit' => 'table-of-contents.edit',
+                        'update' => 'table-of-contents.update',
+                        'destroy' => 'table-of-contents.destroy',
+                    ],
+                ]);
+
+                // Additional TOC routes
+                Route::post('table-of-contents/{tableOfContent}/toggle-status', [TableOfContentController::class, 'toggleStatus'])->name('table-of-contents.toggle-status');
+                Route::post('table-of-contents/reorder', [TableOfContentController::class, 'reorder'])->name('table-of-contents.reorder');
+                Route::delete('table-of-contents/bulk-delete', [TableOfContentController::class, 'bulkDelete'])->name('table-of-contents.bulk-delete');
+
+                // Publication Team Management (nested under publications)
+                Route::get('teams', [PublicationTeamController::class, 'index'])->name('teams.index');
+                Route::get('teams/create', [PublicationTeamController::class, 'create'])->name('teams.create');
+                Route::post('teams', [PublicationTeamController::class, 'store'])->name('teams.store');
+                Route::get('teams/show', [PublicationTeamController::class, 'show'])->name('teams.show');
+                Route::delete('teams/{team}', [PublicationTeamController::class, 'destroy'])->name('teams.destroy');
+                Route::put('teams/{team}/role', [PublicationTeamController::class, 'updateRole'])->name('teams.update-role');
+                Route::delete('teams/bulk-remove', [PublicationTeamController::class, 'bulkRemove'])->name('teams.bulk-remove');
+                Route::get('teams/data', [PublicationTeamController::class, 'getTeamMembers'])->name('teams.data');
+            });
+
+        // Team Management
+        Route::resource('teams', TeamController::class);
+
+        // Slider Management
+        Route::resource('sliders', SliderController::class);
+        Route::post('/sliders/{slider}/toggle-status', [SliderController::class, 'toggleStatus'])->name('sliders.toggle-status');
+
+        // About Us Content Section Management
+        Route::resource('about-us-contents', AboutUsContentSectionController::class);
+        Route::post('/about-us-contents/{aboutUsContent}/toggle-status', [AboutUsContentSectionController::class, 'toggleStatus'])->name('about-us-contents.toggle-status');
+
+        // Portfolio Management
+        Route::resource('portfolios', PortfolioController::class);
+        Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
+
+        // Pages Management
+        Route::resource('pages', AdminPageController::class);
+        Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
+
+        // Meta Tags Management
+        Route::resource('meta-tags', MetaTagController::class);
+        Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
+
+        // Image Upload for CKEditor
+        Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');
+
+        // Logout
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    });

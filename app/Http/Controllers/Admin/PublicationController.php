@@ -68,7 +68,7 @@ class PublicationController extends Controller
         if (isset($validated['post_type'])) {
             $validated['post_type'] = (string) $validated['post_type'];
         }
-
+        
         // Handle file upload
         if ($request->hasFile('feature_image')) {
             $validated['feature_image'] = $request->file('feature_image')->store('publications', 'public');
@@ -123,16 +123,8 @@ class PublicationController extends Controller
             $validated['post_type'] = (string) $validated['post_type'];
         }
 
-        // Handle image removal
-        if ($request->has('remove_image') && $request->remove_image == '1') {
-            // Delete old image if exists
-            if ($publication->feature_image) {
-                Storage::disk('public')->delete($publication->feature_image);
-                $validated['feature_image'] = null;
-            }
-        }
         // Handle file upload
-        elseif ($request->hasFile('feature_image')) {
+        if ($request->hasFile('feature_image')) {
             // Delete old image if exists
             if ($publication->feature_image) {
                 Storage::disk('public')->delete($publication->feature_image);
@@ -185,5 +177,35 @@ class PublicationController extends Controller
             'status' => $newStatus,
             'message' => 'Publication status updated successfully.'
         ]);
+    }
+
+
+      public function editorUpload(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = $request->file('upload')->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = $filename . '_' . time() . '.' . $extension;
+
+            //Upload File
+            $request->file('upload')->move(public_path() . '/uploads/editor/publication', $filenametostore);
+
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('uploads/editor/publication/' . $filenametostore);
+            $message = 'File uploaded successfully';
+            $result = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$message')</script>";
+
+            // Render HTML output
+            @header('Content-type: text/html; charset=utf-8');
+            echo $result;
+        }
     }
 }

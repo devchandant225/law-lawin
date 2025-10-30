@@ -141,25 +141,19 @@
                                     <div class="w-6 h-6 bg-purple-500 rounded-lg flex items-center justify-center">
                                         <i class="fas fa-graduation-cap text-white text-xs"></i>
                                     </div>
-                                    Education
+                                    Qualification
                                 </button>
                             @endif
                             
-                            <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300 {{ !$team->experience && !$team->qualification ? 'active' : '' }}" 
-                                    onclick="switchTab(event, 'specialization-tab')" role="tab" aria-controls="specialization-tab" aria-selected="{{ !$team->experience && !$team->qualification ? 'true' : 'false' }}">
-                                <div class="w-6 h-6 bg-amber-500 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-gavel text-white text-xs"></i>
-                                </div>
-                                Specialization
-                            </button>
-                            
-                            <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300" 
-                                    onclick="switchTab(event, 'availability-tab')" role="tab" aria-controls="availability-tab" aria-selected="false">
-                                <div class="w-6 h-6 bg-red-500 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-map-marker-alt text-white text-xs"></i>
-                                </div>
-                                Availability
-                            </button>
+                            @if($team->additional_details)
+                                <button class="tab-button flex items-center gap-2 px-6 py-3 text-sm font-semibold text-gray-500 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300 {{ !$team->experience && !$team->qualification ? 'active' : '' }}" 
+                                        onclick="switchTab(event, 'additional-tab')" role="tab" aria-controls="additional-tab" aria-selected="{{ !$team->experience && !$team->qualification ? 'true' : 'false' }}">
+                                    <div class="w-6 h-6 bg-blue-500 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-info-circle text-white text-xs"></i>
+                                    </div>
+                                    Additional Details
+                                </button>
+                            @endif
                         </div>
                         
                         <!-- Tab Content -->
@@ -189,75 +183,35 @@
                                                 <i class="fas fa-graduation-cap text-white text-xl"></i>
                                             </div>
                                             <div class="flex-1">
-                                                <h4 class="text-2xl font-bold text-gray-900 mb-4">Education</h4>
-                                                <p class="text-gray-600 text-lg leading-relaxed mb-4">{{ $team->qualification }}</p>
-                                                <p class="text-gray-500 text-sm">{{ $team->name }} has completed rigorous academic training in law, providing a solid foundation for professional legal practice and continuous learning in the ever-evolving legal landscape.</p>
+                                                <h4 class="text-2xl font-bold text-gray-900 mb-4">Qualification</h4>
+                                                <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                                                    {!! $team->qualification !!}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                             
-                            <div id="specialization-tab" class="tab-panel {{ !$team->experience && !$team->qualification ? 'active' : '' }}" role="tabpanel" aria-labelledby="specialization-tab">
-                                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
-                                    <div class="flex items-start gap-6">
-                                        <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                                            <i class="fas fa-gavel text-white text-xl"></i>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Specialization</h4>
-                                            <p class="text-gray-600 text-lg leading-relaxed mb-4">{{ $team->designation }}</p>
-                                            <p class="text-gray-500 text-sm">As a {{ $team->designation }}, {{ $team->name }} focuses on delivering specialized legal services with deep expertise in this area of law, ensuring clients receive targeted and effective legal solutions.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div id="availability-tab" class="tab-panel" role="tabpanel" aria-labelledby="availability-tab">
-                                <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
-                                    <div class="flex items-start gap-6">
-                                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                                            <i class="fas fa-map-marker-alt text-white text-xl"></i>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h4 class="text-2xl font-bold text-gray-900 mb-4">Availability</h4>
-                                            <p class="text-gray-600 text-lg leading-relaxed mb-4">Available for consultation</p>
-                                            <p class="text-gray-500 text-sm">{{ $team->name }} is currently accepting new clients and consultations. Contact us to schedule an appointment and discuss your legal needs with our experienced legal professional.</p>
-                                            <div class="mt-6 flex flex-wrap gap-3">
-                                                @if($team->email)
-                                                    <a href="mailto:{{ $team->email }}" 
-                                                       class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
-                                                        <i class="fas fa-envelope"></i> Email Now
-                                                    </a>
-                                                @endif
-                                                @if($team->phone)
-                                                    <a href="tel:{{ $team->phone }}" 
-                                                       class="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-colors">
-                                                        <i class="fas fa-phone"></i> Call Now
-                                                    </a>
-                                                @endif
+                            @if($team->additional_details)
+                                <div id="additional-tab" class="tab-panel {{ !$team->experience && !$team->qualification ? 'active' : '' }}" role="tabpanel" aria-labelledby="additional-tab">
+                                    <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100">
+                                        <div class="flex items-start gap-6">
+                                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-info-circle text-white text-xl"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <h4 class="text-2xl font-bold text-gray-900 mb-4">Additional Details</h4>
+                                                <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                                                    {!! $team->additional_details !!}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
-
-                    <!-- Additional Details -->
-                    @if($team->additional_details)
-                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                            <h3 class="flex items-center gap-4 text-2xl font-bold text-primary mb-6">
-                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-info-circle text-white text-xl"></i>
-                                </div>
-                                Additional Information
-                            </h3>
-                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                                {!! $team->additional_details !!}
-                            </div>
-                        </div>
-                    @endif
                 </div>
 
                 <!-- Sidebar - 30% -->

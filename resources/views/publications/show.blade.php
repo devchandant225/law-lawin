@@ -584,7 +584,7 @@
 
 @push('styles')
     <style>
-        h3 {
+        h3,h4 {
             color: #70bfce;
         }
 

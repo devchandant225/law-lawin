@@ -7,6 +7,7 @@ use App\Models\Slider;
 use App\Models\Team;
 use App\Models\Publication;
 use App\Models\Portfolio;
+use App\Models\TableOfContent;
 use App\View\Components\ServiceSection;
 use App\View\Components\TeamSection;
 use App\View\Components\PortfolioSection;
@@ -31,14 +32,58 @@ class HomeController extends Controller
         return view('home', compact('sliders', 'services', 'teams', 'portfolios'));
     }
 
-    public function terms()
+    public function termsCondition()
     {
-        return view('pages.terms');
+        $publication = Publication::where('post_type', 'terms-condition')
+            ->where('status', 'active')
+            ->first();
+        
+        if (!$publication) {
+            abort(404, 'Terms & Conditions page not found.');
+        }
+        
+        $tableOfContents = TableOfContent::where('publication_id', $publication->id)
+            ->where('status', 'active')
+            ->orderBy('orderlist', 'asc')
+            ->get();
+        
+        return view('terms-condition', compact('publication', 'tableOfContents'));
     }
 
-    public function privacy()
+    public function privacyPolicy()
     {
-        return view('pages.privacy');
+        $publication = Publication::where('post_type', 'privacy-policy')
+            ->where('status', 'active')
+            ->first();
+        
+        if (!$publication) {
+            abort(404, 'Privacy Policy page not found.');
+        }
+        
+        $tableOfContents = TableOfContent::where('publication_id', $publication->id)
+            ->where('status', 'active')
+            ->orderBy('orderlist', 'asc')
+            ->get();
+        
+        return view('privacy-policy', compact('publication', 'tableOfContents'));
+    }
+
+    public function cookiesPolicy()
+    {
+        $publication = Publication::where('post_type', 'cookies-policy')
+            ->where('status', 'active')
+            ->first();
+        
+        if (!$publication) {
+            abort(404, 'Cookies Policy page not found.');
+        }
+        
+        $tableOfContents = TableOfContent::where('publication_id', $publication->id)
+            ->where('status', 'active')
+            ->orderBy('orderlist', 'asc')
+            ->get();
+        
+        return view('cookies-policy', compact('publication', 'tableOfContents'));
     }
 }
 

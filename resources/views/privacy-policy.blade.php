@@ -26,8 +26,37 @@
     <section class="pt-3">
         <div class="px-3">
             <div class="flex flex-wrap -mx-4">
-                <!-- Main Content (Full width) -->
-                <div class="w-full px-4">
+                <!-- Sidebar - Table of Contents (Hidden on Mobile) -->
+                <div class="w-full lg:w-1/4 px-4 hidden lg:block">
+                    @if ($tableOfContents->count() > 0)
+                        <!-- Table of Contents Navigation -->
+                        <div class="sticky top-[5rem] z-50" id="tocSidebar">
+                            <div
+                                class="bg-white rounded-lg shadow-lg overflow-hidden toc-navigation max-h-[calc(100vh-6rem)]">
+                                <div class="bg-primary text-white p-5">
+                                    <h5 class="mb-0 flex items-center text-base font-medium">
+                                        <i class="fas fa-list-ol mr-2"></i>
+                                        Table Of Contents
+                                    </h5>
+                                </div>
+                                <div class="p-0">
+                                    <nav class="toc-nav max-h-80 overflow-y-auto">
+                                        @foreach ($tableOfContents as $content)
+                                            <a href="#toc-section-{{ $content->id }}"
+                                                class="toc-nav-link flex items-center no-underline p-3 border-b border-gray-200 text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 border-l-4 border-l-transparent hover:border-l-primary text-sm"
+                                                data-target="toc-section-{{ $content->id }}">
+                                                <span class="flex-1">{{ Str::limit($content->title, 100) }}</span>
+                                            </a>
+                                        @endforeach
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Main Content (Full width on mobile, 3/4 on desktop) -->
+                <div class="w-full lg:w-3/4 px-4">
                     <!-- Privacy Policy Header -->
                     <div class="publication-header-card bg-white overflow-hidden">
                         @if ($publication->feature_image_url)
@@ -67,6 +96,27 @@
                             @endif
                         </div>
                     </div>
+
+                    <!-- Table of Contents Content Sections -->
+                    @if ($tableOfContents->count() > 0)
+                        @foreach ($tableOfContents as $content)
+                            <section id="toc-section-{{ $content->id }}" class="bg-white toc-content-section">
+                                <div class="py-3 px-2">
+                                    <div class="flex items-start">
+                                        <div class="flex-1">
+                                            <h3 class="content-title text-lg font-semibold text-accent mb-4">
+                                                {{ $content->title }}</h3>
+                                            @if ($content->description)
+                                                <div class="toc-content text-gray-700 leading-relaxed">
+                                                    {!! $content->description !!}
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        @endforeach
+                    @endif
 
                     <!-- Quick Legal Assistance Section -->
                     <section class="bg-accent rounded-lg shadow-xl overflow-hidden cta-section mt-10 p-6">
@@ -279,4 +329,64 @@
             }
         }
     </style>
+@endpush
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth Scrolling for TOC Links
+            const tocLinks = document.querySelectorAll('.toc-nav-link');
+            const sections = document.querySelectorAll('[id^="toc-section-"]');
+
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target') || this.getAttribute('href')
+                        .substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        tocLinks.forEach(l => l.classList.remove('toc-nav-active', 'bg-primary', 'text-white', 'border-l-primary'));
+                        this.classList.add('toc-nav-active', 'bg-primary', 'text-white', 'border-l-primary');
+
+                        const headerOffset = 120;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for Active TOC Item
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: [0.1, 0.5, 1.0]
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(link => {
+                            link.classList.remove('toc-nav-active', 'bg-primary', 'text-white', 'border-l-primary');
+                        });
+
+                        const correspondingLink = document.querySelector(
+                            `[data-target="${entry.target.id}"]`);
+                        if (correspondingLink) {
+                            correspondingLink.classList.add('toc-nav-active', 'bg-primary', 'text-white', 'border-l-primary');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 @endpush

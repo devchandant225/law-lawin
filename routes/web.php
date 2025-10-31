@@ -144,12 +144,11 @@ Route::get('/calculator', function () {
 })->name('calculator');
 
 // Policy Pages
-Route::get('/terms-of-service', [AdminPublicationController::class, 'showTermsCondition'])->name('terms-condition');
-Route::get('/privacy-policy', [AdminPublicationController::class, 'showPrivacyPolicy'])->name('privacy-policy');
-Route::get('/cookies-policy', [AdminPublicationController::class, 'showCookiesPolicy'])->name('cookies-policy');
+Route::get('/terms-of-service', [HomeController::class, 'termsCondition'])->name('terms-condition');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/cookie-policy-for-lawin-and-partners', [HomeController::class, 'cookiesPolicy'])->name('cookies-policy');
 
 // Add home route with name
-Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('terms');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*

@@ -194,10 +194,12 @@
                                                 {{ old('post_type', $publication->post_type ?? 'publication') == 'publication' ? 'selected' : '' }}>Publication</option>
                                             <option value="more-publication"
                                                 {{ old('post_type', $publication->post_type) == 'more-publication' ? 'selected' : '' }}>More Publication</option>
-                                            <option value="service-location"
-                                                {{ old('post_type', $publication->post_type) == 'service-location' ? 'selected' : '' }}>Service Location</option>
-                                            <option value="language"
-                                                {{ old('post_type', $publication->post_type) == 'language' ? 'selected' : '' }}>Language</option>
+                                            <option value="terms-condition"
+                                                {{ old('post_type', $publication->post_type) == 'terms-condition' ? 'selected' : '' }}>Terms & Conditions</option>
+                                            <option value="privacy-policy"
+                                                {{ old('post_type', $publication->post_type) == 'privacy-policy' ? 'selected' : '' }}>Privacy Policy</option>
+                                            <option value="cookies-policy"
+                                                {{ old('post_type', $publication->post_type) == 'cookies-policy' ? 'selected' : '' }}>Cookies Policy</option>
                                         </select>
                                         @error('post_type')
                                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

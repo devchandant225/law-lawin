@@ -14,7 +14,7 @@
     {{-- Publications Section --}}
     @livewire('publication-section', [
         'showViewAll' => true,
-        'limit' => 8,
+        'limit' => 12,
         'showSearch' => true,
         'sectionTitle' => '<span class="">Publications</span>',
         'sectionSubtitle' => 'Legal Knowledge & Resources',

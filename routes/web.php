@@ -143,9 +143,13 @@ Route::get('/calculator', function () {
     return view('calculator');
 })->name('calculator');
 
+// Policy Pages
+Route::get('/terms-condition', [AdminPublicationController::class, 'showTermsCondition'])->name('terms-condition');
+Route::get('/privacy-policy', [AdminPublicationController::class, 'showPrivacyPolicy'])->name('privacy-policy');
+Route::get('/cookies-policy', [AdminPublicationController::class, 'showCookiesPolicy'])->name('cookies-policy');
+
 // Add home route with name
 Route::get('/terms-and-conditions', [HomeController::class, 'terms'])->name('terms');
-Route::get('/privacy-policy', [HomeController::class, 'privacy'])->name('privacy');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*

@@ -204,8 +204,56 @@ class PublicationController extends Controller
             $result = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$message')</script>";
 
             // Render HTML output
-            @header('Content-type: text/html; charset=utf-8');
+        @header('Content-type: text/html; charset=utf-8');
             echo $result;
         }
+    }
+
+    /**
+     * Display the terms and conditions page.
+     */
+    public function showTermsCondition()
+    {
+        $publication = Publication::where('post_type', 'terms-condition')
+                                 ->where('status', 'active')
+                                 ->first();
+
+        if (!$publication) {
+            abort(404, 'Terms & Conditions not found');
+        }
+
+        return view('terms-condition', compact('publication'));
+    }
+
+    /**
+     * Display the privacy policy page.
+     */
+    public function showPrivacyPolicy()
+    {
+        $publication = Publication::where('post_type', 'privacy-policy')
+                                 ->where('status', 'active')
+                                 ->first();
+
+        if (!$publication) {
+            abort(404, 'Privacy Policy not found');
+        }
+
+        return view('privacy-policy', compact('publication'));
+    }
+
+    /**
+     * Display the cookies policy page.
+     */
+    public function showCookiesPolicy()
+    {
+        $publication = Publication::where('post_type', 'cookies-policy')
+                                 ->where('status', 'active')
+                                 ->first();
+
+        if (!$publication) {
+            abort(404, 'Cookies Policy not found');
+        }
+
+        return view('cookies-policy', compact('publication'));
     }
 }

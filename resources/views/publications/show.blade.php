@@ -68,7 +68,7 @@
                         @else
                             <!-- Gradient Background with Text when no image -->
                             <div class="publication-gradient-header">
-                                <div class="bg-gradient-to-b from-accent to-yellow-500 h-[28rem] w-full flex items-center justify-center relative overflow-hidden">
+                                <div class="bg-primary h-[28rem] w-full flex items-center justify-center relative overflow-hidden">
                                     <!-- Background Pattern -->
                                     <div class="absolute inset-0 opacity-20">
                                         <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl opacity-30 animate-pulse"></div>

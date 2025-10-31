@@ -26,13 +26,15 @@ class PublicationSection extends Component
         $sectionDescription = null,
         $showSearch = true
     ) {
-        $this->limit = $limit;
-        
-        // Hide "View All Publications" button if we're already on the publications page
         $currentUrl = request()->path();
+        
+        // On homepage, use the provided limit (default 8)
+        // On publications page, show all publications (no limit)
         if ($currentUrl === 'publication') {
+            $this->limit = null; // No limit on publications page
             $this->showViewAll = false;
         } else {
+            $this->limit = $limit; // Use limit on homepage
             $this->showViewAll = $showViewAll;
         }
         

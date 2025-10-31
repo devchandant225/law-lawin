@@ -628,7 +628,7 @@
         }
 
         th {
-            background-color: cyan;
+            background-color: #70bfce;
             color: #fff;
             font-weight: 600;
         }

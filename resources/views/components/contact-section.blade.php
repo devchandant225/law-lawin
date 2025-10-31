@@ -4,7 +4,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
             
             <!-- Left Column - Contact Information -->
-            <div class="space-y-8 bg-gradient-to-br from-accent to-primary px-8 py-8 rounded-2xl shadow-xl" data-aos="fade-right" data-aos-delay="200">
+            <div class="space-y-8 bg-gradient-to-br from-accent to-yellow-600 px-8 py-8 rounded-2xl shadow-xl" data-aos="fade-right" data-aos-delay="200">
                 <!-- Header -->
                 <div class="space-y-6">
                     <h2 class="text-xl lg:text-2xl font-semibold text-white leading-tight">

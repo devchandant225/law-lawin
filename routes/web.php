@@ -144,7 +144,7 @@ Route::get('/calculator', function () {
 })->name('calculator');
 
 // Policy Pages
-Route::get('/terms-condition', [AdminPublicationController::class, 'showTermsCondition'])->name('terms-condition');
+Route::get('/terms-of-service', [AdminPublicationController::class, 'showTermsCondition'])->name('terms-condition');
 Route::get('/privacy-policy', [AdminPublicationController::class, 'showPrivacyPolicy'])->name('privacy-policy');
 Route::get('/cookies-policy', [AdminPublicationController::class, 'showCookiesPolicy'])->name('cookies-policy');
 

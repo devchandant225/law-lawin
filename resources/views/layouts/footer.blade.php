@@ -263,9 +263,11 @@
                         in Nepal</a>
                     <a href="#"
                         class="text-gray-100 hover:text-white transition-colors duration-300">Disclaimer</a>
-                    <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Terms of
-                        use</a>
-                    <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Privacy
+                    <a href="/terms-of-service" class="text-gray-100 hover:text-white transition-colors duration-300">Terms of
+                        Service</a>
+                    <a href="/privacy-policy" class="text-gray-100 hover:text-white transition-colors duration-300">Privacy
+                        Policy</a>
+                    <a href="/cookie-policy-for-lawin-and-partners" class="text-gray-100 hover:text-white transition-colors duration-300">Cookies
                         Policy</a>
                 </div>
             </div>

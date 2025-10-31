@@ -19,7 +19,7 @@ class PublicationSection extends Component
     public $publications;
 
     public function mount(
-        $limit = 8,
+        $limit = 12,
         $showViewAll = true,
         $sectionTitle = null,
         $sectionSubtitle = null,

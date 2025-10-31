@@ -43,8 +43,8 @@ class HomeController extends Controller
         }
         
         $tableOfContents = TableOfContent::where('publication_id', $publication->id)
-            ->where('status', 'active')
-            ->orderBy('orderlist', 'asc')
+            ->where('status', true)
+            ->orderBy('order_index', 'asc')
             ->get();
         
         return view('terms-condition', compact('publication', 'tableOfContents'));
@@ -61,8 +61,8 @@ class HomeController extends Controller
         }
         
         $tableOfContents = TableOfContent::where('publication_id', $publication->id)
-            ->where('status', 'active')
-            ->orderBy('orderlist', 'asc')
+            ->where('status', true)
+            ->orderBy('order_index', 'asc')
             ->get();
         
         return view('privacy-policy', compact('publication', 'tableOfContents'));
@@ -79,8 +79,8 @@ class HomeController extends Controller
         }
         
         $tableOfContents = TableOfContent::where('publication_id', $publication->id)
-            ->where('status', 'active')
-            ->orderBy('orderlist', 'asc')
+            ->where('status', true)
+            ->orderBy('order_index', 'asc')
             ->get();
         
         return view('cookies-policy', compact('publication', 'tableOfContents'));

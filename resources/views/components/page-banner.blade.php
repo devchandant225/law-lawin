@@ -1,7 +1,7 @@
 <div class="h-[85px]">
     <div class="absolute top-0 left-0 w-full z-30">
         <!-- Breadcrumb Style Banner with Primary Color Background -->
-        <section class="relative h-[200px] flex flex-col justify-between overflow-hidden pt-[4rem] bg-cyan-500/40">
+        <section class="relative h-[200px] flex flex-col justify-between overflow-hidden pt-[4rem] bg-gray-800">
             <!-- Empty space for banner height -->
             <div class="flex-grow"></div>
 

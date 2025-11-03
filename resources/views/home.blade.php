@@ -22,7 +22,7 @@
     <x-practice-section :showViewAll="true" :limit="8" />
 
     {{-- Portfolio Section Title --}}
-    <x-page-section-title title="<span>Our Portfolio</span>" />
+    <x-page-section-title title="<span>We Serve</span>" />
     {{-- Portfolio Section --}}
     <x-portfolio-section :portfolios="$portfolios" :showViewAll="true" :limit="10" />
 

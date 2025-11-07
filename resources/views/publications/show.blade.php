@@ -41,7 +41,7 @@
                                     </h5>
                                 </div>
                                 <div class="p-0">
-                                    <nav class="toc-nav max-h-80 overflow-y-auto">
+                                    <nav class="toc-nav overflow-y-auto" style="max-height: calc(100vh - 14rem);">
                                         @foreach ($tableOfContents as $content)
                                             <a href="#toc-section-{{ $content->id }}"
                                                 class="toc-nav-link flex items-center no-underline p-3 border-b border-gray-200 text-gray-700 hover:bg-primary hover:text-white transition-all duration-300 border-l-4 border-l-transparent hover:border-l-primary text-sm"
@@ -544,38 +544,67 @@
                 enhancedObserver.observe(section);
             });
 
-            // Enhanced TOC link click handling
+            // Function to scroll to section
+            function scrollToSection(targetId, link) {
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    // Remove active state from all links
+                    tocLinks.forEach(l => {
+                        l.classList.remove('toc-nav-active', 'bg-primary', 'text-white',
+                            'border-l-primary');
+                        l.classList.add('border-l-transparent', 'text-gray-700');
+                    });
+
+                    // Add active state to current link
+                    link.classList.add('toc-nav-active', 'bg-primary', 'text-white',
+                        'border-l-primary');
+                    link.classList.remove('border-l-transparent', 'text-gray-700');
+
+                    // Calculate scroll position
+                    const headerOffset = 120;
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    // Smooth scroll
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            // Throttle function to prevent excessive scrolling
+            function throttle(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+
+            // Enhanced TOC link click and hover handling
             tocLinks.forEach(link => {
+                // Click event - immediate response
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('data-target') || this.getAttribute('href')
                         .substring(1);
-                    const targetSection = document.getElementById(targetId);
+                    scrollToSection(targetId, this);
+                });
 
-                    if (targetSection) {
-                        // Remove active state from all links
-                        tocLinks.forEach(l => {
-                            l.classList.remove('toc-nav-active', 'bg-primary', 'text-white',
-                                'border-l-primary');
-                            l.classList.add('border-l-transparent', 'text-gray-700');
-                        });
+                // Hover event - throttled scroll to section on hover
+                const throttledHoverScroll = throttle(function(targetId, link) {
+                    scrollToSection(targetId, link);
+                }, 300); // 300ms delay
 
-                        // Add active state to clicked link
-                        this.classList.add('toc-nav-active', 'bg-primary', 'text-white',
-                            'border-l-primary');
-                        this.classList.remove('border-l-transparent', 'text-gray-700');
-
-                        // Calculate scroll position
-                        const headerOffset = 120;
-                        const elementPosition = targetSection.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        // Smooth scroll
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                link.addEventListener('mouseenter', function(e) {
+                    const targetId = this.getAttribute('data-target') || this.getAttribute('href')
+                        .substring(1);
+                    throttledHoverScroll(targetId, this);
                 });
             });
         });
@@ -660,6 +689,75 @@
 
         tr:hover {
             background-color: #f1f1f1;
+        }
+
+        /* TOC Full Height Styles */
+        .toc-navigation {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toc-nav {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toc-nav-link {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toc-nav-link:hover {
+            transform: translateX(2px);
+            box-shadow: 0 2px 8px rgba(112, 191, 206, 0.3);
+        }
+
+        .toc-nav-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #70bfce, #5a9ba8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toc-nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .toc-nav-active {
+            background-color: #70bfce !important;
+            color: white !important;
+            border-left-color: #70bfce !important;
+        }
+
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* TOC scrollbar styling */
+        .toc-nav::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .toc-nav::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .toc-nav::-webkit-scrollbar-thumb {
+            background: #70bfce;
+            border-radius: 3px;
+        }
+
+        .toc-nav::-webkit-scrollbar-thumb:hover {
+            background: #5a9ba8;
         }
 
         @media (max-width: 768px) {

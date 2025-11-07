@@ -25,7 +25,14 @@
                     @if ($globalProfile && $globalProfile->address)
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-primary mt-1 flex-shrink-0 text-sm"></i>
-                            <span class="leading-relaxed">{{ $globalProfile->address }}</span>
+                            @if ($globalProfile->google_map_link)
+                                <a href="{{ $globalProfile->google_map_link }}" target="_blank" class="leading-relaxed hover:text-primary transition-colors duration-300 hover:underline">
+                                    {{ $globalProfile->address }}
+                                    <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                                </a>
+                            @else
+                                <span class="leading-relaxed">{{ $globalProfile->address }}</span>
+                            @endif
                         </div>
                     @else
                         <div class="flex items-start space-x-3">

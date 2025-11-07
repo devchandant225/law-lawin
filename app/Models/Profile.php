@@ -24,6 +24,7 @@ class Profile extends Model
         'youtube_link',
         'wechat_link',
         'address',
+        'google_map_link',
         'description',
     ];
 

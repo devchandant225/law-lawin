@@ -44,7 +44,14 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="text-gray-100">
-                                <p class="font-medium">{{ $address }}</p>
+                                @if ($globalProfile && $globalProfile->google_map_link)
+                                    <a href="{{ $globalProfile->google_map_link }}" target="_blank" class="font-medium hover:text-white hover:underline transition-colors duration-300">
+                                        {{ $address }}
+                                        <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                                    </a>
+                                @else
+                                    <p class="font-medium">{{ $address }}</p>
+                                @endif
                             </div>
                         </div>
                     @endif

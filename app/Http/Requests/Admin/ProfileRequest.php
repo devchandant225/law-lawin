@@ -35,6 +35,7 @@ class ProfileRequest extends FormRequest
             'linkedin_link' => 'nullable|url|max:255',
             'youtube_link' => 'nullable|url|max:255',
             'address' => 'nullable|string|max:1000',
+            'google_map_link' => 'nullable|url|max:500',
             'description' => 'nullable|string',
         ];
     }
@@ -58,6 +59,7 @@ class ProfileRequest extends FormRequest
             'linkedin_link' => 'LinkedIn Link',
             'youtube_link' => 'YouTube Link',
             'address' => 'Address',
+            'google_map_link' => 'Google Map Link',
             'description' => 'Description',
         ];
     }

@@ -235,7 +235,7 @@
                                             <div class="relative flex-shrink-0">
                                                 @if($member->image_url)
                                                     <img src="{{ $member->image_url }}" alt="{{ $member->name }}" 
-                                                         class="w-20 h-20 rounded object-cover border-2 border-gray-100 group-hover:border-blue-300 transition-colors">
+                                                         class="w-20 h-28 rounded object-cover border-2 border-gray-100 group-hover:border-blue-300 transition-colors">
                                                 @else
                                                     <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center border-2 border-gray-100 group-hover:border-blue-300 transition-colors">
                                                         <i class="fas fa-user text-white text-lg"></i>

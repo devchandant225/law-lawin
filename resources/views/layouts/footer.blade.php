@@ -264,12 +264,7 @@
 
                 <!-- Footer Links -->
                 <div class="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
-                    <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Law firm
-                        in Nepal</a>
-                    <a href="#" class="text-gray-100 hover:text-white transition-colors duration-300">Lawyers
-                        in Nepal</a>
-                    <a href="#"
-                        class="text-gray-100 hover:text-white transition-colors duration-300">Disclaimer</a>
+                   
                     <a href="/terms-of-service" class="text-gray-100 hover:text-white transition-colors duration-300">Terms of
                         Service</a>
                     <a href="/privacy-policy" class="text-gray-100 hover:text-white transition-colors duration-300">Privacy

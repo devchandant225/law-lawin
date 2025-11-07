@@ -77,7 +77,7 @@
                               </li>
 
                               <li>
-                                  <a href="/about/introduction">About</a>
+                                  <a href="{{ route('about') }}">About</a>
                               </li>
 
                               <li class="dropdown">

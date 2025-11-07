@@ -27,7 +27,7 @@ class AboutUsContentSection extends Model
     ];
 
     // Page type constants
-    const PAGE_TYPE_ABOUT = 'about-page';
+    const PAGE_TYPE_ABOUT = 'about';
     const PAGE_TYPE_HOME = 'home-page';
 
     // Status constants
@@ -108,5 +108,16 @@ class AboutUsContentSection extends Model
     {
         $options = self::getStatusOptions();
         return $options[$this->status] ?? $this->status;
+    }
+
+    /**
+     * Get about page content sections
+     */
+    public static function getAboutPageContent()
+    {
+        return self::active()
+            ->forPageType(self::PAGE_TYPE_ABOUT)
+            ->ordered()
+            ->get();
     }
 }

@@ -144,7 +144,7 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-8 header-nav">
                     <a href="{{ route('home') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Home</a>
-                    <a href="/about/introduction" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
+                    <a href="{{ route('about') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
                     <a href="{{ route('team.index') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
                     
                     <!-- Practice Areas Dropdown -->
@@ -282,7 +282,7 @@
             <!-- Navigation Links -->
             <nav class="flex-1 px-4 py-6 space-y-4">
                 <a href="{{ route('home') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
-                <a href="/about/introduction" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About</a>
+                <a href="{{ route('about') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About</a>
                 <a href="{{ route('team.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Team</a>
                 <a href="{{ route('practices.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Practice Areas</a>
                 <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>

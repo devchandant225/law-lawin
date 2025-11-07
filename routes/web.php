@@ -52,6 +52,7 @@ use App\Http\Controllers\PageController as PublicPageController;
 */
 
 // About
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/about/introduction', [AboutController::class, 'introduction']);
 Route::get('/about/executive-committee', [AboutController::class, 'executiveCommittee']);
 

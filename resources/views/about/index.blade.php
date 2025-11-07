@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-    {{-- Banner Section --}}
-    <x-banner />
-
     {{-- About Us Content Sections --}}
     @if($aboutContent->isNotEmpty())
         @foreach($aboutContent as $content)

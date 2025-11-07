@@ -27,7 +27,7 @@ class AboutUsContentSection extends Model
     ];
 
     // Page type constants
-    const PAGE_TYPE_ABOUT = 'about';
+    const PAGE_TYPE_ABOUT = 'about-page';
     const PAGE_TYPE_HOME = 'home-page';
 
     // Status constants

@@ -54,7 +54,7 @@
                                     <div class="relative inline-block">
                                         @if($team->image_url)
                                             <img src="{{ $team->image_url }}" alt="{{ $team->name }}" 
-                                                 class="w-32 h-48 md:w-48 md:h-58 object-cover rounded-2xl border-4 border-white/30 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                                                 class="w-32 h-48 md:w-40 md:h-56 object-contain rounded-2xl border-4 border-white/30 shadow-2xl group-hover:scale-105 transition-transform duration-300">
                                         @else
                                             <div class="w-32 h-40 md:w-40 md:h-48 bg-white/20 backdrop-blur-sm rounded-2xl border-4 border-white/30 flex items-center justify-center shadow-2xl group-hover:scale-105 transition-transform duration-300">
                                                 <i class="fas fa-user text-white text-6xl"></i>

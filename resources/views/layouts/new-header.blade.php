@@ -143,13 +143,13 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex items-center space-x-8 header-nav">
-                    <a href="{{ route('home') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Home</a>
-                    <a href="{{ route('about') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
-                    <a href="{{ route('team.index') }}" class="text-white hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
+                    <a href="{{ route('home') }}" class="text-[#108fcc] font-medium transition-colors capitalize nav-link">Home</a>
+                    <a href="{{ route('about') }}" class="text-[#108fcc] hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
+                    <a href="{{ route('team.index') }}" class="text-[#108fcc] hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
                     
                     <!-- Practice Areas Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('practices.index') }}" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('practices.index') }}" class="text-[#108fcc]  font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Practice Areas
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -184,7 +184,7 @@
 
                     <!-- Services Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('services.index') }}" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('services.index') }}" class="text-[#108fcc] font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Our Services
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -219,7 +219,7 @@
 
                     <!-- News & Publications Dropdown -->
                     <div class="relative group">
-                        <a href="#" class="text-white hover:text-white/80 font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="#" class="text-[#108fcc] font-medium transition-colors flex items-center capitalize nav-link group/link">
                            News & Publications
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -250,7 +250,7 @@
                         </div>
                     </div>
 
-                    <a href="/contact" class="text-white hover:text-white/80 font-medium transition-colors nav-link">Contact</a>
+                    <a href="/contact" class="text-[#108fcc] font-medium transition-colors nav-link">Contact</a>
                  
                 </nav>
 

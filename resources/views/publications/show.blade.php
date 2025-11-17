@@ -674,7 +674,7 @@
         }
 
         th {
-            background-color: #70bfce;
+            background-color: #108fcc;
             color: #fff;
             font-weight: 600;
         }
@@ -721,7 +721,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(to bottom, #70bfce, #5a9ba8);
+            background: linear-gradient(to bottom, #d0700b, #d0700b);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -731,9 +731,9 @@
         }
 
         .toc-nav-active {
-            background-color: #70bfce !important;
+            background-color: #d0700b !important;
             color: white !important;
-            border-left-color: #70bfce !important;
+            border-left-color: #d0700b !important;
         }
 
         /* Smooth scrolling behavior */

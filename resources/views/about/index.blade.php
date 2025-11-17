@@ -7,7 +7,7 @@
 @section('content')
     {{-- Page Banner --}}
     <x-page-banner title="About Us" subtitle="" :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'About Us']]" />
-    <x-page-section-title title="<span> About Us</span>" />
+    
     {{-- About Us Content Sections --}}
     @if ($aboutContent->isNotEmpty())
         @foreach ($aboutContent as $content)

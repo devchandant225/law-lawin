@@ -250,7 +250,7 @@
                         </div>
                     </div>
 
-                    <a href="/contact" class="text-[#108fcc] font-medium transition-colors nav-link">Contact</a>
+                    <a href="/contact" class="text-nav font-medium transition-colors nav-link">Contact</a>
                  
                 </nav>
 

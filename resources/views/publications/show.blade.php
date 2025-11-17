@@ -619,6 +619,7 @@
 
         ul {
             list-style: disc;
+            padding-left: 18px !important;
         }
 
         ul li {

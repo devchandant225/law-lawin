@@ -617,6 +617,14 @@
             color: #70bfce;
         }
 
+        ul {
+            list-style: disc;
+        }
+
+        ul li {
+            list-style: disc;
+        }
+
         /* Responsive gradient header */
         .publication-gradient-header {
             border-radius: 0.5rem;

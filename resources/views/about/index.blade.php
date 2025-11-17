@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+ {{-- Page Banner --}}
+    <x-page-banner title="About Us"
+        subtitle=""
+        :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'About Us']]" />
+    {{-- Publications Section Title --}}
     {{-- About Us Content Sections --}}
     @if($aboutContent->isNotEmpty())
         @foreach($aboutContent as $content)

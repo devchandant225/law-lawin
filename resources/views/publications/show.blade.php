@@ -618,12 +618,12 @@
         }
 
         ul {
-            list-style: disc;
+            list-style: auto;
             padding-left: 18px !important;
         }
 
         ul li {
-            list-style: disc;
+            list-style: auto;
         }
 
         /* Responsive gradient header */

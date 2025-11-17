@@ -1,5 +1,5 @@
 {{-- Page Section Title Component --}}
-<div class="relative bg-accent py-6 overflow-hidden">
+<div class="relative bg-primary py-6 overflow-hidden">
     {{-- Background Pattern/Effects --}}
     {{-- <div class="absolute inset-0 opacity-10">
         <div class="absolute top-0 left-0 w-full h-full">

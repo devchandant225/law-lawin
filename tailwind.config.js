@@ -12,6 +12,7 @@ export default {
                 primary: "#108fcc",
                 secondary: "#d0700b",
                 accent: "#108fcc",
+                nav: "#108fcc",
             },
         },
     },

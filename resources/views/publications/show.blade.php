@@ -113,7 +113,7 @@
                                 <div class="py-3 px-2">
                                     <div class="flex items-start">
                                         <div class="flex-1">
-                                            <h3 class="content-title text-lg font-semibold text-accent mb-4">
+                                            <h3 class="content-title text-lg font-semibold text-accent mb-2">
                                                 {{ $content->title }}</h3>
                                             @if ($content->description)
                                                 <div class="toc-content text-gray-700 leading-relaxed">

@@ -250,6 +250,57 @@
                         </div>
                     </div>
 
+                    <!-- Help Desk Dropdown -->
+                    <div class="relative group">
+                        <a href="#" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
+                            Help Desk
+                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div class="py-3">
+                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Legal Help Desk</span>
+                                </div>
+                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-red-50 group-hover/item:bg-red-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-gavel text-red-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Criminal Case</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Criminal Lawyers advices</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-building text-blue-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Corporate Legal Help Desk</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Corporate Lawyers advices</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-purple-50 group-hover/item:bg-purple-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-heart text-purple-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Divorce & Family Help Desk</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Divorce Lawyers advices</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-rings-wedding text-green-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Court Marriage Help Desk</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Marriage Lawyers Advices</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="/contact" class="text-nav font-medium transition-colors nav-link">Contact</a>
                  
                 </nav>
@@ -288,6 +339,16 @@
                 <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>
                 <a href="{{ route('posts.by-type', 'news') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">News</a>
                 <a href="{{ route('publications.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">Publications</a>
+                
+                <!-- Help Desk Mobile Menu -->
+                <div class="border-l-4 border-primary/20 pl-4 ml-2">
+                    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Help Desk</div>
+                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Criminal Case</a>
+                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Corporate Legal Help Desk</a>
+                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Divorce & Family Help Desk</a>
+                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Court Marriage Help Desk</a>
+                </div>
+                
                 <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
             </nav>
         </div>

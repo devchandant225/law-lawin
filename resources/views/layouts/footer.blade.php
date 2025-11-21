@@ -26,7 +26,8 @@
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-primary mt-1 flex-shrink-0 text-sm"></i>
                             @if ($globalProfile->google_map_link)
-                                <a href="{{ $globalProfile->google_map_link }}" target="_blank" class="leading-relaxed hover:text-primary transition-colors duration-300 hover:underline">
+                                <a href="{{ $globalProfile->google_map_link }}" target="_blank"
+                                    class="leading-relaxed hover:text-primary transition-colors duration-300 hover:underline">
                                     {{ $globalProfile->address }}
                                     <i class="fas fa-external-link-alt ml-1 text-xs"></i>
                                 </a>
@@ -205,7 +206,7 @@
                         </div>
                         <div>
                             <button type="submit"
-                                class="w-full bg-secondary text-white font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-md hover:bg-primary transition-colors duration-300 text-xs sm:text-sm">
+                                class="w-full bg-gradient from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-md hover:bg-primary transition-colors duration-300 text-xs sm:text-sm">
                                 Subscribe Now
                             </button>
                         </div>
@@ -217,7 +218,7 @@
                     <a href="/calculator"
                         class="inline-flex items-center text-gray-700 hover:text-primary transition-colors duration-300 group font-semibold text-sm sm:text-base lg:text-lg underline">
                         <i class="fas fa-calculator mr-2 group-hover:scale-110 transition-transform duration-300"></i>
-                        <span class="hidden sm:inline">Court FEE CALCULATOR OF NEPAL</span>
+                        <span class="hidden sm:inline">COURT FEE CALCULATOR OF NEPAL</span>
                         <span class="sm:hidden">Court Calculator</span>
                         <i class="fas fa-external-link-alt ml-2 text-xs"></i>
                     </a>
@@ -234,9 +235,10 @@
                     @if ($globalProfile && $globalProfile->address)
                         <!-- Clickable overlay -->
                         @if ($globalProfile->google_map_link)
-                            <a href="{{ $globalProfile->google_map_link }}" target="_blank" 
-                               class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-                                <div class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2 shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                            <a href="{{ $globalProfile->google_map_link }}" target="_blank"
+                                class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                                <div
+                                    class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2 shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
                                     <i class="fas fa-external-link-alt text-primary"></i>
                                     <span class="text-sm font-semibold text-gray-800">Open in Google Maps</span>
                                 </div>
@@ -245,14 +247,17 @@
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=en&amp;q={{ urlencode($globalProfile->address) }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade" title="Office Location Map - Click to open in Google Maps"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Office Location Map - Click to open in Google Maps"
                             class="w-full h-full transition-opacity duration-300 group-hover:opacity-80">
                         </iframe>
                     @else
                         <!-- Default fallback with static Google Maps link -->
-                        <a href="https://www.google.com/maps/search/?api=1&query=Park+Lane,+Buddhanagar-8,+Kathmandu,+Nepal" target="_blank" 
-                           class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
-                            <div class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2 shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Park+Lane,+Buddhanagar-8,+Kathmandu,+Nepal"
+                            target="_blank"
+                            class="absolute inset-0 z-10 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                            <div
+                                class="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2 shadow-lg transform scale-90 group-hover:scale-100 transition-transform duration-300">
                                 <i class="fas fa-external-link-alt text-primary"></i>
                                 <span class="text-sm font-semibold text-gray-800">Open in Google Maps</span>
                             </div>
@@ -260,12 +265,13 @@
                         <iframe
                             src="https://maps.google.com/maps?width=100%25&amp;height=250&amp;hl=en&amp;q=Park+Lane,+Buddhanagar-8,+Kathmandu,+Nepal&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade" title="Default Location Map - Click to open in Google Maps"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Default Location Map - Click to open in Google Maps"
                             class="w-full h-full transition-opacity duration-300 group-hover:opacity-80">
                         </iframe>
                     @endif
                 </div>
-                
+
                 <!-- Map Click Instructions -->
                 <div class="text-center text-xs text-gray-500 mb-2">
                     <i class="fas fa-info-circle mr-1"></i>
@@ -288,12 +294,15 @@
 
                 <!-- Footer Links -->
                 <div class="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
-                   
-                    <a href="/terms-of-service" class="text-gray-100 hover:text-white transition-colors duration-300">Terms of
+
+                    <a href="/terms-of-service"
+                        class="text-gray-100 hover:text-white transition-colors duration-300">Terms of
                         Service</a>
-                    <a href="/privacy-policy" class="text-gray-100 hover:text-white transition-colors duration-300">Privacy
+                    <a href="/privacy-policy"
+                        class="text-gray-100 hover:text-white transition-colors duration-300">Privacy
                         Policy</a>
-                    <a href="/cookie-policy-for-lawin-and-partners" class="text-gray-100 hover:text-white transition-colors duration-300">Cookies
+                    <a href="/cookie-policy-for-lawin-and-partners"
+                        class="text-gray-100 hover:text-white transition-colors duration-300">Cookies
                         Policy</a>
                 </div>
             </div>

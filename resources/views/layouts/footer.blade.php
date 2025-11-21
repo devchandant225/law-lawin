@@ -206,7 +206,7 @@
                         </div>
                         <div>
                             <button type="submit"
-                                class="w-full bg-gradient from-primary to-secondary hover:from-secondary hover:to-primary text-white font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-md hover:bg-primary transition-colors duration-300 text-xs sm:text-sm">
+                                class="w-full bg-gradient-to-r from-primary to-secondary hover:bg-gradient-to-r hover:from-secondary hover:to-primary text-white font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-md transition-colors duration-300 text-xs sm:text-sm">
                                 Subscribe Now
                             </button>
                         </div>

@@ -1,5 +1,5 @@
 <div>
-    <section class="relative py-8 bg-gray-800 overflow-hidden">
+    <section class="relative py-8 bg-gray-100 overflow-hidden">
 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             @if ($showSearch)
@@ -37,7 +37,7 @@
                 <!-- Two-column responsive grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3" wire:loading.remove.delay>
                     @foreach ($publications as $index => $publication)
-                        <div class="group relative bg-blue-200 rounded-xl border  shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="group relative bg-blue-100 rounded-xl border  shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
                             <div class="p-2">
                                 <h2 class="text-base font-semibold text-gray-800 group-hover:text-primary transition-colors">
                                     <a href="{{ route('publication.show', $publication->slug) }}">{{$index + 1 . " . " . $publication->title }}</a>

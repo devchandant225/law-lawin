@@ -37,7 +37,7 @@
                 <!-- Two-column responsive grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3" wire:loading.remove.delay>
                     @foreach ($publications as $index => $publication)
-                        <div class="group relative bg-blue-100 rounded-xl border  shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <div class="group relative bg-blue-100 rounded-xl border shadow hover:shadow-xl transition-all duration-300 overflow-hidden">
                             <div class="p-2">
                                 <h2 class="text-base font-semibold text-gray-800 group-hover:text-primary transition-colors">
                                     <a href="{{ route('publication.show', $publication->slug) }}">{{$index + 1 . " . " . $publication->title }}</a>

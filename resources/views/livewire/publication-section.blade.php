@@ -1,5 +1,5 @@
 <div>
-    <section class="relative py-8 bg-slate-900 overflow-hidden">
+    <section class="relative py-8 bg-gray-900 overflow-hidden">
 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             @if ($showSearch)

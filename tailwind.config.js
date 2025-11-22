@@ -12,7 +12,7 @@ export default {
                 primary: "#1d5e7d",
                 secondary: "#d0700b",
                 accent: "#108fcc",
-                nav: "#00000",
+                nav: "#1b1b1e",
             },
         },
     },

@@ -134,3 +134,203 @@
         </div>
     </section>
 @endsection
+@push('styles')
+    <style>
+        h3 {
+            color: #70bfce;
+        }
+
+        ul {
+            list-style: auto;
+            padding-left: 18px !important;
+        }
+
+        ul li {
+            list-style: auto;
+        }
+
+        /* Responsive gradient header */
+        .publication-gradient-header {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .publication-gradient-header h1 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .publication-gradient-header p {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 640px) {
+            .publication-gradient-header h1 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+
+            .publication-gradient-header p {
+                font-size: 1rem !important;
+            }
+
+            .publication-gradient-header .bg-gradient-to-b {
+                height: 20rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .publication-gradient-header h1 {
+                font-size: 1.75rem !important;
+            }
+
+            .publication-gradient-header .bg-gradient-to-b {
+                height: 18rem !important;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #108fcc;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* TOC Full Height Styles */
+        .toc-navigation {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toc-nav {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toc-nav-link {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toc-nav-link:hover {
+            transform: translateX(2px);
+            box-shadow: 0 2px 8px rgba(112, 191, 206, 0.3);
+        }
+
+        .toc-nav-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #d0700b, #d0700b);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toc-nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .toc-nav-active {
+            background-color: #d0700b !important;
+            color: white !important;
+            border-left-color: #d0700b !important;
+        }
+
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* TOC scrollbar styling */
+        .toc-nav::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .toc-nav::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .toc-nav::-webkit-scrollbar-thumb {
+            background: #70bfce;
+            border-radius: 3px;
+        }
+
+        .toc-nav::-webkit-scrollbar-thumb:hover {
+            background: #5a9ba8;
+        }
+
+        @media (max-width: 768px) {
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+                width: 100%;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                padding: 10px;
+                background-color: #fff;
+            }
+
+            td {
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: 600;
+                color: #2c3e50;
+                text-align: left;
+            }
+        }
+    </style>
+@endpush

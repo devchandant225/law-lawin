@@ -91,5 +91,57 @@
                 </div>
             </div>
         @endif
+
+        <!-- Main About Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+            <!-- Image Section - Left -->
+            <div class="relative order-2 lg:order-1">
+                <!-- Main Image Container -->
+                <div class="relative">
+                    <!-- Image with rounded corners and shadow -->
+                    <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
+                        <img src="{{ asset('storage/' . $why_choose_home->image1) }}"
+                            alt="{{ $why_choose_home->title ?? 'Legal Services' }}"
+                            class="w-full h-[30rem] object-cover rounded">
+
+                        <!-- Subtle gradient overlay -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl pointer-events-none">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Content Section - Right -->
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-2">
+                <!-- Description Content -->
+                <div class="">
+                    <div class="text-base text-gray-600 max-w-none text-justify">
+                        {!! $why_choose_home->desc_1 !!}
+                    </div>
+                </div>
+                <!-- Section Header -->
+                <div class="space-y-6">
+                    <!-- Tagline Badge -->
+                    <div
+                        class="inline-flex items-center space-x-3 px-5 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20">
+                        <span class="text-sm font-semibold text-primary uppercase tracking-wider">About Us</span>
+                    </div>
+
+                    <!-- Main Title -->
+                    <div class="space-y-4">
+                        <h2 class="font-semibold text-gray-800 leading-tight">
+                            <span class="text-primary text-3xl underline">
+                                {{ $why_choose_home->title ?? 'Lawin & Partners' }}
+                            </span>
+                        </h2>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </section>

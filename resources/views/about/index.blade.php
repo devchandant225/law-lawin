@@ -76,7 +76,7 @@
 
                     {{-- Description 2 Section Below --}}
                     @if ($content->desc_2)
-                        <div class="mt-12 lg:mt-12 rounded-2xl p-6">
+                        <div class="mt-12 lg:mt-12 rounded-2xl">
                             <div class="mx-auto">
                                 <div class="text-left">
                                     <div class="text-base text-gray-600 mx-auto text-justify">

@@ -33,7 +33,7 @@
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
                                     <img src="{{ $practice->feature_image_url }}" 
                                          alt="{{ $practice->title }}" 
-                                         class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
                             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">{{ $practice->title }}</h1>

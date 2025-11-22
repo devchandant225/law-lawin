@@ -114,20 +114,9 @@
             </div>
 
             <!-- Content Section - Right -->
-            <div class="grid lg:grid-cols-2 grid-cols-1 gap-2">
-                <!-- Description Content -->
+            <div class="">
+           
                 <div class="">
-                    <div class="text-base text-gray-600 max-w-none text-justify">
-                        {!! $why_choose_home->desc_1 !!}
-                    </div>
-                </div>
-                <!-- Section Header -->
-                <div class="space-y-6">
-                    <!-- Tagline Badge -->
-                    <div
-                        class="inline-flex items-center space-x-3 px-5 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20">
-                        <span class="text-sm font-semibold text-primary uppercase tracking-wider">About Us</span>
-                    </div>
 
                     <!-- Main Title -->
                     <div class="space-y-4">
@@ -139,6 +128,13 @@
 
                     </div>
                 </div>
+                     <!-- Description Content -->
+                <div class="">
+                    <div class="text-base text-gray-600 max-w-none text-justify">
+                        {!! $why_choose_home->desc_1 !!}
+                    </div>
+                </div>
+                <!-- Section Header -->
 
             </div>
         </div>

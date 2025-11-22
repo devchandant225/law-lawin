@@ -63,7 +63,7 @@
                                 <!-- More Details Button -->
                                     <div class="mt-auto">
                                     <a href="{{ route('practice.show', $practice->slug) }}" 
-                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
+                                       class="relative inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-blue-100 rounded-full overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-lg group/btn">
                                         <!-- Button Content -->
                                         <span class="relative z-10">Read More</span>
                                         <svg class="relative z-10 w-4 h-4 ml-2 transform group-hover/btn:translate-x-1 transition-transform duration-300" 

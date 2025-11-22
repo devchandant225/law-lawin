@@ -21,8 +21,7 @@
                 <!-- Main Image Container -->
                 <div class="relative">
                     <!-- Image with rounded corners and shadow -->
-                    <div
-                        class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
+                    <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
                         <img src="{{ asset('storage/' . $intro_home->image1) }}"
                             alt="{{ $intro_home->title ?? 'Legal Services' }}"
                             class="w-full h-[30rem] object-cover rounded">
@@ -41,7 +40,8 @@
                 <!-- Section Header -->
                 <div class="space-y-6">
                     <!-- Tagline Badge -->
-                    <div class="inline-flex items-center space-x-3 px-5 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20">
+                    <div
+                        class="inline-flex items-center space-x-3 px-5 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full border border-primary/20">
                         <span class="text-sm font-semibold text-primary uppercase tracking-wider">About Us</span>
                     </div>
 
@@ -52,7 +52,7 @@
                                 {{ $intro_home->title ?? 'Lawin & Partners' }}
                             </span>
                         </h2>
-                       
+
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Call to Action Buttons -->
-                {{-- <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                <div class="flex flex-col sm:flex-row gap-4 pt-6">
                     <a href="{{ route('team.index') }}"
                         class="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary via-secondary to-primary text-white font-semibold rounded-xl hover:from-secondary hover:via-primary hover:to-secondary transition-all duration-300 transform hover:scale-105 hover:shadow-xl shadow-lg">
                         <span>Meet Our Team</span>
@@ -74,7 +74,7 @@
                         class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary/30 text-primary font-semibold rounded-xl hover:border-primary hover:text-white hover:bg-primary transition-all duration-300">
                         <span>How We Do It</span>
                     </a>
-                </div> --}}
+                </div>
             </div>
         </div>
 

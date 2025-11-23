@@ -232,7 +232,7 @@
                                         <i class="fas fa-gavel text-red-500 text-xs"></i>
                                     </div>
                                     <div>
-                                        <div class="font-medium">Criminal Case</div>
+                                        <div class="font-medium">Criminal Law Help Desk</div>
                                         <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Criminal Lawyers advices</div>
                                     </div>
                                 </a>
@@ -241,7 +241,7 @@
                                         <i class="fas fa-building text-blue-500 text-xs"></i>
                                     </div>
                                     <div>
-                                        <div class="font-medium">Corporate Legal Help Desk</div>
+                                        <div class="font-medium">Corporate Law Help Desk</div>
                                         <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Corporate Lawyers advices</div>
                                     </div>
                                 </a>
@@ -250,7 +250,7 @@
                                         <i class="fas fa-heart text-purple-500 text-xs"></i>
                                     </div>
                                     <div>
-                                        <div class="font-medium">Divorce & Family Help Desk</div>
+                                        <div class="font-medium">Family and Divorce Law Help Desk</div>
                                         <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Divorce Lawyers advices</div>
                                     </div>
                                 </a>
@@ -259,7 +259,7 @@
                                         <i class="fas fa-rings-wedding text-green-500 text-xs"></i>
                                     </div>
                                     <div>
-                                        <div class="font-medium">Court Marriage Help Desk</div>
+                                        <div class="font-medium">Court Marriage Law Help Desk</div>
                                         <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Marriage Lawyers Advices</div>
                                     </div>
                                 </a>

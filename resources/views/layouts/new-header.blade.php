@@ -128,13 +128,13 @@
 <!-- Main Header - Sticky -->
 <div class="sticky top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
     <header class="header-main transition-all duration-300">
-        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:max-w-8xl w-full mx-auto px-2 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="flex-shrink-0">
                         @if ($globalProfile && $globalProfile->logo_url)
-                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="w-[6rem] h-[4rem] lg:h-16 lg:w-auto header-logo">
+                            <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}" class="w-[10rem] h-[5rem] lg:h-16 lg:w-auto header-logo">
                         @else
                             <img src="assets/images/logo-light.png" alt="{{ config('app.name') }}" class="h-12 w-auto header-logo">
                         @endif

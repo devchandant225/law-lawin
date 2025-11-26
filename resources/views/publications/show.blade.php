@@ -246,7 +246,7 @@
                 class="absolute bottom-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl opacity-40 animate-pulse delay-1000">
             </div>
     </section>
-    @endif
+                    @endif
 
     <!-- FAQs Section -->
     @if ($faqs->count() > 0)
@@ -378,6 +378,7 @@
             'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
         ],
     ]" :showSocialLinks="true" />
+
     </div>
     </div>
     </section>

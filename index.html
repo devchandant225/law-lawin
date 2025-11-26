@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandan Thakur - Full-Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .header {
+            background: #000;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border: 3px solid #000;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .header .title {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+
+        .contact-info a,
+        .contact-info span {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 40px;
+            border-left: 3px solid #000;
+            border-right: 3px solid #000;
+            border-bottom: 3px solid #000;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            color: #000;
+            border-bottom: 3px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .summary {
+            text-align: justify;
+            line-height: 1.8;
+            color: #000;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 15px;
+            row-gap: 12px;
+        }
+
+        .skill-category {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .skill-items {
+            color: #000;
+        }
+
+        .experience-item,
+        .project-item {
+            margin-bottom: 25px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1em;
+            color: #000;
+        }
+
+        .job-date {
+            color: #000;
+            font-weight: 700;
+        }
+
+        .company {
+            color: #333;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .responsibilities {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .responsibilities li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .responsibilities li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .projects-category {
+            margin-bottom: 25px;
+        }
+
+        .category-title {
+            font-weight: 700;
+            color: #000;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 4px solid #000;
+        }
+
+        .project-item {
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border-left: 3px solid #000;
+            margin-bottom: 12px;
+        }
+
+        .project-name {
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .project-description {
+            color: #000;
+            font-size: 0.95em;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .degree {
+            font-weight: 700;
+            color: #000;
+            font-size: 1.05em;
+        }
+
+        .institution {
+            color: #333;
+            margin-top: 3px;
+        }
+
+        .languages {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .language-tag {
+            background: #000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 0;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            .header {
+                background: #000;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .language-tag {
+                background: #000;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CHANDAN THAKUR</h1>
+            <div class="title">Full-Stack Developer</div>
+            <div class="contact-info">
+                <span>+977 9823147749</span>
+                <span>|</span>
+                <span>devchandant225@gmail.com</span>
+                <span>|</span>
+                <span>Naya Thimi, Bhaktapur, Nepal</span>
+            </div>
+            <div class="contact-info">
+                <span>www.linkedin.com/in/chandan-thakur-027b48234</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p class="summary">
+                    Full-Stack Developer with <strong>4+ years</strong> of professional experience in designing,
+                    developing, and deploying web applications using <strong>Node.js, Express.js, React.js, Next.js,
+                        MongoDB, MySQL, Laravel, PHP, and WordPress</strong>. Skilled in REST API development,
+                    responsive UI, database design, authentication, third-party integrations, and cloud deployment.
+                    Experience in building <strong>eCommerce systems, CMS platforms, booking systems,
+                    and SaaS dashboards</strong>. Strong understanding of Git, CI/CD, server management, performance
+                    optimization, and modern JavaScript frameworks. Proven ability to lead projects, build scalable
+                    architectures, optimize SEO, and manage full project lifecycles from requirement analysis to secure
+                    cloud deployment. Adept at problem-solving, writing clean scalable code, and collaborating in agile
+                    environments.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">Frontend Development</div>
+                    <div class="skill-items">HTML5, CSS3, SCSS, Tailwind CSS, JavaScript (ES6+), TypeScript, React.js,
+                        Next.js, Redux Toolkit, Responsive UI/UX, Component-Based Architecture</div>
+
+                    <div class="skill-category">Backend Development</div>
+                    <div class="skill-items">Node.js, Express.js, Laravel, PHP, RESTful API Design & Development,
+                        Authentication (JWT, OAuth), Role-Based Access Control</div>
+
+                    <div class="skill-category">Databases</div>
+                    <div class="skill-items">MongoDB, Mongoose, MySQL, PostgreSQL, Database Design, Query Optimization
+                    </div>
+
+                    <div class="skill-category">Cloud & DevOps</div>
+                    <div class="skill-items">DigitalOcean VPS using CyberPanel, LiteSpeed, Nginx, cPanel hosting, Server
+                        setup, hardening & optimization, Reverse proxy configuration, Docker (basic), CI/CD pipelines,
+                        Linux Server Management, PM2</div>
+
+                    <div class="skill-category">Additional Skills</div>
+                    <div class="skill-items">Git (Version Control), Performance Optimization, SEO-Friendly Development,
+                        Problem Solving, Clean Code Practices, WordPress</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Professional Experience</h2>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Freelance Full Stack Developer</span>
+                        <span class="job-date">2025 – Present</span>
+                    </div>
+                    <div class="company">Remote</div>
+                    <ul class="responsibilities">
+                        <li>Working independently with clients across different industries to design and develop
+                            full-stack web applications using MERN, Laravel, and Next.js.</li>
+                        <li>Building <strong>SEO-optimized, mobile-responsive, and high-performance</strong> websites
+                            tailored to client branding and business goals.</li>
+                        <li>Developing custom dashboards, APIs, eCommerce functionality, booking systems, and CMS
+                            platforms from the ground up.</li>
+                        <li>Handling end-to-end project delivery — requirement gathering, UI/UX planning, backend
+                            development, frontend integration, deployment, and long-term maintenance.</li>
+                        <li>Managing cloud and VPS environments, optimizing server performance, and ensuring secure,
+                            scalable deployments.</li>
+                        <li>Providing technical consultation to clients, improving their digital presence, workflow
+                            automation, and product strategy.</li>
+                        <li>Maintaining strong communication, delivering projects on schedule, and consistently
+                            achieving high client satisfaction.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Full Stack Developer</span>
+                        <span class="job-date">2022 – 2025</span>
+                    </div>
+                    <div class="company">Outofboxdesign — Mahadevsthan, Koteshwor, Kathmandu, Nepal</div>
+                    <ul class="responsibilities">
+                        <li>Led the development of multiple full-stack projects using Laravel and the MERN stack,
+                            delivering high-performance and client-focused web applications.</li>
+                        <li>Designed and built scalable backend architectures, <strong>REST APIs, authentication
+                                systems</strong>, and custom CMS/admin panels.</li>
+                        <li>Developed modern, responsive frontend interfaces with <strong>React, Next.js,
+                                Tailwind</strong>, and optimized UX for better engagement.</li>
+                        <li>Built <strong>SEO-optimized websites</strong> for clients, improving search visibility,
+                            speed performance, and organic reach.</li>
+                        <li>Managed full project cycles — from requirement analysis and planning to deployment, testing,
+                            and maintenance.</li>
+                        <li>Implemented best coding practices, database optimization, version control workflows, and
+                            performance tuning.</li>
+                        <li>Collaborated directly with clients, provided technical guidance, and delivered solutions
+                            aligned with business goals.</li>
+                        <li>Deployed and managed applications across servers, VPS environments, and cloud platforms with
+                            smooth <strong>CI/CD workflows</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <span class="job-title">Fullstack Developer</span>
+                        <span class="job-date">2021 – 2022</span>
+                    </div>
+                    <div class="company">Dakshya Nepal Pvt. Ltd. — Balkumari, Kathmandu, Nepal</div>
+                    <ul class="responsibilities">
+                        <li>Learned and practiced core <strong>MERN stack</strong> concepts in a guided,
+                            learning-focused environment.</li>
+                        <li>Worked on real client projects alongside senior developers while building foundational
+                            skills.</li>
+                        <li>Developed and updated React UI components, ensuring responsiveness and clean structure.</li>
+                        <li>Assisted in integrating REST APIs and performing CRUD operations with Node.js and MongoDB.
+                        </li>
+                        <li>Collaborated with seniors to understand project workflow, architecture, and best practices.
+                        </li>
+                        <li>Followed <strong>Git version control</strong> practices and contributed to team-based
+                            development tasks.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Key Projects</h2>
+
+                <div class="projects-category">
+                    <div class="category-title">MERN / Next.js Projects</div>
+
+                    <div class="project-item">
+                        <div class="project-name">LawBhandari.com</div>
+                        <div class="project-description">Node.js + Next.js website for a law firm in Nepal, highly
+                            optimized, top-ranked, with a complete CMS for content management.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Entrance Portal</div>
+                        <div class="project-description">MERN stack government portal for student registrations,
+                            academic submissions, and payment integration with eSewa & Khalti. Includes admit card
+                            generation in PDF.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Joomni.com / app.joomni.com</div>
+                        <div class="project-description">MERN + Next.js eCommerce website builder enabling SMEs to set
+                            up online stores quickly with a full admin panel.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Beauty-Hub.joomni.com</div>
+                        <div class="project-description">Multi-vendor salons listing and appointment booking system with
+                            a custom AI chatbot (Gemini API wrapper).</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Property-Hub.joomni.com</div>
+                        <div class="project-description">Multi-vendor real estate platform for listing, buying, and
+                            selling properties.</div>
+                    </div>
+                </div>
+
+                <div class="projects-category">
+                    <div class="category-title">Laravel / Other Full-Stack Projects</div>
+
+                    <div class="project-item">
+                        <div class="project-name">HotelRheinfall.com</div>
+                        <div class="project-description">Hotel booking website with international payment gateway
+                            (Saferpay), advanced admin panel, dynamic room pricing, interactive calendar, CMS, and
+                            analytics.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">HotelPeaceland.com</div>
+                        <div class="project-description">Hotel website with CMS and booking management system.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">YallaJetski.com</div>
+                        <div class="project-description">Tour and travel booking website for Jet Ski services.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">AoneJetski.com</div>
+                        <div class="project-description">Laravel-based Jet Ski booking platform similar to
+                            YallaJetski.com, with booking and payment features.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">NepalMotoTours.com</div>
+                        <div class="project-description">SEO-optimized motorcycle tours website with full CMS.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">NewtonsDesign.com</div>
+                        <div class="project-description">Architecture company website with SEO optimization and CMS.
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">JadanConstructionGroup.com</div>
+                        <div class="project-description">Top-ranked construction website in Nepal.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">KutoConstruction.com</div>
+                        <div class="project-description">Construction company website with CMS.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">LawatiConstruction.com</div>
+                        <div class="project-description">Construction portfolio website with CMS.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">ArkshGroup.com</div>
+                        <div class="project-description">SEO-structured company portfolio website with full CMS.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">GSEducare.com</div>
+                        <div class="project-description">Educational consultancy website.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">BBCVisa.com</div>
+                        <div class="project-description">Educational consultancy platform.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Thesewanepal.com</div>
+                        <div class="project-description">Educational consultancy website with CMS and client-focused
+                            features.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">NolaEateryAndBar.com</div>
+                        <div class="project-description">Local restaurant website with menu and booking features.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+
+                <div class="education-item">
+                    <div class="degree">Bachelor of Technology (B.Tech) – Computer Science & Information Technology
+                        (CSIT)</div>
+                    <div class="institution">East West Institute of Technology, Bangalore, Karnataka, India | 2016 –
+                        2020</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree">Higher Secondary (+2) – Science / Computer Stream</div>
+                    <div class="institution">Mithila Institute of Technology (MiT), Janakpurdham, Dhanusha, Nepal | 2013
+                        – 2015</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree">School – Secondary Education</div>
+                    <div class="institution">Mother Teresa Public School, Janakpurdham, Dhanusha, Nepal | Completed 2013
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="languages">
+                    <span class="language-tag">Nepali</span>
+                    <span class="language-tag">English</span>
+                    <span class="language-tag">Maithili</span>
+                    <span class="language-tag">Hindi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

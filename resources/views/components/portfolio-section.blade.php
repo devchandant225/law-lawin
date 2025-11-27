@@ -71,11 +71,11 @@
             </div>
         @endif
         
-        @if($showViewAll && $portfolios->count() > $limit)
+     
             <!-- View All Button -->
-            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center mt-8" data-aos="fade-up" data-aos-delay="600">
                 <a href="{{ route('portfolios.index') }}" 
-                   class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl group">
+                   class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-full hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 hover:shadow-xl group">
                     <span class="mr-3">View All Portfolio</span>
                     <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@
                     </svg>
                 </a>
             </div>
-        @endif
+      
     </div>
 </section>
 

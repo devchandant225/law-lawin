@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="flex-1">
                                                 <h6 class="text-base font-semibold text-primary mb-1 leading-tight">
-                                                    <a href="{{ route('service.show', $relatedService->slug) }}" class="hover:bg-primary transition-colors duration-200">{{ $relatedService->title }}</a>
+                                                    <a href="{{ route('service.show', $relatedService->slug) }}" class="transition-colors duration-200">{{ $relatedService->title }}</a>
                                                 </h6>
                                             </div>
                                         </div>

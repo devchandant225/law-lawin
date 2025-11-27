@@ -178,6 +178,16 @@
             </div>
         </div>
     </section>
+      {{-- Contact Section --}}
+    <x-contact-section :contactInfo="[
+        'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+        'phone' => '+9779841933745',
+        'email' => 'info@lawinpartners.com',
+        'workingHours' => [
+            'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
+            'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
+        ],
+    ]" :showSocialLinks="true" />
 @endsection
 
 @push('styles')

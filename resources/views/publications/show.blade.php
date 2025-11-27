@@ -116,7 +116,7 @@
                                             <h3 class="content-title text-lg font-semibold text-accent">
                                                 {{ $content->title }}</h3>
                                             @if ($content->description)
-                                                <div class="toc-content text-gray-700 leading-relaxed pl-3">
+                                                <div class="toc-content text-gray-700 leading-relaxed pl-4">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif

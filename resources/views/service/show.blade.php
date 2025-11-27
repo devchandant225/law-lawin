@@ -167,7 +167,7 @@
                                     <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/25 transition-all duration-200 bg-white text-gray-800 resize-none" placeholder="Write your message here..." required></textarea>
                                 </div>
                                 
-                                <button type="submit" class="w-full py-3 font-semibold text-white bg-primary rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
+                                <button type="submit" class="w-full py-3 font-semibold text-white bg-gradient-to-r from-primary to-secondary rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
                                     <i class="fas fa-paper-plane"></i>
                                     Send Message
                                 </button>

@@ -22,7 +22,7 @@
                 <!-- Main Content - 70% -->
                 <div class="lg:w-8/12 w-full">
                     <!-- Service Content Card -->
-                    <div class="bg-white rounded-3xl shadow-lg p-8 mb-8 border border-primary animate-fade-in">
+                    <div class="bg-white rounded-3xl shadow-lg p-8 mb-8 animate-fade-in">
                         <div class="mb-8">
                             @if ($service->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden relative group">
@@ -41,13 +41,13 @@
                     </div>
 
                     <!-- Key Benefits Section -->
-                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 border border-primary shadow-lg animate-fade-in">
+                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg animate-fade-in">
                         <h3 class="text-2xl font-semibold text-primary mb-8 flex items-center gap-4">
                             <i class="fas fa-check-circle bg-primary"></i>
                             Key Benefits & Features
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-white rounded-2xl p-6 shadow-md border border-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                            <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                                 <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0 mb-4">
                                     <i class="fas fa-gavel text-white text-xl"></i>
                                 </div>
@@ -83,7 +83,7 @@
                 <div class="lg:w-4/12 w-full">
                     <div class="sticky top-8 space-y-6">
                         <!-- More Services -->
-                        <div class="bg-white rounded-3xl p-6 shadow-lg border border-primary animate-fade-in">
+                        <div class="bg-white rounded-3xl p-6 shadow-lg animate-fade-in">
                             <h4 class="text-xl font-semibold text-primary mb-6 flex items-center gap-3">
                                 <i class="fas fa-list-ul bg-primary"></i>
                                 More Services
@@ -113,7 +113,7 @@
                         </div>
 
                         <!-- Social Share -->
-                        <div class="bg-white rounded-3xl p-6 shadow-lg border border-primary animate-fade-in">
+                        <div class="bg-white rounded-3xl p-6 shadow-lg animate-fade-in">
                             <h4 class="text-xl font-semibold text-primary mb-6 flex items-center gap-3">
                                 <i class="fas fa-share-alt bg-primary"></i>
                                 Share This Service
@@ -135,7 +135,7 @@
                         </div>
 
                         <!-- Contact Form -->
-                        <div class="bg-white rounded-3xl p-6 shadow-lg border border-primary animate-fade-in">
+                        <div class="bg-white rounded-3xl p-6 shadow-lg animate-fade-in">
                             <h4 class="text-xl font-semibold text-primary mb-6 flex items-center gap-3">
                                 <i class="fas fa-envelope bg-primary"></i>
                                 Contact Us

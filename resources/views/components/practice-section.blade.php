@@ -81,10 +81,10 @@
         @if($showViewAll && $practices->isNotEmpty())
             <!-- View All Button -->
             <div class="text-center" data-aos="fade-up" data-aos-delay="600">
-                <a href="{{ route('practices.index') }}" 
+                <a href="{{ route('practice.index') }}"
                    class="inline-flex items-center px-4 py-2 bg-blue-100 text-gray-600 font-semibold rounded-full hover:bg-secondary transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group">
-                    <span class="mr-3">View All Practice Areas</span>
-                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" 
+                    <span class="mr-3">View All Practice</span>
+                    <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                          fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                     </svg>

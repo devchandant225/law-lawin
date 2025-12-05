@@ -91,10 +91,9 @@ Route::get('/service/{slug}', [ServiceController::class, 'show'])->name('service
 
 // Practice Areas
 Route::get('/practice', [PracticeController::class, 'index'])->name('practice.index');
-Route::get('/practices', [PracticeController::class, 'index'])->name('practices.index');
-Route::get('/practices/search', [PracticeController::class, 'search'])->name('practices.search');
-Route::get('/practices/featured', [PracticeController::class, 'featured'])->name('practices.featured');
-Route::get('/practices/stats', [PracticeController::class, 'stats'])->name('practices.stats');
+Route::get('/practice/search', [PracticeController::class, 'search'])->name('practice.search');
+Route::get('/practice/featured', [PracticeController::class, 'featured'])->name('practice.featured');
+Route::get('/practice/stats', [PracticeController::class, 'stats'])->name('practice.stats');
 Route::get('/practice/{slug}', [PracticeController::class, 'show'])->name('practice.show');
 
 // Publications

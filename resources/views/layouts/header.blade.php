@@ -95,10 +95,10 @@
                               </li>
 
                               <li class="dropdown">
-                                  <a href="{{ route('practices.index') }}">Practice Areas</a>
+                                  <a href="{{ route('practice.index') }}">Practice</a>
                                   @if ($navPracticeAreas && $navPracticeAreas->count() > 0)
                                       <ul>
-                                          <li><a href="{{ route('practices.index') }}">All Practice Areas</a></li>
+                                          <li><a href="{{ route('practice.index') }}">All Practice</a></li>
                                           @foreach ($navPracticeAreas->take(8) as $practice)
                                               <li><a
                                                       href="{{ route('practice.show', $practice->slug) }}">{{ $practice->title }}</a>

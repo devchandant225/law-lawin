@@ -10,7 +10,7 @@
         :title="$practice->title" 
         :breadcrumbs="[
             ['label' => 'Home', 'url' => url('/')],
-            ['label' => 'Practice Areas', 'url' => route('practices.index')],
+            ['label' => 'Practice Areas', 'url' => route('practice.index')],
             ['label' => $practice->title]
         ]"
     />
@@ -199,7 +199,7 @@
 
                         <!-- Back to Practice Areas -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 text-center">
-                            <a href="{{ route('practices.index') }}" 
+                            <a href="{{ route('practice.index') }}" 
                                class="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>

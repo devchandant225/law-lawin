@@ -149,7 +149,7 @@
                     
                     <!-- Practice Areas Dropdown -->
                     <div class="relative group">
-                        <a href="{{ route('practices.index') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('practice.index') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Practice Areas
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -159,7 +159,7 @@
                                     <div class="px-4 pb-2 mb-2 border-b border-gray-100">
                                         <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Practice Areas</span>
                                     </div>
-                                    <a href="{{ route('practices.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <a href="{{ route('practice.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                         <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
                                             <i class="fas fa-th-large text-primary text-xs"></i>
                                         </div>
@@ -335,7 +335,7 @@
                 <a href="{{ route('home') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
                 <a href="{{ route('about') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About</a>
                 <a href="{{ route('team.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Team</a>
-                <a href="{{ route('practices.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Practice Areas</a>
+                <a href="{{ route('practice.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Practice Areas</a>
                 <a href="{{ route('services.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our Services</a>
                 <a href="{{ route('posts.by-type', 'news') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">News</a>
                 <a href="{{ route('publications.index') }}" class="block text-gray-800 hover:text-primary font-medium transition-colors">Publications</a>

@@ -246,7 +246,7 @@
                 class="absolute bottom-10 right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl opacity-40 animate-pulse delay-1000">
             </div>
     </section>
-    @endif
+                    @endif
 
     <!-- FAQs Section -->
     @if ($faqs->count() > 0)
@@ -614,11 +614,8 @@
 
 @push('styles')
     <style>
-        h1,
-        h2,
-        h3,
-        h4 {
-            color: #70bfce !important;
+        h3,h4,h5 {
+            color: #70bfce;
         }
 
         ul {

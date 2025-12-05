@@ -618,7 +618,7 @@
         h2,
         h3,
         h4 {
-            color: #70bfce;
+            color: #70bfce !important;
         }
 
         ul {

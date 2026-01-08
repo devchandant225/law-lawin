@@ -1,31 +1,35 @@
-ErrorException
-PHP 8.2.12
-10.50.0
-Attempt to read property "image1" on null
+Undefined variable $leftRightContents
 
 Expand vendor frames
-C:\xampp\htdocs\lawin-new\resources\views\components\about-us.blade
+resources
+ / 
+views
+ / 
+practice
+ / 
+show.blade
 .php
  
-: 25
-require
-10 vendor frames
-C:\xampp\htdocs\lawin-new\resources\views\home.blade
-.php
- 
-: 11
+: 48
 require
 54 vendor frames
-C:\xampp\htdocs\lawin-new\public\index
+public
+ / 
+index
 .php
  
 : 51
-require_once
-1 vendor frame
-C:\xampp\htdocs\lawin-new\resources\views\components\about-us.blade
+[top]
+resources
+ / 
+views
+ / 
+practice
+ / 
+show.blade
 .php
  
-: 25
+: 48
 
 
 
@@ -57,38 +61,42 @@ C:\xampp\htdocs\lawin-new\resources\views\components\about-us.blade
 
 
 
-        </div>
+                                    <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}"
 
-        <div
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
 
-            class="absolute -bottom-8 left-20 w-96 h-96 bg-primary/70 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000">
+                                </div>
 
-        </div>
+                            @endif
 
-    </div>
+                            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+
+                                {{ $practice->title }}</h1>
+
+                            @if ($practice->excerpt)
+
+                                <p class="text-xl text-gray-600 leading-relaxed">{{ $practice->excerpt }}</p>
+
+                            @endif
+
+                        </div>
 
 
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
 
-        <!-- Main About Section -->
+                            {!! $practice->content ?: $practice->description !!}
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+                        </div>
 
-            <!-- Image Section - Left -->
+                        <!-- Left-Right Content Sections -->
 
-            <div class="relative order-2 lg:order-1">
+                        @if ($leftRightContents && $leftRightContents->count() > 0)
 
-                <!-- Main Image Container -->
+                            @foreach ($leftRightContents as $index => $content)
 
-                <div class="relative">
+                                <section class="mb-12">
 
-                    <!-- Image with rounded corners and shadow -->
+                                    <div
 
-                    <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
-
-                        <img src="{{ asset('storage/' . $intro_home->image1) }}"
-
-                            alt="{{ $intro_home->title ?? 'Legal Services' }}"
-
-                            class="w-full h-[30r
+                              

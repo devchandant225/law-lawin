@@ -51,6 +51,12 @@ class PracticeController extends Controller
                           ->where('slug', $slug)
                           ->firstOrFail();
 
+        // Get left-right contents associated with this practice (post)
+        $leftRightContents = $practice->leftRightContents()
+            ->where('status', true)
+            ->orderBy('order', 'asc')
+            ->get();
+
         // Get related practices
         $relatedPractices = Post::ofType('practice')
             ->active()
@@ -59,7 +65,7 @@ class PracticeController extends Controller
             ->limit(6)
             ->get();
 
-        return view('practice.show', compact('practice', 'relatedPractices'));
+        return view('practice.show', compact('practice', 'leftRightContents', 'relatedPractices'));
     }
 
     /**

@@ -48,7 +48,7 @@
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
-                    <div class="bg-white rounded-2xl px-8 py-0 mb-0">
+                    <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-0">
                         <div class="">
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
@@ -63,6 +63,7 @@
                         <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed mt-2">
                             {!! $practice->content ?: $practice->description !!}
                         </div>
+
                         <!-- Left-Right Content Sections -->
                         @if ($leftRightContents && $leftRightContents->count() > 0)
                             @foreach ($leftRightContents as $index => $content)
@@ -103,7 +104,7 @@
 
                     <!-- Bottom Description -->
                     @if ($practice->bottom_description)
-                        <div class="bg-white rounded-2xl px-8 py-0 mb-8">
+                        <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-8">
                             <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                                 {!! $practice->bottom_description !!}
                             </div>

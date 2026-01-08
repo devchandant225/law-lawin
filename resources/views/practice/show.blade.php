@@ -103,7 +103,7 @@
 
                     <!-- Bottom Description -->
                     @if ($practice->bottom_description)
-                        <div class="bg-white rounded-2xl p-8 mb-8">
+                        <div class="bg-white rounded-2xl px-8 py-0 mb-8">
                             <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                                 {!! $practice->bottom_description !!}
                             </div>

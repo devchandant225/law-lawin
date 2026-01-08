@@ -333,5 +333,10 @@ function generateSchema() {
             filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
             filebrowserUploadMethod: 'form'
         })
+
+  CKEDITOR.replace('bottom_description', {
+            filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+            filebrowserUploadMethod: 'form'
+        })
 </script>
 @endsection

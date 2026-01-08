@@ -85,7 +85,7 @@
 
                                         <!-- Content -->
                                         <div class="w-full lg:w-1/2">
-                                            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#0f8cca]">
+                                            <h2 class="text-2xl font-semibold mb-4 text-[#0f8cca]">
                                                 {{ $content->title }}
                                             </h2>
                                             @if ($content->description)

@@ -48,7 +48,7 @@
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
-                    <div class="bg-white rounded-2xl border border-gray-100 p-8 mb-8">
+                    <div class="bg-white rounded-2xl p-8 mb-0">
                         <div class="">
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
@@ -111,7 +111,7 @@
                     @endif
 
                     <!-- Social Share -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 px-6 py-0 mb-8">
                         <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
                             <div
                                 class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">

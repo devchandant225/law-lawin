@@ -16,6 +16,13 @@
             font-size: 500 !important;
             font-size: 14px !important;
         }
+
+        #content-wrapper ol {
+            padding-left: 16px !important;
+        }
+        #content-wrapper ul {
+            padding-left: 16px !important;
+        }
     </style>
 @endsection
 

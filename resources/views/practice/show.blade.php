@@ -48,7 +48,7 @@
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 mb-8">
+                    <div class="bg-white rounded-2xl border border-gray-100 p-8 mb-8">
                         <div class="">
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
@@ -103,7 +103,7 @@
 
                     <!-- Bottom Description -->
                     @if ($practice->bottom_description)
-                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                        <div class="bg-white rounded-2xl p-8 mb-8">
                             <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                                 {!! $practice->bottom_description !!}
                             </div>

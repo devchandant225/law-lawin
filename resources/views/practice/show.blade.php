@@ -56,7 +56,7 @@
                                         class="w-full h-[50vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
-                            <h2 class="text-2xl font-bold text-gray-600 leading-tight">
+                            <h2 class="text-2xl font-bold text-[#0f8cca] leading-tight">
                                 {{ $practice->title }}</h2>
                         </div>
 
@@ -85,7 +85,7 @@
 
                                         <!-- Content -->
                                         <div class="w-full lg:w-1/2">
-                                            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-primary">
+                                            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#0f8cca]">
                                                 {{ $content->title }}
                                             </h2>
                                             @if ($content->description)

@@ -48,7 +48,7 @@
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
-                    <div class="bg-white rounded-2xl p-8 mb-0">
+                    <div class="bg-white rounded-2xl px-8 py-0 mb-0">
                         <div class="">
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">

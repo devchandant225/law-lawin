@@ -24,6 +24,31 @@
         #content-wrapper ul {
             padding-left: 16px !important;
         }
+
+        @media and screen (max-width: 768px) {
+            #content-wrapper p {
+                margin-bottom: 6px !important;
+            }
+
+            #content-wrapper h2 {
+                margin-bottom: 0px !important;
+                font-size: 10px !important;
+            }
+
+            #content-wrapper h3 {
+                margin-bottom: 0px !important;
+                font-size: 500 !important;
+                font-size: 8px !important;
+            }
+
+            #content-wrapper ol {
+                padding-left: 16px !important;
+            }
+
+            #content-wrapper ul {
+                padding-left: 16px !important;
+            }
+        }
     </style>
 @endsection
 

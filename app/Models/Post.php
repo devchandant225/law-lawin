@@ -21,12 +21,37 @@ class Post extends Model
         'status',
         'feature_image',
         'type',
+        'layout',
         'google_schema'
     ];
 
     protected $casts = [
         'google_schema' => 'array',
     ];
+
+    // Layout constants
+    const LAYOUT_WITH_SIDEBAR = 'with_sidebar';
+    const LAYOUT_FULLSCREEN = 'fullscreen';
+
+    /**
+     * Get layout options
+     */
+    public static function getLayoutOptions()
+    {
+        return [
+            self::LAYOUT_WITH_SIDEBAR => 'With Sidebar',
+            self::LAYOUT_FULLSCREEN => 'Fullscreen'
+        ];
+    }
+
+    /**
+     * Get the layout label
+     */
+    public function getLayoutLabelAttribute()
+    {
+        $options = self::getLayoutOptions();
+        return $options[$this->layout] ?? $this->layout;
+    }
 
     /**
      * Boot the model.

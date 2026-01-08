@@ -65,6 +65,7 @@ class PostController extends Controller
             'meta_keywords' => 'nullable|string',
             'status' => 'required|in:active,inactive,draft',
             'type' => 'required|in:service,practice,news,blog',
+            'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
             'google_schema' => 'nullable|string'
         ]);
@@ -126,6 +127,7 @@ class PostController extends Controller
             'meta_keywords' => 'nullable|string',
             'status' => 'required|in:active,inactive,draft',
             'type' => 'required|in:service,practice,news,blog',
+            'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
             'google_schema' => 'nullable|string'
         ]);

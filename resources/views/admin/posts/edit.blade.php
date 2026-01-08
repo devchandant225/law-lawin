@@ -177,6 +177,19 @@
                                     @enderror
                                 </div>
 
+                                <!-- Layout -->
+                                <div>
+                                    <label for="layout" class="block text-sm font-medium text-gray-700 mb-1">Layout <span class="text-red-600">*</span></label>
+                                    <select id="layout" name="layout" required
+                                            class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('layout') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">
+                                        <option value="with_sidebar" {{ old('layout', $post->layout) == 'with_sidebar' ? 'selected' : '' }}>With Sidebar</option>
+                                        <option value="fullscreen" {{ old('layout', $post->layout) == 'fullscreen' ? 'selected' : '' }}>Fullscreen</option>
+                                    </select>
+                                    @error('layout')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
                                 <!-- Status -->
                                 <div>
                                     <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status <span class="text-red-600">*</span></label>

@@ -62,7 +62,7 @@ class PracticeController extends Controller
             ->active()
             ->where('slug', '!=', $slug)
             ->orderBy('created_at', 'desc')
-            ->limit(6)
+            ->limit($practice->layout === 'fullscreen' ? 12 : 6) // Show more practices in fullscreen layout
             ->get();
 
         return view('practice.show', compact('practice', 'leftRightContents', 'relatedPractices'));

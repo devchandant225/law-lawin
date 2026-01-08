@@ -56,8 +56,8 @@
                                         class="w-full h-[50vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
-                            <h1 class="text-3xl font-bold text-gray-600 leading-tight">
-                                {{ $practice->title }}</h1>
+                            <h2 class="text-2xl font-bold text-gray-600 leading-tight">
+                                {{ $practice->title }}</h2>
                         </div>
 
                         <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed mt-2">

@@ -35,7 +35,7 @@
     ]" />
 
     {{-- Main Content Section --}}
-    <section id="content-wrapper" class="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="content-wrapper" class="lg:py-16 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0"

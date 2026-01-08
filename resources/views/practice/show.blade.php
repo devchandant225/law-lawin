@@ -111,7 +111,7 @@
                     @endif
 
                     <!-- Social Share -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 px-6 py-0 mb-8">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
                         <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
                             <div
                                 class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">

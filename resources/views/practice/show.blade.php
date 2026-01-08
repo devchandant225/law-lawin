@@ -8,11 +8,11 @@
         }
 
         #content-wrapper h2 {
-            margin-bottom: -16px !important;
+            margin-bottom: 0px !important;
         }
 
         #content-wrapper h3 {
-            margin-bottom: -16px !important;
+            margin-bottom: 0px !important;
             font-size: 500 !important;
             font-size: 14px !important;
         }

@@ -109,8 +109,11 @@
 												<a href="{{ route('admin.posts.show', $post) }}" title="View" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50">
 													<i class="fas fa-eye"></i>
 												</a>
-						<a href="{{ route('admin.posts.edit', $post) }}" title="Edit" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-primary text-primary hover:bg-purple-50">
+												<a href="{{ route('admin.posts.edit', $post) }}" title="Edit" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-primary text-primary hover:bg-purple-50">
 													<i class="fas fa-edit"></i>
+												</a>
+												<a href="{{ route('admin.left-right-contents.create', ['post_id' => $post->id]) }}" title="Add Left-Right Content" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-blue-300 text-blue-600 hover:bg-blue-50">
+													<i class="fas fa-align-left"></i>
 												</a>
 												<button type="button" title="Delete" onclick="confirmDelete('{{ $post->id }}', '{{ $post->title }}')" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-red-300 text-red-600 hover:bg-red-50">
 													<i class="fas fa-trash"></i>

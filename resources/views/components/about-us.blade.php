@@ -15,6 +15,7 @@
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Main About Section -->
+        @if($intro_home)
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
             <!-- Image Section - Left -->
             <div class="relative order-2 lg:order-1">
@@ -22,7 +23,7 @@
                 <div class="relative">
                     <!-- Image with rounded corners and shadow -->
                     <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
-                        <img src="{{ asset('storage/' . $intro_home->image1) }}"
+                        <img src="{{ $intro_home->image1 ? asset('storage/' . $intro_home->image1) : asset('images/default-about.jpg') }}"
                             alt="{{ $intro_home->title ?? 'Legal Services' }}"
                             class="w-full h-[30rem] object-cover rounded">
 
@@ -73,16 +74,25 @@
                 </div>
             </div>
         @endif
+        @else
+        <!-- Fallback content when intro_home is not available -->
+        <div class="text-center py-12">
+            <h2 class="text-2xl font-bold text-gray-800">About Us</h2>
+            <p class="text-gray-600 mt-4">Content is currently unavailable.</p>
+        </div>
+        @endif
 
+        <!-- Second Section: Why Choose Us -->
+        @if($why_choose_home)
         <!-- Main About Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center mt-16">
             <!-- Image Section - Left -->
             <div class="relative order-2 lg:order-1">
                 <!-- Main Image Container -->
                 <div class="relative">
                     <!-- Image with rounded corners and shadow -->
                     <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
-                        <img src="{{ asset('storage/' . $why_choose_home->image1) }}"
+                        <img src="{{ $why_choose_home->image1 ? asset('storage/' . $why_choose_home->image1) : asset('images/default-why-choose.jpg') }}"
                             alt="{{ $why_choose_home->title ?? 'Legal Services' }}"
                             class="w-full h-[30rem] object-cover rounded">
 
@@ -120,6 +130,13 @@
 
             </div>
         </div>
+        @else
+        <!-- Fallback content when why_choose_home is not available -->
+        <div class="text-center py-12 mt-16">
+            <h2 class="text-2xl font-bold text-gray-800">Why Choose Us</h2>
+            <p class="text-gray-600 mt-4">Content is currently unavailable.</p>
+        </div>
+        @endif
 
     </div>
 </section>

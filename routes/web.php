@@ -234,7 +234,7 @@ Route::prefix('admin')
 
         // Team Management
         Route::resource('teams', TeamController::class);
-
+          
         // Slider Management
         Route::resource('sliders', SliderController::class);
         Route::post('/sliders/{slider}/toggle-status', [SliderController::class, 'toggleStatus'])->name('sliders.toggle-status');
@@ -246,6 +246,10 @@ Route::prefix('admin')
         // Portfolio Management
         Route::resource('portfolios', PortfolioController::class);
         Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
+
+        // Left-Right Content Management
+        Route::resource('left-right-contents', \App\Http\Controllers\Admin\LeftRightContentController::class);
+        Route::post('/left-right-contents/{leftRightContent}/toggle-status', [\App\Http\Controllers\Admin\LeftRightContentController::class, 'toggleStatus'])->name('left-right-contents.toggle-status');
 
         // Pages Management
         Route::resource('pages', AdminPageController::class);

@@ -134,4 +134,12 @@ class Post extends Model
             default => 'Article'
         };
     }
+
+    /**
+     * Get the left-right contents associated with this post.
+     */
+    public function leftRightContents()
+    {
+        return $this->hasMany(LeftRightContent::class);
+    }
 }

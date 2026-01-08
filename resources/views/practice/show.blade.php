@@ -53,14 +53,14 @@
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
                                     <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                        class="w-full h-[50vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
-                            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                            <h1 class="text-2xl font-semibold text-gray-600 leading-tight">
                                 {{ $practice->title }}</h1>
                         </div>
 
-                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                        <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed">
                             {!! $practice->content ?: $practice->description !!}
                         </div>
                         <!-- Left-Right Content Sections -->

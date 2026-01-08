@@ -56,11 +56,8 @@
                                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
-                            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                                 {{ $practice->title }}</h1>
-                            @if ($practice->excerpt)
-                                <p class="text-xl text-gray-600 leading-relaxed">{{ $practice->excerpt }}</p>
-                            @endif
                         </div>
 
                         <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">

@@ -3,18 +3,18 @@
 @section('head')
     <x-meta-tags :title="$practice->meta_title ?: $practice->title . ' - Professional Legal Practice'" :description="$practice->meta_description ?: $practice->excerpt" :keywords="$practice->meta_keywords" :image="$practice->feature_image_url" type="article" :post="$practice" />
     <style>
-        p {
-            margin-bottom: 6px;
+        #content-wrapper p {
+            margin-bottom: 6px !important;
         }
 
-        h2 {
+        #content-wrapper h2 {
             margin-bottom: -16px !important;
         }
 
-        h3 {
-            margin-bottom: -16px;
-            font-size: 500;
-            font-size: 14px;
+        #content-wrapper h3 {
+            margin-bottom: -16px !important;
+            font-size: 500 !important;
+            font-size: 14px !important;
         }
     </style>
 @endsection
@@ -28,7 +28,7 @@
     ]" />
 
     {{-- Main Content Section --}}
-    <section class="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="content-wrapper" class="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <!-- Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <div class="absolute inset-0"

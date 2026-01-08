@@ -14,6 +14,7 @@ class Post extends Model
         'title',
         'slug',
         'description',
+        'bottom_description',
         'excerpt',
         'meta_title',
         'meta_description',

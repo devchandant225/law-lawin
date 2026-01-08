@@ -57,6 +57,18 @@
                                 @enderror
                             </div>
 
+                                <!-- Bottom Description -->
+                            <div>
+                                <label for="bottom_description" class="block text-sm font-medium text-gray-700 mb-1">Bottom Description</label>
+                                <textarea id="bottom_description" name="bottom_description" rows="4"
+                                          placeholder="Additional content that appears at the bottom of the post..."
+                                          class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('bottom_description') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('bottom_description') }}</textarea>
+                                @error('bottom_description')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                                <p class="mt-1 text-xs text-gray-500">Content that appears after the main content and left-right sections</p>
+                            </div>
+
                                 <!-- Excerpt -->
                             <div>
                                 <label for="excerpt" class="block text-sm font-medium text-gray-700 mb-1">Excerpt</label>

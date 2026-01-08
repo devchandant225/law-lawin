@@ -82,6 +82,15 @@
                         @endif
                     </div>
 
+                    <!-- Bottom Description -->
+                    @if($practice->bottom_description)
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                                {!! $practice->bottom_description !!}
+                            </div>
+                        </div>
+                    @endif
+
                     <!-- Social Share -->
                     <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
                         <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
@@ -247,6 +256,15 @@
                                 @endforeach
                             @endif
                         </div>
+
+                        <!-- Bottom Description -->
+                        @if($practice->bottom_description)
+                            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                                <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                                    {!! $practice->bottom_description !!}
+                                </div>
+                            </div>
+                        @endif
 
                         <!-- Social Share -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">

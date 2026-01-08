@@ -4,71 +4,81 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="lg:col-span-1">
-                    <div class="lg:sticky lg:top-4 space-y-6">
-        <div class="flex items-center justify-between mb-6">
-            <h1 class="text-2xl font-bold text-gray-900">Edit Post</h1>
-            <div class="flex items-center gap-2">
-                <a href="{{ route('admin.posts.show', $post) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-sky-300 text-sky-700 hover:bg-sky-50">
-                    <i class="fas fa-eye"></i>
-                    <span>View Post</span>
-                </a>
-                <a href="{{ route('admin.posts.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Back to Posts</span>
-                    </a>
-                </div>
-            </div>
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-bold text-gray-900">Edit Post</h1>
+        <div class="flex items-center gap-2">
+            <a href="{{ route('admin.posts.show', $post) }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-sky-300 text-sky-700 hover:bg-sky-50">
+                <i class="fas fa-eye"></i>
+                <span>View Post</span>
+            </a>
+            <a href="{{ route('admin.posts.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Posts</span>
+            </a>
+        </div>
+    </div>
 
-            <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Main Content -->
-                <div class="lg:col-span-2">
-                        <!-- Basic Information -->
-                    <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
-                        <div class="px-4 py-3 border-b border-gray-200">
-                            <h5 class="font-semibold text-gray-900">Basic Information</h5>
-                        </div>
-                        <div class="p-4 space-y-4">
-                                <!-- Title & Slug -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Title <span class="text-red-600">*</span></label>
-                                    <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}" required onkeyup="generateSlug()"
-                                           placeholder="Enter post title" maxlength="120" data-count="title-count" data-max="120"
-                                           class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('title') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
-                                    <div class="mt-1 flex items-center justify-between text-xs text-gray-500">
-                                        <span>A concise, descriptive title.</span>
-                                        <span id="title-count">0/120</span>
-                            </div>
-                                    @error('title')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
-                                    <input type="text" id="slug" name="slug" value="{{ old('slug', $post->slug) }}" placeholder="Auto-generated from title"
-                                           class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('slug') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
-                                    @error('slug')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
-                                    <p class="mt-1 text-xs text-gray-500">Used in the URL. Leave empty to auto-generate.</p>
-                                </div>
-                                </div>
-
-                                <!-- Description -->
+    <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <!-- Basic Information -->
+                <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
+                    <div class="px-4 py-3 border-b border-gray-200">
+                        <h5 class="font-semibold text-gray-900">Basic Information</h5>
+                    </div>
+                    <div class="p-4 space-y-4">
+                        <!-- Title & Slug -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description <span class="text-red-600">*</span></label>
-                                <textarea id="description" name="description" rows="8" required
-                                          class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('description') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('description', $post->description) }}</textarea>
-                                    @error('description')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Title <span class="text-red-600">*</span></label>
+                                <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}" required onkeyup="generateSlug()"
+                                       placeholder="Enter post title" maxlength="120" data-count="title-count" data-max="120"
+                                       class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('title') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
+                                <div class="mt-1 flex items-center justify-between text-xs text-gray-500">
+                                    <span>A concise, descriptive title.</span>
+                                    <span id="title-count">0/120</span>
                                 </div>
+                                @error('title')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">Slug</label>
+                                <input type="text" id="slug" name="slug" value="{{ old('slug', $post->slug) }}" placeholder="Auto-generated from title"
+                                       class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('slug') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
+                                @error('slug')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                                <p class="mt-1 text-xs text-gray-500">Used in the URL. Leave empty to auto-generate.</p>
+                            </div>
+                        </div>
 
-                                <!-- Excerpt -->
+                        <!-- Description -->
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Description <span class="text-red-600">*</span></label>
+                            <textarea id="description" name="description" rows="8" required
+                                      class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('description') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('description', $post->description) }}</textarea>
+                                @error('description')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!-- Bottom Description -->
+                            <div>
+                                <label for="bottom_description" class="block text-sm font-medium text-gray-700 mb-1">Bottom Description</label>
+                                <textarea id="bottom_description" name="bottom_description" rows="4"
+                                          placeholder="Additional content that appears at the bottom of the post..."
+                                          class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('bottom_description') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('bottom_description', $post->bottom_description) }}</textarea>
+                                @error('bottom_description')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                                <p class="mt-1 text-xs text-gray-500">Content that appears after the main content and left-right sections</p>
+                            </div>
+
+                            <!-- Excerpt -->
                             <div>
                                 <label for="excerpt" class="block text-sm font-medium text-gray-700 mb-1">Excerpt</label>
                                 <textarea id="excerpt" name="excerpt" rows="3" placeholder="Short summary of the post" maxlength="200" data-count="excerpt-count" data-max="200"
@@ -81,9 +91,9 @@
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 <p class="mt-1 text-xs text-gray-500">Brief summary that appears in post listings</p>
-                                </div>
                             </div>
                         </div>
+                    </div>
 
                         <!-- SEO Settings -->
                         <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">

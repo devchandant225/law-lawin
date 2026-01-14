@@ -142,7 +142,7 @@
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
                             <h2 class="text-2xl md:text-3xl font-bold text-accent mb-6 flex items-center gap-3">
                                 <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                 </div>
@@ -152,7 +152,7 @@
                             <div class="space-y-4">
                                 @foreach ($faqs as $faq)
                                     <div class="border border-gray-200 rounded-xl overflow-hidden">
-                                        <button class="faq-question w-full text-left p-5 bg-accent text-accent font-semibold flex justify-between items-center hover:bg-accent/90 transition-colors">
+                                        <button class="faq-question w-full text-left p-5 bg-accent text-white font-semibold flex justify-between items-center hover:bg-accent/90 transition-colors">
                                             <span>{{ $faq->question }}</span>
                                             <svg class="w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -576,24 +576,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const answer = this.nextElementSibling;
             const icon = this.querySelector('svg');
 
-            // Toggle the answer visibility
-            if (answer.classList.contains('hidden')) {
+            // Check if this FAQ is already open
+            const isOpen = !answer.classList.contains('hidden');
+
+            // Close all FAQs first
+            faqQuestions.forEach(otherQuestion => {
+                const otherAnswer = otherQuestion.nextElementSibling;
+                const otherIcon = otherQuestion.querySelector('svg');
+                otherAnswer.classList.add('hidden');
+                otherIcon.style.transform = 'rotate(0deg)';
+            });
+
+            // If the clicked FAQ wasn't open, open it
+            if (!isOpen) {
                 answer.classList.remove('hidden');
                 icon.style.transform = 'rotate(180deg)';
-            } else {
-                answer.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
             }
-
-            // Close other open FAQs
-            faqQuestions.forEach(otherQuestion => {
-                if (otherQuestion !== this) {
-                    const otherAnswer = otherQuestion.nextElementSibling;
-                    const otherIcon = otherQuestion.querySelector('svg');
-                    otherAnswer.classList.add('hidden');
-                    otherIcon.style.transform = 'rotate(0deg)';
-                }
-            });
         });
     });
 });

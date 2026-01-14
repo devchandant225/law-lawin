@@ -42,7 +42,7 @@ class PostFAQController extends Controller
     {
         $request->validate([
             'question' => 'required|string|max:500',
-            'answer' => 'required|string',
+            'answer' => 'required|string', // Allow HTML content from CKEditor
             'status' => ['required', Rule::in(['active', 'inactive'])],
         ]);
 
@@ -75,7 +75,7 @@ class PostFAQController extends Controller
     {
         $request->validate([
             'question' => 'required|string|max:500',
-            'answer' => 'required|string',
+            'answer' => 'required|string', // Allow HTML content from CKEditor
             'status' => ['required', Rule::in(['active', 'inactive'])],
         ]);
 

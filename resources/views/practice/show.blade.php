@@ -55,6 +55,14 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        .faq-answer ol {
+            list-style: disc;
+        }
+
+        .faq-answer ul {
+            list-style: disc;
+        }
+
         .faq-item.active {
             border-color: rgba(15, 140, 202, 0.2);
             box-shadow: 0 25px 50px -12px rgba(15, 140, 202, 0.1);
@@ -149,7 +157,8 @@
 
                     <!-- FAQ Section -->
                     @if ($faqs && $faqs->count() > 0)
-                        <div class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] shadow-2xl shadow-accent/5 border border-gray-100 p-8 md:p-14 mb-16 relative overflow-hidden">
+                        <div
+                            class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] shadow-2xl shadow-accent/5 border border-gray-100 p-8 md:p-14 mb-16 relative overflow-hidden">
                             <!-- Background Decoration -->
                             <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
                             <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
@@ -158,41 +167,58 @@
                                 <div class="max-w-2xl">
                                     <div class="flex items-center gap-3 mb-4">
                                         <span class="w-12 h-[2px] bg-accent"></span>
-                                        <span class="text-accent font-bold uppercase tracking-widest text-sm">Common Inquiries</span>
+                                        <span class="text-accent font-bold uppercase tracking-widest text-sm">Common
+                                            Inquiries</span>
                                     </div>
                                     <h2 class="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1]">
-                                        Expert Legal <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#0d7bb0]">Insights</span>
+                                        Expert Legal <span
+                                            class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#0d7bb0]">Insights</span>
                                     </h2>
                                     <p class="text-gray-500 mt-6 text-lg max-w-xl">
-                                        Find comprehensive answers to the most frequent questions regarding our specialized legal services and practice areas.
+                                        Find comprehensive answers to the most frequent questions regarding our specialized
+                                        legal services and practice areas.
                                     </p>
                                 </div>
                                 <div class="hidden lg:flex flex-col items-center gap-4">
-                                    <div class="w-20 h-20 bg-white shadow-2xl shadow-accent/20 rounded-3xl flex items-center justify-center transform hover:rotate-6 transition-transform duration-500 border border-gray-50">
-                                        <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    <div
+                                        class="w-20 h-20 bg-white shadow-2xl shadow-accent/20 rounded-3xl flex items-center justify-center transform hover:rotate-6 transition-transform duration-500 border border-gray-50">
+                                        <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
                                         </svg>
                                     </div>
-                                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Help Desk</span>
+                                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Help
+                                        Desk</span>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 {{ $practice->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-8 relative z-10">
+                            <div
+                                class="grid grid-cols-1 {{ $practice->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-8 relative z-10">
                                 @foreach ($faqs as $faq)
-                                    <div class="faq-item group bg-white border border-gray-100 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/20">
-                                        <button class="faq-question w-full text-left p-8 flex justify-between items-center gap-6 outline-none">
-                                            <span class="text-xl font-bold text-gray-800 group-hover:text-accent transition-colors duration-300">
+                                    <div
+                                        class="faq-item group bg-white border border-gray-100 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/20">
+                                        <button
+                                            class="faq-question w-full text-left p-8 flex justify-between items-center gap-6 outline-none">
+                                            <span
+                                                class="text-xl font-bold text-gray-800 group-hover:text-accent transition-colors duration-300">
                                                 {{ $faq->question }}
                                             </span>
-                                            <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center transition-all duration-500 group-[.active]:bg-accent group-hover:bg-accent/10">
-                                                <svg class="w-6 h-6 text-gray-400 group-[.active]:text-white group-[.active]:rotate-180 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                            <div
+                                                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center transition-all duration-500 group-[.active]:bg-accent group-hover:bg-accent/10">
+                                                <svg class="w-6 h-6 text-gray-400 group-[.active]:text-white group-[.active]:rotate-180 transition-all duration-500"
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                        d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </div>
                                         </button>
-                                        <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+                                        <div
+                                            class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
                                             <div class="px-8 pb-8 pt-2">
-                                                <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed text-justify border-t border-gray-50 pt-6">
+                                                <div
+                                                    class="prose prose-lg max-w-none text-gray-600 leading-relaxed text-justify border-t border-gray-50 pt-6">
                                                     {!! $faq->answer !!}
                                                 </div>
                                             </div>

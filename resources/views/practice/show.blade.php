@@ -188,7 +188,7 @@
                                     <div
                                         class="faq-item group bg-white border border-gray-100 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:border-accent/20">
                                         <button
-                                            class="faq-question w-full text-left p-8 flex justify-between items-center gap-6 outline-none">
+                                            class="faq-question w-full text-left px-8 py-2 flex justify-between items-center gap-6 outline-none">
                                             <span
                                                 class="text-lg font-bold text-gray-800 group-hover:text-accent transition-colors duration-300">
                                                 {{ $faq->question }}

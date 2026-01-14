@@ -218,7 +218,7 @@
                     @endif
 
                     <!-- Social Share -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 px-8 py-4">
+                    <div class="bg-white border-gray-100 px-8 py-4 mb-4">
                         <h4 class="text-xl font-bold text-primary mb-6">
                            
                             Share This Practice

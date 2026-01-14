@@ -119,7 +119,7 @@
                                             @if ($content->image)
                                                 <img src="{{ asset('storage/' . $content->image) }}"
                                                     alt="{{ $content->title }}"
-                                                    class="w-full h-64 md:h-80 object-cover rounded-xl">
+                                                    class="w-full h-64 md:h-80 object-contain rounded-xl">
                                             @else
                                                 <div
                                                     class="w-full h-64 md:h-80 bg-gray-700 rounded-xl flex items-center justify-center">

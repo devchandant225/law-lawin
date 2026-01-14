@@ -258,7 +258,16 @@
                             </a>
                         </div>
                     </div>
-
+                      {{-- Contact Section --}}
+                            <x-contact-section :contactInfo="[
+                                'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+                                'phone' => '+9779841933745',
+                                'email' => 'info@lawinpartners.com',
+                                'workingHours' => [
+                                    'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
+                                    'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
+                                ],
+                            ]" :showSocialLinks="true" />
                     <!-- More Practice Areas Section -->
                     @if ($relatedPractices->count() > 0)
                         <div class="mb-12">
@@ -273,16 +282,7 @@
                                     </svg>
                                 </a>
                             </div>
-                            {{-- Contact Section --}}
-                            <x-contact-section :contactInfo="[
-                                'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
-                                'phone' => '+9779841933745',
-                                'email' => 'info@lawinpartners.com',
-                                'workingHours' => [
-                                    'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
-                                    'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
-                                ],
-                            ]" :showSocialLinks="true" />
+                           
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                 @foreach ($relatedPractices as $relatedPractice)
                                     <div
@@ -597,7 +597,18 @@
             @endif
         </div>
     </section>
-    
+    @if ($practice->layout !== 'fullscreen')
+        {{-- Contact Section --}}
+        <x-contact-section :contactInfo="[
+            'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+            'phone' => '+9779841933745',
+            'email' => 'info@lawinpartners.com',
+            'workingHours' => [
+                'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
+                'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
+            ],
+        ]" :showSocialLinks="true" />
+    @endif
 @endsection
 
 @push('scripts')

@@ -179,19 +179,7 @@
                                         legal services and practice areas.
                                     </p>
                                 </div>
-                                <div class="hidden lg:flex flex-col items-center gap-4">
-                                    <div
-                                        class="w-20 h-20 bg-white shadow-2xl shadow-accent/20 rounded-3xl flex items-center justify-center transform hover:rotate-6 transition-transform duration-500 border border-gray-50">
-                                        <svg class="w-10 h-10 text-accent" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <span class="text-xs font-bold text-gray-400 uppercase tracking-tighter">Help
-                                        Desk</span>
-                                </div>
+                               
                             </div>
 
                             <div
@@ -202,7 +190,7 @@
                                         <button
                                             class="faq-question w-full text-left p-8 flex justify-between items-center gap-6 outline-none">
                                             <span
-                                                class="text-xl font-bold text-gray-800 group-hover:text-accent transition-colors duration-300">
+                                                class="text-lg font-bold text-gray-800 group-hover:text-accent transition-colors duration-300">
                                                 {{ $faq->question }}
                                             </span>
                                             <div
@@ -218,7 +206,7 @@
                                             class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
                                             <div class="px-8 pb-8 pt-2">
                                                 <div
-                                                    class="prose prose-lg max-w-none text-gray-600 leading-relaxed text-justify border-t border-gray-50 pt-6">
+                                                    class="prose prose-lg max-w-none text-gray-600 leading-relaxed text-justify border-t border-gray-50">
                                                     {!! $faq->answer !!}
                                                 </div>
                                             </div>

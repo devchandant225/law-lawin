@@ -119,7 +119,7 @@
                                             @if ($content->image)
                                                 <img src="{{ asset('storage/' . $content->image) }}"
                                                     alt="{{ $content->title }}"
-                                                    class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg">
+                                                    class="w-full h-64 md:h-80 object-cover rounded-xl">
                                             @else
                                                 <div
                                                     class="w-full h-64 md:h-80 bg-gray-700 rounded-xl flex items-center justify-center">
@@ -204,7 +204,7 @@
                                         </button>
                                         <div
                                             class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
-                                            <div class="px-8 pb-8 pt-2">
+                                            <div class="px-8 pb-8">
                                                 <div
                                                     class="prose prose-lg max-w-none text-gray-600 leading-relaxed text-justify border-t border-gray-50">
                                                     {!! $faq->answer !!}
@@ -219,15 +219,8 @@
 
                     <!-- Social Share -->
                     <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
-                        <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
-                            <div
-                                class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z">
-                                    </path>
-                                </svg>
-                            </div>
+                        <h4 class="text-xl font-bold text-primary mb-6">
+                           
                             Share This Practice
                         </h4>
                         <div class="flex justify-center gap-3">

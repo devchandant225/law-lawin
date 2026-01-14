@@ -251,6 +251,23 @@ Route::prefix('admin')
         Route::resource('left-right-contents', \App\Http\Controllers\Admin\LeftRightContentController::class);
         Route::post('/left-right-contents/{leftRightContent}/toggle-status', [\App\Http\Controllers\Admin\LeftRightContentController::class, 'toggleStatus'])->name('left-right-contents.toggle-status');
 
+        // Post FAQs Management (nested under posts)
+        Route::prefix('posts/{post}')
+            ->name('posts.')
+            ->group(function () {
+                Route::resource('faqs', \App\Http\Controllers\PostFAQController::class, [
+                    'names' => [
+                        'index' => 'faqs.index',
+                        'create' => 'faqs.create',
+                        'store' => 'faqs.store',
+                        'show' => 'faqs.show',
+                        'edit' => 'faqs.edit',
+                        'update' => 'faqs.update',
+                        'destroy' => 'faqs.destroy',
+                    ],
+                ]);
+            });
+
         // Pages Management
         Route::resource('pages', AdminPageController::class);
         Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');

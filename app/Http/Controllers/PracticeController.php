@@ -57,6 +57,12 @@ class PracticeController extends Controller
             ->orderBy('order', 'asc')
             ->get();
 
+        // Get FAQs associated with this practice (post)
+        $faqs = $practice->postFaqs()
+            ->where('status', 'active')
+            ->orderBy('created_at', 'asc')
+            ->get();
+
         // Get related practices
         $relatedPractices = Post::ofType('practice')
             ->active()
@@ -65,7 +71,7 @@ class PracticeController extends Controller
             ->limit($practice->layout === 'fullscreen' ? 12 : 6) // Show more practices in fullscreen layout
             ->get();
 
-        return view('practice.show', compact('practice', 'leftRightContents', 'relatedPractices'));
+        return view('practice.show', compact('practice', 'leftRightContents', 'faqs', 'relatedPractices'));
     }
 
     /**

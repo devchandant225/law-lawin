@@ -168,4 +168,12 @@ class Post extends Model
     {
         return $this->hasMany(LeftRightContent::class);
     }
+
+    /**
+     * Get the FAQs associated with this post.
+     */
+    public function postFaqs()
+    {
+        return $this->hasMany(PostFAQ::class);
+    }
 }

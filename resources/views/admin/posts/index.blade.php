@@ -115,6 +115,9 @@
 												<a href="{{ route('admin.left-right-contents.create', ['post_id' => $post->id]) }}" title="Add Left-Right Content" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-blue-300 text-blue-600 hover:bg-blue-50">
 													<i class="fas fa-align-left"></i>
 												</a>
+												<a href="{{ route('admin.posts.faqs.index', $post->id) }}" title="Manage FAQs" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-indigo-300 text-indigo-600 hover:bg-indigo-50">
+													<i class="fas fa-question-circle"></i>
+												</a>
 												<button type="button" title="Delete" onclick="confirmDelete('{{ $post->id }}', '{{ $post->title }}')" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-red-300 text-red-600 hover:bg-red-50">
 													<i class="fas fa-trash"></i>
 												</button>

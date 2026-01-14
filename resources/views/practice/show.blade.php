@@ -137,6 +137,36 @@
                         </div>
                     @endif
 
+                    <!-- FAQ Section -->
+                    @if ($faqs && $faqs->count() > 0)
+                        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
+                            <h2 class="text-2xl md:text-3xl font-bold text-accent mb-6 flex items-center gap-3">
+                                <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                Frequently Asked Questions
+                            </h2>
+
+                            <div class="space-y-4">
+                                @foreach ($faqs as $faq)
+                                    <div class="border border-gray-200 rounded-xl overflow-hidden">
+                                        <button class="faq-question w-full text-left p-5 bg-accent text-accent font-semibold flex justify-between items-center hover:bg-accent/90 transition-colors">
+                                            <span>{{ $faq->question }}</span>
+                                            <svg class="w-5 h-5 ml-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="faq-answer hidden p-5 bg-gray-50 text-gray-700 border-t border-gray-200">
+                                            <div class="prose prose-sm max-w-none">{!! $faq->answer !!}</div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
                     <!-- Social Share -->
                     <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
                         <h4 class="flex items-center gap-3 text-xl font-bold text-primary mb-6">
@@ -534,4 +564,38 @@
             'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
         ],
     ]" :showSocialLinks="true" />
+@endsection
+
+@section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector('svg');
+
+            // Toggle the answer visibility
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+
+            // Close other open FAQs
+            faqQuestions.forEach(otherQuestion => {
+                if (otherQuestion !== this) {
+                    const otherAnswer = otherQuestion.nextElementSibling;
+                    const otherIcon = otherQuestion.querySelector('svg');
+                    otherAnswer.classList.add('hidden');
+                    otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    });
+});
+</script>
 @endsection

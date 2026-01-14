@@ -137,77 +137,95 @@
                         </div>
                     @endif
 
-                    <!-- FAQ Section -->
-                    @if ($faqs && $faqs->count() > 0)
-                        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 mb-8">
-                            <div class="flex items-center gap-4 mb-8 pb-4 border-b border-gray-100">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-r from-accent to-primary rounded-xl flex items-center justify-center shadow-md">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
-                                    Frequently Asked Questions
-                                </h2>
-                            </div>
+                                        <!-- FAQ Section -->
 
-                            @if ($practice->layout === 'fullscreen')
-                                <!-- Two-column layout for fullscreen -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                    @foreach ($faqs as $faq)
-                                        <div
-                                            class="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                                            <button
-                                                class="faq-question w-full text-left p-6 bg-gradient-to-r from-accent to-primary text-white font-semibold flex justify-between items-center hover:from-accent/90 hover:to-primary/90 transition-all duration-300 group">
-                                                <span class="text-base font-medium">{{ $faq->question }}</span>
-                                                <div
-                                                    class="transform transition-transform duration-300 group-hover:scale-110">
-                                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                    </svg>
+                                        @if ($faqs && $faqs->count() > 0)
+
+                                            <div class="bg-white rounded-3xl shadow-2xl shadow-accent/5 border border-gray-100 p-6 md:p-10 mb-12 overflow-hidden">
+
+                                                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+
+                                                    <div class="relative">
+
+                                                        <span class="inline-block px-4 py-1.5 bg-accent/10 text-accent text-sm font-bold rounded-full mb-3 uppercase tracking-wider">Common Inquiries</span>
+
+                                                        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+
+                                                            Expert Legal <span class="text-accent">Insights</span>
+
+                                                        </h2>
+
+                                                        <div class="absolute -left-10 top-0 w-1 h-full bg-accent/20 rounded-full hidden lg:block"></div>
+
+                                                    </div>
+
+                                                    <div class="hidden md:block">
+
+                                                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-[#0d7bb0] rounded-2xl flex items-center justify-center shadow-lg shadow-accent/20 rotate-3 hover:rotate-0 transition-all duration-300">
+
+                                                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+                                                            </svg>
+
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
-                                            </button>
-                                            <div
-                                                class="faq-answer hidden p-6 bg-white text-gray-700 border-t border-gray-100">
-                                                <div class="prose prose-sm max-w-none">{!! $faq->answer !!}</div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @else
-                                <!-- Single column layout for sidebar layout -->
-                                <div class="space-y-5">
-                                    @foreach ($faqs as $faq)
-                                        <div
-                                            class="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
-                                            <button
-                                                class="faq-question w-full text-left p-6 bg-gradient-to-r from-accent to-primary text-white font-semibold flex justify-between items-center hover:from-accent/90 hover:to-primary/90 transition-all duration-300 group">
-                                                <span class="text-base font-medium">{{ $faq->question }}</span>
-                                                <div
-                                                    class="transform transition-transform duration-300 group-hover:scale-110">
-                                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                                    </svg>
+
+                    
+
+                                                <div class="grid grid-cols-1 {{ $practice->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-6">
+
+                                                    @foreach ($faqs as $faq)
+
+                                                        <div class="faq-item group bg-gray-50/50 hover:bg-white border border-gray-200/60 hover:border-accent/30 rounded-2xl transition-all duration-500 hover:shadow-xl hover:shadow-accent/5">
+
+                                                            <button class="faq-question w-full text-left p-6 flex justify-between items-center outline-none">
+
+                                                                <span class="text-lg font-bold text-gray-800 group-hover:text-accent transition-colors duration-300 pr-6">
+
+                                                                    {{ $faq->question }}
+
+                                                                </span>
+
+                                                                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-white shadow-sm border border-gray-100 flex items-center justify-center group-[.active]:bg-accent group-hover:border-accent/50 transition-all duration-500">
+
+                                                                    <svg class="w-5 h-5 text-gray-400 group-[.active]:text-white group-[.active]:rotate-180 transform transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+
+                                                                    </svg>
+
+                                                                </div>
+
+                                                            </button>
+
+                                                            <div class="faq-answer hidden overflow-hidden">
+
+                                                                <div class="px-6 pb-6 pt-2 text-gray-600 border-t border-gray-100/50">
+
+                                                                    <div class="prose prose-sm md:prose-base max-w-none leading-relaxed text-justify">
+
+                                                                        {!! $faq->answer !!}
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    @endforeach
+
                                                 </div>
-                                            </button>
-                                            <div
-                                                class="faq-answer hidden p-6 bg-white text-gray-700 border-t border-gray-100">
-                                                <div class="prose prose-sm max-w-none">{!! $faq->answer !!}</div>
+
                                             </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
-                    @endif
+
+                                        @endif
 
                     <!-- Social Share -->
                     <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">

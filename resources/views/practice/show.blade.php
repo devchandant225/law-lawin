@@ -223,7 +223,7 @@
                            
                             Share This Practice
                         </h4>
-                        <div class="flex justify-center gap-3">
+                        <div class="flex justify-start gap-3">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}"
                                 target="_blank"
                                 class="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 shadow-md hover:shadow-lg">

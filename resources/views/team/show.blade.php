@@ -30,6 +30,7 @@
         .team-des-wrapper ol,
         .team-des-wrapper ul {
             list-style-type: disc;
+            margin-left: 20px;
         }
     </style>
 @endsection

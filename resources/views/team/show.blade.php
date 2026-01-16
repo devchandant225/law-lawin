@@ -354,9 +354,6 @@
                         <!-- Social Share -->
                         <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
                             <h4 class="flex items-start gap-3 text-xl font-bold text-primary mb-6">
-                                <div
-                                    class="w-10 h-10 bg-gradient-to-br from-primary to-primary rounded-lg flex items-center justify-center">
-                                </div>
                                 Share Profile
                             </h4>
                             <div class="flex justify-center gap-3">

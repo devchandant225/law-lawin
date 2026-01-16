@@ -231,8 +231,7 @@
         .prose h4 {
             color: text-accent;
             font-weight: 700;
-            margin-top: 2em;
-            margin-bottom: 1em;
+            margin: 0;
         }
 
         .prose h2 {

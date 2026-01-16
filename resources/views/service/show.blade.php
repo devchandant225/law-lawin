@@ -79,7 +79,6 @@
                         <!-- Social Share -->
                         <div class="bg-white rounded-3xl p-6 shadow animate-fade-in">
                             <h4 class="text-xl font-semibold text-primary mb-6 flex items-center gap-3">
-                                <i class="fas fa-share-alt bg-primary"></i>
                                 Share This Service
                             </h4>
                             <div class="flex justify-center gap-3">

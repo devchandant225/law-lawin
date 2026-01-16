@@ -130,7 +130,7 @@
                     @endif
 
                     <!-- Professional Profile Section -->
-                    <div
+                    {{-- <div
                         class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg border border-gray-100 p-8 mb-8">
                         <h3 class="flex items-center gap-4 text-2xl font-bold text-primary mb-8">
                             <div
@@ -246,7 +246,7 @@
                                 </div>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Sidebar - 30% -->

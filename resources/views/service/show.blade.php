@@ -231,11 +231,13 @@
         .prose h4 {
             color: text-accent;
             font-weight: 700;
-            margin: 0;
+
         }
 
         .prose h2 {
             font-size: 22px;
+            margin: 2px 0 3px 0;
+
         }
 
         .prose h3 {

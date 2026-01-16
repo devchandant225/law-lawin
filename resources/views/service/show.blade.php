@@ -234,6 +234,12 @@
 
         }
 
+        .prose ol,
+        .prose ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
         .prose h2 {
             font-size: 22px;
             margin: 2px 0 3px 0;

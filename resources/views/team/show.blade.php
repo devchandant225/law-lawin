@@ -26,6 +26,11 @@
         .team-des-wrapper h4 {}
 
         .team-des-wrapper p {}
+
+        .team-des-wrapper ol,
+        .team-des-wrapper ul {
+            list-style-type: disc;
+        }
     </style>
 @endsection
 

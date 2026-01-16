@@ -32,6 +32,45 @@
             list-style-type: disc;
             margin-left: 20px;
         }
+
+        .team-des-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            margin: 20px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .team-des-wrapper thead tr th {
+            background-color: #2b4c7e;
+            color: #fff;
+            text-align: left;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .team-des-wrapper tbody tr td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .team-des-wrapper tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .team-des-wrapper tbody tr:hover {
+            background-color: #f1f5ff;
+            transition: 0.2s;
+        }
+
+        /* Optional scroll for mobile */
+        .team-des-wrapper div {
+            overflow-x: auto;
+        }
     </style>
 @endsection
 

@@ -154,7 +154,7 @@
                             </div>
                         </div>
                     @endif
-
+                    <x-page-section-title title="<span>Frequently Asked Question</span>" />
                     <!-- FAQ Section -->
                     @if ($faqs && $faqs->count() > 0)
                         <div
@@ -162,25 +162,6 @@
                             <!-- Background Decoration -->
                             <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
                             <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-
-                            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 relative z-10">
-                                <div class="max-w-2xl">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <span class="w-12 h-[2px] bg-accent"></span>
-                                        <span class="text-accent font-bold uppercase tracking-widest text-sm">Common
-                                            Inquiries</span>
-                                    </div>
-                                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1]">
-                                        Expert Legal <span
-                                            class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#0d7bb0]">Insights</span>
-                                    </h2>
-                                    <p class="text-gray-500 mt-6 text-lg max-w-xl">
-                                        Find comprehensive answers to the most frequent questions regarding our specialized
-                                        legal services and practice areas.
-                                    </p>
-                                </div>
-                               
-                            </div>
 
                             <div
                                 class="grid grid-cols-1 {{ $practice->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-8 relative z-10">
@@ -220,7 +201,7 @@
                     <!-- Social Share -->
                     <div class="bg-white border-gray-100 px-8 py-4 mb-4">
                         <h4 class="text-xl font-bold text-primary mb-6">
-                           
+
                             Share This Practice
                         </h4>
                         <div class="flex justify-start gap-3">
@@ -258,16 +239,16 @@
                             </a>
                         </div>
                     </div>
-                      {{-- Contact Section --}}
-                            <x-contact-section :contactInfo="[
-                                'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
-                                'phone' => '+9779841933745',
-                                'email' => 'info@lawinpartners.com',
-                                'workingHours' => [
-                                    'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
-                                    'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
-                                ],
-                            ]" :showSocialLinks="true" />
+                    {{-- Contact Section --}}
+                    <x-contact-section :contactInfo="[
+                        'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',
+                        'phone' => '+9779841933745',
+                        'email' => 'info@lawinpartners.com',
+                        'workingHours' => [
+                            'weekdays' => 'Monday - Friday: 9:00 AM - 6:00 PM',
+                            'weekend' => 'Saturday - Sunday: 8:00 AM - 8:00 PM',
+                        ],
+                    ]" :showSocialLinks="true" />
                     <!-- More Practice Areas Section -->
                     @if ($relatedPractices->count() > 0)
                         <div class="mb-12">
@@ -282,7 +263,7 @@
                                     </svg>
                                 </a>
                             </div>
-                           
+
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                 @foreach ($relatedPractices as $relatedPractice)
                                     <div

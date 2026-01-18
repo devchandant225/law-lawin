@@ -277,3 +277,4 @@ Route::prefix('admin')
                 ]);
                 Route::post('/left-right-contents/{leftRightContent}/toggle-status', [\App\Http\Controllers\Admin\LeftRightContentController::class, 'toggleStatus'])->name('left-right-contents.toggle-status');
             });
+    });

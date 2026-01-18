@@ -33,7 +33,7 @@ class ServiceSection extends Component
         $this->showViewAll = $showViewAll;
         $this->sectionTitle = $sectionTitle ?? "We're Providing Best Service To Clients";
         $this->sectionSubtitle = $sectionSubtitle ?? 'Our Services';
-        $this->services = $services ?? $this->getServices($limit);
+        $this->services = $services;
     }
 
     /**
@@ -192,6 +192,10 @@ class ServiceSection extends Component
      */
     public function render(): View|Closure|string
     {
+        if (is_null($this->services)) {
+            $this->services = $this->getServices($this->limit);
+        }
+
         return view('components.service-section', [
             'services' => $this->services,
             'showBrands' => $this->showBrands,

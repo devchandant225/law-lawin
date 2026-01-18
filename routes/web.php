@@ -264,7 +264,7 @@ Route::prefix('admin')
         Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
 
         // Post FAQs Management (nested under posts)
-        Route::prefix('posts/{post}')
+        Route::prefix('posts/{post:id}')
             ->name('posts.')
             ->group(function () {
                 Route::resource('faqs', \App\Http\Controllers\PostFAQController::class, [

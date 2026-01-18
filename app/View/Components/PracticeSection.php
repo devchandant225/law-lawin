@@ -29,7 +29,7 @@ class PracticeSection extends Component
         $this->showViewAll = $showViewAll;
         $this->sectionTitle = $sectionTitle ?? "Expert Legal Practice Areas  <br><span>Tailored to Your Needs</span>";
         $this->sectionSubtitle = $sectionSubtitle ?? 'Practice Area';
-        $this->practices = $this->getPractices($limit);
+        $this->practices = null;
     }
 
     /**
@@ -208,6 +208,10 @@ class PracticeSection extends Component
      */
     public function render(): View|Closure|string
     {
+        if (is_null($this->practices)) {
+            $this->practices = $this->getPractices($this->limit);
+        }
+
         return view('components.practice-section', [
             'practices' => $this->practices,
             'showViewAll' => $this->showViewAll,

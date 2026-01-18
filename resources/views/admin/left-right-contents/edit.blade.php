@@ -3,14 +3,14 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-white">Edit Left-Right Content</h1>
-        <a href="{{ route('admin.left-right-contents.index') }}" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+        <h1 class="text-3xl font-bold text-white">Edit Left-Right Content for: {{ $post->title }}</h1>
+        <a href="{{ route('admin.posts.left-right-contents.index', $post->id) }}" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
             Back to List
         </a>
     </div>
 
     <div class="bg-gray-800 rounded-lg shadow-lg p-6 max-w-3xl mx-auto">
-        <form action="{{ route('admin.left-right-contents.update', $leftRightContent->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.posts.left-right-contents.update', [$post->id, $leftRightContent->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -20,22 +20,6 @@
                     <input type="text" name="title" id="title" value="{{ old('title', $leftRightContent->title) }}" required
                            class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                     @error('title')
-                        <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label for="post_id" class="block text-gray-300 mb-2">Post *</label>
-                    <select name="post_id" id="post_id" required
-                            class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option value="">Select Post</option>
-                        @foreach($posts as $post)
-                            <option value="{{ $post->id }}" {{ old('post_id', $leftRightContent->post_id) == $post->id ? 'selected' : '' }}>
-                                {{ $post->title }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('post_id')
                         <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>

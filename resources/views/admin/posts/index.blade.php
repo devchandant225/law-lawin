@@ -112,7 +112,7 @@
 												<a href="{{ route('admin.posts.edit', $post) }}" title="Edit" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-primary text-primary hover:bg-purple-50">
 													<i class="fas fa-edit"></i>
 												</a>
-												<a href="{{ route('admin.left-right-contents.create', ['post_id' => $post->id]) }}" title="Add Left-Right Content" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-blue-300 text-blue-600 hover:bg-blue-50">
+												<a href="{{ route('admin.posts.left-right-contents.index', $post->id) }}" title="Manage Left-Right Content" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-blue-300 text-blue-600 hover:bg-blue-50">
 													<i class="fas fa-align-left"></i>
 												</a>
 												<a href="{{ route('admin.posts.faqs.index', $post->id) }}" title="Manage FAQs" class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-indigo-300 text-indigo-600 hover:bg-indigo-50">

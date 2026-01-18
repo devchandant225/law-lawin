@@ -247,10 +247,6 @@ Route::prefix('admin')
         Route::resource('portfolios', PortfolioController::class);
         Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
 
-        // Left-Right Content Management
-        Route::resource('left-right-contents', \App\Http\Controllers\Admin\LeftRightContentController::class);
-        Route::post('/left-right-contents/{leftRightContent}/toggle-status', [\App\Http\Controllers\Admin\LeftRightContentController::class, 'toggleStatus'])->name('left-right-contents.toggle-status');
-
         // Post FAQs Management (nested under posts)
         Route::prefix('posts/{post}')
             ->name('posts.')
@@ -266,19 +262,18 @@ Route::prefix('admin')
                         'destroy' => 'faqs.destroy',
                     ],
                 ]);
+
+                // Left-Right Content Management (nested under posts)
+                Route::resource('left-right-contents', \App\Http\Controllers\Admin\LeftRightContentController::class, [
+                    'names' => [
+                        'index' => 'left-right-contents.index',
+                        'create' => 'left-right-contents.create',
+                        'store' => 'left-right-contents.store',
+                        'show' => 'left-right-contents.show',
+                        'edit' => 'left-right-contents.edit',
+                        'update' => 'left-right-contents.update',
+                        'destroy' => 'left-right-contents.destroy',
+                    ],
+                ]);
+                Route::post('/left-right-contents/{leftRightContent}/toggle-status', [\App\Http\Controllers\Admin\LeftRightContentController::class, 'toggleStatus'])->name('left-right-contents.toggle-status');
             });
-
-        // Pages Management
-        Route::resource('pages', AdminPageController::class);
-        Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
-
-        // Meta Tags Management
-        Route::resource('meta-tags', MetaTagController::class);
-        Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
-
-        // Image Upload for CKEditor
-        Route::post('/upload-blog-editor-image', [DashboardController::class, 'uploadEditorImage'])->name('upload-blog-editor-image');
-
-        // Logout
-        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    });

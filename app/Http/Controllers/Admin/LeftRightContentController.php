@@ -13,32 +13,27 @@ class LeftRightContentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Post $post)
     {
-        $query = LeftRightContent::with('post')->orderBy('order', 'asc');
+        $contents = LeftRightContent::where('post_id', $post->id)
+            ->orderBy('order', 'asc')
+            ->get();
 
-        if (request('post_id')) {
-            $query->where('post_id', request('post_id'));
-        }
-
-        $contents = $query->get();
-        return view('admin.left-right-contents.index', compact('contents'));
+        return view('admin.left-right-contents.index', compact('contents', 'post'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Post $post)
     {
-        $posts = Post::all();
-        $selectedPostId = request('post_id') ? request('post_id') : null;
-        return view('admin.left-right-contents.create', compact('posts', 'selectedPostId'));
+        return view('admin.left-right-contents.create', compact('post'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -46,10 +41,10 @@ class LeftRightContentController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'order' => 'required|integer',
             'status' => 'required|boolean',
-            'post_id' => 'required|exists:posts,id',
         ]);
 
         $data = $request->except('image');
+        $data['post_id'] = $post->id;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('left-right-contents', 'public');
@@ -58,30 +53,29 @@ class LeftRightContentController extends Controller
 
         LeftRightContent::create($data);
 
-        return redirect()->route('admin.left-right-contents.index')->with('success', 'Left-right content created successfully.');
+        return redirect()->route('admin.posts.left-right-contents.index', $post->id)->with('success', 'Left-right content created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(LeftRightContent $leftRightContent)
+    public function show(Post $post, LeftRightContent $leftRightContent)
     {
-        return view('admin.left-right-contents.show', compact('leftRightContent'));
+        return view('admin.left-right-contents.show', compact('leftRightContent', 'post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LeftRightContent $leftRightContent)
+    public function edit(Post $post, LeftRightContent $leftRightContent)
     {
-        $posts = Post::all();
-        return view('admin.left-right-contents.edit', compact('leftRightContent', 'posts'));
+        return view('admin.left-right-contents.edit', compact('leftRightContent', 'post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, LeftRightContent $leftRightContent)
+    public function update(Request $request, Post $post, LeftRightContent $leftRightContent)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -89,10 +83,10 @@ class LeftRightContentController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'order' => 'required|integer',
             'status' => 'required|boolean',
-            'post_id' => 'required|exists:posts,id',
         ]);
 
         $data = $request->except('image');
+        $data['post_id'] = $post->id;
 
         if ($request->hasFile('image')) {
             // Delete old image if exists
@@ -106,13 +100,13 @@ class LeftRightContentController extends Controller
 
         $leftRightContent->update($data);
 
-        return redirect()->route('admin.left-right-contents.index')->with('success', 'Left-right content updated successfully.');
+        return redirect()->route('admin.posts.left-right-contents.index', $post->id)->with('success', 'Left-right content updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LeftRightContent $leftRightContent)
+    public function destroy(Post $post, LeftRightContent $leftRightContent)
     {
         // Delete image if exists
         if ($leftRightContent->image) {
@@ -121,13 +115,13 @@ class LeftRightContentController extends Controller
 
         $leftRightContent->delete();
 
-        return redirect()->route('admin.left-right-contents.index')->with('success', 'Left-right content deleted successfully.');
+        return redirect()->route('admin.posts.left-right-contents.index', $post->id)->with('success', 'Left-right content deleted successfully.');
     }
 
     /**
      * Toggle the status of the specified resource.
      */
-    public function toggleStatus(LeftRightContent $leftRightContent)
+    public function toggleStatus(Post $post, LeftRightContent $leftRightContent)
     {
         $leftRightContent->update([
             'status' => !$leftRightContent->status

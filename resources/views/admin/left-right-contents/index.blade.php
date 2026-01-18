@@ -3,10 +3,15 @@
 @section('content')
 <div class="container mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold text-white">Left-Right Contents</h1>
-        <a href="{{ route('admin.left-right-contents.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Add New Content
-        </a>
+        <h1 class="text-3xl font-bold text-white">Left-Right Contents for: {{ $post->title }}</h1>
+        <div class="flex space-x-2">
+            <a href="{{ route('admin.posts.index') }}" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                Back to Posts
+            </a>
+            <a href="{{ route('admin.posts.left-right-contents.create', $post->id) }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Add New Content
+            </a>
+        </div>
     </div>
 
     @if(session('success'))
@@ -22,7 +27,6 @@
                     <tr class="bg-gray-700 text-white">
                         <th class="py-3 px-4 text-left">ID</th>
                         <th class="py-3 px-4 text-left">Title</th>
-                        <th class="py-3 px-4 text-left">Post</th>
                         <th class="py-3 px-4 text-left">Order</th>
                         <th class="py-3 px-4 text-left">Status</th>
                         <th class="py-3 px-4 text-left">Actions</th>
@@ -33,7 +37,6 @@
                         <tr class="border-b border-gray-700 hover:bg-gray-750">
                             <td class="py-3 px-4">{{ $content->id }}</td>
                             <td class="py-3 px-4">{{ Str::limit($content->title, 30) }}</td>
-                            <td class="py-3 px-4">{{ $content->post->title ?? 'N/A' }}</td>
                             <td class="py-3 px-4">{{ $content->order }}</td>
                             <td class="py-3 px-4">
                                 <button
@@ -46,10 +49,10 @@
                             </td>
                             <td class="py-3 px-4">
                                 <div class="flex space-x-2">
-                                    <a href="{{ route('admin.left-right-contents.edit', $content->id) }}" class="text-blue-400 hover:text-blue-300">
+                                    <a href="{{ route('admin.posts.left-right-contents.edit', [$post->id, $content->id]) }}" class="text-blue-400 hover:text-blue-300">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <form action="{{ route('admin.left-right-contents.destroy', $content->id) }}" method="POST" class="inline">
+                                    <form action="{{ route('admin.posts.left-right-contents.destroy', [$post->id, $content->id]) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-400 hover:text-red-300" onclick="return confirm('Are you sure you want to delete this content?')">
@@ -61,7 +64,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="py-4 px-4 text-center text-gray-400">No left-right contents found.</td>
+                            <td colspan="5" class="py-4 px-4 text-center text-gray-400">No left-right contents found for this post.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -72,7 +75,7 @@
     <script>
         async function toggleStatus(id) {
             try {
-                const response = await fetch(`/admin/left-right-contents/${id}/toggle-status`, {
+                const response = await fetch(`/admin/posts/{{ $post->id }}/left-right-contents/${id}/toggle-status`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

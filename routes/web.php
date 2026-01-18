@@ -173,6 +173,9 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin'])
     ->group(function () {
+        // Logout
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
         // Dashboard
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

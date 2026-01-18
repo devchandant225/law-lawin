@@ -193,7 +193,7 @@
 
 
 {{-- Logout --}}
-<a href="{{ route('admin.logout') }}"
+<a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();"
     class="nav-item group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200 text-red-700 hover:bg-red-50">
     <svg class="icon mr-3 h-5 w-5 text-red-500 group-hover:text-red-700" viewBox="0 0 24 24" fill="currentColor">
         <path
@@ -201,3 +201,6 @@
     </svg>
     <span class="hide-when-collapsed">Logout</span>
 </a>
+<form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" class="hidden">
+    @csrf
+</form>

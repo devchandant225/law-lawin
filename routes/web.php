@@ -192,6 +192,11 @@ Route::prefix('admin')
         Route::resource('publications', AdminPublicationController::class);
         Route::post('/publications/{publication}/toggle-status', [AdminPublicationController::class, 'toggleStatus'])->name('publications.toggle-status');
         Route::post('/upload_editor_image', [AdminPublicationController::class, 'editorUpload']);
+        
+        // More Publications Management
+        Route::resource('more-publications', AdminMorePublicationController::class);
+        Route::post('/more-publications/{morePublication}/toggle-status', [AdminMorePublicationController::class, 'toggleStatus'])->name('more-publications.toggle-status');
+
         // FAQ Management
         Route::resource('faqs', AdminFAQController::class);
         Route::post('/faqs/{faq}/toggle-status', [AdminFAQController::class, 'toggleStatus'])->name('faqs.toggle-status');
@@ -250,6 +255,10 @@ Route::prefix('admin')
         // Portfolio Management
         Route::resource('portfolios', PortfolioController::class);
         Route::post('/portfolios/{portfolio}/toggle-status', [PortfolioController::class, 'toggleStatus'])->name('portfolios.toggle-status');
+
+        // Meta Tag Management
+        Route::resource('meta-tags', MetaTagController::class);
+        Route::post('/meta-tags/{metaTag}/toggle-status', [MetaTagController::class, 'toggleStatus'])->name('meta-tags.toggle-status');
 
         // Post FAQs Management (nested under posts)
         Route::prefix('posts/{post}')

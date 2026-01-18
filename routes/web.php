@@ -200,6 +200,10 @@ Route::prefix('admin')
         Route::resource('contacts', AdminContactController::class)->except(['create', 'store', 'edit', 'update']);
         Route::get('/contacts/export', [AdminContactController::class, 'export'])->name('contacts.export');
 
+        // Page Management
+        Route::resource('pages', AdminPageController::class);
+        Route::post('/pages/{page}/toggle-status', [AdminPageController::class, 'toggleStatus'])->name('pages.toggle-status');
+
         // Table of Contents Management (nested under publications)
         Route::prefix('publications/{publication}')
             ->name('publications.')

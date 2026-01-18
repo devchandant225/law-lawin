@@ -101,7 +101,7 @@
                                         class="w-full h-[50vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
-                            <h2 class="text-2xl font-bold text-[#0f8cca] leading-tight">
+                            <h2 class="text-2xl font-bold text-[#0f8cca] leading-tight ml-[8px]">
                                 {{ $practice->title }}</h2>
                         </div>
 

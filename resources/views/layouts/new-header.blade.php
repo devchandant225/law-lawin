@@ -145,8 +145,41 @@
                 <nav class="hidden lg:flex items-center space-x-8 header-nav">
                     <a href="{{ route('home') }}" class="text-nav font-medium transition-colors capitalize nav-link">Home</a>
                     <a href="{{ route('about') }}" class="text-nav hover:text-white/80 font-medium transition-colors capitalize nav-link">About</a>
-                    <a href="{{ route('team.index') }}" class="text-nav hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
-                    
+                   
+                      <!-- Services Dropdown -->
+                    <div class="relative group">
+                        <a href="{{ route('services.index') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
+                            Our Services
+                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                        </a>
+                        @if ($navServices && $navServices->count() > 0)
+                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                                <div class="py-3">
+                                    <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Our Services</span>
+                                    </div>
+                                    <a href="{{ route('services.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                            <i class="fas fa-briefcase text-primary text-xs"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">All Services</div>
+                                            <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Complete service portfolio</div>
+                                        </div>
+                                    </a>
+                                    <div class="h-px bg-gray-100 my-2 mx-4"></div>
+                                    @foreach ($navServices->take(10) as $service)
+                                        <a href="{{ route('service.show', $service->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
+                                                <i class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                            </div>
+                                            <span class="font-medium">{{ $service->title }}</span>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                     <!-- Practice Areas Dropdown -->
                     <div class="relative group">
                         <a href="{{ route('practice.index') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
@@ -182,40 +215,7 @@
                         @endif
                     </div>
 
-                    <!-- Services Dropdown -->
-                    <div class="relative group">
-                        <a href="{{ route('services.index') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
-                            Our Services
-                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
-                        </a>
-                        @if ($navServices && $navServices->count() > 0)
-                            <div class="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                                <div class="py-3">
-                                    <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                        <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Our Services</span>
-                                    </div>
-                                    <a href="{{ route('services.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                        <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
-                                            <i class="fas fa-briefcase text-primary text-xs"></i>
-                                        </div>
-                                        <div>
-                                            <div class="font-medium">All Services</div>
-                                            <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Complete service portfolio</div>
-                                        </div>
-                                    </a>
-                                    <div class="h-px bg-gray-100 my-2 mx-4"></div>
-                                    @foreach ($navServices->take(10) as $service)
-                                        <a href="{{ route('service.show', $service->slug) }}" class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                            <div class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
-                                            </div>
-                                            <span class="font-medium">{{ $service->title }}</span>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                    </div>
+                  
   <!-- Help Desk Dropdown -->
                   
                     <!-- News & Publications Dropdown -->
@@ -250,6 +250,7 @@
                             </div>
                         </div>
                     </div>
+                     <a href="{{ route('team.index') }}" class="text-nav hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
   <div class="relative group">
                         <a href="#" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Help Desk

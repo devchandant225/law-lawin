@@ -80,7 +80,7 @@
     ]" />
 
     {{-- Main Content Section --}}
-    <section id="content-wrapper" class="lg:py-16 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="content-wrapper" class="lg:py-2 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
 
         <div class="container mx-auto px-4 relative z-10">
             @if ($practice->layout === 'fullscreen')

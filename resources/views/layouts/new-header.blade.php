@@ -217,7 +217,40 @@
                         @endif
                     </div>
   <!-- Help Desk Dropdown -->
+                  
+                    <!-- News & Publications Dropdown -->
                     <div class="relative group">
+                        <a href="#" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
+                           News & Publications
+                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                            <div class="py-3">
+                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
+                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Resources</span>
+                                </div>
+                                <a href="{{ route('posts.by-type', 'news') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-newspaper text-blue-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">News</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Latest updates & insights</div>
+                                    </div>
+                                </a>
+                                <a href="{{ route('publications.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-book text-green-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">Publications</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Research & reports</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+  <div class="relative group">
                         <a href="#" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Help Desk
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
@@ -266,39 +299,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- News & Publications Dropdown -->
-                    <div class="relative group">
-                        <a href="#" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
-                           News & Publications
-                            <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
-                        </a>
-                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
-                            <div class="py-3">
-                                <div class="px-4 pb-2 mb-2 border-b border-gray-100">
-                                    <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Resources</span>
-                                </div>
-                                <a href="{{ route('posts.by-type', 'news') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-newspaper text-blue-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">News</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Latest updates & insights</div>
-                                    </div>
-                                </a>
-                                <a href="{{ route('publications.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-book text-green-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">Publications</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Research & reports</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                   
 
                     <a href="/contact" class="text-nav font-medium transition-colors nav-link">Contact</a>

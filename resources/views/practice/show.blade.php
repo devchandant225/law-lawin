@@ -81,12 +81,6 @@
 
     {{-- Main Content Section --}}
     <section id="content-wrapper" class="lg:py-16 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0"
-                style="background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0); background-size: 30px 30px;">
-            </div>
-        </div>
 
         <div class="container mx-auto px-4 relative z-10">
             @if ($practice->layout === 'fullscreen')
@@ -94,8 +88,8 @@
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
                     <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-0">
-                          <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px]">
-                                {{ $practice->title }}</h2>
+                        <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px]">
+                            {{ $practice->title }}</h2>
                         <div class="">
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
@@ -103,7 +97,7 @@
                                         class="w-full h-[50vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
-                          
+
                         </div>
 
                         <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed mt-2 text-justify">

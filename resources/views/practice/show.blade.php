@@ -88,7 +88,7 @@
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
                     <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-0">
-                        <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px]">
+                        <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px] mb-3">
                             {{ $practice->title }}</h2>
                         <div class="">
                             @if ($practice->feature_image_url)

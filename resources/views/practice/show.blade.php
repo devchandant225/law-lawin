@@ -3,55 +3,55 @@
 @section('head')
     <x-meta-tags :title="$practice->meta_title ?: $practice->title . ' - Professional Legal Practice'" :description="$practice->meta_description ?: $practice->excerpt" :keywords="$practice->meta_keywords" :image="$practice->feature_image_url" type="article" :post="$practice" />
     <style>
-        #content-wrapper p {
+        #content-wrapper #fullscreen-layout p {
             margin-bottom: 6px !important;
             margin-left: 22px !important;
         }
 
-        #content-wrapper h2 {
+        #content-wrapper #fullscreen-layout h2 {
             margin-bottom: 0px !important;
             font-size: 22px !important;
             color: #108fcc;
         }
 
-        #content-wrapper h3 {
+        #content-wrapper #fullscreen-layout h3 {
             margin-bottom: 0px !important;
             font-size: 500 !important;
             font-size: 18px !important;
             color: #108fcc;
         }
 
-        #content-wrapper ol {
+        #content-wrapper #fullscreen-layout ol {
             padding-left: 16px !important;
         }
 
-        #content-wrapper ul {
+        #content-wrapper #fullscreen-layout ul {
             padding-left: 16px !important;
         }
 
         @media and screen (max-width: 768px) {
-            #content-wrapper p {
+            #content-wrapper #fullscreen-layout p {
                 margin-bottom: 6px !important;
             }
 
-            #content-wrapper h2 {
+            #content-wrapper #fullscreen-layout h2 {
                 margin-bottom: 0px !important;
                 font-size: 10px !important;
                 color: #108fcc !important;
             }
 
-            #content-wrapper h3 {
+            #content-wrapper #fullscreen-layout h3 {
                 margin-bottom: 0px !important;
                 font-size: 500 !important;
                 font-size: 8px !important;
                 color: #108fcc !important;
             }
 
-            #content-wrapper ol {
+            #content-wrapper #fullscreen-layout ol {
                 padding-left: 16px !important;
             }
 
-            #content-wrapper ul {
+            #content-wrapper #fullscreen-layout ul {
                 padding-left: 16px !important;
             }
         }
@@ -87,7 +87,7 @@
     {{-- Main Content Section --}}
     <section id="content-wrapper" class="lg:py-2 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
 
-        <div class="container mx-auto px-4 relative z-10">
+        <div id="fullscreen-layout" class="container mx-auto px-4 relative z-10">
             @if ($practice->layout === 'fullscreen')
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">

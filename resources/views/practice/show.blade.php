@@ -10,12 +10,13 @@
 
         #content-wrapper h2 {
             margin-bottom: 0px !important;
+            font-size: 22px !important;
         }
 
         #content-wrapper h3 {
             margin-bottom: 0px !important;
             font-size: 500 !important;
-            font-size: 14px !important;
+            font-size: 18px !important;
         }
 
         #content-wrapper ol {
@@ -33,13 +34,13 @@
 
             #content-wrapper h2 {
                 margin-bottom: 0px !important;
-                font-size: 16px !important;
+                font-size: 10px !important;
             }
 
             #content-wrapper h3 {
                 margin-bottom: 0px !important;
                 font-size: 500 !important;
-                font-size: 12px !important;
+                font-size: 8px !important;
             }
 
             #content-wrapper ol {

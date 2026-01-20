@@ -10,12 +10,13 @@
 
         #content-wrapper h2 {
             margin-bottom: 0px !important;
+            font-size: 22px !important;
         }
 
         #content-wrapper h3 {
             margin-bottom: 0px !important;
             font-size: 500 !important;
-            font-size: 14px !important;
+            font-size: 18px !important;
         }
 
         #content-wrapper ol {
@@ -152,7 +153,7 @@
                     @endif
 
                     <!-- Consultation Banner -->
-                    <div class="mb-12 bg-accent rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl group">
+                    <div class="mb-10 bg-accent rounded-[2rem] p-6 md:p-10 text-white relative overflow-hidden shadow-xl group">
                         <!-- Background patterns -->
                         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -164,55 +165,54 @@
                                 <rect width="100" height="100" fill="url(#grid)" />
                             </svg>
                         </div>
-                        <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-110"></div>
                         
                         <div class="relative z-10">
-                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 mb-12">
-                                <div class="max-w-3xl">
-                                    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
-                                        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-10">
+                                <div class="max-w-2xl">
+                                    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                                        <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
                                         Contact our experts
                                     </div>
-                                    <h3 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight tracking-tight">Consult Lawin and Partners</h3>
-                                    <p class="text-white/80 text-lg md:text-xl leading-relaxed font-light">
-                                        Delivering sophisticated legal strategies and compassionate representation. Our dedicated advocates are ready to navigate your complex legal challenges in Nepal.
+                                    <h3 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight tracking-tight">Consult Lawin and Partners</h3>
+                                    <p class="text-white/80 text-base md:text-lg leading-relaxed font-light">
+                                        Delivering sophisticated legal strategies and compassionate representation. Our advocates are ready to navigate your legal challenges in Nepal.
                                     </p>
                                 </div>
-                                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                                    <a href="tel:+9779841933745" class="bg-white text-accent px-10 py-5 rounded-2xl font-black hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95">
-                                        <i class="fas fa-phone-alt"></i> CALL NOW
+                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                    <a href="tel:+9779841933745" class="whitespace-nowrap bg-white text-accent px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 sm:min-w-[160px]">
+                                        <i class="fas fa-phone-alt text-sm"></i> CALL NOW
                                     </a>
-                                    <a href="mailto:info@lawinpartners.com" class="bg-accent border-2 border-white/40 text-white px-10 py-5 rounded-2xl font-black hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-xl hover:border-white active:scale-95">
-                                        <i class="fas fa-envelope"></i> EMAIL US
+                                    <a href="mailto:info@lawinpartners.com" class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 sm:min-w-[160px]">
+                                        <i class="fas fa-envelope text-sm"></i> EMAIL US
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-white/10 pt-12">
-                                <div class="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                                    <p class="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] mb-3">Phone</p>
-                                    <p class="text-lg font-bold">+977-9841933745</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-10">
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Phone</p>
+                                    <p class="text-base font-bold">+977-9841933745</p>
                                 </div>
-                                <div class="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                                    <p class="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] mb-3">Email</p>
-                                    <p class="text-lg font-bold break-all">info@lawinpartners.com</p>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Email</p>
+                                    <p class="text-base font-bold break-all">info@lawinpartners.com</p>
                                 </div>
-                                <div class="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                                    <p class="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] mb-3">Website</p>
-                                    <p class="text-lg font-bold">lawinpartners.com</p>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Website</p>
+                                    <p class="text-base font-bold">lawinpartners.com</p>
                                 </div>
-                                <div class="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                                    <p class="text-white/50 text-[10px] font-black uppercase tracking-[0.2em] mb-3">Location</p>
-                                    <p class="text-lg font-bold">Kathmandu, Nepal</p>
+                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Location</p>
+                                    <p class="text-base font-bold">Kathmandu, Nepal</p>
                                 </div>
                             </div>
 
-                            <div class="mt-12 pt-8 border-t border-white/5">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <i class="fas fa-info-circle text-white/40 text-xs"></i>
-                                    <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Legal Disclaimer</h4>
+                            <div class="mt-8 pt-6 border-t border-white/5">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fas fa-info-circle text-white/40 text-[10px]"></i>
+                                    <h4 class="text-[9px] font-black uppercase tracking-[0.3em] text-white/40">Legal Disclaimer</h4>
                                 </div>
-                                <p class="text-white/40 text-[11px] leading-relaxed italic max-w-4xl text-justify">
+                                <p class="text-white/40 text-[10px] leading-relaxed italic max-w-4xl text-justify">
                                     The content provided here is for informational purposes only and should not be construed as legal advice. Laws and regulations in Nepal are subject to change, and specific legal problems require a consultation with a licensed advocate to assess individual circumstances.
                                 </p>
                             </div>

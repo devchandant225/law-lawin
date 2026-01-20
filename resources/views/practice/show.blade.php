@@ -35,12 +35,14 @@
             #content-wrapper h2 {
                 margin-bottom: 0px !important;
                 font-size: 10px !important;
+                color: #108fcc !important;
             }
 
             #content-wrapper h3 {
                 margin-bottom: 0px !important;
                 font-size: 500 !important;
                 font-size: 8px !important;
+                color: #108fcc !important;
             }
 
             #content-wrapper ol {

@@ -5,7 +5,7 @@
     <style>
         #content-wrapper p {
             margin-bottom: 6px !important;
-            margin-left: 18px !important;
+            margin-left: 12px !important;
         }
 
         #content-wrapper h2 {

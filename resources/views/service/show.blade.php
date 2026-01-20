@@ -11,14 +11,12 @@
         #content-wrapper .fullscreen-layout h2 {
             margin-bottom: 0px !important;
             font-size: 22px !important;
-            color: #108fcc;
         }
 
         #content-wrapper .fullscreen-layout h3 {
             margin-bottom: 0px !important;
             font-size: 500 !important;
             font-size: 18px !important;
-            color: #108fcc;
         }
 
         #content-wrapper .fullscreen-layout ol {

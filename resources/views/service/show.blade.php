@@ -227,7 +227,7 @@
                             <div class="mt-8 pt-6 border-t border-white/5">
                                 <div class="flex items-center gap-2 mb-2">
                                     <i class="fas fa-info-circle text-white/40 text-[10px]"></i>
-                                    <h4 class="text-[22px] font-black uppercase tracking-[0.3em] text-white/40">Legal
+                                    <h4 class="text-[25px] font-black uppercase tracking-[0.3em] text-white/40">Legal
                                         Disclaimer</h4>
                                 </div>
                                 <p class="text-white/40 text-[18px] leading-relaxed italic max-w-4xl text-justify">

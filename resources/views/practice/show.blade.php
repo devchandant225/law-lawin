@@ -23,12 +23,14 @@
 
         #content-wrapper .fullscreen-layout ol {
             padding-left: 16px !important;
-             list-style-type: disc;
+            list-style-type: disc;
+            margin-left: 16px;
         }
 
         #content-wrapper .fullscreen-layout ul {
             padding-left: 16px !important;
-             list-style-type: disc;
+            list-style-type: disc;
+            margin-left: 16px;
         }
 
         @media and screen (max-width: 768px) {
@@ -91,7 +93,7 @@
     {{-- Main Content Section --}}
     <section id="content-wrapper" class="lg:py-2 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
 
-        <div  class="container mx-auto px-4 relative z-10 fullscreen-layout">
+        <div class="container mx-auto px-4 relative z-10 fullscreen-layout">
             @if ($practice->layout === 'fullscreen')
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">
@@ -228,7 +230,7 @@
                             </div>
 
                             <div class="mt-8 pt-6 border-t border-white/5">
-                                <div class="flex items-center gap-2 mb-2">  
+                                <div class="flex items-center gap-2 mb-2">
                                     <i class="fas fa-info-circle text-white text-[10px]"></i>
                                     <h4 class="text-[25px] font-black uppercase tracking-[0.3em] text-white">Legal
                                         Disclaimer</h4>

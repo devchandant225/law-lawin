@@ -24,11 +24,13 @@
         #content-wrapper .fullscreen-layout ol {
             padding-left: 16px !important;
             list-style-type: disc;
+            margin-left: 16px;
         }
 
         #content-wrapper .fullscreen-layout ul {
             padding-left: 16px !important;
             list-style-type: disc;
+            margin-left: 16px;
         }
 
         @media and screen (max-width: 768px) {

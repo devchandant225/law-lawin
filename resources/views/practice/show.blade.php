@@ -23,10 +23,12 @@
 
         #content-wrapper .fullscreen-layout ol {
             padding-left: 16px !important;
+             list-style-type: disc;
         }
 
         #content-wrapper .fullscreen-layout ul {
             padding-left: 16px !important;
+             list-style-type: disc;
         }
 
         @media and screen (max-width: 768px) {

@@ -12,9 +12,9 @@
     </section>
     {{-- <x-why-choose-us /> --}}
     {{-- Services Section Title --}}
-    <x-page-section-title title="<span>Services</span>" />
+    {{-- <x-page-section-title title="<span>Services</span>" /> --}}
     {{-- Services Section --}}
-    <x-service-section :services="$services" :showViewAll="true" :limit="8" />
+    {{-- <x-service-section :services="$services" :showViewAll="true" :limit="8" /> --}}
 
     {{-- Practices Section Title --}}
     <x-page-section-title title="<span>Practices</span>" />

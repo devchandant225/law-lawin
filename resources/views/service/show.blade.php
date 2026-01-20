@@ -191,22 +191,22 @@
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-10">
-                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                <a href="tel:+9779841933745" class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Phone</p>
                                     <p class="text-base font-bold">+977-9841933745</p>
-                                </div>
-                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                </a>
+                                <a href="mailto:info@lawinpartners.com" class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Email</p>
                                     <p class="text-base font-bold break-all">info@lawinpartners.com</p>
-                                </div>
-                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                </a>
+                                <a href="https://lawinpartners.com" target="_blank" class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Website</p>
                                     <p class="text-base font-bold">lawinpartners.com</p>
-                                </div>
-                                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
+                                </a>
+                                <a href="https://www.google.com/maps/place/Lawin+and+Partners/@27.6870255,85.3222862,677m/data=!3m2!1e3!4b1!4m6!3m5!1s0x39eb191b975e3b81:0x60674a6cd53cbf4a!8m2!3d27.6870208!4d85.3248611!16s%2Fg%2F11q84q9trb!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D" class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Location</p>
                                     <p class="text-base font-bold">Kathmandu, Nepal</p>
-                                </div>
+                                </a>
                             </div>
 
                             <div class="mt-8 pt-6 border-t border-white/5">

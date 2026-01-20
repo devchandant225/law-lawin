@@ -131,7 +131,7 @@
                                             </h2>
                                             @if ($content->description)
                                                 <div
-                                                    class="text-gray-300 leading-relaxed text-lg space-y-4 prose prose-lg prose-invert max-w-none text-justify">
+                                                    class="text-gray-300 leading-relaxed text-xl space-y-4 prose prose-lg prose-invert max-w-none text-justify">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif

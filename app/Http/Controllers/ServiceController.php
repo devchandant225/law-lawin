@@ -45,10 +45,27 @@ class ServiceController extends Controller
                       ->where('slug', $slug)
                       ->firstOrFail();
 
-        // Get related services
-        $relatedServices = $this->serviceSection->getRelatedServices($service->slug, 6);
+        // Get left-right contents associated with this service (post)
+        $leftRightContents = $service->leftRightContents()
+            ->where('status', true)
+            ->orderBy('order', 'asc')
+            ->get();
 
-        return view('service.show', compact('service', 'relatedServices'));
+        // Get FAQs associated with this service (post)
+        $faqs = $service->postFaqs()
+            ->where('status', 'active')
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        // Get related services
+        $relatedServices = Post::ofType('service')
+            ->active()
+            ->where('slug', '!=', $slug)
+            ->orderBy('created_at', 'desc')
+            ->limit($service->layout === 'fullscreen' ? 12 : 6)
+            ->get();
+
+        return view('service.show', compact('service', 'leftRightContents', 'faqs', 'relatedServices'));
     }
 
     /**

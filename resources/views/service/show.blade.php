@@ -3,56 +3,56 @@
 @section('head')
     <x-meta-tags :title="$service->meta_title ?: $service->title . ' - Professional Legal Service'" :description="$service->meta_description ?: $service->excerpt" :keywords="$service->meta_keywords" :image="$service->feature_image_url" type="service" :post="$service" />
     <style>
-        #content-wrapper #fullscreen-layout p {
+        #content-wrapper .fullscreen-layout p {
             margin-bottom: 6px !important;
             margin-left: 12px !important;
         }
 
-        #content-wrapper #fullscreen-layout h2 {
+        #content-wrapper .fullscreen-layout h2 {
             margin-bottom: 0px !important;
             font-size: 22px !important;
             color: #108fcc;
         }
 
-        #content-wrapper #fullscreen-layout h3 {
+        #content-wrapper .fullscreen-layout h3 {
             margin-bottom: 0px !important;
             font-size: 500 !important;
             font-size: 18px !important;
             color: #108fcc;
         }
 
-        #content-wrapper #fullscreen-layout ol {
+        #content-wrapper .fullscreen-layout ol {
             padding-left: 16px !important;
         }
 
-        #content-wrapper #fullscreen-layout ul {
+        #content-wrapper .fullscreen-layout ul {
             padding-left: 16px !important;
         }
 
         @media and screen (max-width: 768px) {
-            #content-wrapper #fullscreen-layout p {
+            #content-wrapper .fullscreen-layout p {
                 margin-bottom: 6px !important;
             }
 
-            #content-wrapper #fullscreen-layout h2 {
+            #content-wrapper .fullscreen-layout h2 {
                 margin-bottom: 0px !important;
                 font-size: 16px !important;
                 color: #108fcc !important;
             }
 
-            #content-wrapper #fullscreen-layout h3 {
+            #content-wrapper .fullscreen-layout h3 {
                 margin-bottom: 0px !important;
                 font-size: 500 !important;
                 font-size: 12px !important;
                 color: #108fcc !important;
             }
 
-            #content-wrapper #fullscreen-layout ol {
+            #content-wrapper .fullscreen-layout ol {
                 padding-left: 16px !important;
                 list-style-type: disc;
             }
 
-            #content-wrapper #fullscreen-layout ul {
+            #content-wrapper .fullscreen-layout ul {
                 padding-left: 16px !important;
                 list-style-type: disc;
             }
@@ -89,10 +89,10 @@
     {{-- Main Content Section --}}
     <section id="content-wrapper" class="lg:py-2 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
 
-        <div class="container mx-auto px-4 relative z-10">
+        <div class="container mx-auto px-4 relative z-10 fullscreen-layout">
             @if ($service->layout === 'fullscreen')
                 <!-- Fullscreen Layout -->
-                <div id="fullscreen-layout" class="max-w-7xl mx-auto">
+                <div class="max-w-7xl mx-auto">
                     <!-- Service Content Card -->
                     <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-0">
                         <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px] ">

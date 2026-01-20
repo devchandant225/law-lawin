@@ -194,6 +194,81 @@
                         </div>
                     @endif
 
+                    <!-- Consultation Banner -->
+                    <div class="mb-16 bg-accent rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl group">
+                        <!-- Decorative background element -->
+                        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-white/10 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-110"></div>
+                        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 bg-black/10 rounded-full blur-3xl"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-12">
+                                <div class="max-w-3xl">
+                                    <h3 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Consult Lawin and Partners</h3>
+                                    <p class="text-white/90 text-lg md:text-xl leading-relaxed">
+                                        Empowering your legal journey with expert counsel and dedicated representation in Nepal. Reach out to our professional team for comprehensive legal solutions.
+                                    </p>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                                    <a href="tel:+9779841933745" class="bg-white text-accent px-8 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                                        <i class="fas fa-phone-alt animate-bounce"></i> Call Now
+                                    </a>
+                                    <a href="mailto:info@lawinpartners.com" class="bg-accent border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm shadow-lg hover:border-white">
+                                        <i class="fas fa-envelope"></i> Email Us
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 border-t border-white/20 pt-12">
+                                <div class="flex items-center gap-5 group/item">
+                                    <div class="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover/item:bg-white group-hover/item:text-accent shadow-inner">
+                                        <i class="fas fa-phone-alt text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Phone</p>
+                                        <p class="text-lg font-bold">+977-9841933745</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-5 group/item">
+                                    <div class="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover/item:bg-white group-hover/item:text-accent shadow-inner">
+                                        <i class="fas fa-envelope text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Email</p>
+                                        <p class="text-lg font-bold">info@lawinpartners.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-5 group/item">
+                                    <div class="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover/item:bg-white group-hover/item:text-accent shadow-inner">
+                                        <i class="fas fa-globe text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Website</p>
+                                        <p class="text-lg font-bold">lawinpartners.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-5 group/item">
+                                    <div class="w-14 h-14 bg-white/15 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover/item:bg-white group-hover/item:text-accent shadow-inner">
+                                        <i class="fas fa-map-marker-alt text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Location</p>
+                                        <p class="text-lg font-bold">Kathmandu, Nepal</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-12 p-8 bg-black/10 rounded-3xl border border-white/10 backdrop-blur-sm">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-white/80">Legal Disclaimer</h4>
+                                </div>
+                                <p class="text-white/70 text-sm leading-relaxed text-justify italic">
+                                    The content provided here is for informational purposes only and should not be construed as legal advice. Laws and regulations in Nepal are subject to change, and specific legal problems require a consultation with a licensed advocate to assess individual circumstances.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Social Share -->
                     <div class="bg-white border-gray-100 px-8 py-4 mb-4">
                         <h4 class="text-xl font-bold text-primary mb-6">

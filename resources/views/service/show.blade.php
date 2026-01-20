@@ -95,7 +95,7 @@
                     <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-0">
                         <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px] ">
                             {{ $service->title }}</h2>
-                        <div class="">
+                        <div class="mt-3">
                             @if ($service->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
                                     <img src="{{ $service->feature_image_url }}" alt="{{ $service->title }}"

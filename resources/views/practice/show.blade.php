@@ -226,10 +226,10 @@
                             <div class="mt-8 pt-6 border-t border-white/5">
                                 <div class="flex items-center gap-2 mb-2">
                                     <i class="fas fa-info-circle text-white/40 text-[10px]"></i>
-                                    <h4 class="text-[9px] font-black uppercase tracking-[0.3em] text-white/40">Legal
+                                    <h4 class="text-[22px] font-black uppercase tracking-[0.3em] text-white/40">Legal
                                         Disclaimer</h4>
                                 </div>
-                                <p class="text-white/40 text-[10px] leading-relaxed italic max-w-4xl text-justify">
+                                <p class="text-white/40 text-[16px] leading-relaxed italic max-w-4xl text-justify">
                                     The content provided here is for informational purposes only and should not be construed
                                     as legal advice. Laws and regulations in Nepal are subject to change, and specific legal
                                     problems require a consultation with a licensed advocate to assess individual

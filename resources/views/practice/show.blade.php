@@ -163,7 +163,7 @@
                     @endif
                     <!-- Consultation Banner -->
                     <div
-                        class="mb-10 bg-blue-100 rounded-[2rem] p-6 md:p-10 text-white relative overflow-hidden shadow-xl group">
+                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] p-6 md:p-10 text-white relative overflow-hidden shadow-xl group">
                         <!-- Background patterns -->
                         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -258,7 +258,7 @@
                                 class="grid grid-cols-1 {{ $practice->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-8 relative z-10">
                                 @foreach ($faqs as $faq)
                                     <div
-                                        class="faq-item group bg-blue-100 border border-blue-100/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-blue-100/30 hover:scale-[1.02] hover:bg-blue-100/90">
+                                        class="faq-item group bg-accent border border-accent/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.02] hover:bg-accent/90">
                                         <button
                                             class="faq-question w-full text-left lg:px-8 px-2 py-2 flex justify-between items-center gap-6 outline-none">
                                             <span

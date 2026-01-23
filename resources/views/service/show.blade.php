@@ -257,7 +257,7 @@
                                 class="grid grid-cols-1 {{ $service->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-8 relative z-10">
                                 @foreach ($faqs as $faq)
                                     <div
-                                        class="faq-item group bg-blue-100 border border-blue-100/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-blue-100/30 hover:scale-[1.02] hover:bg-blue-100/90">
+                                        class="faq-item group bg-accent border border-accent/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.02] hover:bg-blue-100/90">
                                         <button
                                             class="faq-question w-full text-left lg:px-8 px-2 py-2 flex justify-between items-center gap-6 outline-none">
                                             <span

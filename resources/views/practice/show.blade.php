@@ -266,7 +266,7 @@
                                                 {{ $faq->question }}
                                             </span>
                                             <div
-                                                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-white/20">
+                                                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-black">
                                                 <svg class="w-6 h-6 text-black group-[.active]:text-accent group-[.active]:rotate-180 transition-all duration-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
@@ -278,7 +278,7 @@
                                             class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
                                             <div class="px-8 pb-8">
                                                 <div
-                                                    class="prose prose-lg prose-invert max-w-none text-black leading-relaxed text-justify border-t border-white/10">
+                                                    class="prose prose-lg prose-invert max-w-none text-black leading-relaxed text-justify border-t border-black/10">
                                                     {!! $faq->answer !!}
                                                 </div>
                                             </div>

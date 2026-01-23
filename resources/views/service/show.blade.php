@@ -257,16 +257,16 @@
                                 class="grid grid-cols-1 {{ $service->layout === 'fullscreen' ? 'lg:grid-cols-2' : '' }} gap-8 relative z-10">
                                 @foreach ($faqs as $faq)
                                     <div
-                                        class="faq-item group bg-accent border border-accent/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.02] hover:bg-accent/90">
+                                        class="faq-item group bg-blue-100 border border-blue-100/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-blue-100/30 hover:scale-[1.02] hover:bg-blue-100/90">
                                         <button
                                             class="faq-question w-full text-left lg:px-8 px-2 py-2 flex justify-between items-center gap-6 outline-none">
                                             <span
-                                                class="text-lg font-semibold text-white group-hover:text-white/90 transition-colors duration-300">
+                                                class="text-lg font-semibold text-black group-hover:text-black/90 transition-colors duration-300">
                                                 {{ $faq->question }}
                                             </span>
                                             <div
                                                 class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-white/20">
-                                                <svg class="w-6 h-6 text-white group-[.active]:text-accent group-[.active]:rotate-180 transition-all duration-500"
+                                                <svg class="w-6 h-6 text-black group-[.active]:text-accent group-[.active]:rotate-180 transition-all duration-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                                         d="M19 9l-7 7-7-7"></path>

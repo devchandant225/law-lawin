@@ -159,7 +159,7 @@
                     @endif
                     <!-- Consultation Banner -->
                     <div
-                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] p-6 md:p-10 text-white relative overflow-hidden shadow-xl group">
+                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-6 py-2 text-white relative overflow-hidden shadow-xl group">
                         <!-- Background patterns -->
                         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -187,18 +187,18 @@
                                         advocates are ready to navigate your legal challenges in Nepal.
                                     </p>
                                 </div>
-                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                                    <a href="tel:+9779841933745"
-                                        class="whitespace-nowrap bg-white text-accent px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 sm:min-w-[160px]">
-                                        <i class="fas fa-phone-alt text-sm"></i> CALL NOW
-                                    </a>
-                                    <a href="mailto:info@lawinpartners.com"
-                                        class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 sm:min-w-[160px]">
-                                        <i class="fas fa-envelope text-sm"></i> EMAIL US
-                                    </a>
-                                </div>
-                            </div>
 
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                <a href="tel:+9779841933745"
+                                    class="whitespace-nowrap bg-white text-accent px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 sm:min-w-[160px]">
+                                    <i class="fas fa-phone-alt text-sm"></i> CALL NOW
+                                </a>
+                                <a href="mailto:info@lawinpartners.com"
+                                    class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 sm:min-w-[160px]">
+                                    <i class="fas fa-envelope text-sm"></i> EMAIL US
+                                </a>
+                            </div>
                             <div
                                 class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-10">
                                 <a href="tel:+9779841933745"

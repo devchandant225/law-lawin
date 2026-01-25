@@ -19,7 +19,7 @@
     {{-- Practices Section Title --}}
     <x-page-section-title title="<span>Practices</span>" />
     {{-- Practices Section --}}
-    <x-practice-section :showViewAll="true" :limit="8" />
+    <x-practice-section :practices="$practices" :showViewAll="true" :limit="8" />
 
     {{-- Portfolio Section Title --}}
     <x-page-section-title title="<span>We Serve</span>" />

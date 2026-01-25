@@ -22,14 +22,18 @@ class HomeController extends Controller
         // Fetch services for homepage (limited to 8)
         $serviceSection = new ServiceSection();
         $services = $serviceSection->getHomeServices();
-        
+
+        // Fetch practices for homepage (limited to 8)
+        $practiceSection = new PracticeSection();
+        $practices = $practiceSection->getHomePractices();
+
         // Fetch team members for homepage (limited to 8)
         $teams = TeamSection::getHomeTeams(8);
-        
+
         // Fetch portfolios for homepage (limited to 10 for portfolio section, 8 for testimonial)
         $portfolios = PortfolioSection::getHomePortfolios();
-        
-        return view('home', compact('sliders', 'services', 'teams', 'portfolios'));
+
+        return view('home', compact('sliders', 'services', 'practices', 'teams', 'portfolios'));
     }
 
     public function termsCondition()

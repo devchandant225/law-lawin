@@ -23,13 +23,13 @@ class PracticeSection extends Component
      * @param string|null $sectionTitle
      * @param string|null $sectionSubtitle
      */
-    public function __construct($limit = 8, $showViewAll = false, $sectionTitle = null, $sectionSubtitle = null)
+    public function __construct($practices = null, $limit = 8, $showViewAll = false, $sectionTitle = null, $sectionSubtitle = null)
     {
+        $this->practices = $practices;
         $this->limit = $limit;
         $this->showViewAll = $showViewAll;
         $this->sectionTitle = $sectionTitle ?? "Expert Legal Practice Areas  <br><span>Tailored to Your Needs</span>";
         $this->sectionSubtitle = $sectionSubtitle ?? 'Practice Area';
-        $this->practices = null;
     }
 
     /**
@@ -214,6 +214,7 @@ class PracticeSection extends Component
      */
     public function render(): View|Closure|string
     {
+        // If practices weren't passed directly, fetch them based on the limit
         if (is_null($this->practices)) {
             $this->practices = $this->getPractices($this->limit);
         }

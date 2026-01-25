@@ -20,6 +20,30 @@
 			</div>
 		@endif
 
+		<!-- Quick Filters -->
+		<div class="mb-4 flex flex-wrap gap-2">
+			<a href="{{ route('admin.posts.index', ['type' => 'service']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('type') == 'service' ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-briefcase text-xs"></i>
+				<span>Services</span>
+			</a>
+			<a href="{{ route('admin.posts.index', ['type' => 'practice']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('type') == 'practice' ? 'bg-purple-100 text-purple-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-balance-scale text-xs"></i>
+				<span>Practice Areas</span>
+			</a>
+			<a href="{{ route('admin.posts.index', ['type' => 'news']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('type') == 'news' ? 'bg-green-100 text-green-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-newspaper text-xs"></i>
+				<span>News</span>
+			</a>
+			<a href="{{ route('admin.posts.index', ['type' => 'blog']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('type') == 'blog' ? 'bg-yellow-100 text-yellow-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-blog text-xs"></i>
+				<span>Blog</span>
+			</a>
+			<a href="{{ route('admin.posts.index') }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ !request('type') ? 'bg-gray-100 text-gray-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-list text-xs"></i>
+				<span>All Posts</span>
+			</a>
+		</div>
+
 		<!-- Filters -->
 		<div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
 			<div class="p-4">
@@ -66,6 +90,7 @@
 								<tr>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-16">Image</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">Order Position</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">Type</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-28">Status</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-32">Created</th>
@@ -89,6 +114,9 @@
 											@if($post->excerpt)
 												<div class="text-sm text-gray-500">{{ Str::limit($post->excerpt, 80) }}</div>
 											@endif
+										</td>
+										<td class="px-4 py-3 text-gray-700 text-sm">
+											{{ $post->orderposition ?? 0 }}
 										</td>
 										<td class="px-4 py-3">
 											<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800">{{ ucfirst($post->type) }}</span>

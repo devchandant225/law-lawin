@@ -37,7 +37,7 @@ class PostController extends Controller
             });
         }
 
-        $posts = $query->latest()->paginate(15);
+        $posts = $query->orderBy('orderposition', 'asc')->orderBy('title', 'asc')->paginate(15);
 
         return view('admin.posts.index', compact('posts'));
     }

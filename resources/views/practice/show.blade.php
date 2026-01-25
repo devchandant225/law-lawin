@@ -200,7 +200,7 @@
                                 </a>
                             </div>
                             <div
-                                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-10">
+                                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-4">
                                 <a href="tel:+9779841933745"
                                     class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Phone</p>

@@ -5,7 +5,7 @@
     <style>
         #content-wrapper .fullscreen-layout p {
             margin-bottom: 6px !important;
-            margin-left: 16px !important;
+            margin-left: 14px !important;
         }
 
         #content-wrapper .fullscreen-layout h2 {

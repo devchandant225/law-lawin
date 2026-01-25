@@ -24,7 +24,11 @@ class PracticeController extends Controller
     public function index()
     {
         // Get all practices
-        $practices = Post::ofType('practice')->active()->orderBy('created_at', 'desc')->get();
+        $practices = Post::ofType('practice')
+            ->active()
+            ->orderBy('orderposition', 'asc')
+            ->orderBy('title', 'asc')
+            ->get();
 
         // Get practice statistics
         $practiceStats = [
@@ -67,7 +71,8 @@ class PracticeController extends Controller
         $relatedPractices = Post::ofType('practice')
             ->active()
             ->where('slug', '!=', $slug)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('orderposition', 'asc')
+            ->orderBy('title', 'asc')
             ->limit($practice->layout === 'fullscreen' ? 12 : 6) // Show more practices in fullscreen layout
             ->get();
 
@@ -100,7 +105,8 @@ class PracticeController extends Controller
                   ->orWhere('description', 'LIKE', "%{$query}%")
                   ->orWhere('excerpt', 'LIKE', "%{$query}%");
             })
-            ->orderBy('created_at', 'desc')
+            ->orderBy('orderposition', 'asc')
+            ->orderBy('title', 'asc')
             ->limit($limit)
             ->get();
 
@@ -125,7 +131,8 @@ class PracticeController extends Controller
         $practices = Post::ofType('practice')
             ->active()
             ->whereNotNull('feature_image')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('orderposition', 'asc')
+            ->orderBy('title', 'asc')
             ->limit($limit)
             ->get();
 

@@ -245,7 +245,7 @@
                     <!-- FAQ Section -->
                     @if ($faqs && $faqs->count() > 0)
                         <div
-                            class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] lg:p-6 lg:mb-16 mb-4 relative overflow-hidden">
+                            class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] lg:p-6 lg:mb-8 mb-4 relative overflow-hidden">
                             <!-- Background Decoration -->
                             <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
                             <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
@@ -258,7 +258,7 @@
                                         <button
                                             class="faq-question w-full text-left lg:px-8 px-2 py-2 flex justify-between items-center gap-6 outline-none">
                                             <span
-                                                class="text-lg font-semibold text-black group-hover:text-white/90 transition-colors duration-300">
+                                                class="text-lg font-semibold text-black group-hover:text-black transition-colors duration-300">
                                                 {{ $faq->question }}
                                             </span>
                                             <div

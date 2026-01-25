@@ -44,7 +44,7 @@ class PracticeSection extends Component
         $query = Post::where('type','practice')
                     ->active()
                     ->orderBy('orderposition', 'asc')
-                    ->orderBy('created_at', 'desc');
+                    ->orderBy('title', 'asc');
 
         if ($limit) {
             $query->limit($limit);
@@ -85,7 +85,7 @@ class PracticeSection extends Component
                   ->active()
                   ->whereNotNull('feature_image')
                   ->orderBy('orderposition', 'asc')
-                  ->orderBy('created_at', 'desc')
+                  ->orderBy('title', 'asc')
                   ->limit($limit)
                   ->get();
     }
@@ -101,7 +101,7 @@ class PracticeSection extends Component
         return Post::where('type','practice')
                   ->active()
                   ->orderBy('orderposition', 'asc')
-                  ->orderBy('created_at', 'desc')
+                  ->orderBy('title', 'asc')
                   ->paginate($perPage);
     }
 
@@ -118,7 +118,7 @@ class PracticeSection extends Component
                   ->active()
                   ->where('slug', '!=', $currentSlug)
                   ->orderBy('orderposition', 'asc')
-                  ->orderBy('created_at', 'desc')
+                  ->orderBy('title', 'asc')
                   ->limit($limit)
                   ->get();
     }
@@ -140,7 +140,7 @@ class PracticeSection extends Component
                         ->orWhere('excerpt', 'LIKE', "%{$query}%");
                   })
                   ->orderBy('orderposition', 'asc')
-                  ->orderBy('created_at', 'desc')
+                  ->orderBy('title', 'asc')
                   ->limit($limit)
                   ->get();
     }
@@ -171,7 +171,7 @@ class PracticeSection extends Component
         return Post::where('type','practice')
                   ->active()
                   ->orderBy('orderposition', 'asc')
-                  ->orderBy('created_at', 'desc')
+                  ->orderBy('title', 'asc')
                   ->limit($limit)
                   ->get();
     }

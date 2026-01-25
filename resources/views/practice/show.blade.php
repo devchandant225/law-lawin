@@ -225,7 +225,7 @@
                                 </a>
                             </div>
 
-                            <div class="mt-2 pt-2 border-t border-white/5">
+                            <div class="mt-2 border-t border-white/5">
                                 <div class="flex items-center gap-2 mb-2">
                                     <i class="fas fa-info-circle text-white text-[10px]"></i>
                                     <h4 class="text-[25px] font-black uppercase tracking-[0.3em] text-white">Legal

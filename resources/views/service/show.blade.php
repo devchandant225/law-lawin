@@ -161,8 +161,9 @@
                     @endif
 
                     <!-- Consultation Banner -->
+                    <!-- Consultation Banner -->
                     <div
-                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] p-6 md:p-10 text-white relative overflow-hidden shadow-xl group">
+                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-6 py-2 text-white relative overflow-hidden shadow-xl group">
                         <!-- Background patterns -->
                         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -176,7 +177,7 @@
                         </div>
 
                         <div class="relative z-10">
-                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-10">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-4">
                                 <div class="max-w-2xl">
                                     <div
                                         class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
@@ -190,20 +191,20 @@
                                         advocates are ready to navigate your legal challenges in Nepal.
                                     </p>
                                 </div>
-                                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                                    <a href="tel:+9779841933745"
-                                        class="whitespace-nowrap bg-white text-accent px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 sm:min-w-[160px]">
-                                        <i class="fas fa-phone-alt text-sm"></i> CALL NOW
-                                    </a>
-                                    <a href="mailto:info@lawinpartners.com"
-                                        class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 sm:min-w-[160px]">
-                                        <i class="fas fa-envelope text-sm"></i> EMAIL US
-                                    </a>
-                                </div>
-                            </div>
 
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                <a href="tel:+9779841933745"
+                                    class="whitespace-nowrap bg-white text-accent px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 sm:min-w-[160px]">
+                                    <i class="fas fa-phone-alt text-sm"></i> CALL NOW
+                                </a>
+                                <a href="mailto:info@lawinpartners.com"
+                                    class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 sm:min-w-[160px]">
+                                    <i class="fas fa-envelope text-sm"></i> EMAIL US
+                                </a>
+                            </div>
                             <div
-                                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-10">
+                                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-4">
                                 <a href="tel:+9779841933745"
                                     class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Phone</p>
@@ -220,7 +221,7 @@
                                     </p>
                                     <p class="text-base font-bold">lawinpartners.com</p>
                                 </a>
-                                <a href="https://www.google.com/maps/place/Lawin+and+Partners/@27.6870255,85.3222862,677m/data=!3m2!1e3!4b1!4m6!3m5!1s0x39eb191b975e3b81:0x60674a6cd53cbf4a!8m2!3d27.6870208!4d85.3248611!16s%2Fg%2F11q84q9trb!5m1!1e1?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D"
+                                <a href="https://www.google.com/maps/place/Lawin+and+Partners/@27.6870208,85.3248611,677m/data=!3m2!1e3!4b1!4m6!3m5!1s0x39eb191b975e3b81:0x60674a6cd53cbf4a!8m2!3d27.6870208!4d85.3248611!16s%2Fg%2F11q84q9trb!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D"
                                     class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
                                     <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Location
                                     </p>
@@ -228,7 +229,90 @@
                                 </a>
                             </div>
 
-                            <div class="mt-8 pt-6 border-t border-white/5">
+                            <div class="mt-2 border-t border-white/5">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fas fa-info-circle text-white text-[10px]"></i>
+                                    <h4 class="text-[25px] font-black uppercase tracking-[0.3em] text-white">Legal
+                                        Disclaimer</h4>
+                                </div>
+                                <p class="text-white text-[18px] leading-relaxed italic max-w-4xl text-justify">
+                                    The content provided here is for informational purposes only and should not be construed
+                                    as legal advice. Laws and regulations in Nepal are subject to change, and specific legal
+                                    problems require a consultation with a licensed advocate to assess individual
+                                    circumstances.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    <!-- Consultation Banner -->
+                    <div
+                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-6 py-2 text-white relative overflow-hidden shadow-xl group">
+                        <!-- Background patterns -->
+                        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                <defs>
+                                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" />
+                                    </pattern>
+                                </defs>
+                                <rect width="100" height="100" fill="url(#grid)" />
+                            </svg>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-4">
+                                <div class="max-w-2xl">
+                                    <div
+                                        class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                                        <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                                        Contact our experts
+                                    </div>
+                                    <h3 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight tracking-tight">
+                                        Consult Lawin and Partners</h3>
+                                    <p class="text-white/80 text-base md:text-lg leading-relaxed font-light">
+                                        Delivering sophisticated legal strategies and compassionate representation. Our
+                                        advocates are ready to navigate your legal challenges in Nepal.
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                                <a href="tel:+9779841933745"
+                                    class="whitespace-nowrap bg-white text-accent px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 sm:min-w-[160px]">
+                                    <i class="fas fa-phone-alt text-sm"></i> CALL NOW
+                                </a>
+                                <a href="mailto:info@lawinpartners.com"
+                                    class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 sm:min-w-[160px]">
+                                    <i class="fas fa-envelope text-sm"></i> EMAIL US
+                                </a>
+                            </div>
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-white/10 pt-4">
+                                <a href="tel:+9779841933745"
+                                    class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Phone</p>
+                                    <p class="text-base font-bold">+977-9841933745</p>
+                                </a>
+                                <a href="mailto:info@lawinpartners.com"
+                                    class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Email</p>
+                                    <p class="text-base font-bold break-all">info@lawinpartners.com</p>
+                                </a>
+                                <a href="https://lawinpartners.com" target="_blank"
+                                    class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Website
+                                    </p>
+                                    <p class="text-base font-bold">lawinpartners.com</p>
+                                </a>
+                                <a href="https://www.google.com/maps/place/Lawin+and+Partners/@27.6870208,85.3248611,677m/data=!3m2!1e3!4b1!4m6!3m5!1s0x39eb191b975e3b81:0x60674a6cd53cbf4a!8m2!3d27.6870208!4d85.3248611!16s%2Fg%2F11q84q9trb!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D"
+                                    class="block bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-all duration-300 hover:-translate-y-1">
+                                    <p class="text-white/50 text-[9px] font-black uppercase tracking-[0.2em] mb-2">Location
+                                    </p>
+                                    <p class="text-base font-bold">Kathmandu, Nepal</p>
+                                </a>
+                            </div>
+
+                            <div class="mt-2 border-t border-white/5">
                                 <div class="flex items-center gap-2 mb-2">
                                     <i class="fas fa-info-circle text-white text-[10px]"></i>
                                     <h4 class="text-[25px] font-black uppercase tracking-[0.3em] text-white">Legal

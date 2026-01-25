@@ -61,7 +61,8 @@ class ServiceController extends Controller
         $relatedServices = Post::ofType('service')
             ->active()
             ->where('slug', '!=', $slug)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('orderposition', 'asc')
+            ->orderBy('title', 'asc')
             ->limit($service->layout === 'fullscreen' ? 12 : 6)
             ->get();
 

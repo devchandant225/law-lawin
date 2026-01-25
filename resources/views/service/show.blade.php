@@ -280,7 +280,7 @@
                                             class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
                                             <div class="px-8 pb-8">
                                                 <div
-                                                    class="prose prose-lg prose-invert max-w-none text-white/90 leading-relaxed text-justify border-t border-white/10">
+                                                    class="prose prose-lg prose-invert max-w-none text-black leading-relaxed text-justify border-t border-white/10">
                                                     {!! $faq->answer !!}
                                                 </div>
                                             </div>

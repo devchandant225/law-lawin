@@ -11,6 +11,7 @@ use App\Models\TableOfContent;
 use App\View\Components\ServiceSection;
 use App\View\Components\TeamSection;
 use App\View\Components\PortfolioSection;
+use App\View\Components\PracticeSection;
 
 class HomeController extends Controller
 {

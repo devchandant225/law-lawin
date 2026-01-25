@@ -23,11 +23,13 @@ class Post extends Model
         'feature_image',
         'type',
         'layout',
-        'google_schema'
+        'google_schema',
+        'orderposition'
     ];
 
     protected $casts = [
         'google_schema' => 'array',
+        'orderposition' => 'integer',
     ];
 
     // Layout constants
@@ -104,6 +106,14 @@ class Post extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Scope a query to order by orderposition ascending.
+     */
+    public function scopeByOrderPosition($query)
+    {
+        return $query->orderBy('orderposition', 'asc');
     }
 
     /**

@@ -180,6 +180,17 @@
                                     @enderror
                                 </div>
 
+                                <!-- Order Position -->
+                                <div>
+                                    <label for="orderposition" class="block text-sm font-medium text-gray-700 mb-1">Order Position</label>
+                                    <input type="number" id="orderposition" name="orderposition" value="{{ old('orderposition', 0) }}" min="0"
+                                           class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('orderposition') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
+                                    @error('orderposition')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                    <p class="mt-1 text-xs text-gray-500">Lower numbers appear first in listings</p>
+                                </div>
+
                                 <!-- Status -->
                                 <div>
                                     <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status <span class="text-red-600">*</span></label>

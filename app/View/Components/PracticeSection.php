@@ -43,6 +43,7 @@ class PracticeSection extends Component
     {
         $query = Post::where('type','practice')
                     ->active()
+                    ->orderBy('orderposition', 'asc')
                     ->orderBy('created_at', 'desc');
 
         if ($limit) {
@@ -83,6 +84,7 @@ class PracticeSection extends Component
         return Post::where('type','practice')
                   ->active()
                   ->whereNotNull('feature_image')
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();
@@ -98,6 +100,7 @@ class PracticeSection extends Component
     {
         return Post::where('type','practice')
                   ->active()
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->paginate($perPage);
     }
@@ -114,6 +117,7 @@ class PracticeSection extends Component
         return Post::where('type','practice')
                   ->active()
                   ->where('slug', '!=', $currentSlug)
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();
@@ -135,6 +139,7 @@ class PracticeSection extends Component
                         ->orWhere('description', 'LIKE', "%{$query}%")
                         ->orWhere('excerpt', 'LIKE', "%{$query}%");
                   })
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();
@@ -165,6 +170,7 @@ class PracticeSection extends Component
     {
         return Post::where('type','practice')
                   ->active()
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();

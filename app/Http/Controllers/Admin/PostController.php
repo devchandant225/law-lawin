@@ -68,7 +68,8 @@ class PostController extends Controller
             'type' => 'required|in:service,practice,news,blog',
             'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
-            'google_schema' => 'nullable|string'
+            'google_schema' => 'nullable|string',
+            'orderposition' => 'nullable|integer|min:0'
         ]);
 
         // Generate slug if not provided
@@ -131,7 +132,8 @@ class PostController extends Controller
             'type' => 'required|in:service,practice,news,blog',
             'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
-            'google_schema' => 'nullable|string'
+            'google_schema' => 'nullable|string',
+            'orderposition' => 'nullable|integer|min:0'
         ]);
 
         // Generate slug if not provided

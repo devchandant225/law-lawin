@@ -47,6 +47,7 @@ class ServiceSection extends Component
     {
         $query = Post::ofType('service')
                     ->active()
+                    ->orderBy('orderposition', 'asc')
                     ->orderBy('created_at', 'desc');
 
         if ($limit) {
@@ -87,6 +88,7 @@ class ServiceSection extends Component
         return Post::ofType('service')
                   ->active()
                   ->whereNotNull('feature_image')
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();
@@ -102,6 +104,7 @@ class ServiceSection extends Component
     {
         return Post::ofType('service')
                   ->active()
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->paginate($perPage);
     }
@@ -118,6 +121,7 @@ class ServiceSection extends Component
         return Post::ofType('service')
                   ->active()
                   ->where('slug', '!=', $currentSlug)
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();
@@ -139,6 +143,7 @@ class ServiceSection extends Component
                         ->orWhere('description', 'LIKE', "%{$query}%")
                         ->orWhere('excerpt', 'LIKE', "%{$query}%");
                   })
+                  ->orderBy('orderposition', 'asc')
                   ->orderBy('created_at', 'desc')
                   ->limit($limit)
                   ->get();

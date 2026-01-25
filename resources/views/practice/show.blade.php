@@ -5,20 +5,18 @@
     <style>
         #content-wrapper .fullscreen-layout p {
             margin-bottom: 6px !important;
-            margin-left: 22px !important;
+            margin-left: 16px !important;
         }
 
         #content-wrapper .fullscreen-layout h2 {
             margin-bottom: 0px !important;
             font-size: 22px !important;
-            color: #108fcc;
         }
 
         #content-wrapper .fullscreen-layout h3 {
             margin-bottom: 0px !important;
             font-size: 500 !important;
             font-size: 18px !important;
-            color: #108fcc;
         }
 
         #content-wrapper .fullscreen-layout ol {
@@ -41,14 +39,12 @@
             #content-wrapper .fullscreen-layout h2 {
                 margin-bottom: 0px !important;
                 font-size: 10px !important;
-                color: #108fcc !important;
             }
 
             #content-wrapper .fullscreen-layout h3 {
                 margin-bottom: 0px !important;
                 font-size: 500 !important;
                 font-size: 8px !important;
-                color: #108fcc !important;
             }
 
             #content-wrapper .fullscreen-layout ol {

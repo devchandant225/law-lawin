@@ -173,7 +173,7 @@
                         </div>
 
                         <div class="relative z-10">
-                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-10">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-4">
                                 <div class="max-w-2xl">
                                     <div
                                         class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">

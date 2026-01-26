@@ -248,9 +248,10 @@
                         </div>
                     </div>
 
-                    <x-page-section-title title="<span>Frequently Asked Question</span>" />
+                 
                     <!-- FAQ Section -->
                     @if ($faqs && $faqs->count() > 0)
+                       <x-page-section-title title="<span>Frequently Asked Question</span>" />
                         <div
                             class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] lg:p-6 lg:mb-16 mb-4 relative overflow-hidden">
                             <!-- Background Decoration -->

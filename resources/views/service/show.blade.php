@@ -104,7 +104,7 @@
                             @if ($service->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
                                     <img src="{{ $service->feature_image_url }}" alt="{{ $service->title }}"
-                                        class="w-full h-[50vh] object-cover group-hover:scale-105 transition-transform duration-500">
+                                        class="w-full h-full object-conatin group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
 

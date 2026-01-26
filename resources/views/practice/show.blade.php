@@ -138,7 +138,7 @@
                                             </h2>
                                             @if ($content->description)
                                                 <div
-                                                    class="text-gray-300 leading-relaxed text-xl space-y-4 prose prose-lg prose-invert max-w-none text-justify">
+                                                    class="text-justify">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif
@@ -152,7 +152,7 @@
                     <!-- Bottom Description -->
                     @if ($practice->bottom_description)
                         <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-8">
-                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-justify">
+                            <div class="text-justify">
                                 {!! $practice->bottom_description !!}
                             </div>
                         </div>

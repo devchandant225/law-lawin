@@ -9,6 +9,7 @@
         }
 
         #content-wrapper .fullscreen-layout h2 {
+            margin-top: 8px !important;
             margin-bottom: 0px !important;
             font-size: 22px !important;
         }

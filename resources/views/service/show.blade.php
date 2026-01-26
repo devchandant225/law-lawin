@@ -109,7 +109,7 @@
 
                         </div>
 
-                        <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed mt-2 text-justify">
+                        <div class="text-justify">
                             {!! $service->content ?: $service->description !!}
                         </div>
 

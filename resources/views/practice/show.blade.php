@@ -107,7 +107,7 @@
 
                         </div>
 
-                        <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed mt-2 text-justify">
+                        <div class="mt-2 text-justify">
                             {!! $practice->content ?: $practice->description !!}
                         </div>
 

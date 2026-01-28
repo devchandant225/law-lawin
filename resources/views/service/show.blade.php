@@ -140,8 +140,7 @@
                                                 {{ $content->title }}
                                             </h2>
                                             @if ($content->description)
-                                                <div
-                                                    class="text-justify">
+                                                <div class="text-justify">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif
@@ -178,14 +177,14 @@
 
                         <div class="relative z-10 flex flex-col items-center text-center">
                             <div
-                                class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-6 py-2 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest mb-6">
+                                class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-6 py-2 rounded-full text-xl font-bold uppercase tracking-widest mb-6">
                                 <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                                 Contact our experts
                             </div>
-                            <h3 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tight">
-                                Consult Lawin and Partners</h3>
-                            
-                            <div class="flex flex-wrap justify-center gap-4 w-full">
+                            <div class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tight">
+                                Consult Lawin and Partners</div>
+
+                            <div class="flex flex-wrap justify-center gap-4 w-full mt-4">
                                 <a href="tel:+9779841933745"
                                     class="whitespace-nowrap bg-white text-accent px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95">
                                     <i class="fas fa-phone-alt"></i> CALL NOW
@@ -206,10 +205,10 @@
                         </div>
                     </div>
 
-                 
+
                     <!-- FAQ Section -->
                     @if ($faqs && $faqs->count() > 0)
-                       <x-page-section-title title="<span>Frequently Asked Question</span>" />
+                        <x-page-section-title title="<span>Frequently Asked Question</span>" />
                         <div
                             class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] lg:p-6 lg:mb-16 mb-4 relative overflow-hidden">
                             <!-- Background Decoration -->
@@ -231,8 +230,8 @@
                                                 class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-white/20">
                                                 <svg class="w-6 h-6 text-black group-[.active]:text-accent group-[.active]:rotate-180 transition-all duration-500"
                                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                        d="M19 9l-7 7-7-7"></path>
                                                 </svg>
                                             </div>
                                         </button>

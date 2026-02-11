@@ -252,7 +252,7 @@
                     </div>
                      <a href="{{ route('team.index') }}" class="text-nav hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
   <div class="relative group">
-                        <a href="#" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('posts.by-type', 'help_desk') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Help Desk
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -261,42 +261,21 @@
                                 <div class="px-4 pb-2 mb-2 border-b border-gray-100">
                                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Legal Help Desk</span>
                                 </div>
-                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-red-50 group-hover/item:bg-red-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-gavel text-red-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">Criminal Law Help Desk</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Criminal Lawyers advices</div>
-                                    </div>
-                                </a>
-                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-building text-blue-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">Corporate Law Help Desk</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Corporate Lawyers advices</div>
-                                    </div>
-                                </a>
-                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-purple-50 group-hover/item:bg-purple-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-heart text-purple-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">Family and Divorce Law Help Desk</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Divorce Lawyers advices</div>
-                                    </div>
-                                </a>
-                                <a href="#" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div class="w-8 h-8 rounded-lg bg-green-50 group-hover/item:bg-green-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-rings-wedding text-green-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">Court Marriage Law Help Desk</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Marriage Lawyers Advices</div>
-                                    </div>
-                                </a>
+                                @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
+                                    @foreach ($navHelpDeskItems as $item)
+                                        <a href="{{ route('posts.show', $item->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                            <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
+                                                <i class="fas fa-info-circle text-blue-500 text-xs"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-medium">{{ $item->title }}</div>
+                                                <div class="text-xs text-gray-500 group-hover/item:text-primary/70">{{ Str::limit($item->excerpt, 40) }}</div>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <div class="px-4 py-2 text-sm text-gray-500 italic">No items available</div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -344,10 +323,13 @@
                 <!-- Help Desk Mobile Menu -->
                 <div class="border-l-4 border-primary/20 pl-4 ml-2">
                     <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Help Desk</div>
-                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Criminal Case</a>
-                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Corporate Legal Help Desk</a>
-                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Divorce & Family Help Desk</a>
-                    <a href="#" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">Court Marriage Help Desk</a>
+                    @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
+                        @foreach ($navHelpDeskItems as $item)
+                            <a href="{{ route('posts.show', $item->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">{{ $item->title }}</a>
+                        @endforeach
+                    @else
+                        <div class="text-xs text-gray-400 italic">No items available</div>
+                    @endif
                 </div>
                 
                 <a href="/contact" class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>

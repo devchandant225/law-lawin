@@ -79,7 +79,7 @@ Route::post('/contact/submit', [ContactFormController::class, 'submit'])->name('
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{type}', [PostController::class, 'byType'])
     ->name('posts.by-type')
-    ->where('type', 'service|practice|news|blog');
+    ->where('type', 'service|practice|news|blog|help_desk');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Services

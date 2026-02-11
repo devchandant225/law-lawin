@@ -74,12 +74,14 @@
                             @if($type == 'service') from-blue-50 to-blue-100 
                             @elseif($type == 'practice') from-green-50 to-green-100 
                             @elseif($type == 'news') from-red-50 to-red-100 
+                            @elseif($type == 'help_desk') from-cyan-50 to-cyan-100
                             @else from-purple-50 to-purple-100 @endif 
                             flex items-center justify-center">
                             <div class="
                                 @if($type == 'service') text-blue-300 
                                 @elseif($type == 'practice') text-green-300 
                                 @elseif($type == 'news') text-red-300 
+                                @elseif($type == 'help_desk') text-cyan-300
                                 @else text-purple-300 @endif">
                                 <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
                                     @if($type == 'service')
@@ -88,6 +90,8 @@
                                         <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z" />
                                     @elseif($type == 'news')
                                         <path d="M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67C20.1,4.44 19.83,4.33 19.5,4.33H4.5C4.17,4.33 3.9,4.44 3.67,4.67C3.44,4.9 3.33,5.17 3.33,5.5V18.5C3.33,18.83 3.44,19.1 3.67,19.33C3.9,19.56 4.17,19.67 4.5,19.67H19.5C19.83,19.67 20.1,19.56 20.33,19.33C20.56,19.1 20.67,18.83 20.67,18.5V5.5C20.67,5.17 20.56,4.9 20.33,4.67Z" />
+                                    @elseif($type == 'help_desk')
+                                        <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
                                     @else
                                         <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                                     @endif

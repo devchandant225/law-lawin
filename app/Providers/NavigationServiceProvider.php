@@ -121,22 +121,13 @@ class NavigationServiceProvider extends ServiceProvider
     /**
      * Get help desk navigation items
      *
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     private function getNavigationHelpDeskItems()
     {
-        return [
-            [
-                'title' => 'NRN Legal Help Desk',
-                'url' => '/help-desk/nrn-legal',
-                'description' => 'Legal assistance for Non-Resident Nepalis'
-            ],
-            [
-                'title' => 'FDI Legal Help Desk',
-                'url' => '/help-desk/fdi-legal',
-                'description' => 'Legal assistance for Foreign Direct Investment'
-            ]
-        ];
+        return cache()->remember('nav_help_desk', 3600, function () {
+            return Post::where('type', 'help_desk')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
+        });
     }
 
     /**
@@ -151,5 +142,6 @@ class NavigationServiceProvider extends ServiceProvider
         cache()->forget('nav_practice_areas');
         cache()->forget('nav_news');
         cache()->forget('nav_team_members');
+        cache()->forget('nav_help_desk');
     }
 }

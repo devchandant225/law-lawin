@@ -29,7 +29,7 @@ class PostController extends Controller
         }
 
         $posts = $query->latest()->paginate(12);
-        $types = ['service', 'practice', 'news', 'blog'];
+        $types = ['service', 'practice', 'news', 'blog', 'help_desk'];
 
         return view('posts.index', compact('posts', 'types'));
     }
@@ -42,6 +42,36 @@ class PostController extends Controller
         // Only show active posts
         if ($post->status !== 'active') {
             abort(404);
+        }
+
+        if ($post->type === 'help_desk') {
+            // Get left-right contents associated with this post
+            $leftRightContents = $post->leftRightContents()
+                ->where('status', true)
+                ->orderBy('order', 'asc')
+                ->get();
+
+            // Get FAQs associated with this post
+            $faqs = $post->postFaqs()
+                ->where('status', 'active')
+                ->orderBy('created_at', 'asc')
+                ->get();
+
+            // Get related help desk posts
+            $relatedHelpDeskPosts = Post::ofType('help_desk')
+                ->active()
+                ->where('id', '!=', $post->id)
+                ->orderBy('orderposition', 'asc')
+                ->orderBy('title', 'asc')
+                ->limit(6)
+                ->get();
+
+            return view('help-desk.show', [
+                'helpDesk' => $post,
+                'leftRightContents' => $leftRightContents,
+                'faqs' => $faqs,
+                'relatedHelpDeskPosts' => $relatedHelpDeskPosts
+            ]);
         }
 
         $relatedPosts = Post::active()
@@ -59,7 +89,7 @@ class PostController extends Controller
      */
     public function byType($type, Request $request)
     {
-        if (!in_array($type, ['service', 'practice', 'news', 'blog'])) {
+        if (!in_array($type, ['service', 'practice', 'news', 'blog', 'help_desk'])) {
             abort(404);
         }
 
@@ -75,7 +105,7 @@ class PostController extends Controller
         }
 
         $posts = $query->latest()->paginate(12);
-        $types = ['service', 'practice', 'news', 'blog'];
+        $types = ['service', 'practice', 'news', 'blog', 'help_desk'];
 
         return view('posts.by-type', compact('posts', 'type', 'types'));
     }

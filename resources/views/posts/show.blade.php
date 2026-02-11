@@ -53,8 +53,9 @@
                     @if($post->type == 'service') bg-blue-100 text-blue-800
                     @elseif($post->type == 'practice') bg-green-100 text-green-800
                     @elseif($post->type == 'news') bg-red-100 text-red-800
+                    @elseif($post->type == 'help_desk') bg-cyan-100 text-cyan-800
                     @else bg-purple-100 text-purple-800 @endif">
-                    {{ ucfirst($post->type) }}
+                    {{ ucfirst(str_replace('_', ' ', $post->type)) }}
                 </span>
             </div>
             

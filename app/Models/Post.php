@@ -167,6 +167,7 @@ class Post extends Model
             'practice' => 'Article',
             'news' => 'NewsArticle',
             'blog' => 'BlogPosting',
+            'help_desk' => 'Article',
             default => 'Article'
         };
     }

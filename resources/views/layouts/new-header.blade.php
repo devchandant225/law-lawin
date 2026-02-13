@@ -302,12 +302,12 @@
                     <a href="{{ route('team.index') }}"
                         class="text-nav hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
                     <div class="relative group">
-                        {{-- <a href="{{ route('help-desk.index') }}"
+                        <a href="{{ route('help-desk.index') }}"
                             class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Help Desk
                             <i
                                 class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
-                        </a> --}}
+                        </a>
                         <div
                             class="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
                             <div class="py-3">

@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-detail-meta-tags :post="$service" />
+@endsection
+
+@section('head')
     <style>
         #content-wrapper .fullscreen-layout p {
             margin-bottom: 6px !important;

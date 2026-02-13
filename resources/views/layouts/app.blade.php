@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     {{-- Dynamic Meta Tags Component --}}
-    <x-meta-tags :post="$post ?? null" />
+    @section('meta_tags')
+        <x-meta-tags :post="$post ?? null" />
+    @show
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />

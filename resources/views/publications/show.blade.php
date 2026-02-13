@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-detail-meta-tags :post="$publication" />
+@endsection
 
+@section('head')
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -11,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/procounsel.css') }}">
 
     @if ($publication->google_schema_json)
-        <script type="application/ld+json">{!! $publication->google_schema_json !!}</script>
+        {{-- Schema handled by x-detail-meta-tags component --}}
     @endif
 @endsection
 

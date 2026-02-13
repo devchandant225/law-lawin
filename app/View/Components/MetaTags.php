@@ -18,7 +18,7 @@ class MetaTags extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($title = '', $description = '', $keywords = '', $image = '', $type = 'website', $post = null)
+    public function __construct($title = null, $description = null, $keywords = null, $image = null, $type = 'website', $post = null)
     {
         $this->title = $title;
         $this->description = $description;

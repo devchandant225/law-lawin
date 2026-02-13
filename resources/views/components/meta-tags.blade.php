@@ -1,18 +1,8 @@
-@props([
-    'title' => null,
-    'description' => null,
-    'keywords' => null,
-    'image' => null,
-    'url' => null,
-    'type' => 'website',
-    'siteName' => config('app.name', 'Professional Law Organization'),
-    'locale' => 'en_US',
-    'schema' => null,
-    'post' => null, // Post model instance
-    'customSchema' => null
-])
-
 @php
+    // Initialize defaults that were previously in @props
+    $siteName = config('app.name', 'Professional Law Organization');
+    $locale = 'en_US';
+
     // Determine page type from current URL
     $currentPath = request()->path();
     $pageType = null;
@@ -59,22 +49,31 @@
         $dbMetaTag = \App\Models\MetaTag::getByPageType($pageType);
     }
     
-    // Set meta values with priority: props > database > post > defaults
-    $metaTitle = $title ?? ($dbMetaTag->title ?? ($post->title ?? config('app.name')));
-    $metaDescription = $description ?? ($dbMetaTag->desc ?? ($post->excerpt ?? $post->meta_description ?? 'Professional legal services and expertise'));
-    $metaKeywords = $keywords ?? ($dbMetaTag->keyword ?? ($post->meta_keywords ?? 'legal services, law firm, professional legal advice'));
-    $metaImage = $image ?? ($dbMetaTag && $dbMetaTag->image ? \Storage::url($dbMetaTag->image) : ($post->feature_image_url ?? asset('images/default-og-image.jpg')));
-    $metaUrl = $url ?? request()->url();
+    // Set meta values with priority: props > post specific > database > defaults
+    // Use ?: (elvis operator) to handle empty strings as missing values
+    // Use optional() or checks to handle null post
+    $postMetaTitle = $post ? $post->meta_title : null;
+    $postTitle = $post ? $post->title : null;
+    $postMetaDesc = $post ? $post->meta_description : null;
+    $postExcerpt = $post ? $post->excerpt : null;
+    $postMetaKeywords = $post ? $post->meta_keywords : null;
+    $postImage = $post ? $post->feature_image_url : null;
+
+    $metaTitle = $title ?: ($postMetaTitle ?: ($postTitle ?: ($dbMetaTag->title ?? config('app.name'))));
+    $metaDescription = $description ?: ($postMetaDesc ?: ($postExcerpt ?: ($dbMetaTag->desc ?? 'Professional legal services and expertise')));
+    $metaKeywords = $keywords ?: ($postMetaKeywords ?: ($dbMetaTag->keyword ?? 'legal services, law firm, professional legal advice'));
+    $metaImage = $image ?: ($postImage ?: ($dbMetaTag && $dbMetaTag->image ? \Storage::url($dbMetaTag->image) : asset('images/default-og-image.jpg')));
+    $metaUrl = request()->url();
     
     // Generate Schema.org structured data
     $schemaData = null;
-    if ($customSchema) {
+    if (isset($customSchema)) {
         $schemaData = $customSchema;
-    } elseif ($dbMetaTag && $dbMetaTag->schema_json_ld) {
-        $schemaData = json_encode($dbMetaTag->schema_json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     } elseif ($post && $post->google_schema_json) {
         $schemaData = $post->google_schema_json;
-    } elseif ($schema) {
+    } elseif ($dbMetaTag && $dbMetaTag->schema_json_ld) {
+        $schemaData = json_encode($dbMetaTag->schema_json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    } elseif (isset($schema)) {
         $schemaData = $schema;
     } else {
         $schemaData = json_encode([
@@ -88,11 +87,11 @@
             'dateModified' => $post ? $post->updated_at->toISOString() : now()->toISOString(),
             'author' => [
                 '@type' => 'Organization',
-                'name' => $siteName
+                'name' => $siteName ?? config('app.name')
             ],
             'publisher' => [
                 '@type' => 'Organization',
-                'name' => $siteName,
+                'name' => $siteName ?? config('app.name'),
                 'logo' => [
                     '@type' => 'ImageObject',
                     'url' => asset('images/logo.png')

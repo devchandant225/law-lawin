@@ -161,6 +161,7 @@
                                         <option value="practice" {{ old('type') == 'practice' ? 'selected' : '' }}>Practice</option>
                                         <option value="news" {{ old('type') == 'news' ? 'selected' : '' }}>News</option>
                                         <option value="blog" {{ old('type') == 'blog' ? 'selected' : '' }}>Blog</option>
+                                        <option value="help_desk" {{ old('type') == 'help_desk' ? 'selected' : '' }}>Help Desk</option>
                                     </select>
                                     @error('type')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -284,7 +285,8 @@ function generateSchema() {
         'service': 'Service',
         'practice': 'Article', 
         'news': 'NewsArticle',
-        'blog': 'BlogPosting'
+        'blog': 'BlogPosting',
+        'help_desk': 'Article'
     };
     
     const schema = {

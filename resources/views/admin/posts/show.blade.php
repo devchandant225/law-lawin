@@ -42,7 +42,9 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800 mb-2">{{ ucfirst($post->type) }}</span>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800 mb-2">
+                                    {{ $post->type === 'help_desk' ? 'Help Desk' : ucfirst($post->type) }}
+                                </span>
                                 <br>
                                 @php
                                     $statusClasses = [
@@ -182,7 +184,9 @@
                                 <div class="text-sm text-gray-500">Post ID</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-xl font-bold text-blue-600">{{ ucfirst($post->type) }}</div>
+                                <div class="text-xl font-bold text-blue-600">
+                                    {{ $post->type === 'help_desk' ? 'Help Desk' : ucfirst($post->type) }}
+                                </div>
                                 <div class="text-sm text-gray-500">Type</div>
                             </div>
                             <div class="text-center">

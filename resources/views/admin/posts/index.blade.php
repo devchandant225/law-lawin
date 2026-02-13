@@ -38,6 +38,10 @@
 				<i class="fas fa-blog text-xs"></i>
 				<span>Blog</span>
 			</a>
+			<a href="{{ route('admin.posts.index', ['type' => 'help_desk']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('type') == 'help_desk' ? 'bg-red-100 text-red-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-headset text-xs"></i>
+				<span>Help Desk</span>
+			</a>
 			<a href="{{ route('admin.posts.index') }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ !request('type') ? 'bg-gray-100 text-gray-800' : 'text-gray-600 hover:bg-gray-100' }}">
 				<i class="fas fa-list text-xs"></i>
 				<span>All Posts</span>
@@ -61,6 +65,7 @@
 							<option value="practice" {{ request('type') == 'practice' ? 'selected' : '' }}>Practice</option>
 							<option value="news" {{ request('type') == 'news' ? 'selected' : '' }}>News</option>
 							<option value="blog" {{ request('type') == 'blog' ? 'selected' : '' }}>Blog</option>
+							<option value="help_desk" {{ request('type') == 'help_desk' ? 'selected' : '' }}>Help Desk</option>
 						</select>
 					</div>
 					<div>
@@ -119,7 +124,9 @@
 											{{ $post->orderposition ?? 0 }}
 										</td>
 										<td class="px-4 py-3">
-											<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800">{{ ucfirst($post->type) }}</span>
+											<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-800">
+												{{ $post->type === 'help_desk' ? 'Help Desk' : ucfirst($post->type) }}
+											</span>
 										</td>
 										<td class="px-4 py-3">
 											@php

@@ -41,9 +41,9 @@
                                     </a>
                                 </h3>
                                 <!-- Description -->
-                                <p class="text-gray-600 leading-relaxed mb-3 flex-grow text-sm">
+                                {{-- <p class="text-gray-600 leading-relaxed mb-3 flex-grow text-sm">
                                     {{ Str::limit(strip_tags($practice->excerpt ?? $practice->description), 55) }}
-                                </p>
+                                </p> --}}
                                 <!-- More Details Button -->
                                     <div class="mt-auto">
                                     <a href="{{ route('practice.show', $practice->slug) }}" 

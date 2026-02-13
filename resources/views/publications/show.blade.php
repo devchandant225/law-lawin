@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <x-meta-tags :title="$publication->metatitle ?: $publication->title . ' - Legal Publication'" :description="$publication->metadescription ?: $publication->excerpt" :keywords="$publication->metakeywords" :image="$publication->feature_image_url" type="article" :post="$publication" />
+    <x-detail-meta-tags :post="$publication" />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>

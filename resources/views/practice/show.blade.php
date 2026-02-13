@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
-    <x-meta-tags :title="$practice->meta_title ?: $practice->title . ' - Professional Legal Practice'" :description="$practice->meta_description ?: $practice->excerpt" :keywords="$practice->meta_keywords" :image="$practice->feature_image_url" type="article" :post="$practice" />
+    <x-detail-meta-tags :post="$practice" />
     <style>
         #content-wrapper .fullscreen-layout p {
             margin-bottom: 6px !important;

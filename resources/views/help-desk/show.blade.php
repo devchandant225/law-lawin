@@ -78,6 +78,85 @@
             border-color: rgba(15, 140, 202, 0.2);
             box-shadow: 0 25px 50px -12px rgba(15, 140, 202, 0.1);
         }
+
+        .family-helpdesk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .family-helpdesk-table thead {
+            background-color: #1e3a8a;
+            /* Deep blue */
+            color: #ffffff;
+        }
+
+        .family-helpdesk-table thead th {
+            padding: 16px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .family-helpdesk-table tbody tr {
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.3s ease;
+        }
+
+        .family-helpdesk-table tbody tr:hover {
+            background-color: #f3f4f6;
+        }
+
+        .family-helpdesk-table tbody td {
+            padding: 18px 16px;
+            font-size: 15px;
+            color: #374151;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .family-helpdesk-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .family-helpdesk-table thead {
+                display: none;
+            }
+
+            .family-helpdesk-table,
+            .family-helpdesk-table tbody,
+            .family-helpdesk-table tr,
+            .family-helpdesk-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .family-helpdesk-table tr {
+                margin-bottom: 20px;
+                background: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                padding: 15px;
+            }
+
+            .family-helpdesk-table td {
+                padding: 10px 0;
+                border: none;
+            }
+
+            .family-helpdesk-table td:first-child {
+                font-weight: 600;
+                color: #1e3a8a;
+                margin-bottom: 6px;
+            }
+        }
     </style>
 @endsection
 

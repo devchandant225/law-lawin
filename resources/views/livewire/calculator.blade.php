@@ -2,11 +2,11 @@
     <div class="max-w-7xl mx-auto">
         <!-- Header -->
         <div class="text-center mb-12">
-            <h1 class="text-3xl md:text-5xl font-bold text-accent mb-4">
-                Calculate your Court Fee
+            <h1 class="text-3xl md:text-5xl font-bold text-accent mb-6 uppercase tracking-wider">
+                Court Fee Calculator
             </h1>
-            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                Get an accurate estimate of court fees for your legal proceedings in Nepal
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                Estimate your court fee budget using the Lawin and Partners Court Fee Calculator, the most reliable tool for estimating court submission fees in Nepal.
             </p>
         </div>
 

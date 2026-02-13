@@ -15,103 +15,90 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="py-20 bg-gradient-to-r from-accent/5 to-accent/10">
+    <!-- Content Section -->
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-accent mb-6">
-                        How Court Fee Calculation Works
-                    </h2>
-                    <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-                        Understanding the step-by-step process of calculating court fees in Nepal
+            <div class="max-w-4xl mx-auto">
+                <div class="prose prose-lg max-w-none text-gray-700">
+                    <h2 class="text-3xl font-bold text-accent mb-8 text-center uppercase tracking-wider">COURT FEE CALCULATOR</h2>
+                    
+                    <p class="mb-6 leading-relaxed">
+                        You can estimate court fee budget using the <strong>Lawin and Partners Court Fee Calculator</strong>, the most reliable tool for estimating court submission fees in Nepal for your cases. Designed by the <strong>best lawyers in Nepal</strong>, we have ensured transparency required for your judicial process in district courts, high courts, and the supreme court.
                     </p>
-                </div>
+                    
+                    <p class="mb-12 leading-relaxed">
+                        Our <strong>Court fee calculator for Nepal</strong> helps you determine the mandatory government fees required under the National Civil Procedure (Code) Act, 2017. Whether you are an individual or a business, this tool eliminates guesswork by providing accurate estimates based on current court fee schedules.
+                    </p>
 
-                <!-- Steps Grid -->
-                <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-                    <!-- Step 1 -->
-                    <div class="group">
-                        <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full border border-accent/10">
-                            <!-- Step Number -->
-                            <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                1
+                    <div class="bg-gray-50 rounded-3xl p-8 md:p-12 mb-12 border border-gray-100">
+                        <h3 class="text-2xl font-bold text-accent mb-6">Applicable nature of Cases for court Fee:</h3>
+                        <p class="mb-8 text-lg">Our calculator is optimized to handle a wide range of legal disputes, including:</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="flex items-start p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
+                                <span class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center mr-4 font-bold">1</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Family Law:</h4>
+                                    <p class="text-sm">Quickly calculate court fees in Nepal for divorce, alimony or child financial costs.</p>
+                                </div>
                             </div>
-                            
-                            <!-- Step Content -->
-                            <div class="text-center">
-                                <h3 class="text-xl font-bold text-accent mb-4 group-hover:text-accent/80 transition-colors">
-                                    Enter Amount
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    Enter the case value or claim amount for which you need to calculate court fees. Our system supports various case types and amounts.
-                                </p>
+                            <div class="flex items-start p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
+                                <span class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center mr-4 font-bold">2</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Property Disputes:</h4>
+                                    <p class="text-sm">Determine the Ansha (property partition) court fee in Nepal based on property valuation.</p>
+                                </div>
                             </div>
-                            
-                            <!-- Decorative Element -->
-                            <div class="absolute top-4 right-4 w-8 h-8 bg-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="flex items-start p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
+                                <span class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center mr-4 font-bold">3</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Civil & Commercial Litigation:</h4>
+                                    <p class="text-sm">Estimates for civil case court fees in Nepal, including contract disputes, debt recovery, and commercial claims.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start p-4 bg-white rounded-2xl shadow-sm border border-gray-50">
+                                <span class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center mr-4 font-bold">4</span>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">Compensation Claims:</h4>
+                                    <p class="text-sm">Calculate fees for torts, medical negligence, or insurance compensation.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Step 2 -->
-                    <div class="group">
-                        <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full border border-accent/10">
-                            <!-- Step Number -->
-                            <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                2
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-accent mb-6 text-center">Purpose of Fee Calculator</h3>
+                        <p class="mb-8 text-center text-lg">As a leading law firm in Nepal, Lawin and Partners is committed to client convenience and transparency and offers:</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="text-center group">
+                                <div class="w-16 h-16 bg-accent/5 text-accent rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                                    <span class="text-xl font-bold">1</span>
+                                </div>
+                                <div class="text-sm font-bold text-gray-800">Cost Transparency</div>
                             </div>
-                            
-                            <!-- Step Content -->
-                            <div class="text-center">
-                                <h3 class="text-xl font-bold text-accent mb-4 group-hover:text-accent/80 transition-colors">
-                                    Calculate Fee
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    Our system calculates the fee based on the progressive rate structure set by Nepal's court system, ensuring accuracy and compliance.
-                                </p>
+                            <div class="text-center group">
+                                <div class="w-16 h-16 bg-accent/5 text-accent rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                                    <span class="text-xl font-bold">2</span>
+                                </div>
+                                <div class="text-sm font-bold text-gray-800">Legal Planning</div>
                             </div>
-                            
-                            <!-- Decorative Element -->
-                            <div class="absolute top-4 right-4 w-8 h-8 bg-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="text-center group">
+                                <div class="w-16 h-16 bg-accent/5 text-accent rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                                    <span class="text-xl font-bold">3</span>
+                                </div>
+                                <div class="text-sm font-bold text-gray-800">Accuracy</div>
+                            </div>
+                            <div class="text-center group">
+                                <div class="w-16 h-16 bg-accent/5 text-accent rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                                    <span class="text-xl font-bold">4</span>
+                                </div>
+                                <div class="text-sm font-bold text-gray-800">Efficiency</div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Step 3 -->
-                    <div class="group">
-                        <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full border border-accent/10">
-                            <!-- Step Number -->
-                            <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                3
-                            </div>
-                            
-                            <!-- Step Content -->
-                            <div class="text-center">
-                                <h3 class="text-xl font-bold text-accent mb-4 group-hover:text-accent/80 transition-colors">
-                                    Get Breakdown
-                                </h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    View detailed breakdown showing how the total fee is calculated across different amount ranges with complete transparency.
-                                </p>
-                            </div>
-                            
-                            <!-- Decorative Element -->
-                            <div class="absolute top-4 right-4 w-8 h-8 bg-accent/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Additional Info -->
-                <div class="mt-16 text-center">
-                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-accent/20">
-                        <div class="flex items-center justify-center mb-4">
-                            <svg class="w-8 h-8 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <h3 class="text-xl font-bold text-accent">Accurate & Reliable</h3>
-                        </div>
-                        <p class="text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                            Our calculator is regularly updated to reflect the latest court fee structures and regulations in Nepal, ensuring you get the most accurate estimates for your legal proceedings.
+                    <div class="bg-accent rounded-3xl p-8 text-center text-white shadow-xl shadow-accent/20">
+                        <p class="text-lg font-medium leading-relaxed">
+                            As a premier law firm in Nepal, our expert attorneys are ready to help you navigate your court fee calculation smooth and make your case easy handling each step process with due care.
                         </p>
                     </div>
                 </div>

@@ -135,6 +135,8 @@ Route::get('/portfolios', [PublicPortfolioController::class, 'index'])->name('po
 Route::get('/page/{page}', [PublicPageController::class, 'show'])->name('page.show');
 
 // Help Desk Routes
+Route::get('/help-desk', [PostController::class, 'byType'])->defaults('type', 'help_desk')->name('help-desk.index');
+Route::get('/help-desk/{slug}', [HelpDeskController::class, 'show'])->name('help-desk.show');
 Route::get('/help-desk/nrn-legal', [HelpDeskController::class, 'nrnLegal'])->name('help-desk.nrn-legal');
 Route::get('/help-desk/fdi-legal', [HelpDeskController::class, 'fdiLegal'])->name('help-desk.fdi-legal');
 

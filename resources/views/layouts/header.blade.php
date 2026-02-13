@@ -121,13 +121,17 @@
                               </li>
 
                               <li class="dropdown">
-                                  <a href="#">Help Desk</a>
-                                  <ul>
-                                      @foreach ($navHelpDeskItems as $helpDeskItem)
-                                          <li><a href="{{ $helpDeskItem['url'] }}">{{ $helpDeskItem['title'] }}</a>
-                                          </li>
-                                      @endforeach
-                                  </ul>
+                                  <a href="{{ route('help-desk.index') }}">Help Desk</a>
+                                  @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
+                                      <ul>
+                                          <li><a href="{{ route('help-desk.index') }}">All Help Desk</a></li>
+                                          @foreach ($navHelpDeskItems->take(8) as $helpDeskItem)
+                                              <li><a
+                                                      href="{{ route('help-desk.show', $helpDeskItem->slug) }}">{{ $helpDeskItem->title }}</a>
+                                              </li>
+                                          @endforeach
+                                      </ul>
+                                  @endif
                               </li>
 
                               <li>

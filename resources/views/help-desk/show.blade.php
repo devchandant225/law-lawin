@@ -85,7 +85,7 @@
     {{-- Page Banner --}}
     <x-page-banner :title="$helpDesk->title" :breadcrumbs="[
         ['label' => 'Home', 'url' => url('/')],
-        ['label' => 'Help Desk', 'url' => route('posts.by-type', 'help_desk')],
+        ['label' => 'Help Desk', 'url' => route('help-desk.index')],
         ['label' => $helpDesk->title],
     ]" />
 
@@ -306,7 +306,7 @@
                         <div class="mb-12">
                             <div class="flex items-center justify-between mb-6">
                                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">More from Help Desk</h2>
-                                <a href="{{ route('posts.by-type', 'help_desk') }}"
+                                <a href="{{ route('help-desk.index') }}"
                                     class="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold">
                                     View All
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -331,7 +331,7 @@
                                         @endif
                                         <div class="p-6">
                                             <h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2">
-                                                <a href="{{ route('posts.show', $relatedPost->slug) }}"
+                                                <a href="{{ route('help-desk.show', $relatedPost->slug) }}"
                                                     class="hover:text-primary transition-colors">
                                                     {{ $relatedPost->title }}
                                                 </a>
@@ -339,7 +339,7 @@
                                             <p class="text-gray-600 text-sm line-clamp-3">
                                                 {{ Str::limit(strip_tags($relatedPost->excerpt ?? $relatedPost->description), 100) }}
                                             </p>
-                                            <a href="{{ route('posts.show', $relatedPost->slug) }}"
+                                            <a href="{{ route('help-desk.show', $relatedPost->slug) }}"
                                                 class="mt-4 inline-flex items-center gap-1 text-primary hover:underline text-sm font-semibold">
                                                 Learn More
                                                 <svg class="w-3 h-3" fill="none" stroke="currentColor"
@@ -500,7 +500,7 @@
                                                 <div class="flex-1 min-w-0">
                                                     <h6
                                                         class="font-semibold text-gray-900 text-sm leading-tight group-hover:text-primary transition-colors">
-                                                        <a href="{{ route('posts.show', $relatedPost->slug) }}"
+                                                        <a href="{{ route('help-desk.show', $relatedPost->slug) }}"
                                                             class="block hover:underline">
                                                             {{ $relatedPost->title }}
                                                         </a>
@@ -591,7 +591,7 @@
 
                             <!-- Back to Help Desk -->
                             <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 text-center">
-                                <a href="{{ route('posts.by-type', 'help_desk') }}"
+                                <a href="{{ route('help-desk.index') }}"
                                     class="inline-flex items-center gap-3 px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

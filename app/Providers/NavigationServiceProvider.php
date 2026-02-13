@@ -28,7 +28,7 @@ class NavigationServiceProvider extends ServiceProvider
     public function boot()
     {
         // Share navigation data with all views
-        View::composer(['layouts.header', 'layouts.partials.navigation', '*'], function ($view) {
+        View::composer(['layouts.header', 'layouts.new-header', 'layouts.partials.navigation', '*'], function ($view) {
             // Get services for navigation dropdown
             $navServices = $this->getNavigationServices();
 

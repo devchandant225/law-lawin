@@ -252,7 +252,7 @@
                     </div>
                      <a href="{{ route('team.index') }}" class="text-nav hover:text-white/80 font-medium transition-colors capitalize nav-link">Team</a>
   <div class="relative group">
-                        <a href="{{ route('posts.by-type', 'help_desk') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
+                        <a href="{{ route('help-desk.index') }}" class="text-nav font-medium transition-colors flex items-center capitalize nav-link group/link">
                             Help Desk
                             <i class="fas fa-chevron-down ml-1 text-xs transform group-hover:rotate-180 transition-transform duration-300"></i>
                         </a>
@@ -261,9 +261,19 @@
                                 <div class="px-4 pb-2 mb-2 border-b border-gray-100">
                                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Legal Help Desk</span>
                                 </div>
+                                <a href="{{ route('help-desk.index') }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div class="w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-info-circle text-primary text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">All Help Desk</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">View all help desk items</div>
+                                    </div>
+                                </a>
+                                <div class="h-px bg-gray-100 my-2 mx-4"></div>
                                 @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
                                     @foreach ($navHelpDeskItems as $item)
-                                        <a href="{{ route('posts.show', $item->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                        <a href="{{ route('help-desk.show', $item->slug) }}" class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                             <div class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
                                                 <i class="fas fa-info-circle text-blue-500 text-xs"></i>
                                             </div>
@@ -322,10 +332,10 @@
                 
                 <!-- Help Desk Mobile Menu -->
                 <div class="border-l-4 border-primary/20 pl-4 ml-2">
-                    <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Help Desk</div>
+                    <a href="{{ route('help-desk.index') }}" class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 hover:text-primary transition-colors">Help Desk</a>
                     @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
                         @foreach ($navHelpDeskItems as $item)
-                            <a href="{{ route('posts.show', $item->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">{{ $item->title }}</a>
+                            <a href="{{ route('help-desk.show', $item->slug) }}" class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">{{ $item->title }}</a>
                         @endforeach
                     @else
                         <div class="text-xs text-gray-400 italic">No items available</div>

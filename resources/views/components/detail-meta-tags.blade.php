@@ -5,13 +5,18 @@
     // Post model uses: meta_title, meta_description, meta_keywords
     // Publication model uses: metatitle, metadescription, metakeywords
     
-    $title = $post->meta_title ?? ($post->metatitle ?? $post->title);
-    $description = $post->meta_description ?? ($post->metadescription ?? $post->excerpt);
-    $keywords = $post->meta_keywords ?? ($post->metakeywords ?? '');
+    // Use ?: (elvis operator) to handle empty strings as false, ensuring fallbacks work
+    $title = ($post->meta_title ?: ($post->metatitle ?: $post->title));
     
-    // Handle image URL (Post has feature_image_url accessor, Publication might too)
-    // Checking Publication model: it has getFeatureImageUrlAttribute.
-    $image = $post->feature_image_url ?? asset('images/default-og-image.jpg');
+    // For description, prioritize meta descriptions, then excerpt, then limit content
+    $rawDescription = ($post->meta_description ?: ($post->metadescription ?: ($post->excerpt ?: ($post->description ?? ''))));
+    $description = Str::limit(strip_tags($rawDescription), 160);
+    
+    $keywords = ($post->meta_keywords ?: ($post->metakeywords ?: ''));
+    
+    // Handle image URL
+    // Both Post and Publication models have getFeatureImageUrlAttribute accessor
+    $image = $post->feature_image_url ?: asset('images/default-og-image.jpg');
     
     $url = request()->url();
     $siteName = config('app.name', 'Professional Law Organization');
@@ -19,23 +24,29 @@
     
     // Schema
     $schemaData = null;
+    
+    // Check for direct google_schema json/array
     if (!empty($post->google_schema)) {
-         // If it's stored as array/json in DB
          if (is_string($post->google_schema)) {
              $schemaData = $post->google_schema;
          } else {
              $schemaData = json_encode($post->google_schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
          }
-    } elseif (method_exists($post, 'getGoogleSchemaJsonAttribute')) {
-        $schemaData = $post->google_schema_json;
     } 
+    // Check for accessor
+    elseif (isset($post->google_schema_json)) {
+        $schemaData = $post->google_schema_json;
+    }
     
     // Fallback schema if empty
     if (empty($schemaData)) {
-         // Simple default schema
+         // Determine schema type
          $schemaType = 'Article'; // Default
-         if (isset($post->type) && $post->type === 'service') $schemaType = 'Service';
-         // Publication doesn't have 'type' column that maps to 'service'/'practice', it has 'post_type'.
+         
+         // Check if it's a Service (Post model with type='service')
+         if (isset($post->type) && $post->type === 'service') {
+             $schemaType = 'Service';
+         }
          
          $schemaData = json_encode([
             '@context' => 'https://schema.org',

@@ -93,6 +93,7 @@
 						<table class="min-w-full divide-y divide-gray-200">
 							<thead class="bg-gray-50">
 								<tr>
+									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-16">Icon</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-16">Image</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
 									<th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-24">Order Position</th>
@@ -105,6 +106,15 @@
 							<tbody class="bg-white divide-y divide-gray-100">
 								@foreach($posts as $post)
 									<tr>
+										<td class="px-4 py-3">
+											@if($post->icon)
+												<img src="{{ $post->icon_url }}" alt="Icon" class="w-8 h-8 object-contain">
+											@else
+												<div class="w-8 h-8 rounded flex items-center justify-center text-gray-300">
+													<i class="fas fa-image"></i>
+												</div>
+											@endif
+										</td>
 										<td class="px-4 py-3">
 											@if($post->feature_image)
 												<img src="{{ $post->feature_image_url }}" alt="{{ $post->title }}" class="w-12 h-12 rounded object-cover">

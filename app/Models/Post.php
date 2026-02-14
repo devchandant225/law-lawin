@@ -21,6 +21,7 @@ class Post extends Model
         'meta_keywords',
         'status',
         'feature_image',
+        'icon',
         'type',
         'layout',
         'google_schema',
@@ -122,6 +123,14 @@ class Post extends Model
     public function getFeatureImageUrlAttribute()
     {
         return $this->feature_image ? asset('storage/' . $this->feature_image) : null;
+    }
+
+    /**
+     * Get the icon URL.
+     */
+    public function getIconUrlAttribute()
+    {
+        return $this->icon ? asset('storage/' . $this->icon) : null;
     }
 
     /**

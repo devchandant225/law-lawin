@@ -68,6 +68,7 @@ class PostController extends Controller
             'type' => 'required|in:service,practice,news,blog,help_desk',
             'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:1024',
             'google_schema' => 'nullable|string',
             'orderposition' => 'nullable|integer|min:0'
         ]);
@@ -80,6 +81,11 @@ class PostController extends Controller
         // Handle file upload
         if ($request->hasFile('feature_image')) {
             $validated['feature_image'] = $request->file('feature_image')->store('posts', 'public');
+        }
+
+        // Handle icon upload
+        if ($request->hasFile('icon')) {
+            $validated['icon'] = $request->file('icon')->store('posts/icons', 'public');
         }
 
         // Parse Google Schema JSON
@@ -132,6 +138,7 @@ class PostController extends Controller
             'type' => 'required|in:service,practice,news,blog,help_desk',
             'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
+            'icon' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:1024',
             'google_schema' => 'nullable|string',
             'orderposition' => 'nullable|integer|min:0'
         ]);
@@ -148,6 +155,15 @@ class PostController extends Controller
                 Storage::disk('public')->delete($post->feature_image);
             }
             $validated['feature_image'] = $request->file('feature_image')->store('posts', 'public');
+        }
+
+        // Handle icon upload
+        if ($request->hasFile('icon')) {
+            // Delete old icon if exists
+            if ($post->icon) {
+                Storage::disk('public')->delete($post->icon);
+            }
+            $validated['icon'] = $request->file('icon')->store('posts/icons', 'public');
         }
 
         // Parse Google Schema JSON
@@ -174,6 +190,11 @@ class PostController extends Controller
         // Delete feature image if exists
         if ($post->feature_image) {
             Storage::disk('public')->delete($post->feature_image);
+        }
+
+        // Delete icon if exists
+        if ($post->icon) {
+            Storage::disk('public')->delete($post->icon);
         }
 
         $post->delete();

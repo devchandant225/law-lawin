@@ -323,8 +323,12 @@
                                         <a href="{{ route('help-desk.show', $item->slug) }}"
                                             class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                             <div
-                                                class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
-                                                <i class="fas fa-info-circle text-blue-500 text-xs"></i>
+                                                class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors overflow-hidden">
+                                                @if ($item->icon)
+                                                    <img src="{{ $item->icon_url }}" alt="{{ $item->title }}" class="w-full h-full object-contain p-1">
+                                                @else
+                                                    <i class="fas fa-info-circle text-blue-500 text-xs"></i>
+                                                @endif
                                             </div>
                                             <div>
                                                 <div class="font-medium">{{ $item->title }}</div>

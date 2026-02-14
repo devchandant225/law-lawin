@@ -208,6 +208,29 @@
                             </div>
                         </div>
 
+                        <!-- Icon -->
+                        <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
+                            <div class="px-4 py-3 border-b border-gray-200">
+                                <h5 class="font-semibold text-gray-900">Icon</h5>
+                            </div>
+                            <div class="p-4 space-y-4">
+                                <div class="mb-3">
+                                    <label for="icon" class="block text-sm font-medium text-gray-700 mb-1">Upload Icon</label>
+                                    <input type="file" id="icon" name="icon" accept="image/*" onchange="previewIcon(this)"
+                                           class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('icon') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
+                                    @error('icon')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                    <p class="mt-1 text-xs text-gray-500">For Help Desk or Services (Max: 1MB)</p>
+                                </div>
+                                
+                                <!-- Icon Preview -->
+                                <div id="icon-preview" style="display: none;">
+                                    <img id="icon-preview-img" src="" alt="Preview" class="rounded border border-gray-200 w-16 h-16 object-contain">
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Featured Image -->
                         <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
                             <div class="px-4 py-3 border-b border-gray-200">
@@ -270,6 +293,18 @@ function previewImage(input) {
         reader.onload = function(e) {
             document.getElementById('preview').src = e.target.result;
             document.getElementById('image-preview').style.display = 'block';
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// Preview uploaded icon
+function previewIcon(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('icon-preview-img').src = e.target.result;
+            document.getElementById('icon-preview').style.display = 'block';
         }
         reader.readAsDataURL(input.files[0]);
     }

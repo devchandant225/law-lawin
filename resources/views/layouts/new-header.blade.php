@@ -272,18 +272,6 @@
                                     <span
                                         class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Resources</span>
                                 </div>
-                                <a href="{{ route('posts.by-type', 'news') }}"
-                                    class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
-                                    <div
-                                        class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
-                                        <i class="fas fa-newspaper text-blue-500 text-xs"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-medium">News</div>
-                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Latest
-                                            updates & insights</div>
-                                    </div>
-                                </a>
                                 <a href="{{ route('publications.index') }}"
                                     class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                     <div
@@ -296,6 +284,19 @@
                                             reports</div>
                                     </div>
                                 </a>
+                                <a href="{{ route('posts.by-type', 'news') }}"
+                                    class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
+                                        <i class="fas fa-newspaper text-blue-500 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium">News</div>
+                                        <div class="text-xs text-gray-500 group-hover/item:text-primary/70">Latest
+                                            updates & insights</div>
+                                    </div>
+                                </a>
+
                             </div>
                         </div>
                     </div>
@@ -315,7 +316,7 @@
                                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Legal
                                         Help Desk</span>
                                 </div>
-                             
+
                                 <div class="h-px bg-gray-100 my-2 mx-4"></div>
                                 @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
                                     @foreach ($navHelpDeskItems as $item)

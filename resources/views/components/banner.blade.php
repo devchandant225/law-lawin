@@ -18,10 +18,10 @@
                             <div class="text-center flex flex-col items-center justify-center">
                                 <div>
                                     <!-- Title -->
-                                    <h1
+                                    <span
                                         class="text-3xl font-semibold text-white mb-6 leading-tight bg-gray-800/40 inline-block px-4 py-2 rounded">
                                         <span class="block">{{ $slider->title }}</span>
-                                    </h1>
+                                    </span>
 
                                 </div>
                                 <div>

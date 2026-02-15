@@ -370,8 +370,13 @@
 
     <!-- Menu Panel -->
     <div class="mobile-nav__panel absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl flex flex-col">
-        <!-- Header spacer to push content below the main header if needed, or just top padding -->
-        <div class="h-20 md:h-24"></div> 
+        <!-- Sidebar Header -->
+        <div class="flex items-center justify-between p-5 border-b border-gray-100">
+            <span class="text-xl font-bold text-gray-800">Menu</span>
+            <button type="button" class="mobile-nav__close p-2 -mr-2 text-gray-400 hover:text-primary transition-colors focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
         
         <!-- Navigation Links -->
         <nav class="flex-1 px-4 py-2 overflow-y-auto custom-scrollbar">

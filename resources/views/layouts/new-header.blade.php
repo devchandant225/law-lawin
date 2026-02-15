@@ -352,16 +352,10 @@
                 <!-- Mobile menu button -->
                 <div class="lg:hidden">
                     <button type="button"
-                        class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors">
-                        <span class="sr-only">Open main menu</span>
-                        <div class="hamburger-icon w-6 h-6 flex flex-col justify-center items-center">
-                            <span
-                                class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300"></span>
-                            <span
-                                class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
-                            <span
-                                class="hamburger-line bg-current block h-0.5 w-6 transform transition-all ease-in-out duration-300 mt-1"></span>
-                        </div>
+                        class="mobile-nav__toggler inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white/80 hover:bg-white/10 transition-colors focus:outline-none">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fas fa-bars text-2xl menu-icon-open transition-transform duration-300"></i>
+                        <i class="fas fa-times text-2xl menu-icon-close hidden transition-transform duration-300"></i>
                     </button>
                 </div>
             </div>
@@ -370,52 +364,109 @@
 </div>
 
 <!-- Mobile Navigation Menu -->
-<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
-    style="top: 100px;">
-    <div class="flex h-full">
-        <!-- Overlay -->
-        <div class="mobile-nav__overlay fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+<div class="mobile-nav fixed inset-0 z-40 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+    <!-- Overlay -->
+    <div class="mobile-nav__overlay fixed inset-0 bg-black/60 opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
 
-        <!-- Menu Panel -->
-        <div class="mobile-nav__panel relative ml-auto flex h-full w-full max-w-sm flex-col bg-white shadow-xl">
+    <!-- Menu Panel -->
+    <div class="mobile-nav__panel absolute right-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl flex flex-col">
+        <!-- Header spacer to push content below the main header if needed, or just top padding -->
+        <div class="h-20 md:h-24"></div> 
+        
+        <!-- Navigation Links -->
+        <nav class="flex-1 px-4 py-2 overflow-y-auto custom-scrollbar">
+            <div class="space-y-1">
+                <a href="{{ route('home') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-home text-gray-400 group-hover:text-primary transition-colors"></i></div>
+                    <span class="font-medium">Home</span>
+                </a>
+                
+                <a href="{{ route('about') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                     <div class="w-8 flex justify-center"><i class="fas fa-info-circle text-gray-400 group-hover:text-primary transition-colors"></i></div>
+                    <span class="font-medium">About</span>
+                </a>
 
-            <!-- Navigation Links -->
-            <nav class="flex-1 px-4 py-6 space-y-4">
-                <a href="{{ route('home') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Home</a>
-                <a href="{{ route('about') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">About</a>
-                <a href="{{ route('team.index') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Team</a>
-                <a href="{{ route('practice.index') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Practice
-                    Areas</a>
-                <a href="{{ route('services.index') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors capitalize">Our
-                    Services</a>
-                <a href="{{ route('posts.by-type', 'news') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors">News</a>
-                <a href="{{ route('publications.index') }}"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors">Publications</a>
+                <div class="border-t border-gray-100 my-2"></div>
+                
+                 <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Services</div>
+                 
+                 <a href="{{ route('services.index') }}" class="flex items-center px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-briefcase text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                    <span class="font-medium">Our Services</span>
+                </a>
 
-                <!-- Help Desk Mobile Menu -->
-                <div class="border-l-4 border-primary/20 pl-4 ml-2">
-                    <a href="{{ route('help-desk.index') }}"
-                        class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2 hover:text-primary transition-colors">Help
-                        Desk</a>
-                    @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
-                        @foreach ($navHelpDeskItems as $item)
-                            <a href="{{ route('help-desk.show', $item->slug) }}"
-                                class="block text-gray-700 hover:text-primary font-medium transition-colors text-sm py-1">{{ $item->title }}</a>
-                        @endforeach
-                    @else
-                        <div class="text-xs text-gray-400 italic">No items available</div>
-                    @endif
+                <a href="{{ route('practice.index') }}" class="flex items-center px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-balance-scale text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                    <span class="font-medium">Practice Areas</span>
+                </a>
+
+                <div class="border-t border-gray-100 my-2"></div>
+                
+                <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Resources</div>
+
+                <a href="{{ route('posts.by-type', 'news') }}" class="flex items-center px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-newspaper text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                    <span class="font-medium">News</span>
+                </a>
+                <a href="{{ route('publications.index') }}" class="flex items-center px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-book text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                    <span class="font-medium">Publications</span>
+                </a>
+
+                 <div class="border-t border-gray-100 my-2"></div>
+
+                 <!-- Help Desk -->
+                 <div class="space-y-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group text-left focus:outline-none" onclick="document.getElementById('mobile-help-desk').classList.toggle('hidden'); this.querySelector('.chevron').classList.toggle('rotate-180');">
+                        <div class="flex items-center">
+                            <div class="w-8 flex justify-center"><i class="fas fa-headset text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                            <span class="font-medium">Help Desk</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300 chevron"></i>
+                    </button>
+                    <div id="mobile-help-desk" class="hidden pl-12 pr-2 space-y-1 bg-gray-50/50 rounded-lg py-2 mx-2">
+                        @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
+                            @foreach ($navHelpDeskItems as $item)
+                                <a href="{{ route('help-desk.show', $item->slug) }}" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary transition-colors rounded hover:bg-white">{{ $item->title }}</a>
+                            @endforeach
+                        @else
+                             <div class="px-3 py-2 text-xs text-gray-400 italic">No items available</div>
+                        @endif
+                         <a href="{{ route('help-desk.index') }}" class="block px-3 py-2 text-sm font-medium text-primary hover:underline mt-1">View All</a>
+                    </div>
                 </div>
 
-                <a href="/contact"
-                    class="block text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
-            </nav>
+                 <div class="border-t border-gray-100 my-2"></div>
+                
+                <a href="/contact" class="flex items-center px-4 py-3 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-envelope text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                    <span class="font-medium">Contact Us</span>
+                </a>
+                 <a href="{{ route('team.index') }}" class="flex items-center px-4 py-3 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                    <div class="w-8 flex justify-center"><i class="fas fa-users text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
+                    <span class="font-medium">Our Team</span>
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Bottom Panel -->
+        <div class="p-5 border-t border-gray-100 bg-gray-50">
+             <div class="flex justify-center space-x-6 mb-4">
+                @if ($globalProfile && $globalProfile->facebook_link)
+                    <a href="{{ $globalProfile->facebook_link }}" class="text-gray-400 hover:text-blue-600 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+                @endif
+                @if ($globalProfile && $globalProfile->linkedin_link)
+                    <a href="{{ $globalProfile->linkedin_link }}" class="text-gray-400 hover:text-blue-700 transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                @endif
+                @if ($globalProfile && $globalProfile->whatsapp)
+                    <a href="{{ $globalProfile->whatsapp }}" class="text-gray-400 hover:text-green-600 transition-colors"><i class="fab fa-whatsapp text-xl"></i></a>
+                @endif
+             </div>
+             <div class="text-center">
+                  <a href="/calculator" class="inline-flex items-center justify-center w-full px-4 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-colors shadow-sm">
+                      <i class="fas fa-calculator mr-2"></i> Cost Calculator
+                  </a>
+             </div>
         </div>
     </div>
 </div>
@@ -611,29 +662,35 @@
         }
     }
 
-    /* Hamburger Menu Animation */
-    .mobile-nav__toggler.active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
+    /* Mobile Menu Toggle Icon */
+    .mobile-nav__toggler.active .menu-icon-open {
+        display: none;
+    }
+    
+    .mobile-nav__toggler.active .menu-icon-close {
+        display: inline-block;
+    }
+    
+    /* Ensure close icon is visible against white menu background if header is transparent */
+    .mobile-nav__toggler.active {
+        color: #374151 !important; /* gray-700 */
+        z-index: 60; 
+        position: relative;
     }
 
-    .mobile-nav__toggler.active .hamburger-line:nth-child(2) {
-        opacity: 0;
-        transform: translateX(20px);
+    /* Custom Scrollbar for Mobile Menu */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
     }
-
-    .mobile-nav__toggler.active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1; 
     }
-
-    /* Adjust mobile navigation positioning */
-    .mobile-nav {
-        height: calc(100vh - 80px);
-        top: 80px;
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d1d5db; 
+        border-radius: 4px;
     }
-
-    .mobile-nav__overlay {
-        top: 80px;
-        height: calc(100vh - 80px);
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af; 
     }
 </style>
 

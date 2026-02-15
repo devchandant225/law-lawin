@@ -429,15 +429,24 @@
                         </div>
                         <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform duration-300 chevron"></i>
                     </button>
-                    <div id="mobile-help-desk" class="hidden pl-12 pr-2 space-y-1 bg-gray-50/50 rounded-lg py-2 mx-2">
+                    <div id="mobile-help-desk" class="hidden pl-10 pr-2 space-y-1 bg-gray-50/50 rounded-lg py-2 mx-2">
                         @if ($navHelpDeskItems && $navHelpDeskItems->count() > 0)
                             @foreach ($navHelpDeskItems as $item)
-                                <a href="{{ route('help-desk.show', $item->slug) }}" class="block px-3 py-2 text-sm text-gray-600 hover:text-primary transition-colors rounded hover:bg-white">{{ $item->title }}</a>
+                                <a href="{{ route('help-desk.show', $item->slug) }}" class="flex items-center px-3 py-2 text-sm text-gray-600 hover:text-primary transition-colors rounded hover:bg-white group">
+                                    <div class="w-6 h-6 rounded bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center mr-3 transition-colors overflow-hidden flex-shrink-0">
+                                        @if ($item->icon)
+                                            <img src="{{ $item->icon_url }}" alt="{{ $item->title }}" class="w-full h-full object-contain p-0.5">
+                                        @else
+                                            <i class="fas fa-info-circle text-blue-500 text-[10px]"></i>
+                                        @endif
+                                    </div>
+                                    <span class="truncate">{{ $item->title }}</span>
+                                </a>
                             @endforeach
                         @else
                              <div class="px-3 py-2 text-xs text-gray-400 italic">No items available</div>
                         @endif
-                         <a href="{{ route('help-desk.index') }}" class="block px-3 py-2 text-sm font-medium text-primary hover:underline mt-1">View All</a>
+                         <a href="{{ route('help-desk.index') }}" class="block px-3 py-2 text-sm font-medium text-primary hover:underline mt-1 ml-9">View All</a>
                     </div>
                 </div>
 

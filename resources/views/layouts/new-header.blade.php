@@ -197,9 +197,12 @@
                                         <a href="{{ route('service.show', $service->slug) }}"
                                             class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                             <div
-                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i
-                                                    class="fas fa-cog text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0 overflow-hidden">
+                                                @if ($service->icon)
+                                                    <img src="{{ $service->icon_url }}" alt="{{ $service->title }}" class="w-full h-full object-contain p-0.5">
+                                                @else
+                                                    <i class="fas fa-cog text-gray-400 group-hover/item:text-primary text-[10px] transition-colors"></i>
+                                                @endif
                                             </div>
                                             <span class="font-medium">{{ $service->title }}</span>
                                         </a>
@@ -242,9 +245,12 @@
                                         <a href="{{ route('practice.show', $practice->slug) }}"
                                             class="group/item flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                             <div
-                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0">
-                                                <i
-                                                    class="fas fa-balance-scale text-gray-400 group-hover/item:text-primary text-xs transition-colors"></i>
+                                                class="w-6 h-6 rounded-md bg-gray-100 group-hover/item:bg-primary/10 flex items-center justify-center mr-3 transition-colors flex-shrink-0 overflow-hidden">
+                                                @if ($practice->icon)
+                                                    <img src="{{ $practice->icon_url }}" alt="{{ $practice->title }}" class="w-full h-full object-contain p-0.5">
+                                                @else
+                                                    <i class="fas fa-balance-scale text-gray-400 group-hover/item:text-primary text-[10px] transition-colors"></i>
+                                                @endif
                                             </div>
                                             <span class="font-medium">{{ $practice->title }}</span>
                                         </a>

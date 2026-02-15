@@ -66,7 +66,7 @@ class NavigationServiceProvider extends ServiceProvider
     private function getNavigationServices()
     {
         return cache()->remember('nav_services', 3600, function () {
-            return Post::where('type', 'service')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
+            return Post::where('type', 'service')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt', 'icon')->get();
         });
     }
 
@@ -90,7 +90,7 @@ class NavigationServiceProvider extends ServiceProvider
     private function getNavigationPracticeAreas()
     {
         return cache()->remember('nav_practice_areas', 3600, function () {
-            return Post::where('type', 'practice')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
+            return Post::where('type', 'practice')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt', 'icon')->get();
         });
     }
 
@@ -126,7 +126,7 @@ class NavigationServiceProvider extends ServiceProvider
     private function getNavigationHelpDeskItems()
     {
         return cache()->remember('nav_help_desk', 3600, function () {
-            return Post::where('type', 'help_desk')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt')->get();
+            return Post::where('type', 'help_desk')->active()->orderBy('orderposition', 'asc')->select('id', 'title', 'slug', 'excerpt', 'icon')->get();
         });
     }
 

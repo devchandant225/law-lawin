@@ -7,57 +7,65 @@
 @section('head')
     <style>
         #content-wrapper .fullscreen-layout p {
-            margin-bottom: 6px !important;
-            margin-left: 14px !important;
+            margin-bottom: 1rem !important;
+            margin-left: 0 !important;
         }
 
         #content-wrapper .fullscreen-layout h2 {
-            margin-bottom: 0px !important;
-            font-size: 22px !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
         }
 
         #content-wrapper .fullscreen-layout h3 {
-            margin-bottom: 0px !important;
-            font-size: 500 !important;
-            font-size: 18px !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1.25rem !important;
+            font-weight: 600 !important;
         }
 
-        #content-wrapper .fullscreen-layout ol {
-            padding-left: 16px !important;
-            list-style-type: disc;
-            margin-left: 16px;
-        }
-
+        #content-wrapper .fullscreen-layout ol,
         #content-wrapper .fullscreen-layout ul {
-            padding-left: 16px !important;
-            list-style-type: disc;
-            margin-left: 16px;
+            padding-left: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            margin-left: 0 !important;
+        }
+        
+        #content-wrapper .fullscreen-layout ul {
+            list-style-type: disc !important;
+        }
+        
+        #content-wrapper .fullscreen-layout ol {
+            list-style-type: decimal !important;
         }
 
-        @media and screen (max-width: 768px) {
+        @media (min-width: 768px) {
             #content-wrapper .fullscreen-layout p {
                 margin-bottom: 6px !important;
+                margin-left: 14px !important;
             }
 
             #content-wrapper .fullscreen-layout h2 {
+                margin-top: 8px !important;
                 margin-bottom: 0px !important;
-                font-size: 10px !important;
+                font-size: 22px !important;
             }
 
             #content-wrapper .fullscreen-layout h3 {
-                margin-bottom: 0px !important;
-                font-size: 500 !important;
-                font-size: 8px !important;
+                font-size: 18px !important;
             }
-
-            #content-wrapper .fullscreen-layout ol {
-                padding-left: 16px !important;
-                list-style-type: disc;
-            }
-
+             #content-wrapper .fullscreen-layout ol,
             #content-wrapper .fullscreen-layout ul {
-                padding-left: 16px !important;
-                list-style-type: disc;
+                 margin-left: 16px !important;
+            }
+        }
+        
+        @media (max-width: 767px) {
+             #content-wrapper .fullscreen-layout h2 {
+                font-size: 1.25rem !important;
+            }
+             #content-wrapper .fullscreen-layout h3 {
+                font-size: 1.1rem !important;
             }
         }
 
@@ -67,11 +75,13 @@
         }
 
         .faq-answer ol {
-            list-style: disc;
+            list-style: decimal;
+            padding-left: 1.25rem;
         }
 
         .faq-answer ul {
             list-style: disc;
+            padding-left: 1.25rem;
         }
 
         .faq-item.active {
@@ -90,34 +100,35 @@
     ]" />
 
     {{-- Main Content Section --}}
-    <section id="content-wrapper" class="lg:py-2 py-0 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section id="content-wrapper" class="lg:py-8 py-4 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
 
         <div class="container mx-auto px-4 relative z-10 fullscreen-layout">
             @if ($practice->layout === 'fullscreen')
                 <!-- Fullscreen Layout -->
                 <div class="max-w-7xl mx-auto">
                     <!-- Practice Content Card -->
-                    <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-0">
-                        <h2 class="text-3xl font-bold text-[#0f8cca] leading-tight ml-[8px] ">
+                    <div class="bg-white rounded-2xl lg:p-8 p-4 mb-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl md:text-3xl font-bold text-[#0f8cca] leading-tight mb-4">
                             {{ $practice->title }}</h2>
                         <div class="mt-3">
                             @if ($practice->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
                                     <img src="{{ $practice->feature_image_url }}" alt="{{ $practice->title }}"
-                                        class="w-full h-[60vh] object-cover group-hover:scale-105 transition-transform duration-500">
+                                        class="w-full h-[40vh] md:h-[60vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
 
                         </div>
 
-                        <div class="mt-2 text-justify">
+                        <div class="mt-2 text-justify prose prose-blue max-w-none">
                             {!! $practice->content ?: $practice->description !!}
                         </div>
 
                         <!-- Left-Right Content Sections -->
                         @if ($leftRightContents && $leftRightContents->count() > 0)
+                            <div class="mt-12 space-y-12">
                             @foreach ($leftRightContents as $index => $content)
-                                <section class="mb-12">
+                                <section>
                                     <div
                                         class="flex flex-col {{ $index % 2 == 0 ? 'lg:flex-row' : 'lg:flex-row-reverse' }} items-center gap-8">
                                         <!-- Image -->
@@ -125,10 +136,10 @@
                                             @if ($content->image)
                                                 <img src="{{ asset('storage/' . $content->image) }}"
                                                     alt="{{ $content->title }}"
-                                                    class="w-full h-64 md:h-80 object-contain rounded-xl">
+                                                    class="w-full h-auto max-h-[400px] object-contain rounded-xl mx-auto">
                                             @else
                                                 <div
-                                                    class="w-full h-64 md:h-80 bg-gray-700 rounded-xl flex items-center justify-center">
+                                                    class="w-full h-64 bg-gray-100 rounded-xl flex items-center justify-center">
                                                     <i class="fas fa-image text-gray-400 text-4xl"></i>
                                                 </div>
                                             @endif
@@ -136,11 +147,11 @@
 
                                         <!-- Content -->
                                         <div class="w-full lg:w-1/2">
-                                            <h2 class="text-2xl font-semibold mb-4 text-[#0f8cca] text-center">
+                                            <h3 class="text-xl md:text-2xl font-semibold mb-4 text-[#0f8cca] text-center lg:text-left">
                                                 {{ $content->title }}
-                                            </h2>
+                                            </h3>
                                             @if ($content->description)
-                                                <div class="text-justify">
+                                                <div class="text-justify prose prose-blue max-w-none">
                                                     {!! $content->description !!}
                                                 </div>
                                             @endif
@@ -148,20 +159,21 @@
                                     </div>
                                 </section>
                             @endforeach
+                            </div>
                         @endif
                     </div>
 
                     <!-- Bottom Description -->
                     @if ($practice->bottom_description)
-                        <div class="bg-white rounded-2xl lg:px-8 px-2 py-0 mb-8">
-                            <div class="text-justify">
+                        <div class="bg-white rounded-2xl lg:p-8 p-4 mb-8 shadow-sm border border-gray-100">
+                            <div class="text-justify prose prose-blue max-w-none">
                                 {!! $practice->bottom_description !!}
                             </div>
                         </div>
                     @endif
                     <!-- Consultation Banner -->
                     <div
-                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-6 py-12 text-white relative overflow-hidden shadow-xl group">
+                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-4 py-8 md:px-6 md:py-12 text-white relative overflow-hidden shadow-xl group">
                         <!-- Background patterns -->
                         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -176,28 +188,28 @@
 
                         <div class="relative z-10 flex flex-col items-center text-center">
                             <div
-                                class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-6 py-2 rounded-full text-xl md:text-xl font-bold uppercase tracking-widest mb-6">
+                                class="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 md:px-6 md:py-2 rounded-full text-sm md:text-xl font-bold uppercase tracking-widest mb-4 md:mb-6">
                                 <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                                 Contact our experts
                             </div>
-                            <span class="text-4xl font-black mb-8 leading-tight tracking-tight">
+                            <span class="text-2xl md:text-4xl font-black mb-6 md:mb-8 leading-tight tracking-tight">
                                 Consult Lawin and Partners</span>
 
-                            <div class="flex flex-wrap justify-center gap-4 w-full mt-4">
+                            <div class="flex flex-wrap justify-center gap-3 md:gap-4 w-full mt-2">
                                 <a href="tel:+9779841933745"
-                                    class="whitespace-nowrap bg-white text-accent px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95">
+                                    class="w-full sm:w-auto whitespace-nowrap bg-white text-accent px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 text-sm md:text-base">
                                     <i class="fas fa-phone-alt"></i> CALL NOW
                                 </a>
                                 <a href="https://wa.me/9779841933745" target="_blank"
-                                    class="whitespace-nowrap bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95">
+                                    class="w-full sm:w-auto whitespace-nowrap bg-[#25D366] text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 text-sm md:text-base">
                                     <i class="fab fa-whatsapp"></i> WHATSAPP
                                 </a>
                                 <a href="viber://chat?number=%2B9779841933745" target="_blank"
-                                    class="whitespace-nowrap bg-[#7360f2] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#5949d6] transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95">
+                                    class="w-full sm:w-auto whitespace-nowrap bg-[#7360f2] text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-[#5949d6] transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 text-sm md:text-base">
                                     <i class="fab fa-viber"></i> VIBER
                                 </a>
                                 <a href="mailto:info@lawinpartners.com"
-                                    class="whitespace-nowrap bg-accent border-2 border-white/40 text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95">
+                                    class="w-full sm:w-auto whitespace-nowrap bg-accent border-2 border-white/40 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-md shadow-lg hover:border-white active:scale-95 text-sm md:text-base">
                                     <i class="fas fa-envelope"></i> EMAIL US
                                 </a>
                             </div>

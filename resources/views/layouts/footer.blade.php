@@ -8,7 +8,7 @@
             <!-- Left Column - Company Info & Social Media -->
             <div class="col-span-2">
                 <!-- Company Logo -->
-                <div class="mb-6 text-center md:text-left">
+                <div class="mb-6 text-left">
                     <a href="{{ route('home') }}" class="inline-block">
                         @if ($globalProfile && $globalProfile->logo_url)
                             <img src="{{ $globalProfile->logo_url }}" alt="{{ config('app.name') }}"
@@ -92,9 +92,9 @@
 
                 <div class="flex gap-4">
                     <div class="">
-                        <h4 class="text-base sm:text-lg font-bold text-accent mb-3 underline text-center md:text-left">
+                        <h4 class="text-base sm:text-lg font-bold text-accent mb-3 underline text-left">
                             Follow Us</h4>
-                        <div class="flex justify-center md:justify-start space-x-2 flex-wrap gap-y-2">
+                        <div class="flex justify-start space-x-2 flex-wrap gap-y-2">
                             @if ($globalProfile && $globalProfile->facebook_link)
                                 <a href="{{ $globalProfile->facebook_link }}" target="_blank"
                                     class="w-8 h-8 sm:w-8 sm:h-8 bg-blue-600 text-white rounded flex items-center justify-center hover:bg-blue-700 transition-colors duration-300">
@@ -128,9 +128,9 @@
 
                     <!-- Connect With Us Section -->
                     <div class="">
-                        <h4 class="text-base sm:text-lg font-bold text-accent mb-3 underline text-center md:text-left">
+                        <h4 class="text-base sm:text-lg font-bold text-accent mb-3 underline text-left">
                             Connect With Us</h4>
-                        <div class="flex justify-center md:justify-start space-x-2 flex-wrap gap-y-2">
+                        <div class="flex justify-start space-x-2 flex-wrap gap-y-2">
                             @if ($globalProfile && $globalProfile->whatsapp)
                                 <a href="{{ $globalProfile->whatsapp }}" target="_blank"
                                     class="w-8 h-8 sm:w-8 sm:h-8 bg-green-500 text-white rounded flex items-center justify-center hover:bg-green-600 transition-colors duration-300">
@@ -180,14 +180,14 @@
             <div class="col-span-2">
                 <!-- Office Hours -->
                 <div class="mb-8">
-                    <h3 class="text-base sm:text-lg font-bold text-accent mb-4 underline text-center md:text-left">
+                    <h3 class="text-base sm:text-lg font-bold text-accent mb-4 underline text-left">
                         Office Hours</h3>
-                    <div class="space-y-2 text-sm font-bold  text-gray-700 text-center md:text-left">
-                        <div class="flex items-center justify-center md:justify-start space-x-2">
+                    <div class="space-y-2 text-sm font-bold  text-gray-700 text-left">
+                        <div class="flex items-center justify-start space-x-2">
                             <i class="fas fa-clock text-primary flex-shrink-0"></i>
                             <span>09:00 AM - 06:00 PM</span>
                         </div>
-                        <div class="flex items-center justify-center md:justify-start space-x-2">
+                        <div class="flex items-center justify-start space-x-2">
                             <i class="fas fa-calendar text-primary flex-shrink-0"></i>
                             <span>Sunday - Friday</span>
                         </div>
@@ -196,9 +196,9 @@
 
                 <!-- Newsletter Signup -->
                 <div class="mb-6">
-                    <h3 class="text-base sm:text-lg font-bold text-accent mb-4 underline text-center md:text-left">
+                    <h3 class="text-base sm:text-lg font-bold text-accent mb-4 underline text-left">
                         Subscribe To Our News Letter</h3>
-                    <form class="space-y-3 max-w-sm mx-auto md:mx-0" method="POST" action="#" id="newsletter-form">
+                    <form class="space-y-3 max-w-sm mx-0" method="POST" action="#" id="newsletter-form">
                         @csrf
                         <div>
                             <input type="email" name="email" placeholder="Enter Your Email" required
@@ -214,7 +214,7 @@
                 </div>
 
                 <!-- Court Fee Calculator -->
-                <div class="text-center md:text-left">
+                <div class="text-left">
                     <a href="/calculator"
                         class="inline-flex items-center text-gray-700 hover:text-primary transition-colors duration-300 group font-semibold text-sm sm:text-base lg:text-lg underline">
                         <i class="fas fa-calculator mr-2 group-hover:scale-110 transition-transform duration-300"></i>
@@ -227,7 +227,7 @@
 
             <!-- Right Column - Direction/Map -->
             <div class="col-span-3">
-                <h3 class="text-base sm:text-lg font-bold text-accent mb-4 underline text-center md:text-left">
+                <h3 class="text-base sm:text-lg font-bold text-accent mb-4 underline text-left">
                     Direction</h3>
 
                 <!-- Google Map -->
@@ -273,7 +273,7 @@
                 </div>
 
                 <!-- Map Click Instructions -->
-                <div class="text-center text-xs text-gray-500 mb-2">
+                <div class="text-left text-xs text-gray-500 mb-2">
                     <i class="fas fa-info-circle mr-1"></i>
                     Hover and click the map to open in Google Maps
                 </div>
@@ -284,16 +284,16 @@
     <!-- Footer Bottom - Clean Design -->
     <div class="bg-accent border-t border-gray-200">
         <div class="px-8 mx-auto py-2">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0">
                 <!-- Copyright -->
-                <div class="text-center md:text-left">
+                <div class="text-left">
                     <p class="text-sm text-gray-100">
                         © <span class="dynamic-year"></span>, Lawin And Partners. All rights reserved..
                     </p>
                 </div>
 
                 <!-- Footer Links -->
-                <div class="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
+                <div class="flex flex-wrap justify-start md:justify-end items-center space-x-6 text-sm">
 
                     <a href="/terms-of-service"
                         class="text-gray-100 hover:text-white transition-colors duration-300">Terms of

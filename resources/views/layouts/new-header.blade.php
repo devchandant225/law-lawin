@@ -364,7 +364,7 @@
 </div>
 
 <!-- Mobile Navigation Menu -->
-<div class="mobile-nav fixed inset-0 z-[60] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+<div class="mobile-nav fixed inset-0 z-[999] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
     <!-- Overlay -->
     <div class="mobile-nav__overlay fixed inset-0 bg-black/60 opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
 
@@ -674,7 +674,7 @@
     /* Ensure close icon is visible against white menu background if header is transparent */
     .mobile-nav__toggler.active {
         color: #374151 !important; /* gray-700 */
-        z-index: 70; 
+        z-index: 1000; 
         position: relative;
     }
 

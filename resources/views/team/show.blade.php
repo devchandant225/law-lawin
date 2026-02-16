@@ -1,20 +1,10 @@
 @extends('layouts.app')
 
-@section('head')
-    <x-meta-tags :title="$team->metatitle ?: $team->name . ' - ' . $team->designation . ' | Legal Professional'" :description="$team->metadescription ?:
-        $team->tagline ?:
-        'Meet ' .
-            $team->name .
-            ', ' .
-            $team->designation .
-            ' at our law firm. Experienced legal professional ready to help with your legal needs.'" :keywords="$team->metakeywords ?:
-        $team->name . ', ' . $team->designation . ', lawyer, attorney, legal professional'" :image="$team->image_url" type="profile" :post="$team" />
+@section('meta_tags')
+    <x-detail-meta-tags :post="$team" />
+@endsection
 
-    @if ($team->googleschema)
-        <script type="application/ld+json">
-            {!! $team->google_schema_json !!}
-        </script>
-    @endif
+@section('head')
     <style>
         .team-des-wrapper h2 {}
 

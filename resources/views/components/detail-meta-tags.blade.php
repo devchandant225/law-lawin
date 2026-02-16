@@ -6,17 +6,17 @@
     // Publication model uses: metatitle, metadescription, metakeywords
     
     // Use ?: (elvis operator) to handle empty strings as false, ensuring fallbacks work
-    $title = ($post->meta_title ?: ($post->metatitle ?: $post->title));
+    $title = ($post->meta_title ?: ($post->metatitle ?: ($post->title ?? $post->name)));
     
     // For description, prioritize meta descriptions, then excerpt, then limit content
-    $rawDescription = ($post->meta_description ?: ($post->metadescription ?: ($post->excerpt ?: ($post->description ?? ''))));
+    $rawDescription = ($post->meta_description ?: ($post->metadescription ?: ($post->excerpt ?: ($post->tagline ?: ($post->description ?? '')))));
     $description = Str::limit(strip_tags($rawDescription), 160);
     
     $keywords = ($post->meta_keywords ?: ($post->metakeywords ?: ''));
     
     // Handle image URL
-    // Both Post and Publication models have getFeatureImageUrlAttribute accessor
-    $image = $post->feature_image_url ?: asset('images/default-og-image.jpg');
+    // Post/Publication models use feature_image_url, Team uses image_url
+    $image = $post->feature_image_url ?: ($post->image_url ?: asset('images/default-og-image.jpg'));
     
     $url = request()->url();
     $siteName = config('app.name', 'Professional Law Organization');

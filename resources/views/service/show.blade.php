@@ -11,6 +11,13 @@
             margin-left: 0 !important;
         }
 
+        #content-wrapper .fullscreen-layout h1 {
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+        }
+
         #content-wrapper .fullscreen-layout h2 {
             margin-top: 1.5rem !important;
             margin-bottom: 0.5rem !important;
@@ -45,6 +52,12 @@
                 margin-left: 12px !important;
             }
 
+            #content-wrapper .fullscreen-layout h1 {
+                margin-top: 8px !important;
+                margin-bottom: 0px !important;
+                font-size: 22px !important;
+            }
+
             #content-wrapper .fullscreen-layout h2 {
                 margin-top: 8px !important;
                 margin-bottom: 0px !important;
@@ -61,6 +74,10 @@
         }
         
         @media (max-width: 767px) {
+             #content-wrapper .fullscreen-layout h1 {
+                font-size: 1.25rem !important;
+                color: #108fcc !important;
+            }
              #content-wrapper .fullscreen-layout h2 {
                 font-size: 1.25rem !important;
                 color: #108fcc !important;
@@ -110,8 +127,8 @@
                 <div class="max-w-7xl mx-auto">
                     <!-- Service Content Card -->
                     <div class="bg-white rounded-2xl lg:p-8 p-4 mb-8 shadow-sm border border-gray-100">
-                        <h2 class="text-2xl md:text-3xl font-bold text-[#0f8cca] leading-tight mb-4">
-                            {{ $service->title }}</h2>
+                        <h1 class="text-2xl md:text-3xl font-bold text-[#0f8cca] leading-tight mb-4">
+                            {{ $service->title }}</h1>
                         <div class="mt-3">
                             @if ($service->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">

@@ -190,7 +190,11 @@
                         </div>
 
                         <div class="text-justify">
-                            {!! $helpDesk->content ?: $helpDesk->description !!}
+                            @if (view()->exists('help-desk.' . $helpDesk->slug))
+                                @include('help-desk.' . $helpDesk->slug)
+                            @else
+                                {!! $helpDesk->content ?: $helpDesk->description !!}
+                            @endif
                         </div>
 
                         <!-- Left-Right Content Sections -->
@@ -455,8 +459,12 @@
                                 @endif
                             </div>
 
-                            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-                                {!! $helpDesk->content ?: $helpDesk->description !!}
+                            <div class="@if(!view()->exists('help-desk.' . $helpDesk->slug)) prose prose-lg max-w-none text-gray-700 leading-relaxed @endif">
+                                @if (view()->exists('help-desk.' . $helpDesk->slug))
+                                    @include('help-desk.' . $helpDesk->slug)
+                                @else
+                                    {!! $helpDesk->content ?: $helpDesk->description !!}
+                                @endif
                             </div>
                             <!-- Left-Right Content Sections -->
                             @if ($leftRightContents && $leftRightContents->count() > 0)

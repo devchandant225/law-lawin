@@ -189,7 +189,7 @@
 
                     <!-- Consultation Banner -->
                     <div
-                        class="mb-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-6 py-12 text-white relative overflow-hidden shadow-xl group">
+                        class="mb-10 mt-10 bg-gradient-to-r from-accent to-secondary rounded-[2rem] px-6 py-12 text-white relative overflow-hidden shadow-xl group">
                         <!-- Background patterns -->
                         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

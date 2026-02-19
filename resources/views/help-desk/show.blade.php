@@ -3,63 +3,7 @@
 @section('head')
     <x-meta-tags :title="$helpDesk->meta_title ?: $helpDesk->title . ' - Legal Help Desk'" :description="$helpDesk->meta_description ?: $helpDesk->excerpt" :keywords="$helpDesk->meta_keywords" :image="$helpDesk->feature_image_url" type="service" :post="$helpDesk" />
     <style>
-        #content-wrapper .fullscreen-layout p {
-            margin-bottom: 6px !important;
-            margin-left: 12px !important;
-        }
 
-        #content-wrapper .fullscreen-layout h2 {
-            margin-top: 8px !important;
-            margin-bottom: 0px !important;
-            font-size: 22px !important;
-        }
-
-        #content-wrapper .fullscreen-layout h3 {
-            margin-bottom: 0px !important;
-            font-size: 500 !important;
-            font-size: 18px !important;
-        }
-
-        #content-wrapper .fullscreen-layout ol {
-            padding-left: 16px !important;
-            list-style-type: disc;
-            margin-left: 16px;
-        }
-
-        #content-wrapper .fullscreen-layout ul {
-            padding-left: 16px !important;
-            list-style-type: disc;
-            margin-left: 16px;
-        }
-
-        @media and screen (max-width: 768px) {
-            #content-wrapper .fullscreen-layout p {
-                margin-bottom: 6px !important;
-            }
-
-            #content-wrapper .fullscreen-layout h2 {
-                margin-bottom: 0px !important;
-                font-size: 16px !important;
-                color: #108fcc !important;
-            }
-
-            #content-wrapper .fullscreen-layout h3 {
-                margin-bottom: 0px !important;
-                font-size: 500 !important;
-                font-size: 12px !important;
-                color: #108fcc !important;
-            }
-
-            #content-wrapper .fullscreen-layout ol {
-                padding-left: 16px !important;
-                list-style-type: disc;
-            }
-
-            #content-wrapper .fullscreen-layout ul {
-                padding-left: 16px !important;
-                list-style-type: disc;
-            }
-        }
 
         /* FAQ Custom Transitions */
         .faq-answer {

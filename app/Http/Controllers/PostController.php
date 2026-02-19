@@ -107,6 +107,10 @@ class PostController extends Controller
         $posts = $query->latest()->paginate(12);
         $types = ['service', 'practice', 'news', 'blog', 'help_desk'];
 
+        if ($type === 'help_desk') {
+            return view('help-desk.index', compact('posts', 'type', 'types'));
+        }
+
         return view('posts.by-type', compact('posts', 'type', 'types'));
     }
 }

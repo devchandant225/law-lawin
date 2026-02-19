@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
+@section('meta_tags')
+    <x-detail-meta-tags :post="$helpDesk" />
+@endsection
+
 @section('head')
-    <x-meta-tags :title="$helpDesk->meta_title ?: $helpDesk->title . ' - Legal Help Desk'" :description="$helpDesk->meta_description ?: $helpDesk->excerpt" :keywords="$helpDesk->meta_keywords" :image="$helpDesk->feature_image_url" type="service" :post="$helpDesk" />
     <style>
 
 

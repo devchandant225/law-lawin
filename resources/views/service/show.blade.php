@@ -132,7 +132,7 @@
                         <div class="mt-3">
                             @if ($service->feature_image_url)
                                 <div class="mb-6 rounded-2xl overflow-hidden group">
-                                    <img src="{{ $service->feature_image_url }}" alt="{{ $service->title }}"
+                                    <img src="{{ $service->feature_image_url }}" alt="{{ $service->feature_image_alt ?: $service->title }}"
                                         class="w-full h-[40vh] md:h-[60vh] object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
                             @endif
@@ -354,7 +354,7 @@
                                         class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
                                         @if ($relatedService->feature_image_url)
                                             <img src="{{ $relatedService->feature_image_url }}"
-                                                alt="{{ $relatedService->title }}" class="w-full h-48 object-cover">
+                                                alt="{{ $relatedService->feature_image_alt ?: $relatedService->title }}" class="w-full h-48 object-cover">
                                         @else
                                             <div
                                                 class="w-full h-48 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
@@ -402,7 +402,7 @@
                             <div class="mb-8">
                                 @if ($service->feature_image_url)
                                     <div class="mb-6 rounded-2xl overflow-hidden group">
-                                        <img src="{{ $service->feature_image_url }}" alt="{{ $service->title }}"
+                                        <img src="{{ $service->feature_image_url }}" alt="{{ $service->feature_image_alt ?: $service->title }}"
                                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     </div>
                                 @endif
@@ -533,7 +533,7 @@
                                                 <div class="relative flex-shrink-0">
                                                     @if ($relatedService->feature_image_url)
                                                         <img src="{{ $relatedService->feature_image_url }}"
-                                                            alt="{{ $relatedService->title }}"
+                                                            alt="{{ $relatedService->feature_image_alt ?: $relatedService->title }}"
                                                             class="w-16 h-12 rounded-lg object-cover border-2 border-gray-100 group-hover:border-primary/30 transition-colors">
                                                     @else
                                                         <div

@@ -14,7 +14,7 @@
                                 <a href="{{ route('service.show', $service->slug) }}" class="block w-full h-full">
                                     @if($service->feature_image)
                                         <img src="{{ $service->feature_image_url }}" 
-                                             alt="{{ $service->title }}" 
+                                             alt="{{ $service->feature_image_alt ?: $service->title }}" 
                                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                         <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-blue-900/30 transition-colors duration-500"></div>
                                     @else

@@ -228,6 +228,16 @@
                                             (Max: 2MB). If no image is uploaded, a gradient background will be displayed.</p>
                                     </div>
 
+                                    <div class="mb-3">
+                                        <label for="feature_image_alt" class="block text-sm font-medium text-gray-700 mb-1">Image Alt Text</label>
+                                        <input type="text" id="feature_image_alt" name="feature_image_alt" value="{{ old('feature_image_alt') }}"
+                                               placeholder="SEO friendly alt text"
+                                               class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('feature_image_alt') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror" />
+                                        @error('feature_image_alt')
+                                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+
                                     <!-- Image Preview -->
                                     <div id="image-preview" style="display: none;">
                                         <img id="preview" src="" alt="Preview"

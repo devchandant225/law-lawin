@@ -33,6 +33,7 @@ class PublicationRequest extends FormRequest
             'post_type' => ['required', 'string', Rule::in(['publication', 'more-publication', 'terms-condition', 'privacy-policy', 'cookies-policy'])],
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'feature_image_alt' => 'nullable|string|max:255',
             'google_schema' => 'nullable|string',
         ];
 

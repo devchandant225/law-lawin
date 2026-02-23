@@ -68,6 +68,7 @@ class PostController extends Controller
             'type' => 'required|in:service,practice,news,blog,help_desk',
             'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
+            'feature_image_alt' => 'nullable|string|max:255',
             'icon' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:1024',
             'google_schema' => 'nullable|string',
             'orderposition' => 'nullable|integer|min:0'
@@ -138,6 +139,7 @@ class PostController extends Controller
             'type' => 'required|in:service,practice,news,blog,help_desk',
             'layout' => 'required|in:with_sidebar,fullscreen',
             'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
+            'feature_image_alt' => 'nullable|string|max:255',
             'icon' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:1024',
             'google_schema' => 'nullable|string',
             'orderposition' => 'nullable|integer|min:0'

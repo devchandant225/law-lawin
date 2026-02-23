@@ -30,7 +30,7 @@
                             <div class="more-publication-item__image">
                                 @if ($morePublication->feature_image_url)
                                     <img src="{{ $morePublication->feature_image_url }}"
-                                        alt="{{ $morePublication->title }}">
+                                        alt="{{ $morePublication->feature_image_alt ?: $morePublication->title }}">
                                 @else
                                     <div class="more-publication-placeholder">
                                         <i class="fas fa-file-alt"></i>

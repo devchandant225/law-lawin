@@ -10,7 +10,7 @@ class Publication extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'feature_image', 'description', 'excerpt', 'status', 'post_type', 'orderlist', 'metatitle', 'metadescription', 'metakeywords', 'google_schema'];
+    protected $fillable = ['title', 'slug', 'feature_image', 'feature_image_alt', 'description', 'excerpt', 'status', 'post_type', 'orderlist', 'metatitle', 'metadescription', 'metakeywords', 'google_schema'];
 
     protected $casts = [
         'google_schema' => 'array',

@@ -66,7 +66,7 @@
                     @if($post->feature_image)
                         <div class="h-48 overflow-hidden">
                             <img src="{{ $post->feature_image_url }}" 
-                                 alt="{{ $post->title }}" 
+                                 alt="{{ $post->feature_image_alt ?: $post->title }}" 
                                  class="w-full h-full object-cover hover:scale-105 transition duration-300">
                         </div>
                     @else

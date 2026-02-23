@@ -16,7 +16,7 @@
                                 <a href="{{ route('practice.show', $practice->slug) }}" class="block w-full h-full">
                                     @if($practice->feature_image)
                                         <img src="{{ $practice->feature_image_url }}" 
-                                             alt="{{ $practice->title }}" 
+                                             alt="{{ $practice->feature_image_alt ?: $practice->title }}" 
                                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                     @else
                                         <div class="w-full h-full bg-gradient-to-br from-primary via-secondary to-primary/80 flex items-center justify-center">

@@ -21,6 +21,7 @@ class Post extends Model
         'meta_keywords',
         'status',
         'feature_image',
+        'feature_image_alt',
         'icon',
         'type',
         'layout',

@@ -102,7 +102,7 @@
         @if($post->feature_image)
             <div class="mb-8">
                 <img src="{{ $post->feature_image_url }}" 
-                     alt="{{ $post->title }}" 
+                     alt="{{ $post->feature_image_alt ?: $post->title }}" 
                      class="w-full h-auto rounded-lg shadow-lg">
             </div>
         @endif
@@ -162,7 +162,7 @@
                             @if($relatedPost->feature_image)
                                 <div class="h-40 overflow-hidden">
                                     <img src="{{ $relatedPost->feature_image_url }}" 
-                                         alt="{{ $relatedPost->title }}" 
+                                         alt="{{ $relatedPost->feature_image_alt ?: $relatedPost->title }}" 
                                          class="w-full h-full object-cover hover:scale-105 transition duration-300">
                                 </div>
                             @endif

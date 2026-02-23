@@ -64,7 +64,7 @@
                     <div class="publication-header-card bg-white overflow-hidden">
                         @if ($publication->feature_image_url)
                             <div class="publication-image-wrapper">
-                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}"
+                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->feature_image_alt ?: $publication->title }}"
                                     class="w-full h-[28rem] object-fill publication-feature-image">
                             </div>
                         @else

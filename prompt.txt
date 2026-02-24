@@ -1,0 +1,31 @@
+root@vmi1925599:/home/lawinpartners.com/public_html/lawin-laravel# php artisan migrate
+
+   INFO  Running migrations.
+
+  2026_02_24_000001_update_schema_fields_in_multiple_tables ........................................................................... 1,022ms FAIL
+
+   Illuminate\Database\QueryException
+
+  SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'column `schema_json_ld` to `schema_head`' at line 1 (Connection: mysql, SQL: alter table `meta_tags` rename column `schema_json_ld` to `schema_head`)
+
+  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:829
+    825▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    826▕                 );
+    827▕             }
+    828▕
+  ➜ 829▕             throw new QueryException(
+    830▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    831▕             );
+    832▕         }
+    833▕     }
+
+      +9 vendor frames
+
+  10  database/migrations/2026_02_24_000001_update_schema_fields_in_multiple_tables.php:15
+      Illuminate\Support\Facades\Facade::__callStatic()
+      +24 vendor frames
+
+  35  artisan:35
+      Illuminate\Foundation\Console\Kernel::handle()
+
+root@vmi1925599:/home/lawinpartners.com/public_html/lawin-laravel#

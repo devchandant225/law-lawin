@@ -23,64 +23,8 @@
     $locale = 'en_US'; // Default locale
     
     // Schema
-    $schemaHead = null;
-    $schemaBody = null;
-    
-    // Check for direct schema_head json/array
-    if (!empty($post->schema_head)) {
-         if (is_string($post->schema_head)) {
-             $schemaHead = $post->schema_head;
-         } else {
-             $schemaHead = json_encode($post->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-         }
-    } 
-    // Check for accessor
-    elseif (isset($post->schema_head_json)) {
-        $schemaHead = $post->schema_head_json;
-    }
-    
-    // Check for schema_body
-    if (!empty($post->schema_body)) {
-        if (is_string($post->schema_body)) {
-            $schemaBody = $post->schema_body;
-        } else {
-            $schemaBody = json_encode($post->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        }
-    }
-    
-    // Fallback schema if head is empty
-    if (empty($schemaHead)) {
-         // Determine schema type
-         $schemaType = 'Article'; // Default
-         
-         // Check if it's a Service (Post model with type='service')
-         if (isset($post->type) && $post->type === 'service') {
-             $schemaType = 'Service';
-         }
-         
-         $schemaHead = json_encode([
-            '@context' => 'https://schema.org',
-            '@type' => $schemaType,
-            'name' => $title,
-            'description' => $description,
-            'url' => $url,
-            'image' => $image,
-            'datePublished' => $post->created_at->toISOString(),
-            'dateModified' => $post->updated_at->toISOString(),
-            'author' => [
-                '@type' => 'Organization',
-                'name' => $siteName
-            ],
-            'publisher' => [
-                '@type' => 'Organization',
-                'name' => $siteName,
-                'logo' => [
-                    '@type' => 'ImageObject',
-                    'url' => asset('images/logo.png')
-                ]
-            ]
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-    }
+    $schemaHeadArray = $post->schema_head_json;
+    $schemaBodyArray = $post->schema_body_json;
 @endphp
 
 <title>{{ $title }}</title>
@@ -113,17 +57,19 @@
 <meta name="format-detection" content="telephone=no">
 
 {{-- JSON-LD (Head) --}}
-@if($schemaHead)
+@foreach($schemaHeadArray as $schemaItem)
 <script type="application/ld+json">
-{!! $schemaHead !!}
+{!! is_array($schemaItem) ? json_encode($schemaItem, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaItem !!}
 </script>
-@endif
+@endforeach
 
 {{-- JSON-LD (Body) --}}
-@if($schemaBody)
+@if(count($schemaBodyArray) > 0)
 @push('scripts')
+@foreach($schemaBodyArray as $schemaItem)
 <script type="application/ld+json">
-{!! $schemaBody !!}
+{!! is_array($schemaItem) ? json_encode($schemaItem, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaItem !!}
 </script>
+@endforeach
 @endpush
 @endif

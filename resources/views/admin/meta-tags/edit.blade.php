@@ -94,28 +94,10 @@
 						</div>
 
 						<!-- Schema JSON-LD (Head) -->
-						<div>
-							<label for="schema_head" class="block text-sm font-medium text-gray-700 mb-2">
-								Schema JSON-LD (Head)
-							</label>
-							<textarea name="schema_head" id="schema_head" rows="8" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-mono text-sm @error('schema_head') border-red-300 @enderror" placeholder='{"@context": "https://schema.org", "@type": "WebPage", "name": "Page Name"}'>{{ old('schema_head', $metaTag->schema_head ? json_encode($metaTag->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
-							@error('schema_head')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							<p class="mt-1 text-sm text-gray-500">Structured data for the &lt;head&gt; section (optional)</p>
-						</div>
+						<x-schema-repeater name="schema_head" label="Schema JSON-LD (Head)" :data="$metaTag->schema_head" />
 
 						<!-- Schema JSON-LD (Body) -->
-						<div>
-							<label for="schema_body" class="block text-sm font-medium text-gray-700 mb-2">
-								Schema JSON-LD (Body)
-							</label>
-							<textarea name="schema_body" id="schema_body" rows="8" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-mono text-sm @error('schema_body') border-red-300 @enderror" placeholder='{"@context": "https://schema.org", "@type": "WebPage", "name": "Page Name"}'>{{ old('schema_body', $metaTag->schema_body ? json_encode($metaTag->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
-							@error('schema_body')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							<p class="mt-1 text-sm text-gray-500">Structured data for the end of &lt;body&gt; section (optional)</p>
-						</div>
+						<x-schema-repeater name="schema_body" label="Schema JSON-LD (Body)" :data="$metaTag->schema_body" />
 
 						<!-- Status -->
 						<div>

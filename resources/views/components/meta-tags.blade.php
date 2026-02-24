@@ -66,21 +66,21 @@
     $metaUrl = request()->url();
     
     // Generate Schema.org structured data
-    $schemaHead = null;
-    $schemaBody = null;
+    $schemaHeadArray = [];
+    $schemaBodyArray = [];
 
     if (isset($customSchema)) {
-        $schemaHead = $customSchema;
-    } elseif ($post && $post->schema_head_json) {
-        $schemaHead = $post->schema_head_json;
-        $schemaBody = $post->schema_body_json;
-    } elseif ($dbMetaTag && $dbMetaTag->schema_head) {
-        $schemaHead = json_encode($dbMetaTag->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        $schemaBody = $dbMetaTag->schema_body_json;
+        $schemaHeadArray[] = $customSchema;
+    } elseif ($post && !empty($post->schema_head_json)) {
+        $schemaHeadArray = $post->schema_head_json;
+        $schemaBodyArray = $post->schema_body_json;
+    } elseif ($dbMetaTag && !empty($dbMetaTag->schema_head_json)) {
+        $schemaHeadArray = $dbMetaTag->schema_head_json;
+        $schemaBodyArray = $dbMetaTag->schema_body_json;
     } elseif (isset($schema)) {
-        $schemaHead = $schema;
+        $schemaHeadArray[] = $schema;
     } else {
-        $schemaHead = json_encode([
+        $schemaHeadArray[] = json_encode([
             '@context' => 'https://schema.org',
             '@type' => $type === 'article' ? 'Article' : ($type === 'service' ? 'Service' : 'WebPage'),
             'name' => $metaTitle,
@@ -155,18 +155,20 @@
 @endif
 
 {{-- JSON-LD Structured Data (Head) --}}
-@if($schemaHead)
+@foreach($schemaHeadArray as $schemaItem)
 <script type="application/ld+json">
-{!! $schemaHead !!}
+{!! is_array($schemaItem) ? json_encode($schemaItem, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaItem !!}
 </script>
-@endif
+@endforeach
 
 {{-- JSON-LD Structured Data (Body) --}}
-@if($schemaBody)
+@if(count($schemaBodyArray) > 0)
 @push('scripts')
+@foreach($schemaBodyArray as $schemaItem)
 <script type="application/ld+json">
-{!! $schemaBody !!}
+{!! is_array($schemaItem) ? json_encode($schemaItem, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaItem !!}
 </script>
+@endforeach
 @endpush
 @endif
 

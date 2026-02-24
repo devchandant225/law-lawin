@@ -123,34 +123,16 @@
                             </div>
                         </div>
 
-                        <!-- Schema -->
-                        <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
-                            <div class="px-4 py-3 border-b border-gray-200">
-                                <h5 class="font-semibold text-gray-900">Structured Data (JSON-LD)</h5>
-                            </div>
-                            <div class="p-4 space-y-4">
-                                <div>
-                                    <label for="schema_head" class="block text-sm font-medium text-gray-700 mb-1">Schema JSON (Head)</label>
-                                    <textarea id="schema_head" name="schema_head" rows="6" placeholder="Enter valid JSON-LD schema for <head>"
-                                        class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('schema_head') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('schema_head') }}</textarea>
-                                    @error('schema_head')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
-                                    <p class="mt-1 text-xs text-gray-500">Leave empty to auto-generate based on publication data. <a href="#" onclick="generateSchema()"
-                                            class="text-indigo-600 hover:underline">Generate Sample Schema</a></p>
-                                </div>
-
-                                <div>
-                                    <label for="schema_body" class="block text-sm font-medium text-gray-700 mb-1">Schema JSON (Body)</label>
-                                    <textarea id="schema_body" name="schema_body" rows="6" placeholder="Enter valid JSON-LD schema for end of <body>"
-                                        class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('schema_body') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('schema_body') }}</textarea>
-                                    @error('schema_body')
-                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
-                                    <p class="mt-1 text-xs text-gray-500">Additional structured data for the body section.</p>
-                                </div>
-                            </div>
-                        </div>
+                                                <!-- Schema -->
+                                                <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
+                                                    <div class="px-4 py-3 border-b border-gray-200">
+                                                        <h5 class="font-semibold text-gray-900">Structured Data (JSON-LD)</h5>
+                                                    </div>
+                                                    <div class="p-4 space-y-6">
+                                                        <x-schema-repeater name="schema_head" label="Schema JSON-LD (Head)" />
+                                                        <x-schema-repeater name="schema_body" label="Schema JSON-LD (Body)" />
+                                                    </div>
+                                                </div>
                     </div>
 
                     <!-- Sidebar -->
@@ -289,33 +271,6 @@
 
         // Preview uploaded image
         function previewImage(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('preview').src = e.target.result;
-                    document.getElementById('image-preview').style.display = 'block';
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // Generate sample schema
-        function generateSchema() {
-            const title = document.getElementById('title').value || 'Your Publication Title';
-            const description = document.getElementById('excerpt').value || 'Your publication excerpt';
-
-            const schema = {
-                "@context": "https://schema.org",
-                "@type": "Article",
-                "name": title,
-                "description": description,
-                "url": window.location.origin + "/publications/your-slug",
-                "datePublished": new Date().toISOString(),
-                "dateModified": new Date().toISOString()
-            };
-
-            document.getElementById('schema_head').value = JSON.stringify(schema, null, 2);
-        }
            CKEDITOR.replace('description', {
             filebrowserUploadUrl: "{{ 'https://lawinpartners.joomni.com/admin/upload_editor_image?_token=' . csrf_token() }}",
             filebrowserUploadMethod: 'form'

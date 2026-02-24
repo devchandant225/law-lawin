@@ -56,13 +56,13 @@ class MetaTagController extends Controller
             $validated['image'] = $request->file('image')->store('meta-tags', 'public');
         }
         
-        // Parse JSON-LD if provided
-        if ($request->filled('schema_head')) {
-            $validated['schema_head'] = json_decode($request->schema_head, true);
+        // Parse JSON-LD if provided (repeater arrays)
+        if ($request->has('schema_head')) {
+            $validated['schema_head'] = array_filter($request->schema_head);
         }
         
-        if ($request->filled('schema_body')) {
-            $validated['schema_body'] = json_decode($request->schema_body, true);
+        if ($request->has('schema_body')) {
+            $validated['schema_body'] = array_filter($request->schema_body);
         }
         
         $validated['is_active'] = $request->has('is_active');
@@ -120,15 +120,15 @@ class MetaTagController extends Controller
             $validated['image'] = $request->file('image')->store('meta-tags', 'public');
         }
         
-        // Parse JSON-LD if provided
-        if ($request->filled('schema_head')) {
-            $validated['schema_head'] = json_decode($request->schema_head, true);
+        // Parse JSON-LD if provided (repeater arrays)
+        if ($request->has('schema_head')) {
+            $validated['schema_head'] = array_filter($request->schema_head);
         } else {
             $validated['schema_head'] = null;
         }
 
-        if ($request->filled('schema_body')) {
-            $validated['schema_body'] = json_decode($request->schema_body, true);
+        if ($request->has('schema_body')) {
+            $validated['schema_body'] = array_filter($request->schema_body);
         } else {
             $validated['schema_body'] = null;
         }

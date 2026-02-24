@@ -34,8 +34,10 @@ class PublicationRequest extends FormRequest
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'feature_image_alt' => 'nullable|string|max:255',
-            'schema_head' => 'nullable|string',
-            'schema_body' => 'nullable|string',
+            'schema_head' => 'nullable|array',
+            'schema_head.*' => 'nullable|string',
+            'schema_body' => 'nullable|array',
+            'schema_body.*' => 'nullable|string',
         ];
 
         // Handle slug validation for create and update
@@ -99,12 +101,12 @@ class PublicationRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        // Remove empty schemas to avoid validation issues
-        if ($this->has('schema_head') && empty(trim($this->schema_head))) {
-            $this->merge(['schema_head' => null]);
+        // Sanitize repeater arrays
+        if ($this->has('schema_head') && is_array($this->schema_head)) {
+            $this->merge(['schema_head' => array_filter($this->schema_head)]);
         }
-        if ($this->has('schema_body') && empty(trim($this->schema_body))) {
-            $this->merge(['schema_body' => null]);
+        if ($this->has('schema_body') && is_array($this->schema_body)) {
+            $this->merge(['schema_body' => array_filter($this->schema_body)]);
         }
 
         // Set default orderlist if not provided
@@ -117,19 +119,27 @@ class PublicationRequest extends FormRequest
             $this->merge(['post_type' => (string) trim($this->post_type)]);
         }
 
-        // Validate JSON format if schema_head is provided
-        if ($this->filled('schema_head')) {
-            $decoded = json_decode($this->schema_head, true);
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->merge(['schema_head' => 'invalid_json']);
+        // Validate JSON format for each item in schema_head
+        if ($this->filled('schema_head') && is_array($this->schema_head)) {
+            foreach ($this->schema_head as $index => $json) {
+                if (!empty($json)) {
+                    json_decode($json);
+                    if (json_last_error() !== JSON_ERROR_NONE) {
+                        $this->merge(["schema_head.{$index}" => 'invalid_json']);
+                    }
+                }
             }
         }
 
-        // Validate JSON format if schema_body is provided
-        if ($this->filled('schema_body')) {
-            $decoded = json_decode($this->schema_body, true);
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->merge(['schema_body' => 'invalid_json']);
+        // Validate JSON format for each item in schema_body
+        if ($this->filled('schema_body') && is_array($this->schema_body)) {
+            foreach ($this->schema_body as $index => $json) {
+                if (!empty($json)) {
+                    json_decode($json);
+                    if (json_last_error() !== JSON_ERROR_NONE) {
+                        $this->merge(["schema_body.{$index}" => 'invalid_json']);
+                    }
+                }
             }
         }
     }

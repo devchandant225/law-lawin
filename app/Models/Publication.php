@@ -14,6 +14,7 @@ class Publication extends Model
 
     protected $casts = [
         'schema_head' => 'array',
+        'schema_body' => 'array',
         'orderlist' => 'integer',
     ];
 
@@ -110,29 +111,25 @@ class Publication extends Model
     }
 
     /**
-     * Get formatted Schema Head as JSON-LD.
+     * Get array of Schema Head JSON-LD strings.
      */
     public function getSchemaHeadJsonAttribute()
     {
         if (empty($this->schema_head)) {
-            return $this->generateDefaultSchema();
+            return [$this->generateDefaultSchema()];
         }
-        return is_array($this->schema_head) 
-            ? json_encode($this->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
-            : $this->schema_head;
+        return is_array($this->schema_head) ? $this->schema_head : [$this->schema_head];
     }
 
     /**
-     * Get formatted Schema Body as JSON-LD.
+     * Get array of Schema Body JSON-LD strings.
      */
     public function getSchemaBodyJsonAttribute()
     {
         if (empty($this->schema_body)) {
-            return null;
+            return [];
         }
-        return is_array($this->schema_body)
-            ? json_encode($this->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
-            : $this->schema_body;
+        return is_array($this->schema_body) ? $this->schema_body : [$this->schema_body];
     }
 
     /**

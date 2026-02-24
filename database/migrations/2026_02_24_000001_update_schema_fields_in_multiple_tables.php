@@ -10,15 +10,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
         // Update meta_tags table
         Schema::table('meta_tags', function (Blueprint $table) {
             if (!Schema::hasColumn('meta_tags', 'schema_head')) {
                 $table->json('schema_head')->nullable()->after('image');
             }
             if (!Schema::hasColumn('meta_tags', 'schema_body')) {
-                $table->text('schema_body')->nullable()->after('is_active');
+                $table->json('schema_body')->nullable()->after('is_active');
             }
         });
 
@@ -39,7 +37,7 @@ return new class extends Migration
                 $table->json('schema_head')->nullable()->after('layout');
             }
             if (!Schema::hasColumn('posts', 'schema_body')) {
-                $table->text('schema_body')->nullable()->after('schema_head');
+                $table->json('schema_body')->nullable()->after('schema_head');
             }
         });
 
@@ -60,7 +58,7 @@ return new class extends Migration
                 $table->json('schema_head')->nullable()->after('metakeywords');
             }
             if (!Schema::hasColumn('publications', 'schema_body')) {
-                $table->text('schema_body')->nullable()->after('schema_head');
+                $table->json('schema_body')->nullable()->after('schema_head');
             }
         });
 

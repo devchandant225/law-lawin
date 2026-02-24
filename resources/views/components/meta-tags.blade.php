@@ -66,17 +66,21 @@
     $metaUrl = request()->url();
     
     // Generate Schema.org structured data
-    $schemaData = null;
+    $schemaHead = null;
+    $schemaBody = null;
+
     if (isset($customSchema)) {
-        $schemaData = $customSchema;
-    } elseif ($post && $post->google_schema_json) {
-        $schemaData = $post->google_schema_json;
-    } elseif ($dbMetaTag && $dbMetaTag->schema_json_ld) {
-        $schemaData = json_encode($dbMetaTag->schema_json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $schemaHead = $customSchema;
+    } elseif ($post && $post->schema_head_json) {
+        $schemaHead = $post->schema_head_json;
+        $schemaBody = $post->schema_body_json;
+    } elseif ($dbMetaTag && $dbMetaTag->schema_head) {
+        $schemaHead = json_encode($dbMetaTag->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $schemaBody = $dbMetaTag->schema_body_json;
     } elseif (isset($schema)) {
-        $schemaData = $schema;
+        $schemaHead = $schema;
     } else {
-        $schemaData = json_encode([
+        $schemaHead = json_encode([
             '@context' => 'https://schema.org',
             '@type' => $type === 'article' ? 'Article' : ($type === 'service' ? 'Service' : 'WebPage'),
             'name' => $metaTitle,
@@ -150,10 +154,21 @@
     <meta property="product:condition" content="new">
 @endif
 
-{{-- JSON-LD Structured Data --}}
+{{-- JSON-LD Structured Data (Head) --}}
+@if($schemaHead)
 <script type="application/ld+json">
-{!! $schemaData !!}
+{!! $schemaHead !!}
 </script>
+@endif
+
+{{-- JSON-LD Structured Data (Body) --}}
+@if($schemaBody)
+@push('scripts')
+<script type="application/ld+json">
+{!! $schemaBody !!}
+</script>
+@endpush
+@endif
 
 {{-- Preload critical resources --}}
 <link rel="preload" href="{{ asset('css/app.css') }}" as="style">

@@ -40,7 +40,8 @@ class MetaTagController extends Controller
             'desc' => 'nullable|string|max:500',
             'keyword' => 'nullable|string|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'schema_json_ld' => 'nullable|json',
+            'schema_head' => 'nullable|string',
+            'schema_body' => 'nullable|string',
             'page_type' => [
                 'required',
                 'string',
@@ -56,8 +57,12 @@ class MetaTagController extends Controller
         }
         
         // Parse JSON-LD if provided
-        if ($request->filled('schema_json_ld')) {
-            $validated['schema_json_ld'] = json_decode($request->schema_json_ld, true);
+        if ($request->filled('schema_head')) {
+            $validated['schema_head'] = json_decode($request->schema_head, true);
+        }
+        
+        if ($request->filled('schema_body')) {
+            $validated['schema_body'] = json_decode($request->schema_body, true);
         }
         
         $validated['is_active'] = $request->has('is_active');
@@ -95,7 +100,8 @@ class MetaTagController extends Controller
             'desc' => 'nullable|string|max:500',
             'keyword' => 'nullable|string|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'schema_json_ld' => 'nullable|json',
+            'schema_head' => 'nullable|string',
+            'schema_body' => 'nullable|string',
             'page_type' => [
                 'required',
                 'string',
@@ -115,10 +121,16 @@ class MetaTagController extends Controller
         }
         
         // Parse JSON-LD if provided
-        if ($request->filled('schema_json_ld')) {
-            $validated['schema_json_ld'] = json_decode($request->schema_json_ld, true);
+        if ($request->filled('schema_head')) {
+            $validated['schema_head'] = json_decode($request->schema_head, true);
         } else {
-            $validated['schema_json_ld'] = null;
+            $validated['schema_head'] = null;
+        }
+
+        if ($request->filled('schema_body')) {
+            $validated['schema_body'] = json_decode($request->schema_body, true);
+        } else {
+            $validated['schema_body'] = null;
         }
         
         $validated['is_active'] = $request->has('is_active');

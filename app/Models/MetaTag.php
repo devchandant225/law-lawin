@@ -14,15 +14,42 @@ class MetaTag extends Model
         'desc',
         'keyword',
         'image',
-        'schema_json_ld',
+        'schema_head',
+        'schema_body',
         'page_type',
         'is_active'
     ];
     
     protected $casts = [
-        'schema_json_ld' => 'array',
+        'schema_head' => 'array',
         'is_active' => 'boolean'
     ];
+
+    /**
+     * Get formatted Schema Head as JSON-LD.
+     */
+    public function getSchemaHeadJsonAttribute()
+    {
+        if (empty($this->schema_head)) {
+            return null;
+        }
+        return is_array($this->schema_head) 
+            ? json_encode($this->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+            : $this->schema_head;
+    }
+
+    /**
+     * Get formatted Schema Body as JSON-LD.
+     */
+    public function getSchemaBodyJsonAttribute()
+    {
+        if (empty($this->schema_body)) {
+            return null;
+        }
+        return is_array($this->schema_body)
+            ? json_encode($this->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+            : $this->schema_body;
+    }
     
     /**
      * Scope to get active meta tags

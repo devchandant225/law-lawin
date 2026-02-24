@@ -93,16 +93,28 @@
 							<p class="mt-1 text-sm text-gray-500">Recommended: 1200x630px, max 2MB (Leave empty to keep current image)</p>
 						</div>
 
-						<!-- Schema JSON-LD -->
+						<!-- Schema JSON-LD (Head) -->
 						<div>
-							<label for="schema_json_ld" class="block text-sm font-medium text-gray-700 mb-2">
-								Schema JSON-LD
+							<label for="schema_head" class="block text-sm font-medium text-gray-700 mb-2">
+								Schema JSON-LD (Head)
 							</label>
-							<textarea name="schema_json_ld" id="schema_json_ld" rows="8" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-mono text-sm @error('schema_json_ld') border-red-300 @enderror" placeholder='{"@context": "https://schema.org", "@type": "WebPage", "name": "Page Name"}'>{{ old('schema_json_ld', $metaTag->schema_json_ld ? json_encode($metaTag->schema_json_ld, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
-							@error('schema_json_ld')
+							<textarea name="schema_head" id="schema_head" rows="8" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-mono text-sm @error('schema_head') border-red-300 @enderror" placeholder='{"@context": "https://schema.org", "@type": "WebPage", "name": "Page Name"}'>{{ old('schema_head', $metaTag->schema_head ? json_encode($metaTag->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
+							@error('schema_head')
 								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
 							@enderror
-							<p class="mt-1 text-sm text-gray-500">Valid JSON-LD structured data (optional)</p>
+							<p class="mt-1 text-sm text-gray-500">Structured data for the &lt;head&gt; section (optional)</p>
+						</div>
+
+						<!-- Schema JSON-LD (Body) -->
+						<div>
+							<label for="schema_body" class="block text-sm font-medium text-gray-700 mb-2">
+								Schema JSON-LD (Body)
+							</label>
+							<textarea name="schema_body" id="schema_body" rows="8" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-mono text-sm @error('schema_body') border-red-300 @enderror" placeholder='{"@context": "https://schema.org", "@type": "WebPage", "name": "Page Name"}'>{{ old('schema_body', $metaTag->schema_body ? json_encode($metaTag->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
+							@error('schema_body')
+								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+							@enderror
+							<p class="mt-1 text-sm text-gray-500">Structured data for the end of &lt;body&gt; section (optional)</p>
 						</div>
 
 						<!-- Status -->
@@ -149,20 +161,25 @@ document.getElementById('desc').addEventListener('input', function() {
 	updateCharCount('desc', 'desc-count');
 });
 
-// JSON validation for schema field
-document.getElementById('schema_json_ld').addEventListener('blur', function() {
-	const value = this.value.trim();
-	if (value) {
-		try {
-			JSON.parse(value);
-			this.classList.remove('border-red-300');
-			this.classList.add('border-green-300');
-		} catch (e) {
-			this.classList.remove('border-green-300');
-			this.classList.add('border-red-300');
-		}
-	} else {
-		this.classList.remove('border-red-300', 'border-green-300');
+// JSON validation for schema fields
+['schema_head', 'schema_body'].forEach(id => {
+	const element = document.getElementById(id);
+	if (element) {
+		element.addEventListener('blur', function() {
+			const value = this.value.trim();
+			if (value) {
+				try {
+					JSON.parse(value);
+					this.classList.remove('border-red-300');
+					this.classList.add('border-green-300');
+				} catch (e) {
+					this.classList.remove('border-green-300');
+					this.classList.add('border-red-300');
+				}
+			} else {
+				this.classList.remove('border-red-300', 'border-green-300');
+			}
+		});
 	}
 });
 </script>

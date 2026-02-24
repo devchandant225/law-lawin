@@ -34,7 +34,8 @@ class PublicationRequest extends FormRequest
             'orderlist' => 'nullable|integer|min:0|max:9999',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'feature_image_alt' => 'nullable|string|max:255',
-            'google_schema' => 'nullable|string',
+            'schema_head' => 'nullable|string',
+            'schema_body' => 'nullable|string',
         ];
 
         // Handle slug validation for create and update
@@ -86,7 +87,8 @@ class PublicationRequest extends FormRequest
             'metadescription' => 'meta description',
             'metakeywords' => 'meta keywords',
             'feature_image' => 'feature image',
-            'google_schema' => 'Google Schema',
+            'schema_head' => 'Schema (Head)',
+            'schema_body' => 'Schema (Body)',
             'orderlist' => 'order list',
             'post_type' => 'post type',
         ];
@@ -97,9 +99,12 @@ class PublicationRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        // Remove empty google_schema to avoid validation issues
-        if ($this->has('google_schema') && empty(trim($this->google_schema))) {
-            $this->merge(['google_schema' => null]);
+        // Remove empty schemas to avoid validation issues
+        if ($this->has('schema_head') && empty(trim($this->schema_head))) {
+            $this->merge(['schema_head' => null]);
+        }
+        if ($this->has('schema_body') && empty(trim($this->schema_body))) {
+            $this->merge(['schema_body' => null]);
         }
 
         // Set default orderlist if not provided
@@ -112,11 +117,19 @@ class PublicationRequest extends FormRequest
             $this->merge(['post_type' => (string) trim($this->post_type)]);
         }
 
-        // Validate JSON format if google_schema is provided
-        if ($this->filled('google_schema')) {
-            $decoded = json_decode($this->google_schema, true);
+        // Validate JSON format if schema_head is provided
+        if ($this->filled('schema_head')) {
+            $decoded = json_decode($this->schema_head, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->merge(['google_schema' => 'invalid_json']);
+                $this->merge(['schema_head' => 'invalid_json']);
+            }
+        }
+
+        // Validate JSON format if schema_body is provided
+        if ($this->filled('schema_body')) {
+            $decoded = json_decode($this->schema_body, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->merge(['schema_body' => 'invalid_json']);
             }
         }
     }

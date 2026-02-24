@@ -25,12 +25,13 @@ class Post extends Model
         'icon',
         'type',
         'layout',
-        'google_schema',
+        'schema_head',
+        'schema_body',
         'orderposition'
     ];
 
     protected $casts = [
-        'google_schema' => 'array',
+        'schema_head' => 'array',
         'orderposition' => 'integer',
     ];
 
@@ -135,14 +136,37 @@ class Post extends Model
     }
 
     /**
-     * Get formatted Google Schema as JSON-LD.
+     * Get formatted Schema Head as JSON-LD.
+     */
+    public function getSchemaHeadJsonAttribute()
+    {
+        if (empty($this->schema_head)) {
+            return $this->generateDefaultSchema();
+        }
+        return is_array($this->schema_head) 
+            ? json_encode($this->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+            : $this->schema_head;
+    }
+
+    /**
+     * Get formatted Schema Body as JSON-LD.
+     */
+    public function getSchemaBodyJsonAttribute()
+    {
+        if (empty($this->schema_body)) {
+            return null;
+        }
+        return is_array($this->schema_body)
+            ? json_encode($this->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+            : $this->schema_body;
+    }
+
+    /**
+     * Backward compatibility for google_schema_json
      */
     public function getGoogleSchemaJsonAttribute()
     {
-        if (empty($this->google_schema)) {
-            return $this->generateDefaultSchema();
-        }
-        return json_encode($this->google_schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        return $this->schema_head_json;
     }
 
     /**

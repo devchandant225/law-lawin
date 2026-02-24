@@ -74,13 +74,22 @@ class PublicationController extends Controller
             $validated['feature_image'] = $request->file('feature_image')->store('publications', 'public');
         }
 
-        // Parse Google Schema JSON
-        if ($request->filled('google_schema')) {
-            $decoded = json_decode($validated['google_schema'], true);
+        // Parse Schema JSON
+        if ($request->filled('schema_head')) {
+            $decoded = json_decode($validated['schema_head'], true);
             if (json_last_error() === JSON_ERROR_NONE) {
-                $validated['google_schema'] = $decoded;
+                $validated['schema_head'] = $decoded;
             } else {
-                unset($validated['google_schema']);
+                unset($validated['schema_head']);
+            }
+        }
+
+        if ($request->filled('schema_body')) {
+            $decoded = json_decode($validated['schema_body'], true);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $validated['schema_body'] = $decoded;
+            } else {
+                unset($validated['schema_body']);
             }
         }
 
@@ -132,13 +141,22 @@ class PublicationController extends Controller
             $validated['feature_image'] = $request->file('feature_image')->store('publications', 'public');
         }
 
-        // Parse Google Schema JSON
-        if ($request->filled('google_schema')) {
-            $decoded = json_decode($validated['google_schema'], true);
+        // Parse Schema JSON
+        if ($request->filled('schema_head')) {
+            $decoded = json_decode($validated['schema_head'], true);
             if (json_last_error() === JSON_ERROR_NONE) {
-                $validated['google_schema'] = $decoded;
+                $validated['schema_head'] = $decoded;
             } else {
-                unset($validated['google_schema']);
+                unset($validated['schema_head']);
+            }
+        }
+
+        if ($request->filled('schema_body')) {
+            $decoded = json_decode($validated['schema_body'], true);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $validated['schema_body'] = $decoded;
+            } else {
+                unset($validated['schema_body']);
             }
         }
 

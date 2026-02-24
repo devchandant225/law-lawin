@@ -23,23 +23,33 @@
     $locale = 'en_US'; // Default locale
     
     // Schema
-    $schemaData = null;
+    $schemaHead = null;
+    $schemaBody = null;
     
-    // Check for direct google_schema json/array
-    if (!empty($post->google_schema)) {
-         if (is_string($post->google_schema)) {
-             $schemaData = $post->google_schema;
+    // Check for direct schema_head json/array
+    if (!empty($post->schema_head)) {
+         if (is_string($post->schema_head)) {
+             $schemaHead = $post->schema_head;
          } else {
-             $schemaData = json_encode($post->google_schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+             $schemaHead = json_encode($post->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
          }
     } 
     // Check for accessor
-    elseif (isset($post->google_schema_json)) {
-        $schemaData = $post->google_schema_json;
+    elseif (isset($post->schema_head_json)) {
+        $schemaHead = $post->schema_head_json;
     }
     
-    // Fallback schema if empty
-    if (empty($schemaData)) {
+    // Check for schema_body
+    if (!empty($post->schema_body)) {
+        if (is_string($post->schema_body)) {
+            $schemaBody = $post->schema_body;
+        } else {
+            $schemaBody = json_encode($post->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        }
+    }
+    
+    // Fallback schema if head is empty
+    if (empty($schemaHead)) {
          // Determine schema type
          $schemaType = 'Article'; // Default
          
@@ -48,7 +58,7 @@
              $schemaType = 'Service';
          }
          
-         $schemaData = json_encode([
+         $schemaHead = json_encode([
             '@context' => 'https://schema.org',
             '@type' => $schemaType,
             'name' => $title,
@@ -102,7 +112,18 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
 
-{{-- JSON-LD --}}
+{{-- JSON-LD (Head) --}}
+@if($schemaHead)
 <script type="application/ld+json">
-{!! $schemaData !!}
+{!! $schemaHead !!}
 </script>
+@endif
+
+{{-- JSON-LD (Body) --}}
+@if($schemaBody)
+@push('scripts')
+<script type="application/ld+json">
+{!! $schemaBody !!}
+</script>
+@endpush
+@endif

@@ -153,23 +153,31 @@
                             </div>
                         </div>
 
-                        <!-- Google Schema -->
+                        <!-- Schema -->
                         <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
                             <div class="px-4 py-3 border-b border-gray-200">
-                                <h5 class="font-semibold text-gray-900">Google Schema (JSON-LD)</h5>
+                                <h5 class="font-semibold text-gray-900">Structured Data (JSON-LD)</h5>
                             </div>
-                            <div class="p-4">
+                            <div class="p-4 space-y-4">
                                 <div>
-                                    <label for="google_schema" class="block text-sm font-medium text-gray-700 mb-1">Schema
-                                        JSON</label>
-                                    <textarea id="google_schema" name="google_schema" rows="8" placeholder="Enter valid JSON-LD schema"
-                                        class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('google_schema') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('google_schema', $publication->google_schema ? json_encode($publication->google_schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
-                                    @error('google_schema')
+                                    <label for="schema_head" class="block text-sm font-medium text-gray-700 mb-1">Schema JSON (Head)</label>
+                                    <textarea id="schema_head" name="schema_head" rows="6" placeholder="Enter valid JSON-LD schema for <head>"
+                                        class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('schema_head') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('schema_head', $publication->schema_head ? json_encode($publication->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
+                                    @error('schema_head')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
-                                    <p class="mt-1 text-xs text-gray-500">Leave empty to auto-generate based on publication
-                                        data. <a href="#" onclick="generateSchema()"
+                                    <p class="mt-1 text-xs text-gray-500">Leave empty to auto-generate based on publication data. <a href="#" onclick="generateSchema()"
                                             class="text-indigo-600 hover:underline">Generate Sample Schema</a></p>
+                                </div>
+
+                                <div>
+                                    <label for="schema_body" class="block text-sm font-medium text-gray-700 mb-1">Schema JSON (Body)</label>
+                                    <textarea id="schema_body" name="schema_body" rows="6" placeholder="Enter valid JSON-LD schema for end of <body>"
+                                        class="block w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 @error('schema_body') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('schema_body', $publication->schema_body ? json_encode($publication->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : '') }}</textarea>
+                                    @error('schema_body')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                    <p class="mt-1 text-xs text-gray-500">Additional structured data for the body section.</p>
                                 </div>
                             </div>
                         </div>
@@ -381,7 +389,7 @@
                 "dateModified": new Date().toISOString()
             };
 
-            document.getElementById('google_schema').value = JSON.stringify(schema, null, 2);
+            document.getElementById('schema_head').value = JSON.stringify(schema, null, 2);
         }
 
         // Remove current image

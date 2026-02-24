@@ -37,34 +37,123 @@
     </section>
 
     <!-- Services Section -->
-    <section class="py-10 border-y border-gray-100">
-        <h2 class="text-2xl font-bold text-primary mb-8">Top Criminal Lawyers Defense Services</h2>
-        <div class="space-y-10">
-            <div>
-                <h3 class="text-xl font-bold text-accent mb-4">Serious Crimes</h3>
-                <ul class="grid md:grid-cols-2 gap-3">
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Homicide and Murder</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Violent Offenses</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Kidnapping</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Sexual Offenses</li>
+    <section class="py-12 border-y border-gray-100">
+        <h2 class="text-3xl font-bold text-primary mb-10 text-left">Top Criminal Lawyers Defense Services</h2>
+        <div class="grid grid-cols-1 gap-12">
+            <div class="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent">
+                        <i class="fas fa-gavel text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Serious Crimes</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-accent mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Homicide and Murder</span>
+                            <p class="text-gray-600 text-sm mt-1">Full-scale defense for complex criminal investigations and trials.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-accent mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Violent Offenses</span>
+                            <p class="text-gray-600 text-sm mt-1">Strategic representation for assault, battery, and other physical allegations.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-accent mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Kidnapping</span>
+                            <p class="text-gray-600 text-sm mt-1">Rigorous legal intervention for abduction and related criminal charges.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-accent mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Sexual Offenses</span>
+                            <p class="text-gray-600 text-sm mt-1">Discreet and high-caliber defense for sensitive criminal matters.</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
-            <div>
-                <h3 class="text-xl font-bold text-accent mb-4">Financial Crimes</h3>
-                <ul class="grid md:grid-cols-2 gap-3">
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Fraud & Forgery</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Money Laundering</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Banking Offenses</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-chevron-right text-xs text-accent"></i> Hundi & Foreign Exchange</li>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Financial Crimes</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-primary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Fraud & Forgery</span>
+                            <p class="text-gray-600 text-sm mt-1">Expert handling of white-collar crime investigations and document verification.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-primary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Money Laundering</span>
+                            <p class="text-gray-600 text-sm mt-1">Defending against allegations of illicit financial transactions and compliance issues.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-primary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Banking Offenses</span>
+                            <p class="text-gray-600 text-sm mt-1">Legal support for cheque bounce, credit card fraud, and institutional violations.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-primary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Hundi & Foreign Exchange</span>
+                            <p class="text-gray-600 text-sm mt-1">Defense against violations of the Foreign Exchange (Regulation) Act.</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
-            <div>
-                <h3 class="text-xl font-bold text-accent mb-4">Cyber & Drugs</h3>
-                <ul class="grid md:grid-cols-2 gap-3">
-                    <li class="fas fa-chevron-right text-xs text-accent flex items-center gap-2">Cyber Crimes</li>
-                    <li class="fas fa-chevron-right text-xs text-accent flex items-center gap-2">Narcotics Possession</li>
-                    <li class="fas fa-chevron-right text-xs text-accent flex items-center gap-2">Drug Trafficking</li>
-                    <li class="fas fa-chevron-right text-xs text-accent flex items-center gap-2">Digital Fraud</li>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Cyber & Drugs</h3>
+                </div>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-secondary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Cyber Crimes</span>
+                            <p class="text-gray-600 text-sm mt-1">Defense for digital defamation, hacking, and online identity theft.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-secondary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Narcotics Possession</span>
+                            <p class="text-gray-600 text-sm mt-1">Representation for drug-related arrests focusing on procedural flaws.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-secondary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Drug Trafficking</span>
+                            <p class="text-gray-600 text-sm mt-1">Comprehensive legal strategy for high-stakes narcotics distribution cases.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3 text-lg">
+                        <i class="fas fa-check-circle text-secondary mt-1.5"></i>
+                        <div>
+                            <span class="font-bold text-gray-900">Digital Fraud</span>
+                            <p class="text-gray-600 text-sm mt-1">Specialized representation for electronic transaction and social media crimes.</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -55,38 +55,68 @@
     </section>
 
     <!-- Phase 1 -->
-    <section class="py-10 border-y border-gray-100">
-        <h2 class="text-2xl font-bold text-primary mb-8">Phase 1: Pre-Filing Preparation</h2>
-        <div class="space-y-10">
-            <div>
-                <h3 class="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
-                    <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">1</span>
-                    Legal Consultation and advice
-                </h3>
-                <ul class="space-y-2 text-gray-700 list-disc ml-14">
-                    <li>Meet with divorce lawyer in Nepal</li>
-                    <li>Determine divorce type (mutual vs contested)</li>
-                    <li>Understand rights/obligations</li>
+    <section class="py-12 border-y border-gray-100">
+        <h2 class="text-3xl font-bold text-primary mb-10 text-left">Phase 1: Pre-Filing Preparation</h2>
+        <div class="space-y-12">
+            <div class="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary font-bold text-xl">1</div>
+                    <h3 class="text-2xl font-bold text-gray-900">Legal Consultation and Advice</h3>
+                </div>
+                <ul class="space-y-4 ml-2">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-primary mt-1"></i>
+                        <span class="text-gray-700 text-lg">Initial strategy meeting with a dedicated divorce lawyer in Nepal.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-primary mt-1"></i>
+                        <span class="text-gray-700 text-lg">Determining the optimal divorce path: Mutual Consent vs. Contested Litigation.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-primary mt-1"></i>
+                        <span class="text-gray-700 text-lg">Comprehensive briefing on legal rights, child custody, and alimony obligations.</span>
+                    </li>
                 </ul>
             </div>
-            <div>
-                <h3 class="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
-                    <span class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm">2</span>
-                    Required Document Collection
-                </h3>
-                <div class="grid md:grid-cols-2 gap-x-12 gap-y-2 ml-14">
-                    <ul class="space-y-2 text-gray-700 list-disc">
-                        <li>Marriage certificate</li>
-                        <li>Citizenship certificates</li>
-                        <li>Children's birth certificates</li>
-                        <li>Property documents</li>
-                    </ul>
-                    <ul class="space-y-2 text-gray-700 list-disc">
-                        <li>Financial records</li>
-                        <li>Passport photos (4 each)</li>
-                        <li>Witness citizenship copy</li>
-                        <li>Full address of abroad</li>
-                    </ul>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center text-accent font-bold text-xl">2</div>
+                    <h3 class="text-2xl font-bold text-gray-900">Required Document Collection</h3>
+                </div>
+                <div class="grid grid-cols-1 gap-4 ml-2">
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-file-invoice text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Marriage Registration Certificate (Original)</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-id-card text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Citizenship Certificates of both spouses</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-baby text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Children's Birth Certificates & identification</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-home text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Property ownership documents & Land titles (Lalpurja)</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-wallet text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Financial records, bank statements & asset valuations</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-camera text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Passport-sized photographs (4 copies each)</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-users text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Witness identification & contact information</span>
+                    </div>
+                    <div class="flex items-start gap-3 group">
+                        <i class="fas fa-map-marked-alt text-accent mt-1 transition-transform group-hover:scale-110"></i>
+                        <span class="text-gray-700 text-lg font-medium">Full verified address for international summons (if applicable)</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,7 +124,7 @@
 
     <!-- Phase 2 -->
     <section>
-        <h2 class="text-2xl font-bold text-primary mb-8 text-center">Phase 2: Due Process Phase (In Court)</h2>
+        <h2 class="text-3xl font-bold text-primary mb-10 text-left">Phase 2: Due Process Phase (In Court)</h2>
         <div class="space-y-6">
             <div class="flex flex-col md:flex-row border-b border-gray-50 pb-4">
                 <div class="md:w-1/4 font-bold text-primary">Drafting</div>

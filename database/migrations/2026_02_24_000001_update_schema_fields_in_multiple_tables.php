@@ -10,6 +10,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    public function up(): void
+    {
         // Update meta_tags table
         Schema::table('meta_tags', function (Blueprint $table) {
             if (!Schema::hasColumn('meta_tags', 'schema_head')) {

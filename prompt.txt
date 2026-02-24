@@ -1,26 +1,23 @@
-2026_02_24_000001_update_schema_fields_in_multiple_tables ............................................................................... 4ms FAIL
 
-   Illuminate\Database\QueryException
+root@vmi1925599:/home/lawinpartners.com/public_html/lawin-laravel# php artisan migrate:refresh --path=/database/migrations/2026_02_24_000001_update_schema_fields_in_multiple_tables.php
 
-  SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'schema_body' (Connection: mysql, SQL: alter table `meta_tags` add `schema_head` json null after `image`, add `schema_body` text null after `is_active`)
+   ParseError
 
-  at vendor/laravel/framework/src/Illuminate/Database/Connection.php:829
-    825▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
-    826▕                 );
-    827▕             }
-    828▕
-  ➜ 829▕             throw new QueryException(
-    830▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
-    831▕             );
-    832▕         }
-    833▕     }
+  syntax error, unexpected identifier "Schema", expecting "function" or "const"
 
-      +9 vendor frames
+  at database/migrations/2026_02_24_000001_update_schema_fields_in_multiple_tables.php:14
+     10▕     /**
+     11▕      * Run the migrations.
+     12▕      */
+     13▕         // Update meta_tags table
+  ➜  14▕         Schema::table('meta_tags', function (Blueprint $table) {
+     15▕             if (!Schema::hasColumn('meta_tags', 'schema_head')) {
+     16▕                 $table->json('schema_head')->nullable()->after('image');
+     17▕             }
+     18▕             if (!Schema::hasColumn('meta_tags', 'schema_body')) {
 
-  10  database/migrations/2026_02_24_000001_update_schema_fields_in_multiple_tables.php:16
-      Illuminate\Support\Facades\Facade::__callStatic()
-      +35 vendor frames
+      +32 vendor frames
 
-  46  artisan:35
+  33  artisan:35
       Illuminate\Foundation\Console\Kernel::handle()
 

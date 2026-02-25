@@ -35,9 +35,31 @@ class PublicationRequest extends FormRequest
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'feature_image_alt' => 'nullable|string|max:255',
             'schema_head' => 'nullable|array',
-            'schema_head.*' => 'nullable|string',
+            'schema_head.*' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!empty($value)) {
+                        json_decode($value);
+                        if (json_last_error() !== JSON_ERROR_NONE) {
+                            $fail('The ' . $attribute . ' must be a valid JSON string.');
+                        }
+                    }
+                },
+            ],
             'schema_body' => 'nullable|array',
-            'schema_body.*' => 'nullable|string',
+            'schema_body.*' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!empty($value)) {
+                        json_decode($value);
+                        if (json_last_error() !== JSON_ERROR_NONE) {
+                            $fail('The ' . $attribute . ' must be a valid JSON string.');
+                        }
+                    }
+                },
+            ],
         ];
 
         // Handle slug validation for create and update
@@ -46,7 +68,14 @@ class PublicationRequest extends FormRequest
             $rules['slug'] = 'nullable|string|max:255|unique:publications,slug';
         } else {
             // Updating existing publication
-            $publicationId = $this->route('publication') ? $this->route('publication')->id : null;
+            $publication = $this->route('publication');
+            $publicationId = is_object($publication) ? $publication->id : $publication;
+            
+            if (!is_numeric($publicationId) && is_string($publicationId)) {
+                $found = \App\Models\Publication::where('slug', $publicationId)->orWhere('id', $publicationId)->first();
+                $publicationId = $found ? $found->id : null;
+            }
+
             $rules['slug'] = ['nullable', 'string', 'max:255', Rule::unique('publications', 'slug')->ignore($publicationId)];
         }
 
@@ -103,10 +132,10 @@ class PublicationRequest extends FormRequest
     {
         // Sanitize repeater arrays
         if ($this->has('schema_head') && is_array($this->schema_head)) {
-            $this->merge(['schema_head' => array_filter($this->schema_head)]);
+            $this->merge(['schema_head' => array_values(array_filter($this->schema_head))]);
         }
         if ($this->has('schema_body') && is_array($this->schema_body)) {
-            $this->merge(['schema_body' => array_filter($this->schema_body)]);
+            $this->merge(['schema_body' => array_values(array_filter($this->schema_body))]);
         }
 
         // Set default orderlist if not provided
@@ -117,30 +146,6 @@ class PublicationRequest extends FormRequest
         // Ensure post_type is properly sanitized as string
         if ($this->has('post_type')) {
             $this->merge(['post_type' => (string) trim($this->post_type)]);
-        }
-
-        // Validate JSON format for each item in schema_head
-        if ($this->filled('schema_head') && is_array($this->schema_head)) {
-            foreach ($this->schema_head as $index => $json) {
-                if (!empty($json)) {
-                    json_decode($json);
-                    if (json_last_error() !== JSON_ERROR_NONE) {
-                        $this->merge(["schema_head.{$index}" => 'invalid_json']);
-                    }
-                }
-            }
-        }
-
-        // Validate JSON format for each item in schema_body
-        if ($this->filled('schema_body') && is_array($this->schema_body)) {
-            foreach ($this->schema_body as $index => $json) {
-                if (!empty($json)) {
-                    json_decode($json);
-                    if (json_last_error() !== JSON_ERROR_NONE) {
-                        $this->merge(["schema_body.{$index}" => 'invalid_json']);
-                    }
-                }
-            }
         }
     }
 }

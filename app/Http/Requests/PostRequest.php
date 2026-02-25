@@ -38,9 +38,31 @@ class PostRequest extends FormRequest
             'orderposition' => 'nullable|integer|min:0',
             'bottom_description' => 'nullable|string',
             'schema_head' => 'nullable|array',
-            'schema_head.*' => 'nullable|string',
+            'schema_head.*' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!empty($value)) {
+                        json_decode($value);
+                        if (json_last_error() !== JSON_ERROR_NONE) {
+                            $fail('The ' . $attribute . ' must be a valid JSON string.');
+                        }
+                    }
+                },
+            ],
             'schema_body' => 'nullable|array',
-            'schema_body.*' => 'nullable|string'
+            'schema_body.*' => [
+                'nullable',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if (!empty($value)) {
+                        json_decode($value);
+                        if (json_last_error() !== JSON_ERROR_NONE) {
+                            $fail('The ' . $attribute . ' must be a valid JSON string.');
+                        }
+                    }
+                },
+            ],
         ];
 
         // Handle slug validation for create and update
@@ -49,7 +71,15 @@ class PostRequest extends FormRequest
             $rules['slug'] = 'nullable|string|max:255|unique:posts,slug';
         } else {
             // Updating existing post
-            $postId = $this->route('post') ? $this->route('post')->id : null;
+            $post = $this->route('post');
+            $postId = is_object($post) ? $post->id : $post; // Handle both object and slug/id
+            
+            // If we only have the slug/id as string, we might need to find the ID
+            if (!is_numeric($postId) && is_string($postId)) {
+                $foundPost = \App\Models\Post::where('slug', $postId)->orWhere('id', $postId)->first();
+                $postId = $foundPost ? $foundPost->id : null;
+            }
+
             $rules['slug'] = ['nullable', 'string', 'max:255', Rule::unique('posts', 'slug')->ignore($postId)];
         }
 
@@ -102,34 +132,10 @@ class PostRequest extends FormRequest
     {
         // Sanitize repeater arrays
         if ($this->has('schema_head') && is_array($this->schema_head)) {
-            $this->merge(['schema_head' => array_filter($this->schema_head)]);
+            $this->merge(['schema_head' => array_values(array_filter($this->schema_head))]);
         }
         if ($this->has('schema_body') && is_array($this->schema_body)) {
-            $this->merge(['schema_body' => array_filter($this->schema_body)]);
-        }
-
-        // Validate JSON format for each item in schema_head
-        if ($this->filled('schema_head') && is_array($this->schema_head)) {
-            foreach ($this->schema_head as $index => $json) {
-                if (!empty($json)) {
-                    json_decode($json);
-                    if (json_last_error() !== JSON_ERROR_NONE) {
-                        $this->merge(["schema_head.{$index}" => 'invalid_json']);
-                    }
-                }
-            }
-        }
-
-        // Validate JSON format for each item in schema_body
-        if ($this->filled('schema_body') && is_array($this->schema_body)) {
-            foreach ($this->schema_body as $index => $json) {
-                if (!empty($json)) {
-                    json_decode($json);
-                    if (json_last_error() !== JSON_ERROR_NONE) {
-                        $this->merge(["schema_body.{$index}" => 'invalid_json']);
-                    }
-                }
-            }
+            $this->merge(['schema_body' => array_values(array_filter($this->schema_body))]);
         }
     }
 }

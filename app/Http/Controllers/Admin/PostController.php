@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -53,27 +54,9 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:posts,slug',
-            'description' => 'required|string',
-            'bottom_description' => 'nullable|string',
-            'excerpt' => 'nullable|string',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string',
-            'meta_keywords' => 'nullable|string',
-            'status' => 'required|in:active,inactive,draft',
-            'type' => 'required|in:service,practice,news,blog,help_desk',
-            'layout' => 'required|in:with_sidebar,fullscreen',
-            'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
-            'feature_image_alt' => 'nullable|string|max:255',
-            'icon' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:1024',
-            'schema_head' => 'nullable|string',
-            'schema_body' => 'nullable|string',
-            'orderposition' => 'nullable|integer|min:0'
-        ]);
+        $validated = $request->validated();
 
         // Generate slug if not provided
         if (empty($validated['slug'])) {
@@ -90,15 +73,8 @@ class PostController extends Controller
             $validated['icon'] = $request->file('icon')->store('posts/icons', 'public');
         }
 
-        // Handle Schema (Repeater Arrays)
-        if ($request->has('schema_head')) {
-            $validated['schema_head'] = array_filter($request->schema_head);
-        }
-
-        if ($request->has('schema_body')) {
-            $validated['schema_body'] = array_filter($request->schema_body);
-        }
-
+        // Handle Schema (Repeater Arrays) - already filtered in PostRequest
+        
         $post = Post::create($validated);
 
         return redirect()->route('admin.posts.index')
@@ -124,27 +100,9 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('posts', 'slug')->ignore($post->id)],
-            'description' => 'required|string',
-            'bottom_description' => 'nullable|string',
-            'excerpt' => 'nullable|string',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string',
-            'meta_keywords' => 'nullable|string',
-            'status' => 'required|in:active,inactive,draft',
-            'type' => 'required|in:service,practice,news,blog,help_desk',
-            'layout' => 'required|in:with_sidebar,fullscreen',
-            'feature_image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
-            'feature_image_alt' => 'nullable|string|max:255',
-            'icon' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif,svg|max:1024',
-            'schema_head' => 'nullable|string',
-            'schema_body' => 'nullable|string',
-            'orderposition' => 'nullable|integer|min:0'
-        ]);
+        $validated = $request->validated();
 
         // Generate slug if not provided
         if (empty($validated['slug'])) {
@@ -169,14 +127,7 @@ class PostController extends Controller
             $validated['icon'] = $request->file('icon')->store('posts/icons', 'public');
         }
 
-        // Handle Schema (Repeater Arrays)
-        if ($request->has('schema_head')) {
-            $validated['schema_head'] = array_filter($request->schema_head);
-        }
-
-        if ($request->has('schema_body')) {
-            $validated['schema_body'] = array_filter($request->schema_body);
-        }
+        // Handle Schema (Repeater Arrays) - already filtered in PostRequest
 
         $post->update($validated);
 

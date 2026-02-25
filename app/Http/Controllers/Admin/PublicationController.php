@@ -74,14 +74,7 @@ class PublicationController extends Controller
             $validated['feature_image'] = $request->file('feature_image')->store('publications', 'public');
         }
 
-        // Handle Schema (Repeater Arrays)
-        if ($request->has('schema_head')) {
-            $validated['schema_head'] = array_filter($request->schema_head);
-        }
-
-        if ($request->has('schema_body')) {
-            $validated['schema_body'] = array_filter($request->schema_body);
-        }
+        // Handle Schema (Repeater Arrays) - already handled in PublicationRequest
 
         $publication = Publication::create($validated);
 
@@ -131,14 +124,7 @@ class PublicationController extends Controller
             $validated['feature_image'] = $request->file('feature_image')->store('publications', 'public');
         }
 
-        // Handle Schema (Repeater Arrays)
-        if ($request->has('schema_head')) {
-            $validated['schema_head'] = array_filter($request->schema_head);
-        }
-
-        if ($request->has('schema_body')) {
-            $validated['schema_body'] = array_filter($request->schema_body);
-        }
+        // Handle Schema (Repeater Arrays) - already handled in PublicationRequest
 
         $publication->update($validated);
 

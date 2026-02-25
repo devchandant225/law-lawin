@@ -116,7 +116,7 @@
                         <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 mb-8">
                             <div class="relative group">
                                 <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-3xl"></div>
-                                <img src="{{ $page->feature_image_url }}" alt="{{ $page->title }}"
+                                <img src="{{ $page->feature_image_url }}" alt="{{ $page->feature_image_alt ?: $page->title }}"
                                     class="w-full h-96 lg:h-[500px] object-cover rounded-3xl shadow-2xl transform transition-transform duration-700 group-hover:scale-105">
                                 <div class="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent"></div>
                             </div>

@@ -50,6 +50,7 @@ class PortfolioController extends Controller
             'order' => 'required|integer|min:0',
             'status' => 'required|in:active,inactive',
             'image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
+            'image_alt' => 'nullable|string|max:255',
         ]);
 
         // Handle file upload
@@ -89,6 +90,7 @@ class PortfolioController extends Controller
             'order' => 'required|integer|min:0',
             'status' => 'required|in:active,inactive',
             'image' => 'nullable|image|mimes:jpeg,png,webp,jpg,gif|max:2048',
+            'image_alt' => 'nullable|string|max:255',
         ]);
 
         // Handle file upload

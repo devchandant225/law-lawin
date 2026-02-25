@@ -24,7 +24,7 @@
                                     <div class="relative h-60 overflow-hidden rounded-t-2xl">
                                         @if($portfolio->image_url)
                                             <img src="{{ $portfolio->image_url }}" 
-                                                 alt="{{ $portfolio->title }}" 
+                                                 alt="{{ $portfolio->image_alt ?: $portfolio->title }}" 
                                                  class="w-full h-full object-contain">
                                         @else
                                             <div class="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 flex items-center justify-center">

@@ -58,6 +58,17 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
 
+                        <!-- Image Alt Text -->
+                        <div class="mt-4">
+                            <label for="image_alt" class="block text-sm font-medium text-gray-700 mb-2">Image Alt Text</label>
+                            <input type="text" id="image_alt" name="image_alt" value="{{ old('image_alt', $portfolio->image_alt) }}" 
+                                class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary @error('image_alt') border-red-300 @enderror" 
+                                placeholder="Describe the image for SEO">
+                            @error('image_alt')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <!-- Image Preview -->
                         <div id="imagePreview" class="mt-4 hidden">
                             <p class="text-sm font-medium text-gray-700 mb-2">New Preview:</p>

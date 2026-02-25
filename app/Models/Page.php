@@ -17,6 +17,7 @@ class Page extends Model
         'excerpt',
         'description',
         'feature_image',
+        'feature_image_alt',
         'status',
         'metatitle',
         'metadescription',

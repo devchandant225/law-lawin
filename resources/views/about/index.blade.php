@@ -32,7 +32,7 @@
                             <div class="relative {{ $loop->even ? 'order-2 lg:order-1' : 'order-2 lg:order-2' }}">
                                 <div class="relative">
                                     <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
-                                        <img src="{{ asset('storage/' . $content->image1) }}" alt="{{ $content->title }}"
+                                        <img src="{{ asset('storage/' . $content->image1) }}" alt="{{ $content->image1_alt ?: ($content->title ?: 'About Us Image 1') }}"
                                             class="w-full h-[30rem] object-cover rounded">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl pointer-events-none">
@@ -91,7 +91,7 @@
                     @if ($content->image2)
                         <div class="mt-12">
                             <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
-                                <img src="{{ asset('storage/' . $content->image2) }}" alt="{{ $content->title }}"
+                                <img src="{{ asset('storage/' . $content->image2) }}" alt="{{ $content->image2_alt ?: ($content->title ?: 'About Us Image 2') }}"
                                     class="w-full h-[20rem] object-cover rounded">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl pointer-events-none">

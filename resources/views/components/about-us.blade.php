@@ -24,7 +24,7 @@
                         <!-- Image with rounded corners and shadow -->
                         <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
                             <img src="{{ $intro_home->image1 ? asset('storage/' . $intro_home->image1) : asset('images/default-about.jpg') }}"
-                                alt="{{ $intro_home->title ?? 'Legal Services' }}"
+                                alt="{{ $intro_home->image1_alt ?: ($intro_home->title ?? 'Legal Services') }}"
                                 class="w-full h-[30rem] object-cover rounded">
 
                             <!-- Subtle gradient overlay -->
@@ -93,7 +93,7 @@
                         <!-- Image with rounded corners and shadow -->
                         <div class="relative overflow-hidden rounded-xl p-6 sm:p-8 shadow">
                             <img src="{{ $why_choose_home->image1 ? asset('storage/' . $why_choose_home->image1) : asset('images/default-why-choose.jpg') }}"
-                                alt="{{ $why_choose_home->title ?? 'Legal Services' }}"
+                                alt="{{ $why_choose_home->image1_alt ?: ($why_choose_home->title ?? 'Legal Services') }}"
                                 class="w-full h-[30rem] object-cover rounded">
 
                             <!-- Subtle gradient overlay -->

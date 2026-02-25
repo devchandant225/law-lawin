@@ -98,7 +98,7 @@
                                 <div class="text-center md:text-left">
                                     <div class="relative inline-block">
                                         @if ($team->image_url)
-                                            <img src="{{ $team->image_url }}" alt="{{ $team->name }}"
+                                            <img src="{{ $team->image_url }}" alt="{{ $team->image_alt ?: $team->name }}"
                                                 class="w-32 h-48 md:w-40 md:h-56 object-fill rounded-2xl border-4 border-white/30 shadow-2xl group-hover:scale-105 transition-transform duration-300">
                                         @else
                                             <div
@@ -310,7 +310,7 @@
                                             class="group flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-all duration-300 border-l-4 border-transparent hover:border-blue-500">
                                             <div class="relative flex-shrink-0">
                                                 @if ($member->image_url)
-                                                    <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
+                                                    <img src="{{ $member->image_url }}" alt="{{ $member->image_alt ?: $member->name }}"
                                                         class="w-20 h-28 rounded object-cover border-2 border-gray-100 group-hover:border-blue-300 transition-colors">
                                                 @else
                                                     <div

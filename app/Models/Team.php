@@ -18,6 +18,7 @@ class Team extends Model
         'designation',
         'orderlist',
         'image',
+        'image_alt',
         'description',
         'tagline',
         'experience',

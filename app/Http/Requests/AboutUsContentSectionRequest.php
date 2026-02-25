@@ -26,6 +26,8 @@ class AboutUsContentSectionRequest extends FormRequest
             'title' => 'nullable|string|max:255',
             'desc_1' => 'nullable|string',
             'desc_2' => 'nullable|string',
+            'image1_alt' => 'nullable|string|max:255',
+            'image2_alt' => 'nullable|string|max:255',
             'page_type' => 'required|in:' . implode(',', array_keys(AboutUsContentSection::getPageTypeOptions())),
             'status' => 'required|in:' . implode(',', array_keys(AboutUsContentSection::getStatusOptions())),
             'order_list' => 'nullable|integer|min:0'

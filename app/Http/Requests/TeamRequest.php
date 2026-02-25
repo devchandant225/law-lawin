@@ -29,6 +29,7 @@ class TeamRequest extends FormRequest
             'designation' => 'nullable|string|max:255',
             'orderlist' => 'nullable|integer|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image_alt' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'tagline' => 'nullable|string|max:500',
             'experience' => 'nullable|string',

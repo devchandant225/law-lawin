@@ -102,6 +102,16 @@
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                                 <p class="mt-1 text-xs text-gray-500">{{ $aboutUsContent->image1 ? 'Upload a new image to replace the current one' : 'Upload the first image' }}</p>
+
+                                <div class="mt-2">
+                                    <label for="image1_alt" class="block text-sm font-medium text-gray-700 mb-1">Image 1 Alt Text</label>
+                                    <input type="text" id="image1_alt" name="image1_alt" value="{{ old('image1_alt', $aboutUsContent->image1_alt) }}" 
+                                           placeholder="Enter alt text for image 1"
+                                           class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('image1_alt') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">
+                                    @error('image1_alt')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
 
                             <!-- Image 2 -->
@@ -131,6 +141,16 @@
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                                 <p class="mt-1 text-xs text-gray-500">{{ $aboutUsContent->image2 ? 'Upload a new image to replace the current one' : 'Upload the second image' }}</p>
+
+                                <div class="mt-2">
+                                    <label for="image2_alt" class="block text-sm font-medium text-gray-700 mb-1">Image 2 Alt Text</label>
+                                    <input type="text" id="image2_alt" name="image2_alt" value="{{ old('image2_alt', $aboutUsContent->image2_alt) }}" 
+                                           placeholder="Enter alt text for image 2"
+                                           class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('image2_alt') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">
+                                    @error('image2_alt')
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                     </div>

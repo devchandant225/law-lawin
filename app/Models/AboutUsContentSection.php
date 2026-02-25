@@ -16,7 +16,9 @@ class AboutUsContentSection extends Model
         'desc_1',
         'desc_2',
         'image1',
+        'image1_alt',
         'image2',
+        'image2_alt',
         'page_type',
         'status',
         'order_list'

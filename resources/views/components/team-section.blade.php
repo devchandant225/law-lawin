@@ -15,7 +15,7 @@
                                 <div class="relative overflow-hidden">
                                     <div class="bg-gradient-to-br from-accent to-secondary/20">
                                         @if ($member->image)
-                                            <img src="{{ $member->image_url }}" alt="{{ $member->name }}"
+                                            <img src="{{ $member->image_url }}" alt="{{ $member->image_alt ?: $member->name }}"
                                                 class="w-full h-[18rem] object-fit object-center">
                                         @else
                                             <img src="{{ asset('assets/images/team/team-1-1.jpg') }}"

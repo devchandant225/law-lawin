@@ -1,23 +1,112 @@
+foreach() argument must be of type array|object, null given
 
-root@vmi1925599:/home/lawinpartners.com/public_html/lawin-laravel# php artisan migrate:refresh --path=/database/migrations/2026_02_24_000001_update_schema_fields_in_multiple_tables.php
+Expand vendor frames
+resources
+ / 
+views
+ / 
+components
+ / 
+detail-meta-tags.blade
+.php
+ 
+: 60
+require
+10 vendor frames
+resources
+ / 
+views
+ / 
+team
+ / 
+show.blade
+.php
+ 
+: 4
+require
+54 vendor frames
+public
+ / 
+index
+.php
+ 
+: 51
+[top]
+resources
+ / 
+views
+ / 
+components
+ / 
+detail-meta-tags.blade
+.php
+ 
+: 60
 
-   ParseError
 
-  syntax error, unexpected identifier "Schema", expecting "function" or "const"
 
-  at database/migrations/2026_02_24_000001_update_schema_fields_in_multiple_tables.php:14
-     10▕     /**
-     11▕      * Run the migrations.
-     12▕      */
-     13▕         // Update meta_tags table
-  ➜  14▕         Schema::table('meta_tags', function (Blueprint $table) {
-     15▕             if (!Schema::hasColumn('meta_tags', 'schema_head')) {
-     16▕                 $table->json('schema_head')->nullable()->after('image');
-     17▕             }
-     18▕             if (!Schema::hasColumn('meta_tags', 'schema_body')) {
 
-      +32 vendor frames
 
-  33  artisan:35
-      Illuminate\Foundation\Console\Kernel::handle()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- Twitter Card --}}
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="{{ $title }}">
+
+<meta name="twitter:description" content="{{ $description }}">
+
+<meta name="twitter:image" content="{{ $image }}">
+
+<meta name="twitter:url" content="{{ $url }}">
+
+
+
+{{-- Theme --}}
+
+<meta name="theme-color" content="#6f64d3">
+
+<meta name="msapplication-TileColor" content="#6f64d3">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="format-detection" content="telephone=no">
+
+
+
+{{-- JSON-LD (Head) --}}
+
+@foreach($schemaHeadArray as $schemaItem)
+
+<script type="application/ld+json">
+
+{!! is_array($schemaItem) ? json_encode($schemaItem, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaItem !!}
+
+</script>

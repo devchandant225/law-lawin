@@ -23,8 +23,8 @@
     $locale = 'en_US'; // Default locale
     
     // Schema
-    $schemaHeadArray = $post->schema_head_json;
-    $schemaBodyArray = $post->schema_body_json;
+    $schemaHeadArray = $post->schema_head_json ?? [];
+    $schemaBodyArray = $post->schema_body_json ?? [];
 @endphp
 
 <title>{{ $title }}</title>

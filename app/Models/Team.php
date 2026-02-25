@@ -26,14 +26,16 @@ class Team extends Model
         'metatitle',
         'metadescription',
         'metakeywords',
-        'googleschema',
+        'schema_head',
+        'schema_body',
         'facebooklink',
         'linkedinlink',
         'status'
     ];
 
     protected $casts = [
-        'googleschema' => 'array',
+        'schema_head' => 'array',
+        'schema_body' => 'array',
         'orderlist' => 'integer',
     ];
 
@@ -90,14 +92,34 @@ class Team extends Model
     }
 
     /**
-     * Get formatted Google Schema as JSON-LD.
+     * Get array of Schema Head JSON-LD strings.
+     */
+    public function getSchemaHeadJsonAttribute()
+    {
+        if (empty($this->schema_head)) {
+            return [$this->generateDefaultSchema()];
+        }
+        
+        return is_array($this->schema_head) ? $this->schema_head : [$this->schema_head];
+    }
+
+    /**
+     * Get array of Schema Body JSON-LD strings.
+     */
+    public function getSchemaBodyJsonAttribute()
+    {
+        if (empty($this->schema_body)) {
+            return [];
+        }
+        return is_array($this->schema_body) ? $this->schema_body : [$this->schema_body];
+    }
+
+    /**
+     * Backward compatibility for google_schema_json
      */
     public function getGoogleSchemaJsonAttribute()
     {
-        if (empty($this->googleschema)) {
-            return $this->generateDefaultSchema();
-        }
-        return json_encode($this->googleschema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        return $this->schema_head_json;
     }
 
     /**

@@ -58,9 +58,14 @@ class TeamController extends Controller
             $validatedData['image'] = $request->file('image')->store('teams', 'public');
         }
 
-        // Handle Google Schema JSON
-        if ($request->filled('googleschema')) {
-            $validatedData['googleschema'] = json_decode($request->googleschema, true);
+        // Handle schema_head
+        if ($request->filled('schema_head')) {
+            $validatedData['schema_head'] = json_decode($request->schema_head, true);
+        }
+
+        // Handle schema_body
+        if ($request->filled('schema_body')) {
+            $validatedData['schema_body'] = json_decode($request->schema_body, true);
         }
 
         // Generate slug if not provided
@@ -106,11 +111,18 @@ class TeamController extends Controller
             $validatedData['image'] = $request->file('image')->store('teams', 'public');
         }
 
-        // Handle Google Schema JSON
-        if ($request->filled('googleschema')) {
-            $validatedData['googleschema'] = json_decode($request->googleschema, true);
+        // Handle schema_head
+        if ($request->filled('schema_head')) {
+            $validatedData['schema_head'] = json_decode($request->schema_head, true);
         } else {
-            $validatedData['googleschema'] = null;
+            $validatedData['schema_head'] = null;
+        }
+
+        // Handle schema_body
+        if ($request->filled('schema_body')) {
+            $validatedData['schema_body'] = json_decode($request->schema_body, true);
+        } else {
+            $validatedData['schema_body'] = null;
         }
 
         // Generate slug if not provided

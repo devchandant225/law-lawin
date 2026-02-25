@@ -184,13 +184,29 @@
                 @endif
 
                 <!-- Google Schema -->
-                @if($team->googleschema)
+                @if($team->schema_head || $team->schema_body)
                     <div class="bg-white border border-gray-200 rounded-xl shadow-sm">
                         <div class="px-4 py-3 border-b border-gray-200">
                             <h5 class="font-semibold text-gray-900">Google Schema (JSON-LD)</h5>
                         </div>
-                        <div class="p-4">
-                            <pre class="bg-gray-50 rounded-lg p-4 text-xs overflow-x-auto"><code>{{ $team->google_schema_json }}</code></pre>
+                        <div class="p-4 space-y-4">
+                            @if($team->schema_head)
+                                <div>
+                                    <dt class="text-sm font-medium text-gray-500 mb-2">Schema Head</dt>
+                                    <dd>
+                                        <pre class="bg-gray-50 rounded-lg p-4 text-xs overflow-x-auto"><code>{{ is_array($team->schema_head) ? json_encode($team->schema_head, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $team->schema_head }}</code></pre>
+                                    </dd>
+                                </div>
+                            @endif
+
+                            @if($team->schema_body)
+                                <div class="pt-4 border-t border-gray-100">
+                                    <dt class="text-sm font-medium text-gray-500 mb-2">Schema Body</dt>
+                                    <dd>
+                                        <pre class="bg-gray-50 rounded-lg p-4 text-xs overflow-x-auto"><code>{{ is_array($team->schema_body) ? json_encode($team->schema_body, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $team->schema_body }}</code></pre>
+                                    </dd>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 @endif

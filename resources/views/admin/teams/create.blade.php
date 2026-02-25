@@ -221,15 +221,24 @@
                         <div class="px-4 py-3 border-b border-gray-200">
                             <h5 class="font-semibold text-gray-900">Google Schema (JSON-LD)</h5>
                         </div>
-                        <div class="p-4">
+                        <div class="p-4 space-y-4">
                             <div>
-                                <label for="googleschema" class="block text-sm font-medium text-gray-700 mb-1">Schema JSON</label>
-                                <textarea id="googleschema" name="googleschema" rows="8" placeholder="Enter valid JSON-LD schema"
-                                          class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('googleschema') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('googleschema') }}</textarea>
-                                @error('googleschema')
+                                <label for="schema_head" class="block text-sm font-medium text-gray-700 mb-1">Schema Head (JSON-LD)</label>
+                                <textarea id="schema_head" name="schema_head" rows="8" placeholder="Enter valid JSON-LD schema for head section"
+                                          class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('schema_head') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('schema_head') }}</textarea>
+                                @error('schema_head')
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
-                                <p class="mt-1 text-xs text-gray-500">Leave empty to auto-generate. <a href="#" onclick="generateSchema()" class="text-indigo-600 hover:underline">Generate Sample Schema</a></p>
+                                <p class="mt-1 text-xs text-gray-500">Leave empty to auto-generate. <a href="#" onclick="generateSchema('schema_head')" class="text-indigo-600 hover:underline">Generate Sample Schema</a></p>
+                            </div>
+
+                            <div>
+                                <label for="schema_body" class="block text-sm font-medium text-gray-700 mb-1">Schema Body (JSON-LD)</label>
+                                <textarea id="schema_body" name="schema_body" rows="8" placeholder="Enter valid JSON-LD schema for body section"
+                                          class="block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-indigo-500 focus:ring-indigo-500 @error('schema_body') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror">{{ old('schema_body') }}</textarea>
+                                @error('schema_body')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -326,7 +335,7 @@ function previewImage(input) {
 }
 
 // Generate sample schema
-function generateSchema() {
+function generateSchema(targetId) {
     const name = document.getElementById('name').value || 'Team Member Name';
     const designation = document.getElementById('designation').value || 'Position';
     const tagline = document.getElementById('tagline').value || 'Professional tagline';
@@ -334,6 +343,7 @@ function generateSchema() {
     const phone = document.getElementById('phone').value;
     const linkedinlink = document.getElementById('linkedinlink').value;
     const facebooklink = document.getElementById('facebooklink').value;
+    const slug = document.getElementById('slug').value || 'member-slug';
     
     const schema = {
         "@context": "https://schema.org",
@@ -341,7 +351,7 @@ function generateSchema() {
         "name": name,
         "jobTitle": designation,
         "description": tagline,
-        "url": window.location.origin + "/team/member-slug"
+        "url": window.location.origin + "/team/" + slug
     };
     
     if (email) schema.email = email;
@@ -352,7 +362,7 @@ function generateSchema() {
     if (facebooklink) sameAs.push(facebooklink);
     if (sameAs.length > 0) schema.sameAs = sameAs;
     
-    document.getElementById('googleschema').value = JSON.stringify(schema, null, 2);
+    document.getElementById(targetId).value = JSON.stringify(schema, null, 2);
 }
 
 // Initialize CKEditor if available

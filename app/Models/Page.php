@@ -81,6 +81,25 @@ class Page extends Model
     }
 
     /**
+     * Get array of Schema Head JSON-LD strings.
+     */
+    public function getSchemaHeadJsonAttribute()
+    {
+        if (empty($this->json_ld_schema)) {
+            return [$this->generateDefaultSchema()];
+        }
+        return is_array($this->json_ld_schema) ? $this->json_ld_schema : [$this->json_ld_schema];
+    }
+
+    /**
+     * Get array of Schema Body JSON-LD strings.
+     */
+    public function getSchemaBodyJsonAttribute()
+    {
+        return [];
+    }
+
+    /**
      * Get formatted JSON-LD Schema.
      */
     public function getJsonLdSchemaFormattedAttribute()

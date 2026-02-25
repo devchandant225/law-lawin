@@ -37,7 +37,8 @@ class TeamRequest extends FormRequest
             'metatitle' => 'nullable|string|max:255',
             'metadescription' => 'nullable|string|max:500',
             'metakeywords' => 'nullable|string|max:1000',
-            'googleschema' => 'nullable|string',
+            'schema_head' => 'nullable|string',
+            'schema_body' => 'nullable|string',
             'facebooklink' => 'nullable|url|max:255',
             'linkedinlink' => 'nullable|url|max:255',
             'status' => 'required|in:active,inactive,draft'
@@ -96,7 +97,8 @@ class TeamRequest extends FormRequest
             'metatitle' => 'meta title',
             'metadescription' => 'meta description',
             'metakeywords' => 'meta keywords',
-            'googleschema' => 'Google Schema',
+            'schema_head' => 'Schema Head',
+            'schema_body' => 'Schema Body',
             'facebooklink' => 'Facebook link',
             'linkedinlink' => 'LinkedIn link',
             'orderlist' => 'order list'
@@ -108,16 +110,25 @@ class TeamRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        // Remove empty googleschema to avoid validation issues
-        if ($this->has('googleschema') && empty(trim($this->googleschema))) {
-            $this->merge(['googleschema' => null]);
+        // Handle schema_head
+        if ($this->has('schema_head') && empty(trim($this->schema_head))) {
+            $this->merge(['schema_head' => null]);
+        }
+        if ($this->filled('schema_head')) {
+            $decoded = json_decode($this->schema_head, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $this->merge(['schema_head' => 'invalid_json']);
+            }
         }
 
-        // Validate JSON format if googleschema is provided
-        if ($this->filled('googleschema')) {
-            $decoded = json_decode($this->googleschema, true);
+        // Handle schema_body
+        if ($this->has('schema_body') && empty(trim($this->schema_body))) {
+            $this->merge(['schema_body' => null]);
+        }
+        if ($this->filled('schema_body')) {
+            $decoded = json_decode($this->schema_body, true);
             if (json_last_error() !== JSON_ERROR_NONE) {
-                $this->merge(['googleschema' => 'invalid_json']);
+                $this->merge(['schema_body' => 'invalid_json']);
             }
         }
 

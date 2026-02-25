@@ -127,8 +127,8 @@
                     <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 mb-8">
                         @if($page->description)
                             <div class="prose prose-lg max-w-none">
-                                <div class="text-gray-700 leading-relaxed whitespace-pre-line">
-                                    {{ $page->description }}
+                                <div class="text-gray-700 leading-relaxed">
+                                    {!! $page->description !!}
                                 </div>
                             </div>
                         @else

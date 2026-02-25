@@ -116,10 +116,19 @@
 
         <!-- Article Content -->
         <article class="prose prose-lg max-w-none">
-            <div class="text-gray-800 leading-relaxed whitespace-pre-line">
-                {!! nl2br(e($post->description)) !!}
+            <div class="text-gray-800 leading-relaxed">
+                {!! $post->description !!}
             </div>
         </article>
+
+        <!-- Bottom Description -->
+        @if($post->bottom_description)
+            <div class="mt-12 pt-8 border-t border-gray-200">
+                <div class="text-gray-800 leading-relaxed">
+                    {!! $post->bottom_description !!}
+                </div>
+            </div>
+        @endif
 
         <!-- Share Buttons -->
         <div class="mt-12 pt-8 border-t border-gray-200">

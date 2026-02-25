@@ -275,14 +275,18 @@ function previewImage(input, previewId) {
     }
 }
 
-   CKEDITOR.replace('desc_1', {
-            filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof CKEDITOR !== 'undefined') {
+        CKEDITOR.replace('desc_1', {
+            filebrowserUploadUrl: "{{ 'https://lawinpartners.com/upload_blog_editor_image?_token=' . csrf_token() }}",
             filebrowserUploadMethod: 'form'
-        })
+        });
 
-           CKEDITOR.replace('desc_2', {
-            filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+        CKEDITOR.replace('desc_2', {
+            filebrowserUploadUrl: "{{ 'https://lawinpartners.com/upload_blog_editor_image?_token=' . csrf_token() }}",
             filebrowserUploadMethod: 'form'
-        })
+        });
+    }
+});
 </script>
 @endsection

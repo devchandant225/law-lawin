@@ -171,12 +171,14 @@ class Post extends Model
      */
     private function generateDefaultSchema()
     {
+        $url = $this->type === 'news' ? url('/news/' . $this->slug) : url('/posts/' . $this->slug);
+        
         $baseSchema = [
             '@context' => 'https://schema.org',
             '@type' => $this->getSchemaType(),
             'name' => $this->title,
             'description' => $this->excerpt ?: substr(strip_tags($this->description), 0, 160),
-            'url' => url('/posts/' . $this->slug),
+            'url' => $url,
             'datePublished' => $this->created_at->toISOString(),
             'dateModified' => $this->updated_at->toISOString()
         ];

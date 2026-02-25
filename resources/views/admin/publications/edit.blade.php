@@ -346,6 +346,15 @@
 
         // Preview uploaded image
         function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('image-preview').style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
         // Remove current image
         function removeCurrentImage() {
@@ -356,6 +365,7 @@
                 // Show the no image placeholder
                 const noImageDiv = document.createElement('div');
                 noImageDiv.className = 'text-center p-6 border-2 border-dashed border-gray-300 rounded-lg';
+                noImageDiv.id = 'removed-image-placeholder';
                 noImageDiv.innerHTML = `
                     <i class="fas fa-image text-4xl text-gray-400 mb-2"></i>
                     <p class="text-sm text-gray-500">Image will be removed. A gradient background will be displayed.</p>
@@ -365,7 +375,6 @@
                     </button>
                 `;
                 document.getElementById('current-image-section').parentNode.insertBefore(noImageDiv, document.getElementById('current-image-section').nextSibling);
-                noImageDiv.id = 'removed-image-placeholder';
             }
         }
 
@@ -378,9 +387,14 @@
                 placeholder.remove();
             }
         }
-        CKEDITOR.replace('description', {
-            filebrowserUploadUrl: "{{ 'https://lawinpartners.joomni.com/admin/upload_editor_image?_token=' . csrf_token() }}",
-            filebrowserUploadMethod: 'form'
-        })
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof CKEDITOR !== 'undefined') {
+                CKEDITOR.replace('description', {
+                    filebrowserUploadUrl: "{{ route('admin.publications.store') . '/../upload_editor_image?_token=' . csrf_token() }}",
+                    filebrowserUploadMethod: 'form'
+                });
+            }
+        });
     </script>
 @endsection

@@ -57,7 +57,7 @@ Route::redirect('/team/best-court-marriage-lawyer-in-nepal', '/team/suprina-kc',
 Route::redirect('/team/best-divorce-lawyer-in-nepal', '/team/sunita-adhikari', 301);
 Route::redirect('/practice/criminal-defense-lawyer-in-nepal', '/practice/criminal-law', 301);
 Route::redirect('/contact-us', '/contact', 301);
-Route::redirect('/news', '/posts/news', 301);
+
 Route::redirect('/practice/insolvency-and-bankruptcy', '/practice/insolvency-law-in-nepal', 301);
 Route::redirect('/service/trademark-registration', '/service/trademark-filing-registration-and-opposition', 301);
 Route::redirect('/service', '/services', 301);
@@ -83,10 +83,17 @@ Route::redirect('/teams', '/team', 301);
 |
 */
 
+// Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/about/introduction', [AboutController::class, 'introduction']);
 Route::get('/about/executive-committee', [AboutController::class, 'executiveCommittee']);
+
+// News
+Route::get('/news', [PostController::class, 'byType'])->defaults('type', 'news')->name('news.index');
+Route::get('/news/{post}', [PostController::class, 'show'])->defaults('type', 'news')->name('news.show');
 
 // Information
 Route::get('/information/notices', [InformationController::class, 'notices']);
@@ -111,7 +118,7 @@ Route::post('/contact/submit', [ContactFormController::class, 'submit'])->name('
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{type}', [PostController::class, 'byType'])
     ->name('posts.by-type')
-    ->where('type', 'service|practice|news|blog|help_desk');
+    ->where('type', 'service|practice|blog|help_desk');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Services
@@ -181,9 +188,6 @@ Route::get('/calculator', function () {
 Route::get('/terms-of-service', [HomeController::class, 'termsCondition'])->name('terms-condition');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/cookie-policy-for-lawin-and-partners', [HomeController::class, 'cookiesPolicy'])->name('cookies-policy');
-
-// Add home route with name
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
 /*
 |--------------------------------------------------------------------------

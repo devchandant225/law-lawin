@@ -37,9 +37,13 @@
     <nav class="flex mb-8 text-sm">
         <a href="{{ url('/') }}" class="text-blue-600 hover:text-blue-700">Home</a>
         <span class="mx-2 text-gray-500">/</span>
-        <a href="{{ route('posts.index') }}" class="text-blue-600 hover:text-blue-700">Posts</a>
-        <span class="mx-2 text-gray-500">/</span>
-        <a href="{{ route('posts.by-type', $post->type) }}" class="text-blue-600 hover:text-blue-700">{{ ucfirst($post->type) }}</a>
+        @if($post->type === 'news')
+            <a href="{{ route('news.index') }}" class="text-blue-600 hover:text-blue-700">News</a>
+        @else
+            <a href="{{ route('posts.index') }}" class="text-blue-600 hover:text-blue-700">Posts</a>
+            <span class="mx-2 text-gray-500">/</span>
+            <a href="{{ route('posts.by-type', $post->type) }}" class="text-blue-600 hover:text-blue-700">{{ ucfirst($post->type) }}</a>
+        @endif
         <span class="mx-2 text-gray-500">/</span>
         <span class="text-gray-700">{{ Str::limit($post->title, 30) }}</span>
     </nav>
@@ -49,14 +53,17 @@
         <header class="mb-8">
             <!-- Post Type Badge -->
             <div class="mb-4">
-                <span class="inline-block px-4 py-2 text-sm font-semibold rounded-full
+                @php
+                    $badgeUrl = $post->type === 'news' ? route('news.index') : route('posts.by-type', $post->type);
+                @endphp
+                <a href="{{ $badgeUrl }}" class="inline-block px-4 py-2 text-sm font-semibold rounded-full
                     @if($post->type == 'service') bg-blue-100 text-blue-800
                     @elseif($post->type == 'practice') bg-green-100 text-green-800
                     @elseif($post->type == 'news') bg-red-100 text-red-800
                     @elseif($post->type == 'help_desk') bg-cyan-100 text-cyan-800
                     @else bg-purple-100 text-purple-800 @endif">
                     {{ ucfirst(str_replace('_', ' ', $post->type)) }}
-                </span>
+                </a>
             </div>
             
             <!-- Title -->
@@ -169,7 +176,10 @@
                             
                             <div class="p-4">
                                 <h4 class="font-semibold text-gray-900 mb-2 line-clamp-2">
-                                    <a href="{{ route('posts.show', $relatedPost) }}" class="hover:text-blue-600 transition duration-200">
+                                    @php
+                                        $relatedPostRoute = $relatedPost->type === 'news' ? route('news.show', $relatedPost) : route('posts.show', $relatedPost);
+                                    @endphp
+                                    <a href="{{ $relatedPostRoute }}" class="hover:text-blue-600 transition duration-200">
                                         {{ $relatedPost->title }}
                                     </a>
                                 </h4>
@@ -190,12 +200,16 @@
 
         <!-- Back to Posts -->
         <div class="mt-12 text-center">
-            <a href="{{ route('posts.index') }}" 
+            @php
+                $backUrl = $post->type === 'news' ? route('news.index') : route('posts.index');
+                $backText = $post->type === 'news' ? 'Back to News' : 'Back to All Posts';
+            @endphp
+            <a href="{{ $backUrl }}" 
                class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition duration-200">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                 </svg>
-                Back to All Posts
+                {{ $backText }}
             </a>
         </div>
     </div>

@@ -377,7 +377,7 @@ function generateSchema(targetId) {
 // Initialize CKEditor if available
 if (typeof CKEDITOR !== 'undefined') {
     CKEDITOR.replace('description', {
-        filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+        filebrowserUploadUrl: "{{ 'https://lawinpartners.com/upload_blog_editor_image?_token=' . csrf_token() }}",
         filebrowserUploadMethod: 'form'
     });
 }

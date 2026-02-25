@@ -303,14 +303,28 @@ function previewImage(input) {
 
 // Preview uploaded icon
 function previewIcon(input) {
-   CKEDITOR.replace('description', {
-            filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
-            filebrowserUploadMethod: 'form'
-        })
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('icon-preview-img').src = e.target.result;
+            document.getElementById('icon-preview').style.display = 'block';
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
-   CKEDITOR.replace('bottom_description', {
-            filebrowserUploadUrl: "{{ 'https://beinseo.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof CKEDITOR !== 'undefined') {
+        CKEDITOR.replace('description', {
+            filebrowserUploadUrl: "{{ 'https://lawinpartners.com/upload_blog_editor_image?_token=' . csrf_token() }}",
             filebrowserUploadMethod: 'form'
-        })
+        });
+
+        CKEDITOR.replace('bottom_description', {
+            filebrowserUploadUrl: "{{ 'https://lawinpartners.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+            filebrowserUploadMethod: 'form'
+        });
+    }
+});
 </script>
 @endsection

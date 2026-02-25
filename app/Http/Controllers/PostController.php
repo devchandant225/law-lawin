@@ -95,8 +95,8 @@ class PostController extends Controller
 
         $query = Post::active()->ofType($type);
 
-        // Search functionality
-        if ($request->filled('search')) {
+        // Search functionality (except for news as requested)
+        if ($request->filled('search') && $type !== 'news') {
             $query->where(function($q) use ($request) {
                 $q->where('title', 'like', '%' . $request->search . '%')
                   ->orWhere('description', 'like', '%' . $request->search . '%')
@@ -109,6 +109,10 @@ class PostController extends Controller
 
         if ($type === 'help_desk') {
             return view('help-desk.index', compact('posts', 'type', 'types'));
+        }
+
+        if ($type === 'news') {
+            return view('posts.news', compact('posts', 'type', 'types'));
         }
 
         return view('posts.by-type', compact('posts', 'type', 'types'));

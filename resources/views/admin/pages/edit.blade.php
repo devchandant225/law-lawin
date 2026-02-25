@@ -286,5 +286,16 @@ function generateSchema() {
     
     document.getElementById('json_ld_schema').value = JSON.stringify(schema, null, 2);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof CKEDITOR !== 'undefined') {
+        if (document.getElementById('description')) {
+            CKEDITOR.replace('description', {
+                filebrowserUploadUrl: "{{ 'https://lawinpartners.com/upload_blog_editor_image?_token=' . csrf_token() }}",
+                filebrowserUploadMethod: 'form'
+            });
+        }
+    }
+});
 </script>
 @endsection

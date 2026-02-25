@@ -290,7 +290,7 @@
                                             reports</div>
                                     </div>
                                 </a>
-                                <a href="{{ route('posts.by-type', 'news') }}"
+                                <a href="{{ route('news.index') }}"
                                     class="group/item flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 hover:text-primary transition-all duration-200 rounded-lg mx-2">
                                     <div
                                         class="w-8 h-8 rounded-lg bg-blue-50 group-hover/item:bg-blue-100 flex items-center justify-center mr-3 transition-colors">
@@ -415,7 +415,7 @@
                 
                 <div class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Resources</div>
 
-                <a href="{{ route('posts.by-type', 'news') }}" class="flex items-center px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
+                <a href="{{ route('news.index') }}" class="flex items-center px-4 py-2.5 text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-all group">
                     <div class="w-8 flex justify-center"><i class="fas fa-newspaper text-gray-400 group-hover:text-primary transition-colors text-sm"></i></div>
                     <span class="font-medium">News</span>
                 </a>

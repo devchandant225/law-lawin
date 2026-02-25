@@ -271,9 +271,23 @@
 
         // Preview uploaded image
         function previewImage(input) {
-           CKEDITOR.replace('description', {
-            filebrowserUploadUrl: "{{ 'https://lawinpartners.joomni.com/admin/upload_editor_image?_token=' . csrf_token() }}",
-            filebrowserUploadMethod: 'form'
-        })
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('image-preview').style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof CKEDITOR !== 'undefined') {
+                CKEDITOR.replace('description', {
+                    filebrowserUploadUrl: "{{ route('admin.publications.store') . '/../upload_editor_image?_token=' . csrf_token() }}",
+                    filebrowserUploadMethod: 'form'
+                });
+            }
+        });
     </script>
 @endsection

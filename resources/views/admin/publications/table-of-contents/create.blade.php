@@ -349,7 +349,7 @@
                 setTimeout(() => {
                     if (document.getElementById(textareaId)) {
                         ckeditorInstances[textareaId] = CKEDITOR.replace(textareaId, {
-                            filebrowserUploadUrl: "{{ 'https://lawinpartners.joomni.com/admin/upload_editor_image?_token=' . csrf_token() }}",
+                            filebrowserUploadUrl: "{{ 'https://lawinpartners.com/admin/upload_editor_image?_token=' . csrf_token() }}",
                             filebrowserUploadMethod: 'form',
                             height: 200
                         });

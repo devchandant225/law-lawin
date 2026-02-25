@@ -111,8 +111,7 @@
                               <li class="dropdown">
                                   <a href="#">News & Publications</a>
                                   <ul>
-                                      <li><a href="{{ route('posts.by-type', 'news') }}">News</a></li>
-                                      <li><a href="{{ route('publications.index') }}">Publications</a></li>
+                                                                             <li><a href="{{ route('news.index') }}">News</a></li>                                      <li><a href="{{ route('publications.index') }}">Publications</a></li>
                                   </ul>
                               </li>
 

@@ -181,28 +181,38 @@ class PublicationController extends Controller
       public function editorUpload(Request $request)
     {
         if ($request->hasFile('upload')) {
+            $file = $request->file('upload');
             //get filename with extension
-            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+            $filenamewithextension = $file->getClientOriginalName();
 
             //get filename without extension
             $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
 
             //get file extension
-            $extension = $request->file('upload')->getClientOriginalExtension();
+            $extension = $file->getClientOriginalExtension();
 
             //filename to store
-            $filenametostore = $filename . '_' . time() . '.' . $extension;
+            $filenametostore = Str::slug($filename) . '_' . time() . '.' . $extension;
 
-            //Upload File
-            $request->file('upload')->move(public_path() . '/uploads/editor/publication', $filenametostore);
+            //Upload File to public disk
+            $path = $file->storeAs('editor/publication', $filenametostore, 'public');
+
+            // Save to Media table for management
+            \App\Models\Media::create([
+                'file_name' => $filenametostore,
+                'file_path' => $path,
+                'file_type' => $file->getMimeType(),
+                'file_size' => $file->getSize(),
+                'original_name' => $filenamewithextension,
+            ]);
 
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('uploads/editor/publication/' . $filenametostore);
+            $url = asset('storage/' . $path);
             $message = 'File uploaded successfully';
             $result = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$message')</script>";
 
             // Render HTML output
-        @header('Content-type: text/html; charset=utf-8');
+            @header('Content-type: text/html; charset=utf-8');
             echo $result;
         }
     }

@@ -43,7 +43,7 @@
                                     @if ($member->phone)
                                         <div class="flex space-x-2">
                                             <i class="fas fa-phone text-primary"></i>
-                                            <a href="tel:{{ $member->phone }}"
+                                            <a href="tel:{{ $member->phone }}" rel="nofollow"
                                                 class="hover:text-blue-100 transition-colors duration-300">
                                                 {{ $member->phone }}
                                             </a>

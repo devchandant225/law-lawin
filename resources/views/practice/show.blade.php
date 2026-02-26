@@ -212,7 +212,7 @@
                                 Consult Lawin and Partners</span>
 
                             <div class="flex flex-wrap justify-center gap-3 md:gap-4 w-full mt-2">
-                                <a href="tel:+9779841933745"
+                                <a href="tel:+9779841933745" rel="nofollow"
                                     class="w-full sm:w-auto whitespace-nowrap bg-white text-accent px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95 text-sm md:text-base">
                                     <i class="fas fa-phone-alt"></i> CALL NOW
                                 </a>
@@ -485,7 +485,7 @@
                                     Consult Lawin and Partners</h3>
 
                                 <div class="flex flex-wrap justify-center gap-4 w-full">
-                                    <a href="tel:+9779841933745"
+                                    <a href="tel:+9779841933745" rel="nofollow"
                                         class="whitespace-nowrap bg-white text-accent px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:-translate-y-1 active:scale-95">
                                         <i class="fas fa-phone-alt"></i> CALL NOW
                                     </a>

@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags :title="$serviceLocation->metatitle ?: $serviceLocation->title . ' - Service Location'"
         :description="$serviceLocation->metadescription ?: $serviceLocation->excerpt" :keywords="$serviceLocation->metakeywords"
         :image="$serviceLocation->feature_image_url" type="article" :post="$serviceLocation" />
+@endsection
 
+@section('head')
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->

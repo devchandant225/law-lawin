@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags :title="'More Publications - Additional Legal Resources'"
         :description="'Explore our extended collection of legal publications, research papers, and specialized resources'"
         :keywords="'more publications, legal resources, law, research, additional content'" />

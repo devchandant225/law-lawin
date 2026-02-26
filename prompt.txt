@@ -1,112 +1,28 @@
-foreach() argument must be of type array|object, null given
-
-Expand vendor frames
-resources
- / 
-views
- / 
-components
- / 
-detail-meta-tags.blade
-.php
- 
-: 60
-require
-10 vendor frames
-resources
- / 
-views
- / 
-team
- / 
-show.blade
-.php
- 
-: 4
-require
-54 vendor frames
-public
- / 
-index
-.php
- 
-: 51
-[top]
-resources
- / 
-views
- / 
-components
- / 
-detail-meta-tags.blade
-.php
- 
-: 60
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- Twitter Card --}}
-
-<meta name="twitter:card" content="summary_large_image">
-
-<meta name="twitter:title" content="{{ $title }}">
-
-<meta name="twitter:description" content="{{ $description }}">
-
-<meta name="twitter:image" content="{{ $image }}">
-
-<meta name="twitter:url" content="{{ $url }}">
-
-
-
-{{-- Theme --}}
-
-<meta name="theme-color" content="#6f64d3">
-
-<meta name="msapplication-TileColor" content="#6f64d3">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="format-detection" content="telephone=no">
-
-
-
-{{-- JSON-LD (Head) --}}
-
-@foreach($schemaHeadArray as $schemaItem)
-
-<script type="application/ld+json">
-
-{!! is_array($schemaItem) ? json_encode($schemaItem, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaItem !!}
-
-</script>
+"Publications - Legal Publications & Resources
+Publication | Lawin and Partners"
+"About Us : Lawin & Partners
+About Us : Lawin & Partners"
+"Our Legal Team - Expert Lawyers & Legal Professionals
+Expert Lawyers in Nepal | Lawin & Partners Team"
+"Publications - Legal Publications & Resources
+Publication | Lawin and Partners"
+"Lawin&Partners
+Lawin&Partners"
+"Our Legal Team - Expert Lawyers & Legal Professionals
+Expert Lawyers in Nepal | Lawin & Partners Team"
+"Lawin&Partners
+Lawin&Partners"
+"Our Services - Professional Legal Expertise
+Legal Services in Nepal – Lawin & Partners"
+"Law Practice Areas in Nepal | Lawin & Partners
+Law Practice Areas in Nepal | Lawin & Partners"
+"Lawin&Partners
+Lawin&Partners"
+"About Us : Lawin & Partners
+About Us : Lawin & Partners"
+"Law Practice Areas in Nepal | Lawin & Partners
+Law Practice Areas in Nepal | Lawin & Partners"
+"Lawin&Partners
+Lawin&Partners"
+"Our Services - Professional Legal Expertise
+Legal Services in Nepal – Lawin & Partners"

@@ -16,7 +16,7 @@
             @if ($globalProfile && $globalProfile->phone)
                 <li class="topbar-one__info__item">
                     <i class="fas fa-phone topbar-one__info__icon"></i>
-                    <a href="tel:{{ $globalProfile->phone }}">{{ $globalProfile->phone }}</a>
+                    <a href="tel:{{ $globalProfile->phone }}" rel="nofollow">{{ $globalProfile->phone }}</a>
                 </li>
             @endif
         </ul><!-- /.list-unstyled topbar-one__info -->

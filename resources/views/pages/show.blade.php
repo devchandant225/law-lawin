@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('head')
-    <x-meta-tags 
+@section('meta_tags')
+    <x-meta-tags
         :title="$page->metatitle ?: $page->title"
-        :description="$page->metadescription ?: $page->excerpt" 
+        :description="$page->metadescription ?: $page->excerpt"
         :keywords="$page->metakeywords"
         :image="$page->feature_image_url"
         :customSchema="$page->json_ld_schema ? $page->json_ld_schema_formatted : null"

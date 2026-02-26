@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags :title="$publication->metatitle ?: $publication->title . ' - Privacy Policy'" :description="$publication->metadescription ?: $publication->excerpt" :keywords="$publication->metakeywords" :image="$publication->feature_image_url" type="article" :post="$publication" />
+@endsection
 
+@section('head')
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -144,8 +146,8 @@
                             <div class="text-white text-base mb-4">
                                 @if ($primaryPhone)
                                     <p class="mb-2">
-                                        <span class="font-medium">You can directly call to our legal expert:</span> 
-                                        <a href="tel:{{ $cleanPhone }}" class="font-bold hover:underline">{{ $primaryPhone }}</a>
+                                        <span class="font-medium">You can directly call to our legal expert:</span>
+                                        <a href="tel:{{ $cleanPhone }}" rel="nofollow" class="font-bold hover:underline">{{ $primaryPhone }}</a>
                                     </p>
                                 @endif
                                 <p class="mb-4">

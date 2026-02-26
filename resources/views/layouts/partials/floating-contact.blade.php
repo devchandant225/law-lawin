@@ -21,7 +21,7 @@
 
             @if ($globalProfile->phone1)
                 <a href="tel:{{ $globalProfile->phone1 }}" class="floating-contact__option floating-contact__phone"
-                    title="Call Us">
+                    title="Call Us" rel="nofollow">
                     <i class="fas fa-phone"></i>
                     <span class="floating-contact__tooltip">Call</span>
                 </a>

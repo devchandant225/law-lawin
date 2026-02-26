@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags :title="$language->metatitle ?: $language->title . ' - Language Services'"
         :description="$language->metadescription ?: $language->excerpt" :keywords="$language->metakeywords"
         :image="$language->feature_image_url" type="article" :post="$language" />
+@endsection
 
+@section('head')
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->

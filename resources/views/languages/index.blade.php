@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('head')
-    <x-meta-tags title="Languages - Legal Language Services" 
+@section('meta_tags')
+    <x-meta-tags title="Languages - Legal Language Services"
         description="Explore our comprehensive legal language services and multi-lingual support capabilities."
         keywords="legal languages, multi-lingual services, translation, interpretation" />
+@endsection
 
+@section('head')
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->

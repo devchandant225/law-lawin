@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
 @endsection
 
@@ -13,6 +13,14 @@
     <x-page-section-title title="<span>Our Team</span>" />
     {{-- Modern Team Section with Tailwind CSS --}}
     <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+                Our Team
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                Meet our experienced team of legal professionals dedicated to providing you with expert legal solutions.
+            </p>
+        </div>
 
         <div class="container mx-auto px-4 relative z-10">
 
@@ -57,7 +65,7 @@
                                         @if ($member->phone)
                                             <div class="flex space-x-2">
                                                 <i class="fas fa-phone text-primary"></i>
-                                                <a href="tel:{{ $member->phone }}"
+                                                <a href="tel:{{ $member->phone }}" rel="nofollow"
                                                     class="hover:text-primary transition-colors duration-300">
                                                     {{ $member->phone }}
                                                 </a>

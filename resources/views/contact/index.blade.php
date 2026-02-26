@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags />
 @endsection
 
@@ -8,8 +8,22 @@
     <x-page-banner title="Contact Us"
         subtitle="Get in touch with our expert legal team for professional consultation and assistance." :breadcrumbs="[['label' => 'Home', 'url' => route('home')], ['label' => 'Contact Us']]"
         backgroundImage="assets/images/backgrounds/page-header-contact-bg.jpg" />
+
     {{-- Contact Section Title --}}
     <x-page-section-title title="<span>Contact Us</span>" />
+    
+    {{-- H1 for SEO --}}
+    <section class="py-8 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+                Contact Us
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                Get in touch with our expert legal team for professional consultation and assistance.
+            </p>
+        </div>
+    </section>
+
     {{-- Contact Section --}}
     <x-contact-section :contactInfo="[
         'address' => 'Fishing Harbour - Jumeira St - Umm Suqeim - Umm Suqeim 2 - Dubai',

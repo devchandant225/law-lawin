@@ -197,7 +197,7 @@
                             <h2 class="text-3xl md:text-5xl font-bold mb-10 leading-tight">Consult with Lawin and Partners Experts</h2>
 
                             <div class="flex flex-wrap justify-center gap-4">
-                                <a href="tel:+9779841933745"
+                                <a href="tel:+9779841933745" rel="nofollow"
                                     class="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all flex items-center gap-3">
                                     <i class="fas fa-phone-alt"></i> CALL NOW
                                 </a>

@@ -49,7 +49,7 @@
                                 <span class="block sm:inline">phone : </span>
                                 @foreach ($phoneNumbers as $phone)
                                     <a href="tel:{{ $phone }}"
-                                        class="hover:text-accent transition-colors block sm:inline">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
+                                        class="hover:text-accent transition-colors block sm:inline" rel="nofollow">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
                                 @endforeach
                             </div>
                         </div>
@@ -58,7 +58,8 @@
                             <i class="fas fa-phone text-accent mt-1 flex-shrink-0 text-sm"></i>
                             <div>
                                 <span class="block sm:inline">phone : </span>
-                                <span class="block sm:inline">+9779808811027, +9779849964619</span>
+                                <a href="tel:+9779808811027" class="hover:text-accent transition-colors block sm:inline" rel="nofollow">+9779808811027</a>,
+                                <a href="tel:+9779849964619" class="hover:text-accent transition-colors block sm:inline" rel="nofollow">+9779849964619</a>
                             </div>
                         </div>
                     @endif

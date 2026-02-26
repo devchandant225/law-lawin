@@ -63,9 +63,9 @@
                             </div>
                             <div class="text-gray-100">
                                 <p class="font-medium">
-                                    Phone : 
+                                    Phone :
                                     @foreach ($phoneNumbers as $phone)
-                                        <a href="tel:{{ $phone }}" class="hover:text-white transition-colors duration-300">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
+                                        <a href="tel:{{ $phone }}" class="hover:text-white transition-colors duration-300" rel="nofollow">{{ $phone }}</a>{{ !$loop->last ? ', ' : '' }}
                                     @endforeach
                                 </p>
                             </div>

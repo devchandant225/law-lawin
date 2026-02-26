@@ -131,7 +131,7 @@
                                             </a>
                                         @endif
                                         @if ($team->phone)
-                                            <a href="tel:{{ $team->phone }}"
+                                            <a href="tel:{{ $team->phone }}" rel="nofollow"
                                                 class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-500 hover:text-white transition-all duration-300 hover:scale-105">
                                                 <i class="fas fa-phone"></i> Call
                                             </a>

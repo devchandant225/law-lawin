@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags />
 @endsection
 

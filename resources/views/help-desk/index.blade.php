@@ -16,6 +16,14 @@
     ]" />
 
     <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+                Legal Help Desk
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                Access our comprehensive legal help desk for guidance on court marriage, divorce, criminal law, and foreign investment in Nepal.
+            </p>
+        </div>
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mb-16">
                 <h2 class="text-4xl font-bold text-gray-900 mb-6">
@@ -83,7 +91,7 @@
                 <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">Our experts are available 24/7 to provide immediate support for your legal emergencies.</p>
                 
                 <div class="flex flex-wrap justify-center gap-6">
-                    <a href="tel:+9779841933745" class="bg-primary text-white px-10 py-4 rounded-lg font-bold hover:opacity-90 transition-all shadow-md flex items-center gap-3">
+                    <a href="tel:+9779841933745" rel="nofollow" class="bg-primary text-white px-10 py-4 rounded-lg font-bold hover:opacity-90 transition-all shadow-md flex items-center gap-3">
                         <i class="fas fa-phone-alt"></i> CALL 24/7
                     </a>
                     <a href="/contact" class="bg-white text-primary border-2 border-primary px-10 py-4 rounded-lg font-bold hover:bg-primary hover:text-white transition-all flex items-center gap-3">

@@ -8,7 +8,7 @@
                 @if ($globalProfile && $globalProfile->phone1)
                     <div class="flex items-center space-x-1 sm:space-x-2">
                         <i class="fas fa-phone text-gray-500 text-xs"></i>
-                        <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-gray-800 transition-colors">
+                        <a href="tel:{{ $globalProfile->phone1 }}" class="hover:text-gray-800 transition-colors" rel="nofollow">
                             {{ $globalProfile->phone1 }}
                         </a>
                     </div>
@@ -76,7 +76,7 @@
                     <div class="flex items-center space-x-1">
                         <i class="fas fa-phone text-gray-500 text-xs"></i>
                         <a href="tel:{{ $globalProfile->phone1 }}"
-                            class="text-xs text-gray-600 hover:text-gray-800 transition-colors">
+                            class="text-xs text-gray-600 hover:text-gray-800 transition-colors" rel="nofollow">
                             {{ $globalProfile->phone1 }}
                         </a>
                     </div>

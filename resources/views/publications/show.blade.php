@@ -195,7 +195,7 @@
                                             @if (isset($member['phone']) && $member['phone'])
                                                 <div class="flex space-x-2">
                                                     <i class="fas fa-phone text-primary"></i>
-                                                    <a href="tel:{{ $member['phone'] }}"
+                                                    <a href="tel:{{ $member['phone'] }}" rel="nofollow"
                                                         class="hover:text-primary transition-colors duration-300">
                                                         {{ $member['phone'] }}
                                                     </a>
@@ -311,7 +311,7 @@
                 @if ($primaryPhone)
                     <p class="mb-2">
                         <span class="font-medium">You can directly call to our legal expert:</span>
-                        <a href="tel:{{ $cleanPhone }}" class="font-bold hover:underline">{{ $primaryPhone }}</a>
+                        <a href="tel:{{ $cleanPhone }}" rel="nofollow" class="font-bold hover:underline">{{ $primaryPhone }}</a>
                     </p>
                 @endif
                 <p class="mb-4">

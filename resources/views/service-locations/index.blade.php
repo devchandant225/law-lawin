@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags :title="'Service Locations - Legal Services by Location'"
         :description="'Find our legal services by location. Comprehensive coverage across different regions and jurisdictions'"
         :keywords="'service locations, legal services, regional coverage, law offices, legal assistance by location'" />

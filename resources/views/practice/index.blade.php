@@ -1,20 +1,34 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags />
 @endsection
 
 @section('content')
     {{-- Page Banner --}}
-    <x-page-banner 
-        title="" 
+    <x-page-banner
+        title=""
         subtitle="Discover our comprehensive legal practice areas and specialized expertise that provide exceptional legal services across various areas of law"
         :breadcrumbs="[
             ['label' => 'Home', 'url' => url('/')],
             ['label' => 'Practice Areas']
         ]"
     />
+
       <x-page-section-title title="<span>Practice Areas</span>" />
+
+    {{-- H1 for SEO --}}
+    <section class="py-8 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+                Practice Areas
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                Discover our comprehensive legal practice areas and specialized expertise.
+            </p>
+        </div>
+    </section>
+
     <div class="page-wrapper">
 
     {{-- Main Practices Section --}}

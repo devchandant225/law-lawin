@@ -1,17 +1,25 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags />
 @endsection
 
 @section('content')
     {{-- Page Banner --}}
     <x-page-banner title="About Us" subtitle="" :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'About Us']]" />
-    
+
     {{-- About Us Content Sections --}}
     @if ($aboutContent->isNotEmpty())
         @foreach ($aboutContent as $content)
             <section class="relative py-8 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+                        About Us
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                        Learn more about our organization, mission, and the dedicated team behind our success.
+                    </p>
+                </div>
                 <!-- Decorative Background Pattern -->
                 <div class="absolute inset-0 opacity-5">
                     <div

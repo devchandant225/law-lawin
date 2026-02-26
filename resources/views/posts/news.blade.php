@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags title="News & Updates - Professional Insights"
         description="Stay updated with the latest news, updates and professional insights from our legal experts."
         keywords="legal news, law firm updates, legal insights, news"

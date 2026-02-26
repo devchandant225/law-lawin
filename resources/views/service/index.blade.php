@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('meta_tags')
     <x-meta-tags title="Our Services - Professional Legal Expertise"
         description="Explore our comprehensive range of professional legal services. Expert legal advice and representation across various practice areas."
         keywords="legal services, law firm services, legal expertise, professional legal advice, legal representation"
@@ -12,8 +12,22 @@
     <x-page-banner title=""
         subtitle="Comprehensive legal expertise tailored to meet your specific needs with dedication and professional excellence"
         :breadcrumbs="[['label' => 'Home', 'url' => url('/')], ['label' => 'Services']]" />
+
     {{-- Contact Section Title --}}
     <x-page-section-title title="<span>Our Services</span>" />
+    
+    {{-- H1 for SEO --}}
+    <section class="py-8 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+                Our Services
+            </h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                Explore our comprehensive range of professional legal services. Expert legal advice and representation across various practice areas.
+            </p>
+        </div>
+    </section>
+
     {{-- Services Section --}}
     <x-service-section :services="$services" :showViewAll="false"
         sectionTitle="All Our <span class='text-[#6f64d3]'>Services</span>" sectionSubtitle="Complete Service Portfolio"

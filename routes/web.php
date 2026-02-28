@@ -242,6 +242,10 @@ Route::prefix('admin')
         Route::resource('faqs', AdminFAQController::class);
         Route::post('/faqs/{faq}/toggle-status', [AdminFAQController::class, 'toggleStatus'])->name('faqs.toggle-status');
 
+        // Homepage FAQ Management
+        Route::resource('homepage-faqs', \App\Http\Controllers\Admin\HomepageFAQController::class);
+        Route::post('/homepage-faqs/{homepageFaq}/toggle-status', [\App\Http\Controllers\Admin\HomepageFAQController::class, 'toggleStatus'])->name('homepage-faqs.toggle-status');
+
         // Contact Submissions Management
         Route::resource('contacts', AdminContactController::class)->except(['create', 'store', 'edit', 'update']);
         Route::get('/contacts/export', [AdminContactController::class, 'export'])->name('contacts.export');

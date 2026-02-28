@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -13,7 +14,8 @@ class TeamController extends Controller
     public function index()
     {
         $teams = Team::active()->ordered()->get();
-        return view('team.index', compact('teams'));
+        $post = Post::where('type', 'team_page')->active()->first();
+        return view('team.index', compact('teams', 'post'));
     }
 
     /**

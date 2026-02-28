@@ -155,6 +155,7 @@
                                         <option value="news" {{ old('type') == 'news' ? 'selected' : '' }}>News</option>
                                         <option value="blog" {{ old('type') == 'blog' ? 'selected' : '' }}>Blog</option>
                                         <option value="help_desk" {{ old('type') == 'help_desk' ? 'selected' : '' }}>Help Desk</option>
+                                        <option value="team_page" {{ old('type') == 'team_page' ? 'selected' : '' }}>Team Page</option>
                                     </select>
                                     @error('type')
                                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

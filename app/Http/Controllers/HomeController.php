@@ -8,6 +8,7 @@ use App\Models\Team;
 use App\Models\Publication;
 use App\Models\Portfolio;
 use App\Models\TableOfContent;
+use App\Models\HomepageFAQ;
 use App\View\Components\ServiceSection;
 use App\View\Components\TeamSection;
 use App\View\Components\PortfolioSection;
@@ -34,7 +35,10 @@ class HomeController extends Controller
         // Fetch portfolios for homepage (limited to 10 for portfolio section, 8 for testimonial)
         $portfolios = PortfolioSection::getHomePortfolios();
 
-        return view('home', compact('sliders', 'services', 'practices', 'teams', 'portfolios'));
+        // Fetch active homepage FAQs
+        $faqs = HomepageFAQ::active()->ordered()->get();
+
+        return view('home', compact('sliders', 'services', 'practices', 'teams', 'portfolios', 'faqs'));
     }
 
     public function termsCondition()

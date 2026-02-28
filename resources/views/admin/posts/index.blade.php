@@ -42,6 +42,10 @@
 				<i class="fas fa-headset text-xs"></i>
 				<span>Help Desk</span>
 			</a>
+			<a href="{{ route('admin.posts.index', ['type' => 'team_page']) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ request('type') == 'team_page' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-600 hover:bg-gray-100' }}">
+				<i class="fas fa-users text-xs"></i>
+				<span>Team Page</span>
+			</a>
 			<a href="{{ route('admin.posts.index') }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm {{ !request('type') ? 'bg-gray-100 text-gray-800' : 'text-gray-600 hover:bg-gray-100' }}">
 				<i class="fas fa-list text-xs"></i>
 				<span>All Posts</span>
@@ -66,6 +70,7 @@
 							<option value="news" {{ request('type') == 'news' ? 'selected' : '' }}>News</option>
 							<option value="blog" {{ request('type') == 'blog' ? 'selected' : '' }}>Blog</option>
 							<option value="help_desk" {{ request('type') == 'help_desk' ? 'selected' : '' }}>Help Desk</option>
+							<option value="team_page" {{ request('type') == 'team_page' ? 'selected' : '' }}>Team Page</option>
 						</select>
 					</div>
 					<div>

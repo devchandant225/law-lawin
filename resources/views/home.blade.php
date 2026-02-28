@@ -43,6 +43,9 @@
     {{-- Team Section --}}
     <x-team-section :teams="$teams" :showViewAll="true" :showSectionHeader="false" :limit="4" />
 
+    {{-- Homepage FAQ Section --}}
+    <x-faq-section :faqs="$faqs" />
+
     {{-- Contact Section Title --}}
     <x-page-section-title title="<span>Reach out for the best Legal Advice</span>" />
     {{-- Contact Section --}}

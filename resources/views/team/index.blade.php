@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('meta_tags')
-    <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
+    @if ($post)
+        <x-meta-tags :title="$post->meta_title ?: $post->title" :description="$post->meta_description" :keywords="$post->meta_keywords" :image="$post->feature_image_url ?: asset('images/team-banner.jpg')" type="website" />
+    @else
+        <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
+    @endif
 @endsection
 
 @section('content')
@@ -15,11 +19,17 @@
     <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
-                Our Team
+                {{ $post ? $post->title : 'Our Team' }}
             </h1>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
-                Meet our experienced team of legal professionals dedicated to providing you with expert legal solutions.
-            </p>
+            <div class="prose prose-lg max-w-4xl mx-auto text-center text-gray-600">
+                @if ($post)
+                    {!! $post->description !!}
+                @else
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
+                        Meet our experienced team of legal professionals dedicated to providing you with expert legal solutions.
+                    </p>
+                @endif
+            </div>
         </div>
 
         <div class="container mx-auto px-4 relative z-10">
@@ -116,6 +126,12 @@
                     <h4 class="text-2xl font-bold text-gray-800 mb-4">No team members available at the moment.</h4>
                     <p class="text-gray-600 max-w-md mx-auto">Please check back later to meet our amazing team of legal
                         professionals.</p>
+                </div>
+            @endif
+
+            @if ($post && $post->bottom_description)
+                <div class="mt-12 prose prose-lg max-w-4xl mx-auto text-gray-600">
+                    {!! $post->bottom_description !!}
                 </div>
             @endif
         </div>

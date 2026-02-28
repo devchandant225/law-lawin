@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
             'meta_description' => 'nullable|string|max:500',
             'meta_keywords' => 'nullable|string|max:1000',
             'status' => 'required|in:active,inactive,draft',
-            'type' => 'required|in:service,practice,news,blog,help_desk',
+            'type' => 'required|in:service,practice,news,blog,help_desk,team_page',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'feature_image_alt' => 'nullable|string|max:255',
             'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:1024',

@@ -201,6 +201,7 @@ class Post extends Model
             'news' => 'NewsArticle',
             'blog' => 'BlogPosting',
             'help_desk' => 'Article',
+            'team_page' => 'WebPage',
             default => 'Article'
         };
     }

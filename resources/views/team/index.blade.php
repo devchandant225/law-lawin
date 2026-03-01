@@ -9,6 +9,12 @@
 @endsection
 
 @section('content')
+    <style>
+        p {
+            margin-bottom: 1rem !important;
+            margin-left: 0 !important;
+        }
+    </style>
     {{-- Page Banner --}}
     <x-page-banner title=""
         subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"
@@ -17,8 +23,8 @@
     <x-page-section-title title="<span>Our Team</span>" />
     {{-- Modern Team Section with Tailwind CSS --}}
     <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div class="px-4 sm:px-6 lg:px-8 mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-accent mb-4 text-center">
                 {{ $post ? $post->title : 'Our Team' }}
             </h1>
             <div class="prose prose-lg text-justify text-gray-600">
@@ -26,7 +32,8 @@
                     {!! $post->description !!}
                 @else
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto text-center">
-                        Meet our experienced team of legal professionals dedicated to providing you with expert legal solutions.
+                        Meet our experienced team of legal professionals dedicated to providing you with expert legal
+                        solutions.
                     </p>
                 @endif
             </div>
@@ -34,13 +41,13 @@
 
         <div class="container mx-auto px-4 relative z-10">
 
-
             @if ($teams->isNotEmpty())
                 <!-- Team Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 md:gap-x-16 gap-y-4 mb-12 justify-center">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 md:gap-x-16 gap-y-4 mb-12 justify-center">
                     @foreach ($teams as $index => $member)
-                        <div class="team-card-wrapper w-full max-w-[14rem] mx-auto" data-aos="fade-up" data-aos-duration="800"
-                            data-aos-delay="{{ $index * 100 }}">
+                        <div class="team-card-wrapper w-full max-w-[14rem] mx-auto" data-aos="fade-up"
+                            data-aos-duration="800" data-aos-delay="{{ $index * 100 }}">
                             <div
                                 class="bg-white rounded-2xl shadow-md transition-all duration-500 group overflow-hidden border border-gray-100 hover:border-primary/30">
                                 <!-- Team Member Image -->

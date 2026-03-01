@@ -7,14 +7,96 @@
         <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
     @endif
 @endsection
-
-@section('content')
+@section('head')
     <style>
         p {
             margin-bottom: 1rem !important;
             margin-left: 0 !important;
         }
+
+        h1 {
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+        }
+
+        h2 {
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.5rem !important;
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+        }
+
+        h3 {
+            margin-bottom: 0.5rem !important;
+            font-size: 1.25rem !important;
+            font-weight: 600 !important;
+        }
+
+        ol,
+        ul {
+            padding-left: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            margin-left: 0 !important;
+        }
+
+        ul {
+            list-style-type: disc !important;
+        }
+
+        ol {
+            list-style-type: decimal !important;
+        }
+
+        @media (min-width: 768px) {
+            p {
+                margin-bottom: 6px !important;
+                margin-left: 12px !important;
+            }
+
+            h1 {
+                margin-top: 8px !important;
+                margin-bottom: 0px !important;
+                font-size: 22px !important;
+            }
+
+            h2 {
+                margin-top: 8px !important;
+                margin-bottom: 0px !important;
+                font-size: 22px !important;
+            }
+
+            h3 {
+                font-size: 18px !important;
+            }
+
+            ol,
+            ul {
+                margin-left: 16px !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 1.25rem !important;
+                color: #108fcc !important;
+            }
+
+            h2 {
+                font-size: 1.25rem !important;
+                color: #108fcc !important;
+            }
+
+            h3 {
+                font-size: 1.1rem !important;
+                color: #108fcc !important;
+            }
+        }
     </style>
+@endsection
+@section('content')
+
     {{-- Page Banner --}}
     <x-page-banner title=""
         subtitle="Meet our dedicated team of legal professionals who bring years of experience, expertise, and passion to serve your legal needs with excellence and integrity"

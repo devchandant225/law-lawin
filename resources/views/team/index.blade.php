@@ -17,7 +17,7 @@
     <x-page-section-title title="<span>Our Team</span>" />
     {{-- Modern Team Section with Tailwind CSS --}}
     <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div class="mx-auto px-4 sm:px-6 lg:px-8 mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
                 {{ $post ? $post->title : 'Our Team' }}
             </h1>

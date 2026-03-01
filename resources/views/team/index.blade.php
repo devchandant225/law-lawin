@@ -17,11 +17,11 @@
     <x-page-section-title title="<span>Our Team</span>" />
     {{-- Modern Team Section with Tailwind CSS --}}
     <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div class="mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div class="px-4 sm:px-6 lg:px-8 mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 text-center">
                 {{ $post ? $post->title : 'Our Team' }}
             </h1>
-            <div class="prose prose-lg max-w-4xl mx-auto text-center text-gray-600">
+            <div class="prose prose-lg text-justify text-gray-600">
                 @if ($post)
                     {!! $post->description !!}
                 @else
@@ -130,7 +130,7 @@
             @endif
 
             @if ($post && $post->bottom_description)
-                <div class="mt-12 prose prose-lg max-w-4xl mx-auto text-gray-600">
+                <div class="mt-12 prose prose-lg text-justify text-gray-600">
                     {!! $post->bottom_description !!}
                 </div>
             @endif

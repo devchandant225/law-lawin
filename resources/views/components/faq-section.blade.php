@@ -2,38 +2,32 @@
 
 @if ($faqs && $faqs->count() > 0)
     <x-page-section-title :title="'<span>' . $title . '</span>'" />
-    <section class="py-8 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="bg-gradient-to-br from-white to-gray-50/50 rounded-[2.5rem] lg:p-6 mb-4 relative overflow-hidden">
-                <!-- Background Decoration -->
-                <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
-                    @foreach ($faqs as $faq)
-                        <div class="faq-item group bg-blue-100 border border-blue-100/20 rounded-[2rem] transition-all duration-500 hover:shadow-2xl hover:shadow-blue-100/30 hover:scale-[1.02] hover:bg-blue-100/90">
-                            <button class="faq-question w-full text-left lg:px-8 px-4 py-6 flex justify-between items-center gap-6 outline-none">
-                                <span class="text-lg font-semibold text-black group-hover:text-black/90 transition-colors duration-300">
-                                    {{ $faq->question }}
-                                </span>
-                                <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-white/20">
-                                    <svg class="w-6 h-6 text-black group-[.active]:text-accent group-[.active]:rotate-180 transition-all duration-500"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </button>
-                            <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
-                                <div class="px-8 pb-8">
-                                    <div class="prose prose-lg max-w-none text-black leading-relaxed text-justify border-t border-white/10 pt-4">
-                                        {!! $faq->answer !!}
-                                    </div>
+    <section class="py-8 bg-gray-900 relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 relative z-10">
+                @foreach ($faqs as $faq)
+                    <div class="faq-item group relative bg-blue-100 rounded-xl border shadow hover:shadow-xl transition-all duration-300 overflow-hidden">
+                        <button class="faq-question w-full text-left px-4 py-3 flex justify-between items-center gap-4 outline-none">
+                            <span class="text-base font-semibold text-gray-800 group-hover:text-primary transition-colors duration-300">
+                                {{ ($loop->index + 1) . " . " . $faq->question }}
+                            </span>
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-white/50 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-white/80">
+                                <svg class="w-4 h-4 text-gray-800 group-[.active]:text-primary group-[.active]:rotate-180 transition-all duration-500"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0 opacity-0 transition-all duration-500 ease-in-out">
+                            <div class="px-4 pb-4">
+                                <div class="prose prose-sm max-w-none text-gray-700 leading-relaxed text-justify border-t border-gray-200/50 pt-3">
+                                    {!! $faq->answer !!}
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>

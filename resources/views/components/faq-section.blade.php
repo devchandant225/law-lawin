@@ -9,7 +9,7 @@
                     <div class="faq-item group relative bg-blue-100 rounded-xl border shadow hover:shadow-xl transition-all duration-300 overflow-hidden">
                         <button class="faq-question w-full text-left px-4 py-3 flex justify-between items-center gap-4 outline-none">
                             <span class="text-base font-semibold text-gray-800 group-hover:text-primary transition-colors duration-300">
-                                {{ ($loop->index + 1) . " . " . $faq->question }}
+                                {{ $faq->question }}
                             </span>
                             <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-white/50 flex items-center justify-center transition-all duration-500 group-[.active]:bg-white group-hover:bg-white/80">
                                 <svg class="w-4 h-4 text-gray-800 group-[.active]:text-primary group-[.active]:rotate-180 transition-all duration-500"

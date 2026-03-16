@@ -7,7 +7,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 relative z-10">
                 @foreach ($faqs as $faq)
                     <div class="faq-item group relative bg-blue-100 rounded-xl border shadow hover:shadow-xl transition-all duration-300 overflow-hidden">
-                        <button class="faq-question w-full text-left px-4 py-3 flex justify-between items-center gap-4 outline-none">
+                        <button class="faq-question w-full text-left px-4 py-1 flex justify-between items-center gap-4 outline-none">
                             <span class="text-base font-semibold text-gray-800 group-hover:text-primary transition-colors duration-300">
                                 {{ $faq->question }}
                             </span>

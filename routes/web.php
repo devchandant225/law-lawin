@@ -143,9 +143,9 @@ Route::get('/publication/stats', [PublicPublicationController::class, 'stats'])-
 Route::get('/publication/{slug}', [PublicPublicationController::class, 'show'])->name('publication.show');
 
 // More Publications - Redirect to Publications
-// Route::get('/more-publication', function () {
-//     return redirect('/publication', 301);
-// })->name('more-publications.index');
+Route::get('/more-publication', function () {
+    return redirect('/publication', 302);
+})->name('more-publications.index');
 Route::get('/more-publication/{slug}', [MorePublicationController::class, 'show'])->name('more-publication.show');
 Route::get('/more-publications/search', [MorePublicationController::class, 'search'])->name('more-publications.search');
 Route::get('/more-publications/featured', [MorePublicationController::class, 'featured'])->name('more-publications.featured');

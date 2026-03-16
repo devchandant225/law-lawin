@@ -43,6 +43,7 @@ class MorePublicationController extends Controller
      */
     public function show($slug): View
     {
+        dd($slug);
         $morePublication = Publication::where('slug', $slug)->active()->morePublication()->firstOrFail();
         
         // Get related more-publications

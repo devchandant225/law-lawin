@@ -7,7 +7,7 @@
                     data-slide="{{ $index }}">
                     <!-- Background Image -->
                     <div class="absolute inset-0">
-                        <img src="{{ $slider->image_url }}" alt="{{ $slider->title }}"
+                        <img src="{{ $slider->image_url }}" alt="{{ $slider->image_alt }}"
                             class="w-full h-full object-cover object-center">
                     </div>
 

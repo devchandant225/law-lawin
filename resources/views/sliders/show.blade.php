@@ -60,8 +60,9 @@
                         <div class="mb-6">
                             <h3 class="text-lg font-semibold text-gray-700 mb-3">Slider Image</h3>
                             @if($slider->image)
-                                <img src="{{ $slider->image_url }}" alt="{{ $slider->title }}" 
+                                <img src="{{ $slider->image_url }}" alt="{{ $slider->image_alt }}"
                                      class="w-full rounded-lg shadow-md object-cover max-h-96">
+                                <p class="mt-2 text-sm text-gray-600"><span class="font-medium">Alt Text:</span> {{ $slider->image_alt ?: 'Same as title' }}</p>
                             @else
                                 <div class="bg-gray-100 rounded-lg p-8 text-center">
                                     <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -79,7 +79,7 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">{{ $slider->id }}</td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         @if($slider->image)
-                                            <img src="{{ $slider->image_url }}" alt="{{ $slider->title }}" 
+                                            <img src="{{ $slider->image_url }}" alt="{{ $slider->image_alt }}"
                                                  class="h-16 w-24 object-cover rounded-md shadow-sm">
                                         @else
                                             <span class="text-gray-500 text-sm">No Image</span>
@@ -87,6 +87,7 @@
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="text-sm font-medium text-gray-900">{{ $slider->title }}</div>
+                                        <div class="text-xs text-gray-500">Alt: {{ $slider->image_alt ?: 'Same as title' }}</div>
                                     </td>
                                     <td class="px-4 py-4">
                                         <div class="text-sm text-gray-600">

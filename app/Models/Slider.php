@@ -13,6 +13,7 @@ class Slider extends Model
         'title',
         'description',
         'image',
+        'image_alt',
         'status',
         'orderlist'
     ];
@@ -20,6 +21,14 @@ class Slider extends Model
     protected $casts = [
         'status' => 'boolean',
     ];
+
+    /**
+     * Get the image alt text, defaulting to title if not set
+     */
+    public function getImageAltAttribute()
+    {
+        return $this->image_alt ?: $this->title;
+    }
 
     /**
      * Scope to get active sliders

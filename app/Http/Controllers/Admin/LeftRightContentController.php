@@ -38,6 +38,7 @@ class LeftRightContentController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'image_alt' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'order' => 'required|integer',
             'status' => 'required|boolean',
@@ -45,6 +46,11 @@ class LeftRightContentController extends Controller
 
         $data = $request->except('image');
         $data['post_id'] = $post->id;
+
+        // Set image_alt to title if not provided
+        if (empty($data['image_alt'])) {
+            $data['image_alt'] = $data['title'];
+        }
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('left-right-contents', 'public');
@@ -80,6 +86,7 @@ class LeftRightContentController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'image_alt' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'order' => 'required|integer',
             'status' => 'required|boolean',
@@ -87,6 +94,11 @@ class LeftRightContentController extends Controller
 
         $data = $request->except('image');
         $data['post_id'] = $post->id;
+
+        // Set image_alt to title if not provided
+        if (empty($data['image_alt'])) {
+            $data['image_alt'] = $data['title'];
+        }
 
         if ($request->hasFile('image')) {
             // Delete old image if exists

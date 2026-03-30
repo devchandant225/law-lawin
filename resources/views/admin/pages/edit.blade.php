@@ -184,7 +184,7 @@
                                     <h5 class="font-semibold text-gray-900">Current Image</h5>
                                 </div>
                                 <div class="p-4">
-                                    <img src="{{ $page->feature_image_url }}" alt="{{ $page->title }}" class="rounded border border-gray-200 w-full object-cover">
+                                    <img src="{{ $page->feature_image_url }}" alt="{{ $page->feature_image_alt ?: $page->title }}" class="rounded border border-gray-200 w-full object-cover">
                                 </div>
                             </div>
                         @endif

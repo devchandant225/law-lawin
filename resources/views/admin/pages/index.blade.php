@@ -76,7 +76,7 @@
 									<tr>
 										<td class="px-4 py-3">
 											@if($page->feature_image)
-												<img src="{{ $page->feature_image_url }}" alt="{{ $page->title }}" class="w-12 h-12 rounded object-cover">
+												<img src="{{ $page->feature_image_url }}" alt="{{ $page->feature_image_alt ?: $page->title }}" class="w-12 h-12 rounded object-cover">
 											@else
 												<div class="w-12 h-12 rounded bg-gray-100 flex items-center justify-center">
 													<i class="fas fa-file-alt text-gray-400"></i>

@@ -55,6 +55,14 @@
                 </div>
 
                 <div class="md:col-span-2">
+                    <label for="image_alt" class="block text-gray-300 mb-2">Image Alt Text</label>
+                    <input type="text" name="image_alt" id="image_alt" value="{{ old('image_alt') }}"
+                           placeholder="Image description for accessibility"
+                           class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <p class="text-gray-400 text-sm mt-1">Alternative text for accessibility and SEO. Defaults to title if empty.</p>
+                </div>
+
+                <div class="md:col-span-2">
                     <label for="description" class="block text-gray-300 mb-2">Description</label>
                     <textarea name="description" id="description" rows="4"
                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('description') }}</textarea>

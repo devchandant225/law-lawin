@@ -74,7 +74,8 @@
                         <!-- Featured Image -->
                         @if($publication->feature_image)
                             <div class="mb-4">
-                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->title }}" class="w-full max-h-[400px] object-cover rounded">
+                                <img src="{{ $publication->feature_image_url }}" alt="{{ $publication->feature_image_alt ?: $publication->title }}" class="w-full max-h-[400px] object-cover rounded">
+                                <p class="mt-2 text-sm text-gray-600"><span class="font-medium">Alt Text:</span> {{ $publication->feature_image_alt ?: 'Same as title' }}</p>
                             </div>
                         @endif
 

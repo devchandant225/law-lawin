@@ -154,7 +154,7 @@
                                         <div class="w-full lg:w-1/2">
                                             @if ($content->image)
                                                 <img src="{{ asset('storage/' . $content->image) }}"
-                                                    alt="{{ $content->title }}"
+                                                    alt="{{ $content->image_alt ?: $content->title }}"
                                                     class="w-full h-auto max-h-[400px] object-contain rounded-xl mx-auto">
                                             @else
                                                 <div

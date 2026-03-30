@@ -57,9 +57,18 @@
                     @if($leftRightContent->image)
                         <div class="mt-2">
                             <p class="text-gray-300">Current Image:</p>
-                            <img src="{{ asset('storage/' . $leftRightContent->image) }}" alt="Current" class="w-32 h-32 object-cover mt-2">
+                            <img src="{{ asset('storage/' . $leftRightContent->image) }}" alt="{{ $leftRightContent->image_alt ?: $leftRightContent->title }}" class="w-32 h-32 object-cover mt-2">
+                            <p class="text-gray-400 text-sm mt-1"><span class="font-medium">Alt Text:</span> {{ $leftRightContent->image_alt ?: 'Same as title' }}</p>
                         </div>
                     @endif
+                </div>
+
+                <div class="md:col-span-2">
+                    <label for="image_alt" class="block text-gray-300 mb-2">Image Alt Text</label>
+                    <input type="text" name="image_alt" id="image_alt" value="{{ old('image_alt', $leftRightContent->image_alt) }}"
+                           placeholder="Image description for accessibility"
+                           class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <p class="text-gray-400 text-sm mt-1">Alternative text for accessibility and SEO. Defaults to title if empty.</p>
                 </div>
 
                 <div class="md:col-span-2">

@@ -42,7 +42,8 @@
                     <div class="p-6">
                         @if($page->feature_image)
                             <div class="mb-6">
-                                <img src="{{ $page->feature_image_url }}" alt="{{ $page->title }}" class="w-full h-64 object-cover rounded-lg border border-gray-200">
+                                <img src="{{ $page->feature_image_url }}" alt="{{ $page->feature_image_alt ?: $page->title }}" class="w-full h-64 object-cover rounded-lg border border-gray-200">
+                                <p class="mt-2 text-sm text-gray-600"><span class="font-medium">Alt Text:</span> {{ $page->feature_image_alt ?: 'Same as title' }}</p>
                             </div>
                         @endif
 

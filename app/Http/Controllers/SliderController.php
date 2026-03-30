@@ -32,17 +32,22 @@ class SliderController extends Controller
     public function store(SliderRequest $request)
     {
         $data = $request->validated();
-        
+
         // Handle image upload
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('sliders', 'public');
         }
-        
+
+        // Set image_alt to title if not provided
+        if (empty($data['image_alt'])) {
+            $data['image_alt'] = $data['title'];
+        }
+
         // Set status if not provided
         $data['status'] = $request->has('status') ? 1 : 0;
-        
+
         Slider::create($data);
-        
+
         return redirect()->route('admin.sliders.index')
                         ->with('success', 'Slider created successfully.');
     }
@@ -69,7 +74,7 @@ class SliderController extends Controller
     public function update(SliderRequest $request, Slider $slider)
     {
         $data = $request->validated();
-        
+
         // Handle image upload
         if ($request->hasFile('image')) {
             // Delete old image
@@ -78,12 +83,17 @@ class SliderController extends Controller
             }
             $data['image'] = $request->file('image')->store('sliders', 'public');
         }
-        
+
+        // Set image_alt to title if not provided
+        if (empty($data['image_alt'])) {
+            $data['image_alt'] = $data['title'];
+        }
+
         // Set status if not provided
         $data['status'] = $request->has('status') ? 1 : 0;
-        
+
         $slider->update($data);
-        
+
         return redirect()->route('admin.sliders.index')
                         ->with('success', 'Slider updated successfully.');
     }

@@ -83,7 +83,7 @@
                     <div class="publication-header-card card mb-40">
                         @if ($language->feature_image_url)
                             <div class="publication-image-wrapper">
-                                <img src="{{ $language->feature_image_url }}" alt="{{ $language->title }}"
+                                <img src="{{ $language->feature_image_url }}" alt="{{ $language->feature_image_alt ?: $language->title }}"
                                     class="card-img-top publication-feature-image">
                             </div>
                         @endif

@@ -272,7 +272,8 @@
                                 @if($post->feature_image)
                                         <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Current Image</label>
-                                        <img src="{{ $post->feature_image_url }}" alt="{{ $post->title }}" class="rounded border border-gray-200 max-h-52">
+                                        <img src="{{ $post->feature_image_url }}" alt="{{ $post->feature_image_alt ?: $post->title }}" class="rounded border border-gray-200 max-h-52">
+                                        <p class="mt-2 text-sm text-gray-600"><span class="font-medium">Alt Text:</span> {{ $post->feature_image_alt ?: 'Same as title' }}</p>
                                     </div>
                                 @endif
 

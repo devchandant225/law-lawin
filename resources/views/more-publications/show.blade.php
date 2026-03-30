@@ -83,7 +83,7 @@
                     <div class="publication-header-card card mb-40">
                         @if ($morePublication->feature_image_url)
                             <div class="publication-image-wrapper">
-                                <img src="{{ $morePublication->feature_image_url }}" alt="{{ $morePublication->title }}"
+                                <img src="{{ $morePublication->feature_image_url }}" alt="{{ $morePublication->feature_image_alt ?: $morePublication->title }}"
                                     class="card-img-top publication-feature-image">
                             </div>
                         @endif

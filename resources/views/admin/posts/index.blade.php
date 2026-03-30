@@ -122,7 +122,7 @@
 										</td>
 										<td class="px-4 py-3">
 											@if($post->feature_image)
-												<img src="{{ $post->feature_image_url }}" alt="{{ $post->title }}" class="w-12 h-12 rounded object-cover">
+												<img src="{{ $post->feature_image_url }}" alt="{{ $post->feature_image_alt ?: $post->title }}" class="w-12 h-12 rounded object-cover">
 											@else
 												<div class="w-12 h-12 rounded bg-gray-100 flex items-center justify-center">
 													<i class="fas fa-image text-gray-400"></i>

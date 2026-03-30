@@ -24,6 +24,7 @@ class SliderRequest extends FormRequest
         $rules = [
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'image_alt' => 'nullable|string|max:255',
             'status' => 'boolean',
             'orderlist' => 'required|integer|min:0',
         ];

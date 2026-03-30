@@ -12,9 +12,7 @@
     <!-- Procounsel CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/procounsel.css') }}">
 
-    @if ($publication->google_schema_json)
-        {{-- Schema handled by x-detail-meta-tags component --}}
-    @endif
+    {{-- Schema handled by x-detail-meta-tags component --}}
 @endsection
 
 @section('content')

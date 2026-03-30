@@ -122,7 +122,12 @@
                 @endif
 
                 <!-- Google Schema -->
-                @if($publication->google_schema || $publication->google_schema_json)
+                @if($publication->schema_head || !empty($publication->google_schema_json))
+                    @php
+                        $schemaJson = is_array($publication->google_schema_json) 
+                            ? json_encode($publication->google_schema_json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+                            : $publication->google_schema_json;
+                    @endphp
                     <div class="mb-6 bg-white border border-gray-200 rounded-xl shadow-sm">
                         <div class="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                             <h5 class="font-semibold text-gray-900"><i class="fab fa-google mr-2"></i>Google Schema (JSON-LD)</h5>
@@ -132,7 +137,7 @@
                         </div>
                         <div class="p-4">
                             <div id="schema-content" style="display: none;">
-                                <pre class="bg-gray-50 p-3 rounded border border-gray-200 overflow-auto"><code class="language-json">{{ $publication->google_schema_json }}</code></pre>
+                                <pre class="bg-gray-50 p-3 rounded border border-gray-200 overflow-auto"><code class="language-json">{{ $schemaJson }}</code></pre>
                             </div>
                         </div>
                     </div>

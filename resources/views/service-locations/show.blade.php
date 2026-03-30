@@ -14,8 +14,12 @@
     <!-- Procounsel CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/procounsel.css') }}">
 
-    @if ($serviceLocation->google_schema_json)
-        <script type="application/ld+json">{!! $serviceLocation->google_schema_json !!}</script>
+    @php
+        $schemaJson = $serviceLocation->google_schema_json ?? [];
+        $schemaOutput = is_array($schemaJson) ? json_encode($schemaJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaJson;
+    @endphp
+    @if(!empty($schemaJson))
+        <script type="application/ld+json">{!! $schemaOutput !!}</script>
     @endif
 @endsection
 

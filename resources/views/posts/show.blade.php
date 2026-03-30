@@ -225,8 +225,12 @@
 </div>
 
 <!-- Google Schema JSON-LD -->
-@if($post->google_schema)
-    {!! $post->google_schema_json !!}
+@php
+    $schemaJson = $post->google_schema_json ?? [];
+    $schemaOutput = is_array($schemaJson) ? json_encode($schemaJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaJson;
+@endphp
+@if(!empty($post->google_schema) || !empty($schemaJson))
+    {!! $schemaOutput !!}
 @else
     <script type="application/ld+json">
     {

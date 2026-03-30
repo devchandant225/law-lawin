@@ -24,7 +24,7 @@ class LeftRightContent extends Model
      */
     public function getImageAltAttribute()
     {
-        return $this->image_alt ?: $this->title;
+        return $this->attributes['image_alt'] ?? $this->title;
     }
 
     public function post()

@@ -14,11 +14,15 @@
         @endphp
 
         @foreach($items as $index => $value)
+            @php
+                // Convert array to JSON string for display
+                $displayValue = is_array($value) ? json_encode($value, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : (string) $value;
+            @endphp
             <div class="schema-item flex gap-2">
                 <div class="flex-1">
-                    <textarea name="{{ $name }}[]" rows="4" 
+                    <textarea name="{{ $name }}[]" rows="4"
                         class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-mono text-xs schema-textarea"
-                        placeholder='{"@context": "https://schema.org", ...}'>{{ is_array($value) ? json_encode($value, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $value }}</textarea>
+                        placeholder='{"@context": "https://schema.org", ...}'>{{ $displayValue }}</textarea>
                     <p class="json-error-msg mt-1 text-xs text-red-600 hidden">Invalid JSON format</p>
                 </div>
                 <button type="button" class="remove-schema self-start p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Remove">

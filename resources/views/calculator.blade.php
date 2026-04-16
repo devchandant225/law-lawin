@@ -16,7 +16,7 @@
     {{-- Main Container --}}
     <div class="bg-[#f8fafc] pb-20">
         {{-- Calculator Section with Floating Card Effect --}}
-        <section class="relative z-10 -mt-10 lg:-mt-20 px-4">
+        <section class="relative z-10 py-12 px-4">
             <div class="container mx-auto max-w-6xl">
                 <div class="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
                     @livewire('calculator')

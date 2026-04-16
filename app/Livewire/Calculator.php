@@ -72,8 +72,8 @@ class Calculator extends Component
 
             $breakdown = [
                 ['range' => 'Upto 25,000', 'fee' => $step1Fee],
-                ['range' => "From 25,001 to 50,000 : 5% of " . number_format($this->twentyfivethousand), 'fee' => $step2Fee],
-                ['range' => "From 50,001 to 1,00,000 : 3.5% of " . number_format($this->fiftythousand), 'fee' => $step3Fee],
+                ['range' => "From 25,001 to 50,000 : 5% of 25,000", 'fee' => $step2Fee],
+                ['range' => "From 50,001 to 1,00,000 : 3.5% of 50,000", 'fee' => $step3Fee],
                 ['range' => "From 1,00,001 to 5,00,000 : 2% of " . number_format($amt), 'fee' => $step4Fee],
             ];
         } elseif ($amountValue <= $this->twentyfivelakh) {
@@ -87,8 +87,8 @@ class Calculator extends Component
 
             $breakdown = [
                 ['range' => 'Upto 25,000', 'fee' => $step1Fee],
-                ['range' => "From 25,001 to 50,000 : 5% of " . number_format($this->twentyfivethousand), 'fee' => $step2Fee],
-                ['range' => "From 50,001 to 1,00,000 : 3.5% of " . number_format($this->fiftythousand), 'fee' => $step3Fee],
+                ['range' => "From 25,001 to 50,000 : 5% of 25,000", 'fee' => $step2Fee],
+                ['range' => "From 50,001 to 1,00,000 : 3.5% of 50,000", 'fee' => $step3Fee],
                 ['range' => 'From 1,00,001 to 5,00,000 : 2% of 4,00,000', 'fee' => $step4Fee],
                 ['range' => "From 5,00,001 to 25,00,000 : 1.5% of " . number_format($amt), 'fee' => $step5Fee],
             ];
@@ -104,13 +104,18 @@ class Calculator extends Component
 
             $breakdown = [
                 ['range' => 'Upto 25,000', 'fee' => $step1Fee],
-                ['range' => "From 25,001 to 50,000 : 5% of " . number_format($this->twentyfivethousand), 'fee' => $step2Fee],
-                ['range' => "From 50,001 to 1,00,000 : 3.5% of " . number_format($this->fiftythousand), 'fee' => $step3Fee],
+                ['range' => "From 25,001 to 50,000 : 5% of 25,000", 'fee' => $step2Fee],
+                ['range' => "From 50,001 to 1,00,000 : 3.5% of 50,000", 'fee' => $step3Fee],
                 ['range' => 'From 1,00,001 to 5,00,000 : 2% of 4,00,000', 'fee' => $step4Fee],
-                ['range' => 'From 5,00,001 to 25,00,000 : 1.5% of 20,00,000', 'fee' => $step5Fee],
+                ['range' => 'From 5,00,001 to 25,00,000 : 1.5% of 2,000,000', 'fee' => $step5Fee],
                 ['range' => "Above 25,00,001 : 1% of " . number_format($amt), 'fee' => $step6Fee],
             ];
         }
+
+        $this->lawFee = $fee;
+        $this->calculationBreakdown = $breakdown;
+        $this->showBreakdown = true;
+    }
 
         $this->lawFee = $fee;
         $this->calculationBreakdown = $breakdown;

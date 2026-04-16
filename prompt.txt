@@ -1,28 +1,17 @@
-syntax error, unexpected variable "$this", expecting "function" or "const"
+Livewire only supports one HTML element per component. Multiple root elements detected for component: [calculator]
 
 Expand vendor frames
-app
- / 
-Livewire
- / 
-Calculator
-.php
- 
-: 120
-Composer\Autoload\{closure}
-1 vendor frame
-.unknown
-0
-class_exists
 5 vendor frames
-resources
+storage
+ / 
+framework
  / 
 views
  / 
-calculator.blade
+2d42239a5bafb2046c54efaf3de05f1d
 .php
  
-: 15
+: 59
 require
 54 vendor frames
 public
@@ -32,14 +21,16 @@ index
  
 : 51
 [top]
-app
+storage
  / 
-Livewire
+framework
  / 
-Calculator
+views
+ / 
+2d42239a5bafb2046c54efaf3de05f1d
 .php
  
-: 120
+: 59
 
 
 
@@ -71,34 +62,26 @@ Calculator
 
 
 
-            $step5Fee = 0.015 * 2000000;
+<?php unset($__componentOriginale0f6bf82b872605c3c11e5a0889fb708); ?>
 
-            $step6Fee = 0.01 * $amt;
-
-            $fee = $step1Fee + $step2Fee + $step3Fee + $step4Fee + $step5Fee + $step6Fee;
+<?php endif; ?>
 
 
 
-            $breakdown = [
 
-                ['range' => 'Upto 25,000', 'fee' => $step1Fee],
 
-                ['range' => "From 25,001 to 50,000 : 5% of 25,000", 'fee' => $step2Fee],
-
-                ['range' => "From 50,001 to 1,00,000 : 3.5% of 50,000", 'fee' => $step3Fee],
-
-                ['range' => 'From 1,00,001 to 5,00,000 : 2% of 4,00,000', 'fee' => $step4Fee],
-
-                ['range' => 'From 5,00,001 to 25,00,000 : 1.5% of 2,000,000', 'fee' => $step5Fee],
-
-                ['range' => "Above 25,00,001 : 1% of " . number_format($amt), 'fee' => $step6Fee],
-
-            ];
-
-        }
+    <div class="bg-[#f8fafc] pb-20">
 
 
 
-        $this->lawFee = $fee;
+        <section class="relative z-10 -mt-10 lg:-mt-20 px-4">
 
-        $this->calculationBreak
+            <div class="container mx-auto max-w-6xl">
+
+                <div class="bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
+
+                    <?php
+
+$__split = function ($name, $params = []) {
+
+    return [$name, $params];

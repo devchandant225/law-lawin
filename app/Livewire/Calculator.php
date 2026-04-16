@@ -117,11 +117,6 @@ class Calculator extends Component
         $this->showBreakdown = true;
     }
 
-        $this->lawFee = $fee;
-        $this->calculationBreakdown = $breakdown;
-        $this->showBreakdown = true;
-    }
-
     public function render()
     {
         return view('livewire.calculator');

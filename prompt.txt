@@ -1,28 +1,104 @@
-"Publications - Legal Publications & Resources
-Publication | Lawin and Partners"
-"About Us : Lawin & Partners
-About Us : Lawin & Partners"
-"Our Legal Team - Expert Lawyers & Legal Professionals
-Expert Lawyers in Nepal | Lawin & Partners Team"
-"Publications - Legal Publications & Resources
-Publication | Lawin and Partners"
-"Lawin&Partners
-Lawin&Partners"
-"Our Legal Team - Expert Lawyers & Legal Professionals
-Expert Lawyers in Nepal | Lawin & Partners Team"
-"Lawin&Partners
-Lawin&Partners"
-"Our Services - Professional Legal Expertise
-Legal Services in Nepal – Lawin & Partners"
-"Law Practice Areas in Nepal | Lawin & Partners
-Law Practice Areas in Nepal | Lawin & Partners"
-"Lawin&Partners
-Lawin&Partners"
-"About Us : Lawin & Partners
-About Us : Lawin & Partners"
-"Law Practice Areas in Nepal | Lawin & Partners
-Law Practice Areas in Nepal | Lawin & Partners"
-"Lawin&Partners
-Lawin&Partners"
-"Our Services - Professional Legal Expertise
-Legal Services in Nepal – Lawin & Partners"
+syntax error, unexpected variable "$this", expecting "function" or "const"
+
+Expand vendor frames
+app
+ / 
+Livewire
+ / 
+Calculator
+.php
+ 
+: 120
+Composer\Autoload\{closure}
+1 vendor frame
+.unknown
+0
+class_exists
+5 vendor frames
+resources
+ / 
+views
+ / 
+calculator.blade
+.php
+ 
+: 15
+require
+54 vendor frames
+public
+ / 
+index
+.php
+ 
+: 51
+[top]
+app
+ / 
+Livewire
+ / 
+Calculator
+.php
+ 
+: 120
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            $step5Fee = 0.015 * 2000000;
+
+            $step6Fee = 0.01 * $amt;
+
+            $fee = $step1Fee + $step2Fee + $step3Fee + $step4Fee + $step5Fee + $step6Fee;
+
+
+
+            $breakdown = [
+
+                ['range' => 'Upto 25,000', 'fee' => $step1Fee],
+
+                ['range' => "From 25,001 to 50,000 : 5% of 25,000", 'fee' => $step2Fee],
+
+                ['range' => "From 50,001 to 1,00,000 : 3.5% of 50,000", 'fee' => $step3Fee],
+
+                ['range' => 'From 1,00,001 to 5,00,000 : 2% of 4,00,000', 'fee' => $step4Fee],
+
+                ['range' => 'From 5,00,001 to 25,00,000 : 1.5% of 2,000,000', 'fee' => $step5Fee],
+
+                ['range' => "Above 25,00,001 : 1% of " . number_format($amt), 'fee' => $step6Fee],
+
+            ];
+
+        }
+
+
+
+        $this->lawFee = $fee;
+
+        $this->calculationBreak

@@ -125,11 +125,11 @@
             </div>
         </div>
     </div>
-</div>
 
-<style>
-    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fade-in-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    .animate-fade-in { animation: fade-in 0.5s ease-out; }
-    .animate-fade-in-up { animation: fade-in-up 0.4s ease-out forwards; }
-</style>
+    <style>
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fade-in-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fade-in 0.5s ease-out; }
+        .animate-fade-in-up { animation: fade-in-up 0.4s ease-out forwards; }
+    </style>
+</div>

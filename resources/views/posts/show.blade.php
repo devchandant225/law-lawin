@@ -224,36 +224,6 @@
     </div>
 </div>
 
-<!-- Google Schema JSON-LD -->
-@php
-    $schemaJson = $post->google_schema_json ?? [];
-    $schemaOutput = is_array($schemaJson) ? json_encode($schemaJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) : $schemaJson;
-@endphp
-@if(!empty($post->google_schema) || !empty($schemaJson))
-    {!! $schemaOutput !!}
-@else
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "{{ match($post->type) { 'service' => 'Service', 'practice' => 'Article', 'news' => 'NewsArticle', 'blog' => 'BlogPosting', default => 'Article' } }}",
-      "name": "{{ $post->title }}",
-      "headline": "{{ $post->title }}",
-      "description": "{{ $post->excerpt ?: Str::limit(strip_tags($post->description), 160) }}",
-      "url": "{{ request()->url() }}",
-      "datePublished": "{{ $post->created_at->toISOString() }}",
-      "dateModified": "{{ $post->updated_at->toISOString() }}"
-      @if($post->feature_image)
-      ,
-      "image": {
-        "@type": "ImageObject",
-        "url": "{{ $post->feature_image_url }}",
-        "width": 1200,
-        "height": 630
-      }
-      @endif
-    }
-    </script>
-@endif
 
 <style>
 .line-clamp-2 {

@@ -3,147 +3,236 @@
 @section('title', 'Create Meta Tag')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-	<div>
-		<div class="flex items-center justify-between mb-6">
-			<div>
-				<h1 class="text-2xl font-bold text-gray-900">Create Meta Tag</h1>
-				<p class="text-gray-600 mt-1">Add SEO meta tags for a page</p>
-			</div>
-			<a href="{{ route('admin.meta-tags.index') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50">
-				<i class="fas fa-arrow-left"></i>
-				<span>Back to Meta Tags</span>
-			</a>
-		</div>
+<div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Create Meta Tag</h1>
+            <p class="text-gray-500 mt-1">Configure SEO and social media metadata for your website pages.</p>
+        </div>
+        <a href="{{ route('admin.meta-tags.index') }}" class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm">
+            <i class="fas fa-arrow-left text-xs"></i>
+            <span>Back to List</span>
+        </a>
+    </div>
 
-		<div class="bg-white border border-gray-200 rounded-xl shadow-sm">
-			<div class="p-6">
-				<form action="{{ route('admin.meta-tags.store') }}" method="POST" enctype="multipart/form-data">
-					@csrf
-					
-					<div class="grid grid-cols-1 gap-6">
-						<!-- Page Type -->
-						<div>
-							<label for="page_type" class="block text-sm font-medium text-gray-700 mb-2">
-								Page Type <span class="text-red-500">*</span>
-							</label>
-							<select name="page_type" id="page_type" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary @error('page_type') border-red-300 @enderror" required>
-								<option value="">Select Page Type</option>
-								@foreach($pageTypes as $value => $label)
-									@if(!in_array($value, $usedPageTypes))
-										<option value="{{ $value }}" {{ old('page_type') == $value ? 'selected' : '' }}>{{ $label }}</option>
-									@endif
-								@endforeach
-							</select>
-							@error('page_type')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							@if(count($usedPageTypes) > 0)
-								<p class="mt-1 text-sm text-gray-500">Note: Some page types are already configured</p>
-							@endif
-						</div>
+    <form action="{{ route('admin.meta-tags.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
+        @csrf
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Basic Info & SEO -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- SEO Content Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900">Search Engine Optimization</h3>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <!-- Title -->
+                        <div>
+                            <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Meta Title <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <input type="text" name="title" id="title" value="{{ old('title') }}" maxlength="255" 
+                                    class="block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 bg-gray-50/30 transition-all" 
+                                    placeholder="Enter page title for search results" required>
+                                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                    <span id="title-count" class="text-xs font-medium text-gray-400">0</span>
+                                    <span class="text-xs font-medium text-gray-300 mx-1">/</span>
+                                    <span class="text-xs font-medium text-gray-400">60</span>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-xs text-gray-500">The title tag is one of the most important SEO factors. Aim for 50-60 characters.</p>
+                            @error('title')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-						<!-- Title -->
-						<div>
-							<label for="title" class="block text-sm font-medium text-gray-700 mb-2">
-								Meta Title <span class="text-red-500">*</span>
-							</label>
-							<input type="text" name="title" id="title" value="{{ old('title') }}" maxlength="255" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary @error('title') border-red-300 @enderror" required>
-							@error('title')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							<p class="mt-1 text-sm text-gray-500">Recommended: 50-60 characters</p>
-						</div>
+                        <!-- Description -->
+                        <div>
+                            <label for="desc" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Meta Description
+                            </label>
+                            <div class="relative">
+                                <textarea name="desc" id="desc" rows="4" maxlength="500" 
+                                    class="block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 bg-gray-50/30 transition-all resize-none"
+                                    placeholder="Write a compelling summary of the page content...">{{ old('desc') }}</textarea>
+                                <div class="absolute bottom-3 right-4 flex items-center pointer-events-none bg-white/80 px-2 py-1 rounded-md backdrop-blur-sm">
+                                    <span id="desc-count" class="text-xs font-medium text-gray-400">0</span>
+                                    <span class="text-xs font-medium text-gray-300 mx-1">/</span>
+                                    <span class="text-xs font-medium text-gray-400">160</span>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-xs text-gray-500">Briefly summarize the page content. Aim for 150-160 characters for best results.</p>
+                            @error('desc')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-						<!-- Description -->
-						<div>
-							<label for="desc" class="block text-sm font-medium text-gray-700 mb-2">
-								Meta Description
-							</label>
-							<textarea name="desc" id="desc" rows="3" maxlength="500" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary @error('desc') border-red-300 @enderror">{{ old('desc') }}</textarea>
-							@error('desc')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							<p class="mt-1 text-sm text-gray-500">Recommended: 150-160 characters</p>
-						</div>
+                        <!-- Keywords -->
+                        <div>
+                            <label for="keyword" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Meta Keywords
+                            </label>
+                            <input type="text" name="keyword" id="keyword" value="{{ old('keyword') }}"
+                                class="block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 bg-gray-50/30 transition-all" 
+                                placeholder="legal, law firm, consultation (comma separated)">
+                            <p class="mt-2 text-xs text-gray-500">Keywords are less important now but can still be helpful for some search engines.</p>
+                            @error('keyword')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
 
-						<!-- Keywords -->
-						<div>
-							<label for="keyword" class="block text-sm font-medium text-gray-700 mb-2">
-								Meta Keywords
-							</label>
-							<textarea name="keyword" id="keyword" rows="2" maxlength="1000" class="block w-full rounded-lg border-gray-300 focus:border-primary focus:ring-primary @error('keyword') border-red-300 @enderror" placeholder="keyword1, keyword2, keyword3">{{ old('keyword') }}</textarea>
-							@error('keyword')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							<p class="mt-1 text-sm text-gray-500">Separate keywords with commas</p>
-						</div>
+                <!-- Structured Data Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900">Structured Data (JSON-LD)</h3>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <x-schema-repeater name="schema_head" label="Header Schema" />
+                        <x-schema-repeater name="schema_body" label="Body Schema" />
+                    </div>
+                </div>
+            </div>
 
-						<!-- Image -->
-						<div>
-							<label for="image" class="block text-sm font-medium text-gray-700 mb-2">
-								Meta Image (Open Graph)
-							</label>
-							<input type="file" name="image" id="image" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-primary file:text-white hover:file:bg-purple-700 @error('image') border-red-300 @enderror">
-							@error('image')
-								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-							@enderror
-							<p class="mt-1 text-sm text-gray-500">Recommended: 1200x630px, max 2MB</p>
-						</div>
+            <!-- Right Column: Settings & Image -->
+            <div class="space-y-8">
+                <!-- Page Configuration Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900">Configuration</h3>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <!-- Page Type -->
+                        <div>
+                            <label for="page_type" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Page Type <span class="text-red-500">*</span>
+                            </label>
+                            <select name="page_type" id="page_type" class="block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-3 bg-gray-50/30 transition-all" required>
+                                <option value="">Select Page Type</option>
+                                @foreach($pageTypes as $value => $label)
+                                    @if(!in_array($value, $usedPageTypes))
+                                        <option value="{{ $value }}" {{ old('page_type') == $value ? 'selected' : '' }}>{{ $label }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('page_type')
+                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-						<!-- Schema JSON-LD (Head) -->
-						<x-schema-repeater name="schema_head" label="Schema JSON-LD (Head)" />
+                        <!-- Status -->
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100">
+                            <div class="flex flex-col">
+                                <span class="text-sm font-semibold text-gray-900">Active Status</span>
+                                <span class="text-xs text-gray-500">Enable or disable these tags</span>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" name="is_active" value="1" class="sr-only peer" {{ old('is_active', true) ? 'checked' : '' }}>
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-						<!-- Schema JSON-LD (Body) -->
-						<x-schema-repeater name="schema_body" label="Schema JSON-LD (Body)" />
+                <!-- Social Media Image Card -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900">Social Share Image</h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="relative group">
+                            <div id="image-preview" class="w-full aspect-video rounded-xl bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center overflow-hidden transition-all group-hover:border-indigo-400">
+                                <div id="preview-placeholder" class="text-center p-4">
+                                    <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                                    <p class="text-sm text-gray-500">Click to upload or drag and drop</p>
+                                    <p class="text-xs text-gray-400 mt-1">Recommended: 1200x630px</p>
+                                </div>
+                                <img id="preview-img" class="hidden w-full h-full object-cover">
+                            </div>
+                            <input type="file" name="image" id="image" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+                        </div>
+                        @error('image')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
 
-						<!-- Status -->
-						<div>
-							<div class="flex items-center">
-								<input type="checkbox" name="is_active" id="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }} class="rounded border-gray-300 text-primary focus:ring-primary">
-								<label for="is_active" class="ml-2 block text-sm text-gray-700">
-									Active
-								</label>
-							</div>
-							<p class="mt-1 text-sm text-gray-500">Enable this meta tag for the selected page</p>
-						</div>
-					</div>
-
-					<div class="flex items-center justify-end gap-4 mt-8 pt-6 border-t border-gray-200">
-						<a href="{{ route('admin.meta-tags.index') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
-							Cancel
-						</a>
-						<button type="submit" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-primary">
-							Create Meta Tag
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                <!-- Action Buttons -->
+                <div class="flex flex-col gap-3">
+                    <button type="submit" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold text-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all shadow-lg shadow-indigo-200 active:scale-[0.98]">
+                        Save Meta Tag
+                    </button>
+                    <button type="reset" class="w-full py-3 bg-white text-gray-600 border border-gray-200 rounded-2xl font-semibold hover:bg-gray-50 transition-all">
+                        Discard Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
+@push('scripts')
 <script>
-// JSON validation for schema fields
-['schema_head', 'schema_body'].forEach(id => {
-	const element = document.getElementById(id);
-	if (element) {
-		element.addEventListener('blur', function() {
-			const value = this.value.trim();
-			if (value) {
-				try {
-					JSON.parse(value);
-					this.classList.remove('border-red-300');
-					this.classList.add('border-green-300');
-				} catch (e) {
-					this.classList.remove('border-green-300');
-					this.classList.add('border-red-300');
-				}
-			} else {
-				this.classList.remove('border-red-300', 'border-green-300');
-			}
-		});
-	}
-});
+    // Character counters
+    function updateCounter(inputId, counterId, limit) {
+        const input = document.getElementById(inputId);
+        const counter = document.getElementById(counterId);
+        if (input && counter) {
+            const length = input.value.length;
+            counter.textContent = length;
+            
+            if (length > limit) {
+                counter.classList.add('text-red-500');
+            } else if (length > limit * 0.8) {
+                counter.classList.add('text-amber-500');
+            } else {
+                counter.classList.remove('text-red-500', 'text-amber-500');
+            }
+        }
+    }
+
+    document.getElementById('title').addEventListener('input', () => updateCounter('title', 'title-count', 60));
+    document.getElementById('desc').addEventListener('input', () => updateCounter('desc', 'desc-count', 160));
+
+    // Image preview
+    document.getElementById('image').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            const previewImg = document.getElementById('preview-img');
+            const placeholder = document.getElementById('preview-placeholder');
+            const previewContainer = document.getElementById('image-preview');
+
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                previewImg.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+                previewContainer.classList.remove('bg-gray-100', 'border-dashed');
+                previewContainer.classList.add('border-solid', 'border-indigo-500');
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Initialize counters
+    updateCounter('title', 'title-count', 60);
+    updateCounter('desc', 'desc-count', 160);
 </script>
+@endpush
 @endsection

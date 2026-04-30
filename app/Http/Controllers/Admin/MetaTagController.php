@@ -40,8 +40,8 @@ class MetaTagController extends Controller
             'desc' => 'nullable|string|max:500',
             'keyword' => 'nullable|string|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'schema_head' => 'nullable|string',
-            'schema_body' => 'nullable|string',
+            'schema_head' => 'nullable|array',
+            'schema_body' => 'nullable|array',
             'page_type' => [
                 'required',
                 'string',
@@ -100,8 +100,8 @@ class MetaTagController extends Controller
             'desc' => 'nullable|string|max:500',
             'keyword' => 'nullable|string|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'schema_head' => 'nullable|string',
-            'schema_body' => 'nullable|string',
+            'schema_head' => 'nullable|array',
+            'schema_body' => 'nullable|array',
             'page_type' => [
                 'required',
                 'string',

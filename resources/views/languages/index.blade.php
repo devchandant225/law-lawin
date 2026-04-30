@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('meta_tags')
-    <x-meta-tags title="Languages - Legal Language Services"
-        description="Explore our comprehensive legal language services and multi-lingual support capabilities."
-        keywords="legal languages, multi-lingual services, translation, interpretation" />
+    <x-meta-tags />
 @endsection
 
 @section('head')

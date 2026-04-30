@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta_tags')
-    <x-meta-tags :title="'Publications - Legal Publications & Resources'" :description="'Browse our comprehensive collection of legal publications, research papers, and resources'" :keywords="'publications, legal resources, law, research'" />
+    <x-meta-tags />
 @endsection
 
 @section('content')

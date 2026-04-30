@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('meta_tags')
-    <x-meta-tags title="Our Services - Professional Legal Expertise"
-        description="Explore our comprehensive range of professional legal services. Expert legal advice and representation across various practice areas."
-        keywords="legal services, law firm services, legal expertise, professional legal advice, legal representation"
-        type="website" />
+    <x-meta-tags />
 @endsection
 
 @section('content')

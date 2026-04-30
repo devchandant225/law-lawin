@@ -59,10 +59,10 @@
     $postMetaKeywords = $post ? $post->meta_keywords : null;
     $postImage = $post ? $post->feature_image_url : null;
 
-    $metaTitle = $title ?: ($postMetaTitle ?: ($postTitle ?: ($dbMetaTag->title ?? config('app.name'))));
-    $metaDescription = $description ?: ($postMetaDesc ?: ($postExcerpt ?: ($dbMetaTag->desc ?? 'Professional legal services and expertise')));
-    $metaKeywords = $keywords ?: ($postMetaKeywords ?: ($dbMetaTag->keyword ?? 'legal services, law firm, professional legal advice'));
-    $metaImage = $image ?: ($postImage ?: ($dbMetaTag && $dbMetaTag->image ? \Storage::url($dbMetaTag->image) : asset('images/default-og-image.jpg')));
+    $metaTitle = $title ?: ($dbMetaTag->title ?? ($postMetaTitle ?: ($postTitle ?: config('app.name'))));
+    $metaDescription = $description ?: ($dbMetaTag->desc ?? ($postMetaDesc ?: ($postExcerpt ?: 'Professional legal services and expertise')));
+    $metaKeywords = $keywords ?: ($dbMetaTag->keyword ?? ($postMetaKeywords ?: 'legal services, law firm, professional legal advice'));
+    $metaImage = $image ?: ($dbMetaTag && $dbMetaTag->image ? \Storage::url($dbMetaTag->image) : ($postImage ?: asset('images/default-og-image.jpg')));
     $metaUrl = request()->url();
     
     // Generate Schema.org structured data
@@ -71,12 +71,12 @@
 
     if (isset($customSchema)) {
         $schemaHeadArray[] = $customSchema;
-    } elseif ($post && !empty($post->schema_head_json)) {
-        $schemaHeadArray = $post->schema_head_json;
-        $schemaBodyArray = $post->schema_body_json;
     } elseif ($dbMetaTag && !empty($dbMetaTag->schema_head_json)) {
         $schemaHeadArray = $dbMetaTag->schema_head_json;
         $schemaBodyArray = $dbMetaTag->schema_body_json;
+    } elseif ($post && !empty($post->schema_head_json)) {
+        $schemaHeadArray = $post->schema_head_json;
+        $schemaBodyArray = $post->schema_body_json;
     } elseif (isset($schema)) {
         $schemaHeadArray[] = $schema;
     } else {

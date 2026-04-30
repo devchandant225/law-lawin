@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('meta_tags')
-    @if ($post)
-        <x-meta-tags :title="$post->meta_title ?: $post->title" :description="$post->meta_description" :keywords="$post->meta_keywords" :image="$post->feature_image_url ?: asset('images/team-banner.jpg')" type="website" />
-    @else
-        <x-meta-tags :title="'Our Legal Team - Expert Lawyers & Legal Professionals'" :description="'Meet our experienced team of legal professionals. Expert lawyers, attorneys, and legal consultants ready to handle your legal needs with dedication and expertise.'" :keywords="'legal team, lawyers, attorneys, legal professionals, law firm team, legal experts'" :image="asset('images/team-banner.jpg')" type="website" />
-    @endif
+    <x-meta-tags :post="$post" />
 @endsection
 @section('head')
     <style>
